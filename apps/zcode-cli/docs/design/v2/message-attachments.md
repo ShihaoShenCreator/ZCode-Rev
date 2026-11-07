@@ -597,7 +597,7 @@ Compact 时：
 
 ### Phase 1：契约和 projection 骨架
 
-1. 扩展 `@zcode/contracts` 的 `ModelInputMessage`、JSON schema、session event payload。
+1. 扩展 `@s-agent/contracts` 的 `ModelInputMessage`、JSON schema、session event payload。
 2. 扩展 session `FilePart` metadata，保持旧 part JSON 可读。
 3. 新增 `MessageProjector`，把 stored messages 投影成 provider-neutral `MessageContentBlock[]`。
 4. 更新 `MessageHistory`，支持 user content blocks，同时保持纯文本路径兼容。

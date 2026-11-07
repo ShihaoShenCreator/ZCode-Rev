@@ -6,7 +6,7 @@ import type {
   CommandsQueryParams,
   CommandsQueryResult,
   ConversationSnapshot,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   resolvePendingCommandWorkspaceKey,
   type PendingCommandClientContext,

@@ -11,7 +11,6 @@ import { chromium } from "playwright-core";
 import { registerProviderPresentationCases } from "./provider-settings-presentation-cases.mjs";
 import { registerProviderModelEditorCases } from "./provider-model-editor-cases.mjs";
 import { registerProgressiveModelEditorCases } from "./provider-model-editor-progressive-cases.mjs";
-import { registerOffPeakEligibilityCases } from "./offpeak-eligibility-cases.mjs";
 
 const root = fileURLToPath(new URL("../../../../../../", import.meta.url));
 const entry = "/packages/ui/test/browser/manual-review/pending/provider-settings-batch.fixture.tsx";
@@ -61,7 +60,6 @@ after(async () => {
 });
 
 const artifacts = join(tmpdir(), "zcode-provider-settings-batch");
-registerOffPeakEligibilityCases(() => ({ browser, origin }));
 registerProviderPresentationCases(() => ({ browser, origin, artifacts }));
 registerProviderModelEditorCases(() => ({ browser, origin, artifacts }));
 registerProgressiveModelEditorCases(() => ({ browser, origin, artifacts }));
@@ -310,33 +308,6 @@ for (const [width, locale, theme] of [
 for (const [width, locale, theme] of [
   [390, "zh-CN", "light"],
   [1200, "en-US", "dark"],
-]) {
-  test(`account has no provider toggle ${width}/${locale}/${theme}`, async () => {
-    const page = await browser.newPage({ viewport: { width, height: 900 } });
-    const mutations = [];
-    await page.route("**/mutation", async (route) => {
-      mutations.push(route.request().postDataJSON());
-      await route.fulfill({ status: 200, body: "{}" });
-    });
-    try {
-      await page.goto(
-        `${origin}fixture?${new URLSearchParams({ locale, theme, access: "account" })}`,
-      );
-      await page.getByTestId("detail").getByText("GLM-5.3", { exact: true }).waitFor();
-      assert.equal(await page.getByTestId("model-provider-enabled-switch").count(), 0);
-      assert.ok(
-        (await page.getByTestId("detail").getByRole("switch").count()) > 0,
-        "model switches remain available",
-      );
-      assert.deepEqual(mutations, [], "rendering must not save an enable override");
-    } finally {
-      await page.close();
-    }
-  });
-}
-for (const [width, locale, theme] of [
-  [390, "zh-CN", "light"],
-  [1200, "en-US", "dark"],
 ])
   test(`provider batch ${width}/${locale}/${theme}`, async () => {
     await mkdir(artifacts, { recursive: true });
@@ -357,21 +328,22 @@ for (const [width, locale, theme] of [
     });
     try {
       await page.goto(`${origin}fixture?${new URLSearchParams({ locale, theme })}`);
-      const group = page.locator('[data-provider-template-group="zhipu"]');
-      await group.waitFor();
-      assert.equal(await group.locator("button").count(), 4);
-      assert.deepEqual(
-        await group.locator("button").evaluateAll((nodes) => nodes.map((n) => n.dataset.testid)),
-        ["bigmodel-api", "zai-api", "bigmodel-standard-api", "zai-standard-api"].map(
-          (id) => "model-provider-template-item-" + id,
-        ),
+      // 去智谱化：内置模板已退役 Z.ai/BigModel 分组，模板选择器只应出现通用 Provider 模板。
+      assert.equal(
+        await page.locator('[data-provider-template-group="zhipu"]').count(),
+        0,
+        "retired zhipu template group must not render",
       );
+      const firstTemplate = page
+        .locator("[data-testid^='model-provider-template-item-']")
+        .first();
+      await firstTemplate.waitFor();
       assert.equal(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         true,
       );
       await page.screenshot({ path: join(artifacts, `templates-${width}.png`) });
-      await group.locator("button").first().click();
+      await firstTemplate.click();
       const toggle = page.getByTestId("model-provider-enabled-switch");
       await toggle.waitFor();
       assert.equal(await toggle.getAttribute("aria-checked"), "true");
@@ -408,10 +380,10 @@ for (const [width, locale, theme] of [
       const allKeyLinks = page.getByRole("button", { name: /获取.*Key|Get.*[Kk]ey/ });
       assert.equal(await allKeyLinks.count(), 1);
       await keyLink.click();
-      assert.equal(
-        await page.getByTestId("opened").textContent(),
-        "https://bigmodel.cn/coding-plan/personal/overview",
-      );
+      // 去智谱化：Key 管理跳转必须是模板自身配置的地址，不得再指向已退役的 bigmodel.cn 套餐页。
+      const openedUrl = await page.getByTestId("opened").textContent();
+      assert.ok(openedUrl, "api key management url must be configured");
+      assert.doesNotMatch(openedUrl, /bigmodel\.cn|open\.bigmodel\.cn/u);
       const nav = page.getByRole("button", { name: "fixture", exact: true });
       const before = await nav.boundingBox();
       await page.mouse.move(before.x + before.width / 2, before.y + before.height / 2);
@@ -471,10 +443,7 @@ for (const [width, locale, theme] of [
       await keyInput.fill("");
       assert.equal(await allKeyLinks.count(), 1);
       await keyLink.click();
-      assert.equal(
-        await page.getByTestId("opened").textContent(),
-        "https://bigmodel.cn/coding-plan/personal/overview",
-      );
+      assert.equal(await page.getByTestId("opened").textContent(), openedUrl);
       assert.deepEqual(errors, []);
       await page.screenshot({ path: join(artifacts, `detail-${width}.png`) });
     } finally {

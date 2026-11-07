@@ -6,7 +6,7 @@ import type {
   ModelRequest,
   ModelToolCall,
   ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 import {
   createRuntimeAssistantEntry,

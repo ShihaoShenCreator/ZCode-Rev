@@ -38,7 +38,7 @@ export default defineConfig({
   banner: {
     js: 'import { fileURLToPath as __zcodeFileURLToPath } from "node:url"; import { dirname as __zcodeDirname } from "node:path"; const __filename = __zcodeFileURLToPath(import.meta.url); const __dirname = __zcodeDirname(__filename);',
   },
-  noExternal: ["@zcode/shared", "@zcode/rpc", "@zcode/services"],
+  noExternal: ["@s-agent/shared", "@s-agent/rpc", "@s-agent/services"],
   define: SERVER_CLI_DEFINES,
   external: [
     "node-pty",

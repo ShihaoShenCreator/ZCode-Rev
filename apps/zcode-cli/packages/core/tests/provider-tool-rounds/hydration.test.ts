@@ -8,7 +8,7 @@ import {
   createSessionId,
   type MessagePart,
   type MessageWithParts,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { MessageHistoryImpl } from "../../src/agent/message-history.js";
 import { hydrateMessageHistoryFromSession } from "../../src/agent/session-history-hydrator.js";
 

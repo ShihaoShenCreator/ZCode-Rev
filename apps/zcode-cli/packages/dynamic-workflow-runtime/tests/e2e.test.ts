@@ -4,7 +4,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { InMemoryJournalStore, WorkflowError, inputHash } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore, WorkflowError, inputHash } from "@s-agent/dynamic-workflow";
 import { runScript } from "./helpers.js";
 
 const RUN = "run";

@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import type { WorkspaceHookBundleSnapshot, WorkspaceHookTrustRecord } from "@zcode/contracts";
+import type { WorkspaceHookBundleSnapshot, WorkspaceHookTrustRecord } from "@s-agent/contracts";
 import {
   WORKSPACE_HOOK_STATE_ADMISSION_MAP,
   createWorkspaceHookBundleSnapshot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   InMemoryWorkspaceHookPolicyProvider,
   WorkspaceHookTrustCoordinator,

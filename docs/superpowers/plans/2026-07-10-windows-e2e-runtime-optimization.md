@@ -14,7 +14,7 @@
 - 不牺牲 Windows/macOS/Linux 兼容；Windows 优化必须保留 POSIX 平台现有清理路径。
 - 不降低 conversation case 的产品断言；有意覆盖 45 秒边界的 case 进入显式 slow lane，而不是静默缩短。
 - 每项优化都先运行定向 spec，最终只运行一次完整 `pnpm test:e2e`，不做无证据的全量循环。
-- 完成前执行 `pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck` 和 `pnpm lint`。
+- 完成前执行 `pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck` 和 `pnpm lint`。
 - 当前工作区已有未提交的 DeepSeek V4 与 edit E2E 修改；实施时只提交本计划对应文件，不覆盖或夹带这些改动。
 
 ---
@@ -317,7 +317,7 @@ Run: `pnpm exec vitest run packages/e2e-report/test/node-index.test.ts`
 
 Expected: PASS。
 
-Run: `pnpm --filter @zcode/desktop typecheck:e2e`
+Run: `pnpm --filter @s-agent/desktop typecheck:e2e`
 
 Expected: PASS。
 
@@ -327,7 +327,7 @@ PowerShell:
 
 ```powershell
 $env:ZCODE_E2E_SPEC='./test/e2e/container-boot.test.ts,./test/e2e/conversation-session/conversation-session-first-send.test.ts'
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 ```
 
 Expected: summary 包含 prepare、before-session、before、after、after-session、complete；case 数与原 spec 一致。
@@ -395,10 +395,10 @@ const e2eQuitStrategy: E2EQuitStrategy =
 ```powershell
 $env:ZCODE_E2E_SPEC='./test/e2e/container-boot.test.ts,./test/e2e/conversation-session/conversation-session-first-send.test.ts,./test/e2e/conversation-session/conversation-session-running-actions.test.ts'
 $env:ZCODE_E2E_QUIT_STRATEGY='app-quit-before-delete'
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 
 $env:ZCODE_E2E_QUIT_STRATEGY='webdriver-owned'
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 ```
 
 比较两个 summary 的 `after`、`after-session` P50/P95，并检查进程列表。
@@ -416,7 +416,7 @@ Run: `pnpm exec vitest run packages/desktop/test/e2e-process-cleanup.test.ts`
 
 Expected: PASS。
 
-Run: `pnpm --filter @zcode/desktop typecheck:e2e`
+Run: `pnpm --filter @s-agent/desktop typecheck:e2e`
 
 Expected: PASS。
 
@@ -463,13 +463,13 @@ git commit -m "test(desktop): reduce windows e2e session teardown"
 
 - [ ] **Step 4: 校验 fixture**
 
-Run: `pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-model-switch-queue.test.ts`
+Run: `pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-model-switch-queue.test.ts`
 
 Expected: PASS。
 
 - [ ] **Step 5: 运行一次定向 E2E**
 
-Run: `pnpm --filter @zcode/desktop test:e2e -- --spec ./test/e2e/conversation-session/conversation-session-model-switch-queue.test.ts`
+Run: `pnpm --filter @s-agent/desktop test:e2e -- --spec ./test/e2e/conversation-session/conversation-session-model-switch-queue.test.ts`
 
 Expected: 2 passing；第二个 case不超过 30 秒；request capture 仍为 secondary model/thought。
 
@@ -528,7 +528,7 @@ Run: `pnpm exec vitest run packages/desktop/test/spec-groups.test.ts`
 
 Expected: PASS。
 
-Run: `pnpm --filter @zcode/desktop typecheck:e2e`
+Run: `pnpm --filter @s-agent/desktop typecheck:e2e`
 
 Expected: PASS。
 
@@ -537,7 +537,7 @@ Expected: PASS。
 ```powershell
 $env:ZCODE_E2E_GROUP_COMPATIBLE_SPECS='1'
 $env:ZCODE_E2E_SPEC='./test/e2e/conversation-session/conversation-session-markdown-table-enhanced-scroll.test.ts,./test/e2e/conversation-session/conversation-session-markdown-table-layout.test.ts,./test/e2e/conversation-session/conversation-session-status-panel-inline-layout.test.ts'
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 ```
 
 Expected: 三个文件在一个 worker 内顺序执行，case 总数一致，只有一次 before-session/after-session，无 fixture mismatch 或状态串扰。
@@ -597,8 +597,8 @@ Expected: FAIL，runner 尚不存在。
 
 runner 顺序固定为：
 
-1. 执行 `pnpm --filter @zcode/e2e-report build:node`
-2. 执行 `pnpm --filter @zcode/desktop build:no-runtime-assets`
+1. 执行 `pnpm --filter @s-agent/e2e-report build:node`
+2. 执行 `pnpm --filter @s-agent/desktop build:no-runtime-assets`
 3. 执行 `node scripts/build-desktop-agent-cli.mjs`
 4. 并行启动两个 `wdio run wdio.conf.ts --shard=x/2`
 5. 等待两个子进程
@@ -616,7 +616,7 @@ runner 顺序固定为：
 根 `package.json`：
 
 ```json
-"test:e2e:windows:sharded": "pnpm --filter @zcode/desktop test:e2e:windows:sharded"
+"test:e2e:windows:sharded": "pnpm --filter @s-agent/desktop test:e2e:windows:sharded"
 ```
 
 - [ ] **Step 5: 运行 runner 单测**
@@ -704,7 +704,7 @@ $mainSpecs = $env:ZCODE_E2E_SPEC
 $env:ZCODE_E2E_ARTIFACT_DIR = "$mainArtifactDir-preflight"
 $env:ZCODE_E2E_RUN_ID = "$mainRunId-preflight"
 $env:ZCODE_E2E_SPEC = './test/e2e/container-boot.test.ts'
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $env:ZCODE_E2E_ARTIFACT_DIR = $mainArtifactDir
@@ -747,7 +747,7 @@ git commit -m "ci(desktop): add windows e2e runtime budgets"
 
 - [x] **Step 1: 执行机械检查**
 
-Run: `pnpm --filter @zcode/desktop typecheck:e2e`
+Run: `pnpm --filter @s-agent/desktop typecheck:e2e`
 
 Expected: PASS。
 

@@ -5,7 +5,7 @@ import {
   createModelProviderId,
   createSessionId,
   modelMessageContentToText,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { buildPersistentAgentMemoryPrompt } from "../src/subagent/persistent-memory-prompt.js";
 import { resolvePersistentAgentMemoryRoot } from "../src/subagent/persistent-memory.js";

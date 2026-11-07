@@ -1,4 +1,4 @@
-import { ModelRetryBudget } from "@zcode/contracts";
+import { ModelRetryBudget } from "@s-agent/contracts";
 import type { ResolvedAiSdkModelRetryOptions } from "./retry-policy.js";
 
 /**

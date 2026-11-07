@@ -1,17 +1,17 @@
-import { BufferWriter, serialize } from "@zcode/rpc";
-import { ServiceChannels } from "@zcode/shared";
+import { BufferWriter, serialize } from "@s-agent/rpc";
+import { ServiceChannels } from "@s-agent/shared";
 import {
   PROTOCOL_V4_LIMITS,
   type V4AttachmentBeginResult,
   type V4AttachmentChunkResult,
   type V4AttachmentPutParams,
   type V4AttachmentPutResult,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type {
   ZCodeAgentAttachmentBeginParams,
   ZCodeAgentAttachmentChunkParams,
   ZCodeAgentAttachmentTerminalParams,
-} from "@zcode/services";
+} from "@s-agent/services";
 import { logger } from "@/logger.js";
 
 /** 384KiB 可被 3 整除，除末片外 base64 不含 padding；同时为两层 envelope 留足空间。 */

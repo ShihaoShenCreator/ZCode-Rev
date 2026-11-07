@@ -211,7 +211,7 @@ it("marks runtime mainActive while a session active turn exists", async () => {
 Expected RED before implementation:
 
 ```bash
-pnpm --filter @zcode/zcode-cli-bootstrap test -- zcode-protocol.test.ts -t "marks runtime mainActive"
+pnpm --filter @s-agent/zcode-cli-bootstrap test -- zcode-protocol.test.ts -t "marks runtime mainActive"
 ```
 
 If the package script differs locally, use:

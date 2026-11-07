@@ -1,4 +1,4 @@
-import { isAuxiliarySessionKind } from "@zcode/shared";
+import { isAuxiliarySessionKind } from "@s-agent/shared";
 /* eslint-disable max-lines -- task index 的 v4 帧摄入、snapshot upsert 和 workspace 广播必须共享同一份闭包状态。 */
 import { repairSubagentTaskIndex } from "#src/task-facts/repairSubagentTaskIndex.js";
 import {
@@ -16,7 +16,7 @@ import {
   type ZCodeSessionStateSnapshot,
   type ZCodeWorkspaceEvent,
   type ZCodeWorkspaceTaskListChanged,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   PROTOCOL_V4_LIMITS,
   sessionsIndexTopic,
@@ -32,8 +32,8 @@ import {
   type V4WorkspaceConfigSubscribeResult,
   type WorkspaceConfigTopicFrame,
   type WorkspaceConfigTopicWireCandidate,
-} from "@zcode/shared/zcode-protocol-v4";
-import { Emitter, type Event, type IDisposable } from "@zcode/rpc";
+} from "@s-agent/shared/zcode-protocol-v4";
+import { Emitter, type Event, type IDisposable } from "@s-agent/rpc";
 import { createServiceLogger } from "#src/logger/serviceLogger.js";
 import { TaskIndexRepo } from "#src/session/taskIndexRepo.js";
 import type { ZCodeWorkspaceEventSubscriptionParams } from "#src/session/zcodeTaskListTypes.js";

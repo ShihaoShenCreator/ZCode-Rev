@@ -1,6 +1,6 @@
 import { isAbsolute, resolve } from "node:path";
-import { SqliteSessionStore } from "@zcode/adapters/storage";
-import { resolvePath, type ConfigResult } from "@zcode/adapters/config";
+import { SqliteSessionStore } from "@s-agent/adapters/storage";
+import { resolvePath, type ConfigResult } from "@s-agent/adapters/config";
 import {
   SESSION_ENTRY_MODEL_SELECTION,
   parseModelSelectionValue,
@@ -10,9 +10,9 @@ import {
   type InputHistoryStorePort,
   type LocalSettingStorePort,
   type ProjectId,
-} from "@zcode/contracts";
-import type { ModelSelection } from "@zcode/provider";
-import { isHighspeedProviderId } from "@zcode/shared";
+} from "@s-agent/contracts";
+import type { ModelSelection } from "@s-agent/provider";
+import { isHighspeedProviderId } from "@s-agent/shared";
 import { StartupTimer } from "../startup-logging.js";
 
 export function isClosableSessionStore(

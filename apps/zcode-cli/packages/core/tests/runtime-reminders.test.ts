@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId, type ModelMessageContent } from "@zcode/contracts";
+import { createSessionId, type ModelMessageContent } from "@s-agent/contracts";
 import {
   RUNTIME_MODE_REMINDER_CONFIG,
   TODO_REMINDER_CONFIG,

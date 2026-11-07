@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { ModelToolContract } from "@zcode/contracts";
+import type { ModelToolContract } from "@s-agent/contracts";
 import { TestAiSdkModelAdapter, TestProviderConfigFixture } from "./test-provider-config.js";
 import { createTestModelProperties } from "./test-model-format.js";
 

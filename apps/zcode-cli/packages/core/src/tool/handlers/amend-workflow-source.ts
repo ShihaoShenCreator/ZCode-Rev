@@ -15,7 +15,7 @@ import {
   type AmendWorkflowPredecessor,
   type DynamicWorkflowRunPort,
   type DynamicWorkflowRunSnapshot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolHandlerFailure } from "../types.js";
 import { normalizeWorkflowMaxConcurrency } from "./create-workflow-source.js";
 import { readWorkflowScriptFile } from "./workflow-path-source.js";

@@ -8,7 +8,7 @@ import {
   createSessionId,
   type MessageWithParts,
   type SessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   sessionFeatureFromToolSearchExposure,
   sessionFeaturesFromPersistedMessages,

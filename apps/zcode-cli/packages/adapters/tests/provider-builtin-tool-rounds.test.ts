@@ -13,13 +13,13 @@ import {
   createRootTraceContext,
   createSessionId,
   type SessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createRegistryModelConfig,
   createRegistryProviderConfig,
   parseModelConfig,
   parseProviderConfig,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { createSqliteSessionStore } from "../src/storage/session-store/sqlite-session-store.js";
 import { AiSdkModelAdapter } from "../src/model/runner.js";
 import { createTestModelProperties } from "./test-model-format.js";

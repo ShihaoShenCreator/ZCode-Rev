@@ -4,7 +4,7 @@
 // 出回合事件（dwf 进度、后台通知驱动的回合），而界面看起来完全正常。所以它必须有测试。
 import assert from "node:assert/strict";
 import test from "node:test";
-import type { SessionEvent } from "@zcode/contracts";
+import type { SessionEvent } from "@s-agent/contracts";
 import { createTuiSessionEventRelay } from "../src/tui-session-event-relay.js";
 
 /** 一个假 runtime：记录挂载/卸载次数，并能主动发事件。 */

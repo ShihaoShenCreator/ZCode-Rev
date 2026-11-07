@@ -63,8 +63,8 @@ Screen Recording 授权条目。相关约束：
 - **helper 主可执行必须是 SEA Mach-O。** `scripts/build-cua-helper-app.mjs` 用 Node SEA 把 helper 入口
   注入到一份拷贝的 Node 可执行里（替换旧的 shell wrapper），签名/公证前必须已是 Mach-O。
 - **plain-node ABI 的 `ax_native.node` 必须先编好。** SEA helper 运行时用内嵌 Node（非 Electron）加载
-  pinned `@zcode/zcode-cua/build/Release/ax_native.node`，因此需要 **plain-node ABI**（node-gyp rebuild，
-  而非 `@electron/rebuild` 的 Electron ABI）。`@zcode/zcode-cua` 已加入 `pnpm-workspace.yaml` 的
+  pinned `@s-agent/zcode-cua/build/Release/ax_native.node`，因此需要 **plain-node ABI**（node-gyp rebuild，
+  而非 `@electron/rebuild` 的 Electron ABI）。`@s-agent/zcode-cua` 已加入 `pnpm-workspace.yaml` 的
   `allowBuilds`；独立 Helper 构建/验收必须显式检查该统一 addon 存在并可加载。
 - **跨架构（x64 在 Apple Silicon runner 上打包）。** 打包进程的 `process.execPath` 在 Apple Silicon runner
   上是 arm64 Node，若 x64 job 不另行指定 Node，SEA helper 会被打成 arm64。`build-cua-helper-app.mjs` 的

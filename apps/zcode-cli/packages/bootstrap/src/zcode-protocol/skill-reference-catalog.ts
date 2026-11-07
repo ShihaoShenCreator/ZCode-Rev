@@ -4,8 +4,8 @@ import {
   zcodeSkillsReferenceCatalogParamsSchema,
   type ZCodeSkillReferenceCatalogEntry,
   type ZCodeSkillsReferenceCatalogResult,
-} from "@zcode/shared";
-import type { SkillLoadOutcome, SkillMetadata } from "@zcode/contracts";
+} from "@s-agent/shared";
+import type { SkillLoadOutcome, SkillMetadata } from "@s-agent/contracts";
 import { listZCodeSkills } from "../skills.js";
 import {
   parseParams,

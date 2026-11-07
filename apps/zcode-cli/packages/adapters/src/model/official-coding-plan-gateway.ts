@@ -1,7 +1,7 @@
 import type {
   ProviderEndpointRoutingDecision,
   ProviderEndpointRoutingPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 const HTTPS_DEFAULT_PORT = "443";
 const ROOT_PATH = "/";

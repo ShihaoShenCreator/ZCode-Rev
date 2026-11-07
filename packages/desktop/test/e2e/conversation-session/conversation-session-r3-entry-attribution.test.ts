@@ -1,7 +1,7 @@
 import { startDraftFromProject } from "#e2e/helpers/project-sidebar";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity, providerProvisioningResultSchema } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity, providerProvisioningResultSchema } from "@s-agent/shared";
 import { clearAppData } from "../helpers/desktop-app.js";
 import {
   getUpstreamRequestRecordCount,

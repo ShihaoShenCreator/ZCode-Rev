@@ -5,7 +5,7 @@
 // 留白处编译、看得见它之前的绑定、要返回留白的类型、先在 EvalWorkflowSnippet 里排练固定逻辑、
 // 一处留白只补一次（循环里的函数体每轮都跑）。
 
-import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@zcode/contracts";
+import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@s-agent/contracts";
 
 export const FILL_WORKFLOW_HOLE_TOOL_DESCRIPTION = [
   "Supplies the body of a hole that a RUNNING dynamic-workflow run has reached and is waiting at. Starts nothing: the run keeps its id, journal and subagents, and grows by the statements you write.",

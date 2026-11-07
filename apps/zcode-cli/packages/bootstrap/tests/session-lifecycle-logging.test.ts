@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { Logger } from "@zcode/contracts";
-import { conversationTopic } from "@zcode/shared/zcode-protocol-v4";
+import type { Logger } from "@s-agent/contracts";
+import { conversationTopic } from "@s-agent/shared/zcode-protocol-v4";
 import {
   activateSessionForResume,
   listSessionSubagents,

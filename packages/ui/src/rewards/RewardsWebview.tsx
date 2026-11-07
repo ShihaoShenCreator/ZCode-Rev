@@ -7,7 +7,7 @@ import {
   resolveRewardsOrigin,
   ZCODE_ENV,
   type RewardsContext,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { useServices } from "@/hooks/useServices.js";
 import { usePlatform } from "@/hooks/usePlatform.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

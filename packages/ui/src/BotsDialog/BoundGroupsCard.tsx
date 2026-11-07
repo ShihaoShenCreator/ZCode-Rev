@@ -1,4 +1,4 @@
-import type { BotConfig } from "@zcode/shared";
+import type { BotConfig } from "@s-agent/shared";
 import { useBotBoundGroups, type BoundGroupRow } from "@/hooks/useBotBoundGroups.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { Switch } from "@/components/ui/switch.js";

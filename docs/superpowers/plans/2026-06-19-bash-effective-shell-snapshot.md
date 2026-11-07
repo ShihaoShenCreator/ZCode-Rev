@@ -9,7 +9,7 @@
 
 **Architecture:** Introduce a session-scoped Effective Bash Shell descriptor that is resolved once at session create/resume and reused by context assembly, Bash execution, and Explore subagents. Runtime shell changes update the execution descriptor immediately and append a provider-visible mid-conversation system notice instead of rewriting the initial `# Environment` system context.
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/contracts`, `@zcode/core`, `@zcode/adapters`, ZCode Protocol session runtime.
+**Tech Stack:** TypeScript, Vitest, `@s-agent/contracts`, `@s-agent/core`, `@s-agent/adapters`, ZCode Protocol session runtime.
 
 ## Global Constraints
 
@@ -145,7 +145,7 @@ shellOverride?: ExecutionShellSelection;
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts typecheck
+pnpm --filter @s-agent/contracts typecheck
 ```
 
 Expected: typecheck passes or fails only at downstream call sites that still expect `source: "user-config"` only. Those downstream failures are addressed in later tasks.
@@ -235,7 +235,7 @@ In `apps/zcode-cli/packages/adapters/tests/exec.test.ts`, add tests for:
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters exec vitest run tests/exec.test.ts
+pnpm --filter @s-agent/adapters exec vitest run tests/exec.test.ts
 ```
 
 Expected: all adapter exec tests pass.
@@ -322,8 +322,8 @@ Add an adapter context test where no `effectiveShellDisplayName` is provided and
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters exec vitest run tests/fs-context.test.ts
-pnpm --filter @zcode/core exec vitest run tests/runtime-trace.test.ts
+pnpm --filter @s-agent/adapters exec vitest run tests/fs-context.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-trace.test.ts
 ```
 
 Expected: new tests pass and existing context behavior remains covered.
@@ -381,7 +381,7 @@ expect(getSystemReminderDescriptor("shell_environment_change")).toMatchObject({
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/system-reminder-source.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/system-reminder-source.test.ts
 ```
 
 Expected: source classification passes.
@@ -486,8 +486,8 @@ Add tests that prove:
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-trace.test.ts
-pnpm --filter @zcode/bootstrap exec vitest run tests/zcode-protocol.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-trace.test.ts
+pnpm --filter @s-agent/bootstrap exec vitest run tests/zcode-protocol.test.ts
 ```
 
 Expected: shell update is model-visible through an added mid-conversation system notice and does not refresh the context prefix.
@@ -550,7 +550,7 @@ Add a test that missing `bashShellSelection` keeps current auto-resolution behav
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts
 ```
 
 Expected: Bash handler passes the effective shell selection when present and preserves fallback behavior when absent.
@@ -604,7 +604,7 @@ Add a test that child runtime Bash execution receives the same selection.
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-explore.test.ts
 ```
 
 Expected: Explore prompt and child Bash execution no longer diverge from the parent session.
@@ -646,7 +646,7 @@ Test this timeline:
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/session-persistence.test.ts
+pnpm --filter @s-agent/bootstrap exec vitest run tests/session-persistence.test.ts
 ```
 
 Expected: resume keeps chronological truth instead of rewriting the initial environment.
@@ -679,7 +679,7 @@ Assert explicit user selection still wins, then fixed Program Files candidates, 
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters exec vitest run tests/exec.test.ts
+pnpm --filter @s-agent/adapters exec vitest run tests/exec.test.ts
 ```
 
 Expected: existing Git Bash and CMD behavior remains unchanged except the new per-user install path is detectable when present.
@@ -711,9 +711,9 @@ Document these rules:
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters exec vitest run tests/exec.test.ts tests/fs-context.test.ts
-pnpm --filter @zcode/core exec vitest run tests/system-reminder-source.test.ts tests/context-builder.test.ts tests/runtime-trace.test.ts tests/subagent-explore.test.ts tests/bash-handler.test.ts
-pnpm --filter @zcode/bootstrap exec vitest run tests/zcode-protocol.test.ts tests/session-persistence.test.ts
+pnpm --filter @s-agent/adapters exec vitest run tests/exec.test.ts tests/fs-context.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/system-reminder-source.test.ts tests/context-builder.test.ts tests/runtime-trace.test.ts tests/subagent-explore.test.ts tests/bash-handler.test.ts
+pnpm --filter @s-agent/bootstrap exec vitest run tests/zcode-protocol.test.ts tests/session-persistence.test.ts
 ```
 
 Expected: all focused tests pass.

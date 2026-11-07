@@ -6,7 +6,7 @@ import {
   resolveRuntimeZCodeEndpointOrigin,
   resolveRuntimeZCodeEnv,
   ZCODE_APP_VERSION_ENV,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ModelProviderSourceTitle } from "./model-config.js";
 
 const ZCODE_DATA_BASE_DIR_ENV_KEY = "ZCODE_DATA_BASE_DIR";

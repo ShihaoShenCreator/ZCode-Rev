@@ -6,7 +6,7 @@
 
 **Architecture:** 本次只在 agent/core 的 Bash tool runtime 层新增一个保守的 read-state producer，不改 prompt、provider-visible tool 列表、protocol、desktop、UI、remote control。`bashHandler` 在 foreground Bash 返回前先基于旧 read state 生成 stale hint，再按保守的读命令语义回填 Bash 读状态。
 
-**Tech Stack:** TypeScript、Vitest、`unbash`、`@zcode/contracts` 的 `FileSystemPort` / `ExecutionResult` / `BashOutput`、现有 `ReadFileStateMap`。
+**Tech Stack:** TypeScript、Vitest、`unbash`、`@s-agent/contracts` 的 `FileSystemPort` / `ExecutionResult` / `BashOutput`、现有 `ReadFileStateMap`。
 
 ## Global Constraints
 
@@ -18,7 +18,7 @@
 - 不新增 protocol 字段；`staleReadFileStateHint` 已存在于 `BashOutput` contract。
 - 不把 Bash read-state metadata 持久化到 session store；初版只维护本 turn/runtime 内 `context.readFileState`。
 - 不自动提交 commit；如果执行者被用户明确要求提交，使用 Conventional Commits。
-- 完成代码改动后必须运行 `pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts`、`pnpm --filter @zcode/core typecheck`、`pnpm --filter @zcode/core lint`，最终按仓库约束运行 `pnpm typecheck` 和 `pnpm lint`。
+- 完成代码改动后必须运行 `pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts`、`pnpm --filter @s-agent/core typecheck`、`pnpm --filter @s-agent/core lint`，最终按仓库约束运行 `pnpm typecheck` 和 `pnpm lint`。
 
 ---
 
@@ -98,7 +98,7 @@ Expected: 只新增上述 spec 文档，无 runtime 代码变更。
 
 **Test helper changes:**
 
-- [ ] 从 `@zcode/contracts` 引入 `FileSystemPort`、`FileSystemReadTextResult`、`FileSystemStatResult`。
+- [ ] 从 `@s-agent/contracts` 引入 `FileSystemPort`、`FileSystemReadTextResult`、`FileSystemStatResult`。
 - [ ] 从 `../src/tool/read-file-state.js` 引入 `createReadFileStateKey`。
 - [ ] 从 `../src/tool/types.js` 引入 `ReadFileStateMap` 类型。
 - [ ] 扩展 `contextWith` options：
@@ -265,7 +265,7 @@ readFileState.set(createReadFileStateKey(filePath, 1, undefined), {
 **Run failing tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts
 ```
 
 Expected before implementation: the new read-state/stale producer tests fail because Bash handler currently never writes `readFileState` and never fills `staleReadFileStateHint`.
@@ -282,7 +282,7 @@ Expected before implementation: the new read-state/stale producer tests fail bec
 **Imports:**
 
 ```ts
-import type { BashOutput, ExecutionResult, FileSystemPort, FileSystemStatResult, TraceContext } from "@zcode/contracts";
+import type { BashOutput, ExecutionResult, FileSystemPort, FileSystemStatResult, TraceContext } from "@s-agent/contracts";
 import { resolveWorkspacePath } from "../path-policy.js";
 import {
   createReadFileStateKey,
@@ -525,7 +525,7 @@ function createBashReadFileStateTrace(context: ToolExecutionContext): TraceConte
 **Run focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts
 ```
 
 Expected after Phase 2 only: tests still fail until handler integration imports and calls the helper.
@@ -582,7 +582,7 @@ return output;
 **Run focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts
 ```
 
 Expected: new Bash read-state and stale hint tests pass.
@@ -617,7 +617,7 @@ Expected: new Bash read-state and stale hint tests pass.
 **Run focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts
 ```
 
 Expected: all Bash handler tests pass.
@@ -631,17 +631,17 @@ Expected: all Bash handler tests pass.
 **Commands:**
 
 ```bash
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/core lint
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/core lint
 pnpm typecheck
 pnpm lint
 ```
 
 **Checklist:**
 
-- [ ] `pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts` passes.
-- [ ] `pnpm --filter @zcode/core typecheck` passes.
-- [ ] `pnpm --filter @zcode/core lint` passes.
+- [ ] `pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts` passes.
+- [ ] `pnpm --filter @s-agent/core typecheck` passes.
+- [ ] `pnpm --filter @s-agent/core lint` passes.
 - [ ] `pnpm typecheck` passes.
 - [ ] `pnpm lint` passes.
 - [ ] `git diff --stat` only includes:

@@ -165,10 +165,10 @@ function readModelOptions(options: CliOptions): SharedModelOptions {
 
 function printUsageAndExit(): never {
   console.error(`Usage:
-  pnpm --filter @zcode/prompt-trajectory record -- --fixture <fixture.json> --out <dir>
-  pnpm --filter @zcode/prompt-trajectory record:prompt -- --prompt <text> --model <provider/model> --upstream-base-url <url> [--out <dir>] [--api-key-env <env>]
-  pnpm --filter @zcode/prompt-trajectory run:testcases -- [--cases <dir>] [--out-root out] --model <provider/model> --upstream-base-url <url> [--api-key-env <env>]
-  pnpm --filter @zcode/prompt-trajectory derive -- --out <dir> [--input <trajectory.jsonl>] [--ignore-tool-search-changes]
-  pnpm --filter @zcode/prompt-trajectory model-io -- --input <model-io.jsonl> --out <dir> [--query-source main_turn] [--ignore-tool-search-changes]`);
+  pnpm --filter @s-agent/prompt-trajectory record -- --fixture <fixture.json> --out <dir>
+  pnpm --filter @s-agent/prompt-trajectory record:prompt -- --prompt <text> --model <provider/model> --upstream-base-url <url> [--out <dir>] [--api-key-env <env>]
+  pnpm --filter @s-agent/prompt-trajectory run:testcases -- [--cases <dir>] [--out-root out] --model <provider/model> --upstream-base-url <url> [--api-key-env <env>]
+  pnpm --filter @s-agent/prompt-trajectory derive -- --out <dir> [--input <trajectory.jsonl>] [--ignore-tool-search-changes]
+  pnpm --filter @s-agent/prompt-trajectory model-io -- --input <model-io.jsonl> --out <dir> [--query-source main_turn] [--ignore-tool-search-changes]`);
   process.exit(1);
 }

@@ -7,7 +7,7 @@ import { PassThrough, Readable } from "node:stream";
 import { test } from "node:test";
 import { setTimeout as delay } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
-import type { RunContext } from "@zcode/shared-types";
+import type { RunContext } from "@s-agent/shared-types";
 import {
   resolveNativeSearchArgs,
   runEmbeddedSearchCli,

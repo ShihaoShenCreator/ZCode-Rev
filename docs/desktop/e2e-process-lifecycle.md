@@ -44,7 +44,7 @@ The same boundary applies on macOS, Linux, and Windows. Windows retry cleanup af
 
 1. enters the configured z-code checkout;
 2. fetches `staging` from the configured HTTPS repository and updates the local branch with a fast-forward merge;
-3. clears inherited spec filters and runs the desktop E2E suite once, without entering the shard runner, through `pnpm --filter @zcode/desktop test:e2e:serial`;
+3. clears inherited spec filters and runs the desktop E2E suite once, without entering the shard runner, through `pnpm --filter @s-agent/desktop test:e2e:serial`;
 4. invokes `scripts/ci/push-e2e-metrics-to-bitable.mjs` and then `scripts/ci/push-e2e-report-to-feedback.mjs` for that artifact directory, including when the E2E command fails. Failure artifact collection is enabled so the report upload can attach failed-case videos.
 
 The continuous loop owns exactly one run-specific output directory:

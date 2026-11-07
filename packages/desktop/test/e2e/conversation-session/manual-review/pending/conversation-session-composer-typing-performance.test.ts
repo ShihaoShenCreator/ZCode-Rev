@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { ServiceChannels } from "@zcode/shared";
-import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND } from "@zcode/shared/test-ids";
+import { ServiceChannels } from "@s-agent/shared";
+import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND } from "@s-agent/shared/test-ids";
 import { DEFAULT_WORKSPACE, setInputValueByTestIdDom } from "../../../helpers/desktop-app.js";
 import { getV4ComposerDraftScopeSnapshot } from "../../../helpers/conversation-session-store.js";
 import {

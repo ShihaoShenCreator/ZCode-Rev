@@ -4,8 +4,8 @@ import {
   createProjectId,
   createSessionId,
   type ModelSelection,
-} from "@zcode/contracts";
-import type { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import type { AgentRuntime } from "@s-agent/core";
 
 import { createSessionFacade } from "../src/app/session-facade.js";
 

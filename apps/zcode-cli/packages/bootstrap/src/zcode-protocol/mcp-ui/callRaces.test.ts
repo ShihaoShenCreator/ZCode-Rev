@@ -1,5 +1,5 @@
-import type { McpAppProvidedToolDefinition, McpAppProvidedToolExecutor } from "@zcode/core";
-import type { McpAppsAppToolCallRequest } from "@zcode/shared/mcp-apps";
+import type { McpAppProvidedToolDefinition, McpAppProvidedToolExecutor } from "@s-agent/core";
+import type { McpAppsAppToolCallRequest } from "@s-agent/shared/mcp-apps";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { McpUiAppToolRegistry } from "./appTools.js";
 import { createExampleSessionAccess } from "./contract.example.js";

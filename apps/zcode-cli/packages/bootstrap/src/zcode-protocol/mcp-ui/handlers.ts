@@ -1,9 +1,9 @@
-import type { Logger } from "@zcode/contracts";
-import { McpResourceSubscribeUnsupportedError } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
+import { McpResourceSubscribeUnsupportedError } from "@s-agent/contracts";
 import {
   MCP_APPS_UI_READ_RESOURCE_MAX_BYTES,
   isMcpAppsUiReadResourceMimeAllowed,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import type {
   McpUiCallToolParams,
   McpUiCallToolResult,

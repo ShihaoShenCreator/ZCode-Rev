@@ -1,4 +1,4 @@
-import type { ToolSearchExecutionContext } from "@zcode/contracts";
+import type { ToolSearchExecutionContext } from "@s-agent/contracts";
 import { createPartId, TurnMachineImpl } from "../deps.js";
 import type {
   MessageId,

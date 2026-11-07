@@ -89,7 +89,7 @@ compaction 补回文件（`rewind-compact.md` 的“文件恢复”）重读磁�
 
 read-state hydrator 必须独立于 UI、desktop service 和远控 replayable stream。它只读取
 `SessionStorePort.messages()` 返回的 tool parts 和当前 `FileSystemPort`，不新增
-`@zcode/protocol` 字段，不改变 desktop continuous 或 web remote replayable 的消息流。
+`@s-agent/protocol` 字段，不改变 desktop continuous 或 web remote replayable 的消息流。
 
 成功 full `Read` 的 completed tool part metadata 需要额外保存一个 versioned
 `readFileState` snapshot：

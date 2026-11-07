@@ -1,14 +1,14 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { createSessionId, createProjectId } from "@zcode/contracts";
+import { createSessionId, createProjectId } from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../../adapters/src/storage/session-store/sqlite-session-store.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestModelFactory } from "./test-runtime-model.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 import { getTodoReminderTurnCounts } from "../src/runtime/helpers/runtime-reminders.js";
 import { expect, it } from "vitest";
-import type { ModelRequest, ModelResult } from "@zcode/contracts";
+import type { ModelRequest, ModelResult } from "@s-agent/contracts";
 import type { AgentRuntimeInternal } from "../src/runtime/internal.js";
 it.each(["off", "on"] as const)(
   "keeps TodoWrite reminders equivalent for direct/wrapped runtime calls (stream=%s)",

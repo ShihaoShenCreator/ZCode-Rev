@@ -6,7 +6,7 @@
 
 **Architecture:** provider-visible embedded-search policy 保持现状；执行层在有可用内置二进制时从当前 `internal-cli` passthrough 切到 `argv0-dispatch`。ZCode 不做 Bun native multicall ELF，第一版用 CLI multicall shim 读取 `ARGV0` / `process.argv0` 后转发到包内 `rg` / `bfs` / `ugrep`，后续如果有真正 native multicall binary，可以只替换 backend resolver。
 
-**Tech Stack:** TypeScript, Node.js CLI, Electron runtime resources, SEA assets, shell snapshot startup scripts, `@zcode/contracts`, `@zcode/shared`, `@zcode/adapters`, Vitest.
+**Tech Stack:** TypeScript, Node.js CLI, Electron runtime resources, SEA assets, shell snapshot startup scripts, `@s-agent/contracts`, `@s-agent/shared`, `@s-agent/adapters`, Vitest.
 
 ## Global Constraints
 
@@ -141,7 +141,7 @@ describe("runtime tool descriptors", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/shared test -- runtimeToolRuntime.test.ts
+pnpm --filter @s-agent/shared test -- runtimeToolRuntime.test.ts
 ```
 
 Expected: FAIL because `bfs` / `ugrep` are not part of `RuntimeToolId`.
@@ -176,7 +176,7 @@ ugrep: {
 Run:
 
 ```bash
-pnpm --filter @zcode/shared test -- runtimeToolRuntime.test.ts
+pnpm --filter @s-agent/shared test -- runtimeToolRuntime.test.ts
 ```
 
 Expected: PASS.
@@ -248,7 +248,7 @@ const runtimeToolEnvPatch = buildRuntimeToolEnvPatch(["ripgrep", "bfs", "ugrep"]
 Run:
 
 ```bash
-pnpm --filter @zcode/services test -- runtimeToolResolver.test.ts
+pnpm --filter @s-agent/services test -- runtimeToolResolver.test.ts
 ```
 
 Expected: PASS.
@@ -454,7 +454,7 @@ export function resolveSearchRuntimeToolPlan({
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop test -- searchRuntimeToolsManifest.test.ts
+pnpm --filter @s-agent/desktop test -- searchRuntimeToolsManifest.test.ts
 ```
 
 Expected: PASS.
@@ -471,9 +471,9 @@ Expected: PASS.
 
 **Interfaces:**
 - Consumes: `resolveSearchRuntimeToolPlan()` from Task 3
-- Produces: `pnpm --filter @zcode/desktop prepare:bfs`
-- Produces: `pnpm --filter @zcode/desktop prepare:ugrep`
-- Preserves: `pnpm --filter @zcode/desktop prepare:rg`
+- Produces: `pnpm --filter @s-agent/desktop prepare:bfs`
+- Produces: `pnpm --filter @s-agent/desktop prepare:ugrep`
+- Preserves: `pnpm --filter @s-agent/desktop prepare:rg`
 
 - [ ] **Step 1: Add tests for tool download planning**
 
@@ -651,7 +651,7 @@ Update `packages/desktop/package.json`:
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop test -- download-search-runtime-tool.test.ts searchRuntimeToolsManifest.test.ts
+pnpm --filter @s-agent/desktop test -- download-search-runtime-tool.test.ts searchRuntimeToolsManifest.test.ts
 ```
 
 Expected: PASS.
@@ -779,7 +779,7 @@ case "ugrep":
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop test -- runtime-asset-scripts.test.ts preparePrebuildsReleaseReuse.test.ts
+pnpm --filter @s-agent/desktop test -- runtime-asset-scripts.test.ts preparePrebuildsReleaseReuse.test.ts
 ```
 
 Expected: PASS.
@@ -915,7 +915,7 @@ Do not add `env` to `RunContext` for this task. The CLI process env is the sourc
 Run:
 
 ```bash
-pnpm --filter @zcode/cli test -- bundled-search-multicall.test.ts
+pnpm --filter @s-agent/cli test -- bundled-search-multicall.test.ts
 ```
 
 Expected: PASS.
@@ -1025,7 +1025,7 @@ When `argv[1]` is a script entrypoint, include it in `args` exactly like current
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap test -- embedded-search-backend.test.ts
+pnpm --filter @s-agent/bootstrap test -- embedded-search-backend.test.ts
 ```
 
 Expected: PASS.
@@ -1111,7 +1111,7 @@ Do not alter `internal-cli` behavior in this task. The current passthrough is th
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- embedded-search-prelude.test.ts bash-startup-script.test.ts
+pnpm --filter @s-agent/adapters test -- embedded-search-prelude.test.ts bash-startup-script.test.ts
 ```
 
 Expected: PASS.
@@ -1175,8 +1175,8 @@ UGREP:-G --ignore-files --hidden -I --exclude-dir=.git --exclude-dir=.svn --excl
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- exec.test.ts
-pnpm --filter @zcode/core test -- bash-handler.test.ts
+pnpm --filter @s-agent/adapters test -- exec.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts
 ```
 
 Expected: PASS.
@@ -1261,13 +1261,13 @@ Expected:
 Run focused tests:
 
 ```bash
-pnpm --filter @zcode/shared test -- runtimeToolRuntime.test.ts
-pnpm --filter @zcode/services test -- runtimeToolResolver.test.ts
-pnpm --filter @zcode/desktop test -- searchRuntimeToolsManifest.test.ts download-search-runtime-tool.test.ts runtime-asset-scripts.test.ts preparePrebuildsReleaseReuse.test.ts
-pnpm --filter @zcode/cli test -- bundled-search-multicall.test.ts
-pnpm --filter @zcode/bootstrap test -- embedded-search-backend.test.ts
-pnpm --filter @zcode/adapters test -- embedded-search-prelude.test.ts bash-startup-script.test.ts exec.test.ts
-pnpm --filter @zcode/core test -- bash-handler.test.ts
+pnpm --filter @s-agent/shared test -- runtimeToolRuntime.test.ts
+pnpm --filter @s-agent/services test -- runtimeToolResolver.test.ts
+pnpm --filter @s-agent/desktop test -- searchRuntimeToolsManifest.test.ts download-search-runtime-tool.test.ts runtime-asset-scripts.test.ts preparePrebuildsReleaseReuse.test.ts
+pnpm --filter @s-agent/cli test -- bundled-search-multicall.test.ts
+pnpm --filter @s-agent/bootstrap test -- embedded-search-backend.test.ts
+pnpm --filter @s-agent/adapters test -- embedded-search-prelude.test.ts bash-startup-script.test.ts exec.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts
 ```
 
 Run required repo gates:
@@ -1280,9 +1280,9 @@ pnpm lint
 Run manual smoke:
 
 ```bash
-pnpm --filter @zcode/desktop prepare:runtime-assets
-pnpm --filter @zcode/cli build
-pnpm --filter @zcode/cli build:sea
+pnpm --filter @s-agent/desktop prepare:runtime-assets
+pnpm --filter @s-agent/cli build
+pnpm --filter @s-agent/cli build:sea
 ```
 
 Run platform asset preflight before publishing:
@@ -1291,9 +1291,9 @@ Run platform asset preflight before publishing:
 for platform_key in darwin-arm64 darwin-x64 linux-arm64 linux-x64 win32-arm64 win32-x64; do
   os=${platform_key%-*}
   arch=${platform_key##*-}
-  ZCODE_TARGET_OS="$os" ZCODE_TARGET_ARCH="$arch" pnpm --filter @zcode/desktop prepare:rg
-  ZCODE_TARGET_OS="$os" ZCODE_TARGET_ARCH="$arch" pnpm --filter @zcode/desktop prepare:bfs
-  ZCODE_TARGET_OS="$os" ZCODE_TARGET_ARCH="$arch" pnpm --filter @zcode/desktop prepare:ugrep
+  ZCODE_TARGET_OS="$os" ZCODE_TARGET_ARCH="$arch" pnpm --filter @s-agent/desktop prepare:rg
+  ZCODE_TARGET_OS="$os" ZCODE_TARGET_ARCH="$arch" pnpm --filter @s-agent/desktop prepare:bfs
+  ZCODE_TARGET_OS="$os" ZCODE_TARGET_ARCH="$arch" pnpm --filter @s-agent/desktop prepare:ugrep
 done
 ```
 

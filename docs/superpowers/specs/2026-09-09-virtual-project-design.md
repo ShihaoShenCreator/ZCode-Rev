@@ -769,7 +769,7 @@ desktop continuous / mobile replayable -> original attachment, no new runtime
 
 ## 7. 迁移（启动门禁，复用同一迁移实现）
 
-共享迁移模块通过 `@zcode/shared/sqlite-migrations` 导出；CLI/desktop agent 的构建子路径映射必须从 shared 包的 exports 派生，不维护第二份手工子路径清单。实际 bundle 构建与导入属于迁移交付验证，不能只检查 TypeScript 源码。
+共享迁移模块通过 `@s-agent/shared/sqlite-migrations` 导出；CLI/desktop agent 的构建子路径映射必须从 shared 包的 exports 派生，不维护第二份手工子路径清单。实际 bundle 构建与导入属于迁移交付验证，不能只检查 TypeScript 源码。
 
 2026-10-10 合并后采用上游的可观测启动门禁：Host Worker 在业务服务初始化前准备 app 库，再用同一 CLI bundle 的存储准备入口准备会话库。Worker 必须读取旧 settings 并传给项目迁移，不能先记账再丢掉旧项目种子。两边复用既有 SQL、checksum、表级备份及 Repo；锁等待异步，提交成功后才发布 ready，不创建第二套会话迁移实现。失败进入启动错误/重试流程；重试以完整 migration ID 幂等跳过已完成的库，不假设两库之间存在原子事务。CLI 正常打开数据库仍检查 migration，覆盖独立 TUI 与远端运行。两个不同名称的 0004 和 CLI 双方迁移都保留，不按序号覆盖；0023_session_soft_delete_outcome 识别开发期已执行的 0020 同内容记录。
 

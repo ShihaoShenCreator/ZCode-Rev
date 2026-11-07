@@ -18,7 +18,7 @@ import {
   type JsonSchema,
   type RunSettlement,
   type ValidateFn,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { runWorkflowScript } from "../src/index.js";
 import { AutoDriver, type AutoDriverConfig } from "./auto-driver.js";
 

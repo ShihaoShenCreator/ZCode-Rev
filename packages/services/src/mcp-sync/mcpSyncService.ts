@@ -11,7 +11,7 @@ import type {
   SaveCliMcpToUserDirectoryRequest,
   SettingsDirectoryLocation,
   SettingsDirectorySource,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { IMcpSyncService } from "./mcpSync.js";
 import { createMcpDataSyncMethods } from "../data-sync/node.js";
 import { createServiceLogger } from "../logger/serviceLogger.js";

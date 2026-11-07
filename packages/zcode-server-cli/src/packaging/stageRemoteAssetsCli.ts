@@ -55,13 +55,13 @@ async function main(): Promise<void> {
   };
   const versionReleaseDir = join(repoRoot, "packages/desktop/mock-cdn/releases", version);
   await beginSourceServerRemoteReleaseGeneration({ versionReleaseDir });
-  await run("pnpm", ["--filter", "@zcode/server-cli", "build"], repoRoot, env);
+  await run("pnpm", ["--filter", "@s-agent/server-cli", "build"], repoRoot, env);
   for (const [index, target] of targets.entries()) {
     await run(
       "pnpm",
       [
         "--filter",
-        "@zcode/server-cli",
+        "@s-agent/server-cli",
         "exec",
         "tsx",
         "src/packaging/stageCli.ts",

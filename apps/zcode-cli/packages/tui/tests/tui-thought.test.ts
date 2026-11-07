@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
-import { getZCodeCopy } from "@zcode/i18n";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { applySessionEventToState } from "../src/app-events.js";
 import type { Message, ThoughtTranscriptPart } from "../src/app-model.js";
 import {

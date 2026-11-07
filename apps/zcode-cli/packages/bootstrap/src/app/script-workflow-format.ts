@@ -3,7 +3,7 @@ import type {
   ScriptWorkflowRunRecord,
   ScriptWorkflowRunStats,
   WorkflowScriptMeta,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export function emptyScriptWorkflowStats(): ScriptWorkflowRunStats {
   return {

@@ -1,9 +1,9 @@
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import type { NodeReplRequestMeta, NodeReplSession } from "@zcode/core";
+import type { NodeReplRequestMeta, NodeReplSession } from "@s-agent/core";
 import { setupBrowserRuntime } from "../src/browser-client.js";
-import { createBrowserBridgeGlobals, type ActiveNodeReplCall } from "@zcode/node-repl-host/browser-bridge";
-import { readNodeReplBrowserRuntimeBridge } from "@zcode/node-repl-host/runtime-bridge";
+import { createBrowserBridgeGlobals, type ActiveNodeReplCall } from "@s-agent/node-repl-host/browser-bridge";
+import { readNodeReplBrowserRuntimeBridge } from "@s-agent/node-repl-host/runtime-bridge";
 
 describe("subagent browser boundary", () => {
   it("keeps browser bridge access and initialization available in subagent scope", async () => {

@@ -21,7 +21,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { spawn as spawnType } from "node:child_process";
-import { InMemoryJournalStore } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore } from "@s-agent/dynamic-workflow";
 import { runWorkflowScript } from "../src/index.js";
 import { AutoDriver } from "./auto-driver.js";
 import { askSpecsFor } from "./helpers.js";

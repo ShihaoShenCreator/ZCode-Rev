@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { PassThrough, Writable } from "node:stream";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createNodeProviderRuntimePathEnv } from "@zcode/provider-node";
+import { createNodeProviderRuntimePathEnv } from "@s-agent/provider-node";
 
 const telemetryMocks = vi.hoisted(() => ({
   closeMcp: vi.fn(async () => {}),
@@ -44,8 +44,8 @@ vi.mock("../src/app/process-provider-registry-runtime.js", async (importOriginal
   };
 });
 
-vi.mock("@zcode/adapters/mcp", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@zcode/adapters/mcp")>();
+vi.mock("@s-agent/adapters/mcp", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@s-agent/adapters/mcp")>();
   return {
     ...original,
     createMcpAdapter: () => ({ close: telemetryMocks.closeMcp }),
@@ -123,8 +123,8 @@ vi.mock("../src/app/create-app.js", async (importOriginal) => {
   };
 });
 
-vi.mock("@zcode/telemetry", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@zcode/telemetry")>()),
+vi.mock("@s-agent/telemetry", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@s-agent/telemetry")>()),
   prepareModelTelemetryEnv: telemetryMocks.prepareModelTelemetryEnv,
   shutdownPreparedModelTelemetry: telemetryMocks.shutdownPreparedModelTelemetry,
 }));

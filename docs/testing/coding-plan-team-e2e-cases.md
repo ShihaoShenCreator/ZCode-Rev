@@ -1,5 +1,7 @@
 # Team Plan E2E Cases
 
+> 已退役：本文记录 Z.AI/BigModel 原生套餐界面的历史 E2E 合同，不再代表当前 S-Agent 的测试要求。
+
 本文记录 Team Plan 接入后，桌面端设置页和用量入口需要覆盖的 E2E case。范围限定在 desktop local workspace，接口使用 WDIO case-local mock server，不访问真实 BigModel / Z.ai 套餐接口。
 
 ## 覆盖原则
@@ -36,7 +38,7 @@
 正式运行命令（本用例不调用模型，账户接口使用本地业务 mock）：
 
 ```bash
-pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/provider-family-responsive.test.ts'
+pnpm --filter @s-agent/desktop test:e2e -- --spec './test/e2e/provider-family-responsive.test.ts'
 ```
 
 通过证据：`packages/desktop/.e2e-artifacts/desktop-e2e-20260904060418619-p33484-6650d642259f46f0/summary.json`（1 passed）。本次修正 runner 的专属 JWT 初始化、等待真实刷新结束，以及 Radix 可见 tooltip 的 WebDriver 选择器；未改产品实现。

@@ -6,7 +6,7 @@ import {
   TaskOutputInputJsonSchema,
   TaskOutputResultJsonSchema,
   type ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { generateText } from "ai";
 import { describe, expect, it } from "vitest";
 import { createGenerateTextOptions } from "../src/model/runner-options.js";

@@ -5,9 +5,9 @@
 // 存储层用一个带 `listWorldNodes` 的内存 journal 替身——它的形状就是 adapters 的
 // `DwfRunIntrospectionQueries.listWorldNodes`（那边的 SQL 在 adapters 的测试里钉）。
 import { describe, expect, it } from "vitest";
-import type { DwfWorldNodeRow } from "@zcode/adapters/storage";
-import { InMemoryJournalStore } from "@zcode/dynamic-workflow";
-import type { NodeRecord, RunRecord } from "@zcode/dynamic-workflow";
+import type { DwfWorldNodeRow } from "@s-agent/adapters/storage";
+import { InMemoryJournalStore } from "@s-agent/dynamic-workflow";
+import type { NodeRecord, RunRecord } from "@s-agent/dynamic-workflow";
 import {
   boundWorkspaceResult,
   listWorkspaceNodesFrom,

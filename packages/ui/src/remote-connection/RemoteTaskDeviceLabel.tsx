@@ -1,5 +1,5 @@
 import { useRemoteProjectPresentationFacts } from "@/hooks/RemoteProjectPresentationContext.js";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { cn } from "@/components/lib/utils.js";
 import { useRemoteDevicePresentationInput } from "@/hooks/useSourceServerStatuses.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

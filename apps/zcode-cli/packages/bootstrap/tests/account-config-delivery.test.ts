@@ -3,12 +3,12 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ProviderConfigMap, createAccountProviderConfigSnapshot } from "@zcode/provider";
+import { ProviderConfigMap, createAccountProviderConfigSnapshot } from "@s-agent/provider";
 import {
   ZCODE_BUILTIN_PROVIDER_CONFIG_FILE_ENV,
   ZCODE_PERSONAL_PROVIDER_CONFIG_FILE_ENV,
-} from "@zcode/provider-node";
-import { zcodeProtocolMethods } from "@zcode/shared";
+} from "@s-agent/provider-node";
+import { zcodeProtocolMethods } from "@s-agent/shared";
 import {
   startProcessProviderRegistryRuntime,
   parseProcessAccountProviderConfigSnapshot,

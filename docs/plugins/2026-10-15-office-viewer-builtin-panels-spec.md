@@ -11,7 +11,7 @@
 决策：
 
 - 四个插件统一升到 0.2.0，在原有生产技能之外新增一个查看技能（`docx-viewer`、`pdf-viewer`、`pptx-viewer`、`xlsx-viewer`）、一个 stdio MCP server 和一个 `availability: "session"` 的 UI surface。
-- 面板实现放在共享包 `@zcode/office-runtime`（`apps/zcode-cli/packages/office-runtime`）。每个插件在 package.json 的 `office` 字段声明面板标题与格式，`build` 脚本调用 `../office-runtime/scripts/build.mjs`，只打包该格式的解析器与查看器。
+- 面板实现放在共享包 `@s-agent/office-runtime`（`apps/zcode-cli/packages/office-runtime`）。每个插件在 package.json 的 `office` 字段声明面板标题与格式，`build` 脚本调用 `../office-runtime/scripts/build.mjs`，只打包该格式的解析器与查看器。
 - `read_document`、`search_document` 服务面板里的讨论：返回的位置是面板使用的锚点，可直接交给 `show_in_viewer`；PDF 文字与面板文字层经过同一套归一（§6.3），可作为 `quote` 高亮。Excel 例外：没有缓存结果的公式在 server 文字里没有值，面板会计算并显示（见 `xlsx-viewer` 技能）。工具描述写明这一用途，要求先 `open_document`，并把面板之外的提取与处理指向同格式的生产技能（`docx` / `xlsx` / `pptx` / `pdf`）。server 不校验文件是否已在面板打开：未打开的工作区文件照常可读，没有面板的环境（见各查看技能）也依赖这一点。
 - 生产技能、视觉评审 Agent 与许可证（Apache-2.0）保持不变；面板与 server 代码随 office-runtime 的 MIT 许可写入 `dist/LICENSE`。
 
@@ -19,7 +19,7 @@
 
 ```text
 apps/zcode-cli/packages/<name>-plugin/package.json  ── office.title / office.kinds
-                │ pnpm --filter @zcode/<name>-plugin build
+                │ pnpm --filter @s-agent/<name>-plugin build
                 ▼
 office-runtime/scripts/build.mjs（插件名取自 .zcode-plugin/plugin.json）
                 ▼

@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { setDataBaseDir } from "@zcode/services/node";
+import { setDataBaseDir } from "@s-agent/services/node";
 
 import { acquireFeishuWebSocketLock } from "../../../../services/src/bots/channelRuntime.js";
 import {

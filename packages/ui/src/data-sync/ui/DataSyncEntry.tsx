@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { BlocksIcon, CableIcon, ChevronDown, UploadCloud, WandIcon } from "lucide-react";
-import type { DeviceSyncResult } from "@zcode/shared";
+import type { DeviceSyncResult } from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import {
   DropdownMenu,

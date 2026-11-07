@@ -8,12 +8,12 @@ import type {
   SessionId,
   TraceId,
   TurnId,
-} from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import {
   sessionsIndexSnapshotSchema,
   sessionsIndexTopicFrameSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 import {
   SessionsIndexProjection,

@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import React from "react";
 import { createTestRenderer } from "@mbears/opentui-core/testing";
 import { CliRenderEvents } from "@mbears/opentui-core";
-import type { UiThemeMode } from "@zcode/contracts";
+import type { UiThemeMode } from "@s-agent/contracts";
 import { runTuiWithRenderer } from "../../tui/src/tui.js";
 import { getActiveTuiThemeMode } from "../../tui/src/theme/state.js";
 import type { TuiOptions, TuiStartupOptions } from "../../tui/src/types.js";

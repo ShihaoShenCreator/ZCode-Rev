@@ -71,7 +71,7 @@ await nodeRepl.emitImage({ base64: shot.image.base64, mimeType: shot.image.mimeT
 
 见 plan（T0–T6 为 P0，T7–T11 为 P1）。每 task 先写组件 spec 再码，单独 Conventional Commit。
 
-- **T1/T2 验证**：`pnpm --filter @zcode/core test` + `@zcode/contracts`；纯 REPL 语义（globalThis 持久/reset 清空/顶层 await/动态 import/write 收集/AbortSignal）单测全绿。
+- **T1/T2 验证**：`pnpm --filter @s-agent/core test` + `@s-agent/contracts`；纯 REPL 语义（globalThis 持久/reset 清空/顶层 await/动态 import/write 收集/AbortSignal）单测全绿。
 - **P0 端到端**：desktop 起（feature 开关开）→ agent 会话模型写上面那段 js → 断言 main WebContentsView 实际导航、返回非空 PNG base64；抓 main 日志确认 CDP attach + `Page.captureScreenshot`。
 - **收尾**：`pnpm typecheck`（含 desktop renderer/main/preload 单独 tsc）+ `pnpm lint`。
 

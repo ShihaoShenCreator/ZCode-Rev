@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { SessionId, SessionInputRecord, SessionStorePort } from "@zcode/contracts";
+import type { SessionId, SessionInputRecord, SessionStorePort } from "@s-agent/contracts";
 import { lookupGlobalCreateSessionCommand } from "../src/zcode-protocol-v4/create-session-command-fact.js";
 
 const sessionId = "session-created-first" as SessionId;

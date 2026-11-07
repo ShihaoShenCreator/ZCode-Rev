@@ -5,7 +5,7 @@
  * 同路径、不同 identity 的远端 workspace 在这里如果丢掉 identity，审计上下文就无法区分。
  */
 import { describe, expect, it, vi } from "vitest";
-import { zcodeProtocolMethods } from "@zcode/shared";
+import { zcodeProtocolMethods } from "@s-agent/shared";
 import {
   createOfficialMcpAuthHeadersPort,
   type OfficialMcpAuthRequestContext,

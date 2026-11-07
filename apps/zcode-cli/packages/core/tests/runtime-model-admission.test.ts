@@ -8,7 +8,7 @@ import {
   type ModelRequestAdmission,
   type ModelRequestAdmissionTicket,
   type ModelSelection,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createRuntimeModel } from "../src/runtime/methods/runtime-model.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

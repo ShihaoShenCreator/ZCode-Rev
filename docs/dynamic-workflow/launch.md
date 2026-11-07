@@ -2079,7 +2079,7 @@ questions.
 
 The card joins the tool call to its run by tool call id and reads a `workflowRuns` mirror
 that the TUI maintains with the same reducer the desktop projection uses
-(`@zcode/shared`'s `workflow-runs-reducer`), fed by `dynamic_workflow_run_progress` events
+(`@s-agent/shared`'s `workflow-runs-reducer`), fed by `dynamic_workflow_run_progress` events
 through a subscription that outlives turns. There is no second clock: no polling, no
 interval.
 

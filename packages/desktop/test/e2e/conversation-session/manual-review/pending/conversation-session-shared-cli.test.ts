@@ -6,7 +6,7 @@ import {
   TID_TASK_ITEM,
   TID_WORKSPACE_MORE_BUTTON,
   TID_CONFIRM_DIALOG_CONFIRM,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, DEFAULT_WORKSPACE } from "#e2e/helpers/desktop-app";
 import { openMobilePairingPage, seedMobileFixtureLogin } from "#e2e/helpers/mobile-pairing";
 import { obtainUnreadPairingUrl } from "#e2e/helpers/web-remote-unread";

@@ -1,7 +1,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { releaseControlledReplay } from "#e2e/helpers/controlled-replay";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { clearAppData, waitForWorkspaceApp } from "../helpers/desktop-app.js";
 import {
   refreshSeededOpenAIProvidersThroughSettings,

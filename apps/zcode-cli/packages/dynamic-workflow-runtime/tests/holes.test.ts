@@ -13,7 +13,7 @@ import {
   type RunEvent,
   type RunSettlement,
   type WorkflowEngine,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { runWorkflowScript, type RunControlBinding } from "../src/index.js";
 import { AutoDriver, type AutoDriverConfig } from "./auto-driver.js";
 import { TEST_CWD } from "./helpers.js";

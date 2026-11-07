@@ -10,14 +10,14 @@ import {
   callHandoffHost,
   restoreHandoffProbes,
 } from "#e2e/helpers/remote-project-handoff-probe";
-import { ServiceChannels } from "@zcode/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import {
   TID_TASK_SETTINGS_BUTTON,
   TID_SETTINGS_SECTION_NAV,
   testId,
   TID_SETTINGS_BACK_BUTTON,
   TID_SSH_DIALOG,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

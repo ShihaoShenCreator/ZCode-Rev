@@ -198,7 +198,7 @@ it("排队不会抢占执行中输入，重试 attempt 延续原起点并接受�
 });
 
 it("准备阶段订阅只观察原输入，重复阶段保留独立区间且结束后解除订阅", async () => {
-  const { beginLocalTurnPreparation } = await import("@zcode/contracts");
+  const { beginLocalTurnPreparation } = await import("@s-agent/contracts");
   const recorder = createRecorder();
   recorder.receive(
     {
@@ -228,7 +228,7 @@ it("准备阶段订阅只观察原输入，重复阶段保留独立区间且结�
 
 it("立即引导独立分类，压缩模型不抢记用户输出", async () => {
   const { SessionEventType, createSessionEvent, createSessionId, createTurnId } =
-    await import("@zcode/contracts");
+    await import("@s-agent/contracts");
   const sessionId = createSessionId();
   const turnId = createTurnId();
   const recorder = createRecorder(() => 100);
@@ -299,7 +299,7 @@ it("立即引导独立分类，压缩模型不抢记用户输出", async () => {
 });
 
 it("细分预算满仍记录主请求与输出，并明确标记截断", async () => {
-  const { beginLocalTurnPreparation } = await import("@zcode/contracts");
+  const { beginLocalTurnPreparation } = await import("@s-agent/contracts");
   const recorder = createRecorder();
   recorder.receive(
     {

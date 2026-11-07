@@ -3,7 +3,7 @@ import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { HELPER_APP_NAME, HELPER_DISPLAY_NAME } from "@zcode/zcode-cua/broker/helperConstants";
+import { HELPER_APP_NAME, HELPER_DISPLAY_NAME } from "@s-agent/zcode-cua/broker/helperConstants";
 import { afterEach, describe, expect, it } from "vitest";
 
 const isWindows = process.platform === "win32";
@@ -51,7 +51,7 @@ fi
   );
 }
 
-function createReleaseApp(rootDir: string, productName = "ZCode") {
+function createReleaseApp(rootDir: string, productName = "S-Agent") {
   const appPath = join(rootDir, `${productName}.app`);
 
   writeExecutable(join(appPath, "Contents", "MacOS", productName), "#!/bin/bash\n");
@@ -97,7 +97,7 @@ describe.skipIf(isWindows)("doctor-macos-release-app.sh", () => {
     const workspaceDir = makeTempDir("zcode-macos-preview-doctor-");
     const binDir = join(workspaceDir, "bin");
     const toolLog = join(workspaceDir, "tool.log");
-    const { appPath } = createReleaseApp(workspaceDir, "ZCode Preview");
+    const { appPath } = createReleaseApp(workspaceDir, "S-Agent Preview");
     const zcodeHome = join(workspaceDir, ".zcode");
     const helperAppPath = createZcodeHomeHelper(zcodeHome, "preview");
 
@@ -112,13 +112,13 @@ describe.skipIf(isWindows)("doctor-macos-release-app.sh", () => {
       ZCODE_HOME: zcodeHome,
     });
 
-    expect(output).toContain(`validating ZCode Preview.app: ${appPath}`);
+    expect(output).toContain(`validating S-Agent Preview.app: ${appPath}`);
     const log = readFileSync(toolLog, "utf-8");
     expect(log).toContain(`codesign\t--verify\t--deep\t--strict\t${appPath}`);
     expect(log).toContain(`codesign\t--verify\t--deep\t--strict\t${helperAppPath}`);
   });
 
-  it("默认只验收安装后的 ZCode.app，不强绑 Computer Use Helper 发布", () => {
+  it("默认只验收安装后的 S-Agent.app，不强绑 Computer Use Helper 发布", () => {
     const workspaceDir = makeTempDir("zcode-macos-release-doctor-");
     const binDir = join(workspaceDir, "bin");
     const toolLog = join(workspaceDir, "tool.log");
@@ -139,7 +139,7 @@ describe.skipIf(isWindows)("doctor-macos-release-app.sh", () => {
     expect(output).toContain("standalone Computer Use Helper.app not required");
   });
 
-  it("CUA release gate 验收外置 ZCode Computer Use.app", () => {
+  it("CUA release gate 验收外置 S-Agent Computer Use.app", () => {
     const workspaceDir = makeTempDir("zcode-macos-release-doctor-helper-");
     const binDir = join(workspaceDir, "bin");
     const toolLog = join(workspaceDir, "tool.log");

@@ -9,7 +9,7 @@ import {
   type ToolArtifactReadRequest,
   type ToolArtifactStorePort,
   type ToolArtifactWriteRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { bashHandler, bashToolEntry } from "../src/tool/handlers/bash.js";
 import { formatPersistedOutputEnvelope } from "../src/tool/result-persistence-format.js";
 import { serializeOutput } from "../src/tool/executor/result-serialization.js";

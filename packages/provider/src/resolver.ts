@@ -1,6 +1,6 @@
 /* oxlint-disable eslint(max-lines) -- Resolver 同时产出 Settings 分层结果与唯一 Registry 完整类型证明。 */
 import type { z } from "zod";
-import type { completeModelConfigDataSchema } from "@zcode/shared/model-config";
+import type { completeModelConfigDataSchema } from "@s-agent/shared/model-config";
 import type {
   completeApiKeyAccessDataSchema,
   completeZhipuAccountAccessDataSchema,
@@ -234,8 +234,21 @@ export class ProviderConfigResolver {
     const issues: ConfigValidationIssue[] = [];
     const resolvedProviders: ResolvedProvider[] = [];
     const registryProviders: Provider[] = [];
+    const retiredProviderIds = new Set<string>();
 
-    for (const providerId of resolveProviderOrder(input, effectiveProviders)) {
+    for (const [providerId, config] of effectiveProviders.entries()) {
+      if (!isRetiredNativeProviderConfig(config)) continue;
+      retiredProviderIds.add(providerId);
+      issues.push({
+        code: "provider-retired",
+        path: ["providers", providerId],
+        message: "该旧版 Z.ai/BigModel 账号 Provider 已退役，请改用自定义 API Key Provider。",
+      });
+    }
+
+    for (const providerId of resolveProviderOrder(input, effectiveProviders).filter(
+      (id) => !retiredProviderIds.has(id),
+    )) {
       const rule = effectiveProviders.getRule(providerId)!;
       const { config, providerName } = rule;
       // 账号不再支持总禁用；旧覆盖值不能让无开关的账号永久失效，其他资格仍正常校验。
@@ -362,6 +375,15 @@ export class ProviderConfigResolver {
       issues: Object.freeze(issues),
     });
   }
+}
+
+function isRetiredNativeProviderConfig(config: ProviderConfig): boolean {
+  return (
+    config.access?.type === "zhipu-account" ||
+    config.access?.type === "zhipu-coding-plan-api-key" ||
+    config.group === "zai-family" ||
+    config.group === "bigmodel-family"
+  );
 }
 
 function uniqueInOrder(modelIds: readonly ModelId[]): readonly ModelId[] {

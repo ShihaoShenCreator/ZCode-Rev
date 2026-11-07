@@ -6,7 +6,7 @@ import {
   type ModelInputMessage,
   type SessionStorePort,
   type ToolArtifactStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createToolRegistry } from "../src/tool/registry.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

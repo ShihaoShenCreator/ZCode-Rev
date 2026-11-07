@@ -1,6 +1,6 @@
 import { StoreContext } from "@/store/StoreProvider.js";
 import { createZCodeStore } from "@/store/index.js";
-import type { IBroadcastService } from "@zcode/services";
+import type { IBroadcastService } from "@s-agent/services";
 import { PluginStoreDetailView } from "@/settings/PluginStoreDetailView.js";
 import { useState } from "react";
 import { createRoot } from "react-dom/client";

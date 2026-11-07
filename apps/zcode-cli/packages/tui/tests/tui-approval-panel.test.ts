@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import type { PermissionBrokerRequest } from "@zcode/contracts";
-import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@zcode/shared";
+import type { PermissionBrokerRequest } from "@s-agent/contracts";
+import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@s-agent/shared";
 import { ApprovalPanel } from "../src/app-approval-panel.js";
 import { createApprovalResult, decisionsForApproval } from "../src/app-approval.js";
 import type { ApprovalPrompt } from "../src/app-model.js";

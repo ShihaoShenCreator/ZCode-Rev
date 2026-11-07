@@ -26,7 +26,7 @@ labels need one obvious place to review for consistency.
 
 ## Contract
 
-`@zcode/i18n` exports typed locale catalogs. TUI modules receive a resolved copy
+`@s-agent/i18n` exports typed locale catalogs. TUI modules receive a resolved copy
 object from the TUI entry boundary for stable user-facing labels, help text,
 status messages, and fallback text instead of adding new presentation strings
 inline.

@@ -15,7 +15,7 @@ import {
   parseWorkflowSettingsAdjustment,
   type WorkflowAdjustableSettings,
   type WorkflowSettingsAdjustment,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   ToolHandlerFailure,
   ToolInputAdjustmentResult,

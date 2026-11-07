@@ -3,14 +3,14 @@ import type {
   AgentExecutionTelemetryPort,
   ToolExecutionSpanWriter,
   ToolTraceStart,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   HookEventName,
   createRootTraceContext,
   createSessionId,
   createToolCallId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";

@@ -6,7 +6,7 @@ import {
   type ModelRequest,
   type SessionStorePort,
   type ToolPart,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { MessageHistoryImpl } from "../src/agent/message-history.js";
 import { hydrateMessageHistoryFromSession } from "../src/agent/session-history-hydrator.js";
 import { buildProviderRequestMessages } from "../src/runtime/helpers/provider-request-messages.js";

@@ -1,4 +1,4 @@
-import type { ModelSelection } from "@zcode/contracts";
+import type { ModelSelection } from "@s-agent/contracts";
 
 export function createTestModelSelection(
   input: string | ModelSelection,

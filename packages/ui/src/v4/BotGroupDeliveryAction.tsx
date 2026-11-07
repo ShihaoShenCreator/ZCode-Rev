@@ -1,7 +1,7 @@
 import { DeliveryContext } from "@/v4/botGroupDeliveryContext.js";
 import { useContext, useMemo, type ReactNode } from "react";
 import { CircleAlertIcon } from "lucide-react";
-import type { BotGroupDelivery } from "@zcode/shared";
+import type { BotGroupDelivery } from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

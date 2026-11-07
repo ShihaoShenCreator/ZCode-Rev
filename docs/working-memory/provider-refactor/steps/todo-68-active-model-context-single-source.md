@@ -139,7 +139,7 @@ Subagent 继承父 Model 时，child Selection、child prompt 中的模型身份
 验证结果：
 
 - Core 全量单测：`2207 passed / 36 skipped / 2 todo`；
-- `@zcode/core` typecheck：通过；
+- `@s-agent/core` typecheck：通过；
 - 根 `pnpm typecheck`：通过；
 - 根 `pnpm lint`：通过（仅有仓库既存 warning）；
 - 本轮修改文件格式检查与 `git diff --check`：通过；

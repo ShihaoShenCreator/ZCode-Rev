@@ -9,7 +9,7 @@ import {
   type ApiClient,
   type ProviderFamilyDomain,
   type ProviderFamilyConnectionSelectionSettings,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { type BigModelTeamPlanBizContext } from "#src/bigmodel/teamPlanApiKey.js";
 import {
   fetchPersonalCodingPlanEntitlement,
@@ -24,10 +24,6 @@ import {
   resolveZaiStartPlanBalanceModelIds,
   type ZaiStartPlanBalanceEnvelope,
 } from "./zaiStartPlanBilling.js";
-import {
-  createBigModelLoginAuthHeaders,
-  createZaiLoginAuthHeaders,
-} from "../coding-plan-subscription/bigmodelCodingPlanSubscriptionProvider.js";
 
 const REQUEST_TIMEOUT_MS = 15_000;
 const log = createServiceLogger("coding-plan-availability");
@@ -555,4 +551,22 @@ function summarizeStartPlans(
     plan_id: plan.plan_id ?? null,
     status: plan.status ?? null,
   }));
+}
+
+function createBigModelLoginAuthHeaders(token: string): Record<string, string> {
+  return {
+    // BigModel 登录态业务接口要求 Authorization 直接传 accessToken。
+    // 这里不能套 Bearer；Bearer 只适用于模型/API Key 类接口。
+    Authorization: token,
+    "Content-Type": "application/json",
+  };
+}
+
+function createZaiLoginAuthHeaders(token: string): Record<string, string> {
+  return {
+    // Z.ai provider connection 已把 access_token 持久化为业务 JWT。
+    // 这里不能使用模型 API key，也不能给业务 JWT 添加 Bearer 前缀。
+    Authorization: token,
+    "Content-Type": "application/json",
+  };
 }

@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
 import { createConnection } from "node:net";
-import type { BrowserClientTransport } from "@zcode/core/browser-client";
-import type { NodeReplRequestMeta, NodeReplSession } from "@zcode/core/repl";
-import type { BrowserCommand, BrowserCommandResult } from "@zcode/shared";
+import type { BrowserClientTransport } from "@s-agent/core/browser-client";
+import type { NodeReplRequestMeta, NodeReplSession } from "@s-agent/core/repl";
+import type { BrowserCommand, BrowserCommandResult } from "@s-agent/shared";
 // 只加载 broker 协议；shared 总入口会在每个 Worker 中初始化无关领域的 schema。
-import { nodeReplBrowserBrokerResponseSchema } from "@zcode/shared/node-repl-browser-broker";
+import { nodeReplBrowserBrokerResponseSchema } from "@s-agent/shared/node-repl-browser-broker";
 import { NODE_REPL_BROWSER_BRIDGE_SYMBOL } from "./runtime-bridge.js";
 
 const MAX_RESPONSE_BYTES = 32 * 1024 * 1024;

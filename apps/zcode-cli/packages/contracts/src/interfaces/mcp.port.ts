@@ -4,8 +4,8 @@ import type {
   McpServerFailureKind,
   OfficialMcpAuthPortFailureReason,
   WorkspaceMcpTrustReview,
-} from "@zcode/shared";
-import type { McpAppsToolVisibility, McpToolUiDescriptor } from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared";
+import type { McpAppsToolVisibility, McpToolUiDescriptor } from "@s-agent/shared/mcp-apps";
 import type { JsonSchema } from "../model/index.js";
 import type { TraceContext } from "../tracing/tracer.js";
 
@@ -204,7 +204,7 @@ export interface McpToolDescriptor {
    * - stdio：结果由插件进程自己产出、可任意伪造，因此**不置位**。
    *
    * 刻意**不**按"插件是否来自官方 marketplace"判定：那会让非官方安装源（含本地自测与
-   * zcode-plugins-test）的官方插件失效，而它也不是真实屏障——详见 `@zcode/shared` 的
+   * zcode-plugins-test）的官方插件失效，而它也不是真实屏障——详见 `@s-agent/shared` 的
    * `isOfficialMcpOriginTrusted`。
    */
   official?: boolean;
@@ -413,7 +413,7 @@ export interface OfficialMcpAuthHeadersPort {
  * （它让官方插件在发布前无法对真实端点自测，而第三方插件本可用 hook 读到同一份凭证，
  * 并非真实屏障）。
  *
- * 实现在 `@zcode/shared`：host 与 adapter 共用同一份，避免一侧放行一侧拒绝。
+ * 实现在 `@s-agent/shared`：host 与 adapter 共用同一份，避免一侧放行一侧拒绝。
  * 异步是为了让 host 侧能按 settings 覆盖解析 origin。
  */
 export interface OfficialMcpTrustedOriginRegistry {

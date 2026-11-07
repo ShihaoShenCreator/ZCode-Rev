@@ -11,9 +11,9 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import type { ExecutionPort, FileSystemPort, TraceContext } from "@zcode/contracts";
-import { NodeExecutionAdapter } from "@zcode/adapters/exec";
-import { WORLD_RUN_LITERAL_CODE } from "@zcode/dynamic-workflow";
+import type { ExecutionPort, FileSystemPort, TraceContext } from "@s-agent/contracts";
+import { NodeExecutionAdapter } from "@s-agent/adapters/exec";
+import { WORLD_RUN_LITERAL_CODE } from "@s-agent/dynamic-workflow";
 import { createDynamicWorkflowSnippetService } from "../src/app/dynamic-workflow-snippet-service.js";
 /**
  * 独立的 run cwd：harness 把入口文件写到 `<cwd>/.zcode/workflow-runs/<runId>.mjs` 且保留，

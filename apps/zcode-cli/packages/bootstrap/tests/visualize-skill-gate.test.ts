@@ -1,9 +1,9 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createConfig } from "@zcode/adapters/config";
-import { createNodeSkillAdapter } from "@zcode/adapters/skills";
-import type { Logger } from "@zcode/contracts";
+import { createConfig } from "@s-agent/adapters/config";
+import { createNodeSkillAdapter } from "@s-agent/adapters/skills";
+import type { Logger } from "@s-agent/contracts";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createWorkflowChildSkillPort } from "../src/app/script-workflow-child-runtime.js";
 import { resolveStartupPlugins } from "../src/app/startup-marks.js";

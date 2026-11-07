@@ -108,14 +108,6 @@ export interface UsageEntitlementContext {
   productId?: string | null;
 }
 
-export type PlanIdentityStatus = "coding_plan" | "start_plan" | "no_plan" | "unknown";
-
-export interface PlanIdentitySnapshot {
-  generatedAt: number;
-  planStatus: PlanIdentityStatus;
-  planProductId: string;
-}
-
 export interface UsageEntitlementRemaining {
   count: number;
   isShow: boolean;

@@ -5,7 +5,7 @@ import {
   type ConversationTopicFrame,
   type SessionControl,
   type ConversationTopicWireCandidate,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type { IZCodeAgentService, ZCodeAgentSessionTarget } from "#src/zcode-agent/zcodeAgent.js";
 
 /** Bot 控制操作临时读取 CLI 权威快照，不建立第二份输入队列。 */

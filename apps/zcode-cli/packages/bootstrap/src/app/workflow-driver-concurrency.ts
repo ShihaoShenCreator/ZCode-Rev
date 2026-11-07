@@ -13,15 +13,15 @@ import {
   type ModelRequestAdmission,
   type SessionEvent,
   type SessionId,
-} from "@zcode/contracts";
-import type { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import type { AgentRuntime } from "@s-agent/core";
 import type {
   AskLastTool,
   AskProgress,
   AskWaitInfo,
   InstanceRef,
   RunStallInfo,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { createActorToolActivity, type ActorToolCounts } from "./workflow-driver-tool-activity.js";
 import {
   workflowConcurrencyKey,

@@ -1,4 +1,4 @@
-import type { GenUiModelContext } from "@zcode/shared/gen-ui";
+import type { GenUiModelContext } from "@s-agent/shared/gen-ui";
 import type { RuntimeInputPresentation } from "./runtime-input-presentation.js";
 // ============================================================
 // Session Ports - Core interfaces for session management
@@ -338,7 +338,7 @@ export interface TurnInputIntentMetadata {
     botIdentity?: { name: string; openId?: string };
     mentionedBot?: boolean;
     appId?: string;
-    contentParts?: import("@zcode/shared").ChannelContentPart[];
+    contentParts?: import("@s-agent/shared").ChannelContentPart[];
     messages?: Array<{
       mentionedBot?: boolean;
       messageId: string;
@@ -346,7 +346,7 @@ export interface TurnInputIntentMetadata {
       senderName: string;
       text: string;
       attachmentIndexes: number[];
-      contentParts?: import("@zcode/shared").ChannelContentPart[];
+      contentParts?: import("@s-agent/shared").ChannelContentPart[];
     }>;
     /** 入队时由 Host 注入，历史资源请求不能借用后续重新授权的版本。 */
     authorizationId?: string;

@@ -8,7 +8,7 @@
 // 端口的两条查询（`listArtifactRows` / `listArtifactItems`）不在引擎的 JournalStorePort 上，
 // 所以生产路径靠能力探测接上；这里用一个带 / 不带那个方法的内存 journal 把两支都跑到。
 import { describe, expect, it, vi } from "vitest";
-import { InMemoryJournalStore, type NodeRecord, type RunStatus } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore, type NodeRecord, type RunStatus } from "@s-agent/dynamic-workflow";
 import {
   artifactsOf,
   snapshotOf,

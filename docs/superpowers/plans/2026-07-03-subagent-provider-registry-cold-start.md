@@ -6,7 +6,7 @@
 
 **Architecture:** 修复语义是“任何会执行 subagent 的 agent runtime，在 turn 前必须拥有完整 app provider registry”。实现上分两条链路：local desktop 由 `zcodeAgentService` 在 service 内部把 `providerRegistrySource` 的完整 registry 注入当前 CLI workspace；remote workspace 保持现有 `remoteWorkspaceProviderSync` 专用链路，不把 local 行为混进 remote replayable 语义。subagent 不负责 provider 注入，继续复用父 runtime 的 `modelAdapter`。
 
-**Tech Stack:** TypeScript, `@zcode/protocol`, ZCode Services, React/UI remote sync guard tests, Vitest, ZCode Desktop WDIO E2E.
+**Tech Stack:** TypeScript, `@s-agent/protocol`, ZCode Services, React/UI remote sync guard tests, Vitest, ZCode Desktop WDIO E2E.
 
 ## Global Constraints
 
@@ -18,7 +18,7 @@
 - 不修改 `Agent` tool schema，不把 provider config 放进 provider-visible tool input、child prompt 或 tool result。
 - 不把 workspace provider registry sync 放进 runtime headers 热路径。
 - 不重构 `packages/ui/src/lib/remoteWorkspaceProviderSync.ts` 的现有 remote 语义。
-- 修改完成后执行 `pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
+- 修改完成后执行 `pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
 - 回归 E2E 使用正式 failing case：`packages/desktop/test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts`。
 
 ---
@@ -98,7 +98,7 @@
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts
 ```
 
 Expected:
@@ -116,7 +116,7 @@ Run:
 ```bash
 ZCODE_DESKTOP_AGENT_BUILD_MODE=pnpm \
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-subagent-provider-registry-cold-start.json \
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts'
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts'
 ```
 
 Expected before fix: FAIL with:
@@ -372,7 +372,7 @@ it("pushes changed local provider registry to active workspace clients", async (
 If TypeScript complains about the inline source type, type the helper as:
 
 ```ts
-import type { Event } from "@zcode/rpc";
+import type { Event } from "@s-agent/rpc";
 ```
 
 and return the callback as an `Event<ModelProviderRegistryChangedEvent>` using the local event shape already exported by services. Do not weaken the production type.
@@ -818,7 +818,7 @@ If remote helper changed, stop and explain why the change is necessary before co
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts
 ```
 
 Expected: PASS with the known title fixture warning.
@@ -830,7 +830,7 @@ Run:
 ```bash
 ZCODE_DESKTOP_AGENT_BUILD_MODE=pnpm \
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-subagent-provider-registry-cold-start.json \
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts'
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-provider-registry-cold-start.test.ts'
 ```
 
 Expected after fix: PASS.
@@ -894,7 +894,7 @@ Do not mark `covered` before the replay passes.
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop typecheck:e2e
+pnpm --filter @s-agent/desktop typecheck:e2e
 pnpm typecheck
 pnpm lint
 git diff --check

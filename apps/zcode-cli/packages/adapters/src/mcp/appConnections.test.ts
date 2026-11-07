@@ -1,4 +1,4 @@
-import type { McpPort, McpServerConfig } from "@zcode/contracts";
+import type { McpPort, McpServerConfig } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { createMcpConnectionPool } from "./pool.js";
 

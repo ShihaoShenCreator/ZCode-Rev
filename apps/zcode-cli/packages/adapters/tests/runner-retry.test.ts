@@ -1,6 +1,6 @@
 import { APICallError, RetryError } from "ai";
 import { describe, expect, it, vi } from "vitest";
-import { ModelErrorCode, ModelFailureReason, ModelRetryReason } from "@zcode/contracts";
+import { ModelErrorCode, ModelFailureReason, ModelRetryReason } from "@s-agent/contracts";
 import { classifyModelFailure } from "../src/model/failure-classifier.js";
 import type { ResolvedAiSdkModelRetryOptions } from "../src/model/retry-policy.js";
 import { AiSdkModelAdapterError } from "../src/model/errors.js";

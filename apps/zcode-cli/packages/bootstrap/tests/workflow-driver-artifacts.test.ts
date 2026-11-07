@@ -16,7 +16,7 @@ import { mkdir, mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { createFileSystemError } from "@zcode/contracts";
+import { createFileSystemError } from "@s-agent/contracts";
 import type {
   ExecutionPort,
   FileSystemPort,
@@ -24,8 +24,8 @@ import type {
   ToolArtifactStorePort,
   ToolArtifactWriteResult,
   ToolBinaryArtifactWriteRequest,
-} from "@zcode/contracts";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
+} from "@s-agent/contracts";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
 import {
   ARTIFACT_CAPS,
   InMemoryJournalStore,
@@ -33,7 +33,7 @@ import {
   type ArtifactPublishRequest,
   type WorkflowDriver,
   type WorkflowReportSink,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { createWorkflowEscalationRegistry } from "../src/app/workflow-escalation-registry.js";
 import { createAgentRuntimeWorkflowDriver } from "../src/app/workflow-driver.js";
 

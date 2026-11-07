@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { modelConfigDataSchema } from "@zcode/shared/model-config";
+import { modelConfigDataSchema } from "@s-agent/shared/model-config";
 import { providerConfigDataSchema, zhipuAccountAccessDataSchema } from "./provider-data-schema.js";
 import { ModelConfig, ModelConfigRules } from "./model-config.js";
 import {
@@ -34,7 +34,12 @@ export function parseProviderConfigMap(input: unknown): ProviderConfigMap {
 }
 
 export function parseZCodeBuiltinProviderConfigMap(input: unknown): ProviderConfigMap {
-  return createProviderRules(z.array(builtinProviderConfigRuleSchema).parse(input));
+  return createProviderRules(
+    z
+      .array(builtinProviderConfigRuleSchema)
+      .parse(input)
+      .filter((rule) => !isRetiredNativeProviderRule(rule)),
+  );
 }
 
 export function parseProviderTemplateMap(input: unknown): ProviderTemplateMap {
@@ -47,8 +52,12 @@ export function parseZCodeBuiltinProviderConfigRules(input: unknown): {
 } {
   const parsed = builtinProviderConfigRulesSchema.parse(input);
   return {
-    providers: createProviderRules(parsed.providerRules),
-    providerTemplates: createTemplateRules(parsed.templateRules),
+    providers: createProviderRules(
+      parsed.providerRules.filter((rule) => !isRetiredNativeProviderRule(rule)),
+    ),
+    providerTemplates: createTemplateRules(
+      parsed.templateRules.filter((rule) => !isRetiredNativeProviderRule(rule)),
+    ),
   };
 }
 
@@ -88,22 +97,69 @@ export function parseZCodeBuiltinModelConfigRules(input: unknown): ModelConfigRu
       type: "model-api" as const,
       config: createModelConfig(rule.config),
     })),
-    ...parsed.providerSiteRules.map((rule) => ({
-      ...rule,
-      type: "provider-site" as const,
-      config: createModelConfig(rule.config),
-    })),
-    ...parsed.templateModelRules.map((rule) => ({
-      ...rule,
-      type: "template-model" as const,
-      config: createModelConfig(rule.config),
-    })),
-    ...parsed.builtinProviderModelRules.map((rule) => ({
-      ...rule,
-      type: "provider-model" as const,
-      config: createModelConfig(rule.config),
-    })),
+    ...parsed.providerSiteRules
+      .filter((rule) => !isRetiredNativeEndpoint(rule.baseUrlMatch))
+      .map((rule) => ({
+        ...rule,
+        type: "provider-site" as const,
+        config: createModelConfig(rule.config),
+      })),
+    ...parsed.templateModelRules
+      .filter((rule) => !isRetiredNativeProviderTemplateId(rule.templateId))
+      .map((rule) => ({
+        ...rule,
+        type: "template-model" as const,
+        config: createModelConfig(rule.config),
+      })),
+    ...parsed.builtinProviderModelRules
+      .filter((rule) => !isRetiredNativeProviderId(rule.providerId))
+      .map((rule) => ({
+        ...rule,
+        type: "provider-model" as const,
+        config: createModelConfig(rule.config),
+      })),
   ]);
+}
+
+const RETIRED_NATIVE_PROVIDER_TEMPLATE_IDS = new Set([
+  "zai-api",
+  "zai-standard-api",
+  "bigmodel-api",
+  "bigmodel-standard-api",
+]);
+
+function isRetiredNativeProviderTemplateId(templateId: string | null | undefined): boolean {
+  return templateId != null && RETIRED_NATIVE_PROVIDER_TEMPLATE_IDS.has(templateId);
+}
+
+function isRetiredNativeProviderId(providerId: string | null | undefined): boolean {
+  return providerId?.startsWith("account:zai-") === true ||
+    providerId?.startsWith("account:bigmodel-") === true;
+}
+
+function isRetiredNativeProviderRule(
+  rule: ProviderConfigRuleData | ProviderTemplateConfigRuleData,
+): boolean {
+  const { access, api, logo } = rule.config;
+  const group = "group" in rule.config ? rule.config.group : undefined;
+  return (
+    isRetiredNativeProviderTemplateId("templateId" in rule ? rule.templateId : undefined) ||
+    isRetiredNativeProviderId("providerId" in rule ? rule.providerId : undefined) ||
+    access?.type === "zhipu-account" ||
+    access?.type === "zhipu-coding-plan-api-key" ||
+    group === "zai-family" ||
+    group === "bigmodel-family" ||
+    logo?.key === "zai" ||
+    logo?.key === "bigmodel" ||
+    isRetiredNativeEndpoint(api?.baseUrl)
+  );
+}
+
+function isRetiredNativeEndpoint(value: string | null | undefined): boolean {
+  if (!value) return false;
+  const normalized = value.toLowerCase().replace(/\\\./gu, ".");
+  return /(?:^|[^a-z0-9.-])(?:[a-z0-9-]+\.)*z\.ai(?:[^a-z0-9.-]|$)/u.test(normalized) ||
+    /(?:^|[^a-z0-9.-])(?:[a-z0-9-]+\.)*bigmodel\.cn(?:[^a-z0-9.-]|$)/u.test(normalized);
 }
 
 export function parsePersonalModelConfigRules(input: unknown): ModelConfigRules {

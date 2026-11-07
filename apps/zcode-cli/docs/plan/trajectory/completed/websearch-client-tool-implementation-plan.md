@@ -299,8 +299,8 @@ function createRuntime(
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/websearch.test.ts tests/main-tool-pool.test.ts tests/subagent-explore.test.ts
-pnpm --filter @zcode/adapters exec vitest run tests/websearch.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/websearch.test.ts tests/main-tool-pool.test.ts tests/subagent-explore.test.ts
+pnpm --filter @s-agent/adapters exec vitest run tests/websearch.test.ts
 ```
 
 Expected: FAIL with old direct provider-native behavior:
@@ -452,7 +452,7 @@ The handler should still pass provider-native camelCase args to the adapter thro
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/websearch.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/websearch.test.ts
 ```
 
 Expected: schema tests pass; registry/projection tests still fail until Phase 2.
@@ -651,7 +651,7 @@ to:
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/websearch.test.ts tests/main-tool-pool.test.ts tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/websearch.test.ts tests/main-tool-pool.test.ts tests/subagent-explore.test.ts
 ```
 
 Expected: registry/projection tests pass; handler result formatting tests may still fail until Phase 3.
@@ -756,8 +756,8 @@ it("formats WebSearch tool results with markdown sources reminder", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/websearch.test.ts
-pnpm --filter @zcode/adapters exec vitest run tests/runner.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/websearch.test.ts
+pnpm --filter @s-agent/adapters exec vitest run tests/runner.test.ts
 ```
 
 Expected: WebSearch handler side request, formatter, providerExecuted normalization, and nested usage extraction pass.
@@ -819,7 +819,7 @@ expect(
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/websearch.test.ts tests/scheduler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/websearch.test.ts tests/scheduler.test.ts
 ```
 
 Expected: `WebSearch` is treated as read-only/concurrent safe and produces ordinary tool lifecycle events.
@@ -945,10 +945,10 @@ If prompt-trajectory cannot force a WebSearch tool call without live provider be
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters exec vitest run tests/websearch.test.ts tests/runner.test.ts
-pnpm --filter @zcode/bootstrap^... build
-pnpm --filter @zcode/bootstrap build
-pnpm --filter @zcode/prompt-trajectory run:testcases -- --cases testcases/p12-tool-surface --out-root out/websearch-client-tool-p12
+pnpm --filter @s-agent/adapters exec vitest run tests/websearch.test.ts tests/runner.test.ts
+pnpm --filter @s-agent/bootstrap^... build
+pnpm --filter @s-agent/bootstrap build
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- --cases testcases/p12-tool-surface --out-root out/websearch-client-tool-p12
 ```
 
 Expected:
@@ -988,13 +988,13 @@ Keep docs that describe generic provider-native behavior or adapter internals if
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run \
+pnpm --filter @s-agent/core exec vitest run \
   tests/websearch.test.ts \
   tests/main-tool-pool.test.ts \
   tests/subagent-explore.test.ts \
   tests/scheduler.test.ts
 
-pnpm --filter @zcode/adapters exec vitest run \
+pnpm --filter @s-agent/adapters exec vitest run \
   tests/websearch.test.ts \
   tests/runner.test.ts
 ```
@@ -1013,7 +1013,7 @@ CI=true pnpm lint
 Expected:
 
 - `pnpm lint` should exit 0. Existing warnings may remain if oxlint reports warnings without nonzero exit.
-- `pnpm typecheck` may fail on the current baseline `@zcode/shared` export/type errors unrelated to WebSearch. If it fails, capture the first 20 error lines and confirm none reference files touched by this WebSearch implementation.
+- `pnpm typecheck` may fail on the current baseline `@s-agent/shared` export/type errors unrelated to WebSearch. If it fails, capture the first 20 error lines and confirm none reference files touched by this WebSearch implementation.
 
 - [x] **Step 6.4: Manual runtime check**
 

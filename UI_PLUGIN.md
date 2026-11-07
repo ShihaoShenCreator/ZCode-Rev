@@ -251,8 +251,8 @@ node apps/zcode-cli/packages/cli/dist/zcode.cjs plugins install excalidraw@zcode
 | 通信与业务单测              | 插件仓库   | `pnpm test`                                                  | 连接顺序、版本冲突、取消等自动化回归                                  |
 | 独立安装产物                | 插件仓库   | `pnpm test:artifacts`                                        | 从仓库外启动构建产物、读取页面/资源，检查运行依赖                     |
 | 官方 App/AppBridge 页面通信 | 插件仓库   | `pnpm test:pages`                                            | Blender、Excalidraw、OpenPencil 的真实 SDK 握手、初始结果、主题和取消 |
-| Excalidraw 冒烟             | 插件仓库   | `pnpm --filter @zcode/plugin-excalidraw smoke`               | 实际 stdio 服务与资源接口                                             |
-| Excalidraw 浏览器交互       | 插件仓库   | `pnpm --filter @zcode/plugin-excalidraw test:e2e`            | 真实画布交互、保存、撤销/重做和冷启动；测试宿主桥不等于 Electron 沙箱 |
+| Excalidraw 冒烟             | 插件仓库   | `pnpm --filter @s-agent/plugin-excalidraw smoke`               | 实际 stdio 服务与资源接口                                             |
+| Excalidraw 浏览器交互       | 插件仓库   | `pnpm --filter @s-agent/plugin-excalidraw test:e2e`            | 真实画布交互、保存、撤销/重做和冷启动；测试宿主桥不等于 Electron 沙箱 |
 | Showcase 桌面联调           | 主仓库     | 下方 `--showcase-only` 命令                                  | 当前源码的 Agent、沙箱、真实页面与会话通信                            |
 
 测试页面前先 `pnpm build`；浏览器测试需要 Chrome，或通过 `CHROME_PATH` 指定 Chromium。Excalidraw 浏览器截图默认在系统临时目录的 `excalidraw-e2e`，可用 `EXCALIDRAW_E2E_ARTIFACTS` 指定输出路径。

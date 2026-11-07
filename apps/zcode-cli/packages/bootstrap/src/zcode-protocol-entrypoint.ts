@@ -1,23 +1,23 @@
-import { createMcpTransportFetch } from "@zcode/adapters";
-import { createConfig, resolvePath } from "@zcode/adapters/config";
-import type { McpElicitationPort, McpNotificationPort } from "@zcode/contracts";
-import { createNodeModelSelectionFacade } from "@zcode/provider-node";
-import { createNodeLoggerFactory } from "@zcode/adapters/logging";
+import { createMcpTransportFetch } from "@s-agent/adapters";
+import { createConfig, resolvePath } from "@s-agent/adapters/config";
+import type { McpElicitationPort, McpNotificationPort } from "@s-agent/contracts";
+import { createNodeModelSelectionFacade } from "@s-agent/provider-node";
+import { createNodeLoggerFactory } from "@s-agent/adapters/logging";
 import {
   createMcpAdapterConnectionPool,
   createMcpTelemetryTracker,
   type McpConnectionPool,
   type McpTelemetryTracker,
-} from "@zcode/adapters/mcp";
+} from "@s-agent/adapters/mcp";
 import {
   zcodeProtocolNotifications,
   type ZCodeMcpResourceSample,
   type ZCodeMcpTelemetryEvent,
-} from "@zcode/shared";
-import { createNodeSessionDataFiles, type SqliteSessionStore } from "@zcode/adapters/storage";
-import { traceContextToLogContext, createRootTraceContext } from "@zcode/contracts";
-import type { McpPort, ModelSelection } from "@zcode/contracts";
-import type { PresentationSurface } from "@zcode/core";
+} from "@s-agent/shared";
+import { createNodeSessionDataFiles, type SqliteSessionStore } from "@s-agent/adapters/storage";
+import { traceContextToLogContext, createRootTraceContext } from "@s-agent/contracts";
+import type { McpPort, ModelSelection } from "@s-agent/contracts";
+import type { PresentationSurface } from "@s-agent/core";
 import type { RunZCodeProtocolAgentOptions, ZCodeAppOptions } from "./app/types.js";
 import { createZCodeApp } from "./app/create-app.js";
 import {
@@ -50,7 +50,7 @@ import {
   OFFICIAL_MCP_DEV_TRUSTED_ORIGINS_ENV,
   ZCODE_WORKSPACE_IDENTITY_ENV,
   resolveRuntimeZCodeEndpointOrigin,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { ZCodeProtocolAgentServer } from "./zcode-protocol/server.js";
 import { ZCodeProtocolNdjsonConnection } from "./zcode-protocol/transport.js";
 import { cleanupProtocolRuntime } from "./zcode-protocol/runtime-cleanup.js";

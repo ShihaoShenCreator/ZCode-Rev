@@ -4,12 +4,12 @@ import {
   createWorkspaceHookBundleSnapshot,
   type WorkspaceHookBundleSnapshot,
   type Logger,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   InMemoryWorkspaceHookPolicyProvider,
   WorkspaceHookTrustCoordinator,
   createWorkspaceHookRuntimeAdmission,
-} from "@zcode/core";
+} from "@s-agent/core";
 import {
   WorkspaceHookReviewController,
   type WorkspaceHookReviewLifecycleEvent,

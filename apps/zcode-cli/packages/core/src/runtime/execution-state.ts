@@ -1,11 +1,11 @@
-import { resolveExecutionState, type ExecutionState } from "@zcode/shared";
+import { resolveExecutionState, type ExecutionState } from "@s-agent/shared";
 import {
   SESSION_ENTRY_EXECUTION_STATE,
   SessionEventType,
   type TraceContext,
   type SessionId,
   type SessionEntryInfo,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AgentRuntimeInternal } from "./internal.js";
 import {
   unpublishedPermissionGrants,

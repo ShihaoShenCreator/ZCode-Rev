@@ -118,7 +118,7 @@ function runPnpm(args, options = {}) {
 function runBootstrapServerBuild() {
   const serverDir = resolve(rootDir, "packages/server");
 
-  // bootstrap:with-remote 的最终构建过去复用 build:bootstrap，导致 @zcode/server build
+  // bootstrap:with-remote 的最终构建过去复用 build:bootstrap，导致 @s-agent/server build
   // 内部再次嵌套 pnpm run build:remote；在本地低内存环境中 tsx/esbuild 子进程容易卡住或被停掉。
   // 同时不能按 dist 文件存在就跳过构建：开发时 version 经常不变，旧 entry-http 或 remote bundle
   // 会让本地/远端继续运行旧协议。这里仅保留直接执行等价入口的低内存优化，CI 和生产 build 脚本保持原样。
@@ -206,7 +206,7 @@ function runBootstrapDesktopBuild() {
 }
 
 function runBootstrapWithRemoteBuild() {
-  for (const filter of ["@zcode/rpc", "@zcode/web", "@zcode/formal-proof"]) {
+  for (const filter of ["@s-agent/rpc", "@s-agent/web", "@s-agent/formal-proof"]) {
     // pnpm -r 会在 bootstrap:with-remote 的最终构建阶段并发启动多个 Vite/esbuild/tsup。
     // remote assets 已经占过一轮内存峰值，这里显式串行包构建，且不改变 build:bootstrap/CI 命令。
     runPnpm(["--filter", filter, "build"]);
@@ -239,7 +239,7 @@ if (withRemoteAssets) {
   // Bug 原因：R3 首装只消费 Source Server archive，旧 bootstrap 只生成 legacy
   // manifest/components，导致开发态继续命中 gitignore 中的历史 dist-release。
   // 放在最终 workspace build 之后，确保 archive 收集的是本轮最新编译产物。
-  runPnpm(["--filter", "@zcode/server-cli", "stage:remote-assets"]);
+  runPnpm(["--filter", "@s-agent/server-cli", "stage:remote-assets"]);
 } else {
   runPnpm(["run", "build:bootstrap"]);
 }

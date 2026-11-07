@@ -17,9 +17,9 @@ import {
   TID_BROWSER_ADDRESS_INPUT,
   TID_BROWSER_WEBVIEW,
   TID_PREVIEW_PANE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import type { ChainablePromiseElement } from "webdriverio";
-import type { FileApplicationInfo } from "@zcode/shared";
+import type { FileApplicationInfo } from "@s-agent/shared";
 import {
   installFileApplicationMenuProbe,
   readFileApplicationMenuProbe,

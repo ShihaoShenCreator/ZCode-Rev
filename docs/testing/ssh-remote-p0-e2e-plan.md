@@ -112,7 +112,7 @@ Ubuntu 24.04 + password SSH
 - `SSH-P0-CONN-01/02`：2026-08-10 在同一 Ubuntu 24.04 上完成 formal 默认 replay，1 passing，artifact `desktop-e2e-20260810-073137-368`。
 - `SSH-P0-DEV-01/02/03`：2026-08-10 在 case-local `/tmp` repo 上完成 formal 默认 replay，1 passing，artifact `desktop-e2e-20260810-073248-576`。
 - `SSH-P0-TASK-02`、`SSH-P0-LIFE-01/02/03` 在实际运行通过前保持 `pending`；不得用 unit/integration 证据替代真实 SSH Electron E2E 状态。
-- `SSH-P0-TASK-03`（2026-09-04 新增）：来源于 3.11.1 WSL 用户反馈——远程 workspace 运行中打开设置页后侧栏永久转圈；根因与单元证据见 `docs/wsl-task-status-inconsistency.md` T3。fixture 合同检查已通过（`pnpm --filter @zcode/desktop e2e:fixture:check`），真实 SSH 运行通过前保持 `pending`。
+- `SSH-P0-TASK-03`（2026-09-04 新增）：来源于 3.11.1 WSL 用户反馈——远程 workspace 运行中打开设置页后侧栏永久转圈；根因与单元证据见 `docs/wsl-task-status-inconsistency.md` T3。fixture 合同检查已通过（`pnpm --filter @s-agent/desktop e2e:fixture:check`），真实 SSH 运行通过前保持 `pending`。
 
 ## Lifecycle pending 实现
 

@@ -18,7 +18,7 @@ import {
   type SessionInfo,
   type SessionStorePort,
   type TodoItem,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { formatTaskNotification } from "../src/runtime-task/notification.js";
 import {
   formatLocalAgentTaskNotification,

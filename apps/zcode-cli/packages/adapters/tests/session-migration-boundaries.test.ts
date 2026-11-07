@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { describe, expect, it } from "vitest";
-import { sqliteMigrations } from "@zcode/shared/sqlite-migrations";
+import { sqliteMigrations } from "@s-agent/shared/sqlite-migrations";
 import { SQLITE_MIGRATIONS } from "../src/storage/session-store/migrations.js";
 
 function hashes(db: DatabaseSync) {

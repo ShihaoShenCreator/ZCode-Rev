@@ -2,7 +2,7 @@
 
 ## 目标
 
-`@zcode/zcode-cua`（CUA producer：MCP server、Helper runtime、`ax_native.node`、node_repl SDK、官方 Skill）从独立仓库 `git.example.invalid/codegeex/zcode-cua` 搬入 z-code 的 `packages/zcode-cua/`，成为普通 workspace 包：
+`@s-agent/zcode-cua`（CUA producer：MCP server、Helper runtime、`ax_native.node`、node_repl SDK、官方 Skill）从独立仓库 `git.example.invalid/codegeex/zcode-cua` 搬入 z-code 的 `packages/zcode-cua/`，成为普通 workspace 包：
 
 - 消费方统一 `workspace:*`，不再有 git SHA pin，也不再需要 `ZCODE_CUA_GIT_TOKEN` 之类的私有仓库凭据。
 - `dist/` 不入 git，由 `pnpm build:cua` 产出；根 `prepare` 与 CI 安装后自动构建。
@@ -41,7 +41,7 @@ docs/cua/producer/ 对外有效的 CUA producer 文档
 - CUA 版本号唯一真相源：`packages/zcode-cua/package.json` 的 `version`。构建期仍内联进 `SERVER_VERSION`。
 - 删除 pin 工具链：`bump-zcode-cua-producer.mjs`、`check-cua-baseline.mjs`、`sync-skill-from-zcode-cua.mjs`、`upstream.json`。
 - `check-version-coherence.mjs` 直接读取 workspace 包的 `package.json` 与 `plugin/`；插件侧 Skill 由 `packages/zcode-cua/plugin/` 同步，14 KiB 预算守卫保留。
-- Windows Helper 产物名 `@zcode/zcode-cua-helper-runtime` 作为发布物名称保留，不再是 npm 依赖别名。
+- Windows Helper 产物名 `@s-agent/zcode-cua-helper-runtime` 作为发布物名称保留，不再是 npm 依赖别名。
 
 ## 构建链路
 
@@ -51,7 +51,7 @@ pnpm install
   └─ root prepare：husky && pnpm build:cua
         └─ tsc -b tsconfig.build.json && node scripts/build.mjs  → packages/zcode-cua/dist
 消费方（desktop / services / cli adapters / core / node-repl-host / zcode-cua-plugin）
-  └─ 通过 workspace 软链解析 @zcode/zcode-cua → dist/**
+  └─ 通过 workspace 软链解析 @s-agent/zcode-cua → dist/**
 ```
 
 `typecheck`、CUA 独立测试、`dev:desktop`、`build:cua-helper` 以及 CI 安装步骤之后都依赖 `dist` 已存在。

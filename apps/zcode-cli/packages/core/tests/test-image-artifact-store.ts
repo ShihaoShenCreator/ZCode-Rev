@@ -1,4 +1,4 @@
-import type { ToolArtifactStorePort } from "@zcode/contracts";
+import type { ToolArtifactStorePort } from "@s-agent/contracts";
 
 export function createTestImageArtifactStore(): ToolArtifactStorePort {
   const artifacts = new Map<string, { content: string; contentType: string }>();

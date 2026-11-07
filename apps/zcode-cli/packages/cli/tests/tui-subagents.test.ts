@@ -8,9 +8,9 @@ import {
   createSessionId,
   SessionEventType,
   type SessionEvent,
-} from "@zcode/contracts";
-import type { ZCodeSessionSubagentsResult } from "@zcode/shared";
-import { getZCodeCopy } from "@zcode/i18n";
+} from "@s-agent/contracts";
+import type { ZCodeSessionSubagentsResult } from "@s-agent/shared";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { runTuiWithRenderer } from "../../tui/src/tui.js";
 import {
   applyMainSessionEvent,

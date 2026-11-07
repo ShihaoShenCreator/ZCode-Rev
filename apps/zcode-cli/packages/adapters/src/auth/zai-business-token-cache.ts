@@ -1,4 +1,4 @@
-import { ProjectAccessTokenTransientError } from "@zcode/shared";
+import { ProjectAccessTokenTransientError } from "@s-agent/shared";
 
 const REFRESH_LEAD_MS = 120_000;
 const REFRESH_RETRY_BACKOFF_MS = 5_000;

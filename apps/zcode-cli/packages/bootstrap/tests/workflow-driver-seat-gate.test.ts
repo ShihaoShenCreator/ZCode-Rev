@@ -14,14 +14,14 @@ import {
   type ModelRequestAdmission,
   type SessionEvent,
   type SessionEventSink,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   InMemoryJournalStore,
   type ActorRef,
   type InstanceRef,
   type RunEvent,
   type WorkflowReportSink,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { createWorkflowEscalationRegistry } from "../src/app/workflow-escalation-registry.js";
 import { createJournalSequenceCapture } from "../src/app/dynamic-workflow-run-sequence-capture.js";
 import { createAgentRuntimeWorkflowDriver } from "../src/app/workflow-driver.js";

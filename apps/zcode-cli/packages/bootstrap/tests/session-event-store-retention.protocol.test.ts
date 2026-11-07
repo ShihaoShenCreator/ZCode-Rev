@@ -4,13 +4,13 @@ import {
   SessionEventType,
   type SessionEvent,
   type SessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   zcodeProtocolMethods,
   zcodeSessionEventsResultSchema,
   zcodeSessionStateSnapshotSchema,
   type ZCodeProtocolMessage,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ZCodeAppOptions } from "../src/app/types.js";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 import { createFakeApp } from "./helpers/fake-zcode-app.js";

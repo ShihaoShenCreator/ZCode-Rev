@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { TID_OAUTH_LOGIN_BUTTON, TID_LOGIN_USE_API_KEY_BUTTON } from "@zcode/shared/test-ids";
+import { TID_OAUTH_LOGIN_BUTTON, TID_LOGIN_USE_API_KEY_BUTTON } from "@s-agent/shared/test-ids";
 import { clearAppData, getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 
 const OAUTH_CREDENTIAL_KEYS = [

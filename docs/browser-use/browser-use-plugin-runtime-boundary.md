@@ -47,10 +47,10 @@ owner 维持。这样 desktop browser view / CDP / 协议桥可以继续留在�
 
 ## REPL 发布依赖边界
 
-`@zcode/core/repl` 是 `NodeReplSession` 及其类型的独立公共入口，直接复用现有执行引擎；
-MCP server 的 core 依赖只能进入 `core/repl`，不能通过 `@zcode/core` 总入口带入 Agent、
+`@s-agent/core/repl` 是 `NodeReplSession` 及其类型的独立公共入口，直接复用现有执行引擎；
+MCP server 的 core 依赖只能进入 `core/repl`，不能通过 `@s-agent/core` 总入口带入 Agent、
 工具注册表、Subagent 或工作流编译器。core 总入口保留原有导出，兼容已有调用方。
-独立的 `browser-client.mjs` 继续通过 `@zcode/core/browser-client` 提供浏览器对象图。
+独立的 `browser-client.mjs` 继续通过 `@s-agent/core/browser-client` 提供浏览器对象图。
 
 App 的 Electron Node 模式、普通 Node CLI 和 SEA 内置 Node 共用 CLI 入口的轻量 plugin-host 分支：
 
@@ -64,14 +64,14 @@ main → 环境清理 / SEA 工具准备 → plugin-host 鉴权 → MCP server �
 复用原有 plugin-host 的凭据校验、argv 透传和退出 owner：鉴权失败在 import 前拒绝，成功 MCP
 继续依靠 stdio 存活，初始化失败仍由现有 watchdog 收口。插件参数不触发 Provider 初始化。
 回归测试须在业务入口求值时主动抛错，并证明普通与压缩 CLI 的 plugin-host 仍可正常加载插件。
-启动层通过 `@zcode/shared/runtime-env`、`@zcode/shared/mcp`、
-`@zcode/shared/runtime-tool-runtime` 和已有的 `@zcode/contracts/plugins` 读取环境处理、
+启动层通过 `@s-agent/shared/runtime-env`、`@s-agent/shared/mcp`、
+`@s-agent/shared/runtime-tool-runtime` 和已有的 `@s-agent/contracts/plugins` 读取环境处理、
 身份常量与 SEA 工具描述，避免总入口的无关 schema 初始化。所有入口指向原文件，
 broker 凭据 capture 仍是同一模块持有的唯一状态，不复制校验或环境实现。
 
-MCP server 通过 `@zcode/contracts/tools/node-repl` 读取 JS 工具 schema，通过
-`@zcode/contracts/mcp` 读取 MCP 结果元数据常量；browser bridge 通过
-`@zcode/shared/node-repl-browser-broker` 读取现有 broker 协议。禁止为了这些少量定义
+MCP server 通过 `@s-agent/contracts/tools/node-repl` 读取 JS 工具 schema，通过
+`@s-agent/contracts/mcp` 读取 MCP 结果元数据常量；browser bridge 通过
+`@s-agent/shared/node-repl-browser-broker` 读取现有 broker 协议。禁止为了这些少量定义
 求值 contracts/shared 总入口，避免每个 MCP 进程及一次性 Worker 初始化无关业务 schema。
 这些公共子入口直接指向原文件，保留校验、工具描述和返回格式的唯一事实源。
 

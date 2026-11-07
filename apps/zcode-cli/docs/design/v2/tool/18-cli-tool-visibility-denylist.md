@@ -206,13 +206,13 @@ zcode -p "分析一下" --disallowedTools "Bash(git *) Edit"
 **建议测试命令**
 
 ```bash
-pnpm --filter @zcode/cli exec node --disable-warning=DEP0205 --import tsx --test tests/cli.unit.test.ts
+pnpm --filter @s-agent/cli exec node --disable-warning=DEP0205 --import tsx --test tests/cli.unit.test.ts
 ```
 
 如果该 filter 名称不匹配，先运行：
 
 ```bash
-pnpm -r list --depth -1 | rg "@zcode/cli|zcode-cli"
+pnpm -r list --depth -1 | rg "@s-agent/cli|zcode-cli"
 ```
 
 **验收**
@@ -283,7 +283,7 @@ pnpm -r list --depth -1 | rg "@zcode/cli|zcode-cli"
 **建议测试命令**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/main-tool-pool.test.ts tests/mcp-tool-bridge.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/main-tool-pool.test.ts tests/mcp-tool-bridge.test.ts
 ```
 
 **验收**
@@ -341,7 +341,7 @@ pnpm --filter @zcode/core exec vitest run tests/main-tool-pool.test.ts tests/mcp
 **建议测试命令**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/main-tool-pool.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/main-tool-pool.test.ts
 ```
 
 **验收**
@@ -394,7 +394,7 @@ pnpm --filter @zcode/core exec vitest run tests/main-tool-pool.test.ts
 **建议测试命令**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-explore.test.ts
 ```
 
 **验收**
@@ -433,7 +433,7 @@ pnpm --filter @zcode/core exec vitest run tests/subagent-explore.test.ts
 **建议测试命令**
 
 ```bash
-pnpm --filter @zcode/cli exec node --disable-warning=DEP0205 --import tsx --test tests/cli.unit.test.ts
+pnpm --filter @s-agent/cli exec node --disable-warning=DEP0205 --import tsx --test tests/cli.unit.test.ts
 ```
 
 **验收**
@@ -463,8 +463,8 @@ pnpm --filter @zcode/cli exec node --disable-warning=DEP0205 --import tsx --test
 **建议验证命令**
 
 ```bash
-pnpm --filter @zcode/cli exec node --disable-warning=DEP0205 --import tsx --test tests/cli.unit.test.ts
-pnpm --filter @zcode/core exec vitest run tests/main-tool-pool.test.ts tests/mcp-tool-bridge.test.ts tests/subagent-explore.test.ts
+pnpm --filter @s-agent/cli exec node --disable-warning=DEP0205 --import tsx --test tests/cli.unit.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/main-tool-pool.test.ts tests/mcp-tool-bridge.test.ts tests/subagent-explore.test.ts
 pnpm typecheck
 pnpm lint
 ```

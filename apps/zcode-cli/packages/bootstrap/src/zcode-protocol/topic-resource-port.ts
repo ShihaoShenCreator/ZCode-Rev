@@ -1,11 +1,11 @@
-import { channelReplyResultSchema } from "@zcode/shared";
+import { channelReplyResultSchema } from "@s-agent/shared";
 import { randomUUID } from "node:crypto";
-import type { TopicResourcePort } from "@zcode/contracts";
+import type { TopicResourcePort } from "@s-agent/contracts";
 import {
   zcodeProtocolMethods,
   zcodeTopicResourceReadResultSchema,
   zcodeTopicResourceCancelResultSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   protocolTraceFromTraceContext,
   type ZCodeProtocolAgentServerContext,

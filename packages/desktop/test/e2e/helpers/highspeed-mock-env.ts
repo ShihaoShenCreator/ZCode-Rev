@@ -1,4 +1,4 @@
-import type { HighspeedMockScenario } from "@zcode/shared";
+import type { HighspeedMockScenario } from "@s-agent/shared";
 
 export const HIGHSPEED_MOCK_SCENARIO_ENV = "ZCODE_HIGHSPEED_MOCK_SCENARIO";
 

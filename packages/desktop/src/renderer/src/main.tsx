@@ -16,9 +16,9 @@ import {
   playTaskNotificationSound,
   setStreamClientId,
   setReactErrorArmsReporter,
-} from "@zcode/ui";
-import "@zcode/ui/styles.css";
-import { connectViaMessagePort, createMessagePortServiceConnection } from "@zcode/client";
+} from "@s-agent/ui";
+import "@s-agent/ui/styles.css";
+import { connectViaMessagePort, createMessagePortServiceConnection } from "@s-agent/client";
 import {
   InternalChannels,
   databaseStartupStateSchema,
@@ -27,9 +27,9 @@ import {
   LAUNCH_MARKS_QUERY_KEY,
   type LaunchMarks,
   DEFAULT_LOCALE,
-} from "@zcode/shared";
-import type { Locale } from "@zcode/shared";
-import type { IServiceAccessor } from "@zcode/services";
+} from "@s-agent/shared";
+import type { Locale } from "@s-agent/shared";
+import type { IServiceAccessor } from "@s-agent/services";
 import { createDesktopPlatform } from "./desktopPlatform.js";
 import { startPerformanceTimelineCleanup } from "./performanceTimelineCleanup.js";
 import { initializeDesktopUserActionTrace } from "./userActionTraceBootstrap.js";
@@ -69,7 +69,7 @@ function registerE2EStoreBridgesIfEnabled() {
     return;
   }
 
-  void import("@zcode/ui/e2e-store-bridge").then(({ registerE2EStoreBridges }) => {
+  void import("@s-agent/ui/e2e-store-bridge").then(({ registerE2EStoreBridges }) => {
     registerE2EStoreBridges();
   });
 }

@@ -4,7 +4,7 @@
 
 **Goal:** 为 `SendMessage` 和 `TaskStop` 增加与现有 ToolCall 体系一致的紧凑摘要和结构化详情，彻底避免 fallback raw JSON 展示。
 
-**Architecture:** 在 `@zcode/shared` 固定 canonical tool name 到 presentation family 的映射，UI 的 `resolveToolCallRenderer` 只按 family 路由。Core 复用 `ToolResultDisplayPayload`，从 hook/model serialization 之前的原始 output 生成 `local_agent_message` / `task_stop` display；UI 用集中 reader 统一读取实时 event、持久化 metadata 和 provider 兼容形态，renderer 只消费已校验字段并保留明确的旧数据 fallback。
+**Architecture:** 在 `@s-agent/shared` 固定 canonical tool name 到 presentation family 的映射，UI 的 `resolveToolCallRenderer` 只按 family 路由。Core 复用 `ToolResultDisplayPayload`，从 hook/model serialization 之前的原始 output 生成 `local_agent_message` / `task_stop` display；UI 用集中 reader 统一读取实时 event、持久化 metadata 和 provider 兼容形态，renderer 只消费已校验字段并保留明确的旧数据 fallback。
 
 **Tech Stack:** TypeScript 6、React 19、Vitest 4、react-dom/server、Tailwind semantic tokens、lucide-react、FormatJS i18n。
 

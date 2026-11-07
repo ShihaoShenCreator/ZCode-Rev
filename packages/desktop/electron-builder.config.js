@@ -4,7 +4,7 @@ import { readdir, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { createRequire } from "node:module";
-import { HELPER_APP_NAME } from "@zcode/zcode-cua/broker/helperConstants";
+import { HELPER_APP_NAME } from "@s-agent/zcode-cua/broker/helperConstants";
 import { runCommand, runCommandAndReadStdout } from "../../scripts/spawn-command.mjs";
 import { loadBuiltinProviderConfig } from "../../scripts/builtin-provider-config.mjs";
 import { noticesFileName, stageElectronNotices } from "../../scripts/third-party-notices.mjs";
@@ -115,7 +115,7 @@ const REQUIRED_ASAR_RUNTIME_MODULES = [
   // 线上已出现安装包启动即报 Cannot find module '@babel/runtime/helpers/interopRequireDefault'，
   // 这里显式把 @babel/runtime 作为闭包根注入，确保 ARMS 主进程埋点链路在生产包内可解析。
   "@babel/runtime",
-  // Bugfix: @zcode/services 的代理连通性探测会动态 require("undici") 取 ProxyAgent。
+  // Bugfix: @s-agent/services 的代理连通性探测会动态 require("undici") 取 ProxyAgent。
   // tsup 虽然把 services 代码并进了主/host 产物，但不会把这个运行时 require 的包内联进去，
   // electron-builder 产物又可能漏掉 hoisted 的 undici，最终 mac 安装包启动即报 Cannot find module "undici"。
   // 这里把 undici 和其他兜底依赖一样强制注入 app.asar，避免用户在已安装应用里主进程直接崩溃。
@@ -251,7 +251,7 @@ const PACKAGING_PRUNE_PATTERNS = [
   "!**/SECURITY*",
   // 26.17 的 pnpm 收集器按 lockfile 全平台图收包，会把纯构建期依赖带进 app.asar
   // （2026-10-26 与 26.8.1 产物 asar 逐包对账 +24MB 未压缩）。以下均已核实零运行时引用：
-  // - shadcn 是 @zcode/ui 误声明在生产位的组件脚手架 CLI，连带 @ts-morph/ts-morph、
+  // - shadcn 是 @s-agent/ui 误声明在生产位的组件脚手架 CLI，连带 @ts-morph/ts-morph、
   //   @babel 生态与 caniuse-lite/browserslist/baseline-browser-mapping 数据包；
   // - node-gyp/node-addon-api 是 CUA 原生模块构建工具链；
   // - cpu-features/nan 是 ssh2 的可选原生加速，缺失时 ssh2 自动降级。
@@ -627,7 +627,7 @@ export default {
     // 默认也会原样进入安装包。这里统一在主包层做一次裁剪，只移除非运行时文件，LICENSE 继续保留。
     ...PACKAGING_PRUNE_PATTERNS,
     ...createDesktopNativePackagePrunePatterns(targetPlatform.key),
-    "!node_modules/@zcode/**",
+    "!node_modules/@s-agent/**",
     "!node_modules/react/**",
     "!node_modules/react-dom/**",
   ],
@@ -914,7 +914,7 @@ export default {
   linux: {
     target: ["AppImage", "deb", "rpm", "pacman"],
     artifactName: buildDesktopArtifactName("linux"),
-    // desktop 包名是 scoped package（@zcode/desktop），electron-builder 默认会把
+    // desktop 包名是 scoped package（@s-agent/desktop），electron-builder 默认会把
     // Linux executable/Icon 推成 @zcodedesktop。部分桌面环境无法按这个 icon name 命中
     // hicolor 图标，最终回退成系统齿轮。这里固定成稳定的小写名称，让 Icon=zcode
     // 与 /usr/share/icons/hicolor/*/apps/zcode.png 保持一致。

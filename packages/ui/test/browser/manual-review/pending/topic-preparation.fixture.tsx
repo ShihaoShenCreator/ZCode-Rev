@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { BotTopicPreparation } from "@zcode/shared";
-import type { UserInputRow } from "@zcode/shared/zcode-protocol-v4";
+import type { BotTopicPreparation } from "@s-agent/shared";
+import type { UserInputRow } from "@s-agent/shared/zcode-protocol-v4";
 import { TooltipProvider } from "@/components/ui/tooltip.js";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 import { BotTopicPreparationList } from "@/v4/BotTopicPreparation.js";

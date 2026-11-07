@@ -11,7 +11,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { ZCODE_DWF_CHILD_COMMAND } from "@zcode/contracts";
+import { ZCODE_DWF_CHILD_COMMAND } from "@s-agent/contracts";
 import { dynamicWorkflowChildSpawn } from "../src/app/dynamic-workflow-run-launch.js";
 
 describe("dynamicWorkflowChildSpawn", () => {

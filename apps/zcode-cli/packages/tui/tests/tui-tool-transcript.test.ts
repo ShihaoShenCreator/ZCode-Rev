@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import type { Message, ToolTranscriptPart } from "../src/app-model.js";
 import {
   applyToolTranscriptEvent,

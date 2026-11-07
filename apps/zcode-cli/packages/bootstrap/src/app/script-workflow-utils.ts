@@ -4,7 +4,7 @@ import type {
   SessionId,
   SessionStorePort,
   WorkflowAgentCallInput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { homedir } from "node:os";
 import { isAbsolute, join, relative } from "node:path";
 

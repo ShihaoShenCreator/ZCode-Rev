@@ -3,7 +3,7 @@ import { requestSecurityClientConfig } from "./request-security-edition/index.js
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { once } from "node:events";
 import { readFile } from "node:fs/promises";
-import { BUILTIN_MODEL_PROVIDER_IDS } from "@zcode/shared";
+import { BUILTIN_MODEL_PROVIDER_IDS } from "@s-agent/shared";
 import { createMarketingTouchFixture } from "./marketing-touch-fixture.js";
 import { rewardsWebsiteFixture } from "./rewards-website-fixture.js";
 

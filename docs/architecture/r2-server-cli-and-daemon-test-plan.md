@@ -52,11 +52,11 @@ user service 验证注册、自启动与状态；本地环境无法运行 privil
 
 此外，已使用 `linux-amd64-dev`（SSH 用户 `dev`）完成 Linux x64 实机验证：解压约 74 MB
 发行包后，`serve --daemon`、status/stop、在线全量更新及 Supervisor/Core/Agent release 收敛、带 archive SHA 与内容 hash 校验的
-组件增量更新、坏 release 回滚、`node-pty`、`@zcode/tui`/`playwright-core`/`koffi` 动态加载，
+组件增量更新、坏 release 回滚、`node-pty`、`@s-agent/tui`/`playwright-core`/`koffi` 动态加载，
 以及 bfs/rg/ugrep 和七个随包官方插件均已通过。
 
 ```bash
-pnpm --filter @zcode/server-cli stage --target linux-arm64
+pnpm --filter @s-agent/server-cli stage --target linux-arm64
 node packages/zcode-server-cli/scripts/verify-remote-ssh.mjs --target linux-arm64   # --keep 保留现场
 ```
 

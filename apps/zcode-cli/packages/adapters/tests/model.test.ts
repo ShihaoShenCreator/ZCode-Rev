@@ -8,7 +8,7 @@ import {
   runWithModelInvocationContext,
   type ModelEvent,
   type ModelProperties,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createModel as createRawModel,
   type ModelExecutionRequest,

@@ -55,7 +55,7 @@ debug server 默认启用网络代理，默认监听：
 ```sh
 ZCODE_HTTP_PROXY=http://127.0.0.1:4184 \
 ZCODE_AGENT_CA_CERT=/absolute/path/to/packages/debug/certs/network-ca/certs/ca.pem \
-pnpm --filter @zcode/cli dev
+pnpm --filter @s-agent/cli dev
 ```
 
 ZCode runtime 会过滤用户 shell 里的标准代理/证书变量；debug app 只提供 `ZCODE_HTTP_PROXY` 和 `ZCODE_AGENT_CA_CERT` 作为模型/provider 抓包的显式入口。普通 `http_proxy` 等用户变量会被封存后只恢复给 Bash/tool/MCP stdio 子进程，因此开发期如果要抓模型流量应使用这里的 `ZCODE_*` 变量，如果只想让用户命令/curl/git 走本机代理则可以继续使用标准代理变量。

@@ -55,7 +55,7 @@
 - Create: `packages/desktop/test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts`
   - 通过真实桌面窗口验证 plan approval、plan file 落盘、`/compact`、后续 provider request 中 plan continuity。
 - After manual review, move: `packages/desktop/test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts` -> `packages/desktop/test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts`
-  - 通过 `pnpm --filter @zcode/desktop e2e:promote -- --spec ./test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts --reviewed --apply` 完成移动和脚手架生成。
+  - 通过 `pnpm --filter @s-agent/desktop e2e:promote -- --spec ./test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts --reviewed --apply` 完成移动和脚手架生成。
 
 ---
 
@@ -175,7 +175,7 @@ Create `apps/zcode-cli/packages/core/tests/plan-file-continuity.test.ts`:
 
 ```ts
 import { describe, expect, it } from "vitest";
-import { createRootTraceContext, createSessionId } from "@zcode/contracts";
+import { createRootTraceContext, createSessionId } from "@s-agent/contracts";
 import { MemoryFileSystem } from "./memory-test-utils.js";
 import {
   formatPlanFileReference,
@@ -269,7 +269,7 @@ describe("plan file continuity", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- plan-file-continuity.test.ts
+pnpm --filter @s-agent/core test -- plan-file-continuity.test.ts
 ```
 
 Expected: FAIL with module resolution error for `../src/runtime/helpers/plan-file-continuity.js`.
@@ -298,7 +298,7 @@ import {
   type FileSystemPort,
   type SessionId,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   systemReminderAttachmentEntry,
   type RuntimeMessageEntry,
@@ -419,7 +419,7 @@ export * from "./plan-file-continuity.js";
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- plan-file-continuity.test.ts
+pnpm --filter @s-agent/core test -- plan-file-continuity.test.ts
 ```
 
 Expected: PASS all five tests.
@@ -442,7 +442,7 @@ Expected: PASS all five tests.
 In `createPlanModeExecutor()` test helper input type, add:
 
 ```ts
-  fileSystemPort?: import("@zcode/contracts").FileSystemPort;
+  fileSystemPort?: import("@s-agent/contracts").FileSystemPort;
   workingDirectory?: string;
   workspaceRoot?: string;
 ```
@@ -553,7 +553,7 @@ Add this test in `describe("plan mode tools", ...)`:
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- plan-mode-tool.test.ts
+pnpm --filter @s-agent/core test -- plan-mode-tool.test.ts
 ```
 
 Expected: FAIL because `ExitPlanMode` has not written the plan file yet.
@@ -627,7 +627,7 @@ In `exitPlanModeHandler`, after the mode check and before `context.sessionModePo
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- plan-mode-tool.test.ts plan-file-continuity.test.ts
+pnpm --filter @s-agent/core test -- plan-mode-tool.test.ts plan-file-continuity.test.ts
 ```
 
 Expected: PASS. The existing output shape still includes `plan`, `approved`, `previousMode`, `mode`, and `allowedPrompts`; no `planFilePath` output field is introduced.
@@ -686,7 +686,7 @@ Add:
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- system-reminder-source.test.ts
+pnpm --filter @s-agent/core test -- system-reminder-source.test.ts
 ```
 
 Expected: FAIL because `plan_file_reference` is not registered yet.
@@ -750,7 +750,7 @@ immediately after `resume_referenced_session_context`.
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- system-reminder-source.test.ts
+pnpm --filter @s-agent/core test -- system-reminder-source.test.ts
 ```
 
 Expected: PASS.
@@ -874,7 +874,7 @@ it("persists approved plan file reference after compact so resume keeps the full
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- runtime-compact.test.ts -t "persists approved plan file reference after compact"
+pnpm --filter @s-agent/core test -- runtime-compact.test.ts -t "persists approved plan file reference after compact"
 ```
 
 Expected: FAIL because `compactActiveConversation()` only appends read-state reminders today.
@@ -935,7 +935,7 @@ with:
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- runtime-compact.test.ts -t "persists approved plan file reference after compact"
+pnpm --filter @s-agent/core test -- runtime-compact.test.ts -t "persists approved plan file reference after compact"
 ```
 
 Expected: PASS.
@@ -945,7 +945,7 @@ Expected: PASS.
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- plan-file-continuity.test.ts plan-mode-tool.test.ts system-reminder-source.test.ts runtime-compact.test.ts
+pnpm --filter @s-agent/core test -- plan-file-continuity.test.ts plan-mode-tool.test.ts system-reminder-source.test.ts runtime-compact.test.ts
 ```
 
 Expected: PASS for the four targeted files.
@@ -978,7 +978,7 @@ expect(exitPlanModeContract.inputSchema).not.toHaveProperty("properties.filePath
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- tool-contracts.test.ts
+pnpm --filter @s-agent/core test -- tool-contracts.test.ts
 ```
 
 Expected: PASS. Any failure blocks completion until its source is identified; do not edit unrelated files while diagnosing this gate.
@@ -996,7 +996,7 @@ Expected: PASS. Any failure blocks completion until its source is identified; do
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- runtime-compact.test.ts -t "persists approved plan file reference after compact" --reporter verbose
+pnpm --filter @s-agent/core test -- runtime-compact.test.ts -t "persists approved plan file reference after compact" --reporter verbose
 ```
 
 Expected: PASS. The assertion must inspect the post-resume provider request messages and must include both `A plan file exists from plan mode at:` and `E2E_PLAN_FILE_COMPACT_CONTINUITY_MARKER`.
@@ -1226,7 +1226,7 @@ async function readLatestPlanFile(): Promise<{ content: string; path: string }> 
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop typecheck:e2e
+pnpm --filter @s-agent/desktop typecheck:e2e
 ```
 
 Expected: PASS.
@@ -1244,7 +1244,7 @@ Expected: PASS.
 Run:
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @s-agent/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts'
 ```
 
 Expected:
@@ -1287,7 +1287,7 @@ Expected:
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop e2e:promote -- --spec ./test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts --reviewed --apply
+pnpm --filter @s-agent/desktop e2e:promote -- --spec ./test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts --reviewed --apply
 ```
 
 Expected:
@@ -1328,7 +1328,7 @@ The fixture may reuse `packages/desktop/test/e2e/fixtures/upstream/common.json` 
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec './test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts'
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec './test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts'
 ```
 
 Expected: PASS.
@@ -1338,7 +1338,7 @@ Expected: PASS.
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts'
+pnpm --filter @s-agent/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-plan-file-compact-continuity.test.ts'
 ```
 
 Expected: PASS. The replay must assert `plan_file_reference` in the post-compact provider request, not only visible UI completion.
@@ -1358,8 +1358,8 @@ Expected: PASS.
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- plan-file-continuity.test.ts plan-mode-tool.test.ts system-reminder-source.test.ts runtime-compact.test.ts
-pnpm --filter @zcode/desktop typecheck:e2e
+pnpm --filter @s-agent/core test -- plan-file-continuity.test.ts plan-mode-tool.test.ts system-reminder-source.test.ts runtime-compact.test.ts
+pnpm --filter @s-agent/desktop typecheck:e2e
 pnpm typecheck
 pnpm lint
 ```
@@ -1397,7 +1397,7 @@ Expected: shows the docs, core, tests, and E2E files changed by this implementat
 - Generic read-state reminders remain independent and still skip `docs/superpowers/plans/`.
 - Conversation-session catalog and coverage matrix include the new accepted case before E2E implementation.
 - The E2E is run through a visible desktop window, passes, is promoted, and passes replay/fixture checks.
-- `pnpm --filter @zcode/desktop typecheck:e2e`, `pnpm typecheck`, and `pnpm lint` pass or have clearly documented unrelated pre-existing failures.
+- `pnpm --filter @s-agent/desktop typecheck:e2e`, `pnpm typecheck`, and `pnpm lint` pass or have clearly documented unrelated pre-existing failures.
 - No commit is created automatically.
 
 ## Change Surface and Cost

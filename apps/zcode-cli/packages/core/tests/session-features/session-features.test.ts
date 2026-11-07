@@ -15,7 +15,7 @@ import {
   type SessionEntryInfo,
   type SessionId,
   type SessionStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AgentRuntime } from "../../src/runtime.js";
 import type { AgentRuntimeInternal } from "../../src/runtime/internal.js";
 import { createRuntimeModel } from "../../src/runtime/methods/runtime-model.js";

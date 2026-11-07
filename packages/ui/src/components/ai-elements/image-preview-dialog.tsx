@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeftIcon, ArrowRightIcon, DownloadIcon, XIcon } from "lucide-react";
-import type { IPlatformService } from "@zcode/shared";
+import type { IPlatformService } from "@s-agent/shared";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/components/lib/utils.js";
 import { Button } from "@/components/ui/button.js";

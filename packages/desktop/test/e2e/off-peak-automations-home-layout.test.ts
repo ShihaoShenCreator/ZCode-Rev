@@ -9,7 +9,7 @@ import {
   TID_AUTOMATION_CREATE_MANUALLY,
   TID_AUTOMATIONS_OPEN,
   TID_OFFPEAK_CREATE_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

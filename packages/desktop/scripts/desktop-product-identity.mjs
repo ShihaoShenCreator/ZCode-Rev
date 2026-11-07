@@ -1,25 +1,25 @@
 /**
  * 构建期开关：为真时安装包使用 Preview 身份，而后端环境仍由 `ZCODE_ENV` 单独决定。
  * 典型用法是 `ZCODE_ENV=production ZCODE_PREVIEW_IDENTITY=1`，得到一个连接生产后端、
- * 可与正式版并排安装的 `ZCode Preview`。
+ * 可与正式版并排安装的 `S-Agent Preview`。
  */
 export const ZCODE_PREVIEW_IDENTITY_ENV = "ZCODE_PREVIEW_IDENTITY";
 
 const PRODUCTION_IDENTITY = Object.freeze({
   flavor: "production",
   appId: "dev.zcode.app",
-  productName: "ZCode",
-  linuxExecutableName: "zcode",
-  linuxPackageName: "zcode",
+  productName: "S-Agent",
+  linuxExecutableName: "s-agent",
+  linuxPackageName: "s-agent",
   cuaHelperInstallVariant: null,
 });
 
 const PREVIEW_IDENTITY = Object.freeze({
   flavor: "preview",
   appId: "dev.zcode.app.preview",
-  productName: "ZCode Preview",
-  linuxExecutableName: "zcode-preview",
-  linuxPackageName: "zcode-preview",
+  productName: "S-Agent Preview",
+  linuxExecutableName: "s-agent-preview",
+  linuxPackageName: "s-agent-preview",
   cuaHelperInstallVariant: "preview",
 });
 
@@ -69,7 +69,7 @@ export function resolveDesktopProductIdentity(env = process.env) {
 
 /**
  * 产物文件名后缀标记的是后端环境而不是身份：`_TEST` 只出现在测试后端的安装包上。
- * 生产后端的 Preview 包靠 productName（`ZCode Preview-<version>-...`）与正式包区分。
+ * 生产后端的 Preview 包靠 productName（`S-Agent Preview-<version>-...`）与正式包区分。
  */
 export function resolveDesktopArtifactSuffix(env = process.env) {
   return normalizeDesktopZCodeEnv(env) === "test" ? "_TEST" : "";

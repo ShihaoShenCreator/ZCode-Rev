@@ -29,7 +29,7 @@ export {
  * | 闲时运行超时 | 3106 | 400  | 单次运行时间到顶，提示手动新建任务 |
  * | 上游 HTTP 异常 | 2007 | 500  | 可重试；刷新配额，勿本地扣额度 |
  */
-import { isOffPeakTicketExpiredError, OFF_PEAK_TICKET_EXPIRED_MARKER } from "@zcode/shared";
+import { isOffPeakTicketExpiredError, OFF_PEAK_TICKET_EXPIRED_MARKER } from "@s-agent/shared";
 
 export const PROVIDER_BUSINESS_ERROR_CODES = [
   "1006",

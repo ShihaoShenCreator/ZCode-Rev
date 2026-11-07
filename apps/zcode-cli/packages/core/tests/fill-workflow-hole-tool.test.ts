@@ -20,8 +20,8 @@ import {
   type PermissionRequestedPayload,
   type SessionEvent,
   type ToolExecutionResult,
-} from "@zcode/contracts";
-import { collectSites, createWorkflowProgram } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import { collectSites, createWorkflowProgram } from "@s-agent/dynamic-workflow";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { createCreateWorkflowDisplay } from "../src/tool/executor/create-workflow-display.js";

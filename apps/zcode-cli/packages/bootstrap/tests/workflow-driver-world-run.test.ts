@@ -6,8 +6,8 @@
  */
 
 import { describe, expect, it } from "vitest";
-import type { ExecutionPort, ExecutionResult, FileSystemPort } from "@zcode/contracts";
-import { InMemoryJournalStore, type WorkflowReportSink } from "@zcode/dynamic-workflow";
+import type { ExecutionPort, ExecutionResult, FileSystemPort } from "@s-agent/contracts";
+import { InMemoryJournalStore, type WorkflowReportSink } from "@s-agent/dynamic-workflow";
 import { createWorkflowEscalationRegistry } from "../src/app/workflow-escalation-registry.js";
 import { createAgentRuntimeWorkflowDriver } from "../src/app/workflow-driver.js";
 

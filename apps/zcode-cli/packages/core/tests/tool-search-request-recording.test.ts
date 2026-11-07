@@ -9,7 +9,7 @@ import {
   type ModelRequest,
   type ModelRequestPayload,
   type ModelResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { TurnMachineImpl } from "../src/agent/turn-machine.js";
 import type { AgentRuntimeInternal } from "../src/runtime/internal.js";
 import type { AgentRuntimeConfig } from "../src/runtime/types.js";

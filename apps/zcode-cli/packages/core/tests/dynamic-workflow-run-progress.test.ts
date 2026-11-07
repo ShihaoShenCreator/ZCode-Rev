@@ -11,7 +11,7 @@ import {
   createSessionId,
   createToolCallId,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../src/index.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 

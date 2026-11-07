@@ -18,9 +18,9 @@ import {
   MODEL_UNRESOLVED_CODE,
   type AnalyzeResult,
   type ModelReference,
-} from "@zcode/dynamic-workflow";
-import type { CreateWorkflowDiagnostic, ModelCatalogPort, ModelSelection } from "@zcode/contracts";
-import { parseModelPickerValue } from "@zcode/shared/model-selection";
+} from "@s-agent/dynamic-workflow";
+import type { CreateWorkflowDiagnostic, ModelCatalogPort, ModelSelection } from "@s-agent/contracts";
+import { parseModelPickerValue } from "@s-agent/shared/model-selection";
 import type { ToolInputResolutionResult } from "../types.js";
 import { analyzeScript } from "./workflow-script-analysis.js";
 import { resolveModelReference } from "./model-reference.js";

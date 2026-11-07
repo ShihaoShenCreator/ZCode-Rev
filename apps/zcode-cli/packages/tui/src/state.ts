@@ -1,4 +1,4 @@
-import type { SessionEvent } from "@zcode/contracts";
+import type { SessionEvent } from "@s-agent/contracts";
 import type { TuiPromptInput } from "./types.js";
 
 export const normalizePromptInput = (

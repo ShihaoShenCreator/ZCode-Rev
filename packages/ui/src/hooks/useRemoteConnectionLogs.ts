@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { RemoteConnectionRuntimeLog } from "@zcode/shared";
+import type { RemoteConnectionRuntimeLog } from "@s-agent/shared";
 import { usePlatform } from "@/hooks/usePlatform.js";
 
 export interface RemoteConnectionLogEntry {

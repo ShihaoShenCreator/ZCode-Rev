@@ -5,15 +5,15 @@ import {
   createTurnId,
   type SessionEvent,
   type SessionId,
-} from "@zcode/contracts";
-import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@s-agent/shared";
 import {
   V4_METHODS,
   conversationTopic,
   conversationTopicFrameSchema,
   reassembleTopicWireFrames,
   routedTopicWireFrameSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type { ZCodeApp, ZCodeAppOptions } from "../src/app/types.js";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 import { createFakeApp } from "./helpers/fake-zcode-app.js";

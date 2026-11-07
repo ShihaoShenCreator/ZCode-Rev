@@ -1,7 +1,7 @@
 import { useToolPresentationHostCapabilities } from "@/hooks/useToolPresentationHostCapabilities.js";
 import { ToolPresentationCapabilitiesProvider } from "@/ToolCallBlocks/presentationCapabilities.js";
 import { memo, type ReactNode, useEffect, useMemo, useState } from "react";
-import { TID_CHAT_TOOL_CALL_BLOCK, testId } from "@zcode/shared/test-ids";
+import { TID_CHAT_TOOL_CALL_BLOCK, testId } from "@s-agent/shared/test-ids";
 import { useIsOfficeMode } from "@/hooks/useInterfaceMode.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { mapToolStatus } from "@/lib/mapToolStatus.js";

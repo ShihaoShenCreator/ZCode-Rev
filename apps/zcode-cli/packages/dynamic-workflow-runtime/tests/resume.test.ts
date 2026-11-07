@@ -5,7 +5,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { InMemoryJournalStore } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore } from "@s-agent/dynamic-workflow";
 import { runScript } from "./helpers.js";
 
 const RUN = "run";

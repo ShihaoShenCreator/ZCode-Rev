@@ -18,7 +18,7 @@ import {
   zcodeProviderRuntimeHeadersErrorCode,
   type HighspeedMessageMeta,
   type ZCodeApiRetryStatus,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_CHAT_ASSISTANT_HISTORY_CONTENT,
   TID_CHAT_ASSISTANT_HISTORY_TRIGGER,
@@ -26,13 +26,13 @@ import {
   TID_CHAT_LOADING,
   TID_V4_ROW,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import type {
   ApiRetryState,
   AttachmentRef,
   CommandAck,
   ConversationRowTarget,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ChatLoading } from "@/components/ai-elements/chat-loading.js";
 import { ChatApiRetryStatus } from "@/chat-input-toolbar/display.js";
 import { cn } from "@/components/lib/utils.js";

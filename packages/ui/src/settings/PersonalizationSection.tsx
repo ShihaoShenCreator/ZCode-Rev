@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo } from "react";
 import { create } from "zustand";
-import type { ISettingService } from "@zcode/services";
-import { USER_INSTRUCTIONS_MAX_BYTES } from "@zcode/shared";
+import type { ISettingService } from "@s-agent/services";
+import { USER_INSTRUCTIONS_MAX_BYTES } from "@s-agent/shared";
 import {
   TID_SETTINGS_PERSONALIZATION_CANCEL,
   TID_SETTINGS_PERSONALIZATION_EDITOR,
   TID_SETTINGS_PERSONALIZATION_SAVE,
   TID_SETTINGS_PERSONALIZATION_SIZE_HINT,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import { toast } from "@/components/ui/toast.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

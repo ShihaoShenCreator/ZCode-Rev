@@ -9,8 +9,8 @@
 // - retry 只允许全时间线最后一条 assistant 回复，历史回复直接拒绝；
 // - forkAssistant 经过 stable resolver 后走 conversation-only fork，result 带 forkedSessionId。
 import { describe, expect, it, vi } from "vitest";
-import { RewindStrategy, SessionEventType } from "@zcode/contracts";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import { RewindStrategy, SessionEventType } from "@s-agent/contracts";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";
 import {
   V4EditTargetNotLatestError,

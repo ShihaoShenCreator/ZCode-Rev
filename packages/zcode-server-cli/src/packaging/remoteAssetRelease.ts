@@ -7,7 +7,7 @@ import {
   SOURCE_SERVER_RELEASE_TARGETS,
   sourceServerReleaseDescriptorSchema,
   type SourceServerReleaseTarget,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export { SOURCE_SERVER_RELEASE_DESCRIPTOR_FILE_NAME };
 export const SOURCE_SERVER_REMOTE_RELEASE_TARGETS = SOURCE_SERVER_RELEASE_TARGETS;

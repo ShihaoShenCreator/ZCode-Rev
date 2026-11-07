@@ -161,8 +161,8 @@ pnpm exec vitest run packages/services/test/modelProviderService.test.ts
 目标测试：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters test -- runner-options
-pnpm --dir apps/zcode-cli --filter @zcode/core test -- runtime-model-anomaly runtime-tool-loop runtime-compact
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters test -- runner-options
+pnpm --dir apps/zcode-cli --filter @s-agent/core test -- runtime-model-anomaly runtime-tool-loop runtime-compact
 ```
 
 ### Task 4：验证三种协议的最终请求体
@@ -182,7 +182,7 @@ pnpm --dir apps/zcode-cli --filter @zcode/core test -- runtime-model-anomaly run
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters test -- model-output-tokens-wire
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters test -- model-output-tokens-wire
 ```
 
 ### Task 4.1：加入已验证的 provider 例外
@@ -218,8 +218,8 @@ pnpm --dir apps/zcode-cli --filter @zcode/adapters test -- model-output-tokens-w
 目标测试：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters test -- model-output-token-provider-compat
-pnpm --dir apps/zcode-cli --filter @zcode/adapters test
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters test -- model-output-token-provider-compat
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters test
 pnpm --dir apps/zcode-cli typecheck
 ```
 
@@ -229,9 +229,9 @@ pnpm --dir apps/zcode-cli typecheck
 
 ```bash
 pnpm exec vitest run packages/services/test/modelProviderService.test.ts
-pnpm --dir apps/zcode-cli --filter @zcode/adapters test
-pnpm --dir apps/zcode-cli --filter @zcode/core test
-pnpm --dir apps/zcode-cli --filter @zcode/contracts test
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters test
+pnpm --dir apps/zcode-cli --filter @s-agent/core test
+pnpm --dir apps/zcode-cli --filter @s-agent/contracts test
 ```
 
 - [x] 执行两个 workspace 的机械检查：

@@ -3,7 +3,7 @@ import type {
   FeedbackTicketModule,
   FeedbackTicketSeverity,
   FeedbackTicketType,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 type FeedbackTab = "submit" | "tickets";
 

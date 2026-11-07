@@ -24,7 +24,7 @@ import {
   type DynamicWorkflowRunPort,
   type FillWorkflowHoleInput,
   type ModelMessageContent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   ToolApprovalGate,
   ToolEntry,

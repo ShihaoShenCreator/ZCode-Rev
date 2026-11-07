@@ -6,8 +6,8 @@ import {
   type AgentSummary,
   type AgentsCapability,
   type SubAgentConfig,
-} from "@zcode/shared";
-import type { ISubagentsService } from "@zcode/services";
+} from "@s-agent/shared";
+import type { ISubagentsService } from "@s-agent/services";
 import { shouldExposeE2EStoreBridge } from "@/lib/e2eStoreBridge.js";
 import { logger } from "@/logger.js";
 import { getRemoteWorkspaceServicesForIdentity } from "@/store/remoteWorkspaceSessionStore.js";

@@ -1,4 +1,4 @@
-import type { FileEntry } from "@zcode/shared";
+import type { FileEntry } from "@s-agent/shared";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import type { Stats } from "node:fs";

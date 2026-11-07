@@ -6,7 +6,7 @@
 
 **Architecture:** 保留现有 `ExecutionShellSelection` / `resolveEffectiveBashShellSelection()` 的解析能力，但新增一个 core runtime owner：`session-shell-environment.ts`。所有 runtime 内部 shell 状态读写、EnvInfo shell patch、snapshot persist/restore 都通过这个 owner；pre-conversation context rebuild 抽到无环的 shared helper，owner 只调用 helper，不反向依赖 `config.ts` / `context.ts`。bootstrap/protocol 只负责提供“当前候选 selection”，不再维护额外 prepared 状态。
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/contracts`, `@zcode/adapters`, `@zcode/core`, `@zcode/bootstrap`, ZCode Protocol.
+**Tech Stack:** TypeScript, Vitest, `@s-agent/contracts`, `@s-agent/adapters`, `@s-agent/core`, `@s-agent/bootstrap`, ZCode Protocol.
 
 ## Global Constraints
 
@@ -451,7 +451,7 @@ Do not keep a temporary public alias for `initializeBashShellSelectionIfNeeded`;
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-trace.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-trace.test.ts
 ```
 
 Expected: runtime trace tests pass. The new test proves the owner API initializes once and produces the provider-visible shell display used by context.
@@ -563,7 +563,7 @@ Update any remaining bootstrap/tests call sites to use `initializeSessionShellEn
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-trace.test.ts tests/context-builder.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-trace.test.ts tests/context-builder.test.ts
 ```
 
 Expected: runtime trace and context builder tests pass.
@@ -711,7 +711,7 @@ It must not mutate runtime config or message history.
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts
 ```
 
 Expected: tests cover restored snapshot, stale snapshot fallback, legacy session drift reminder, and invalid snapshot fallback.
@@ -837,7 +837,7 @@ Use existing test helpers around lines where `recordShellInitialization()` is al
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/zcode-protocol.test.ts
+pnpm --filter @s-agent/bootstrap exec vitest run tests/zcode-protocol.test.ts
 ```
 
 Expected: protocol tests pass.
@@ -869,7 +869,7 @@ In `AgentRuntimeConfig`, delete:
 bashShellOverride?: ExecutionShellOverride | undefined;
 ```
 
-Keep `ExecutionShellOverride` in `@zcode/contracts` because the low-level execution boundary still names `shellOverride` on `ExecutionCommand`.
+Keep `ExecutionShellOverride` in `@s-agent/contracts` because the low-level execution boundary still names `shellOverride` on `ExecutionCommand`.
 
 - [ ] **Step 2: Update runtime updateConfig patch type**
 
@@ -929,7 +929,7 @@ because `ExecutionCommand` is the adapter boundary and already documents that th
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts
 ```
 
 Expected: Bash tests pass and no call site still references runtime-level `bashShellOverride`.
@@ -995,7 +995,7 @@ Do not pass any shell override alias.
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-explore.test.ts
 ```
 
 Expected: Explore child prompt shell and Bash execution selection both inherit parent session-start shell.
@@ -1065,7 +1065,7 @@ Expected: docs mention `bashShellOverride` only as a removed runtime concept or 
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run \
+pnpm --filter @s-agent/core exec vitest run \
   tests/runtime-trace.test.ts \
   tests/runtime-persistence.test.ts \
   tests/subagent-explore.test.ts \
@@ -1079,7 +1079,7 @@ Expected: all selected core tests pass.
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/zcode-protocol.test.ts
+pnpm --filter @s-agent/bootstrap exec vitest run tests/zcode-protocol.test.ts
 ```
 
 Expected: protocol shell initialization, deferred draft, resume, and send tests pass.
@@ -1089,7 +1089,7 @@ Expected: protocol shell initialization, deferred draft, resume, and send tests 
 If Task 2 touched `apps/zcode-cli/packages/adapters/src/exec/bash-shell-provider.ts` or `apps/zcode-cli/packages/adapters/src/exec/index.ts`, run:
 
 ```bash
-pnpm --filter @zcode/adapters exec vitest run tests/exec.test.ts tests/fs-context.test.ts
+pnpm --filter @s-agent/adapters exec vitest run tests/exec.test.ts tests/fs-context.test.ts
 ```
 
 Expected: adapters tests pass.

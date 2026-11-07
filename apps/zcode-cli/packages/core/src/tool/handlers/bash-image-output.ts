@@ -6,7 +6,7 @@ import {
   parseImageDataUrl,
   type ParsedImageDataUrl,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolExecutionContext } from "../types.js";
 import { stripClaudeCodeHintLines } from "./bash-semantics.js";
 

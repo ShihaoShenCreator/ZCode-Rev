@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@zcode/shared";
+import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@s-agent/shared";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 import { createFakeApp } from "./helpers/fake-zcode-app.js";
 

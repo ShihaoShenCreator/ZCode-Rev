@@ -187,20 +187,20 @@ Provider 仍能完整运行；需要 Account 进一步约束的 Built-in Provide
 `access.entitled=false`。这个缺省只表达当前 Entry 没有账号权益，不回退到旧 Snapshot。
 
 文件读取、原子写入、文件锁、Built-in watcher 与 Personal revision polling 属于 Node.js 运行环境，不进入纯领域包。
-它们集中在 `@zcode/provider-node`：
+它们集中在 `@s-agent/provider-node`：
 
 ```text
-@zcode/provider
+@s-agent/provider
 └─ Config / Resolver / Registry / Facade
 
-@zcode/provider-node
+@s-agent/provider-node
 ├─ ZCode Built-in file source
 ├─ Personal file repository
 ├─ Config runtime
 └─ process registry runtime
 ```
 
-Entry 负责定位物理文件并显式注入路径；`@zcode/provider-node` 不假设 Desktop、Worker、CLI 或 TUI 的安装目录。Host 与 Worker 各自读取同一 Environment 的文件，Registry 对象和 View 不跨进程传输。
+Entry 负责定位物理文件并显式注入路径；`@s-agent/provider-node` 不假设 Desktop、Worker、CLI 或 TUI 的安装目录。Host 与 Worker 各自读取同一 Environment 的文件，Registry 对象和 View 不跨进程传输。
 
 ZCode Built-in 的远端同步由 Environment 组合根拥有。Local Host、Remote Host、Standalone Server 和没有
 Host 的 Prompt CLI/TUI 各自为所属 Environment 建立一个同步 owner；普通 Core Worker 只读、监听 Host
@@ -293,7 +293,7 @@ Local Host -> Local Worker           Remote Host -> Remote Worker
 上图只定义 Environment 所有权边界。远程 Provisioning、远程设置操作、登录和配置同步是独立产品能力，
 不属于 Provider Refactor 或 M4 的实施范围。
 
-消息中的 Provider Config 是普通可序列化对象，到达 Worker 后由 `@zcode/provider` 的同一
+消息中的 Provider Config 是普通可序列化对象，到达 Worker 后由 `@s-agent/provider` 的同一
 Schema 校验解析。Account Source 只接受 `builtinModelIds`，并只允许对固定 `zhipu-account` Access 覆盖
 `entitled`；Provider 顶层 `enabled`、Access 身份、API Key、Secret 和请求期鉴权材料不能通过该入口进入
 Registry。相同 revision 不重复发布，新进程在开始
@@ -305,7 +305,7 @@ Request Auth 时，Model 在发出网络请求前返回明确的缺凭据错误�
 Host 内的 `AccountProviderService` 同时是 Registry 的 Account Source。它读取 Config Service 当前的
 ZCode Built-in Provider Config，把账号、套餐和团队连接解析为 Account Built-in Provider Config。Account 的职责是
 对 Built-in 中与账号相关的 Provider 做进一步约束，不参与 Personal Overlay。远端请求通过注入的 Account
-Resolver 完成，`@zcode/provider` 中的 Service 本身不依赖网络、文件系统或 OAuth 实现。
+Resolver 完成，`@s-agent/provider` 中的 Service 本身不依赖网络、文件系统或 OAuth 实现。
 
 Account Source 每次发布都记录 `basedOnZCodeBuiltinRevision`。Registry 收到 Built-in change 时，在对应
 Account 刷新完成前继续保留上一份完整 Registry，不能发布新 Built-in 与旧 Account 的组合；即使 Overlay

@@ -2,7 +2,7 @@ import { subagentSettingsReadyCursor, subagentUpdateCursor } from "./subagent-sn
 import { join } from "node:path";
 import { stat } from "node:fs/promises";
 import { Key } from "webdriverio";
-import { encodeCustomModelValue } from "@zcode/shared";
+import { encodeCustomModelValue } from "@s-agent/shared";
 import {
   TID_CHAT_MODEL_SELECT_GROUP,
   TID_CHAT_MODEL_SELECT_ITEM,
@@ -16,7 +16,7 @@ import {
   TID_SUBAGENT_BUILT_IN_MODEL_TRIGGER,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clickTestIdByDom,
   waitForTestIdByDom,

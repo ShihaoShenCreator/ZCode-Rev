@@ -7,8 +7,8 @@ import {
   ZCODE_AGENT_PROVIDER,
   encodeCustomModelValue,
   type ProviderFamilyConnectionSelection,
-} from "@zcode/shared";
-import { TID_CHAT_MODEL_SELECT_TRIGGER, TID_V4_MODEL_CONFIG } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { TID_CHAT_MODEL_SELECT_TRIGGER, TID_V4_MODEL_CONFIG } from "@s-agent/shared/test-ids";
 import { getE2EAppDataPaths } from "./desktop-app.js";
 import { getUpstreamApiKey } from "./upstream-provider.js";
 import { waitForSqliteTable } from "./e2e-sqlite-readiness.js";

@@ -43,10 +43,10 @@ Share 落地页是独立静态构建：`pnpm run build:web-share` 使用 Vite `b
 两者共用同一份 SPA 和静态资源，路径前缀决定中文或英文 UI locale；它与 `/remote/v4` 使用独立镜像、
 Deployment、CI Job 和回滚版本；公开 Preview 匿名访问，private Preview 使用同源 Web OAuth。
 
-裁剪构建只安装 `@zcode/web-share` 的依赖闭包。复用的 Web/UI 源文件不能依赖完整工作区的
-`node_modules` 链接；Vite 对 `@zcode/shared` 根入口使用精确匹配的源码别名，避免从 Web
-目录解析失败，同时不得把 `@zcode/shared/*` 子路径改写到 `index.ts/*`。Share 闭包用到的每个
-`@zcode/shared/*` 子路径（如 `test-ids`、`zcode-protocol-v4`）都要在 `packages/web-share/vite.config.ts`
+裁剪构建只安装 `@s-agent/web-share` 的依赖闭包。复用的 Web/UI 源文件不能依赖完整工作区的
+`node_modules` 链接；Vite 对 `@s-agent/shared` 根入口使用精确匹配的源码别名，避免从 Web
+目录解析失败，同时不得把 `@s-agent/shared/*` 子路径改写到 `index.ts/*`。Share 闭包用到的每个
+`@s-agent/shared/*` 子路径（如 `test-ids`、`zcode-protocol-v4`）都要在 `packages/web-share/vite.config.ts`
 登记精确的源码别名。隔离构建回归覆盖此约束。
 
 镜像和 nginx 路由的手工验收用 `scripts/test-web-share-build.sh`（需要本机 Docker，不需要 CUA Git
@@ -93,7 +93,7 @@ Preview not_found → 现有 Loader
 另覆盖中英文、320px 手机/桌面视口、深浅主题、无横向溢出及过期页不出现新增内容。
 首页请求由浏览器测试拦截，不依赖外网。组件单测补充其他错误状态的隔离断言。
 
-本地 Share 验证入口：`pnpm dev:web-share:test` 启动与生产相同的 `@zcode/web-share` Vite 入口，
+本地 Share 验证入口：`pnpm dev:web-share:test` 启动与生产相同的 `@s-agent/web-share` Vite 入口，
 固定连接测试环境；启动后手动打开
 `http://localhost:5173/cn/share/<share_code>` 或 `http://localhost:5173/share/<share_code>`，分享码只从 URL
 路径读取，不需要环境变量；前者显示中文，后者显示英文。`pnpm dev:web-share:mock` 使用开发态

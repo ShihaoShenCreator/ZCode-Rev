@@ -1,12 +1,12 @@
 import { createHash } from "node:crypto";
-import { CancellationTokenSource, type IChannel } from "@zcode/rpc";
+import { CancellationTokenSource, type IChannel } from "@s-agent/rpc";
 import {
   TOPIC_RESOURCE_RELAY_CHUNK_BYTES,
   zcodeTopicResourceRelayRequestSchema,
   zcodeTopicResourceRelayMetadataSchema,
   zcodeTopicResourceRelayChunkSchema,
   type ZCodePromptAttachment,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export async function validateTopicResourceFromRelay(
   channel: Pick<IChannel, "call">,

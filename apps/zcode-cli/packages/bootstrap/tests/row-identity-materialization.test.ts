@@ -6,8 +6,8 @@ import {
   type SessionId,
   type TraceId,
   type TurnId,
-} from "@zcode/contracts";
-import { conversationSnapshotSchema } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { conversationSnapshotSchema } from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/product-projection.js";
 
 function event(

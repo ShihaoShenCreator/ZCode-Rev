@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { MicrocompactTrigger } from "@zcode/contracts";
+import { MicrocompactTrigger } from "@s-agent/contracts";
 import { maybeLocalMicrocompactMessages } from "../src/compact/index.js";
 import type { RuntimeMessageEntry } from "../src/agent/message-history.js";
 import {

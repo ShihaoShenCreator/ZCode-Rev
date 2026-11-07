@@ -1,6 +1,6 @@
 import { once } from "node:events";
 import { createServer, type ServerResponse } from "node:http";
-import type { ClientScenesResponse } from "@zcode/services";
+import type { ClientScenesResponse } from "@s-agent/services";
 
 /** 只给需要验证真实模板网格的 case 注入 Client Scenes，避免布局断言依赖远端目录。 */
 export const CLIENT_SCENES_AUTOMATIONS_HOME_SPEC = "off-peak-automations-home-layout.test.ts";

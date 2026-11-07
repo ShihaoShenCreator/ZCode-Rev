@@ -1,30 +1,30 @@
-import { sessionLifecycleParamsSchema, sessionLifecycleSnapshotSchema } from "@zcode/shared";
+import { sessionLifecycleParamsSchema, sessionLifecycleSnapshotSchema } from "@s-agent/shared";
 import { querySessionDebug } from "./session-debug.js";
-import { offPeakControlParamsSchema, offPeakControlResultSchema } from "@zcode/shared";
-import { createNodeNetworkCapture } from "@zcode/shared/node";
-import { networkCaptureControlSchema, zcodeProtocolNotifications } from "@zcode/shared";
+import { offPeakControlParamsSchema, offPeakControlResultSchema } from "@s-agent/shared";
+import { createNodeNetworkCapture } from "@s-agent/shared/node";
+import { networkCaptureControlSchema, zcodeProtocolNotifications } from "@s-agent/shared";
 import {
   zcodePluginsCancelOperationParamsSchema,
   zcodeProtocolMethods,
   zcodeRuntimeCapabilitiesParamsSchema,
   zcodeWorkspaceCancelGenerateTextParamsSchema,
   zcodeWorkspaceHookTrustGrantParamsSchema,
-} from "@zcode/shared";
-import type { BrowserControlPort } from "@zcode/contracts";
+} from "@s-agent/shared";
+import type { BrowserControlPort } from "@s-agent/contracts";
 import type {
   McpElicitationRequest,
   McpElicitationResult,
   McpServerNotification,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { requestMcpElicitation } from "./interaction-broker.js";
-import { InMemoryWorkspaceHookPolicyProvider } from "@zcode/core";
+import { InMemoryWorkspaceHookPolicyProvider } from "@s-agent/core";
 import {
   V4_METHODS,
   V4_NOTIFICATIONS,
   parseConversationTopic,
   parseSessionsIndexTopic,
   parseWorkspaceConfigTopic,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type {
   ZCodeProtocolError,
   ZCodeProtocolMessage,
@@ -33,7 +33,7 @@ import type {
   ZCodeProtocolRequest,
   ZCodeProtocolRequestId,
   ZCodeProtocolResponse,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   cancelBackgroundTask,
   closeSession,
@@ -154,7 +154,7 @@ import {
   type ZCodeProtocolAgentServerContext,
   type ZCodeProtocolSessionRecord,
 } from "./server-types.js";
-import { createInMemorySessionEventStore } from "@zcode/contracts";
+import { createInMemorySessionEventStore } from "@s-agent/contracts";
 
 export type { ZCodeProtocolAgentDependencies, ZCodeProtocolSessionRecord };
 

@@ -1,4 +1,4 @@
-import { updateUiLocaleInFileConfig, type ConfigResult } from "@zcode/adapters/config";
+import { updateUiLocaleInFileConfig, type ConfigResult } from "@s-agent/adapters/config";
 import {
   McpResourceSubscribeUnsupportedError,
   resolveMcpToolVisibility,
@@ -21,15 +21,15 @@ import {
   type TurnInputIntentMetadata,
   type UiLocale,
   type UiThemePreference,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createMcpAppProvidedToolEntry,
   createMcpToolEntry,
   toMcpToolName,
   type AgentRuntime,
-} from "@zcode/core";
-import { resolveLocale } from "@zcode/i18n";
-import { normalizeModelSelection, type ModelSelection } from "@zcode/provider";
+} from "@s-agent/core";
+import { resolveLocale } from "@s-agent/i18n";
+import { normalizeModelSelection, type ModelSelection } from "@s-agent/provider";
 import { listMcpServerStatuses } from "../mcp-config.js";
 import { loadSessionTranscriptFromStore } from "../session-transcript.js";
 import { getLocaleConfigPath } from "./locale-selection.js";

@@ -4,7 +4,7 @@ import {
   TID_SETTINGS_BACK_BUTTON,
   TID_SETTINGS_PAGE,
   TID_TASK_SETTINGS_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, waitForWorkspaceApp } from "../helpers/desktop-app.js";
 import { prepareV4ConversationE2E } from "../helpers/v4-conversation.js";
 import { selectRemoteDeviceMenuItem } from "../helpers/remote-project-actions.js";

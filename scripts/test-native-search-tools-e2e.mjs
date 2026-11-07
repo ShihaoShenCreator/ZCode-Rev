@@ -43,7 +43,7 @@ function expectStatus(result, status, label) {
 function verifyBashEmbeddedSearch(plan) {
   const buildResult = execute(
     "pnpm",
-    ["--dir", repoRoot, "--filter", "@zcode/bootstrap^...", "--if-present", "build"],
+    ["--dir", repoRoot, "--filter", "@s-agent/bootstrap^...", "--if-present", "build"],
     { cwd: repoRoot, env: process.env },
   );
   expectStatus(buildResult, 0, "Bash embedded search dependency build");

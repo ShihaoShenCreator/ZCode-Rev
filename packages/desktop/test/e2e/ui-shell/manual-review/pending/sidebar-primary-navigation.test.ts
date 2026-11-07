@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import { TID_AUTOMATIONS_OPEN, TID_TASK_NEW_BUTTON } from "@zcode/shared/test-ids";
+import { TID_AUTOMATIONS_OPEN, TID_TASK_NEW_BUTTON } from "@s-agent/shared/test-ids";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";
 
 describe("桌面侧栏主导航", () => {

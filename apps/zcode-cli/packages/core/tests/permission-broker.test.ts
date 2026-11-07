@@ -4,9 +4,9 @@ import {
   createSessionId,
   createToolCallId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createManualPermissionBroker } from "../src/permission/broker.js";
-import type { PermissionBrokerRequest } from "@zcode/contracts";
+import type { PermissionBrokerRequest } from "@s-agent/contracts";
 
 describe("ManualPermissionBroker", () => {
   it("publishes a pending request and waits for client resolution", async () => {

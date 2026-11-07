@@ -35,7 +35,7 @@ Add a test that creates a persisted fork child with `title: "Fork of Checkpoint�
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts -t "emits persisted generated title before SessionResumed"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts -t "emits persisted generated title before SessionResumed"
 ```
 
 Expected before implementation: failure because `titleEventIndex === -1`.
@@ -47,7 +47,7 @@ Extend `v4-cold-resume.test.ts` so the persisted session has `parentID`. Assert 
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/v4-cold-resume.test.ts -t "重启后冷订阅"
+pnpm --filter @s-agent/bootstrap exec vitest run tests/v4-cold-resume.test.ts -t "重启后冷订阅"
 ```
 
 Expected before implementation: failure because `resumedSummary.parentSessionId` is `undefined`.
@@ -84,7 +84,7 @@ return {
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/v4-cold-resume.test.ts -t "重启后冷订阅"
+pnpm --filter @s-agent/bootstrap exec vitest run tests/v4-cold-resume.test.ts -t "重启后冷订阅"
 ```
 
 Expected: the parent relation assertion passes.
@@ -117,8 +117,8 @@ Document that session store title was already correct, but v4 live projection on
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts -t "emits persisted generated title before SessionResumed"
-pnpm --filter @zcode/bootstrap exec vitest run tests/v4-cold-resume.test.ts -t "重启后冷订阅"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts -t "emits persisted generated title before SessionResumed"
+pnpm --filter @s-agent/bootstrap exec vitest run tests/v4-cold-resume.test.ts -t "重启后冷订阅"
 ```
 
 Expected: both pass.

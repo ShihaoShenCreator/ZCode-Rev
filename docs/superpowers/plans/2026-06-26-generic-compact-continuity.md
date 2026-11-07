@@ -6,7 +6,7 @@
 
 **Architecture:** 不新增模型专用分支或模型专用配置；直接更新现有 compact prompt、summary 后处理、post-compact message 组装、recent-context 保留、read-state/file reminder 恢复和 compact summary output cap。实现只落本计划冻结的 compact 逻辑/策略，不自行新增策略、抽象或配置开关。UI 投影继续把 compact 展示成一根 `context_compaction` divider，底层 provider-visible 保留 recent messages 不应改变聊天 UI。
 
-**Tech Stack:** TypeScript, Vitest, `apps/zcode-cli/packages/core`, `@zcode/contracts`, provider-visible request tests, existing compact/session persistence stores.
+**Tech Stack:** TypeScript, Vitest, `apps/zcode-cli/packages/core`, `@s-agent/contracts`, provider-visible request tests, existing compact/session persistence stores.
 
 ## Global Constraints
 

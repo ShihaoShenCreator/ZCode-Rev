@@ -3,7 +3,7 @@ import {
   SessionEventType,
   createCoreError,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolExecutionContext, ToolEntry, ToolExecutionModelContext } from "../types.js";
 import { isRecord } from "./utils.js";
 

@@ -1,4 +1,4 @@
-import type { SessionStorePort, SessionId } from "@zcode/contracts";
+import type { SessionStorePort, SessionId } from "@s-agent/contracts";
 import type { TurnInputIntentMetadata } from "../deps.js";
 
 /**

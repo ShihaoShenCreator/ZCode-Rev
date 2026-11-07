@@ -7,8 +7,8 @@ import type { ChildProcessWithoutNullStreams } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute, join, resolve } from "node:path";
-import { Emitter } from "@zcode/rpc";
-import { GEN_UI_OUTPUT_DIRECTORY, GEN_UI_OUTPUT_ROOT_ENV } from "@zcode/shared/node";
+import { Emitter } from "@s-agent/rpc";
+import { GEN_UI_OUTPUT_DIRECTORY, GEN_UI_OUTPUT_ROOT_ENV } from "@s-agent/shared/node";
 import { getAppConfigDir, getZCodeDataRootDir } from "#src/paths.js";
 import {
   parseZCodeProcessDiagnostic,
@@ -16,7 +16,7 @@ import {
   ZCODE_PROCESS_DIAGNOSTIC_NAME_MAX_CHARS,
   ZCODE_PROCESS_DIAGNOSTIC_MESSAGE_MAX_CHARS,
   ZCODE_PROCESS_DIAGNOSTIC_STACK_MAX_CHARS,
-} from "@zcode/shared/process-diagnostic";
+} from "@s-agent/shared/process-diagnostic";
 import {
   ZCODE_AGENT_RUNTIME,
   ZCODE_AGENT_PROVIDER,
@@ -24,7 +24,7 @@ import {
   resolveWorkspaceKey,
   resolveZCodeRuntimeEnv,
   sanitizeZCodeRuntimeEnv,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   findZCodeAgentRuntimeBinary,
   findZCodeAgentRuntimeNodeBundle,

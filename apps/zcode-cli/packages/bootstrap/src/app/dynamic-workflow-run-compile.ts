@@ -20,8 +20,8 @@ import {
   type CompileDiagnostic,
   type SiteTable,
   type WorkflowProgram,
-} from "@zcode/dynamic-workflow";
-import { projectSiteGraph } from "@zcode/dynamic-workflow/projections";
+} from "@s-agent/dynamic-workflow";
+import { projectSiteGraph } from "@s-agent/dynamic-workflow/projections";
 import { compiledHolesOf } from "./dynamic-workflow-run-holes.js";
 import type { CompiledDynamicWorkflowScript } from "./dynamic-workflow-run-launch.js";
 

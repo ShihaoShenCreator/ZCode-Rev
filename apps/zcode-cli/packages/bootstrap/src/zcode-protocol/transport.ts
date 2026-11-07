@@ -5,15 +5,15 @@ import type {
   ZCodeProtocolRequest,
   ZCodeProtocolRequestId,
   ZCodeProtocolResponse,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   networkCaptureControlSchema,
   zcodeProtocolMessageSchema,
   zcodeProtocolMethods,
   zcodeProtocolNotifications,
-} from "@zcode/shared";
-import { V4_METHODS } from "@zcode/shared/zcode-protocol-v4";
-import type { Logger } from "@zcode/contracts";
+} from "@s-agent/shared";
+import { V4_METHODS } from "@s-agent/shared/zcode-protocol-v4";
+import type { Logger } from "@s-agent/contracts";
 
 type ZCodeProtocolOutgoingMessage =
   | ZCodeProtocolError

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { KeyEvent } from "@mbears/opentui-core";
-import { getZCodeCopy } from "@zcode/i18n";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { filterSelectionItems, handleSelectionKey } from "../src/app-input.js";
 import type { SelectionState } from "../src/app-model.js";
 import { palette } from "../src/app-model.js";

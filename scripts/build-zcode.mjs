@@ -13,20 +13,24 @@ import {
 import { installScriptSource } from "./zcode-distribution/installer.mjs";
 
 const root = resolve(import.meta.dirname, "..");
-const defaultOutDir = resolve(root, "dist", "zcode");
-const defaultBaseUrl = (await loadEndpointEnv()).ZCODE_DIST_BASE_URL?.trim() || "";
-const packageDirName = "zcode";
+const defaultOutDir = resolve(root, "dist", "s-agent");
+const distributionEnv = await loadEndpointEnv();
+const defaultBaseUrl =
+  distributionEnv.S_AGENT_DIST_BASE_URL?.trim() ||
+  distributionEnv.ZCODE_DIST_BASE_URL?.trim() ||
+  "";
+const packageDirName = "s-agent";
 const usage = `Usage:
-  pnpm build:zcode
+  pnpm build:s-agent
   node scripts/build-zcode.mjs --skip-build
   node scripts/build-zcode.mjs --version 3.3.3-dev.1
-  node scripts/build-zcode.mjs --out-dir dist/zcode
-  node scripts/build-zcode.mjs --base-url http://host/zcode/deps/zcode/
+  node scripts/build-zcode.mjs --out-dir dist/s-agent
+  node scripts/build-zcode.mjs --base-url http://host/s-agent/deps/s-agent/
 
 Options:
   --skip-build        Reuse existing web/server/agent build outputs.
   --version <text>    Release version. Defaults to root package.json version.
-  --out-dir <path>    Output directory. Defaults to dist/zcode.
+  --out-dir <path>    Output directory. Defaults to dist/s-agent.
   --base-url <url>    Default install.sh download base URL.
   --help, -h          Show this help.
 `;
@@ -99,7 +103,7 @@ function commandText(command, args) {
 }
 
 function run(command, args, options = {}) {
-  console.log(`[zcode] ${commandText(command, args)}`);
+  console.log(`[s-agent] ${commandText(command, args)}`);
   const result = spawnSync(command, args, {
     cwd: root,
     stdio: "inherit",
@@ -141,20 +145,20 @@ async function assertDirectory(directory, label) {
 
 async function buildOutputs(skipBuild) {
   if (skipBuild) {
-    console.log("[zcode] skipping build; reusing existing outputs");
+    console.log("[s-agent] skipping build; reusing existing outputs");
     return;
   }
 
-  run("pnpm", ["--filter", "@zcode/cli...", "build"]);
+  run("pnpm", ["--filter", "@s-agent/cli...", "build"]);
   await rm(resolve(root, "packages", "server", "dist"), {
     force: true,
     recursive: true,
   });
-  run("pnpm", ["--filter", "@zcode/server", "build"]);
-  run("pnpm", ["--filter", "@zcode/web", "build"]);
+  run("pnpm", ["--filter", "@s-agent/server", "build"]);
+  run("pnpm", ["--filter", "@s-agent/web", "build"]);
 }
 
-async function stageZCodePackage({ packageRoot, version }) {
+async function stageSAgentPackage({ packageRoot, version }) {
   const webDist = resolve(root, "packages", "web", "dist");
   const serverDist = resolve(root, "packages", "server", "dist");
   const agentBundle = resolve(root, "apps", "zcode-cli", "packages", "cli", "dist", "zcode.cjs");
@@ -183,14 +187,14 @@ async function stageZCodePackage({ packageRoot, version }) {
   await mkdir(resolve(packageRoot, "agent"), {
     recursive: true,
   });
-  await cp(agentBundle, resolve(packageRoot, "agent", "zcode.cjs"));
+  await cp(agentBundle, resolve(packageRoot, "agent", "s-agent.cjs"));
   // TUI 入口通过真正的 CLI 路径定位伴随配置；只复制 JS 会在仓库外启动失败。
   await cp(agentProvider, resolve(packageRoot, "agent/provider"), { recursive: true });
   await cp(
     resolve(root, "apps/zcode-cli/packages/cli/dist/THIRD-PARTY-NOTICES.md"),
     resolve(packageRoot, "agent/THIRD-PARTY-NOTICES.md"),
   );
-  await chmod(resolve(packageRoot, "agent", "zcode.cjs"), 0o755);
+  await chmod(resolve(packageRoot, "agent", "s-agent.cjs"), 0o755);
 
   await stageTuiRuntime(packageRoot);
   await copyRuntimeNodeModules(packageRoot);
@@ -199,7 +203,7 @@ async function stageZCodePackage({ packageRoot, version }) {
   await mkdir(resolve(packageRoot, "bin"), {
     recursive: true,
   });
-  const runner = resolve(packageRoot, "bin", "zcode.mjs");
+  const runner = resolve(packageRoot, "bin", "s-agent.mjs");
   await cp(resolve(root, "scripts/zcode-distribution/runner.mjs"), runner);
   await chmod(runner, 0o755);
 
@@ -207,7 +211,7 @@ async function stageZCodePackage({ packageRoot, version }) {
     resolve(packageRoot, "package.json"),
     JSON.stringify(
       {
-        name: "zcode-runtime",
+        name: "s-agent-runtime",
         private: true,
         type: "module",
         version,
@@ -233,7 +237,7 @@ async function createTarball({ packageParent, releaseDir, tarballName }) {
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   if (!options.help && !options.baseUrl)
-    throw new Error("Configure ZCODE_DIST_BASE_URL in .env or pass --base-url");
+    throw new Error("Configure S_AGENT_DIST_BASE_URL (or legacy ZCODE_DIST_BASE_URL) in .env or pass --base-url");
   if (options.help) {
     console.log(usage);
     return;
@@ -242,7 +246,7 @@ async function main() {
   const rootPackageJson = await readJson(resolve(root, "package.json"));
   const version = options.version ?? rootPackageJson.version;
   if (!version || typeof version !== "string") {
-    throw new Error("Unable to resolve ZCode version.");
+    throw new Error("Unable to resolve S-Agent version.");
   }
 
   await buildOutputs(options.skipBuild);
@@ -258,7 +262,7 @@ async function main() {
     force: true,
     recursive: true,
   });
-  await stageZCodePackage({
+  await stageSAgentPackage({
     packageRoot,
     version,
   });
@@ -276,7 +280,7 @@ async function main() {
       {
         baseUrl: options.baseUrl,
         createdAt: new Date().toISOString(),
-        name: "zcode",
+        name: "s-agent",
         sha256,
         tarball: tarballName,
         version,
@@ -293,9 +297,9 @@ async function main() {
     recursive: true,
   });
 
-  console.log(`[zcode] release directory: ${outDir}`);
-  console.log(`[zcode] tarball: ${tarball}`);
-  console.log(`[zcode] sha256: ${sha256}`);
+  console.log(`[s-agent] release directory: ${outDir}`);
+  console.log(`[s-agent] tarball: ${tarball}`);
+  console.log(`[s-agent] sha256: ${sha256}`);
 }
 
 await main();

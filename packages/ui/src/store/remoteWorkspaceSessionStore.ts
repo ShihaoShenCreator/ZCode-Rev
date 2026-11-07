@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import type { RemoteTarget, WorkspacePurpose } from "@zcode/shared";
-import type { IServiceAccessor } from "@zcode/services";
+import type { RemoteTarget, WorkspacePurpose } from "@s-agent/shared";
+import type { IServiceAccessor } from "@s-agent/services";
 import { remoteAgentServiceGeneration } from "@/lib/remoteAgentServiceGeneration.js";
 import { createRemoteWorkspaceDisconnectedError } from "@/lib/remoteWorkspaceServiceError.js";
 

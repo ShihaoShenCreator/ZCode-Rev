@@ -3,8 +3,8 @@ import type {
   ZCodeTaskChangeSummary,
   ZCodeTaskChangedFileSummary,
   ZCodeTaskMeta,
-} from "@zcode/shared";
-import { computeLineChangeStat } from "@zcode/shared";
+} from "@s-agent/shared";
+import { computeLineChangeStat } from "@s-agent/shared";
 
 interface AggregatedFileChange {
   path: string;

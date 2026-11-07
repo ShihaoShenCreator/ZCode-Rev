@@ -4,9 +4,9 @@
 > 上位：`2026-07-07-browser-use-cdp-node-repl-spec.md`。
 > 范围：定义跨 agent/协议/main 三处同源的 `BrowserCommand` 契约、agent 侧 `BrowserControlPort` 端口、以及 ZCode Protocol 的 `interaction/browserExecute` 方法。纯契约层，不含实现（broker/桥/CDP 在 T4/T5）。
 
-## 1. 关键事实：@zcode/shared 单一来源
+## 1. 关键事实：@s-agent/shared 单一来源
 
-`apps/zcode-cli` 在**根 pnpm-workspace** 里，agent bootstrap 的 `@zcode/shared` 解析到**根 `packages/shared`**（与 app 同一个包）。故 `BrowserCommand` 与协议方法在 `packages/shared` 定义一次，agent 与 app 双方共用，天然无契约漂移。
+`apps/zcode-cli` 在**根 pnpm-workspace** 里，agent bootstrap 的 `@s-agent/shared` 解析到**根 `packages/shared`**（与 app 同一个包）。故 `BrowserCommand` 与协议方法在 `packages/shared` 定义一次，agent 与 app 双方共用，天然无契约漂移。
 
 ## 2. BrowserCommand 契约（迁移复用）
 
@@ -52,7 +52,7 @@
     }): Promise<BrowserCommandResult>;
   }
   ```
-- `BrowserCommand`/`BrowserCommandResult` 类型来源：agent contracts 需要它们。由于 `@zcode/shared` 双方共用，contracts 可 `import type { BrowserCommand } from "@zcode/shared"`（确认 contracts 依赖 @zcode/shared；若不依赖则在 contracts 内定义镜像类型 + round-trip 测）。
+- `BrowserCommand`/`BrowserCommandResult` 类型来源：agent contracts 需要它们。由于 `@s-agent/shared` 双方共用，contracts 可 `import type { BrowserCommand } from "@s-agent/shared"`（确认 contracts 依赖 @s-agent/shared；若不依赖则在 contracts 内定义镜像类型 + round-trip 测）。
 
 ## 5. Port 注入链（沿 executionPort 同路）
 

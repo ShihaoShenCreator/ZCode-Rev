@@ -1,4 +1,4 @@
-import { zcodeProcessResourceSampleSchema } from "@zcode/shared";
+import { zcodeProcessResourceSampleSchema } from "@s-agent/shared";
 import { describe, expect, it, vi } from "vitest";
 import {
   ZCODE_PROCESS_RESOURCE_SAMPLE_INTERVAL_MS,

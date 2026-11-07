@@ -83,9 +83,8 @@ it("模型配置与切换用例保留可观测的思考参数映射", async () =
     "specs",
     "builtInSubagentModelOverridesSpec",
     "settingsSubagentCreateEditPersistenceSpec",
-    "isSubagentCodingPlanLoginCatalogStaleSpec",
     `return ${expression};`,
-  ) as (specs: string[], a: boolean, b: boolean, c: () => boolean) => boolean;
+  ) as (specs: string[], a: boolean, b: boolean) => boolean;
   for (const folder of ["", "manual-review/pending/"]) {
     for (const name of [
       "model-config",
@@ -106,7 +105,6 @@ it("模型配置与切换用例保留可观测的思考参数映射", async () =
           [`./test/e2e/conversation-session/${folder}conversation-session-${name}.test.ts`],
           false,
           false,
-          () => false,
         ),
       ).toBe(true);
     }
@@ -116,7 +114,6 @@ it("模型配置与切换用例保留可观测的思考参数映射", async () =
       ["./test/e2e/conversation-session/conversation-session-first-send.test.ts"],
       false,
       false,
-      () => false,
     ),
   ).toBe(false);
 });

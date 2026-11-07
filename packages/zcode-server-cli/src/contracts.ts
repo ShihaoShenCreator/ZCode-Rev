@@ -1,4 +1,4 @@
-import { sourceServerRunningTasksSchema, type SourceServerRunningTask } from "@zcode/shared";
+import { sourceServerRunningTasksSchema, type SourceServerRunningTask } from "@s-agent/shared";
 import { z } from "zod";
 
 export const SERVER_CLI_PROTOCOL_VERSION = 1;

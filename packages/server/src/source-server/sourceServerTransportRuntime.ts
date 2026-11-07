@@ -1,7 +1,7 @@
 import { Duplex } from "node:stream";
 import { StringDecoder } from "node:string_decoder";
-import { isPublicZCodeErrorCode, type PublicZCodeErrorCode } from "@zcode/shared";
-import type { StdioStream } from "@zcode/server/remote/backend.js";
+import { isPublicZCodeErrorCode, type PublicZCodeErrorCode } from "@s-agent/shared";
+import type { StdioStream } from "@s-agent/server/remote/backend.js";
 
 export interface RemoteExecResult {
   exitCode: number;

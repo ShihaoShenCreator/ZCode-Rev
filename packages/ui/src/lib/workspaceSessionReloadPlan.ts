@@ -1,4 +1,4 @@
-import type { ZCodeProvider, ZCodeError } from "@zcode/shared";
+import type { ZCodeProvider, ZCodeError } from "@s-agent/shared";
 import { buildWorkspacePrepareUiError } from "@/lib/chatPrepareError.js";
 
 export const WORKSPACE_SESSION_RELOAD_DEBOUNCE_MS = 1200;

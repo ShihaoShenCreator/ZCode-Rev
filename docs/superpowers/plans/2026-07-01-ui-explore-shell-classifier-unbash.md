@@ -4,18 +4,18 @@
 
 **Goal:** 用 CLI 同源的 `unbash` AST 分析替换 UI Explore 聚合里的 Bash 正则扫字符串逻辑，避免 `pnpm install ... | tail -5` 这类真实执行命令被误展示到“探索”分组下。
 
-**Architecture:** 把浏览器安全的 Bash 解析、只读策略和 Explore 展示分类抽到 `@zcode/shared/shell` 子路径，CLI core 和 UI 同时依赖 shared 纯函数。Node-only 的 git runtime guard 继续留在 `@zcode/core`，避免 Web/移动端 bundle 引入 `node:fs` / `node:path`。UI 的 PowerShell 分类保留现有规则，只把 Unix shell / Bash / sh / zsh 命令切到 shared classifier。
+**Architecture:** 把浏览器安全的 Bash 解析、只读策略和 Explore 展示分类抽到 `@s-agent/shared/shell` 子路径，CLI core 和 UI 同时依赖 shared 纯函数。Node-only 的 git runtime guard 继续留在 `@s-agent/core`，避免 Web/移动端 bundle 引入 `node:fs` / `node:path`。UI 的 PowerShell 分类保留现有规则，只把 Unix shell / Bash / sh / zsh 命令切到 shared classifier。
 
-**Tech Stack:** TypeScript, Vitest, `unbash@4.0.1`, `@zcode/shared`, `@zcode/core`, React UI tool-call aggregation.
+**Tech Stack:** TypeScript, Vitest, `unbash@4.0.1`, `@s-agent/shared`, `@s-agent/core`, React UI tool-call aggregation.
 
 ## Global Constraints
 
 - 这是 UI 展示分类 bugfix，不改变 Bash runtime 执行、权限、sandbox、session stream、desktop continuous 或 web remote replayable 语义。
 - 涉及 `packages/ui`，实现前必须阅读并遵守根目录 `DESIGN.md`；本计划不做视觉重设计。
-- UI 层禁止直接依赖 `apps/zcode-cli/packages/core` 或 `@zcode/core`。
+- UI 层禁止直接依赖 `apps/zcode-cli/packages/core` 或 `@s-agent/core`。
 - Node-only runtime guard（例如读取 `.git` 的逻辑）禁止从 shared 顶层或 browser-facing 子路径导出。
 - `packages/ui/src/lib/toolCallAggregation.ts` 继续只做聚合入口；真正修复应落在 `packages/ui/src/lib/exploreToolCall.ts` 和 shared classifier。
-- Import 路径保持绝对路径；UI 从 `@zcode/shared/shell` 导入，不写跨域相对路径。
+- Import 路径保持绝对路径；UI 从 `@s-agent/shared/shell` 导入，不写跨域相对路径。
 - 注释用中文，只解释 bug 原因和边界，不写空泛注释。
 - 不自动提交；只有用户在当前任务明确要求 commit 时才提交。实现完成后可给出 Conventional Commits 消息建议。
 - 验证必须至少运行 targeted Vitest、`pnpm typecheck`、`pnpm lint`；如果 Web build 无法完整运行，需要在交付说明列出原因和风险。
@@ -108,7 +108,7 @@ Expected:
 
 ## Phase 1: 抽出 browser-safe shell shared 模块
 
-### Task 1.1: 新增 `@zcode/shared/shell` 子路径和依赖归属
+### Task 1.1: 新增 `@s-agent/shared/shell` 子路径和依赖归属
 
 **Files:**
 - Modify: `packages/shared/package.json`
@@ -117,7 +117,7 @@ Expected:
 - Create: `packages/shared/src/shell/index.ts`
 
 **Interfaces:**
-- Produces: `@zcode/shared/shell` 子路径，供 UI 和 core 导入。
+- Produces: `@s-agent/shared/shell` 子路径，供 UI 和 core 导入。
 - Produces: shared 拥有 `unbash@4.0.1` 直接依赖。
 - Consumes: core 通过 workspace dependency 使用 shared shell helpers。
 
@@ -127,7 +127,7 @@ Edit `packages/shared/package.json`:
 
 ```json
 {
-  "name": "@zcode/shared",
+  "name": "@s-agent/shared",
   "private": true,
   "type": "module",
   "exports": {
@@ -156,16 +156,16 @@ Edit `apps/zcode-cli/packages/core/package.json` dependencies:
 ```json
 {
   "dependencies": {
-    "@zcode/contracts": "workspace:*",
-    "@zcode/shared": "workspace:*",
-    "@zcode/shared-types": "workspace:*",
+    "@s-agent/contracts": "workspace:*",
+    "@s-agent/shared": "workspace:*",
+    "@s-agent/shared-types": "workspace:*",
     "cheerio": "^1.0.0",
     "diff": "^9.0.0"
   }
 }
 ```
 
-Expected: `unbash` 不再是 `@zcode/core` 的直接 dependency，避免 parser 所属权继续留在 agent core。
+Expected: `unbash` 不再是 `@s-agent/core` 的直接 dependency，避免 parser 所属权继续留在 agent core。
 
 - [ ] **Step 3: 创建 shared shell 入口**
 
@@ -186,7 +186,7 @@ Run:
 pnpm install --lockfile-only
 ```
 
-Expected: `pnpm-lock.yaml` 中 `@zcode/shared` 直接依赖 `unbash@4.0.1`，`@zcode/core` 不再直接列出 `unbash`。
+Expected: `pnpm-lock.yaml` 中 `@s-agent/shared` 直接依赖 `unbash@4.0.1`，`@s-agent/core` 不再直接列出 `unbash`。
 
 ### Task 1.2: 移动 browser-safe Bash parser 和 readonly policy
 
@@ -617,7 +617,7 @@ Expected: PASS.
 - Test: `apps/zcode-cli/packages/core/tests/bash-permission.test.ts`
 
 **Interfaces:**
-- Consumes from `@zcode/shared/shell`:
+- Consumes from `@s-agent/shared/shell`:
   - `analyzeBashCommand`
   - `isBashCommandPermissionSafe`
   - `evaluateBashReadonlyPolicy`
@@ -634,14 +634,14 @@ Expected: PASS.
 Edit import block to:
 
 ```ts
-import type { ExecutionResult } from "@zcode/contracts";
+import type { ExecutionResult } from "@s-agent/contracts";
 import {
   analyzeBashCommand,
   evaluateBashReadonlyPolicy,
   hasKnownBashWriteOption,
   isBashCommandPermissionSafe,
   isSedInPlaceOption,
-} from "@zcode/shared/shell";
+} from "@s-agent/shared/shell";
 import {
   analysisContainsGitAndDirectoryChange,
   analysisContainsGitCommand,
@@ -677,14 +677,14 @@ Run:
 rg -n "bash-command-parser|bash-readonly-policy" apps/zcode-cli/packages/core/src
 ```
 
-Expected: No import points to removed `./bash-command-parser.js` or `./bash-readonly-policy.js`; remaining references either import from `@zcode/shared/shell` or refer to test/documentation text.
+Expected: No import points to removed `./bash-command-parser.js` or `./bash-readonly-policy.js`; remaining references either import from `@s-agent/shared/shell` or refer to test/documentation text.
 
 - [ ] **Step 4: Run core Bash permission tests**
 
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-permission.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/bash-permission.test.ts
 ```
 
 Expected: PASS. Existing plan-mode read-only behavior must not regress.
@@ -714,7 +714,7 @@ Add to `"keeps mutating Bash commands denied in plan mode"` command list:
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/bash-permission.test.ts -t "keeps mutating Bash commands denied in plan mode"
+pnpm --filter @s-agent/core exec vitest run tests/bash-permission.test.ts -t "keeps mutating Bash commands denied in plan mode"
 ```
 
 Expected: PASS.
@@ -731,7 +731,7 @@ Expected: PASS.
 - Test: `packages/ui/test/toolCallAggregation.test.ts`
 
 **Interfaces:**
-- Consumes: `classifyBashCommandForExplore(command)` from `@zcode/shared/shell`
+- Consumes: `classifyBashCommandForExplore(command)` from `@s-agent/shared/shell`
 - Produces: `isExploreToolCall({ kind, input }): boolean` keeps public signature unchanged。
 
 - [ ] **Step 1: Change command extraction to preserve complete shell script**
@@ -752,7 +752,7 @@ Expected: UI no longer splits Bash by `&&` / `||` / `;`; `unbash` owns shell str
 Add imports:
 
 ```ts
-import { classifyBashCommandForExplore } from "@zcode/shared/shell";
+import { classifyBashCommandForExplore } from "@s-agent/shared/shell";
 import { resolveToolCallIdentity } from "@/lib/toolIdentity.js";
 ```
 
@@ -1009,7 +1009,7 @@ Expected: PASS.
 Run:
 
 ```bash
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 ```
 
 Expected: PASS.
@@ -1039,10 +1039,10 @@ Expected: PASS or existing warnings only.
 Run:
 
 ```bash
-pnpm --filter @zcode/web exec vite build --base=/remote/__test__/
+pnpm --filter @s-agent/web exec vite build --base=/remote/__test__/
 ```
 
-Expected: PASS. There should be no `node:fs`, `node:path`, or `process is not defined` bundle errors from `@zcode/shared/shell`.
+Expected: PASS. There should be no `node:fs`, `node:path`, or `process is not defined` bundle errors from `@s-agent/shared/shell`.
 
 - [ ] **Step 6: Inspect dependency ownership**
 
@@ -1052,7 +1052,7 @@ Run:
 pnpm list unbash --depth 4 --recursive
 ```
 
-Expected: `@zcode/shared` owns `unbash@4.0.1`; `@zcode/core` reaches it through `@zcode/shared`, not as a direct dependency.
+Expected: `@s-agent/shared` owns `unbash@4.0.1`; `@s-agent/core` reaches it through `@s-agent/shared`, not as a direct dependency.
 
 - [ ] **Step 7: Review diff before handoff**
 

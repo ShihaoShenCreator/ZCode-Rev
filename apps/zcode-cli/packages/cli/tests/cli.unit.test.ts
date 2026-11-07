@@ -8,7 +8,7 @@ import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE, ZCODE_PLUGIN_HOST_COMMAND } from "@zcode/contracts";
+import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE, ZCODE_PLUGIN_HOST_COMMAND } from "@s-agent/contracts";
 import {
   ZCODE_CUA_OFFICIAL_PLUGIN_ID,
   ZCODE_CUA_NODE_REPL_HOST_ENV_KEY,
@@ -20,9 +20,9 @@ import {
   sanitizeZCodeRuntimeEnvInPlace,
   type ModelSelection,
   type ZCodeModelOption,
-} from "@zcode/shared";
-import type { RunContext } from "@zcode/shared-types";
-import type { TuiOptions } from "@zcode/tui";
+} from "@s-agent/shared";
+import type { RunContext } from "@s-agent/shared-types";
+import type { TuiOptions } from "@s-agent/tui";
 import { run } from "../src/run.js";
 import { createTuiSubmitPrompt } from "../src/tui-prompt-handler.js";
 import {
@@ -674,7 +674,7 @@ test("shows a non-blocking login notice when no coding plan key is configured", 
         listModels: () => [
           {
             ...createTestModelOption("zai", "glm-5.1"),
-            disabledReason: "Sign in to Z.AI Coding Plan first.",
+            disabledReason: "Configure a provider first.",
           },
         ],
         runtime: {} as never,
@@ -706,7 +706,7 @@ test("honors configured locale before app creation when login is required", asyn
     const exitCode = await run(ctx, {
       cwd: () => tempRoot,
       env: {},
-      // 登录态改由 App 的可选模型推导；App 在启动屏首帧之后才创建，这里模拟没有可选模型。
+      // 无可选模型时仍显示通用 Provider 配置说明，不触发账号登录。
       createZCodeApp: () => {
         appCreated = true;
         return {
@@ -747,9 +747,8 @@ test("honors configured locale before app creation when login is required", asyn
           abortSignal: new AbortController().signal,
         });
 
-        assert.equal(pickerResult.response, "选择 Coding Plan 提供商的配置方式。");
-        assert.equal(pickerResult.selection?.title, "配置 Coding Plan");
-        assert.equal(pickerResult.selection?.prompt, "选择登录或 API key 配置方式。");
+        assert.match(pickerResult.response, /S-Agent 已停用账号登录/);
+        assert.equal(pickerResult.selection, undefined);
         return 0;
       },
       userConfigPath: configPath,
@@ -977,61 +976,30 @@ test("zcode commands list prints custom commands", async () => {
   assert.match(ctx.stdout.output(), /\/review \[scope\]/);
 });
 
-test("zcode login runs OAuth flow and prints the authorization URL", async () => {
+test("s-agent login is retired without loading environment or invoking authentication", async () => {
   const ctx = createContext(["login", "--no-browser"]);
-  let sawNoBrowser = false;
+  let dotenvLoaded = false;
   const exitCode = await run(ctx, {
     ...createPromptDeps(),
-    loginZCodeCli: async (options) => {
-      sawNoBrowser = options?.noBrowser === true;
-      await options?.onAuthorizeUrl?.({
-        authorize_url: "https://chat.z.ai/oauth/authorize?state=state",
-        expires_at: 1735000000,
-        flow_id: "flow-1",
-        poll_interval_sec: 2,
-        poll_token: "poll-token",
-      });
-      return {
-        configPath: "/home/test/.zcode/v2/model-selection.json",
-        credentialsPath: "/home/test/.zcode/v2/credentials.json",
-        model: "zai/glm-5.1",
-        providerId: "zai",
-        user: {
-          user_id: "u_1",
-          email: "alice@example.com",
-          name: "Alice",
-        },
-      };
+    loadDotenv: () => {
+      dotenvLoaded = true;
+      return { keys: [], loaded: false };
     },
   });
 
-  assert.equal(exitCode, 0);
-  assert.equal(sawNoBrowser, true);
-  assert.match(ctx.stdout.output(), /Open this URL to sign in/);
-  assert.match(ctx.stdout.output(), /https:\/\/chat\.z\.ai\/oauth\/authorize/);
-  assert.match(ctx.stdout.output(), /Login successful as Alice/);
-  assert.match(
-    ctx.stdout.output(),
-    /Model selection: \/home\/test\/\.zcode\/v2\/model-selection\.json/,
-  );
+  assert.equal(exitCode, 1);
+  assert.equal(dotenvLoaded, false);
+  assert.match(ctx.stderr.output(), /S-Agent no longer supports account sign-in/);
 });
 
-test("zcode logout clears shared OAuth credentials", async () => {
+test("s-agent logout is retired without changing legacy credentials", async () => {
   const ctx = createContext(["logout"]);
-  let logoutCalled = false;
   const exitCode = await run(ctx, {
     ...createPromptDeps(),
-    logoutZCodeCli: async () => {
-      logoutCalled = true;
-      return {
-        credentialsPath: "/home/test/.zcode/v2/credentials.json",
-      };
-    },
   });
 
-  assert.equal(exitCode, 0);
-  assert.equal(logoutCalled, true);
-  assert.match(ctx.stdout.output(), /Logged out from Coding Plan accounts/);
+  assert.equal(exitCode, 1);
+  assert.match(ctx.stderr.output(), /Existing credentials are left untouched/);
 });
 
 test("parses login and logout slash commands", () => {
@@ -1055,107 +1023,29 @@ test("parses login and logout slash commands", () => {
   });
 });
 
-test("command center handles login and logout locally", async () => {
-  let loginCalled = false;
-  let loginAbortSignal: AbortSignal | undefined;
-  let apiKeyCalled = false;
-  let logoutCalled = false;
-  const emittedEvents: Array<{
-    payload?: unknown;
-    sessionId?: unknown;
-    traceId?: unknown;
-    type?: string;
-  }> = [];
+test("command center retires login and logout without recording their arguments", async () => {
+  const recorded: string[] = [];
   const commandCenter = createCommandCenter({
-    // 授权链接消息归属当前活动会话（TUI 首帧后已创建 App），但登录流程本身不向模型提交 prompt。
-    getApp: async () =>
-      ({
-        sessionId: "session-login",
-        traceId: "trace-login",
-        submitPrompt: async () => {
-          throw new Error("login must not submit a model prompt");
-        },
-      }) as never,
-    login: async (options) => {
-      loginCalled = true;
-      loginAbortSignal = options?.abortSignal;
-      await options?.onAuthorizeUrl?.({
-        authorize_url: "https://chat.z.ai/oauth/authorize?state=state",
-        expires_at: 1735000000,
-        flow_id: "flow-1",
-        poll_interval_sec: 2,
-      });
-      return {
-        configPath: "/home/test/.zcode/v2/model-selection.json",
-        credentialsPath: "/home/test/.zcode/v2/credentials.json",
-        model: "zai/glm-5.1",
-        providerId: "zai",
-        user: {
-          user_id: "u_1",
-          email: "alice@example.com",
-          name: "Alice",
-        },
-      };
+    getApp: async () => {
+      throw new Error("retired account commands must not create an app");
     },
-    configureApiKey: async (options) => {
-      apiKeyCalled = options.providerId === "bigmodel" && options.apiKey === "manual-key";
-      return {
-        configPath: "/home/test/.zcode/v2/model-selection.json",
-        model: "bigmodel/glm-5.1",
-        providerId: "bigmodel",
-      };
-    },
-    logout: async () => {
-      logoutCalled = true;
-      return {
-        credentialsPath: "/home/test/.zcode/v2/credentials.json",
-      };
-    },
+    getLocale: () => "en-US",
+    recordInputHistory: (input) => recorded.push(String(input)),
     resumeApp: async () => {
       throw new Error("resume should not be called");
     },
   });
 
-  const pickerResult = await commandCenter("/login", {});
-  const loginAbort = new AbortController();
-  const loginResult = await commandCenter("/login zai-coding-plan", {
-    abortSignal: loginAbort.signal,
-    onEvent: async (event) => {
-      emittedEvents.push(event);
-    },
-  } as never);
-  const apiKeyResult = await commandCenter("/login bigmodel-coding-plan-api-key manual-key", {});
+  const loginResult = await commandCenter("/login zai-coding-plan-api-key secret-value", {});
   const logoutResult = await commandCenter("/logout", {});
 
-  assert.equal(pickerResult.selection?.items.length, 4);
-  assert.equal(pickerResult.selection?.filterable, false);
-  assert.equal(
-    pickerResult.selection?.items[0]?.pending?.primary,
-    "Waiting for Z.AI authorization",
-  );
-  assert.equal(pickerResult.selection?.items[2]?.input?.primary, "Enter Z.AI Coding Plan API Key");
-  assert.equal(pickerResult.selection?.items[2]?.input?.mask, true);
-  assert.equal(loginAbortSignal, loginAbort.signal);
-  assert.equal(loginCalled, true);
-  assert.equal(apiKeyCalled, true);
-  assert.equal(logoutCalled, true);
-  assert.equal(emittedEvents[0]?.type, "assistant_message");
-  assert.equal(emittedEvents[0]?.sessionId, "session-login");
-  assert.equal(emittedEvents[0]?.traceId, "trace-login");
-  assert.match(
-    String((emittedEvents[0]?.payload as { content?: string } | undefined)?.content),
-    /https:\/\/chat\.z\.ai\/oauth\/authorize/,
-  );
-  assert.match(loginResult.response, /Configured Z\.AI Coding Plan as Alice/);
-  assert.match(
-    loginResult.response,
-    /Model selection: \/home\/test\/\.zcode\/v2\/model-selection\.json/,
-  );
-  assert.match(apiKeyResult.response, /Configured BigModel Coding Plan/);
-  assert.match(logoutResult.response, /Logged out from Coding Plan accounts/);
+  assert.match(loginResult.response, /S-Agent no longer supports account sign-in/);
+  assert.match(logoutResult.response, /Existing credentials are left untouched/);
+  assert.equal(loginResult.selection, undefined);
+  assert.deepEqual(recorded, []);
 });
 
-test("command center localizes the Coding Plan setup picker", async () => {
+test("command center localizes the retired account login notice", async () => {
   const commandCenter = createCommandCenter({
     getApp: async () => {
       throw new Error("app should not be created");
@@ -1168,13 +1058,8 @@ test("command center localizes the Coding Plan setup picker", async () => {
 
   const result = await commandCenter("/login", {});
 
-  assert.equal(result.response, "选择 Coding Plan 提供商的配置方式。");
-  assert.equal(result.selection?.title, "配置 Coding Plan");
-  assert.equal(result.selection?.prompt, "选择登录或 API key 配置方式。");
-  assert.equal(result.selection?.filterable, false);
-  assert.match(result.selection?.items[0]?.secondary ?? "", /打开浏览器登录/);
-  assert.equal(result.selection?.items[2]?.input?.primary, "输入 Z.AI Coding Plan API Key");
-  assert.equal(result.selection?.items[2]?.input?.placeholder, "粘贴 API key");
+  assert.equal(result.response, "S-Agent 已停用账号登录，请改用自建 Provider 配置。");
+  assert.equal(result.selection, undefined);
 });
 
 test("command center keeps local commands usable before login", async () => {
@@ -1185,7 +1070,7 @@ test("command center keeps local commands usable before login", async () => {
       throw new Error("app should not be created before login");
     },
     getLocale: () => "en-US",
-    // 登录判定改为“是否存在可选模型”，由注入的检查器回答，命令中心自身不创建 App。
+    // 可用模型判定由注入的检查器回答，命令中心自身不创建 App。
     hasSelectableModels: async () => false,
     resumeApp: async () => {
       throw new Error("resume should not be called");

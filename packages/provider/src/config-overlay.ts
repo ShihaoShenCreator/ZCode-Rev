@@ -8,7 +8,8 @@ export interface ConfigValidationIssue {
     | "invalid-reasoning-mapping"
     | "invalid-pattern"
     | "invalid-url"
-    | "missing-template";
+    | "missing-template"
+    | "provider-retired";
   readonly path: readonly string[];
   readonly message: string;
 }

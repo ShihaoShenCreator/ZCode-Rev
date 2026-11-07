@@ -15,9 +15,9 @@ import {
   userCandidates,
   type Candidate,
   type ProductContext,
-} from "@zcode/formal-proof/model";
-import type { SessionEvent } from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/formal-proof/model";
+import type { SessionEvent } from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import {
   ProductProjection,
   computeAvailability,

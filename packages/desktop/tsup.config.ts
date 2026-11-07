@@ -263,19 +263,19 @@ export default defineConfig([
     // desktop 保持 undici 为外部依赖，remote 单文件 bundle 再单独内联。
     external: desktopNodeRuntimeExternals,
     noExternal: [
-      "@zcode/server",
-      "@zcode/shared",
-      "@zcode/rpc",
-      "@zcode/services",
-      "@zcode/client",
+      "@s-agent/server",
+      "@s-agent/shared",
+      "@s-agent/rpc",
+      "@s-agent/services",
+      "@s-agent/client",
       // Provider Refactor 的 workspace 包导出 TypeScript 源码；Electron 生产运行时没有
       // TS loader，必须随 Desktop bundle 内联，不能留下指向 src/index.ts 的裸包引用。
-      "@zcode/provider",
-      "@zcode/provider-node",
+      "@s-agent/provider",
+      "@s-agent/provider-node",
       // services 已内联进 main，但其 producer import 曾被保留为裸包引用；
       // electron-builder 又会排除 node_modules/@zcode，导致安装包启动即 ERR_MODULE_NOT_FOUND。
       // producer 的 JS broker 必须跟随 services 一起内联，原生 addon 仍只存在于独立 Helper。
-      "@zcode/zcode-cua",
+      "@s-agent/zcode-cua",
     ],
     define: createMainDefines(),
     // 修复原因：main/host 同时 watch 且共享 out 根目录时，默认 chunk 命名会互相覆盖，
@@ -307,7 +307,7 @@ export default defineConfig([
     removeNodeProtocol: false,
     target: "node22",
     external: ["electron"],
-    noExternal: ["@zcode/shared"],
+    noExternal: ["@s-agent/shared"],
     outExtension: () => ({ js: ".cjs" }),
     define: createSharedDefines(),
     esbuildOptions(options) {
@@ -356,14 +356,14 @@ export default defineConfig([
     // 这里同样保留为外部依赖，避免 desktop 开发态和打包态 host 进程启动失败。
     external: desktopNodeRuntimeExternals,
     noExternal: [
-      "@zcode/server",
-      "@zcode/shared",
-      "@zcode/rpc",
-      "@zcode/services",
-      "@zcode/client",
-      "@zcode/provider",
-      "@zcode/provider-node",
-      "@zcode/zcode-cua",
+      "@s-agent/server",
+      "@s-agent/shared",
+      "@s-agent/rpc",
+      "@s-agent/services",
+      "@s-agent/client",
+      "@s-agent/provider",
+      "@s-agent/provider-node",
+      "@s-agent/zcode-cua",
     ],
     define: createSharedDefines(),
     // 与 main 保持一致的 chunk 隔离策略，避免 host/main 产物相互覆盖。
@@ -383,18 +383,18 @@ export default defineConfig([
     // node:sqlite 只有带前缀的内置入口；tsup 去掉 node: 会错误加载第三方 sqlite 包。
     removeNodeProtocol: false,
     target: "node22",
-    // 与 host 同构：常驻 cron scheduler 进程复用 @zcode/services（tasks-index + cron），
+    // 与 host 同构：常驻 cron scheduler 进程复用 @s-agent/services（tasks-index + cron），
     // 同样保留 undici 等为外部依赖，避免 Electron ESM runtime 的 dynamic require 崩溃。
     external: desktopNodeRuntimeExternals,
     noExternal: [
-      "@zcode/server",
-      "@zcode/shared",
-      "@zcode/rpc",
-      "@zcode/services",
-      "@zcode/client",
-      "@zcode/provider",
-      "@zcode/provider-node",
-      "@zcode/zcode-cua",
+      "@s-agent/server",
+      "@s-agent/shared",
+      "@s-agent/rpc",
+      "@s-agent/services",
+      "@s-agent/client",
+      "@s-agent/provider",
+      "@s-agent/provider-node",
+      "@s-agent/zcode-cua",
     ],
     define: createSharedDefines(),
     esbuildOptions(options) {

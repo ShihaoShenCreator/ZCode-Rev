@@ -2,7 +2,7 @@
 import { randomUUID } from "node:crypto";
 import { readFile, stat } from "node:fs/promises";
 import { hostname } from "node:os";
-import { resolveServerOsUser } from "@zcode/shared/node";
+import { resolveServerOsUser } from "@s-agent/shared/node";
 import * as nodePath from "node:path";
 import { basename, extname, resolve } from "node:path";
 import { Hono, type Context } from "hono";
@@ -17,16 +17,16 @@ import {
   ChannelClient,
   LoggingChannelServer,
   type ISocket,
-} from "@zcode/rpc";
-import type { TopicResourcePeers } from "@zcode/services/node";
-import { TOPIC_RESOURCE_RELAY_CHANNEL } from "@zcode/shared";
+} from "@s-agent/rpc";
+import type { TopicResourcePeers } from "@s-agent/services/node";
+import { TOPIC_RESOURCE_RELAY_CHANNEL } from "@s-agent/shared";
 import {
   ServiceCollection,
   IZCodeAgentService,
   createZCodeAgentConnectionScope,
   IBotsService,
   IProviderProvisioningTargetService,
-} from "@zcode/services";
+} from "@s-agent/services";
 import {
   botProviders,
   formatLogPrefix,
@@ -38,11 +38,11 @@ import {
   type BotProvider,
   type ServerRemoteInfo,
   type ServerRemoteWorkspaceInfo,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   SourceServerWorkspaceIdentityChannelServer,
   type SourceServerWorkspaceIdentityMapper,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import { createHostCapabilityStore } from "./hostCapability.js";
 
 function wrapWebSocket(ws: WebSocket): ISocket {

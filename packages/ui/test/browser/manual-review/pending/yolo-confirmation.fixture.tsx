@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { IServiceAccessor, ModelSelectionView } from "@zcode/services";
-import type { IPlatformService, ZCodePermissionRequest } from "@zcode/shared";
+import type { IServiceAccessor, ModelSelectionView } from "@s-agent/services";
+import type { IPlatformService, ZCodePermissionRequest } from "@s-agent/shared";
 import { ServiceProvider } from "@/hooks/useServices.js";
 import { PlatformProvider } from "@/hooks/usePlatform.js";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
@@ -9,7 +9,6 @@ import { ConfirmDialogHost } from "@/ConfirmDialog.js";
 import { PermissionDialog } from "@/PermissionDialog.js";
 import { V4ComposerModeSwitch } from "@/v4/composer/V4ComposerModeControls.js";
 import { AutomationEditView } from "@/settings/AutomationEditView.js";
-import { OffPeakEditView } from "@/settings/OffPeakEditView.js";
 import { TabStoreProvider } from "@/store/TabStoreProvider.js";
 import { TooltipProvider } from "@/components/ui/tooltip.js";
 import "@/styles.css";
@@ -87,20 +86,6 @@ function Fixture() {
         <AutomationEditView
           key={target}
           editing={null}
-          defaultWorkspacePath="/example"
-          saving={false}
-          onBack={() => setResponse("back")}
-          onSubmit={async (value) => {
-            setResponse(JSON.stringify(value));
-            return true;
-          }}
-        />
-      )}
-      {surface === "offpeak" && (
-        <OffPeakEditView
-          key={target}
-          editing={null}
-          modelSelectionView={modelView}
           defaultWorkspacePath="/example"
           saving={false}
           onBack={() => setResponse("back")}

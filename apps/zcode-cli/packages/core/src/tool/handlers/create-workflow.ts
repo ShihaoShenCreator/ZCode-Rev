@@ -25,7 +25,7 @@ import {
   type TraceContext,
   createWorkflowPhaseAlongside,
   createWorkflowPhaseNames,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   ToolApprovalGate,
   ToolEntry,

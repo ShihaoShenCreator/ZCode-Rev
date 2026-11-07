@@ -37,7 +37,7 @@ import { describe, expect, it, vi } from "vitest";
 import type {
   ConversationSnapshot,
   UserInputRow,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { SessionPane } from "@/v4/SessionPane.js";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 

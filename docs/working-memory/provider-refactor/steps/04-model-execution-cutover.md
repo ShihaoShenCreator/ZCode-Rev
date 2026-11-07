@@ -663,7 +663,7 @@ background Child 被拒绝，闲时完成后同一 Session 的普通 Prompt 恢�
 
 - Protocol Agent 与 CLI/TUI 一样读取 Environment 级 Model Selection Config；显式 configured default
   可以引用 hidden Provider，只有无显式选择时的用户 fallback 跳过 hidden 候选；
-- Desktop main/host/scheduler bundle 内联 `@zcode/provider` 与 `@zcode/provider-node`，避免 Electron
+- Desktop main/host/scheduler bundle 内联 `@s-agent/provider` 与 `@s-agent/provider-node`，避免 Electron
   worker 在干净运行环境中从 TypeScript source export 解析不存在的 `.js` 文件；
 - Adapter 只有在 Active Model 绑定 `accountAccessId` 时才消费 Host 的账号 runtime-header Port；普通
   API-key Model 直接使用 Provider Config 的静态访问材料，`request-auth` Model 使用创建时冻结的
@@ -675,5 +675,5 @@ background Child 被拒绝，闲时完成后同一 Session 的普通 Prompt 恢�
 ZCODE_E2E_CONTAINER=1 \
 ZCODE_E2E_SPEC=./test/e2e/conversation-session/manual-review/pending/\
 conversation-session-offpeak-subagent-model-inheritance.test.ts \
-pnpm --filter @zcode/desktop test:e2e:serial
+pnpm --filter @s-agent/desktop test:e2e:serial
 ```

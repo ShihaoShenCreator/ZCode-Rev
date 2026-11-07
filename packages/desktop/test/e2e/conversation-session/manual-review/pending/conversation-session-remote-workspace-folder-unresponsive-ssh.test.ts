@@ -1,8 +1,8 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
-import { TID_SSH_DIALOG, TID_SSH_ERROR } from "@zcode/shared/test-ids";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
+import { TID_SSH_DIALOG, TID_SSH_ERROR } from "@s-agent/shared/test-ids";
 import { readConnectRemoteFailures } from "#e2e/helpers/connect-remote-error-log";
 import { clearAppData } from "#e2e/helpers/desktop-app";
 import {

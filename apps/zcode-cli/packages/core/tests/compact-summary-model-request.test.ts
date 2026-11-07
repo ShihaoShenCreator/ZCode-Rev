@@ -13,7 +13,7 @@ import {
   type ModelRequest,
   type ModelStreamEvent,
   type ModelTextResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { runCompactSummaryModelRequest as runCompactSummaryModelRequestWithModel } from "../src/runtime/methods/compact-summary-model-request.js";
 import { createTestModelSelection } from "./test-model-selection.js";
 import { createTestModelFormatProperties } from "./test-runtime-model.js";

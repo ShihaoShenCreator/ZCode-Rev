@@ -1,4 +1,4 @@
-import { requestVerificationDiagnostics } from "@zcode/shared";
+import { requestVerificationDiagnostics } from "@s-agent/shared";
 import { CoreErrorType, ModelErrorCode, createCoreError, isCoreError } from "../deps.js";
 import type { ModelUsage } from "../deps.js";
 import { isPlainRecord, stringProperty } from "./data.js";

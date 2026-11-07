@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import type { IPluginManagementService } from "@zcode/services";
+import type { IPluginManagementService } from "@s-agent/services";
 import { createPluginManagementStore } from "@/store/pluginManagementStore.js";
 import { PluginStoreInstallButton } from "@/settings/PluginStoreCard.js";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";

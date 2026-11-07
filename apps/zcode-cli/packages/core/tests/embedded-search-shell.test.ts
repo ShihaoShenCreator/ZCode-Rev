@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ExecutionShellSelection } from "@zcode/contracts";
+import type { ExecutionShellSelection } from "@s-agent/contracts";
 import { supportsEmbeddedSearchShellSelection } from "../src/embedded-search/shell.js";
 
 describe("supportsEmbeddedSearchShellSelection", () => {

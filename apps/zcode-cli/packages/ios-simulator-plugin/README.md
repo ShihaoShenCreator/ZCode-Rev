@@ -95,8 +95,8 @@ Run `ios_preflight` inside a model session to get precise missing setup checks.
 
 ```bash
 pnpm install
-pnpm --filter @zcode/ios-simulator-plugin typecheck
-pnpm --filter @zcode/ios-simulator-plugin build
+pnpm --filter @s-agent/ios-simulator-plugin typecheck
+pnpm --filter @s-agent/ios-simulator-plugin build
 ```
 
 The Claude-compatible `.mcp.json` and the ZCode manifest both execute

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { modelInputMessageJsonSchema } from "@zcode/contracts";
+import { modelInputMessageJsonSchema } from "@s-agent/contracts";
 import { validateJsonSchemaValue } from "../src/tool/json-schema.js";
 
 describe("tool JSON schema validator", () => {

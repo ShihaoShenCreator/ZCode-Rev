@@ -34,8 +34,8 @@
 
 ## 验证
 
-- `pnpm --filter @zcode/core test -- tests/expert-workflow.test.ts tests/workflow-lifecycle.test.ts`
-- `pnpm --filter @zcode/core typecheck`
+- `pnpm --filter @s-agent/core test -- tests/expert-workflow.test.ts tests/workflow-lifecycle.test.ts`
+- `pnpm --filter @s-agent/core typecheck`
 - `npm run lint:count`
 - `npm run lint`
 - `npm test`

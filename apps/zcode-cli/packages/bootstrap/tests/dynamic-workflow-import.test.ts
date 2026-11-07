@@ -8,8 +8,8 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { InMemoryJournalStore, type PersonaSpec } from "@zcode/dynamic-workflow";
-import type { MessageWithParts, SessionId } from "@zcode/contracts";
+import { InMemoryJournalStore, type PersonaSpec } from "@s-agent/dynamic-workflow";
+import type { MessageWithParts, SessionId } from "@s-agent/contracts";
 import { buildImportedCache, preflightAmendImport } from "../src/app/dynamic-workflow-import.js";
 import type { ActorTranscriptStore } from "../src/app/workflow-actor-transcript.js";
 

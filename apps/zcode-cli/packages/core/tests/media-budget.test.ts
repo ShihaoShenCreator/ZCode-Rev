@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CoreErrorType, createSessionId, type ModelInputMessage } from "@zcode/contracts";
+import { CoreErrorType, createSessionId, type ModelInputMessage } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import {
   DEFAULT_MODEL_REQUEST_MEDIA_BUDGET_BYTES,

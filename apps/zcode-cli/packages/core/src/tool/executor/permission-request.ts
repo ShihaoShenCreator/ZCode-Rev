@@ -8,7 +8,7 @@ import {
   type ToolResultDisplayPayload,
   type PermissionUpdate,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { PermissionDecisionResult } from "../../permission/service.js";
 import type { ExecutableToolCall } from "../types.js";
 import { emitPermissionRequested } from "./events.js";

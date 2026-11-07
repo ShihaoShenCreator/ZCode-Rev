@@ -447,7 +447,7 @@ describe("RespondToCoordinator contract", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest run tests/respond-to-coordinator.test.ts
+pnpm --filter @s-agent/contracts exec vitest run tests/respond-to-coordinator.test.ts
 ```
 
 Expected: FAIL，提示 `RespondToCoordinatorInputSchema` 等 export 不存在。
@@ -544,7 +544,7 @@ export interface CoordinatorResponsePort {
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest run tests/respond-to-coordinator.test.ts
+pnpm --filter @s-agent/contracts exec vitest run tests/respond-to-coordinator.test.ts
 pnpm exec vitest run packages/shared/test/zcodeProtocol.test.ts
 ```
 
@@ -555,7 +555,7 @@ Expected: PASS。
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts typecheck
+pnpm --filter @s-agent/contracts typecheck
 pnpm exec tsc -p packages/shared/tsconfig.json --noEmit
 ```
 
@@ -673,8 +673,8 @@ plan + allowedInPlanMode 但 destructive/needsApproval/非 session -> deny / mod
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/tool-contracts.test.ts tests/runtime-hooks.test.ts -t "RespondToCoordinator"
-pnpm --filter @zcode/core exec vitest run tests/permission-service.test.ts -t "explicit session capability|non-read-only session"
+pnpm --filter @s-agent/core exec vitest run tests/tool-contracts.test.ts tests/runtime-hooks.test.ts -t "RespondToCoordinator"
+pnpm --filter @s-agent/core exec vitest run tests/permission-service.test.ts -t "explicit session capability|non-read-only session"
 ```
 
 Expected: FAIL，工具尚未注册、context 缺少 port，且 permission capability 尚不存在。
@@ -915,8 +915,8 @@ if (
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/tool-contracts.test.ts tests/runtime-hooks.test.ts -t "RespondToCoordinator"
-pnpm --filter @zcode/core exec vitest run tests/permission-service.test.ts -t "explicit session capability|non-read-only session"
+pnpm --filter @s-agent/core exec vitest run tests/tool-contracts.test.ts tests/runtime-hooks.test.ts -t "RespondToCoordinator"
+pnpm --filter @s-agent/core exec vitest run tests/permission-service.test.ts -t "explicit session capability|non-read-only session"
 ```
 
 Expected: PASS。
@@ -1019,7 +1019,7 @@ outer runtime command queue starts exactly one model-only request #2
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts -t "subagent message"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts -t "subagent message"
 ```
 
 Expected: FAIL，`enqueueSubagentMessage` 或 command mode 尚不存在。
@@ -1192,8 +1192,8 @@ if (command.mode === "subagent-message") {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts -t "subagent message"
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts -t "runtime task notifications before the next active tool-loop"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts -t "subagent message"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts -t "runtime task notifications before the next active tool-loop"
 ```
 
 Expected: 新测试 PASS；既有 task notification active-loop test 继续 PASS。
@@ -1286,7 +1286,7 @@ expectProviderMarkerBefore(parentRequests, "<subagent-message>", "<task-notifica
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-explore.test.ts -t "RespondToCoordinator|SendMessage to a running"
+pnpm --filter @s-agent/core exec vitest run tests/subagent-explore.test.ts -t "RespondToCoordinator|SendMessage to a running"
 ```
 
 Expected: FAIL，child tool surface 尚未包含回复工具或 parent 未收到 reply command。
@@ -1296,7 +1296,7 @@ Expected: FAIL，child tool surface 尚未包含回复工具或 parent 未收到
 `subagent/coordinator-response.ts`：
 
 ```ts
-import type { CoordinatorResponsePort, SessionId } from "@zcode/contracts";
+import type { CoordinatorResponsePort, SessionId } from "@s-agent/contracts";
 import type { EnqueueSubagentMessageInput } from "../runtime/types.js";
 
 export interface CreateCoordinatorResponsePortOptions {
@@ -1428,9 +1428,9 @@ expect(bashMetadata.concurrentSafe).toBe(false);
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-explore.test.ts -t "RespondToCoordinator|SendMessage to a running"
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-allowlist.test.ts
-pnpm --filter @zcode/core exec vitest run tests/scheduler.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-explore.test.ts -t "RespondToCoordinator|SendMessage to a running"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-allowlist.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/scheduler.test.ts
 ```
 
 Expected: PASS。
@@ -1545,8 +1545,8 @@ provider-visible model content 必须同时包含失败原因和 `Continue the c
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/session-history-hydrator.test.ts tests/runtime-tool-loop.test.ts tests/subagent-explore.test.ts -t "subagent message"
-pnpm --filter @zcode/core exec vitest run tests/read-session-context-tool.test.ts -t "subagent message"
+pnpm --filter @s-agent/core exec vitest run tests/session-history-hydrator.test.ts tests/runtime-tool-loop.test.ts tests/subagent-explore.test.ts -t "subagent message"
+pnpm --filter @s-agent/core exec vitest run tests/read-session-context-tool.test.ts -t "subagent message"
 pnpm exec vitest run packages/shared/test/zcodeSessionVisibleContent.test.ts -t "subagent message"
 ```
 
@@ -1585,8 +1585,8 @@ if (MODEL_ONLY_SYNTHETIC_NOTICE_SOURCES.has(String(message.info.source ?? ""))) 
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/session-history-hydrator.test.ts tests/runtime-tool-loop.test.ts tests/subagent-explore.test.ts -t "subagent message"
-pnpm --filter @zcode/core exec vitest run tests/read-session-context-tool.test.ts -t "subagent message"
+pnpm --filter @s-agent/core exec vitest run tests/session-history-hydrator.test.ts tests/runtime-tool-loop.test.ts tests/subagent-explore.test.ts -t "subagent message"
+pnpm --filter @s-agent/core exec vitest run tests/read-session-context-tool.test.ts -t "subagent message"
 pnpm exec vitest run packages/shared/test/zcodeSessionVisibleContent.test.ts -t "subagent message"
 ```
 
@@ -1597,7 +1597,7 @@ Expected: PASS。
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts -t "task notification|background notification|subagent message"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts -t "task notification|background notification|subagent message"
 ```
 
 Expected: PASS；`task-notification` 的 active/idle、goal continuation 和 sealed child cleanup 语义没有变化。
@@ -1690,7 +1690,7 @@ manifest 的 `spec` 必须直接指向 formal BG25 spec，不得指向 `manual-r
 - [ ] **Step 3：运行 fixture checker**
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts
 ```
 
 Expected: exit code `0`，所有 synthetic request 均有 `syntheticReason`。
@@ -1698,7 +1698,7 @@ Expected: exit code `0`，所有 synthetic request 均有 `syntheticReason`。
 - [ ] **Step 4：运行 isolated replay**
 
 ```bash
-E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-subagent-respond-to-coordinator.json pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts'
+E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-subagent-respond-to-coordinator.json pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts'
 ```
 
 Expected: PASS，证明不依赖 legacy shared fixture；运行生成的 CLI config 不包含 `240/80`
@@ -1707,7 +1707,7 @@ auto-compact override，provider capture 不包含 compact summary request，UI 
 - [ ] **Step 5：运行 default replay**
 
 ```bash
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts'
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts'
 ```
 
 Expected: PASS。
@@ -1724,7 +1724,7 @@ Expected: PASS。
 
 ```bash
 node scripts/audit-conversation-session-case-coverage.mjs --check --json
-pnpm --filter @zcode/desktop typecheck:e2e
+pnpm --filter @s-agent/desktop typecheck:e2e
 ```
 
 Expected: 两条命令 exit code `0`。
@@ -1740,7 +1740,7 @@ Expected: PASS，并记录实际 artifact 目录 `packages/desktop/.e2e-artifact
 - [ ] **Step 9：执行 Docker admission 并复跑 verified suite**
 
 ```bash
-pnpm --filter @zcode/desktop e2e:docker:admit -- --spec ./test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts --verified --artifact packages/desktop/.e2e-artifacts/<run-id> --apply
+pnpm --filter @s-agent/desktop e2e:docker:admit -- --spec ./test/e2e/conversation-session/conversation-session-subagent-respond-to-coordinator.test.ts --verified --artifact packages/desktop/.e2e-artifacts/<run-id> --apply
 pnpm run test:e2e:container:conversation
 ```
 
@@ -1776,8 +1776,8 @@ git commit -m "test(e2e): cover subagent coordinator responses"
 - [ ] **Step 1：运行 contracts/core focused suite**
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest run tests/respond-to-coordinator.test.ts
-pnpm --filter @zcode/core exec vitest run tests/tool-contracts.test.ts tests/runtime-hooks.test.ts tests/permission-service.test.ts tests/runtime-tool-allowlist.test.ts tests/runtime-tool-loop.test.ts tests/subagent-explore.test.ts tests/session-history-hydrator.test.ts tests/read-session-context-tool.test.ts tests/scheduler.test.ts
+pnpm --filter @s-agent/contracts exec vitest run tests/respond-to-coordinator.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/tool-contracts.test.ts tests/runtime-hooks.test.ts tests/permission-service.test.ts tests/runtime-tool-allowlist.test.ts tests/runtime-tool-loop.test.ts tests/subagent-explore.test.ts tests/session-history-hydrator.test.ts tests/read-session-context-tool.test.ts tests/scheduler.test.ts
 ```
 
 Expected: PASS。
@@ -1793,10 +1793,10 @@ Expected: PASS。
 - [ ] **Step 3：运行 CLI package checks**
 
 ```bash
-pnpm --filter @zcode/contracts typecheck
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/contracts lint
-pnpm --filter @zcode/core lint
+pnpm --filter @s-agent/contracts typecheck
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/contracts lint
+pnpm --filter @s-agent/core lint
 ```
 
 Expected: PASS。

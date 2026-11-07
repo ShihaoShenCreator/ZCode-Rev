@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { ipcMain, session, webContents, type BrowserWindow, type UtilityProcess } from "electron";
-import { HostMessageTypes, PlatformChannels, type NetworkCaptureBatch } from "@zcode/shared";
-import { createNodeNetworkCapture } from "@zcode/shared/node";
+import { HostMessageTypes, PlatformChannels, type NetworkCaptureBatch } from "@s-agent/shared";
+import { createNodeNetworkCapture } from "@s-agent/shared/node";
 import { NetworkCaptureBuffer } from "./networkCaptureBuffer.js";
 import { subscribeBeforeRequest } from "./observeBeforeRequest.js";
 

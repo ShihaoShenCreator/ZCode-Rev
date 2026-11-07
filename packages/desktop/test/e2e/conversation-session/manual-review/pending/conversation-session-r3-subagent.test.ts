@@ -10,7 +10,7 @@ import {
   TID_V4_STOP,
   TID_V4_COMPOSER_INPUT,
   TID_V4_COMPOSER_SEND,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, switchToWorkspaceRendererWindow } from "../../../helpers/desktop-app.js";
 import { reloadElectronSessionPreservingBrowserProfile } from "../../../helpers/e2e-electron-reload.js";
 import {

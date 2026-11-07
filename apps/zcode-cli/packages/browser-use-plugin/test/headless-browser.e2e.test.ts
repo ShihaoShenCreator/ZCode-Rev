@@ -5,18 +5,18 @@ import { Client, InMemoryTransport } from "@modelcontextprotocol/client";
 import {
   createManagedCdpBrowserRuntime,
   resolveInstalledBrowserExecutable,
-} from "@zcode/adapters/browser";
+} from "@s-agent/adapters/browser";
 import {
   NODE_REPL_BROWSER_BROKER_SOCKET_ENV,
   NODE_REPL_BROWSER_BROKER_TOKEN_ENV,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { chromium } from "playwright-core";
 import { afterEach, expect, it } from "vitest";
 import {
   createNodeReplBrowserBroker,
   type NodeReplBrowserBroker,
 } from "../../bootstrap/src/app/node-repl-browser-broker.js";
-import type { NodeReplMcpRuntime } from "@zcode/node-repl-host";
+import type { NodeReplMcpRuntime } from "@s-agent/node-repl-host";
 
 const required = process.env.ZCODE_HEADLESS_BROWSER_E2E_REQUIRED === "1";
 const executablePath = discoverBrowserExecutable();
@@ -73,7 +73,7 @@ realBrowserTest(
     setEnv(NODE_REPL_BROWSER_BROKER_TOKEN_ENV, broker.token);
     setEnv("DISPLAY", undefined);
 
-    const mcpModule = await import("@zcode/node-repl-host");
+    const mcpModule = await import("@s-agent/node-repl-host");
     mcpRuntime = mcpModule.createNodeReplMcpRuntime({
       executeJs: mcpModule.createInProcessNodeReplExecutor(),
     });

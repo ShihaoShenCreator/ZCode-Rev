@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { ZCodeProvider, ZCodeTaskMeta } from "@zcode/shared";
+import type { ZCodeProvider, ZCodeTaskMeta } from "@s-agent/shared";
 import { useZCodeTaskService } from "@/hooks/useZCodeTaskService.js";
 import { useBaseWorkspaceServices } from "@/hooks/useWorkspaceServices.js";
 import { useTaskNativeSessionLogFile } from "@/hooks/useTaskNativeSessionLogFile.js";

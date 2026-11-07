@@ -4,7 +4,7 @@
 // docs/dynamic-workflow/concurrency.md「Retuning a live run」。与情势截面
 // （dynamic-workflow-run-roster.port.ts）同一条拆分理由：dynamic-workflow-run.port.ts 顶到
 // oxlint max-lines 上限（400 行），而这三个类型自成一组。公开面不变——那边原样再导出，
-// `@zcode/contracts` 的导入路径一字不改。
+// `@s-agent/contracts` 的导入路径一字不改。
 
 /**
  * {@link import("./dynamic-workflow-run.port.js").DynamicWorkflowRunPort.retuneConcurrency}

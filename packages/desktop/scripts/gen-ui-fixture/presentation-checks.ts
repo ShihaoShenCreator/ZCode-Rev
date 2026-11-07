@@ -2,7 +2,7 @@ import { BrowserWindow, clipboard, nativeImage, type WebContents } from "electro
 import assert from "node:assert/strict";
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
-import type { PluginSandboxHandle } from "@zcode/shared/mcp-apps";
+import type { PluginSandboxHandle } from "@s-agent/shared/mcp-apps";
 import { checkPreviewCorners } from "./preview-corner-checks.js";
 import { checkUnifiedStyles } from "./style-checks.js";
 

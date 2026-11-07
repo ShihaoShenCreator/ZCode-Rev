@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronRightIcon, LaptopIcon, RefreshCwIcon } from "lucide-react";
-import { Button } from "@zcode/ui/button";
-import { DevicePlatformIcon, getDevicePlatformLabel } from "@zcode/ui/device-platform-icon";
+import { Button } from "@s-agent/ui/button";
+import { DevicePlatformIcon, getDevicePlatformLabel } from "@s-agent/ui/device-platform-icon";
 import { WebRemoteControlBrand } from "#src/web-remote-control/ui/webRemoteControlBrand.js";
 import {
   WebRemoteControlConnectionSheet,
@@ -9,61 +9,47 @@ import {
 } from "#src/web-remote-control/ui/webRemoteControlConnectionSheet.js";
 import type {
   WebRemoteControlDeviceGroup,
-  WebRemoteControlDeviceListAccount,
   WebRemoteControlDeviceListView,
 } from "#src/web-remote-control/contract.js";
 
 import type { WebRemoteControlScreenLocale } from "#src/web-remote-control/domain/webRemoteControlScreenCopy.js";
-import { WebRemoteControlSwitchAccountDialog } from "#src/web-remote-control/ui/webRemoteControlSwitchAccountDialog.js";
 
 const copyByLocale = {
   "zh-CN": {
     title: "选择电脑",
-    switchAccount: "切换",
-    switchAccountFallback: "切换账号",
     refresh: "刷新",
     loading: "正在加载设备…",
     online: "在线",
     offline: "离线",
     unnamed: "未命名设备",
     connections: (count: number) => `${count} 个连接`,
-    notFound: "没看到你的电脑？在电脑端 ZCode 登录同一账号并开启远程控制，然后刷新。",
+    notFound: "此版本暂不提供账号登录，无法使用 Web 远程控制。",
     emptyTitle: "暂无设备",
-    emptyDescription: "在电脑端登录同一账号并开启 Web 远程控制，然后刷新列表。",
+    emptyDescription: "此版本暂不提供账号登录，无法加载远程设备。",
     error: "无法加载设备，请检查网络后刷新。",
   },
   "en-US": {
     title: "Choose a computer",
-    switchAccount: "Switch",
-    switchAccountFallback: "Switch account",
     refresh: "Refresh",
     loading: "Loading devices…",
     online: "Online",
     offline: "Offline",
     unnamed: "Unnamed device",
     connections: (count: number) => `${count} connections`,
-    notFound:
-      "Don't see your computer? Sign in to ZCode on it with the same account, turn on remote control, then refresh.",
+    notFound: "Account sign-in is unavailable in this version, so web remote control cannot be used.",
     emptyTitle: "No devices yet",
-    emptyDescription:
-      "Sign in with the same account on your computer, enable Web remote control, then refresh this list.",
+    emptyDescription: "Account sign-in is unavailable in this version, so remote devices cannot load.",
     error: "Could not load devices. Check your connection and refresh.",
   },
 };
 
 type DeviceListCopy = (typeof copyByLocale)["zh-CN"];
 
-const PROVIDER_LABELS: Record<WebRemoteControlDeviceListAccount["provider"], string> = {
-  zai: "Z.ai",
-  bigmodel: "BigModel",
-};
-
 interface WebRemoteControlDeviceListPageProps {
   view: WebRemoteControlDeviceListView;
   locale: WebRemoteControlScreenLocale;
   onSelect(sid: string): void;
   onRefresh(): void;
-  onSwitchAccount(): void;
   /** 多连接弹层的“启动于”相对时间基准，测试注入。 */
   now?: () => number;
 }
@@ -101,7 +87,7 @@ function describeDevice(
   const single = device.onlineConnections.length === 1 ? device.onlineConnections[0] : undefined;
   const version = single?.meta.version?.trim();
   const parts = online
-    ? [platform, version ? `ZCode ${version}` : undefined]
+    ? [platform, version ? `S-Agent ${version}` : undefined]
     : [platform, copy.offline];
   const filtered = parts.filter((part): part is string => Boolean(part));
   if (filtered.length === 0) filtered.push(online ? copy.online : copy.offline);
@@ -175,64 +161,11 @@ function DeviceSection({
   );
 }
 
-function AccountRow({
-  account,
-  copy,
-  locale,
-  onSwitchAccount,
-}: {
-  account?: WebRemoteControlDeviceListAccount;
-  copy: DeviceListCopy;
-  locale: WebRemoteControlScreenLocale;
-  onSwitchAccount(): void;
-}) {
-  const switchButton = (label: string) => (
-    <WebRemoteControlSwitchAccountDialog locale={locale} onConfirm={onSwitchAccount}>
-      <Button
-        type="button"
-        variant="ghost"
-        className="-my-2 h-9 shrink-0 rounded-lg px-2 font-medium focus-visible:bg-hover"
-      >
-        {label}
-      </Button>
-    </WebRemoteControlSwitchAccountDialog>
-  );
-  if (!account) {
-    return (
-      <div className="-ml-2 mt-1 flex items-center">{switchButton(copy.switchAccountFallback)}</div>
-    );
-  }
-  return (
-    <div className="mt-1 flex min-w-0 items-center gap-2 text-ui-sm text-foreground-subtle">
-      {account.avatarUrl ? (
-        <img
-          src={account.avatarUrl}
-          alt=""
-          aria-hidden="true"
-          className="size-5 shrink-0 rounded-full object-cover"
-        />
-      ) : (
-        <span
-          aria-hidden="true"
-          className="flex size-5 shrink-0 items-center justify-center rounded-full bg-surface-hover text-ui-xs font-semibold text-foreground"
-        >
-          {Array.from(account.displayName.trim())[0]?.toUpperCase() ?? "?"}
-        </span>
-      )}
-      <span className="min-w-0 truncate">
-        {account.displayName} · {PROVIDER_LABELS[account.provider]}
-      </span>
-      {switchButton(copy.switchAccount)}
-    </div>
-  );
-}
-
 export function WebRemoteControlDeviceListPage({
   view,
   locale,
   onSelect,
   onRefresh,
-  onSwitchAccount,
   now = () => Date.now(),
 }: WebRemoteControlDeviceListPageProps) {
   const copy = copyByLocale[locale];
@@ -271,13 +204,6 @@ export function WebRemoteControlDeviceListPage({
             />
           </Button>
         </div>
-        <AccountRow
-          account={view.account}
-          copy={copy}
-          locale={locale}
-          onSwitchAccount={onSwitchAccount}
-        />
-
         {view.error ? (
           <p role="alert" className="mt-5 px-1 text-ui-sm text-destructive">
             {copy.error}

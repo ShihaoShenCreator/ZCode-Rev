@@ -4,13 +4,13 @@ import {
   ZCODE_AGENT_PROVIDER,
   getZCodeAgentAvailableModes,
   type ZCodeConfigOption,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_CHAT_MODE_SELECT_TRIGGER,
   TID_CHAT_MODE_SELECT_ITEM,
   TID_V4_COMPOSER_INPUT,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DropdownMenu,
   DropdownMenuTrigger,

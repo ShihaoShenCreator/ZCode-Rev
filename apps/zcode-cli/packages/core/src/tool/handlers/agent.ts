@@ -13,7 +13,7 @@ import {
   type AgentInput,
   type AgentOutput,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { TASK_TOOL_NAME } from "../compat.js";
 import type { ToolEntry, ToolHandler } from "../types.js";
 

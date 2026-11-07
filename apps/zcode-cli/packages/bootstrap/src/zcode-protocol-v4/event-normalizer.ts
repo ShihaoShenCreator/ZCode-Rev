@@ -1,4 +1,4 @@
-import { normalizeGenUiInput } from "@zcode/core";
+import { normalizeGenUiInput } from "@s-agent/core";
 import type {
   BackgroundResultOriginMeta,
   HighspeedMessageMetadata,
@@ -9,9 +9,9 @@ import type {
   TurnInputIntentMetadata,
   TurnStartedPayload,
   WorkflowLaunchMeta,
-} from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
-import type { AttachmentRef } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
+import type { AttachmentRef } from "@s-agent/shared/zcode-protocol-v4";
 
 export type CanonicalConversationVisibility = "visible" | "modelOnly" | "stateOnly";
 export type CanonicalConversationOrigin =
@@ -50,8 +50,8 @@ interface CanonicalConversationFactBase {
 
 export interface CanonicalUserIntentFact extends CanonicalConversationFactBase {
   inputOrigin?: "desktop" | "mobile";
-  conversationQuotes?: import("@zcode/contracts").TurnInputIntentMetadata["conversationQuotes"];
-  botGroupSource?: import("@zcode/shared").BotGroupInputSource;
+  conversationQuotes?: import("@s-agent/contracts").TurnInputIntentMetadata["conversationQuotes"];
+  botGroupSource?: import("@s-agent/shared").BotGroupInputSource;
   semanticKind: "userIntent";
   visibility: "visible" | "modelOnly";
   origin:
@@ -90,7 +90,7 @@ export interface CanonicalUserIntentFact extends CanonicalConversationFactBase {
   admittedAt?: number;
   requestedDelivery?: "auto" | "startNow" | "queue" | "guide";
   admittedDelivery?: "startNow" | "queue" | "guide";
-  genUiContext?: import("@zcode/contracts").TurnInputIntentMetadata["genUiContext"];
+  genUiContext?: import("@s-agent/contracts").TurnInputIntentMetadata["genUiContext"];
   sharedContextRefs?: readonly { kind: "shared_context_import"; context_id: string }[];
   fallbackReasonCode?: string;
   modelSelection?: TurnInputIntentMetadata["modelSelection"];

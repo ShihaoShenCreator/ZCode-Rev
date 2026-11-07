@@ -1,5 +1,5 @@
 import { memo, useCallback, useState, useSyncExternalStore } from "react";
-import type { WorkspaceMcpAdmissionSnapshotState } from "@zcode/shared/zcode-protocol-v4";
+import type { WorkspaceMcpAdmissionSnapshotState } from "@s-agent/shared/zcode-protocol-v4";
 import { getWorkspaceKey } from "@/lib/workspaceKey.js";
 import {
   TID_V4_WORKSPACE_MCP_PENDING_TRIGGER,
@@ -12,7 +12,7 @@ import {
   TID_V4_WORKSPACE_HOOK_PENDING_UNREAD,
   TID_V4_WORKSPACE_HOOK_PENDING_DISMISS,
   TID_V4_WORKSPACE_HOOK_PENDING_REVIEW,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { Anchor, Cable } from "lucide-react";
 import { Button } from "@/components/ui/button.js";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover.js";

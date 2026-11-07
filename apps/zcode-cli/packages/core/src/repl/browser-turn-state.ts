@@ -1,4 +1,4 @@
-import type { BrowserResponseMeta, SessionId, TurnId } from "@zcode/contracts";
+import type { BrowserResponseMeta, SessionId, TurnId } from "@s-agent/contracts";
 
 export interface BrowserTurnScreenshotCandidate {
   browserGeneration: number;

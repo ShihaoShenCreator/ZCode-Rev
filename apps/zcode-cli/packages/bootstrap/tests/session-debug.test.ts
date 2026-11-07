@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
-import { sessionDebugSnapshotSchema } from "@zcode/shared";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
+import { sessionDebugSnapshotSchema } from "@s-agent/shared";
 import {
   observeSessionDebug,
   readSessionDebug,

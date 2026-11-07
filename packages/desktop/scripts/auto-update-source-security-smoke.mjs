@@ -135,7 +135,7 @@ async function listen(label) {
   platform: "node",
   format: "cjs",
   external: ["electron", "electron-updater", "semver"],
-  alias: { "@zcode/shared": resolve(repoRoot, "packages/shared/src/index.ts") },
+  alias: { "@s-agent/shared": resolve(repoRoot, "packages/shared/src/index.ts") },
   plugins: [
     {
       name: "security-smoke-official-origin",

@@ -8,7 +8,7 @@ import {
   type HookInput,
   type SessionEvent,
   type WorkspaceHookBundleSnapshot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   InMemoryWorkspaceHookPolicyProvider,
   WorkspaceHookTrustCoordinator,

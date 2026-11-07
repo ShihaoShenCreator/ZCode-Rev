@@ -13,7 +13,7 @@
  *   3. **上限溢出拒绝节点**（`WorldReadCapExceeded`），既不截断也不折成 DriverError。
  *
  * 为什么独立成文件而不并入 workflow-driver.test.ts：那份用例经 helpers 在运行时 import
- * `@zcode/core`（真实 AgentRuntime），而本文件只碰 driver 的世界读取面（它对 `@zcode/core`
+ * `@s-agent/core`（真实 AgentRuntime），而本文件只碰 driver 的世界读取面（它对 `@s-agent/core`
  * 只有类型导入），因此不依赖模型侧的任何东西。同 workflow-driver-world-read-args.test.ts。
  */
 
@@ -26,13 +26,13 @@ import type {
   FileSystemSearchFilesRequest,
   FileSystemSearchTextEntry,
   FileSystemSearchTextRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   FACADE_DTS,
   InMemoryJournalStore,
   WORLD_READ_CAPS,
   type WorkflowReportSink,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { createWorkflowEscalationRegistry } from "../src/app/workflow-escalation-registry.js";
 import { createAgentRuntimeWorkflowDriver } from "../src/app/workflow-driver.js";
 

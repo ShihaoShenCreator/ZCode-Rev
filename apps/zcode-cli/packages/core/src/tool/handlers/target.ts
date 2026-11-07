@@ -9,7 +9,7 @@ import {
   GoalReadOutputJsonSchema,
   GoalReadOutputSchema,
   createCoreError,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry, ToolHandler, ToolExecutionContext } from "../types.js";
 
 const MAX_GOAL_MODEL_BYTES = 100_000;

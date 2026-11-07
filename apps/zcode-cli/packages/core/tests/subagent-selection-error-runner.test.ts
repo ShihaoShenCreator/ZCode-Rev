@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { createSessionId, createTurnId, createTraceId, createToolCallId } from "@zcode/contracts";
+import { createSessionId, createTurnId, createTraceId, createToolCallId } from "@s-agent/contracts";
 import { createExploreSubagentPort } from "../src/subagent/runner.js";
 import { resolveSubagentSelection } from "../src/runtime/helpers/subagent-selection.js";
 import { createErrorResult } from "../src/tool/executor/errors.js";

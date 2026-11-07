@@ -19,7 +19,7 @@ Jenkins checkout z-code
 ```
 
 Jenkins 不把 API token 或 Docker 密码放入 Docker ARG、镜像标签、构建上下文或日志。
-Share 构建只安装 `@zcode/web-share` 的轻量依赖，并使用仓库锁文件保证渲染依赖可复现；
+Share 构建只安装 `@s-agent/web-share` 的轻量依赖，并使用仓库锁文件保证渲染依赖可复现；
 过滤安装不会把完整 Web/Remote 的 CUA 依赖带入闭包，也不需要 CUA Git token。运行时镜像只有
 nginx 和静态产物，material-icons 从 `packages/web/public` 一并复制。
 

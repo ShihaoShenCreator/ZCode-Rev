@@ -1,7 +1,7 @@
 import {
   ENTER_PLAN_MODE_TOOL_NAME,
   EXIT_PLAN_MODE_TOOL_NAME,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { filterDisallowedToolNames } from "../tool/tool-visibility.js";
 
 export const SUBAGENT_CHILD_FORCED_DISALLOWED_TOOLS = [

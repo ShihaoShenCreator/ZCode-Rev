@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { DesktopCommandIds } from "@zcode/shared";
+import { DesktopCommandIds } from "@s-agent/shared";
 import {
   TID_WORKSPACE_HELP_MENU_RESOURCE_MANAGER,
   TID_WORKSPACE_HELP_MENU_TRIGGER,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   ActivityIcon,
   BookOpenIcon,

@@ -23,9 +23,9 @@ import { readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { createNodeSkillAdapter } from "@zcode/adapters/skills";
-import type { SkillRoot } from "@zcode/contracts";
-import { analyzeWorkflowScript, compileWorkflowScript, FACADE_DTS } from "@zcode/dynamic-workflow";
+import { createNodeSkillAdapter } from "@s-agent/adapters/skills";
+import type { SkillRoot } from "@s-agent/contracts";
+import { analyzeWorkflowScript, compileWorkflowScript, FACADE_DTS } from "@s-agent/dynamic-workflow";
 import { describe, expect, it } from "vitest";
 import {
   BUNDLED_SKILL_PACK_REQUIRED_PATHS,

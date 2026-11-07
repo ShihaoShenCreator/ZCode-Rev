@@ -15,12 +15,12 @@ import {
   parseRemoteWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
   type ZCodeTaskMeta,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_WORKSPACE_MORE_BUTTON,
   TID_WORKSPACE_PATH,
   TID_WORKSPACE_TITLE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { useMemo, useRef, useState } from "react";
 import { ControlHintTooltip } from "@/ControlHintTooltip.js";
 import { cn } from "@/components/lib/utils.js";

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { ReadTextOutput } from "@zcode/contracts";
+import type { ReadTextOutput } from "@s-agent/contracts";
 import type { RuntimeMessageEntry } from "../src/agent/message-history.js";
 import {
   buildPostCompactFileRestore,

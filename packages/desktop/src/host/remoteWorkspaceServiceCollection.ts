@@ -45,7 +45,7 @@ import {
   IPromptAttachmentTransferService,
   type ServiceDescriptor,
   type IServiceAccessor,
-} from "@zcode/services";
+} from "@s-agent/services";
 import {
   REMOTE_WORKSPACE_RPC_CHANNELS,
   assertRemoteWorkspaceRpcContract,
@@ -54,12 +54,12 @@ import {
   createServiceLogger,
   createLegacySingleRootProjectService,
   createRemoteProjectService,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import {
   buildServerRemoteWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
-} from "@zcode/shared";
-import type { RemoteTarget } from "@zcode/shared";
+} from "@s-agent/shared";
+import type { RemoteTarget } from "@s-agent/shared";
 import {
   createRemoteProviderProvisioningExecutorFromWorkspace,
   registerRemoteProviderProvisioningExecutor,

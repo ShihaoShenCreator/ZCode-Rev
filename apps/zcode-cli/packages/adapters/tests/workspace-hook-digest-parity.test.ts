@@ -10,7 +10,7 @@ import {
   resolveWorkspaceHookRuntimeRoot,
   workspaceHooksConfigSchema,
   type WorkspaceHooksConfig,
-} from "@zcode/shared/workspace-hook-discovery";
+} from "@s-agent/shared/workspace-hook-discovery";
 
 const roots: string[] = [];
 

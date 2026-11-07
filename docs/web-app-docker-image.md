@@ -2,7 +2,7 @@
 
 ## 目标
 
-提供一个本地可运行的完整 Web App Docker 镜像，包含 Web 静态资源、`@zcode/server` HTTP/WS 服务和 ZCode agent app-server。镜像用于本地 Docker 验证，不替代桌面端远控 shared-host 架构。
+提供一个本地可运行的完整 Web App Docker 镜像，包含 Web 静态资源、`@s-agent/server` HTTP/WS 服务和 ZCode agent app-server。镜像用于本地 Docker 验证，不替代桌面端远控 shared-host 架构。
 
 ## 运行结构
 
@@ -17,7 +17,7 @@ Node gateway
   `-- /ws* proxy
        |
        v
-@zcode/server entry-http
+@s-agent/server entry-http
   |
   | stdio
   v
@@ -36,8 +36,8 @@ zcode.cjs app-server
 - builder 阶段执行：
   - `pnpm install --frozen-lockfile`
   - `packages/desktop/scripts/prepare-agent-node-bundle.mjs`
-  - `pnpm --filter @zcode/server build`
-  - `pnpm --filter @zcode/web build`
+  - `pnpm --filter @s-agent/server build`
+  - `pnpm --filter @s-agent/web build`
 - runtime 阶段只暴露一个端口，默认 `3030`。
 - runtime 阶段保留 server 的 pnpm runtime 依赖，因为 `entry-http.js` 会外置 `ssh2`、`node-pty`、`undici` 等包。
 

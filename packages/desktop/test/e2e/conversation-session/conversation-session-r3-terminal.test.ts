@@ -2,7 +2,7 @@ import { execFile } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
-import { TID_TERMINAL, TID_TERMINAL_TOGGLE } from "@zcode/shared/test-ids";
+import { TID_TERMINAL, TID_TERMINAL_TOGGLE } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, waitForTestIdByDom } from "../helpers/desktop-app.js";
 import {
   connectSSHWorkspaceAndSendFirstTurn,

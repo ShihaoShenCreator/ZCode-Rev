@@ -1,4 +1,4 @@
-import { TID_V4_TIMELINE } from "@zcode/shared/test-ids";
+import { TID_V4_TIMELINE } from "@s-agent/shared/test-ids";
 import {
   AUTOLINK,
   CITATION_TARGET_PATH,

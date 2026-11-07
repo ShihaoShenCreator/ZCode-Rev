@@ -85,9 +85,9 @@ workspace identity。Active Model 仍冻结本轮创建时的 Effective Model Co
 
 ## 5. 验证与验收
 
-1. `pnpm --filter @zcode/provider-node test`
-2. `pnpm --filter @zcode/provider-node typecheck`
-3. `pnpm --filter @zcode/provider test` 与 typecheck
+1. `pnpm --filter @s-agent/provider-node test`
+2. `pnpm --filter @s-agent/provider-node typecheck`
+3. `pnpm --filter @s-agent/provider test` 与 typecheck
 4. `pnpm typecheck`
 5. `pnpm lint`
 6. 相关格式检查、`git diff --check`

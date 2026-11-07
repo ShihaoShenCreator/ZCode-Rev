@@ -6,8 +6,8 @@ import {
   type DatabaseMigrationFacts,
   zcodeStoragePreparationFrameSchema,
   type DatabaseStartupState,
-} from "@zcode/shared";
-import { resolveDefaultZCodeAgentCommand } from "@zcode/services/storage-startup";
+} from "@s-agent/shared";
+import { resolveDefaultZCodeAgentCommand } from "@s-agent/services/storage-startup";
 
 type Phase = NonNullable<DatabaseStartupState["databasePhase"]>;
 import { workerMessageSchema } from "./contract.js";

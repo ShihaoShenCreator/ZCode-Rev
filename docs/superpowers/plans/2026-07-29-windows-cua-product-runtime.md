@@ -4,7 +4,7 @@
 
 **Goal:** Ship the completed Windows CUA source runtime inside ZCode Windows x64/arm64 packages and start it without a local source checkout.
 
-**Architecture:** Stage the pinned `@zcode/zcode-cua` Windows entry, native addon, and minimal external dependencies into `bundled-tools/<triplet>/cua-helper`, then package it at `resources/tools/cua-helper`. A single asynchronous resolver admits either an explicit development root or the verified packaged manifest, while the existing named-pipe Helper host remains the only lifecycle implementation.
+**Architecture:** Stage the pinned `@s-agent/zcode-cua` Windows entry, native addon, and minimal external dependencies into `bundled-tools/<triplet>/cua-helper`, then package it at `resources/tools/cua-helper`. A single asynchronous resolver admits either an explicit development root or the verified packaged manifest, while the existing named-pipe Helper host remains the only lifecycle implementation.
 
 **Tech Stack:** TypeScript, Node.js 24, Electron 41.0.3, Node-API, Win32 PE, electron-builder 26, Vitest, PowerShell/vsigntool.
 
@@ -12,7 +12,7 @@
 
 - Product scope is Windows desktop-local only; do not modify SSH, WSL, Docker, remote workspace, mobile `/remote`, replayable delivery, owner, queue, snapshot, or workspace identity behavior.
 - Product resources live at `resources/tools/cua-helper`; source override remains `ZCODE_CUA_DEV_ROOT`.
-- Runtime manifest schema is `1`, package name is `@zcode/zcode-cua`, Electron version is `41.0.3`, and target architectures are `x64` and `arm64`.
+- Runtime manifest schema is `1`, package name is `@s-agent/zcode-cua`, Electron version is `41.0.3`, and target architectures are `x64` and `arm64`.
 - PE machine `0x8664` means x64 and `0xaa64` means arm64; mismatches fail the build.
 - Development override misconfiguration fails closed and never falls back to product resources.
 - Runtime file-system and hashing I/O is asynchronous.
@@ -102,7 +102,7 @@
 
 **Interfaces:**
 
-- Consumes: pinned `@zcode/zcode-cua-helper-runtime` at the Task 1 commit, or explicit absolute `ZCODE_CUA_DEV_ROOT`.
+- Consumes: pinned `@s-agent/zcode-cua-helper-runtime` at the Task 1 commit, or explicit absolute `ZCODE_CUA_DEV_ROOT`.
 - Produces: `prepareWindowsCuaHelperAssets({ sourceRoot, outputRoot, targetPlatform, electronVersion })` and a schema-1 `runtime-manifest.json`.
 
 - [ ] **Step 1: Write RED tests for staging**
@@ -121,7 +121,7 @@
 - [ ] **Step 3: Implement asynchronous staging**
 
   Resolve the source from non-empty absolute `ZCODE_CUA_DEV_ROOT`, otherwise from
-  `@zcode/zcode-cua-helper-runtime`. Validate source identity/version/artifacts,
+  `@s-agent/zcode-cua-helper-runtime`. Validate source identity/version/artifacts,
   parse the PE machine, copy entry/addon, stage the `express` dependency closure
   plus target Sharp packages into `node_modules`, hash entry/addon, and atomically
   replace `bundled-tools/<triplet>/cua-helper`.
@@ -129,7 +129,7 @@
 - [ ] **Step 4: Wire the build scripts and exact dependency pin**
 
   Add `prepare:windows-cua-helper`; invoke it after `prepare:agent-bundle` and
-  `prepare:rg`. Update `@zcode/zcode-cua-helper-runtime` to the exact remote Task 1
+  `prepare:rg`. Update `@s-agent/zcode-cua-helper-runtime` to the exact remote Task 1
   commit and regenerate the lockfile.
 
 - [ ] **Step 5: Verify Task 2**
@@ -138,7 +138,7 @@
 
   ```text
   pnpm exec vitest run packages/desktop/test/windows-cua-helper-assets.test.ts
-  $env:ZCODE_CUA_DEV_ROOT='C:\Users\dev\zcode-cua'; pnpm --filter @zcode/desktop prepare:windows-cua-helper
+  $env:ZCODE_CUA_DEV_ROOT='C:\Users\dev\zcode-cua'; pnpm --filter @s-agent/desktop prepare:windows-cua-helper
   ```
 
   Expected: tests pass and staged manifest reports win32/x64, Electron 41.0.3,
@@ -285,8 +285,8 @@
   ```text
   $env:ZCODE_CUA_DEV_ROOT='C:\Users\dev\zcode-cua'
   $env:ZCODE_SKIP_REMOTE_ASSETS='1'
-  pnpm --filter @zcode/desktop build
-  pnpm --filter @zcode/desktop exec electron-builder --win --x64 --dir
+  pnpm --filter @s-agent/desktop build
+  pnpm --filter @s-agent/desktop exec electron-builder --win --x64 --dir
   ```
 
   Expected: afterPack verifies `resources/tools/cua-helper`; no signing certificate is

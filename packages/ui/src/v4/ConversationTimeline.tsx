@@ -19,7 +19,7 @@ import {
 import { flushSync } from "react-dom";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { ArrowDownIcon } from "lucide-react";
-import { TID_V4_TIMELINE, TID_V4_TIMELINE_BOTTOM } from "@zcode/shared/test-ids";
+import { TID_V4_TIMELINE, TID_V4_TIMELINE_BOTTOM } from "@s-agent/shared/test-ids";
 import type {
   ApiRetryState,
   AttachmentRef,
@@ -28,7 +28,7 @@ import type {
   ConversationRowTarget,
   QueueItem,
   SessionPhase,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { cn } from "@/components/lib/utils.js";
 import { runUserAction } from "@/lib/userActionTelemetry.js";
 import { Button } from "@/components/ui/button.js";

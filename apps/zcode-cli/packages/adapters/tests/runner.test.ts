@@ -28,7 +28,7 @@ import {
   type ModelNetworkStatusEvent,
   type ModelStreamEvent,
   type ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { executeAdapterGenerateText, executeAdapterStreamText } from "./test-adapter-model.js";
 
 describe("AiSdkModelAdapter", () => {

@@ -21,7 +21,7 @@ Desktop renderer / SSH/WSL/Docker window
 │ owner / lease / stale-run: 只负责跨 host 命令和阻塞请求路由 │
 │ relay/main: 鉴权、配对、心跳、payload/拥塞信号透传           │
 └──────────────────────────┬───────────────────────────────────┘
-                           │ stdio / @zcode/protocol-v4
+                           │ stdio / @s-agent/protocol-v4
                            v
 ┌──────────────────────── CLI runtime ─────────────────────────┐
 │ event log -> Projection -> per-subscriber publisher          │

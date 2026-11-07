@@ -19,7 +19,7 @@ import {
   TID_AUTOMATIONS_OPEN,
   TID_CRON_CREATE_CARD,
   TID_CRON_CREATE_OPEN,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   DEFAULT_WORKSPACE,

@@ -8,7 +8,7 @@ import {
   ZCODE_PRODUCT_FLAVOR,
   type DesktopCommandId,
   type Locale,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   blendBadgeIntoBitmap,
   renderAntialiasedStatusDotPixels,

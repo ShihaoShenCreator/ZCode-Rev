@@ -2,10 +2,10 @@ import { SessionLifecycleController } from "../src/session-lifecycle/index.js";
 import {
   applyConversationDeltas,
   type ConversationSnapshot,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { describe, expect, it, vi } from "vitest";
 import { ConversationV4Gateway } from "../src/zcode-protocol-v4/v4-gateway.js";
-import type { ConversationTopicFrame } from "@zcode/shared/zcode-protocol-v4";
+import type { ConversationTopicFrame } from "@s-agent/shared/zcode-protocol-v4";
 
 function deferred() {
   let resolve!: () => void;
@@ -86,7 +86,7 @@ function setup(
 function setupOwned() {
   const fixture = setup();
   const activate = vi.fn(
-    async (_messages: import("@zcode/contracts").MessageWithParts[]) => undefined,
+    async (_messages: import("@s-agent/contracts").MessageWithParts[]) => undefined,
   );
   let active = false;
   const lifecycle = new SessionLifecycleController({

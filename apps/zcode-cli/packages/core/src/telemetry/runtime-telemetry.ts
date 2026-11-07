@@ -18,7 +18,7 @@ import type {
   SyntheticUserMessageSource,
   ToolExecutionSpanWriter,
   TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 interface RuntimeTelemetryFacadeOptions {
   agentName?: string;

@@ -1,4 +1,4 @@
-import { toolSearchNameForMode } from "@zcode/contracts";
+import { toolSearchNameForMode } from "@s-agent/contracts";
 import { resolveDeferredToolCall } from "../deferred-call.js";
 import {
   type AgentTelemetryErrorCategory,
@@ -11,18 +11,18 @@ import {
   traceContextToLogContext,
   type ToolExecutionSpanWriter,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   OFFICIAL_CUA_FRAME_MODEL_CONTENT_PROTECTION,
   attestOfficialCuaFrameContent,
   containsOfficialCuaImageRefCredentialText,
-} from "@zcode/zcode-cua/frame-contract";
+} from "@s-agent/zcode-cua/frame-contract";
 import {
   normalizeToolExecutionInput,
   prepareInitialToolExecutionInput,
 } from "../input-normalization.js";
 import { hasOfficialCuaFrameAuthority } from "../../mcp/image-normalization.js";
-import type { SkillTelemetryMetadata } from "@zcode/contracts";
+import type { SkillTelemetryMetadata } from "@s-agent/contracts";
 import type { ToolExecutionContext, ToolExecutionResult } from "../types.js";
 import type { ToolEntry } from "../types.js";
 import type { BackgroundTaskTracker } from "./background-tasks.js";

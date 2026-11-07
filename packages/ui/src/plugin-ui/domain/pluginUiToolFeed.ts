@@ -1,6 +1,6 @@
-import type { McpAppsToolResultPayload } from "@zcode/shared/mcp-apps";
-import { MCP_APPS_TRUNCATED_META_KEY } from "@zcode/shared/mcp-apps";
-import type { ConversationRow, ToolCallRow } from "@zcode/shared/zcode-protocol-v4";
+import type { McpAppsToolResultPayload } from "@s-agent/shared/mcp-apps";
+import { MCP_APPS_TRUNCATED_META_KEY } from "@s-agent/shared/mcp-apps";
+import type { ConversationRow, ToolCallRow } from "@s-agent/shared/zcode-protocol-v4";
 import type { PluginUiPresentation } from "../contract.js";
 import { parseJsonText, readPluginUiPresentation } from "./readPluginUiPresentation.js";
 

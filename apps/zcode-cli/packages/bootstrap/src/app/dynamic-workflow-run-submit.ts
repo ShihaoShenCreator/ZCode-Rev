@@ -15,16 +15,16 @@ import type {
   DynamicWorkflowRunSubmitRequest,
   DynamicWorkflowRunSubmitResult,
   TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   collectDiagnostics,
   createWorkflowProgram,
   type Caps,
   type ImportedRunCache,
   type RunSettlement,
-} from "@zcode/dynamic-workflow";
-import { formatModelPickerValue } from "@zcode/shared/model-selection";
-import type { ModelSelection } from "@zcode/shared/model-selection";
+} from "@s-agent/dynamic-workflow";
+import { formatModelPickerValue } from "@s-agent/shared/model-selection";
+import type { ModelSelection } from "@s-agent/shared/model-selection";
 import {
   buildImportedCache,
   preflightAmendImport,

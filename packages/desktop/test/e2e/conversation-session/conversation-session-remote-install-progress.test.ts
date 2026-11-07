@@ -1,4 +1,4 @@
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { prepareSourceServerUpdateArchive } from "#e2e/helpers/source-server-update-fixture";
 import {
   connectRemoteSourceFromSettings,

@@ -4,7 +4,7 @@ import {
   type ModelNetworkStatusEvent,
   type ModelStreamEvent,
   type ModelUsage,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AiSdkModelRuntime } from "../src/model/runner.js";
 import { executeAdapterGenerateText, executeAdapterStreamText } from "./test-adapter-model.js";
 import { TestAiSdkModelAdapter, TestProviderConfigFixture } from "./test-provider-config.js";

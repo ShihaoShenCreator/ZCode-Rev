@@ -1,7 +1,7 @@
 import { DatabaseSync } from "node:sqlite";
 import { describe, expect, it } from "vitest";
 import { commitPermissionFullAccess } from "../src/storage/session-store/repositories/permission-full-access.js";
-import type { SessionId } from "@zcode/contracts";
+import type { SessionId } from "@s-agent/contracts";
 
 function fixture() {
   const db = new DatabaseSync(":memory:");

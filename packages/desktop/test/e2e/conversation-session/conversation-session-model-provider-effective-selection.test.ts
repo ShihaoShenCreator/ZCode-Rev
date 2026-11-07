@@ -1,8 +1,8 @@
-import { ProviderConfig } from "@zcode/provider";
-import { NodePersonalProviderConfigRepository } from "@zcode/provider-node";
+import { ProviderConfig } from "@s-agent/provider";
+import { NodePersonalProviderConfigRepository } from "@s-agent/provider-node";
 import { DatabaseSync } from "node:sqlite";
 import { join } from "node:path";
-import { type ModelSelection, BUILTIN_MODEL_PROVIDER_IDS } from "@zcode/shared";
+import { type ModelSelection, BUILTIN_MODEL_PROVIDER_IDS } from "@s-agent/shared";
 import {
   TID_MODEL_PROVIDER_CONNECTION_MODE_ITEM,
   TID_MODEL_PROVIDER_CONNECTION_MODE_TRIGGER,
@@ -21,7 +21,7 @@ import {
   TID_AUTOMATION_CARD,
   TID_AUTOMATION_CARD_MENU,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

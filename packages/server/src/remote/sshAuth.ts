@@ -1,5 +1,5 @@
 import type { ConnectConfig } from "ssh2";
-import type { PublicZCodeErrorCode } from "@zcode/shared";
+import type { PublicZCodeErrorCode } from "@s-agent/shared";
 
 export const SSH_READY_TIMEOUT_MS = 60_000;
 export const SSH_KEEPALIVE_INTERVAL_MS = 15_000;

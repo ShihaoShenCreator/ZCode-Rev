@@ -1,4 +1,4 @@
-import { SessionEventType, createEventId } from "@zcode/contracts";
+import { SessionEventType, createEventId } from "@s-agent/contracts";
 import {
   zcodeMcpReadResourceParamsSchema,
   zcodeMcpUiCallToolParamsSchema,
@@ -14,7 +14,7 @@ import {
   type ZCodeMcpUiListResourceTemplatesResult,
   type ZCodeMcpUiListResourcesResult,
   type ZCodeMcpUiReadResourceResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   ProtocolRequestError,
   parseParams,

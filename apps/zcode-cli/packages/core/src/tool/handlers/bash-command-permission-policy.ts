@@ -1,4 +1,4 @@
-import type { PermissionRuleValue, PermissionUpdate } from "@zcode/contracts";
+import type { PermissionRuleValue, PermissionUpdate } from "@s-agent/contracts";
 import type {
   ToolPermissionRulePolicy,
   ToolRuntimePermissionCapabilityContext,

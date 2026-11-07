@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { ZCodePluginInfo } from "@zcode/shared";
+import type { ZCodePluginInfo } from "@s-agent/shared";
 import { clearAppData, getE2EAppDataPaths } from "../../../helpers/desktop-app.js";
 import {
   capturePluginManualReview,

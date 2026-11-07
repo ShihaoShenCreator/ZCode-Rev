@@ -41,7 +41,7 @@ packages/provider-node/src/publisher/model-discovery/
 ```
 
 这里可以复用正式 Built-in Release Parser、Provider Schema 和 Node 网络能力，但不得从
-`@zcode/provider-node` 公共根入口导出，避免应用运行时依赖发布工具。
+`@s-agent/provider-node` 公共根入口导出，避免应用运行时依赖发布工具。
 
 薄命令入口放在：
 

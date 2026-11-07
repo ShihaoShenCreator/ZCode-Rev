@@ -1,4 +1,4 @@
-import type { ArmsCustomEventPayload } from "@zcode/shared";
+import type { ArmsCustomEventPayload } from "@s-agent/shared";
 import { shouldExposeE2EStoreBridge } from "@/lib/e2eStoreBridge.js";
 
 export interface ArmsCustomEventE2EEntry extends ArmsCustomEventPayload {

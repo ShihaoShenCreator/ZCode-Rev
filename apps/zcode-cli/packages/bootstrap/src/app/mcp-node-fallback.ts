@@ -1,6 +1,6 @@
 import { join } from "node:path";
-import type { Logger } from "@zcode/contracts";
-import { createMcpNodeFallbackProvider, type McpNodeFallbackProvider } from "@zcode/adapters/mcp";
+import type { Logger } from "@s-agent/contracts";
+import { createMcpNodeFallbackProvider, type McpNodeFallbackProvider } from "@s-agent/adapters/mcp";
 import { bundleBaseDirs } from "./bundled-plugins.js";
 
 /** 随包 npm 相对 zcode.cjs 的位置；与 desktop prepare:agent-bundle 的 staging 目录同一约定。 */

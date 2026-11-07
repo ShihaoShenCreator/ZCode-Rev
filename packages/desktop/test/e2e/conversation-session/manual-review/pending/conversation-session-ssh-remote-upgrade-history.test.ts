@@ -1,6 +1,6 @@
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { buildRemoteWorkspaceIdentity, parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { buildRemoteWorkspaceIdentity, parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_COMPOSER_REMOTE_CONNECTION,
   TID_COMPOSER_WORKSPACE_TRIGGER,
@@ -10,7 +10,7 @@ import {
   TID_TASK_SETTINGS_BUTTON,
   TID_TASK_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { CreateWorkflowCausalityGraphSchema } from "@zcode/contracts";
+import { CreateWorkflowCausalityGraphSchema } from "@s-agent/contracts";
 import {
   MAIN_LANE,
   type CausalityGraph,
   type ControlFlowGraph,
   type FlowHole,
-} from "@zcode/dynamic-workflow/projections";
+} from "@s-agent/dynamic-workflow/projections";
 import { boundCausalityGraph } from "../src/tool/handlers/create-workflow-graph-bounds.js";
 
 // docs/dynamic-workflow/presentation.md「The display contract」：`holes` 是还开着的留白（控制流图的

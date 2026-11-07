@@ -1,5 +1,5 @@
-import type { ICloudContentService } from "@zcode/services";
-import type { MarketingAsset, MarketingVisual } from "@zcode/shared";
+import type { ICloudContentService } from "@s-agent/services";
+import type { MarketingAsset, MarketingVisual } from "@s-agent/shared";
 import type { CloudDialogHero } from "@/components/cloud-content-dialog/cloudContentDialogTypes.js";
 import { logger } from "@/logger.js";
 

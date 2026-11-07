@@ -1,6 +1,7 @@
 # ZCode 官方 Server MCP：不可用时的输入框提示（额度耗尽 / 无 Coding Plan 权益）规格
 
-- 状态：T1（服务端错误码 → 输入框提示）已实现；T2（退登换 API Key 的本地分类）未实现，见 §10.2
+- 状态：已退役，仅作历史设计记录；历史实现曾完成 T1（服务端错误码 → 输入框提示），T2（退登换 API Key 的本地分类）未实现。
+- 当前 S-Agent 不提供本文描述的额度横幅或套餐入口，后续代码路径可能已删除。
 - 当前统一鉴权与 scope 事实见 `zcode-official-server-mcp-auth-spec.md`；本文只维护 quota/banner 产品行为。
 - 前置：`zcode-official-server-mcp-client-phase-1-spec.md`（下称 "phase-1"）。信任判定口径、身份头集合、
   凭证解析与失败分类全部沿用 phase-1，本文不重复

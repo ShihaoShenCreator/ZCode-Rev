@@ -41,13 +41,7 @@ const CODING_PLAN_TEAM_SPEC_MARKERS = [
   // 创建埋点回归复用本地账号控制面，避免初始化/发送访问真实套餐与登录服务。
   "conversation-session-create-telemetry.test.ts",
   "conversation-session-automation-run-title-stable.test.ts",
-  "coding-plan-team-usage.test.ts",
-  "coding-plan-entitlement-presentation.test.ts",
-  "provider-family-responsive.test.ts",
   "provider-builtin-refresh-failure.test.ts",
-  // Bugfix：登录后刷新子代理 catalog 的 case 与套餐用量 case 共用 team mock。
-  // 抽取 spec 判定时必须保留该入口，否则单跑时 worker 会在业务断言前缺少 mock。
-  "subagent-coding-plan-login-catalog-stale.test.ts",
   "conversation-session-model-provider-restart-recovery.test.ts",
   "conversation-session-model-provider-settings-transition.test.ts",
   "conversation-session-model-provider-effective-selection.test.ts",
@@ -63,7 +57,6 @@ const CODING_PLAN_TEAM_SPEC_MARKERS = [
   "conversation-session-highspeed-card-fallback-unlocks-model.test.ts",
   "conversation-session-highspeed-card-admission-retains-draft.test.ts",
   "conversation-session-highspeed-queue-edit.test.ts",
-  "conversation-session-model-provider-plan-surface.test.ts",
   // Bug 原因：连续切模回放也播种了模拟登录态；未隔离控制面时，线上 401
   // 会触发登录过期弹窗，遮住第二轮的模型菜单，导致与切模无关的失败。
   "conversation-session-active-model-context.test.ts",

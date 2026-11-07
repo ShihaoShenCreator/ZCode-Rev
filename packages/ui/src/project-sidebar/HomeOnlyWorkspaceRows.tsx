@@ -5,7 +5,7 @@ import {
   isWebRemoteControlBridgeableWorkspaceTarget,
   resolveWebRemoteControlWorkspaceKey,
   type WebRemoteControlWorkspaceTarget,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { toast } from "@/components/ui/toast.js";
 import { cn } from "@/components/lib/utils.js";

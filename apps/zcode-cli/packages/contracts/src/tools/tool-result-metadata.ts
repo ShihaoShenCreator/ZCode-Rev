@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { PersistedToolSearchContentSchema } from "./tool-search.js";
-import { OFFICIAL_MCP_TOOL_ERROR_CODES } from "@zcode/shared";
+import { OFFICIAL_MCP_TOOL_ERROR_CODES } from "@s-agent/shared";
 import {
   MCP_APPS_RESOURCE_URI_MAX_CHARS,
   MCP_APPS_CONTENT_MAX_BYTES,
@@ -8,7 +8,7 @@ import {
   MCP_APPS_SURFACE_ID_MAX_CHARS,
   MCP_APPS_SURFACE_ID_PATTERN,
   MCP_APPS_WIDGET_META_MAX_BYTES,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 
 import {
   CREATE_WORKFLOW_DISPLAY_MAX_DIAGNOSTICS,
@@ -194,7 +194,7 @@ export const nodeReplImageToolResultDisplayPayloadSchema = z
 
 /**
  * 插件 UI 元数据。
- * contracts 仍在 zod v3，无法直接复用 `@zcode/shared/mcp-apps` 的 zod v4 schema 对象，这里按同一常量
+ * contracts 仍在 zod v3，无法直接复用 `@s-agent/shared/mcp-apps` 的 zod v4 schema 对象，这里按同一常量
  * 手写一份；字段集合与 `mcpToolDisplayUiSchema` 必须一致，由 core/tests/mcp-ui-display.test.ts 用同一
  * fixture 双侧 parse 锁住。
  */
@@ -240,13 +240,13 @@ export const mcpToolResultDisplayPayloadSchema = z
     /**
      * 官方 Server MCP 判定本次调用不可用时下发的结构化标识（额度耗尽 / 无 Coding Plan）。
      * 只在 tool result 为 isError 且该 MCP 为官方来源时出现，UI 据此在输入框上方提示。
-     * 与 code 同源：`@zcode/shared` 的 OFFICIAL_MCP_TOOL_ERROR_CODES。
+     * 与 code 同源：`@s-agent/shared` 的 OFFICIAL_MCP_TOOL_ERROR_CODES。
      */
     unavailable: z
       .object({ code: z.enum(OFFICIAL_MCP_TOOL_ERROR_CODES) })
       .strict()
       .optional(),
-    // 与 `@zcode/shared` v4 toolDisplay 的 mcp_tool.ui 同步；两侧都是 strict，缺一处会被 zod 静默 strip。
+    // 与 `@s-agent/shared` v4 toolDisplay 的 mcp_tool.ui 同步；两侧都是 strict，缺一处会被 zod 静默 strip。
     ui: mcpToolDisplayUiPayloadSchema.optional(),
   })
   .strict();

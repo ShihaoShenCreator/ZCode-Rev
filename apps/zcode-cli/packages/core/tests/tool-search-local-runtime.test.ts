@@ -10,7 +10,7 @@ import {
   type ModelRequest,
   type ModelResult,
   type ToolSearchMode,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../../adapters/src/storage/session-store/sqlite-session-store.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestModelFactory } from "./test-runtime-model.js";

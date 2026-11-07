@@ -1,5 +1,5 @@
 import { requestSecurityMessagesEnUS } from "@/request-security-edition/messages.js";
-/* eslint-disable max-lines -- 19 个差分 case 的受控输入必须集中保存，避免新旧驱动各自复制后悄悄漂移。 */
+/* eslint-disable max-lines -- 18 个差分 case 的受控输入必须集中保存，避免新旧驱动各自复制后悄悄漂移。 */
 
 export type ParityModelStatus =
   | "model_request_started"
@@ -188,7 +188,6 @@ export type ConversationTelemetryParityOperation =
       reaction: "like" | "dislike" | "none";
       scope?: string;
     }
-  | { kind: "quota.assert" }
   | { kind: "verification.assert" }
   | { kind: "scope.dispose"; scope?: string }
   | { kind: "web.noop"; operations: ConversationTelemetryParityOperation[] };
@@ -1189,14 +1188,6 @@ function buildScenarios(): ConversationTelemetryParityScenario[] {
       "toggle-none",
       "command-failure-rollback",
       "reopen-persisted",
-    ]),
-    scenario("TDP16", [{ kind: "quota.assert" }], {}, {}, [
-      "quota-banner",
-      "dismiss",
-      "blocking-and-nonblocking",
-      "entitlement-refresh",
-      "upgrade-context",
-      "purchase-events-pruned",
     ]),
     scenario("TDP17", [{ kind: "verification.assert" }, ...tdp17], {}, { chat_error_banner: 1 }, [
       "visible-3007",

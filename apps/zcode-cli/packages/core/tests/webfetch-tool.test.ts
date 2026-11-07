@@ -9,7 +9,7 @@ import {
   type HttpClientResponse,
   type Model,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   clearWebFetchCacheForTests,
   webFetchHandler,

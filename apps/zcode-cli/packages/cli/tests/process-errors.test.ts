@@ -4,7 +4,7 @@ import { once } from "node:events";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { Writable } from "node:stream";
-import { parseZCodeProcessDiagnostic } from "@zcode/shared/process-diagnostic";
+import { parseZCodeProcessDiagnostic } from "@s-agent/shared/process-diagnostic";
 import { isProtocolServerInvocation } from "../src/arguments.js";
 import { interceptKnownRuntimeWarnings } from "../src/runtime-warnings.js";
 import { installProtocolStderrBoundary } from "../src/protocol-stderr.js";

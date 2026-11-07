@@ -10,7 +10,7 @@ import {
   type HookExecutionDescriptor,
   type HookRunLifecyclePayload,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createConfiguredHookRunner,
   createInMemoryHookRunner,

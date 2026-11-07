@@ -43,7 +43,7 @@ M2 已经基本完成 Provider 事实来源切换。Official、Personal 与 Acco
 | 测试 | 15,441 | 28,237 |
 | Markdown 文档 | 10,036 | 1,053 |
 
-新增生产内容中，`@zcode/provider`、`@zcode/provider-node` 与 Official Config 共 `6,436` 行，其中纯领域与 Node Source/Repository 实现为 `4,120` 行，Official Config 为 `2,316` 行。这部分构成 M2 最集中的新设计骨架。
+新增生产内容中，`@s-agent/provider`、`@s-agent/provider-node` 与 Official Config 共 `6,436` 行，其中纯领域与 Node Source/Repository 实现为 `4,120` 行，Official Config 为 `2,316` 行。这部分构成 M2 最集中的新设计骨架。
 
 ## 已经切干净的事实链路
 

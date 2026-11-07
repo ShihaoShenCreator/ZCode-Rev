@@ -1,9 +1,9 @@
-import { getCapturedZCodeAgentTelemetryEnv } from "@zcode/shared";
+import { getCapturedZCodeAgentTelemetryEnv } from "@s-agent/shared";
 import {
   prepareModelTelemetryEnv,
   shutdownPreparedModelTelemetry,
   type PrepareModelTelemetryOptions,
-} from "@zcode/telemetry";
+} from "@s-agent/telemetry";
 
 /**
  * 官方 CLI 异步入口在创建同步 App 之前调用；只把准备出的 device MID 放回业务 env，

@@ -9,8 +9,8 @@ import {
   ProviderRegistry,
   parsePersonalProviderConfigMap,
   parsePersonalModelConfigRules,
-} from "@zcode/provider";
-import { decodeZCodeBuiltinRelease } from "@zcode/provider-node";
+} from "@s-agent/provider";
+import { decodeZCodeBuiltinRelease } from "@s-agent/provider-node";
 
 const nonempty = z.string().trim().min(1);
 const ids = z

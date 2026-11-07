@@ -1,5 +1,5 @@
-import type { WebRemoteControlStatus, WebRemoteControlFailure } from "@zcode/shared";
-import { resolveWebRemoteControlWorkspaceKey } from "@zcode/shared";
+import type { WebRemoteControlStatus, WebRemoteControlFailure } from "@s-agent/shared";
+import { resolveWebRemoteControlWorkspaceKey } from "@s-agent/shared";
 import type { useZCodeIntl } from "@/i18n/IntlProvider.js";
 
 export function isSameWebRemoteControlTarget(

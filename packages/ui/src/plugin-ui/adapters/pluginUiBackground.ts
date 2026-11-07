@@ -1,5 +1,5 @@
-import type { IServiceAccessor } from "@zcode/services";
-import { isRemoteWorkspaceIdentity, type IPlatformService } from "@zcode/shared";
+import type { IServiceAccessor } from "@s-agent/services";
+import { isRemoteWorkspaceIdentity, type IPlatformService } from "@s-agent/shared";
 import { logger } from "@/logger.js";
 import { buildPluginUiSurfaceKey } from "@/plugin-ui/contract.js";
 import { resolvePluginUiLogicalScope } from "@/plugin-ui/domain/pluginUiLogicalScope.js";

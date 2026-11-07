@@ -1,4 +1,4 @@
-import { BACKGROUND_BASH_OUTPUT_MAX_BYTES, type BackgroundBashOutputResult } from "@zcode/shared";
+import { BACKGROUND_BASH_OUTPUT_MAX_BYTES, type BackgroundBashOutputResult } from "@s-agent/shared";
 import { readBashOutput } from "./bash-file-output.js";
 import { NodeExecutionAdapterRun } from "./node-execution-adapter-run.js";
 import {
@@ -17,7 +17,7 @@ import type {
   ExecutionRequest,
   ExecutionResult,
   ExecutionRunOptions,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export class NodeExecutionAdapterLifecycle extends NodeExecutionAdapterRun {
   async start(

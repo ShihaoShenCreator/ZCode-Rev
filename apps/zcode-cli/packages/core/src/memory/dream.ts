@@ -1,7 +1,7 @@
 import { mkdir, readFile, stat, unlink, utimes, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import type { ModelToolCall } from "@zcode/contracts";
+import type { ModelToolCall } from "@s-agent/contracts";
 
 import { analyzeBashCommand } from "../tool/handlers/bash-command-parser.js";
 import { resolveContainedMemoryFilePath } from "./memory-file-path.js";

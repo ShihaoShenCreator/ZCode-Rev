@@ -4,8 +4,8 @@ import {
   ModelErrorCode,
   type ModelNetworkStatusEvent,
   type SessionEvent,
-} from "@zcode/contracts";
-import { uuidv7 } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { uuidv7 } from "@s-agent/shared";
 import { ConversationTelemetryFactNormalizer } from "../src/zcode-protocol-v4/conversation-telemetry-facts.js";
 
 import {

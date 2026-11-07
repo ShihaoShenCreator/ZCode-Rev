@@ -1,4 +1,4 @@
-import { createRemoteConversationTelemetryDispatcher } from "@zcode/shared/conversation-telemetry";
+import { createRemoteConversationTelemetryDispatcher } from "@s-agent/shared/conversation-telemetry";
 import { installRequestSecurityDiagnostics } from "./request-security-edition/index.js";
 import { createLocalTtftExporter } from "./localTtftExporter.js";
 /* eslint-disable max-lines */
@@ -71,7 +71,7 @@ import {
   migrateApplicationStorage,
   resolveDefaultZCodeAgentCommand,
   startupStorage,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import {
   desktopMenuMessageIds,
   type Locale,
@@ -93,7 +93,7 @@ import {
   type TelemetryEventPayload,
   HostMessageTypes,
   InternalChannels,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger, webRemoteControlRelayLogger, flushLocalTtftLogs } from "./logger.js";
 import { markMainLaunchAppReady } from "./desktopLaunchMarks.js";
 import { createCuaPipFocusRouter, resolveCuaPipWindowKey } from "./cuaPipFocusRouter.js";
@@ -274,7 +274,7 @@ import {
   createEmbeddedBrowserPermissionUiBridge,
   setActiveEmbeddedBrowserPermissionUiBridge,
 } from "./embeddedBrowserPermissionUiBridge.js";
-import { mapZCodeEnvToArmsRumEnv } from "@zcode/shared";
+import { mapZCodeEnvToArmsRumEnv } from "@s-agent/shared";
 import {
   findWindowsProcessesReferencingResourceMarkers,
   probeWindowsPackagedResourceWritable,

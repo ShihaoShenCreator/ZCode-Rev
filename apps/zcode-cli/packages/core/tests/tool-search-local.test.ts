@@ -5,7 +5,7 @@ import {
   DeferredToolCallInputSchema,
   TodoWriteInputSchema,
   type ToolSearchExecutionContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { RuntimeMessageEntry } from "../src/agent/message-history.js";
 import { buildToolExposure } from "../src/tool/search/exposure.js";
 import { createToolRegistry } from "../src/tool/registry.js";

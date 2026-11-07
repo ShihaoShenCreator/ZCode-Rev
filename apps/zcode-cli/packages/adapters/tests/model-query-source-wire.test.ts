@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { ModelNetworkStatusEvent, ModelRequestSessionType } from "@zcode/contracts";
+import type { ModelNetworkStatusEvent, ModelRequestSessionType } from "@s-agent/contracts";
 import { TestAiSdkModelAdapter, TestProviderConfigFixture } from "./test-provider-config.js";
 import { executeAdapterGenerateText, executeAdapterStreamText } from "./test-adapter-model.js";
 

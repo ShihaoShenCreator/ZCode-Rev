@@ -2,7 +2,7 @@
 
 > 后续裁决：本文保留原分支的设计与审查历史；“获取失败 → 重新登录”及 §7.2 的候选方案已由 [Provider Refactor Todo114](../working-memory/provider-refactor/steps/todo-114-account-status-sync-and-key-retry.md)（上游原 Todo105）取代。当前按该 Todo 补齐同步协议、统一两家缺 Key 分类，并复用刷新重试。
 
-> 状态：spec（待决策/待实现）
+> 状态：已退役，仅保留历史设计与审查记录；当前 S-Agent 不提供本文所述的 Z.AI/BigModel 账号连接。
 > 日期：2026-09-10
 > 相关：`docs/coding-plan/zai-bigmodel-team-plan-symmetry.md`、`packages/services/src/model-provider/codingPlanProviderAvailability.ts`、`packages/provider/src/account-provider-state.ts`、`packages/ui/src/settings/model-provider-section/providerFamilyConnectionVisibility.ts`
 

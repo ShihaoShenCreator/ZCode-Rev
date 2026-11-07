@@ -11,8 +11,8 @@ import {
   createCoreError,
   type TraceContext,
   type WorkflowInput,
-} from "@zcode/contracts";
-import type { ModelMessageContent } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import type { ModelMessageContent } from "@s-agent/contracts";
 import type { ToolEntry, ToolHandler } from "../types.js";
 import { WORKFLOW_TOOL_DESCRIPTION } from "./workflow-description.js";
 import { assertNotOffPeakTurn } from "./off-peak.js";

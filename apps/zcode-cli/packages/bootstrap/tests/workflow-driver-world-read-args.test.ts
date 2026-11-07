@@ -9,13 +9,13 @@
  * 或者下一步新增 op 时忘了在 driver 里接上。
  *
  * 为什么独立成文件而不并入 workflow-driver.test.ts：那份用例经 helpers 在运行时 import
- * `@zcode/core`（真实 AgentRuntime）。本文件只碰 driver 端口本身（它对 `@zcode/core` 只有
+ * `@s-agent/core`（真实 AgentRuntime）。本文件只碰 driver 端口本身（它对 `@s-agent/core` 只有
  * 类型导入），因此不依赖模型侧的任何东西。
  */
 
 import { describe, expect, it } from "vitest";
-import type { ExecutionPort, FileSystemPort } from "@zcode/contracts";
-import { InMemoryJournalStore, type WorkflowReportSink } from "@zcode/dynamic-workflow";
+import type { ExecutionPort, FileSystemPort } from "@s-agent/contracts";
+import { InMemoryJournalStore, type WorkflowReportSink } from "@s-agent/dynamic-workflow";
 import { createWorkflowEscalationRegistry } from "../src/app/workflow-escalation-registry.js";
 import { createAgentRuntimeWorkflowDriver } from "../src/app/workflow-driver.js";
 

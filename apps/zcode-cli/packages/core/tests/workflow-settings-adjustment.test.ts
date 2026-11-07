@@ -6,7 +6,7 @@ import {
   createToolCallId,
   type DynamicWorkflowRunPort,
   type ModelCatalogPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { applyPermissionInputAdjustments } from "../src/tool/executor/permission-input-adjustments.js";
 import type { ToolExecutorDeps } from "../src/tool/executor/types.js";
 import {

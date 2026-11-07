@@ -28,7 +28,7 @@ import {
   type ModelCatalogPort,
   type SessionEvent,
   type SessionInfo,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../src/index.js";
 import { createRuntimeCommandId } from "../src/runtime/command-queue.js";
 import { drainPendingRuntimeCommandsForActiveLoop } from "../src/runtime/methods/runtime-command-active-loop.js";

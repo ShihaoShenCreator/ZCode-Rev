@@ -4,7 +4,7 @@ import { windowsExecutableCandidates } from "./windows-executable.js";
 import {
   type ExecutionShellDialect,
   type ExecutionShellSelection,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 type PosixShellKind = "bash" | "zsh";
 type ExecutableCheck = (path: string) => boolean;

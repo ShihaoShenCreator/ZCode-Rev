@@ -1,4 +1,4 @@
-# @zcode/prompt-trajectory
+# @s-agent/prompt-trajectory
 
 Test-only OpenAI protocol trajectory recorder for zcode-cli prompt assembly checks.
 
@@ -32,23 +32,23 @@ Recording rules:
 ## Commands
 
 ```bash
-pnpm --filter @zcode/bootstrap^... build
-pnpm --filter @zcode/bootstrap build
+pnpm --filter @s-agent/bootstrap^... build
+pnpm --filter @s-agent/bootstrap build
 
-pnpm --filter @zcode/prompt-trajectory record -- \
+pnpm --filter @s-agent/prompt-trajectory record -- \
   --fixture fixtures/prompt/basic-live.json \
   --out /tmp/zcode-prompt-trajectory/basic-live
 
-pnpm --filter @zcode/prompt-trajectory record:prompt -- \
+pnpm --filter @s-agent/prompt-trajectory record:prompt -- \
   --prompt "Say hello in one short sentence."
 
-pnpm --filter @zcode/prompt-trajectory run:testcases -- \
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- \
   --cases testcases
 
-pnpm --filter @zcode/prompt-trajectory derive -- \
+pnpm --filter @s-agent/prompt-trajectory derive -- \
   --out /tmp/zcode-prompt-trajectory/basic-live
 
-pnpm --filter @zcode/prompt-trajectory model-io -- \
+pnpm --filter @s-agent/prompt-trajectory model-io -- \
   --input ~/.zcode/cli/rollout/model-io-<session>.jsonl \
   --out /tmp/zcode-prompt-trajectory/model-io-session
 ```
@@ -132,7 +132,7 @@ For ToolSearch-only synthesis, `model-io` and `derive` accept
 `--ignore-tool-search-changes` (off by default):
 
 ```bash
-pnpm --filter @zcode/prompt-trajectory model-io -- \
+pnpm --filter @s-agent/prompt-trajectory model-io -- \
   --input /path/to/model-io-session.jsonl --out /tmp/toolsearch-synthesis \
   --ignore-tool-search-changes
 ```

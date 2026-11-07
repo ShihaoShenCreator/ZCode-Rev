@@ -3,11 +3,11 @@ import {
   ZCODE_CUA_OFFICIAL_PLUGIN_ID,
   ZCODE_CUA_PLUGIN_AUTHORITY_ENV_KEY,
   ZCODE_PLUGIN_ID_ENV_KEY,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { registerMcpTools, traceContextToLogContext } from "../deps.js";
 import type { McpConnectionSnapshot, McpServerConfig, TraceContext } from "../deps.js";
 import type { AgentRuntimeInternal } from "../internal.js";
-import type { McpToolDescriptor, PluginReferenceCatalog } from "@zcode/contracts";
+import type { McpToolDescriptor, PluginReferenceCatalog } from "@s-agent/contracts";
 
 const MCP_SESSION_OAUTH_AUTHORIZATION_TIMEOUT_MS = 15_000;
 

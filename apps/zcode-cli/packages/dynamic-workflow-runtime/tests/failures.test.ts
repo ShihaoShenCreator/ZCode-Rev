@@ -6,7 +6,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { InMemoryJournalStore, WorkflowError, type Caps, type RunSettlement } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore, WorkflowError, type Caps, type RunSettlement } from "@s-agent/dynamic-workflow";
 import { runWorkflowScript } from "../src/index.js";
 import { AutoDriver } from "./auto-driver.js";
 import { TEST_CWD } from "./helpers.js";

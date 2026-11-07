@@ -1,5 +1,5 @@
 {
-  "name": "@zcode/shared",
+  "name": "@s-agent/shared",
   "private": true,
   "type": "module",
   "imports": {
@@ -41,7 +41,7 @@
     "lint:fix": "oxlint --fix"
   },
   "dependencies": {
-    "@zcode/model-option-map": "workspace:*",
+    "@s-agent/model-option-map": "workspace:*",
     "zod": "4.6.5"
   },
   "devDependencies": {

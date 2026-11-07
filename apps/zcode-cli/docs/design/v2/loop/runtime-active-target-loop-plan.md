@@ -614,15 +614,15 @@ cd apps/zcode-cli
 
 ```bash
 cd apps/zcode-cli
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/bootstrap typecheck
-pnpm --filter @zcode/core lint
-pnpm --filter @zcode/bootstrap lint
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/bootstrap typecheck
+pnpm --filter @s-agent/core lint
+pnpm --filter @s-agent/bootstrap lint
 ```
 
 通过标准：
 
-- `@zcode/core` / `@zcode/bootstrap` typecheck 通过。
+- `@s-agent/core` / `@s-agent/bootstrap` typecheck 通过。
 - full lint 当前仍被仓库既有 `max-lines` 规则阻塞；本次改动文件的 focused lint 除 `max-lines` 外没有新增问题。
 
 - [x] 运行 diff hygiene。

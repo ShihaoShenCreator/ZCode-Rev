@@ -1,4 +1,4 @@
-import { ServiceChannels } from "@zcode/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import { createServiceDescriptor } from "../descriptors.js";
 import type {
   ZCodeConfigOption,
@@ -13,7 +13,7 @@ import type {
   BotWorkspaceRef,
   BotsConfigFile,
   ZCodeAutomationBotDeliveryTarget,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ZCodeAgentAppRuntimePreferences } from "../zcode-agent/zcodeAgent.js";
 
 export interface BotCreateBindCodeParams {
@@ -128,14 +128,14 @@ export type BotFeishuRegistrationPollResult =
 
 export interface IBotsService {
   replyToChannel?(
-    params: import("@zcode/shared").ChannelReplyHostRequest,
-  ): Promise<import("@zcode/shared").ChannelReplyResult>;
+    params: import("@s-agent/shared").ChannelReplyHostRequest,
+  ): Promise<import("@s-agent/shared").ChannelReplyResult>;
   validateTopicResource?(
     params: import("#src/bots/topicResource.js").TopicResourceRequest,
   ): Promise<void>;
   readTopicResource?(
     params: import("#src/bots/topicResource.js").TopicResourceRequest,
-  ): Promise<import("@zcode/shared").ZCodePromptAttachment>;
+  ): Promise<import("@s-agent/shared").ZCodePromptAttachment>;
   /**
    * 将 App 全局交互偏好同步给 Bot 已持有的远端 runtime；不得为此建立新的远端连接。
    */
@@ -193,13 +193,13 @@ export interface IBotsService {
     deliveryId: string;
     threadId?: string;
     received: boolean;
-  }): Promise<import("@zcode/shared").BotGroupDelivery>;
+  }): Promise<import("@s-agent/shared").BotGroupDelivery>;
   resendGroupResult?(params: {
     botId: string;
     chatId: string;
     deliveryId: string;
     threadId?: string;
-  }): Promise<import("@zcode/shared").BotGroupDelivery>;
+  }): Promise<import("@s-agent/shared").BotGroupDelivery>;
   retryPrivateDelivery?(params: { botId: string; deliveryId: string }): Promise<void>;
   resetBotState(contextKey: string): Promise<void>;
   /** 在 automation prompt 派发前订阅终态，并把结果回推到创建它的 Bot 会话。 */
@@ -218,7 +218,7 @@ export const IBotsService = createServiceDescriptor<IBotsService>(ServiceChannel
 export interface BotRemoteWorkspaceResolution {
   workspacePath: string;
   workspaceIdentity: string;
-  target: import("@zcode/shared").RemoteTarget;
+  target: import("@s-agent/shared").RemoteTarget;
   /** 只有当前窗口存在在线 logical session 才有值，用于 attachment 换代隔离。 */
   runtimeKey?: string;
 }

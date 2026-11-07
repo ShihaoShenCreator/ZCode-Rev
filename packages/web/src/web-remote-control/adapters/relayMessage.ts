@@ -1,12 +1,12 @@
 import {
   WEB_REMOTE_CONTROL_RPC_TRANSPORT_LIMITS,
   type WebRemoteControlFailure,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   parseWebRemoteControlRelayV2IncomingMessage,
   type WebRemoteControlRelayV2IncomingMessage,
   type WebRemoteControlRelayV2OutgoingMessage,
-} from "@zcode/shared/web-remote-relay";
+} from "@s-agent/shared/web-remote-relay";
 
 export async function readWebSocketData(data: unknown): Promise<string | null> {
   if (typeof data === "string") {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SESSION_TASK_TYPES } from "@zcode/contracts";
+import { SESSION_TASK_TYPES } from "@s-agent/contracts";
 import { isTaskListSessionType } from "../src/zcode-protocol-v4/task-list-session-membership.js";
 
 describe("task-list session membership", () => {

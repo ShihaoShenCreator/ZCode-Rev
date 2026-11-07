@@ -10,8 +10,8 @@ import {
   type SessionId,
   type TraceContext,
   type WorkflowAgentCallInput,
-} from "@zcode/contracts";
-import type { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import type { AgentRuntime } from "@s-agent/core";
 import type { PrepareUserExecutionBoundary } from "./types.js";
 import { readWorkflowScriptDocument, stableHash } from "./script-workflow-meta.js";
 import { prepareScriptWorkflowRun } from "./script-workflow-prepare.js";

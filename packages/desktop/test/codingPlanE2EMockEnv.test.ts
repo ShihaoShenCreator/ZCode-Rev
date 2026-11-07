@@ -120,11 +120,6 @@ describe("Coding Plan E2E mock env", () => {
       ]),
     ).toBe(true);
   });
-  it("prepares account APIs for the formal real-app provider responsive case", () => {
-    expect(shouldPrepareCodingPlanTeamMock(["./test/e2e/provider-family-responsive.test.ts"])).toBe(
-      true,
-    );
-  });
   it.each([
     "conversation-session-highspeed-card.test.ts",
     "conversation-session-highspeed-card-draw-timeout.test.ts",
@@ -167,12 +162,7 @@ describe("Coding Plan E2E mock env", () => {
     expect(environment.ZCODE_E2E_CODING_PLAN_MOCK_URL).toBe(upgradeBaseUrl);
   });
 
-  it("prepares the team mock for targeted login, provider transition, and off-peak cases", () => {
-    expect(
-      shouldPrepareCodingPlanTeamMock([
-        "./test/e2e/subagents/subagent-coding-plan-login-catalog-stale.test.ts",
-      ]),
-    ).toBe(true);
+  it("prepares the team mock for provider transition and off-peak cases", () => {
     expect(
       shouldPrepareCodingPlanTeamMock([
         "./test/e2e/conversation-session/conversation-session-model-provider-settings-transition.test.ts",

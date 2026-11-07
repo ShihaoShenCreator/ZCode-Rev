@@ -3,7 +3,7 @@ import {
   zcodeProviderUpdateAccountConfigParamsSchema,
   type ZCodeProviderRefreshRegistryResult,
   type ZCodeProviderUpdateAccountConfigResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { parseProcessAccountProviderConfigSnapshot } from "../app/process-provider-registry-runtime.js";
 import {
   parseParams,

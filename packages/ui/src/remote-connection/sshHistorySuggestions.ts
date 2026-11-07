@@ -1,4 +1,4 @@
-import type { RemoteWorkspaceSessionEntry } from "@zcode/shared";
+import type { RemoteWorkspaceSessionEntry } from "@s-agent/shared";
 
 interface SshConnectionHistorySuggestions {
   hosts: string[];

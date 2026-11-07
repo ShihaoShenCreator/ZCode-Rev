@@ -5,14 +5,14 @@ import {
   createModelProviderId,
   WEBSEARCH_PROVIDER_NATIVE_SPEC,
   WEBSEARCH_TOOL_CONTRACT,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createRegistryModelConfig,
   createRegistryProviderConfig,
   parseModelConfig,
   parseProviderConfig,
   parseZCodeBuiltinModelConfigRules,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { buildProviderRequestMessages } from "../../core/src/runtime/helpers/provider-request-messages.js";
 import { AiSdkModelAdapter } from "../src/model/runner.js";
 

@@ -13,7 +13,7 @@ import {
   type HttpClientRequest,
   type HttpClientResponse,
   type HttpClientRunOptions,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   loadTlsCaCertificates,
   resolveProxyForRequest,

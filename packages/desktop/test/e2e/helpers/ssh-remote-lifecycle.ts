@@ -6,7 +6,7 @@ import {
   waitForTaskRowInProject,
 } from "./project-sidebar.js";
 import { removeRemoteProjectEntryForRow } from "./remote-project-handoff-probe.js";
-import { TID_TASK_SETTINGS_BUTTON } from "@zcode/shared/test-ids";
+import { TID_TASK_SETTINGS_BUTTON } from "@s-agent/shared/test-ids";
 import {
   waitForWorkspaceApp,
   switchToWorkspaceRendererWindow,

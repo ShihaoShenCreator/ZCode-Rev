@@ -22,7 +22,7 @@
 
 ---
 
-### Task 1: 共享 launch marks 序列化/解析（`@zcode/shared`）
+### Task 1: 共享 launch marks 序列化/解析（`@s-agent/shared`）
 
 **Files:**
 - Create: `packages/shared/src/launchMarks.ts`
@@ -164,7 +164,7 @@ git commit -m "feat(shared): launch marks 序列化/解析"
 - Test: `packages/ui/test/uiPerfArmsTelemetry.test.ts`
 
 **Interfaces:**
-- Consumes: `LaunchMarks` from `@zcode/shared`（Task 1）
+- Consumes: `LaunchMarks` from `@s-agent/shared`（Task 1）
 - Produces:
   - 常量 `LAUNCH_TO_INPUT_SANITY_MAX_MS = 300000`
   - 事件名常量：`UI_PERF_EVENT_LAUNCH_TO_INPUT="perf_ui_launch_to_input"`、`UI_PERF_EVENT_LAUNCH_ELECTRON_INIT="perf_ui_launch_electron_init_ms"`、`UI_PERF_EVENT_LAUNCH_APP_READY="perf_ui_launch_app_ready_ms"`、`UI_PERF_EVENT_LAUNCH_WINDOW="perf_ui_launch_window_ms"`、`UI_PERF_EVENT_LAUNCH_RENDERER_LOAD="perf_ui_launch_renderer_load_ms"`、`UI_PERF_EVENT_LAUNCH_REACT_COMMIT="perf_ui_launch_react_commit_ms"`、`UI_PERF_EVENT_LAUNCH_STARTUP_GATE="perf_ui_launch_startup_gate_ms"`
@@ -178,7 +178,7 @@ git commit -m "feat(shared): launch marks 序列化/解析"
 
 ```ts
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { ArmsCustomEventPayload } from "@zcode/shared";
+import type { ArmsCustomEventPayload } from "@s-agent/shared";
 import {
   LAUNCH_TO_INPUT_SANITY_MAX_MS,
   STREAM_STALL_REPORT_THRESHOLD_MS,
@@ -363,7 +363,7 @@ Expected: FAIL（`reportUiLaunchToInput` / 新常量未导出）
 3a. 顶部 import 增加 `LaunchMarks` 类型：
 
 ```ts
-import type { ArmsCustomEventPayload, IPlatformService, LaunchMarks } from "@zcode/shared";
+import type { ArmsCustomEventPayload, IPlatformService, LaunchMarks } from "@s-agent/shared";
 ```
 
 3b. 删除第 6 行 `export const UI_PERF_EVENT_FIRST_SCREEN = "perf_ui_first_screen";`，替换为新事件名 + 哨兵常量：
@@ -466,7 +466,7 @@ git commit -m "feat(ui): 启动到能输入 7 段上报,废弃 perf_ui_first_scr
 - Modify: `packages/desktop/src/main/desktopHostProcess.ts:86-112`（loadWindow 内记 T3、拼 query）
 
 **Interfaces:**
-- Consumes: `serializeLaunchMarks`, `LAUNCH_MARKS_QUERY_KEY`, `LaunchMarks` from `@zcode/shared`（Task 1）
+- Consumes: `serializeLaunchMarks`, `LAUNCH_MARKS_QUERY_KEY`, `LaunchMarks` from `@s-agent/shared`（Task 1）
 - Produces: `getMainLaunchPartialMarks(): { createdAt: number; mainStart: number; appReady: number }`（供 loadWindow 调用）
 
 > 说明：`additionalArguments` 在 `BrowserWindow` 构造时固定，而 T3 在更晚的 `loadWindow` 才产生，故四个 marks 统一走 loadURL query（renderer 单点读取）。此任务无独立单测（Electron 主进程时序难纯函数化），靠 Task 1 的序列化单测 + Task 6 本地验证覆盖。
@@ -476,7 +476,7 @@ git commit -m "feat(ui): 启动到能输入 7 段上报,废弃 perf_ui_first_scr
 在 `packages/desktop/src/main/index.ts` 模块顶部 import 区之后、其它初始化之前，加入：
 
 ```ts
-import { serializeLaunchMarks, type LaunchMarks } from "@zcode/shared";
+import { serializeLaunchMarks, type LaunchMarks } from "@s-agent/shared";
 
 // 启动计时(epoch ms):T0 进程创建 / T1 main JS / T2 whenReady。T3 在 loadWindow 记。
 const launchCreatedAt = process.getCreationTime() ?? Date.now();
@@ -488,7 +488,7 @@ export function getMainLaunchPartialMarks(): Omit<LaunchMarks, "loadUrl"> {
 }
 ```
 
-（若文件已 import `@zcode/shared` 的其它符号，合并到同一 import；`serializeLaunchMarks` 实际在 desktopHostProcess 用，这里仅需 `LaunchMarks` 类型——按需保留类型导入。）
+（若文件已 import `@s-agent/shared` 的其它符号，合并到同一 import；`serializeLaunchMarks` 实际在 desktopHostProcess 用，这里仅需 `LaunchMarks` 类型——按需保留类型导入。）
 
 - [ ] **Step 2: whenReady 回调入口记 T2**
 
@@ -506,7 +506,7 @@ export function getMainLaunchPartialMarks(): Omit<LaunchMarks, "loadUrl"> {
 import {
   LAUNCH_MARKS_QUERY_KEY,
   serializeLaunchMarks,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { getMainLaunchPartialMarks } from "./index.js";
 ```
 
@@ -544,7 +544,7 @@ git commit -m "feat(desktop): main 采集 T0-T3 经 loadURL query 注入"
 - Modify: `packages/desktop/src/renderer/src/main.tsx`
 
 **Interfaces:**
-- Consumes: `parseLaunchMarks`, `LAUNCH_MARKS_QUERY_KEY`, `LaunchMarks` from `@zcode/shared`
+- Consumes: `parseLaunchMarks`, `LAUNCH_MARKS_QUERY_KEY`, `LaunchMarks` from `@s-agent/shared`
 - Produces:
   - `window.__ZCODE_LAUNCH_MARKS__: LaunchMarks | null`（从 location query 解析，模块层一次）
   - `window.__ZCODE_RENDERER_START__: number`（T4，模块顶部 Date.now()）
@@ -552,7 +552,7 @@ git commit -m "feat(desktop): main 采集 T0-T3 经 loadURL query 注入"
 
 - [ ] **Step 1: 模块顶部记 T4、解析 marks**
 
-`packages/desktop/src/renderer/src/main.tsx`，import 区把 `reportUiFirstScreen` 从 `@zcode/ui` 移除；从 `@zcode/shared` 增加 `parseLaunchMarks, LAUNCH_MARKS_QUERY_KEY, type LaunchMarks`。在 `startPerformanceTimelineCleanup();`（第 26 行）之前加入：
+`packages/desktop/src/renderer/src/main.tsx`，import 区把 `reportUiFirstScreen` 从 `@s-agent/ui` 移除；从 `@s-agent/shared` 增加 `parseLaunchMarks, LAUNCH_MARKS_QUERY_KEY, type LaunchMarks`。在 `startPerformanceTimelineCleanup();`（第 26 行）之前加入：
 
 ```ts
 // T4:renderer bundle 开始执行。同时从 loadURL query 解析 main 注入的 T0-T3。
@@ -676,7 +676,7 @@ Expected: FAIL（`Cannot find module .../launchToInputReport.js`）
 
 ```ts
 // packages/ui/src/lib/launchToInputReport.ts
-import type { LaunchMarks } from "@zcode/shared";
+import type { LaunchMarks } from "@s-agent/shared";
 
 export function shouldReportLaunchToInput(state: {
   isStartupRenderBlocked: boolean;

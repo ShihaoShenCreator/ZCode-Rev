@@ -9,7 +9,7 @@ import {
   createTraceId,
   type MessageWithParts,
   type ModelRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { MessageHistoryImpl } from "../src/agent/message-history.js";
 import {
   activeSessionMessages,

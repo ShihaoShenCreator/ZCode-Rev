@@ -1,6 +1,6 @@
 import React from "react";
-import type { ModelSelection } from "@zcode/shared";
-import type { SessionEvent, TurnId } from "@zcode/contracts";
+import type { ModelSelection } from "@s-agent/shared";
+import type { SessionEvent, TurnId } from "@s-agent/contracts";
 import { submitDuringActiveTurn, submitIdleTurn } from "./app-submit.js";
 import type {
   DraftAttachment,

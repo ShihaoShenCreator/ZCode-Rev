@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import type { ConversationTopicFrame } from "@zcode/shared/zcode-protocol-v4";
-import { measureTopicNotificationEnvelopeBytes } from "@zcode/shared/zcode-protocol-v4";
+import type { ConversationTopicFrame } from "@s-agent/shared/zcode-protocol-v4";
+import { measureTopicNotificationEnvelopeBytes } from "@s-agent/shared/zcode-protocol-v4";
 import { emitReservedTopicFrame } from "../src/zcode-protocol-v4/v4-gateway.js";
 import type { TopicFrameReservation } from "../src/zcode-protocol-v4/topic-frame-reservation.js";
 

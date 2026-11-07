@@ -1,4 +1,4 @@
-import { OFFICIAL_MCP_AUTH_META_KEY as SHARED_KEY } from "@zcode/shared";
+import { OFFICIAL_MCP_AUTH_META_KEY as SHARED_KEY } from "@s-agent/shared";
 import { describe, expect, it, vi } from "vitest";
 import { createSitesApi, OFFICIAL_MCP_AUTH_META_KEY, readOfficialAuth } from "./api.ts";
 

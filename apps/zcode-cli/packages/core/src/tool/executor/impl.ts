@@ -1,5 +1,5 @@
-import type { TraceContext, TurnId } from "@zcode/contracts";
-import { createRootTraceContext } from "@zcode/contracts";
+import type { TraceContext, TurnId } from "@s-agent/contracts";
+import { createRootTraceContext } from "@s-agent/contracts";
 import { createDenyPermissionBroker } from "../../permission/broker.js";
 import type { ToolSchedule } from "../scheduler.js";
 import type {

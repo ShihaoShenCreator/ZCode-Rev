@@ -9,13 +9,13 @@ import {
   type IPlatformService,
   type RemoteTarget,
   type ZCodePluginsInstallResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   withPluginTelemetry,
   type IDataSyncCategoryService,
   type IPluginManagementService,
   type IServiceAccessor,
-} from "@zcode/services";
+} from "@s-agent/services";
 import { reportAppTelemetryEvent } from "@/lib/appTelemetry.js";
 import { logger } from "@/logger.js";
 import {

@@ -18,7 +18,7 @@ rebase 到最新 staging 后全量单测 **9 失败 / 12444 通过**，无崩溃
 | 跨平台漂移 | 2 | `feedbackHttpClient`、`stdioDesktopPresentationSurface`（见下） |
 | flaky（负载超时） | 1 | `appUsagePanel`，单独运行通过 |
 
-rebase 附带处理：staging 的 CUA 单包合并（broker 51 文件并入 `@zcode/zcode-cua`）
+rebase 附带处理：staging 的 CUA 单包合并（broker 51 文件并入 `@s-agent/zcode-cua`）
 移除了 `launchSocketPath` / `reservedTransport`（rendezvous `.pending` 让渡机制），
 本地 windowsCuaDevHelperHost / node.ts 与相关测试已对齐新 API（Windows named pipe
 无 fs 让渡语义，socketPath 即唯一事实源；caller_timeout 一律 warming up fail-closed）。

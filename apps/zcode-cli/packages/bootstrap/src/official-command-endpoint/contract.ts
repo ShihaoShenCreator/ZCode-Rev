@@ -3,7 +3,7 @@
  * 官方插件命令（如 zcode-site）不持有凭证，经 agent 的本地端点调用 zcode-server；
  * 端点按 session token 认出会话，只放行 OFFICIAL_COMMAND_ROUTES，每个请求向 host 现取身份头。
  */
-import type { ExecutionPort, Logger, OfficialMcpAuthHeadersResult } from "@zcode/contracts";
+import type { ExecutionPort, Logger, OfficialMcpAuthHeadersResult } from "@s-agent/contracts";
 
 /** 放行的路径前缀与它所属的官方插件。只有这里列出的接口能借到用户身份。 */
 export const OFFICIAL_COMMAND_ROUTES: readonly { prefix: string; pluginId: string }[] = [

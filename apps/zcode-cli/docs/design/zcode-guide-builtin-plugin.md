@@ -33,7 +33,7 @@
 ```
 apps/zcode-cli/packages/zcode-guide-plugin/
 ├── .zcode-plugin/plugin.json      # 清单：name=zcode-guide, skills="skills"
-├── package.json                   # @zcode/zcode-guide-plugin（SEA 脚本按 packageName 读取）
+├── package.json                   # @s-agent/zcode-guide-plugin（SEA 脚本按 packageName 读取）
 ├── README.md
 └── skills/
     ├── zcode-configuration-guide/SKILL.md   # 总纲：五类资源位置/优先级 + 路由到诊断技能

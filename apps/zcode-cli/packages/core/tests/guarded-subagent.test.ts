@@ -4,7 +4,7 @@ import {
   SessionEventType,
   type PermissionBrokerRequest,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createManualPermissionBroker } from "../src/permission/broker.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestModelFactory } from "./test-runtime-model.js";

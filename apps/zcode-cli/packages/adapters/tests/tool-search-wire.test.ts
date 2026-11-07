@@ -16,7 +16,7 @@ import { expect, it } from "vitest";
 import { toAiSdkMessages } from "../src/model/transform.js";
 import { toAiSdkTools } from "../src/model/tool-transform.js";
 import { toolSearchHeaders } from "../src/model/tool-search.js";
-import { createSessionId, type Model } from "@zcode/contracts";
+import { createSessionId, type Model } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "../../core/tests/test-agent-runtime.js";
 import { createTestModelFactory } from "../../core/tests/test-runtime-model.js";
 import { createTestSessionEventStore } from "../../core/tests/test-event-store.js";

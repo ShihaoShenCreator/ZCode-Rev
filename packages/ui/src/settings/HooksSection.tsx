@@ -8,8 +8,8 @@ import {
 /* eslint-disable max-lines -- Hooks 页面聚合 Scope、插件投影、搜索与配置写入流程。 */
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { Plus } from "lucide-react";
-import type { Hook, HookConfig, ZCodeInstalledPluginSummary, ZCodePluginInfo } from "@zcode/shared";
-import type { IHooksService } from "@zcode/services";
+import type { Hook, HookConfig, ZCodeInstalledPluginSummary, ZCodePluginInfo } from "@s-agent/shared";
+import type { IHooksService } from "@s-agent/services";
 import { Button } from "@/components/ui/button.js";
 import { toast } from "@/components/ui/toast.js";
 import { useConfirmDialog } from "@/hooks/useConfirmDialog.js";

@@ -10,7 +10,7 @@ import {
   type MessageWithParts,
   type Model,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   INTERRUPT_MARKER_SOURCE,
   isRuntimeAttachmentEntry,

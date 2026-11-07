@@ -1,5 +1,5 @@
-import type { CreateAiSdkModelOptions } from "@zcode/adapters/model";
-import { ModelErrorCode, ModelProtocolError, type Model } from "@zcode/contracts";
+import type { CreateAiSdkModelOptions } from "@s-agent/adapters/model";
+import { ModelErrorCode, ModelProtocolError, type Model } from "@s-agent/contracts";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
@@ -9,7 +9,7 @@ import {
   ProviderRegistry,
   ZhipuAccountAccessConfig,
   type Provider,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { describe, expect, it, vi } from "vitest";
 import { ApiProviderModelRuntime } from "../src/app/provider-registry-model-runtime.js";
 import {

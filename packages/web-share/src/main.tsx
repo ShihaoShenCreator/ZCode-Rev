@@ -15,12 +15,6 @@ import {
 } from "../../web/src/share/conversationShareRoute.js";
 import { resolveWebRemoteControlInitialTheme } from "../../web/src/web-remote-control/adapters/webRemoteControlThemeSeed.js";
 import { createWebAuthService } from "../../web/src/auth/webAuthService.js";
-import {
-  WEB_ZAI_OAUTH_CONFIG,
-  resolveWebAuthDevReturnTo,
-} from "../../web/src/auth/webZaiOAuthConfig.js";
-import { parseOAuthState, resolveSafeAppReturnTo } from "../../web/src/auth/oauthStateCodec.js";
-import { ShareCallbackPage } from "./ShareAuthPages.js";
 
 const root = createRoot(document.getElementById("root")!);
 const webAuthService = createWebAuthService();
@@ -44,21 +38,18 @@ function isOAuthCallback(): boolean {
 }
 
 function renderCallback(): void {
-  const state = parseOAuthState(new URLSearchParams(window.location.search).get("state") ?? "");
-  const retryTarget = resolveSafeAppReturnTo(state?.app_return_to) ?? "/share";
+  const locale = resolveConversationShareRouteLocale(window.location.pathname);
+  document.documentElement.lang = locale;
+  document.title = locale === "zh-CN" ? "S-Agent 会话分享" : "S-Agent Conversation Share";
   root.render(
-    <ShareCallbackPage
-      authService={webAuthService}
-      onSuccess={({ appReturnTo }) => window.location.replace(appReturnTo ?? "/share")}
-      onRetry={() => window.location.replace(retryTarget)}
-    />,
+    <ConversationShareLandingStatus state={{ kind: "login_required" }} locale={locale} />,
   );
 }
 
 async function renderShare(): Promise<void> {
   const locale = resolveConversationShareRouteLocale(window.location.pathname);
   document.documentElement.lang = locale;
-  document.title = locale === "zh-CN" ? "ZCode 会话分享" : "ZCode Conversation Share";
+  document.title = locale === "zh-CN" ? "S-Agent 会话分享" : "S-Agent Conversation Share";
 
   const shareCode = resolveConversationShareCodeFromPath(window.location.pathname);
   if (!shareCode) {
@@ -90,19 +81,6 @@ async function renderShare(): Promise<void> {
       shareCode={shareCode}
       client={client}
       getAccessToken={() => getMockToken() ?? webAuthService.getZCodeJwtToken()}
-      onLogin={(provider) => {
-        if (mockMode) {
-          window.sessionStorage.setItem("zcode:share:mock-auth", "owner");
-          window.location.reload();
-          return;
-        }
-        webAuthService.startLogin({
-          provider,
-          appReturnTo: window.location.href,
-          redirectUri: WEB_ZAI_OAUTH_CONFIG.shareRedirectUri,
-          devReturnTo: resolveWebAuthDevReturnTo(WEB_ZAI_OAUTH_CONFIG, "share"),
-        });
-      }}
       onLogout={() => {
         if (mockMode) window.sessionStorage.removeItem("zcode:share:mock-auth");
         void webAuthService.logout();

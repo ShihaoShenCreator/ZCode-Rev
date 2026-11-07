@@ -2,7 +2,7 @@
 // 门 1 放行 workflow_child 的用量；DynamicWorkflowRunProgress 派生 workflow.lifecycle；
 // 父会话 tool_internal 嵌套用量仍不外送；turn 载荷的 wf 维度透传。
 import { describe, expect, it } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { ConversationTelemetryFactNormalizer } from "../src/zcode-protocol-v4/conversation-telemetry-facts.js";
 
 function event(

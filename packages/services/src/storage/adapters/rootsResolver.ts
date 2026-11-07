@@ -4,7 +4,7 @@
  */
 import { join, resolve } from "node:path";
 import type { RootsResolverPort } from "../app/ports.js";
-import type { StorageRootSpec } from "@zcode/shared";
+import type { StorageRootSpec } from "@s-agent/shared";
 
 export const ZCODE_DATA_DIR_NAME = ".zcode";
 

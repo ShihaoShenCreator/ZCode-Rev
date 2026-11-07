@@ -1,5 +1,5 @@
-import type { ZCodeConfigOption } from "@zcode/shared";
-import type { SessionConfigState } from "@zcode/shared/zcode-protocol-v4";
+import type { ZCodeConfigOption } from "@s-agent/shared";
+import type { SessionConfigState } from "@s-agent/shared/zcode-protocol-v4";
 import { parseModelPickerValue } from "@/lib/zcodeSessionProjection.js";
 
 function resolveModelDisplayValue(

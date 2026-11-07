@@ -3,7 +3,7 @@ import {
   MCP_APPS_SAMPLING_MAX_PER_AGENT,
   MCP_APPS_SAMPLING_MAX_PER_SESSION,
   MCP_APPS_SAMPLING_TIMEOUT_MS,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import { ProtocolRequestError } from "../server-types.js";
 
 type Scope = { token: string; sessionId: string; signal: AbortSignal };

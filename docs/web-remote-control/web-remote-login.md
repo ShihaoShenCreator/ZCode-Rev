@@ -1,5 +1,7 @@
 # Web Remote Login V2
 
+> **已退役（历史设计记录）**：当前 S-Agent 不提供账号登录、OAuth 回调或需账号认证的 Web 远程控制。`/remote/v4` 与旧分享回调只显示登录不可用说明，不读取或交换旧凭据；公开匿名分享仍可访问，私有分享无法通过 Web 登录访问。当前规则以 [S-Agent 品牌与 Provider 去集成规格](../../specs/s-agent-product-and-provider-retirement.md) 为准。以下内容仅保留历史实现背景，不代表当前行为。
+
 `/remote/v4`（含尾斜杠）是手机远控唯一正式 OAuth/二维码入口。手机只使用 Relay V2；`/web-remote`、其回调与等待页、remoteControlToken/relayOrigin bootstrap 已移除。普通 Web + Server 的 `/ws`、`/ws/remote/:id` 保持不变。
 
 ## 入口与认证
@@ -16,7 +18,7 @@
 
 设备列表页与 `device-not-owned` 失败页的“切换账号”共用居中确认弹窗。标题为“切换账号？”，说明为“将退出当前手机网页端账号，返回登录页。电脑端仍保持登录。”，操作为左侧“取消”、右侧“退出并切换”。英文分别为 “Switch account?”、“You will sign out of this mobile web session and return to the sign-in page. Your computer will stay signed in.”、“Cancel” / “Sign out & switch”。按钮使用中性主次样式，不用危险红色。
 
-弹窗开关仅由共享确认组件的 Dialog 持有，不复制认证状态；UI 通过 `@zcode/ui/dialog` 子路径公开现有 Dialog 原语，Web 层组合本功能文案与触发按钮，确认按钮复用 `WebRemoteControlEntry.switchAccount()`。默认焦点在取消，焦点限制在弹窗内；点击取消、遮罩或按 Esc 关闭，焦点回到入口按钮。确认前不清凭据、不切换入口视图、不取消列表请求；确认后沿用原退出与 URL 保留逻辑。401、JWT 缺失等自动失效路径不经过此弹窗。桌面 continuous / 手机 replayable 恢复边界不变。
+弹窗开关仅由共享确认组件的 Dialog 持有，不复制认证状态；UI 通过 `@s-agent/ui/dialog` 子路径公开现有 Dialog 原语，Web 层组合本功能文案与触发按钮，确认按钮复用 `WebRemoteControlEntry.switchAccount()`。默认焦点在取消，焦点限制在弹窗内；点击取消、遮罩或按 Esc 关闭，焦点回到入口按钮。确认前不清凭据、不切换入口视图、不取消列表请求；确认后沿用原退出与 URL 保留逻辑。401、JWT 缺失等自动失效路径不经过此弹窗。桌面 continuous / 手机 replayable 恢复边界不变。
 
 ```text
 手动入口 → Dialog 打开（仍登录）

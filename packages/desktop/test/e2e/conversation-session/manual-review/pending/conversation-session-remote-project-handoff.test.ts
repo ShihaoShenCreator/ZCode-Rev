@@ -4,8 +4,8 @@ import {
   appSettingsSchema,
   ServiceChannels,
   type SourceServerManagementSnapshot,
-} from "@zcode/shared";
-import type { RemoteProjectDirectory } from "@zcode/services";
+} from "@s-agent/shared";
+import type { RemoteProjectDirectory } from "@s-agent/services";
 import { clearAppData, readSettings, seedSettings } from "#e2e/helpers/desktop-app";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";
 import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-electron-reload";

@@ -42,8 +42,8 @@ import type {
   TelemetryIdentitySnapshot,
   ToolExecutionSpanWriter,
   ToolTraceStart,
-} from "@zcode/contracts/telemetry";
-import type { ModelRequestObservation } from "@zcode/contracts/model";
+} from "@s-agent/contracts/telemetry";
+import type { ModelRequestObservation } from "@s-agent/contracts/model";
 import {
   activeWriterContext,
   BaseSpanWriter,

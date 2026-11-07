@@ -1,12 +1,12 @@
 import { randomUUID } from "node:crypto";
-import { isHighspeedProviderId, resolveExecutionState, type ExecutionState } from "@zcode/shared";
+import { isHighspeedProviderId, resolveExecutionState, type ExecutionState } from "@s-agent/shared";
 import { buildExecutionStateEntry, readRuntimeExecutionState } from "../execution-state.js";
 import {
   createModelId,
   createModelProviderId,
   type CreateSessionInput,
   type ForkCommitBundle,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { systemReminderRuntimeMetadata } from "../../agent/message-history.js";
 import {
   CoreErrorType,
@@ -57,7 +57,7 @@ import type {
   WorkspaceForkResult,
 } from "../types.js";
 import { cloneModelSelection } from "../model-selection.js";
-import type { ModelSelection } from "@zcode/contracts";
+import type { ModelSelection } from "@s-agent/contracts";
 
 function stableForkError(message: string, context: Record<string, unknown> = {}): Error {
   return createCoreError(CoreErrorType.InvalidStateTransition, message, {

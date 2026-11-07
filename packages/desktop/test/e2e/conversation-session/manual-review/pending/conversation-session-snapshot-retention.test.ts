@@ -1,7 +1,7 @@
 // 生产 renderer 的独立 CDP E2E；使用 node:test，不能放入 WDIO/Docker preset。
 // 前置：隔离 HOME 中播种 8 个 sess_probe_retention_0..7 已完成会话，启动未开启 E2E bridge 的 App。
 // ZCODE_RETENTION_CDP_URL=http://127.0.0.1:9326 ZCODE_RETENTION_ARTIFACT_DIR=<dir>
-// pnpm --filter @zcode/desktop test:e2e:retention
+// pnpm --filter @s-agent/desktop test:e2e:retention
 import assert from "node:assert/strict";
 import { createWriteStream } from "node:fs";
 import { mkdir, readFile, writeFile, appendFile } from "node:fs/promises";

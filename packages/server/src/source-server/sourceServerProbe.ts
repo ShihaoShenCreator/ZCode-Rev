@@ -2,24 +2,24 @@ import {
   normalizeRemoteArch,
   normalizeRemotePlatform,
   resolveRemotePlatform,
-} from "@zcode/server/remote/detectEnv.js";
-import type { IRemoteBackend } from "@zcode/server/remote/backend.js";
+} from "@s-agent/server/remote/detectEnv.js";
+import type { IRemoteBackend } from "@s-agent/server/remote/backend.js";
 import {
   assertSupportedRemoteEnvironment,
   createUnsupportedRemotePlatformError,
   WINDOWS_NATIVE_REMOTE_UNSUPPORTED_MESSAGE,
-} from "@zcode/server/remote/remotePlatformSupport.js";
+} from "@s-agent/server/remote/remotePlatformSupport.js";
 import {
   collectCommand,
   readLastJsonLine,
   readUniqueVersion,
   throwIfAborted,
-} from "@zcode/server/source-server/sourceServerTransportRuntime.js";
+} from "@s-agent/server/source-server/sourceServerTransportRuntime.js";
 import type {
   SourceServerProbeOptions,
   SourceServerProbeResult,
   TransportContext,
-} from "@zcode/server/source-server/transportAdapter.js";
+} from "@s-agent/server/source-server/transportAdapter.js";
 
 const SERVER_ROOT_SHELL = '"$HOME/.zcode/server"';
 const SERVER_BIN_SHELL = '"$HOME/.zcode/server/bin/zcode"';

@@ -5,7 +5,7 @@ import {
   type ExecutionPort,
   type SessionId,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   loadZCodeCustomCommand,
   type ListZCodeCustomCommandsOptions,

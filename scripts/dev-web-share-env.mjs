@@ -18,7 +18,7 @@ const env = {
 };
 const args = [
   "--filter",
-  "@zcode/web-share",
+  "@s-agent/web-share",
   "exec",
   "vite",
   "dev",

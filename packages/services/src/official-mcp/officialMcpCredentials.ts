@@ -23,8 +23,8 @@ import {
   type OfficialMcpAuthFailureReason,
   type ZCodeAccountAccess,
   type ZCodeProviderAccountAccess,
-} from "@zcode/shared";
-import type { ModelSelectionView } from "@zcode/provider";
+} from "@s-agent/shared";
+import type { ModelSelectionView } from "@s-agent/provider";
 import { createServiceLogger } from "#src/logger/serviceLogger.js";
 
 const log = createServiceLogger("official-mcp");

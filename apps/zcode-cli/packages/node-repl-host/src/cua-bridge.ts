@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { createConnection } from "node:net";
-import type { NodeReplRequestMeta, NodeReplSession } from "@zcode/core";
+import type { NodeReplRequestMeta, NodeReplSession } from "@s-agent/core";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 
 export const NODE_REPL_CUA_BRIDGE_SYMBOL = Symbol.for("zcode.node-repl.computer-use-bridge");

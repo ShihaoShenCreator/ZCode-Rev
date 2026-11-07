@@ -1,7 +1,7 @@
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { TID_WORKSPACE_FILE_TREE_ROW, testId } from "@zcode/shared/test-ids";
+import { TID_WORKSPACE_FILE_TREE_ROW, testId } from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

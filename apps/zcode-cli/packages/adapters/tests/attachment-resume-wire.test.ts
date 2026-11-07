@@ -12,7 +12,7 @@ import {
   type AttachmentStorageMetadata,
   type ModelInputMessage,
   type TurnAttachment,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { MessageHistoryImpl } from "../../core/src/agent/message-history.js";
 import { hydrateMessageHistoryFromSession } from "../../core/src/agent/session-history-hydrator.js";
 import { resolveTurnAttachments } from "../../core/src/runtime/helpers/attachments.js";

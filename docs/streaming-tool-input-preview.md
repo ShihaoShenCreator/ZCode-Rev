@@ -17,7 +17,7 @@
 
 ## 协议
 
-`@zcode/protocol` 增加 `model.streaming` session event。当前只对 app 暴露以下
+`@s-agent/protocol` 增加 `model.streaming` session event。当前只对 app 暴露以下
 模型 streaming kind：
 
 - `text_delta`

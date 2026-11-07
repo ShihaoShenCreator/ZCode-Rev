@@ -11,7 +11,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog.js";
 import { useOptionalPlatform } from "@/hooks/usePlatform.js";
-import { DesktopCommandIds, ZCODE_VERSION } from "@zcode/shared";
+import { DesktopCommandIds, ZCODE_VERSION } from "@s-agent/shared";
 /* eslint-disable max-lines -- Source/Profile/迁移三类管理操作共享同一 Host 快照和错误状态。 */
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -35,7 +35,7 @@ import {
   Unplug,
   Wrench,
 } from "lucide-react";
-import { resolveWorkspaceKey } from "@zcode/shared";
+import { resolveWorkspaceKey } from "@s-agent/shared";
 import type {
   ConnectionProfile,
   AppSettings,
@@ -43,8 +43,8 @@ import type {
   SourceServerMigrationReport,
   SourceServerRecord,
   SourceServerWorkspaceHistoryEntry,
-} from "@zcode/shared";
-import type { ISourceServerManagementService } from "@zcode/services";
+} from "@s-agent/shared";
+import type { ISourceServerManagementService } from "@s-agent/services";
 import { getPathLeaf } from "@/lib/path.js";
 import { toast } from "@/components/ui/toast.js";
 import { getSourceServerManagementErrorMessage } from "@/lib/sourceServerManagementError.js";

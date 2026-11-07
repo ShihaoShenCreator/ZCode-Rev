@@ -10,9 +10,9 @@ import {
   type ZCodePluginDiagnostic as SharedPluginDiagnostic,
   type ZCodePluginsReferenceCatalogResult,
   type ZCodePluginsResolveSuggestedReferenceResult,
-} from "@zcode/shared";
-import type { PluginReferenceCatalogEntry } from "@zcode/contracts";
-import { buildPluginReferenceCatalog } from "@zcode/core";
+} from "@s-agent/shared";
+import type { PluginReferenceCatalogEntry } from "@s-agent/contracts";
+import { buildPluginReferenceCatalog } from "@s-agent/core";
 import {
   enrichCachedClaudeMarketplaceIconsForOverview,
   getZCodePluginsOverview,

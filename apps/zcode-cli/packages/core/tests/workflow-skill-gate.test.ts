@@ -7,7 +7,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@zcode/contracts";
+import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@s-agent/contracts";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { amendWorkflowToolEntry } from "../src/tool/handlers/amend-workflow.js";
 import { createWorkflowToolEntry } from "../src/tool/handlers/create-workflow.js";

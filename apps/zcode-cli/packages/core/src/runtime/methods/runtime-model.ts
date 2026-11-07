@@ -2,7 +2,7 @@ import {
   modelDescriptorOf,
   type ModelRequestSessionType,
   type ModelRetryBudget,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   CoreErrorType,
   createCoreError,

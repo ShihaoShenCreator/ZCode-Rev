@@ -15,7 +15,7 @@
   `browserGuestManager.ts`、`browserGuestManager.test.ts`、`AnimatedSidePanePanel.tsx`、
   `UnifiedBrowserView.tsx`、`BrowserViewportSurface.tsx`、`electron-webview.d.ts` 及其测试的
   未提交修改；执行前必须等待这些文件稳定并重新阅读最终 diff，禁止覆盖或回退它们。
-- 不修改 `@zcode/protocol`，不新增 relay、task、stream、queue、snapshot 或 replayable 状态；prepare/ready/release 仅是 desktop main 与 owner renderer 的瞬时平台 IPC。
+- 不修改 `@s-agent/protocol`，不新增 relay、task、stream、queue、snapshot 或 replayable 状态；prepare/ready/release 仅是 desktop main 与 owner renderer 的瞬时平台 IPC。
 - workspace 身份继续使用 `workspaceKey = workspaceIdentity?.trim() || workspacePath`；消息必须同时携带 `workspaceKey`、`sessionId`、`browserId`、`browserGeneration`、`tabId`、`webContentsId` 和 `requestId`。
 - prepare 默认总预算固定为 `3000ms`；main 通过 prepare payload 把实际 `timeoutMs` 传给
   renderer，renderer 的本地验证保险 deadline 为 `timeoutMs + 1000ms`。viewport 比较允许每边
@@ -485,7 +485,7 @@ Expected: FAIL，至少包含
 创建 `packages/desktop/src/main/browserView/browserScreenshotSurfaceCoordinator.ts`。核心实现必须使用一个 `pendingByRequestId`，并统一通过 `finishError` / `finishReady` 清理 timer 和 abort listener：
 
 ```ts
-import { BROWSER_SCREENSHOT_SURFACE_PREPARE_TIMEOUT_MS } from "@zcode/shared";
+import { BROWSER_SCREENSHOT_SURFACE_PREPARE_TIMEOUT_MS } from "@s-agent/shared";
 
 const DEFAULT_SCREENSHOT_SURFACE_TIMEOUT_MS =
   BROWSER_SCREENSHOT_SURFACE_PREPARE_TIMEOUT_MS;
@@ -1418,7 +1418,7 @@ function periodicMatchRatio(bitmap, width, height, stride, dx, dy) {
 Run:
 
 ```powershell
-pnpm --filter @zcode/desktop test:browser-screenshot-surface-smoke
+pnpm --filter @s-agent/desktop test:browser-screenshot-surface-smoke
 ```
 
 Expected:

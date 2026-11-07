@@ -3,7 +3,7 @@ import {
   seedBigModelConnectionSelection,
   seedBigModelOAuthCredential,
 } from "./helpers/model-provider-restart.js";
-import { TID_OFFPEAK_CREATE_BUTTON, TID_AUTOMATIONS_OPEN } from "@zcode/shared/test-ids";
+import { TID_OFFPEAK_CREATE_BUTTON, TID_AUTOMATIONS_OPEN } from "@s-agent/shared/test-ids";
 import { mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";

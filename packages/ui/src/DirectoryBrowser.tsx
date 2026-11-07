@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useEffectEvent } from "react";
-import type { IServiceAccessor } from "@zcode/services";
-import type { FileEntry } from "@zcode/shared";
+import type { IServiceAccessor } from "@s-agent/services";
+import type { FileEntry } from "@s-agent/shared";
 import { FolderIcon, FolderSymlinkIcon, LoaderIcon } from "lucide-react";
 import { Button } from "@/components/ui/button.js";
 import { Input } from "@/components/ui/input.js";

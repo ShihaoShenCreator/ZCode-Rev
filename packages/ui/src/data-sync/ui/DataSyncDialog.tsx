@@ -9,7 +9,7 @@ import {
   Package,
   RefreshCw,
 } from "lucide-react";
-import type { DataSyncBlockedReason } from "@zcode/shared";
+import type { DataSyncBlockedReason } from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { Checkbox } from "@/components/ui/checkbox.js";
 import {

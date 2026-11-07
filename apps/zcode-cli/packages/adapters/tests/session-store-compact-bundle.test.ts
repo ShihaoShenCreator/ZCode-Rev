@@ -11,7 +11,7 @@ import {
   createTraceId,
   type MessageWithParts,
   type SessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../src/storage/index.js";
 
 const cleanups: (() => Promise<void>)[] = [];

@@ -1,6 +1,6 @@
 import { PassThrough } from "node:stream";
 import { describe, expect, it, vi } from "vitest";
-import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@zcode/shared";
+import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@s-agent/shared";
 import { ZCodeProtocolNdjsonConnection } from "../src/zcode-protocol/transport.js";
 
 describe("ZCodeProtocolNdjsonConnection", () => {

@@ -1,4 +1,4 @@
-import { formatZCodeAgentProcessName } from "@zcode/shared";
+import { formatZCodeAgentProcessName } from "@s-agent/shared";
 import { startDraftFromProject, waitForProjectRow } from "./project-sidebar.js";
 import {
   countAgentProcessRows,

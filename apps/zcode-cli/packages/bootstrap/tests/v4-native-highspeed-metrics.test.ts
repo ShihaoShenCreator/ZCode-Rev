@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";
 import type { V4CommandCoreHost } from "../src/zcode-protocol-v4/commands/types.js";
 

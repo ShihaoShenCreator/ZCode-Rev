@@ -1,5 +1,5 @@
 import { Box, Server, TerminalSquare } from "lucide-react";
-import type { SourceServerTransportKind } from "@zcode/shared";
+import type { SourceServerTransportKind } from "@s-agent/shared";
 import { cn } from "@/components/lib/utils.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import {

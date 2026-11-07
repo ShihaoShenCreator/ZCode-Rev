@@ -1,4 +1,4 @@
-import { TID_V4_SESSION_PANE, testId } from "@zcode/shared/test-ids";
+import { TID_V4_SESSION_PANE, testId } from "@s-agent/shared/test-ids";
 import { clearAppData } from "../helpers/desktop-app.js";
 import {
   clickV4Stop,

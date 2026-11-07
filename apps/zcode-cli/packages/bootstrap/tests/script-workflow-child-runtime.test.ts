@@ -1,13 +1,13 @@
-import * as executionAdapters from "@zcode/adapters/exec";
+import * as executionAdapters from "@s-agent/adapters/exec";
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
-import { createInMemorySessionEventStore, createSqliteSessionStore } from "@zcode/adapters/storage";
-import { type AgentRuntime, PermissionService, defaultPermissionConfig } from "@zcode/core";
-import { createModelTelemetry } from "@zcode/telemetry";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
+import { createInMemorySessionEventStore, createSqliteSessionStore } from "@s-agent/adapters/storage";
+import { type AgentRuntime, PermissionService, defaultPermissionConfig } from "@s-agent/core";
+import { createModelTelemetry } from "@s-agent/telemetry";
 import {
   createRootTraceContext,
   createSessionId,
@@ -29,7 +29,7 @@ import {
   type SkillRoot,
   type WorkflowEscalatePort,
   type WorkflowSubmitPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createScriptWorkflowAgentRuntime,
   createWorkflowChildSkillPort,

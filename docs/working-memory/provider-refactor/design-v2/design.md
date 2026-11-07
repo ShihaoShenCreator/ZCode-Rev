@@ -156,7 +156,7 @@ Anthropic 时，才选择该入口实际支持且验证最充分的其他 Schema
 写入边界接收稀疏 Config；执行边界只接收经过完整性证明的类型。完整类型是同一份 Config 的类型收窄，
 不是另一套 DTO，也不是第二个 Registry。
 
-Model 的字段以 `@zcode/shared/model-config` 的完整数据 schema 为唯一来源；稀疏 schema 从同一字段派生
+Model 的字段以 `@s-agent/shared/model-config` 的完整数据 schema 为唯一来源；稀疏 schema 从同一字段派生
 缺省/null 覆盖语义。构造输入、JSON 输出及 Registry 完整类型使用 schema 推导，行为类只保留冻结、overlay
 和序列化行为。完整性检查复用该 schema，不再手写第二份字段/值域检查表。纯数据 schema 不引用行为类，
 避免 codec 与类之间循环依赖。Provider/API/Access 同样由 `config/provider-data-schema.ts` 提供单一数据合同；

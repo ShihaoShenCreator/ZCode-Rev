@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
-import type { ConversationSnapshot, WorkspaceConfigState } from "@zcode/shared/zcode-protocol-v4";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
+import type { ConversationSnapshot, WorkspaceConfigState } from "@s-agent/shared/zcode-protocol-v4";
 import {
   ConversationTopicPublisher,
   SessionsIndexPublisher,

@@ -11,7 +11,7 @@ import type {
   McpServerStatus,
   McpToolCallResult,
   McpToolDescriptor,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { randomUUID } from "node:crypto";
 import type { McpTelemetryTracker } from "./telemetry.js";
 

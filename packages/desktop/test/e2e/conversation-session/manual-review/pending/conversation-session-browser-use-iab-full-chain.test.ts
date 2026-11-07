@@ -1,6 +1,6 @@
 import { createServer, type Server } from "node:http";
 import type { AddressInfo } from "node:net";
-import { PlatformChannels } from "@zcode/shared";
+import { PlatformChannels } from "@s-agent/shared";
 import {
   TID_BROWSER_RESPONSIVE_HEIGHT_INPUT,
   TID_BROWSER_RESPONSIVE_SCALED_FRAME,
@@ -11,7 +11,7 @@ import {
   TID_BROWSER_WEBVIEW,
   TID_V4_COMPOSER_INPUT,
   TID_V4_TIMELINE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByWebDriver,

@@ -7,7 +7,7 @@ import {
   TID_V4_COMPOSER_INPUT,
   TID_V4_COMPOSER_SEND,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   setInputValueByTestIdDom,

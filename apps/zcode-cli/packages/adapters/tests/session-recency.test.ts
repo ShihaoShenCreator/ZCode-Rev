@@ -8,7 +8,7 @@ import {
   createSessionId,
   type ModelId,
   type ModelProviderId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../src/storage/index.js";
 
 describe("SQLite session recency", () => {

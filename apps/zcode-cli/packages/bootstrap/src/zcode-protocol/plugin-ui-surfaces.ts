@@ -4,8 +4,8 @@ import {
   zcodePluginsListUiSurfacesParamsSchema,
   type ZCodePluginUiSurface,
   type ZCodePluginsListUiSurfacesResult,
-} from "@zcode/shared";
-import type { PluginMetadata } from "@zcode/contracts";
+} from "@s-agent/shared";
+import type { PluginMetadata } from "@s-agent/contracts";
 import { resolveZCodePlugins } from "../plugins.js";
 import { parseParams, type ZCodeProtocolAgentServerContext } from "./server-types.js";
 

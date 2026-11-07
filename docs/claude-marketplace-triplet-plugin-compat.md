@@ -101,7 +101,7 @@ Claude 插件规范里 manifest `skills` 的数组项指向「技能目录本身
 ## 验证命令
 
 ```bash
-pnpm --filter @zcode/adapters test plugins
+pnpm --filter @s-agent/adapters test plugins
 pnpm typecheck
 pnpm lint
 ```

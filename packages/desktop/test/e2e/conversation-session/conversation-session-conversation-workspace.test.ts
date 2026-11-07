@@ -8,7 +8,7 @@ import {
   TID_V4_COMPOSER_INPUT,
   TID_VIRTUAL_PROJECT_ADD,
   TID_VIRTUAL_PROJECT_NEW_TASK,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_CONVERSATION_WORKSPACE,
   DEFAULT_WORKSPACE,

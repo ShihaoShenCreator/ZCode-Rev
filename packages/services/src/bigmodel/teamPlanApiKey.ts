@@ -1,4 +1,4 @@
-import { API_KEY_USAGE_SCENE, type ApiClient } from "@zcode/shared";
+import { API_KEY_USAGE_SCENE, type ApiClient } from "@s-agent/shared";
 import { readApiJson } from "#src/providers/api/apiJson.js";
 
 const BIGMODEL_TEAM_PLAN_API_KEY_NAME = "zcode-team-api-key";

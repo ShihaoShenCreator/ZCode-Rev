@@ -7,8 +7,8 @@ import {
 } from "#e2e/helpers/remote-project-actions";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
-import { TID_SETTINGS_BACK_BUTTON } from "@zcode/shared/test-ids";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
+import { TID_SETTINGS_BACK_BUTTON } from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

@@ -1,4 +1,4 @@
-import { ensureTelemetryDeviceMid } from "@zcode/services/node";
+import { ensureTelemetryDeviceMid } from "@s-agent/services/node";
 
 export interface EnsureRemoteServerDeviceMidOptions {
   /** 仅测试注入；生产固定使用 services 的 ensureTelemetryDeviceMid。 */

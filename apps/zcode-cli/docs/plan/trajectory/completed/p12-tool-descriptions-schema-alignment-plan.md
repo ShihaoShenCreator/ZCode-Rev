@@ -91,9 +91,9 @@
 
 ```bash
 cd apps/zcode-cli
-pnpm --filter @zcode/core exec vitest run tests/main-tool-pool.test.ts tests/subagent-explore.test.ts tests/tool-contracts.test.ts
-pnpm --filter @zcode/bootstrap^... build
-pnpm --filter @zcode/bootstrap build
+pnpm --filter @s-agent/core exec vitest run tests/main-tool-pool.test.ts tests/subagent-explore.test.ts tests/tool-contracts.test.ts
+pnpm --filter @s-agent/bootstrap^... build
+pnpm --filter @s-agent/bootstrap build
 pnpm prompt-trajectory:testcases -- --cases testcases/p12-tool-surface --out-root out/p12-tool-surface
 ```
 
@@ -278,8 +278,8 @@ pnpm prompt-trajectory:testcases -- --cases testcases/p12-tool-surface --out-roo
 
 - Focused core tests：`packages/core` 下 `main-tool-pool`、`subagent-explore`、`tool-contracts`、`skill-tool`、`tool-input-normalization`、`target-tool` 共 6 files / 36 tests 通过。
 - Focused contracts tests：`packages/contracts/tests/grep.test.ts` 1 file / 1 test 通过。
-- Touched package typecheck：`@zcode/contracts`、`@zcode/core`、`@zcode/bootstrap` 的 `tsc --noEmit` 均通过。
-- Build for trajectory：`@zcode/contracts`、`@zcode/core`、`@zcode/bootstrap` 的 `tsc` build 均通过。
+- Touched package typecheck：`@s-agent/contracts`、`@s-agent/core`、`@s-agent/bootstrap` 的 `tsc --noEmit` 均通过。
+- Build for trajectory：`@s-agent/contracts`、`@s-agent/core`、`@s-agent/bootstrap` 的 `tsc` build 均通过。
 - Prompt trajectory：`tools/prompt-trajectory/out/p12-tool-surface-final-review-20260608-184856/test20260608-184857`。
 - Request-body 抽检：parent request 有 `Agent/Skill` 且无 `Glob/Grep/GoalRead`；Explore child 有 `Read/Bash/Glob/Grep` 且无 `Agent/Skill/Write/Edit/ApplyPatch/GoalRead`，本轮 P-12 baseline fixture 未出现 provider-native `web_search`；`Skill` schema 有 `skill` 无 `name`；`Read/Write/Edit.file_path` description 为 absolute path；`Agent` schema 无 `model/isolation`；Agent description 和 Explore prompt 可语义提示 `WebSearch`。`WebSearch` / native-search exact schema 和 provider-specific request body 后续已由 WebSearch client tool plan 单独落地；Explore prompt 无旧 `|` pipe 误禁且不包含 `Use Skill`。
 - Touched-file lint：P-12 touched `contracts/core/bootstrap` src/tests 文件通过 `oxlint`。
@@ -295,11 +295,11 @@ pnpm prompt-trajectory:testcases -- --cases testcases/p12-tool-surface --out-roo
 
 ```bash
 cd apps/zcode-cli
-pnpm --filter @zcode/core exec vitest run tests/main-tool-pool.test.ts tests/subagent-explore.test.ts tests/tool-contracts.test.ts tests/skill-tool.test.ts tests/tool-input-normalization.test.ts
-pnpm --filter @zcode/core exec vitest run tests/target-tool.test.ts
-pnpm --filter @zcode/contracts exec vitest run tests/grep.test.ts
-pnpm --filter @zcode/bootstrap^... build
-pnpm --filter @zcode/bootstrap build
+pnpm --filter @s-agent/core exec vitest run tests/main-tool-pool.test.ts tests/subagent-explore.test.ts tests/tool-contracts.test.ts tests/skill-tool.test.ts tests/tool-input-normalization.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/target-tool.test.ts
+pnpm --filter @s-agent/contracts exec vitest run tests/grep.test.ts
+pnpm --filter @s-agent/bootstrap^... build
+pnpm --filter @s-agent/bootstrap build
 pnpm prompt-trajectory:testcases -- --cases testcases/p12-tool-surface --out-root out/p12-tool-surface
 pnpm typecheck
 pnpm lint

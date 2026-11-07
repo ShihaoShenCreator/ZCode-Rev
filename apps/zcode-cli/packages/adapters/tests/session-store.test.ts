@@ -22,8 +22,8 @@ import {
   type ModelProviderId,
   type SessionId,
   type WorkspaceId,
-} from "@zcode/contracts";
-import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@s-agent/shared";
 import {
   SqliteSessionMigrationError,
   createSqliteSessionStore,

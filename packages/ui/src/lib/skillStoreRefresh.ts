@@ -1,9 +1,9 @@
-import type { ISkillsService } from "@zcode/services";
+import type { ISkillsService } from "@s-agent/services";
 import {
   normalizeAgentProviderToZCodeAgent,
   ZCODE_AGENT_PROVIDER,
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { useSkillStore } from "@/store/skillStore.js";
 
 export async function refreshSharedSkillStoreForWorkspace(params: {

@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { createReadStream } from "node:fs";
 import { mkdtemp, readdir, readFile, rename, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import type { SourceServerInstallProgress } from "@zcode/shared";
+import type { SourceServerInstallProgress } from "@s-agent/shared";
 import { releaseManifestSchema, type ReleaseManifest } from "../contracts.js";
 import { serverRuntimeManifestSchema, type ServerTarget } from "./manifest.js";
 import { extractArchiveSafely } from "./componentCache.js";

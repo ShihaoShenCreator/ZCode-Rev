@@ -6,8 +6,8 @@ import {
   type ModelMessageContentBlock,
   type ToolResultBudget,
   type TraceContext,
-} from "@zcode/contracts";
-import { OFFICIAL_CUA_FRAME_MODEL_CONTENT_PROTECTION } from "@zcode/zcode-cua/frame-contract";
+} from "@s-agent/contracts";
+import { OFFICIAL_CUA_FRAME_MODEL_CONTENT_PROTECTION } from "@s-agent/zcode-cua/frame-contract";
 import type { ToolEntry, ToolResultSerialization } from "../types.js";
 import { formatGenericPersistedOutputContent } from "../result-persistence-format.js";
 import {

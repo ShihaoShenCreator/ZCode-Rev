@@ -1,4 +1,10 @@
-import { Fragment, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 import { ChevronLeftIcon, ChevronRightIcon, Loader2Icon } from "lucide-react";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import type { ModelSelectGroup } from "@/ModelConfigSelect.js";
@@ -13,7 +19,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu.js";
-import { TID_CHAT_MODEL_SELECT_GROUP, testId } from "@zcode/shared/test-ids";
+import { TID_CHAT_MODEL_SELECT_GROUP, testId } from "@s-agent/shared/test-ids";
 
 const query = "(max-width: 639px)";
 function subscribe(listener: () => void) {
@@ -41,7 +47,6 @@ export function ComposerProviderMenu({
   disabled = false,
   loading = false,
   isDisabled,
-  separatorBeforeKey,
   group,
   label,
   providerFooter,
@@ -53,7 +58,6 @@ export function ComposerProviderMenu({
   disabled?: boolean;
   loading?: boolean;
   isDisabled?: (group: ModelSelectGroup) => boolean;
-  separatorBeforeKey?: string;
   group: ModelSelectGroup | undefined;
   label: string;
   providerFooter?: ReactNode;
@@ -82,36 +86,36 @@ export function ComposerProviderMenu({
         data-composer-provider-list
         className="min-h-0 overflow-y-auto"
       >
-        {groups.map((candidate, index) => (
-          <Fragment key={candidate.key}>
-            {index > 0 && candidate.key === separatorBeforeKey ? (
-              // 原因：默认负边距会撑出滚动列表 4px；列表内分隔线必须留在横向边界内。
-              <DropdownMenuSeparator className="mx-0 shrink-0 bg-border/50" />
-            ) : null}
-            <DropdownMenuRadioItem
-              disabled={disabled || isDisabled?.(candidate)}
-              value={candidate.key}
-              aria-label={[candidate.label, candidate.labelBadge].filter(Boolean).join(" ")}
-              data-testid={testId(TID_CHAT_MODEL_SELECT_GROUP, candidate.key)}
-              data-model-provider-key={candidate.key}
-              className="min-h-8 gap-2 pl-2 pr-8"
-              onSelect={(event) => {
-                event.preventDefault();
-                onSelect(candidate);
-                setOpen(false);
-              }}
-            >
-              <ProviderLogo logo={candidate.logo} className="size-4 rounded-sm" />
-              {/* 名称不占满剩余空间，避免把接入标签推到行尾。 */}
-              <span className="min-w-0 whitespace-normal break-words">{candidate.label}</span>
-              <ProviderAccessBadge group={candidate} />
-            </DropdownMenuRadioItem>
-          </Fragment>
+        {groups.map((candidate) => (
+          <DropdownMenuRadioItem
+            disabled={disabled || isDisabled?.(candidate)}
+            value={candidate.key}
+            aria-label={[candidate.label, candidate.labelBadge]
+              .filter(Boolean)
+              .join(" ")}
+            data-testid={testId(TID_CHAT_MODEL_SELECT_GROUP, candidate.key)}
+            data-model-provider-key={candidate.key}
+            className="min-h-8 gap-2 pl-2 pr-8"
+            onSelect={(event) => {
+              event.preventDefault();
+              onSelect(candidate);
+              setOpen(false);
+            }}
+          >
+            <ProviderLogo logo={candidate.logo} className="size-4 rounded-sm" />
+            {/* 名称不占满剩余空间，避免把接入标签推到行尾。 */}
+            <span className="min-w-0 whitespace-normal break-words">
+              {candidate.label}
+            </span>
+            <ProviderAccessBadge group={candidate} />
+          </DropdownMenuRadioItem>
         ))}
       </DropdownMenuRadioGroup>
       {providerFooter ? (
         <>
-          {groups.length > 0 ? <DropdownMenuSeparator className="shrink-0 bg-border/50" /> : null}
+          {groups.length > 0 ? (
+            <DropdownMenuSeparator className="shrink-0 bg-border/50" />
+          ) : null}
           <div className="shrink-0">{providerFooter}</div>
         </>
       ) : null}
@@ -119,7 +123,9 @@ export function ComposerProviderMenu({
   );
   const title = (
     <span className="flex min-w-0 flex-1 items-center gap-1.5">
-      {group ? <ProviderLogo logo={group.logo} className="size-4 rounded-sm" /> : null}
+      {group ? (
+        <ProviderLogo logo={group.logo} className="size-4 rounded-sm" />
+      ) : null}
       <span className="truncate">{group?.label ?? "—"}</span>
       {group ? <ProviderAccessBadge group={group} /> : null}
     </span>
@@ -131,7 +137,10 @@ export function ComposerProviderMenu({
       aria-label={intl.formatMessage({ id: "common.loading" })}
       className="ml-auto inline-flex size-4 shrink-0 items-center justify-center text-foreground-subtle"
     >
-      <Loader2Icon aria-hidden="true" className="size-4 animate-spin motion-reduce:animate-none" />
+      <Loader2Icon
+        aria-hidden="true"
+        className="size-4 animate-spin motion-reduce:animate-none"
+      />
     </span>
   ) : undefined;
   const triggerProps = {
@@ -183,14 +192,23 @@ export function ComposerProviderMenu({
         onOpenChange={(next) => {
           if (next && triggerRef.current) {
             const row = triggerRef.current.getBoundingClientRect();
-            const menu = triggerRef.current.closest('[role="menu"]')!.getBoundingClientRect();
+            const menu = triggerRef.current
+              .closest('[role="menu"]')!
+              .getBoundingClientRect();
             // 子菜单默认锚定行的内边缘；补偿父菜单 padding/border 后外框对齐并留 4px。
-            setOffset({ side: menu.right - row.right + 4, align: menu.top - row.top });
+            setOffset({
+              side: menu.right - row.right + 4,
+              align: menu.top - row.top,
+            });
           }
           setOpen(next);
         }}
       >
-        <DropdownMenuSubTrigger {...triggerProps} ref={triggerRef} indicator={loadingIndicator}>
+        <DropdownMenuSubTrigger
+          {...triggerProps}
+          ref={triggerRef}
+          indicator={loadingIndicator}
+        >
           {title}
         </DropdownMenuSubTrigger>
         <DropdownMenuPortal>

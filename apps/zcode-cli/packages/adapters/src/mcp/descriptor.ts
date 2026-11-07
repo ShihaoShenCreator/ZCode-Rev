@@ -4,8 +4,8 @@ import {
   type JsonSchema,
   type McpToolAnnotations,
   type McpToolDescriptor,
-} from "@zcode/contracts";
-import { normalizeMcpToolUiMeta, readMcpToolVisibility } from "@zcode/shared/mcp-apps";
+} from "@s-agent/contracts";
+import { normalizeMcpToolUiMeta, readMcpToolVisibility } from "@s-agent/shared/mcp-apps";
 
 export function normalizeMcpToolDescriptor(
   serverName: string,

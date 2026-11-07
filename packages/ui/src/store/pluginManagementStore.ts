@@ -8,9 +8,9 @@ import type {
   ZCodePluginMarketplaceSummary,
   ZCodePluginScope,
   ZCodePluginsDescribeResult,
-} from "@zcode/shared";
-import { CLAUDE_OFFICIAL_PLUGIN_MARKETPLACE_ID } from "@zcode/shared";
-import type { IPluginManagementService } from "@zcode/services";
+} from "@s-agent/shared";
+import { CLAUDE_OFFICIAL_PLUGIN_MARKETPLACE_ID } from "@s-agent/shared";
+import type { IPluginManagementService } from "@s-agent/services";
 import { logger } from "@/logger.js";
 import {
   beginPluginOperation,

@@ -5,7 +5,7 @@ import {
   type WorkflowGraph,
   type WorkflowGraphRecord,
   type WorkflowRunSnapshot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { WorkflowGraphScheduler } from "../src/workflow/scheduler.js";
 import { DEFAULT_EXPERT_WORKFLOW_STRATEGY } from "../src/workflow/expert.js";
 

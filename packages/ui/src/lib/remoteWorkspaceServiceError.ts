@@ -1,4 +1,4 @@
-import { isPublicZCodeErrorCode } from "@zcode/shared";
+import { isPublicZCodeErrorCode } from "@s-agent/shared";
 export const REMOTE_WORKSPACE_DISCONNECTED_ERROR_CODE = "ZCODE_REMOTE_WORKSPACE_DISCONNECTED";
 
 export function createRemoteWorkspaceDisconnectedError(): Error & {

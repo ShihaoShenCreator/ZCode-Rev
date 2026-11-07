@@ -9,8 +9,8 @@ import {
   type SessionId,
   type ToolCallId,
   type TraceId,
-} from "@zcode/contracts";
-import { zcodeSessionEventSchema, zcodeSessionProjectionSchema } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { zcodeSessionEventSchema, zcodeSessionProjectionSchema } from "@s-agent/shared";
 import {
   mapSessionEvent,
   mapSessionProjection,

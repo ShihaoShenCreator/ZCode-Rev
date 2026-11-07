@@ -1,4 +1,4 @@
-import { withoutRequestVerificationHeaders } from "@zcode/shared";
+import { withoutRequestVerificationHeaders } from "@s-agent/shared";
 /* eslint-disable max-lines -- AI SDK 模型执行装配集中维护 provider factory、鉴权和网络错误适配，拆分会让状态同步更脆弱。 */
 // ============================================================
 // Vercel AI SDK model execution
@@ -12,16 +12,16 @@ import {
   compileModelOptionMaps,
   type CompiledModelOptionMaps,
   type ModelOptionValues,
-} from "@zcode/model-option-map";
+} from "@s-agent/model-option-map";
 import {
   type Logger,
   type ModelId,
   type ModelProviderId,
   type ModelRequestAuth,
   type ProviderEndpointRoutingPort,
-} from "@zcode/contracts";
-import type { RegistryProviderConfig } from "@zcode/provider";
-import { withOpenRouterAttributionHeaders } from "@zcode/shared";
+} from "@s-agent/contracts";
+import type { RegistryProviderConfig } from "@s-agent/provider";
+import { withOpenRouterAttributionHeaders } from "@s-agent/shared";
 import { createAnthropicCompatFetch } from "./anthropic-stream-compat.js";
 import { createModelRequestSecurityState } from "./request-security-edition/index.js";
 import type { ModelRequestSecurityState, ModelRequestSecurityPort } from "./request-security.js";
@@ -559,7 +559,7 @@ export function observeProviderFetch(
           queryId: headers.get("x-query-id") ?? undefined,
           sessionId: headers.get("x-session-id") ?? undefined,
           traceId: (headers.get("x-zcode-trace-id") ?? undefined) as
-            | import("@zcode/contracts").TraceId
+            | import("@s-agent/contracts").TraceId
             | undefined,
           at,
           durationMs: at - start,

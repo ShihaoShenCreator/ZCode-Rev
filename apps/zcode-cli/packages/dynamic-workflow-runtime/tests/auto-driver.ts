@@ -24,8 +24,8 @@ import type {
   WorkflowError,
   WorkflowReportSink,
   WorldReadOp,
-} from "@zcode/dynamic-workflow";
-import { refToString } from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
+import { refToString } from "@s-agent/dynamic-workflow";
 
 /** 单次 ask 派发后，driver 代"模型"要做的一步动作。 */
 export type AskAction =

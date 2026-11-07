@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { FileApplicationInfo } from "@zcode/shared";
+import type { FileApplicationInfo } from "@s-agent/shared";
 import { ExternalLinkIcon } from "lucide-react";
 import { FileApplicationIcon } from "@/file-menu/FileApplicationIcon.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

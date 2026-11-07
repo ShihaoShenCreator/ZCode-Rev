@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactElement } from "react";
 import { HoverCard as HoverCardPrimitive } from "radix-ui";
 import { ChevronRight, Settings } from "lucide-react";
 import { Anchor, createPopperScope } from "@radix-ui/react-popper";
-import { sourceServerConnectionStateSchema } from "@zcode/shared";
+import { sourceServerConnectionStateSchema } from "@s-agent/shared";
 import type { RemoteProjectHost } from "@/project-sidebar/contract.js";
 import { remoteHostLabel } from "@/project-sidebar/RemoteHostSection.js";
 import { RemoteConnectionProgressSection } from "@/project-sidebar/RemoteConnectionProgressSection.js";

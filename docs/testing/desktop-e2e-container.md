@@ -76,7 +76,7 @@ E2E_SPEC=./test/e2e/conversation-session/<case>.test.ts \
 通过后用准入工具登记：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:docker:admit -- \
+pnpm --filter @s-agent/desktop e2e:docker:admit -- \
   --spec ./test/e2e/conversation-session/<case>.test.ts \
   --verified \
   --artifact packages/desktop/.e2e-artifacts/<run-id> \

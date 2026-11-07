@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { constants } from "node:fs";
 import { access, chmod, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
 import { join, posix, win32 } from "node:path";
-import type { Logger } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
 
 /**
  * 桌面 agent 跑在 Electron Node 上时，stdio MCP 的 `node` / `npm` / `npx` 在用户机器没装 Node 时

@@ -1,6 +1,6 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 import {
   clickV4Stop,
   getV4PaneSnapshot,

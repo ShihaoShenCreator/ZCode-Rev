@@ -5,8 +5,8 @@ import { join } from "node:path";
 import type {
   ZCodeAutomationBotDeliveryTarget,
   ZCodeStreamEvent,
-} from "@zcode/shared";
-import { AutomationRepo, setDataBaseDir } from "@zcode/services/node";
+} from "@s-agent/shared";
+import { AutomationRepo, setDataBaseDir } from "@s-agent/services/node";
 
 import {
   createBotsServiceHarness,

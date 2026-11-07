@@ -1,4 +1,4 @@
-import { runWithModelInvocationContext } from "@zcode/contracts";
+import { runWithModelInvocationContext } from "@s-agent/contracts";
 import { TestAiSdkModelAdapter, TestProviderConfigFixture } from "./test-provider-config.js";
 import { describe, expect, it, vi } from "vitest";
 import { refreshOffPeakRequestAuth } from "../src/model/off-peak-request-auth.js";

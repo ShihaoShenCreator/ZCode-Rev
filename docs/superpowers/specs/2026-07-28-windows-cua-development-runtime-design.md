@@ -21,7 +21,7 @@ ZCode Host
   -> Helper.app 通过 AX / ScreenCaptureKit / CGEvent 执行
 ```
 
-外部 `@zcode/zcode-cua` 仓库已经包含 Windows UIA、named pipe、基础
+外部 `@s-agent/zcode-cua` 仓库已经包含 Windows UIA、named pipe、基础
 `SendInput` 点击/键盘以及部分元素语义动作，但当前还没有形成 ZCode 本地桌面的完整运行链路：
 
 - ZCode 默认 Product Helper 只允许 `darwin`；
@@ -113,7 +113,7 @@ Windows 使用独立 Helper 子进程，不把 UIA/native backend 运行在：
 
 ```text
 Node.js child process
-  + @zcode/zcode-cua broker/server
+  + @s-agent/zcode-cua broker/server
   + ax_native.node
 ```
 
@@ -591,8 +591,8 @@ stale-file 与 unlink 断言允许在 Windows 跳过，并由独立 Windows name
 - Web remote replayable 链路完全不进入本设计；
 - local/remote 判断必须在 Helper admission 前完成；
 - 不新增 `workspaceIdentity` 与 `workspacePath` 混用；
-- 不修改 Agent 与 App 的 `@zcode/protocol`，除非后续确实出现新的跨进程产品协议；
-- broker method/schema 变化在 `@zcode/zcode-cua` 内严格校验并保持旧调用兼容；
+- 不修改 Agent 与 App 的 `@s-agent/protocol`，除非后续确实出现新的跨进程产品协议；
+- broker method/schema 变化在 `@s-agent/zcode-cua` 内严格校验并保持旧调用兼容；
 - IO 使用异步 API；
 - services 日志使用 `createServiceLogger(scope)`；
 - UI 未包含在本阶段；若后续修改 `packages/ui`，实施前必须读取 `DESIGN.md`。
@@ -606,7 +606,7 @@ stale-file 与 unlink 断言允许在 Windows 跳过，并由独立 Windows name
 4. **截图复杂度**：WGC 涉及 WinRT、D3D11、窗口关闭和设备重建，不应作为小型补丁处理。
 5. **焦点竞争风险**：只调用 `SetForegroundWindow` 不能证明输入目标正确。
 6. **测试债务**：现有大量测试将 macOS/POSIX 假设写死，Windows 绿色基线需要先分类。
-7. **版本漂移**：ZCode compile-time `@zcode/zcode-cua`、Helper runtime alias 和 plugin 版本
+7. **版本漂移**：ZCode compile-time `@s-agent/zcode-cua`、Helper runtime alias 和 plugin 版本
    当前不完全一致，开发闭环必须记录实际服务端/客户端版本。
 
 ## 18. 已确认项与开放项

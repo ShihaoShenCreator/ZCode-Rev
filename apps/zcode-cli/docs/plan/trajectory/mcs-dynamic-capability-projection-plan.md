@@ -6,7 +6,7 @@
 
 **核心架构：** 所有 reminder producer 继续产出 source-aware runtime attachment entry，不在 producer 处分叉。新增一个通用 capability resolver，从当前 `ModelRef` 和 resolved `ModelConnectionInfo` 构造完整决策上下文，再返回 `useMidConversationSystem` boolean。最终 provider request builder 只消费这个 boolean；如果 MCS 关闭，则恢复 legacy user system-reminder shape，并恢复 legacy attachment-like reminder bubble-up 排序。
 
-**技术栈：** TypeScript、Vitest、`@zcode/contracts`、`@zcode/core`、prompt-trajectory、model-io trajectory converter。
+**技术栈：** TypeScript、Vitest、`@s-agent/contracts`、`@s-agent/core`、prompt-trajectory、model-io trajectory converter。
 
 ## 全局约束
 
@@ -127,7 +127,7 @@ git status --short --branch
 2. 跑基线测试：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/provider-request-messages.test.ts tests/prompt-attachments.test.ts tests/runtime-reminders.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/provider-request-messages.test.ts tests/prompt-attachments.test.ts tests/runtime-reminders.test.ts
 ```
 
 预期：实现前全部通过。若失败，先排查，不进入实现。
@@ -239,7 +239,7 @@ describe("isFastSupportedModel", () => {
 先运行并确认失败：
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest run tests/mid-conversation-system.test.ts
+pnpm --filter @s-agent/contracts exec vitest run tests/mid-conversation-system.test.ts
 ```
 
 实现：
@@ -319,7 +319,7 @@ export * from "./mid-conversation-system.js";
 验证：
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest run tests/mid-conversation-system.test.ts
+pnpm --filter @s-agent/contracts exec vitest run tests/mid-conversation-system.test.ts
 ```
 
 ### Task 1.2：core 层完整 capability context
@@ -407,7 +407,7 @@ import {
   type ModelConnectionInfo,
   type ModelConnectionPort,
   type ModelRef,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   evaluateMidConversationSystemCapability,
   resolveMidConversationSystemCapability,
@@ -490,7 +490,7 @@ describe("evaluateMidConversationSystemCapability", () => {
 验证：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-mcs-capability.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-mcs-capability.test.ts
 ```
 
 ## Phase 2：让 Provider Projection 感知 Capability
@@ -587,7 +587,7 @@ interface AttachmentReorderOptions {
 验证：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/provider-request-messages.test.ts tests/prompt-attachments.test.ts tests/message-history.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/provider-request-messages.test.ts tests/prompt-attachments.test.ts tests/message-history.test.ts
 ```
 
 ## Phase 3：Runtime 所有请求路径接入动态 Capability
@@ -678,7 +678,7 @@ export function buildRuntimeProviderRequestMessages(
 验证：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-mcs-capability.test.ts tests/provider-request-messages.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-mcs-capability.test.ts tests/provider-request-messages.test.ts
 ```
 
 ### Task 3.2：替换 runtime call sites
@@ -749,7 +749,7 @@ const projection = buildRuntimeProviderRequestMessages(this, {
 验证：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts tests/runtime-compact.test.ts tests/microcompact.test.ts tests/provider-request-messages.test.ts tests/runtime-mcs-capability.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts tests/runtime-compact.test.ts tests/microcompact.test.ts tests/provider-request-messages.test.ts tests/runtime-mcs-capability.test.ts
 ```
 
 ## Phase 4：Prompt-trajectory E2E 验证
@@ -772,8 +772,8 @@ pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts tests/
 先构建：
 
 ```bash
-pnpm --filter @zcode/contracts build
-pnpm --filter @zcode/core build
+pnpm --filter @s-agent/contracts build
+pnpm --filter @s-agent/core build
 ```
 
 MCS-capable provider 预期片段：
@@ -823,8 +823,8 @@ unsupported provider 预期片段：
 ### 最终验证命令
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest run tests/mid-conversation-system.test.ts
-pnpm --filter @zcode/core exec vitest run tests/runtime-mcs-capability.test.ts tests/provider-request-messages.test.ts tests/prompt-attachments.test.ts tests/runtime-reminders.test.ts
+pnpm --filter @s-agent/contracts exec vitest run tests/mid-conversation-system.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-mcs-capability.test.ts tests/provider-request-messages.test.ts tests/prompt-attachments.test.ts tests/runtime-reminders.test.ts
 pnpm typecheck
 pnpm lint
 ```

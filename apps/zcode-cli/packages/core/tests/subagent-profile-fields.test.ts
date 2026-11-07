@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { SessionId } from "@zcode/contracts";
+import type { SessionId } from "@s-agent/contracts";
 import type { AgentProfile } from "../src/subagent/profile.js";
 import {
   setup,

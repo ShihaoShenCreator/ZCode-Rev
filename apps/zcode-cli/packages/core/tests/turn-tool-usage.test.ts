@@ -3,7 +3,7 @@ import type {
   ToolExecutionResult,
   TraceContext,
   UsageStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AgentRuntimeInternal } from "../src/runtime/internal.js";
 import { recordToolUsageFromResult } from "../src/runtime/methods/turn-tool-usage.js";
 

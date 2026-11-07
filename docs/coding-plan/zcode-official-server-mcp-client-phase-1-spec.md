@@ -181,7 +181,7 @@ export interface McpHttpServerConfig extends McpServerConfigBase {
 因此这是等价性论证，而不是"官方域名所以可信"。
 
 **为什么在 shared 而不是 CLI bootstrap**：判定有两个消费者且分属互不可见的包——MCP adapter
-（请求发出前）与 host/services（身份权威边界的二次校验，只依赖 `@zcode/shared`）。单源是硬
+（请求发出前）与 host/services（身份权威边界的二次校验，只依赖 `@s-agent/shared`）。单源是硬
 要求，双处判定分叉会让一侧放行、另一侧拒绝。CLI 侧文件只做转发。
 
 **唯一的控制与残留风险**：

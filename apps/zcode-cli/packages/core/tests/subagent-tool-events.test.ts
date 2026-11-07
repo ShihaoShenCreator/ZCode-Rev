@@ -8,7 +8,7 @@ import {
   createTurnId,
   type SessionEvent,
   type SessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { mirrorSubagentToolEvent } from "../src/subagent/tool-event-mirror.js";
 import { MemoryFileSystem } from "./memory-test-utils.js";

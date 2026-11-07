@@ -9,7 +9,7 @@ import {
   createToolCallId,
   type ExecutionPort,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   defaultPermissionConfig,
   PermissionService,

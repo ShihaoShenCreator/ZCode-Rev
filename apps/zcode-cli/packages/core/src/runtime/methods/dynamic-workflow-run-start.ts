@@ -6,8 +6,8 @@ import {
   createWorkflowPhaseNames,
   type SavedWorkflowScope,
   type TraceContext,
-} from "@zcode/contracts";
-import type { CompileDiagnostic } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import type { CompileDiagnostic } from "@s-agent/dynamic-workflow";
 import {
   resolveSavedWorkflow,
   validateWorkflowArgs,
@@ -20,7 +20,7 @@ import { writeWorkflowDraft } from "../../tool/handlers/workflow-drafts.js";
 import { analyzeScript } from "../../tool/handlers/workflow-script-analysis.js";
 import { bindScriptModels } from "../../tool/handlers/workflow-script-models.js";
 import type { ExecutableToolCall } from "../../tool/types.js";
-import { uuidv7 } from "@zcode/shared";
+import { uuidv7 } from "@s-agent/shared";
 import { createMessageId, traceContextToLogContext } from "../deps.js";
 import type { AgentRuntimeInternal } from "../internal.js";
 import { emitControlOnlyUserTurn, persistWorkflowLaunchUserMessage } from "./control-only-turn.js";

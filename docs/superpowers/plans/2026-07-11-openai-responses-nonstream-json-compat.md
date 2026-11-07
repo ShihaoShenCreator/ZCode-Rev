@@ -178,8 +178,8 @@ Run:
 pnpm --dir apps/zcode-cli exec vitest run \
   packages/adapters/tests/openai-responses-json-compat.test.ts \
   packages/adapters/tests/registry.test.ts
-pnpm --dir apps/zcode-cli --filter @zcode/adapters typecheck
-pnpm --dir apps/zcode-cli --filter @zcode/adapters lint
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters typecheck
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters lint
 ```
 
 Expected: 两个测试文件、adapter typecheck 和变更文件定向 lint 通过；包级 lint 若命中未改文件的既有基线，留到 Task 3 如实记录。

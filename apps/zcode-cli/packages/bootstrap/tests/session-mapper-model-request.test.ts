@@ -1,6 +1,6 @@
 // RET-012：内存 store 淘汰 sealed turn 时把 model_request 瘦身为 messageCount，映射结果必须与完整 payload 一致。
 import { describe, expect, it } from "vitest";
-import { SessionEventType, createSessionEvent, type SessionId } from "@zcode/contracts";
+import { SessionEventType, createSessionEvent, type SessionId } from "@s-agent/contracts";
 import { mapSessionEvent } from "../src/zcode-protocol/session-mapper.js";
 
 const sessionId = "session_mapper_model_request" as SessionId;

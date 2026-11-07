@@ -12,7 +12,7 @@ const executableFileMode = 0o755;
 const packageJsonFile = "package.json";
 const rootPackageVersionError = "Root package.json must define a non-empty string version.";
 const desktopAgentBuildFlag = "--desktop-agent";
-export const resolveBuildExternal = () => ["@zcode/tui", "playwright-core", "koffi"];
+export const resolveBuildExternal = () => ["@s-agent/tui", "playwright-core", "koffi"];
 
 export const readZodBuildVersion = async () => {
   const sharedPackage = JSON.parse(
@@ -137,18 +137,18 @@ export const resolveBuildAliases = ({
   cliDirectory = cliRoot,
   rootDirectory = projectRoot,
 } = {}) => ({
-  "@zcode/shared-types": resolve(cliDirectory, "../shared-types/dist/index.js"),
+  "@s-agent/shared-types": resolve(cliDirectory, "../shared-types/dist/index.js"),
   // esbuild 会按前缀改写。曾多次漏加新子路径，导致入口文件被误当成目录；
   // 直接从包的公开 exports 派生，并将通用入口放在最后，避免两份清单漂移。
   ...Object.fromEntries(
     Object.entries(sharedPackage.exports)
       .sort(([a], [b]) => Number(a === ".") - Number(b === "."))
       .map(([subpath, target]) => [
-        subpath === "." ? "@zcode/shared" : `@zcode/shared/${subpath.slice(2)}`,
+        subpath === "." ? "@s-agent/shared" : `@s-agent/shared/${subpath.slice(2)}`,
         resolve(rootDirectory, "../../packages/shared", target),
       ]),
   ),
-  "@zcode/core": resolve(cliDirectory, "../core/dist/index.js"),
+  "@s-agent/core": resolve(cliDirectory, "../core/dist/index.js"),
 });
 
 export const buildCli = async ({

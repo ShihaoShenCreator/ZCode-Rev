@@ -17,7 +17,7 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect } from "vitest";
-import { createInMemorySessionEventStore } from "@zcode/adapters/storage";
+import { createInMemorySessionEventStore } from "@s-agent/adapters/storage";
 import {
   createRootTraceContext,
   createSessionId,
@@ -28,8 +28,8 @@ import {
   type ModelNetworkStatusEvent,
   type ModelStatusSink,
   type SessionEvent,
-} from "@zcode/contracts";
-import type { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import type { AgentRuntime } from "@s-agent/core";
 import {
   InMemoryJournalStore,
   type JournalStorePort,
@@ -37,7 +37,7 @@ import {
   type RunEvent,
   type RunSettlement,
   type RunStopReason,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import {
   createDynamicWorkflowRunService,
   type DynamicWorkflowRunService,

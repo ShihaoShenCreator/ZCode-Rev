@@ -10,7 +10,7 @@
 
 **Architecture:** 新建模块级单例封装 `uiPerfArmsTelemetry.ts`(仿既有模块级 ARMS 业务埋点 helper),reporter 在 `Root.tsx` 注入。首token/耗时复用 `useZCodeChat` 已算好的 `completionTelemetry` 镜像双发,不动 `/report`;首屏在 `main.tsx` 监听 `zcode-react-startup-ready`;流式停顿的 per-task 计时状态封装在 telemetry 模块内,handler 仅一行调用。全采,失败吞错。
 
-**Tech Stack:** TypeScript, React, Vitest, `@zcode/shared` 的 `IPlatformService.reportArmsCustomEvent`。
+**Tech Stack:** TypeScript, React, Vitest, `@s-agent/shared` 的 `IPlatformService.reportArmsCustomEvent`。
 
 ---
 
@@ -21,7 +21,7 @@
 ## 关键事实(已核实)
 
 - 上报 API:`platform.reportArmsCustomEvent({ name, group, value, properties })`,公共维度由 main handler(`desktopMainIpcRemote.ts:119`)自动补齐。
-- `ArmsCustomEventPayload`(`@zcode/shared`):`{ name: string; group: string; value?: number; properties?: Record<string, string | number | boolean | undefined> }`。
+- `ArmsCustomEventPayload`(`@s-agent/shared`):`{ name: string; group: string; value?: number; properties?: Record<string, string | number | boolean | undefined> }`。
 - 镜像点:`packages/ui/src/hooks/useZCodeChat.ts:567-603` 的 `reportPromptCompletionTelemetry`,`completionTelemetry.eventExtraDetail` 已含 `time_to_first_token`、`duration_ms`、`status`、`model_name`;`completionTelemetry.taskId`、`completionTelemetry.messageId` 可用。
 - 首屏终点事件:`window` 上的 `"zcode-react-startup-ready"`(`main.tsx:221` 派发)。
 - chunk 到达点:`taskStreamEventHandlers.ts` 的 `agent_message_chunk`(行 ~821)与 `agent_thought_chunk`(行 ~927)case,均有局部变量 `taskId`。
@@ -55,7 +55,7 @@
 
 ```typescript
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { ArmsCustomEventPayload } from "@zcode/shared";
+import type { ArmsCustomEventPayload } from "@s-agent/shared";
 import {
   UI_PERF_ARMS_GROUP,
   clearUiPerfArmsReporterForTest,
@@ -135,7 +135,7 @@ describe("uiPerfArmsTelemetry", () => {
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/ui exec vitest run src/lib/uiPerfArmsTelemetry.test.ts`
+Run: `pnpm --filter @s-agent/ui exec vitest run src/lib/uiPerfArmsTelemetry.test.ts`
 Expected: FAIL — 模块不存在 / 导出未定义。
 
 - [ ] **Step 3: 写实现**
@@ -143,7 +143,7 @@ Expected: FAIL — 模块不存在 / 导出未定义。
 创建 `packages/ui/src/lib/uiPerfArmsTelemetry.ts`:
 
 ```typescript
-import type { ArmsCustomEventPayload, IPlatformService } from "@zcode/shared";
+import type { ArmsCustomEventPayload, IPlatformService } from "@s-agent/shared";
 import { logger } from "@/logger.js";
 
 export const UI_PERF_ARMS_GROUP = "ui_perf";
@@ -254,7 +254,7 @@ export function clearStreamStallTracking(taskId: string): void {
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/ui exec vitest run src/lib/uiPerfArmsTelemetry.test.ts`
+Run: `pnpm --filter @s-agent/ui exec vitest run src/lib/uiPerfArmsTelemetry.test.ts`
 Expected: PASS(5 个用例)。
 
 - [ ] **Step 5: 提交**
@@ -324,7 +324,7 @@ describe("stream stall", () => {
 
 - [ ] **Step 2: 运行测试**
 
-Run: `pnpm --filter @zcode/ui exec vitest run src/lib/uiPerfArmsTelemetry.test.ts`
+Run: `pnpm --filter @s-agent/ui exec vitest run src/lib/uiPerfArmsTelemetry.test.ts`
 Expected: PASS(全部用例,含新增 4 个)。实现已在 Task 1 完成,本任务确认行为。
 
 - [ ] **Step 3: 提交**
@@ -367,7 +367,7 @@ import { setUiPerfArmsReporter } from "@/lib/uiPerfArmsTelemetry.js";
 
 - [ ] **Step 3: 类型检查**
 
-Run: `pnpm --filter @zcode/ui exec tsc --noEmit`
+Run: `pnpm --filter @s-agent/ui exec tsc --noEmit`
 Expected: 无新增错误。
 
 - [ ] **Step 4: 提交**
@@ -423,12 +423,12 @@ import { reportUiFirstToken, reportUiMessageComplete } from "@/lib/uiPerfArmsTel
 
 - [ ] **Step 3: 类型检查**
 
-Run: `pnpm --filter @zcode/ui exec tsc --noEmit`
+Run: `pnpm --filter @s-agent/ui exec tsc --noEmit`
 Expected: 无新增错误。
 
 - [ ] **Step 4: 回归测试**
 
-Run: `pnpm --filter @zcode/ui exec vitest run src/lib`
+Run: `pnpm --filter @s-agent/ui exec vitest run src/lib`
 Expected: PASS(现有 messageTelemetry 等测试不受影响)。
 
 - [ ] **Step 5: 提交**
@@ -473,7 +473,7 @@ import { recordStreamChunkArrival } from "@/lib/uiPerfArmsTelemetry.js";
 
 - [ ] **Step 4: 类型检查**
 
-Run: `pnpm --filter @zcode/ui exec tsc --noEmit`
+Run: `pnpm --filter @s-agent/ui exec tsc --noEmit`
 Expected: 无新增错误。
 
 - [ ] **Step 5: 提交**
@@ -518,7 +518,7 @@ import { clearStreamStallTracking } from "@/lib/uiPerfArmsTelemetry.js";
 
 - [ ] **Step 4: 类型检查 + 回归**
 
-Run: `pnpm --filter @zcode/ui exec tsc --noEmit && pnpm --filter @zcode/ui exec vitest run src/lib src/hooks`
+Run: `pnpm --filter @s-agent/ui exec tsc --noEmit && pnpm --filter @s-agent/ui exec vitest run src/lib src/hooks`
 Expected: 无新增类型错误;测试 PASS。
 
 - [ ] **Step 5: 提交**
@@ -540,14 +540,14 @@ git commit -m "feat(ui-perf): 消息终态清理流式停顿追踪"
 在 `main.tsx` import 区之后、模块顶层(任何同步初始化之前)新增:
 
 ```typescript
-import { reportUiFirstScreen } from "@zcode/ui";
+import { reportUiFirstScreen } from "@s-agent/ui";
 
 // 首屏起点:renderer 模块加载早期。终点为 React commit 后派发的 "zcode-react-startup-ready"。
 const uiFirstScreenStartedAt =
   typeof performance?.now === "function" ? performance.now() : Date.now();
 ```
 
-> 确认 `reportUiFirstScreen` 已从 `@zcode/ui` 包导出。若未导出,在 `packages/ui/src/index.ts`(或对应 barrel)补 `export { reportUiFirstScreen } from "./lib/uiPerfArmsTelemetry.js";`。实现时先 grep `packages/ui/src/index.ts` 确认导出方式。
+> 确认 `reportUiFirstScreen` 已从 `@s-agent/ui` 包导出。若未导出,在 `packages/ui/src/index.ts`(或对应 barrel)补 `export { reportUiFirstScreen } from "./lib/uiPerfArmsTelemetry.js";`。实现时先 grep `packages/ui/src/index.ts` 确认导出方式。
 
 - [ ] **Step 2: 监听终点事件并上报**
 
@@ -569,7 +569,7 @@ window.addEventListener(
 
 Run: `grep -n "uiPerfArmsTelemetry\|reportUiFirstScreen" packages/ui/src/index.ts`
 若无输出,按 Step 1 注记补 barrel 导出。
-Run: `pnpm --filter @zcode/desktop exec tsc --noEmit`
+Run: `pnpm --filter @s-agent/desktop exec tsc --noEmit`
 Expected: 无新增错误。
 
 - [ ] **Step 4: 提交**
@@ -634,7 +634,7 @@ git commit -m "docs: 监控文档新增端侧 UI 性能指标"
 
 - [ ] **Step 1: 全包类型检查 + 测试**
 
-Run: `pnpm --filter @zcode/ui exec tsc --noEmit && pnpm --filter @zcode/desktop exec tsc --noEmit && pnpm --filter @zcode/ui exec vitest run`
+Run: `pnpm --filter @s-agent/ui exec tsc --noEmit && pnpm --filter @s-agent/desktop exec tsc --noEmit && pnpm --filter @s-agent/ui exec vitest run`
 Expected: 无类型错误;全部测试 PASS。
 
 - [ ] **Step 2: 本地构建验证(开发包,`arms_env=local`)**

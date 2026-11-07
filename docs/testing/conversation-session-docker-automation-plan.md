@@ -72,7 +72,7 @@ E2E_SPEC=./test/e2e/conversation-session/<case>.test.ts \
 通过后再登记进 `conversation-session-verified`：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:docker:admit -- \
+pnpm --filter @s-agent/desktop e2e:docker:admit -- \
   --spec ./test/e2e/conversation-session/<case>.test.ts \
   --verified \
   --artifact packages/desktop/.e2e-artifacts/<run-id> \

@@ -5,7 +5,7 @@ import {
   createTurnId,
   SessionEventType,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../src/runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 

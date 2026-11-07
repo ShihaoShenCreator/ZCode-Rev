@@ -9,8 +9,8 @@ import type {
   ModelExecutionTelemetryPort,
   TelemetryIdentitySnapshot,
   TelemetryResourceContext,
-} from "@zcode/contracts/telemetry";
-import type { ModelStatusSink } from "@zcode/contracts/model";
+} from "@s-agent/contracts/telemetry";
+import type { ModelStatusSink } from "@s-agent/contracts/model";
 import { NoopAgentExecutionTelemetry } from "./agent-trace-runtime.js";
 
 type EnvRecord = Record<string, string | undefined>;

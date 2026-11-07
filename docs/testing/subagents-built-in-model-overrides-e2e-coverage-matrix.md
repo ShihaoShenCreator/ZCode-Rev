@@ -12,7 +12,7 @@
 | ---- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `SB` | `packages/desktop/test/e2e/conversation-session/conversation-session-built-in-subagent-model-overrides.test.ts`                        |
 | `SX` | `packages/desktop/test/e2e/conversation-session/manual-review/pending/conversation-session-subagent-runtime-catalog-reasoning.test.ts` |
-| `SL` | `packages/desktop/test/e2e/subagent-coding-plan-login-catalog-stale.test.ts`                                                           |
+| `SL` | `retired:packages/desktop/test/e2e/subagent-coding-plan-login-catalog-stale.test.ts`                                                   |
 | `SM` | `packages/desktop/test/e2e/start-plan-manual-claim-experience.test.ts`                                                                 |
 | `SE` | `packages/desktop/test/e2e/settings/settings-subagent-create-edit-persistence.test.ts`                                                 |
 | `SS` | `retired:packages/services/test/subagentsService.test.ts`                                                                              |

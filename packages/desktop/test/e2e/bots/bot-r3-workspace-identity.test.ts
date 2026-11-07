@@ -1,12 +1,12 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { type IZCodeTaskService, type ISettingService } from "@zcode/services";
+import { type IZCodeTaskService, type ISettingService } from "@s-agent/services";
 import {
   appSettingsSchema,
   buildRemoteWorkspaceIdentity,
   buildServerRemoteWorkspaceIdentity,
   type BotsConfigFile,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { createBotProjectRuntime } from "../../../../services/src/bot-project-runtime/index.js";
 import { SourceServerDirectory } from "#src/host/sourceServerDirectory.js";
 import { resolveBotRemoteWorkspace } from "#src/host/botRemoteWorkspaceResolver.js";

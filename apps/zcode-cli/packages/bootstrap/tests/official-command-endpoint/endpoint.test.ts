@@ -8,14 +8,14 @@ import { afterEach, assert, describe, expect, it, vi } from "vitest";
 import {
   ZCODE_OFFICIAL_ENDPOINT_ENV_KEY,
   ZCODE_OFFICIAL_ENDPOINT_TOKEN_ENV_KEY,
-} from "@zcode/shared";
-import type { ExecutionPort, ExecutionRequest } from "@zcode/contracts";
+} from "@s-agent/shared";
+import type { ExecutionPort, ExecutionRequest } from "@s-agent/contracts";
 import {
   supportsBackgroundTaskWaiter,
   supportsBashBackgroundLifecycle,
   type BackgroundTaskWaiterExecutionPort,
   type BashBackgroundLifecycleExecutionPort,
-} from "@zcode/core";
+} from "@s-agent/core";
 import {
   createOfficialCommandEndpoint,
   withOfficialCommandEnv,

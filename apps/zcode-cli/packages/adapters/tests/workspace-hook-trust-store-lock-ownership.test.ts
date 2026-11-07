@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm, stat, utimes, writeFile } from "node:fs/promises
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import type { WorkspaceHookTrustRecord } from "@zcode/contracts";
+import type { WorkspaceHookTrustRecord } from "@s-agent/contracts";
 import { createFileWorkspaceHookTrustStore } from "../src/storage/workspace-hook-trust-store.js";
 
 /**

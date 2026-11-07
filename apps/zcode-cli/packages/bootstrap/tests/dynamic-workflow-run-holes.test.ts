@@ -11,7 +11,7 @@ import {
   holeSiteId,
   spliceHoleBody,
   type StoredEvent,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import {
   compiledHolesOf,
   mapFillDiagnostics,

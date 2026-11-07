@@ -1,7 +1,7 @@
-import { summarizeRequestVerificationHeaders } from "@zcode/shared";
+import { summarizeRequestVerificationHeaders } from "@s-agent/shared";
 import type { LanguageModelUsage } from "ai";
-import type { Logger, ModelUsage } from "@zcode/contracts";
-import { ModelErrorCode, ModelFailureReason as ModelFailureReasonValue } from "@zcode/contracts";
+import type { Logger, ModelUsage } from "@s-agent/contracts";
+import { ModelErrorCode, ModelFailureReason as ModelFailureReasonValue } from "@s-agent/contracts";
 import { AiSdkModelAdapterError } from "./errors.js";
 import type { ClassifiedModelFailure } from "./failure-classifier.js";
 import { detectProviderBusinessFinishError } from "./provider-finish-business-error.js";

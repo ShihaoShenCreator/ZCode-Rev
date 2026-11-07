@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { Logger } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
 import { resolveProcessProviderEndpointRoutingPort } from "../src/provider-endpoint-routing.js";
 
 describe("resolveProcessProviderEndpointRoutingPort", () => {

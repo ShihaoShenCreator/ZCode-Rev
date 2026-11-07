@@ -16,7 +16,7 @@
     ],
     "noEmit": true,
     "paths": {
-      "@zcode/e2e-report": [
+      "@s-agent/e2e-report": [
         "../e2e-report/src/node/index.ts"
       ]
     }

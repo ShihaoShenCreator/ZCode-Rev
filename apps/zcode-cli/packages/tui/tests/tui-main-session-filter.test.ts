@@ -7,7 +7,7 @@
 // 同时必须证明**没有过滤过头**：dwf 进度是父会话事件，工具卡与结算完成回合要照常活着。
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SessionEventType, createSessionEvent, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, createSessionEvent, type SessionEvent } from "@s-agent/contracts";
 import { isMainSessionEvent } from "../src/app-session-event-handler.js";
 
 const MAIN = "session-main";

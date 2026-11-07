@@ -3,7 +3,7 @@ import {
   CronAutomationSchema,
   inheritPermissionMode,
   type CollaborationMode,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService } from "../src/permission/service.js";
 import { bashToolEntry } from "../src/tool/handlers/bash.js";
 

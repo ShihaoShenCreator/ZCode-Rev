@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createTestModelSelection } from "./test-model-selection.js";
-import type { AgentExecutionTelemetryPort } from "@zcode/contracts";
-import { CompactTrigger, createRootTraceContext, createSessionId } from "@zcode/contracts";
+import type { AgentExecutionTelemetryPort } from "@s-agent/contracts";
+import { CompactTrigger, createRootTraceContext, createSessionId } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 import { createTestModelFactory, createTestRuntimeModel } from "./test-runtime-model.js";

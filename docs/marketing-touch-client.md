@@ -401,14 +401,14 @@ App -> Marketing Touch GET -> URL/hash 授权 -> ZIP prepare/release -> Dialog
 ## 2026-09-10 验证记录
 
 - 相关单测：12 个文件50条通过；随后增加生产授权 ZIP 用例，cloudContentService 3条全部通过（相关用例合计51条）。覆盖 DTO隔离、鉴权与上报、资源哈希/缓存/ZIP、Web降级、轮询、安全校验取消、资源迟到、待操作快照与弹窗互斥。
-- `pnpm typecheck`、`pnpm --filter @zcode/desktop typecheck:e2e` 通过。
+- `pnpm typecheck`、`pnpm --filter @s-agent/desktop typecheck:e2e` 通过。
 - `pnpm lint`：0 error，46项既有 warning；`pnpm architecture:check --changed`：0 violation。
 - macOS Electron delivery E2E：3条通过，最终 run `desktop-e2e-20260910085452990-p8774-6db97d91e9675478`。真实 HTTP/ZIP/iframe ready，挂起 claim 观察 loading，ledger 断言 confirm/cancel及没有 preview 请求。
 - macOS entitlement E2E：1条通过，run `desktop-e2e-20260910085137939-p2018-6b1a685ecf45e04b`。保留权益刷新、Start/Individual 及 Subagent 选择联动。
 - 两个新 E2E 均位于 `packages/desktop/test/e2e/ui-shell/manual-review/pending/marketing-touch-*.test.ts`。按 e2e-case-lifecycle 保持 pending，自动通过不代表人工视觉验收或正式 suite promotion。
 - 未执行：线上真实 Campaign/领取、真实安全校验服务、多窗口实机、Windows/Linux、手机 Web及双主题窄屏视觉验收；不得以本地 fixture 冒充这些验证。
 
-2026-09-12 用户确认转正：三个 spec（delivery、entitlement、anonymous）位于 `packages/desktop/test/e2e/ui-shell/`。复跑：`pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/ui-shell/marketing-touch-*.test.ts'`，不需要 MANUAL_REVIEW 开关。fixture 自动提供 Banner、独立 Popup、ZIP Hero、挂起/释放领取与上报 ledger；不访问真实套餐。使用本机 Electron，不使用 Docker。最新证据与覆盖边界见 `docs/testing/marketing-touch-e2e-implementation.md`；上方 pending 路径是历史记录。
+2026-09-12 用户确认转正：三个 spec（delivery、entitlement、anonymous）位于 `packages/desktop/test/e2e/ui-shell/`。复跑：`pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/ui-shell/marketing-touch-*.test.ts'`，不需要 MANUAL_REVIEW 开关。fixture 自动提供 Banner、独立 Popup、ZIP Hero、挂起/释放领取与上报 ledger；不访问真实套餐。使用本机 Electron，不使用 Docker。最新证据与覆盖边界见 `docs/testing/marketing-touch-e2e-implementation.md`；上方 pending 路径是历史记录。
 
 # 推送回归修复约束（2026-09-11）
 

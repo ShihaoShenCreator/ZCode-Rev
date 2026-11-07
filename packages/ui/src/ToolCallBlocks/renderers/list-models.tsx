@@ -3,9 +3,9 @@ import { useCallback, useMemo } from "react";
 import {
   getModelProviderFamilySpec,
   resolveModelProviderFamilyIdByProviderId,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 // 分享页通过 ToolPresentation 复用本渲染器；从 thoughtLevelOptions 引入会经 display → CodingPlan 拉进
-// @zcode/provider 闭包，导致 web-share 构建失败，因此直接依赖纯词表模块。
+// @s-agent/provider 闭包，导致 web-share 构建失败，因此直接依赖纯词表模块。
 import { thoughtLevelLabelId } from "@/chat-input-toolbar/thoughtLevelLabels.js";
 import { useToolPresentationCapabilities } from "@/ToolCallBlocks/presentationCapabilities.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

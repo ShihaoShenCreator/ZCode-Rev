@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CoreErrorType, HookEventName, SessionEventType, createSessionId } from "@zcode/contracts";
+import { CoreErrorType, HookEventName, SessionEventType, createSessionId } from "@s-agent/contracts";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import { type AgentRuntime } from "../src/runtime.js";
 import {

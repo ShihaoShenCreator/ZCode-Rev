@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { McpToolCallResult } from "@zcode/contracts";
+import type { McpToolCallResult } from "@s-agent/contracts";
 import { normalizeMcpToolResultForModel } from "../src/mcp/image-normalization.js";
 import type { ToolExecutionContext } from "../src/tool/types.js";
 

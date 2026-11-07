@@ -5,10 +5,10 @@
 // ⚠ 术语：这里的 artifact 是脚本经 `artifact.*` 发布给**用户**看的产出，不是引擎内部的
 // `RunSettlement.artifact`（脚本顶层返回值）。
 
-import type { DwfArtifactItem, DwfRunIntrospectionQueries } from "@zcode/adapters/storage";
-import type { DynamicWorkflowRunArtifactItem } from "@zcode/contracts";
-import type { JournalStorePort, NodeRecord } from "@zcode/dynamic-workflow";
-import { WORKFLOW_ARTIFACT_LIMITS } from "@zcode/shared/zcode-protocol-v4";
+import type { DwfArtifactItem, DwfRunIntrospectionQueries } from "@s-agent/adapters/storage";
+import type { DynamicWorkflowRunArtifactItem } from "@s-agent/contracts";
+import type { JournalStorePort, NodeRecord } from "@s-agent/dynamic-workflow";
+import { WORKFLOW_ARTIFACT_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
 
 /**
  * 带产物读面的 journal。签名的**唯一来源**是 adapters 的 {@link DwfRunIntrospectionQueries}

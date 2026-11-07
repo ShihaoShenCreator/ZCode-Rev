@@ -6,8 +6,8 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { zcodeWorkflowsForRunResultSchema, zcodeWorkflowsSaveResultSchema } from "@zcode/shared";
-import { parseSavedWorkflow, serializeSavedWorkflow } from "@zcode/core";
+import { zcodeWorkflowsForRunResultSchema, zcodeWorkflowsSaveResultSchema } from "@s-agent/shared";
+import { parseSavedWorkflow, serializeSavedWorkflow } from "@s-agent/core";
 import {
   findSavedWorkflowForRunOp,
   saveSavedWorkflowFromRunOp,

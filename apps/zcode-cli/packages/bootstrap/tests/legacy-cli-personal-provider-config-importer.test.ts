@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ModelConfigRules, ProviderConfigMap } from "@zcode/provider";
+import { ModelConfigRules, ProviderConfigMap } from "@s-agent/provider";
 import {
   importLegacyCliConfiguredDefault,
   importLegacyCliPersonalProviderConfig,
@@ -24,7 +24,7 @@ const emptyModelRules = {
 };
 
 describe("importLegacyCliPersonalProviderConfig", () => {
-  it("Standalone 与 Desktop 一样丢弃内置套餐配置，API 只迁 Key", () => {
+  it("不迁移旧 Z.ai/BigModel 内置凭据，仍保留通用自定义 Provider", () => {
     const update = importLegacyCliPersonalProviderConfig({
       input: {
         provider: {
@@ -52,13 +52,19 @@ describe("importLegacyCliPersonalProviderConfig", () => {
             source: "builtin",
             options: { apiKey: "discard" },
           },
+          "custom-glm": {
+            kind: "openai-compatible",
+            source: "custom",
+            options: { apiKey: "keep-custom-key", baseURL: "https://glm.example.test/v1" },
+            models: { "GLM-custom": {} },
+          },
         },
       },
     });
-    expect(update.providers.keys()).toEqual(["bigmodel-api"]);
-    expect(update.providers.get("bigmodel-api")?.toJSON()).toEqual({
-      group: "standard-personal",
-      access: { type: "api-key", apiKey: "kept" },
+
+    expect(update.providers.keys()).toEqual(["custom-glm"]);
+    expect(update.providers.get("custom-glm")?.toJSON()).toMatchObject({
+      access: { type: "api-key", apiKey: "keep-custom-key" },
     });
   });
 

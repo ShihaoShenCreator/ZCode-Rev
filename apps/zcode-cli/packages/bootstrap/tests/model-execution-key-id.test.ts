@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { zcodeSessionSendParamsSchema } from "@zcode/shared";
+import { zcodeSessionSendParamsSchema } from "@s-agent/shared";
 import { createModelExecutionContext } from "../src/zcode-protocol/model-execution.js";
 
 describe("请求期 Key ID 执行上下文", () => {

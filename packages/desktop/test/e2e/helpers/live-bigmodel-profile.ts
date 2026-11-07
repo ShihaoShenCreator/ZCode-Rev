@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { platform, userInfo } from "node:os";
 import { resolve } from "node:path";
-import { createCredentialService, setDataBaseDir } from "@zcode/services/node";
+import { createCredentialService, setDataBaseDir } from "@s-agent/services/node";
 import { createCredentialCipherProvider } from "../../../../services/src/credential/providers/credentialCipherProvider.js";
 import { getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 

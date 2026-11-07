@@ -6,8 +6,8 @@ import {
 } from "@/lib/workspaceSidePane.js";
 /* eslint-disable max-lines */
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { createUuid } from "@zcode/shared";
-import type { EmbeddedBrowserOpenUrlRequest, IPlatformService } from "@zcode/shared";
+import { createUuid } from "@s-agent/shared";
+import type { EmbeddedBrowserOpenUrlRequest, IPlatformService } from "@s-agent/shared";
 import type { CodeViewerSource } from "@/lib/codeViewer.js";
 // 保活：side pane terminal 跨 workspace 会话上移到模块级 registry。
 // 关闭 terminal tab 时必须显式 release，杀掉 PTY，避免常驻 registry 造成孤儿进程。

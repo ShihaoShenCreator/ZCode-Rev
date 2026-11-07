@@ -1,11 +1,11 @@
 import type {
   WebRemoteControlExternalWorkspaceBridge,
   WebRemoteControlWorkspaceBridge,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   connectViaProtocol,
   type AcknowledgedWebRemoteControlRelayProtocolAdapter,
-} from "@zcode/client";
+} from "@s-agent/client";
 import {
   bindRemoteWorkspaceIdentity,
   bindRemoteWorkspacePath,
@@ -13,7 +13,7 @@ import {
   registerRemoteWorkspaceSession,
   unregisterRemoteWorkspaceSession,
   type RemoteWorkspaceSession,
-} from "@zcode/ui/remote-workspace-session-store";
+} from "@s-agent/ui/remote-workspace-session-store";
 
 type WebRemoteControlBridgeWithRemoteSession =
   | WebRemoteControlExternalWorkspaceBridge

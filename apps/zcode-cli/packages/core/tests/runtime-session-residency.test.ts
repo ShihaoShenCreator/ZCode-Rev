@@ -1,7 +1,7 @@
 import { BackgroundTaskTracker } from "../src/tool/executor/background-tasks.js";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
-import { createSessionId, createTraceId, createTurnId, type TraceContext } from "@zcode/contracts";
+import { createSessionId, createTraceId, createTurnId, type TraceContext } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { InMemoryRuntimeTaskRegistry, type RuntimeTaskType } from "../src/runtime-task/registry.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

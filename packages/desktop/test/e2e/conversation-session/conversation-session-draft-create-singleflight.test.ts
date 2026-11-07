@@ -1,6 +1,6 @@
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
-import { TID_V4_COMPOSER_SEND, TID_V4_SESSION_PANE, testId } from "@zcode/shared/test-ids";
+import { TID_V4_COMPOSER_SEND, TID_V4_SESSION_PANE, testId } from "@s-agent/shared/test-ids";
 import {
   getV4PaneSnapshot,
   prepareV4ConversationE2E,

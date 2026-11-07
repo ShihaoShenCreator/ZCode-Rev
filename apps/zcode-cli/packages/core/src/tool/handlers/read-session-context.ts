@@ -16,7 +16,7 @@ import {
   type SessionId,
   type SessionInfo,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   buildSessionContextMaterial,
   formatLocalSessionNotFound,

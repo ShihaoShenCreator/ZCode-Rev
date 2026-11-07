@@ -1,4 +1,4 @@
-import type { IServiceAccessor } from "@zcode/services";
+import type { IServiceAccessor } from "@s-agent/services";
 
 export const REMOTE_WORKSPACE_RPC_CONTRACT_VERSION = 1 as const;
 

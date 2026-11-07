@@ -197,7 +197,7 @@ fixture check 唯一提示为 response-only 的 `E2E_BDO_QUERY_NOTIFIED` 未作�
 
 ```bash
 ZCODE_E2E_COVERAGE=1 \
-pnpm --filter @zcode/desktop test:e2e -- \
+pnpm --filter @s-agent/desktop test:e2e -- \
   --spec ./test/e2e/conversation-session/conversation-session-bash-direct-output.test.ts \
   --spec ./test/e2e/conversation-session/conversation-session-terminal-expanded-details-and-status.test.ts
 ```
@@ -232,7 +232,7 @@ V4 background-work 的本次证据仅取 Bash cancel 单条；不把整个文件
 仅复跑新用例（保留同一 wrapper 的 HOME/artifact 隔离；不增加额外 `--` 以免 grep 被忽略）：
 
 ```bash
-pnpm --filter @zcode/desktop test:e2e \
+pnpm --filter @s-agent/desktop test:e2e \
   --spec ./test/e2e/conversation-session/conversation-session-bash-direct-output.test.ts \
   --mochaOpts.grep BDO07
 ```

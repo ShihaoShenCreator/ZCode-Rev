@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity, ServiceChannels } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity, ServiceChannels } from "@s-agent/shared";
 import {
   TID_DOCKER_CONTAINER_INPUT,
   TID_CONFIRM_DIALOG_CONFIRM,
@@ -21,13 +21,13 @@ import {
   TID_SSH_SUCCESS,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   installHandoffRpcProbe,
   callHandoffHost,
   restoreHandoffProbes,
 } from "#e2e/helpers/remote-project-handoff-probe";
-import type { RemoteProjectDirectory } from "@zcode/services";
+import type { RemoteProjectDirectory } from "@s-agent/services";
 import { clearAppData, clickTestIdByDom } from "#e2e/helpers/desktop-app";
 import {
   requestRemoteProjectConnection,

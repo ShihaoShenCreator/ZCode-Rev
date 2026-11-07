@@ -202,7 +202,7 @@ Week 4: M5 (Agent Runtime 整合)
 
 ## 依赖
 
-- `@zcode/contracts` - 必须先完成 M1
+- `@s-agent/contracts` - 必须先完成 M1
 - 测试框架 - vitest（需添加到 workspace）
 - 无外部 I/O 依赖
 
@@ -210,6 +210,6 @@ Week 4: M5 (Agent Runtime 整合)
 
 ## 待定
 
-- [ ] 是否需要 @zcode/contracts 作为独立包，或直接在 core 内定义
+- [ ] 是否需要 @s-agent/contracts 作为独立包，或直接在 core 内定义
 - [ ] ToolScheduler 的依赖检测算法细节
 - [ ] AgentRuntime 的 public API 设计

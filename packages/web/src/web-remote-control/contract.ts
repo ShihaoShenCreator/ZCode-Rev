@@ -1,6 +1,5 @@
-import type { WebRemoteControlFailure, WebRemoteControlV2QrParams } from "@zcode/shared";
-import type { WebRemoteControlRelayV2Device } from "@zcode/shared/web-remote-relay";
-import type { WebOAuthProviderId } from "#src/auth/browserOAuthCredentialRepo.js";
+import type { WebRemoteControlFailure, WebRemoteControlV2QrParams } from "@s-agent/shared";
+import type { WebRemoteControlRelayV2Device } from "@s-agent/shared/web-remote-relay";
 import type { WebAuthService } from "#src/auth/webAuthService.js";
 
 export interface WebRemoteControlDeviceGroup {
@@ -17,19 +16,11 @@ export interface KnownDevice {
   platform?: string;
 }
 
-/** 设备页账号行的只读展示资料；不是登录事实，登录门禁仍以 JWT 为准。 */
-export interface WebRemoteControlDeviceListAccount {
-  displayName: string;
-  avatarUrl?: string;
-  provider: WebOAuthProviderId;
-}
-
 export type WebRemoteControlDeviceListView = {
   kind: "devices";
   devices: WebRemoteControlDeviceGroup[];
   loading: boolean;
   error: boolean;
-  account?: WebRemoteControlDeviceListAccount;
 };
 
 export type WebRemoteControlEntryView =
@@ -47,14 +38,13 @@ export interface WebRemoteControlEntryConnection {
 
 export interface WebRemoteControlEntryOptions {
   // 浏览器 location/history/storage 经现有边界注入，不另存一份登录事实。
-  auth: Pick<WebAuthService, "getZCodeJwtToken" | "getActiveAccount" | "startLogin" | "logout">;
+  auth: Pick<WebAuthService, "getZCodeJwtToken" | "logout">;
   getHref(): string;
   replaceHref(href: string): void;
   storage: Pick<Storage, "getItem" | "setItem">;
   locale: "zh-CN" | "en-US";
   devices(jwt: string, signal: AbortSignal): Promise<WebRemoteControlRelayV2Device[]>;
   subscribeVisible(listener: () => void): () => void;
-  loginOptions?: Parameters<WebAuthService["startLogin"]>[0];
   token(jwt: string, signal: AbortSignal): Promise<string>;
   connect(connection: WebRemoteControlEntryConnection): void;
   onView(view: WebRemoteControlEntryView): void;

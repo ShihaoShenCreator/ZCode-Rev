@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { zcodeToolExecResourceSchema } from "@zcode/shared";
+import { zcodeToolExecResourceSchema } from "@s-agent/shared";
 import { createBashResourceTelemetry } from "../src/exec/bash-resource-telemetry.js";
 import { createProcessProbe } from "../src/device/process-probe.js";
 

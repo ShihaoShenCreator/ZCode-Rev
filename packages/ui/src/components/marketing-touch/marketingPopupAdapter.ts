@@ -1,5 +1,5 @@
 import { additionalRequestModalSelectors } from "@/request-security-edition/errors.js";
-import { isStartPlanModelProviderId, type MarketingPopup } from "@zcode/shared";
+import type { MarketingPopup } from "@s-agent/shared";
 import type {
   CloudContentDialogPayload,
   CloudDialogHero,
@@ -12,7 +12,6 @@ export function canOpenMarketingPopup() {
       [
         '[role="dialog"]',
         '[role="alertdialog"]',
-        '[data-testid="coding-plan-upgrade-surface"]',
         ...additionalRequestModalSelectors,
       ].join(", "),
     )
@@ -34,20 +33,11 @@ export function adaptMarketingPopup(
   locale: "zh-CN" | "en-US",
   popup: MarketingPopup,
   hero: CloudDialogHero | null,
-  viewPlanLabel?: string,
 ): CloudContentDialogPayload {
   const actions: CloudContentDialogPayload["actions"] = {};
   const buttons = popup.buttons.map((button, index) => {
     const key = `button-${index}`;
     const action = button.action;
-    const labelOverride =
-      viewPlanLabel &&
-      action.type === "navigate" &&
-      action.args.page === "settings" &&
-      action.args.section === "models" &&
-      isStartPlanModelProviderId(action.args.provider_id ?? "")
-        ? viewPlanLabel
-        : undefined;
     actions[key] =
       action.type === "close"
         ? { type: "close" }
@@ -55,23 +45,21 @@ export function adaptMarketingPopup(
           ? { type: "open_external", url: action.args.url }
           : action.type === "copy_text"
             ? { type: "copy_text", text: action.args.text }
-            : action.type === "navigate"
-              ? {
-                  type: "navigate",
-                  destination:
-                    action.args.page === "plugin_marketplace" ? "plugin_store" : "settings",
-                }
-              : { type: "claim_plan", planId: action.args.plan_id };
+            : {
+                type: "navigate",
+                destination:
+                  action.args.page === "plugin_marketplace" ? "plugin_store" : "settings",
+              };
     return {
       id: key,
       actionId: key,
-      label: labelOverride ?? marketingLabel(button.text),
+      label: marketingLabel(button.text),
       formattedLabel: {
         format:
-          labelOverride || button.text.format === "plaintext"
+          button.text.format === "plaintext"
             ? ("plain_text" as const)
             : button.text.format,
-        text: labelOverride ?? button.text.content,
+        text: button.text.content,
       },
       variant: action.type === "close" ? ("secondary" as const) : ("primary" as const),
       theme: button.theme ?? { variant: "default" as const },

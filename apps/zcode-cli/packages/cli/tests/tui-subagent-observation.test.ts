@@ -9,8 +9,8 @@ import {
   type SessionStorePort,
   type SessionInfo,
   type MessageWithParts,
-} from "@zcode/contracts";
-import type { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import type { AgentRuntime } from "@s-agent/core";
 import { createSubagentObservation } from "../../bootstrap/src/app/subagent-observation.js";
 
 const parentId = createSessionId("parent");

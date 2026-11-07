@@ -3,8 +3,8 @@ import {
   resolveWorkspaceKey,
   ZCODE_AGENT_PROVIDER,
   type ZCodeTaskMeta,
-} from "@zcode/shared";
-import type { SessionsIndexReconcileResult } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import type { SessionsIndexReconcileResult } from "@s-agent/shared/zcode-protocol-v4";
 import type {
   TaskFactChange,
   TaskFactSource,

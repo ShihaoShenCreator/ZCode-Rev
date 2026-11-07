@@ -26,9 +26,9 @@ describe("desktop product identity", () => {
     expect(resolveDesktopProductIdentity({ ZCODE_ENV: "test" })).toEqual({
       flavor: "preview",
       appId: "dev.zcode.app.preview",
-      productName: "ZCode Preview",
-      linuxExecutableName: "zcode-preview",
-      linuxPackageName: "zcode-preview",
+      productName: "S-Agent Preview",
+      linuxExecutableName: "s-agent-preview",
+      linuxPackageName: "s-agent-preview",
       cuaHelperInstallVariant: "preview",
     });
   });
@@ -56,7 +56,7 @@ describe("desktop product identity", () => {
     }
   });
 
-  it("测试后端永远是 Preview 身份，开关无法把它变成正式 ZCode", () => {
+  it("测试后端永远是 Preview 身份，开关无法把它变成正式 S-Agent", () => {
     expect(resolveDesktopProductFlavor({ ZCODE_ENV: "test", ZCODE_PREVIEW_IDENTITY: "0" })).toBe(
       "preview",
     );
@@ -81,9 +81,9 @@ describe("desktop product identity", () => {
     expect(desktopProductIdentities.production).toEqual({
       flavor: "production",
       appId: "dev.zcode.app",
-      productName: "ZCode",
-      linuxExecutableName: "zcode",
-      linuxPackageName: "zcode",
+      productName: "S-Agent",
+      linuxExecutableName: "s-agent",
+      linuxPackageName: "s-agent",
       cuaHelperInstallVariant: null,
     });
   });

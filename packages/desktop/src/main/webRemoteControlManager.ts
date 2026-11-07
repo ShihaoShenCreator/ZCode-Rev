@@ -1,13 +1,13 @@
-import type { RendererTelemetryEventPayload } from "@zcode/shared";
+import type { RendererTelemetryEventPayload } from "@s-agent/shared";
 /* eslint-disable max-lines -- Web 远程控制 manager 承担外部 relay app payload 路由与 workspace bridge 编排。 */
 import type { MessagePortMain, UtilityProcess as ElectronUtilityProcess } from "electron";
 import { randomUUID } from "node:crypto";
-import { MessagePortProtocol, type MessagePortLike, type MessagePortPayload } from "@zcode/rpc";
+import { MessagePortProtocol, type MessagePortLike, type MessagePortPayload } from "@s-agent/rpc";
 import {
   createAcknowledgedWebRemoteControlRelayProtocol,
   type AcknowledgedWebRemoteControlRelayProtocolAdapter,
   type WebRemoteControlPayloadSendResult,
-} from "@zcode/client";
+} from "@s-agent/client";
 import {
   buildWebRemoteControlExternalQrUrl,
   buildWebRemoteControlBridgeResultTelemetry,
@@ -45,8 +45,8 @@ import {
   type RemoteUsageRemoteKind,
   type TelemetryEventPayload,
   measureWebRemoteControlRpcRelayEnvelopeBytes,
-} from "@zcode/shared";
-import { WebRemoteControlV2ConnectionError } from "@zcode/shared/web-remote-relay";
+} from "@s-agent/shared";
+import { WebRemoteControlV2ConnectionError } from "@s-agent/shared/web-remote-relay";
 import {
   WebRemoteControlDeviceTransport,
   MobilePushConnection,

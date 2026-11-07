@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import { mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { basename, dirname, join } from "node:path";
-import type { Logger } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const faults = vi.hoisted(() => ({

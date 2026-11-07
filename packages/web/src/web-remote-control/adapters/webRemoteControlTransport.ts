@@ -14,13 +14,13 @@ import {
 import {
   WebRemoteControlRelayPayloadSerializer,
   type WebRemoteControlPayloadSendResult,
-} from "@zcode/client";
+} from "@s-agent/client";
 import {
   WEB_REMOTE_CONTROL_RPC_TRANSPORT_LIMITS,
   parseWebRemoteControlAppPayload,
   type WebRemoteControlAppPayload,
   type WebRemoteControlFailure,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   WEB_REMOTE_CONTROL_V2_HEARTBEAT_ACK_TIMEOUT_MS,
   WEB_REMOTE_CONTROL_V2_HEARTBEAT_INTERVAL_MS,
@@ -32,7 +32,7 @@ import {
   getWebRemoteControlHeartbeatJitterMs,
   getWebRemoteControlReconnectJitterMs,
   type WebRemoteControlRelayV2OutgoingMessage,
-} from "@zcode/shared/web-remote-relay";
+} from "@s-agent/shared/web-remote-relay";
 
 export class WebRemoteControlTerminalTransport {
   private readonly WebSocketCtor: typeof globalThis.WebSocket;

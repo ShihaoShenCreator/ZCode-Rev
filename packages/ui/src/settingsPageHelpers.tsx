@@ -5,21 +5,21 @@ import type {
   IntegratedTerminalShellSelection,
   LocalePreference,
   ZCodeInteractionBehavior,
-} from "@zcode/shared";
-import { appToolSearchModeSchema } from "@zcode/shared";
+} from "@s-agent/shared";
+import { appToolSearchModeSchema } from "@s-agent/shared";
 import {
   TID_SETTINGS_ASK_USER_QUESTION_AUTO_RESOLUTION_SWITCH,
   TID_SETTINGS_NATIVE_SEARCH_SWITCH,
   TID_SETTINGS_TOOL_SEARCH_SELECT,
   TID_SETTINGS_TOOL_SEARCH_OPTION,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { useState, useCallback, useEffect } from "react";
-import type { IPlatformService } from "@zcode/shared";
+import type { IPlatformService } from "@s-agent/shared";
 import {
   TID_SETTINGS_LOCALE_SELECT_ITEM,
   TID_SETTINGS_LOCALE_SELECT_TRIGGER,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   Select,
   SelectContent,
@@ -46,7 +46,7 @@ import {
   type SettingsSectionId,
 } from "@/settings/settingsPageConfig.js";
 
-export type { Locale, LocalePreference } from "@zcode/shared";
+export type { Locale, LocalePreference } from "@s-agent/shared";
 export { type SettingsSectionId };
 export { createSettingsPageConfig, resolveSettingsSectionForPlatform };
 export { SETTINGS_SECTION_GROUPS, SETTINGS_SECTIONS };

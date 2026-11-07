@@ -18,8 +18,8 @@ import type {
   SessionId,
   TraceId,
   TurnId,
-} from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import { ProductProjection, computeInputRouting } from "../src/zcode-protocol-v4/index.js";
 
 // ── 事件序列构造器（与 product-projection.test.ts 同构的精简版）──

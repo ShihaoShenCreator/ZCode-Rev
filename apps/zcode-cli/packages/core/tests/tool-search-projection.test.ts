@@ -1,5 +1,5 @@
 import { expect, it, vi } from "vitest";
-import type { ResolvedToolSearchMode } from "@zcode/contracts";
+import type { ResolvedToolSearchMode } from "@s-agent/contracts";
 import type {
   RuntimeMessageEntry,
   RuntimeMessageMessageEntry,

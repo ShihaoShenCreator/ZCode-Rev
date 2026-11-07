@@ -169,7 +169,7 @@ impact-only，本轮不修改产品 spec/测试或自动 promotion。后续计�
 | -------------------------------------------- | ----------------------------------------------------- |
 | workspace freshness                          | 通过；新 test 分支没有 upstream                       |
 | `pnpm typecheck`                             | 失败，9 处错误，详见下表                              |
-| `pnpm --filter @zcode/desktop typecheck:e2e` | 失败，权益 E2E 的 5 处旧 API 错误                     |
+| `pnpm --filter @s-agent/desktop typecheck:e2e` | 失败，权益 E2E 的 5 处旧 API 错误                     |
 | `pnpm lint`                                  | 0 errors / 45 warnings，未修改代码去消除已有 warnings |
 | `pnpm architecture:check --changed`          | 0 violations                                          |
 
@@ -203,7 +203,7 @@ impact-only，本轮不修改产品 spec/测试或自动 promotion。后续计�
 
 ```sh
 ZCODE_E2E_COVERAGE=1 ZCODE_E2E_MANUAL_REVIEW=1 \
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts \
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts \
   --spec './test/e2e/ui-shell/manual-review/pending/marketing-touch-delivery.test.ts' \
   --spec './test/e2e/ui-shell/manual-review/pending/marketing-touch-entitlement.test.ts'
 ```

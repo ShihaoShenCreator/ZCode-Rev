@@ -4,8 +4,8 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { zcodeSkillsReferenceCatalogResultSchema } from "@zcode/shared";
-import type { SkillLoadOutcome } from "@zcode/contracts";
+import { zcodeSkillsReferenceCatalogResultSchema } from "@s-agent/shared";
+import type { SkillLoadOutcome } from "@s-agent/contracts";
 import { getSkillReferenceCatalog } from "../src/zcode-protocol/skill-reference-catalog.js";
 import type {
   ZCodeProtocolAgentServerContext,

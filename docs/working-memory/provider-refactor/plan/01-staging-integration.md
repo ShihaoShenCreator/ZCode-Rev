@@ -150,7 +150,7 @@ typecheck + lint + affected tests
 
 ### 阶段 B 移交问题
 
-CLI 子工作区的完整 typecheck 尚不能在当前安装状态下形成有效结果。直接运行 Adapter/Bootstrap `tsc` 会先读取旧的依赖 `dist`；按 Turbo 依赖顺序构建时，`@zcode/contracts` 又从根工作区解析到 Zod v4，而该 CLI 包声明并依赖 Zod v3。由此产生的 Plugin、Workflow、Workspace Hook 和 Tool Display 类型错误不是 Provider 冲突路径的失败，而是 CLI 子工作区 install/lock/门禁未闭环的直接证据。
+CLI 子工作区的完整 typecheck 尚不能在当前安装状态下形成有效结果。直接运行 Adapter/Bootstrap `tsc` 会先读取旧的依赖 `dist`；按 Turbo 依赖顺序构建时，`@s-agent/contracts` 又从根工作区解析到 Zod v4，而该 CLI 包声明并依赖 Zod v3。由此产生的 Plugin、Workflow、Workspace Hook 和 Tool Display 类型错误不是 Provider 冲突路径的失败，而是 CLI 子工作区 install/lock/门禁未闭环的直接证据。
 
 该问题不在阶段 A 修改业务源码兜底。阶段 B 必须先恢复可复现的 CLI workspace 安装和依赖解析，再把 Core、Adapter、Bootstrap 的 build/typecheck/test 纳入自动阻断门禁。
 

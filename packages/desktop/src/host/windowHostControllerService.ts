@@ -1,16 +1,16 @@
 /* eslint-disable max-lines -- Controller source 聚合、路由、订阅与生命周期属于同一个 Host 边界。 */
-import { Emitter, Event } from "@zcode/rpc";
-import type { ZCodeTaskMeta } from "@zcode/shared";
+import { Emitter, Event } from "@s-agent/rpc";
+import type { ZCodeTaskMeta } from "@s-agent/shared";
 import type {
   ControllerSubscribeParams,
   WindowHostControllerTaskRow,
   WindowHostTaskAddress,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   CONTROLLER_TASKS_INDEX_TOPIC,
   matchesTaskListMembershipKind,
   windowHostTaskAddressSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type {
   IWindowControllerService,
   IZCodeAgentService,
@@ -21,7 +21,7 @@ import type {
   WindowHostTaskUnreadSignal,
   ZCodeTaskListQuery,
   ZCodeTaskListWorkspaceScope,
-} from "@zcode/services";
+} from "@s-agent/services";
 import {
   createWindowHostControllerProjection,
   type WindowHostControllerMutation,
@@ -81,7 +81,7 @@ function mutationParams(address: WindowHostTaskAddress) {
 }
 
 function sessionOverlay(
-  summary: import("@zcode/shared/zcode-protocol-v4").SessionSummary,
+  summary: import("@s-agent/shared/zcode-protocol-v4").SessionSummary,
 ): WindowHostControllerSessionOverlay {
   const liveStatus: WindowHostControllerSessionOverlay["liveStatus"] =
     summary.pendingInteraction ||
@@ -140,8 +140,8 @@ function liveStatusFromMeta(meta: ZCodeTaskMeta): WindowHostControllerTaskRow["l
  * 对应 source 的 tasks-index 重建投影，断连时只冻结最后一次成功的内存快照。
  */
 export function createWindowHostControllerRuntime(options: {
-  onRunStarted?: (run: import("@zcode/shared/web-remote-relay").MobilePushRun) => void;
-  onNotification?: (event: import("@zcode/shared/web-remote-relay").MobilePushEvent) => void;
+  onRunStarted?: (run: import("@s-agent/shared/web-remote-relay").MobilePushRun) => void;
+  onNotification?: (event: import("@s-agent/shared/web-remote-relay").MobilePushEvent) => void;
   createId: () => string;
   readHostTaskList: IZCodeTaskService["listTaskList"];
   resolveSource: (scope: ZCodeTaskListWorkspaceScope) => ResolvedWindowHostControllerSource | null;
@@ -951,7 +951,7 @@ export function createWindowHostControllerRuntime(options: {
       taskId: string;
       workspacePath: string;
       workspaceIdentity?: string;
-      attachmentScope?: import("@zcode/shared").WindowHostAttachmentScope;
+      attachmentScope?: import("@s-agent/shared").WindowHostAttachmentScope;
       allowMissingTask?: boolean;
     }): Promise<WindowHostTaskAddress> {
       const remoteAttachmentScope =

@@ -15,7 +15,7 @@
  */
 
 import { ipcMain } from "electron";
-import { PlatformChannels, rendererHeapSampleSchema } from "@zcode/shared";
+import { PlatformChannels, rendererHeapSampleSchema } from "@s-agent/shared";
 import type { ProcessResourceSampleSource } from "./processResourceSampleSources.js";
 import { isMainApplicationWindowWebContents } from "./resourceManagerWindow.js";
 

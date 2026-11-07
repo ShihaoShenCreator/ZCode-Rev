@@ -16,9 +16,9 @@ import {
   type SessionId,
   type TraceId,
   type TurnId,
-} from "@zcode/contracts";
-import { conversationSnapshotSchema } from "@zcode/shared/zcode-protocol-v4";
-import { builtInTools } from "@zcode/core";
+} from "@s-agent/contracts";
+import { conversationSnapshotSchema } from "@s-agent/shared/zcode-protocol-v4";
+import { builtInTools } from "@s-agent/core";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 
 // ── 事件序列构造器（形态同 product-projection.test.ts）──

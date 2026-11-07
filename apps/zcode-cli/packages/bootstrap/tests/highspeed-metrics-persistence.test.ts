@@ -4,7 +4,7 @@ import type {
   SessionEvent,
   SessionEventStorePort,
   SessionStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   persistHighspeedMetrics,
   persistHighspeedTiming,

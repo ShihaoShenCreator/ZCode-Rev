@@ -6,8 +6,8 @@ import type {
   CreateWorkflowCausalityGraph,
   CreateWorkflowEdge,
   CreateWorkflowOutput,
-} from "@zcode/contracts";
-import type { ControlFlowGraph, HandoffGraph } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import type { ControlFlowGraph, HandoffGraph } from "@s-agent/dynamic-workflow";
 import { createWorkflowToolEntry } from "../src/tool/handlers/create-workflow.js";
 import { boundCausalityGraph } from "../src/tool/handlers/create-workflow-graph-bounds.js";
 import {
@@ -17,7 +17,7 @@ import {
 import { saveSavedWorkflow } from "../src/tool/handlers/saved-workflows/index.js";
 import { registerBuiltInTools } from "../src/tool/handlers/index.js";
 import { analyzeScript } from "../src/tool/handlers/workflow-script-analysis.js";
-import type { ModelCatalogEntry, ModelCatalogPort } from "@zcode/contracts";
+import type { ModelCatalogEntry, ModelCatalogPort } from "@s-agent/contracts";
 import type { ToolExecutionContext, ToolHandlerFailure } from "../src/tool/types.js";
 import { createToolRegistry } from "../src/tool/registry.js";
 

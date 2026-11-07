@@ -4,7 +4,7 @@ import {
   buildZCodeSourceHeadersFromContext,
   createHelpAppConfigReader,
   ZCODE_ENV,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export function createDesktopHelpConfigReader(options: {
   resolveEndpointOrigin: () => Promise<string>;

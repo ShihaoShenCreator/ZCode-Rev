@@ -8,7 +8,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import type { RunEvent } from "@zcode/dynamic-workflow";
+import type { RunEvent } from "@s-agent/dynamic-workflow";
 import { runDriverScript } from "./workflow-driver.helpers.js";
 
 type ProgressEvent = Extract<RunEvent, { type: "node-progress" }>;

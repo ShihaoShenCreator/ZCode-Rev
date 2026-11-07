@@ -62,7 +62,7 @@
 | CUA permission subject          | Permission dialog              | signed Computer Use Helper                                       | request_access / system settings                                 | macOS TCC                             | CUA broker docs                   |
 | CUA observation/action          | Generic node_repl projection   | CuaControlPort + Helper broker                          | `agent.computerUse.<tool>` via `mcp__node_repl__js`              | tool result/session event             | CUA broker implementation         |
 | Windows CUA operation indicator | Desktop Main native projection | CLI runtime lifecycle + desktop-local Host turn tracker | `computer-use/operation-event` → Host→Main `cua-operation-state` | ephemeral；不进入 snapshot/replayable | `windowsCuaOperationIndicator.ts` |
-| macOS CUA PiP session surface | `@zcode/zcode-cua` native presentation | Desktop Main focus router + Host turn fact publisher | typed `pip-session` presentation client | Helper process-local；不进入 snapshot/replayable | producer `PipSessionCoordinator` |
+| macOS CUA PiP session surface | `@s-agent/zcode-cua` native presentation | Desktop Main focus router + Host turn fact publisher | typed `pip-session` presentation client | Helper process-local；不进入 snapshot/replayable | producer `PipSessionCoordinator` |
 | Human takeover                  | 未来专属 UI                    | 未定义                                                  | 未定义                                                           | 未定义                                | roadmap only                      |
 
 ## State And Delivery Boundary

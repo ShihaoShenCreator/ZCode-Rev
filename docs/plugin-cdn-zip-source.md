@@ -261,7 +261,7 @@ const ZIP_MAX_SINGLE_FILE_BYTES = 50 * 1024 * 1024;
   `sanitizeZCodeRuntimeEnv()` -> `applyNetworkEgressEnv()`。
 - zip 下载不走 git 子进程，不能自然继承这套 env；实现应新增一个 fetch dispatcher/proxy-agent
   适配点，或抽出共享 network egress helper，让 HTTP zip download 与 marketplace/git 网络策略一致。
-- `@zcode/adapters` 已依赖 `proxy-agent`，可优先用它构造 Node fetch dispatcher；具体 API 需要 coding
+- `@s-agent/adapters` 已依赖 `proxy-agent`，可优先用它构造 Node fetch dispatcher；具体 API 需要 coding
   阶段按当前 Node/undici 类型验证，不在 spec 中假设不存在的调用签名。
 
 ## 5. Update detection changes
@@ -312,7 +312,7 @@ Phase 1 为最小改动，也可以扩展现有 `readPluginSourceSha()`：
   - 在 plugin entry source 矩阵新增 `{source:"url", type:"zip"}`。
   - 明确无 `type` 的 `{source:"url"}` 仍是 git clone 兼容路径，不代表 HTTP zip。
 - `apps/zcode-cli/packages/adapters/package.json`
-  - `@zcode/adapters` 当前没有 `yauzl`；若采用 yauzl，需要在 adapters 自己声明 dependency。
+  - `@s-agent/adapters` 当前没有 `yauzl`；若采用 yauzl，需要在 adapters 自己声明 dependency。
   - 仓库已有 `yauzl`：`packages/desktop/package.json` 和 `packages/services/package.json` 均依赖
     `yauzl` / `@types/yauzl`，但不能跨 package 隐式使用。
 - `apps/zcode-cli/packages/adapters/src/plugins/marketplace.ts`
@@ -545,10 +545,10 @@ cache/{marketplace}/{plugin}/{version}/
   - [ ] update detection via sha256；
   - [ ] git url/sha existing behavior regression。
 - [ ] 运行窄验证：
-  - [ ] `pnpm --filter @zcode/adapters test -- plugins.test.ts`
-  - [ ] `pnpm --filter @zcode/adapters test -- version-compare.test.ts`
-  - [ ] `pnpm --filter @zcode/adapters typecheck`
-  - [ ] `pnpm --filter @zcode/adapters lint`
+  - [ ] `pnpm --filter @s-agent/adapters test -- plugins.test.ts`
+  - [ ] `pnpm --filter @s-agent/adapters test -- version-compare.test.ts`
+  - [ ] `pnpm --filter @s-agent/adapters typecheck`
+  - [ ] `pnpm --filter @s-agent/adapters lint`
 - [ ] 按仓库要求运行全局：
   - [ ] `pnpm typecheck`
   - [ ] `pnpm lint`

@@ -6,7 +6,7 @@ import {
   TID_OFFPEAK_EDIT_SUBMIT,
   TID_OFFPEAK_FORM_INSTRUCTIONS,
   TID_OFFPEAK_FORM_TITLE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

@@ -269,7 +269,7 @@ import {
   resolveInternalOnlyFeatureGateState,
   ZCODE_ENV,
   shouldEnableInternalOnlyFeature,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { useIntranetProbe } from "@/hooks/useSystemService.js";
 
 export function useInternalOnlyFeatureVisibility(): boolean {
@@ -340,7 +340,7 @@ it("非内网场景会隐藏 ZAPI 且跳过 ZAPI 模型拉取", async () => {
 Add a focused integration helper test around the service-side gate if needed:
 
 ```ts
-import { resolveInternalOnlyFeatureGateState } from "@zcode/shared";
+import { resolveInternalOnlyFeatureGateState } from "@s-agent/shared";
 
 it("simulate public prod maps to production internet for service-side gate", () => {
   expect(
@@ -371,7 +371,7 @@ import {
   resolveInternalOnlyFeatureGateState,
   shouldEnableInternalOnlyFeature,
   ZCODE_ENV,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const isZapiAllowed = async (): Promise<boolean> => {
   if (internalOnlyFeatureVisibilityPromise) {

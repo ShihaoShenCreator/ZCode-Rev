@@ -28,7 +28,7 @@
 desktop tsup（main、host、preload）与 desktop vite（renderer）的 define
         │ __ZCODE_ARMS_RUM_ENDPOINT__ / __ZCODE_TELEMETRY_REPORT_ENDPOINT__ / __ZCODE_AUTO_UPDATE_ENABLED__
         ▼
-@zcode/shared env 常量 ── 运行时代码只读这些常量
+@s-agent/shared env 常量 ── 运行时代码只读这些常量
 ```
 
 - 未注入 define 的环境（测试、其他 bundle）得到关闭值；vitest 为测试注入固定的事件上报端点，以便验证上报链路。

@@ -9,8 +9,8 @@
  * 会把回环请求劫走。
  */
 
-import { AiSdkModelAdapter, type AiSdkModelRetryOptions } from "@zcode/adapters/model";
-import type { ModelStatusSink } from "@zcode/contracts";
+import { AiSdkModelAdapter, type AiSdkModelRetryOptions } from "@s-agent/adapters/model";
+import type { ModelStatusSink } from "@s-agent/contracts";
 import {
   ModelConfig,
   ModelInputFormatConfig,
@@ -20,7 +20,7 @@ import {
   ProviderRegistry,
   type ModelSelection,
   type Provider,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import {
   ApiProviderModelRuntime,
   type RuntimeModelFactory,

@@ -283,7 +283,7 @@ remote resource id、manifest mount 白名单、部署循环与 runtime descript
 
 ## E2E 契约
 
-macOS/Linux/Windows x64 E2E 是独立验证入口，默认从空临时目录调用真实 prepare。外层 runner 只负责按目标构建 producer 集合、下载 Microsoft `rg`、执行版本/feature/ABI 校验和启动一次真实 Bash toolcall E2E，不得再维护一套重复的 fixture 与行为断言。Linux 验证可以先在对应架构 producer 中生成并校验自产 `bfs` / `ugrep`，再由 prepare 补齐 Microsoft musl `rg`，最终通过 `ZCODE_BFS_BINARY` / `ZCODE_UGREP_BINARY` / `ZCODE_RG_BINARY` 把同一组正式产物交给运行 E2E；不能在两个阶段重复编译同一工具。Windows 使用自产 `ugrep` 与 Microsoft `rg`，并让 `find` 走 Git Bash/system。Windows arm64 的跨 target fixture 与 PE verifier 只证明编译、收集和静态依赖契约，不冒充目标架构运行时 E2E。toolcall E2E 必须从根 workspace 按 `@zcode/bootstrap` 的真实依赖关系构建前置 package，不能依赖工作区中预存的 `dist`。完整链路至少覆盖：
+macOS/Linux/Windows x64 E2E 是独立验证入口，默认从空临时目录调用真实 prepare。外层 runner 只负责按目标构建 producer 集合、下载 Microsoft `rg`、执行版本/feature/ABI 校验和启动一次真实 Bash toolcall E2E，不得再维护一套重复的 fixture 与行为断言。Linux 验证可以先在对应架构 producer 中生成并校验自产 `bfs` / `ugrep`，再由 prepare 补齐 Microsoft musl `rg`，最终通过 `ZCODE_BFS_BINARY` / `ZCODE_UGREP_BINARY` / `ZCODE_RG_BINARY` 把同一组正式产物交给运行 E2E；不能在两个阶段重复编译同一工具。Windows 使用自产 `ugrep` 与 Microsoft `rg`，并让 `find` 走 Git Bash/system。Windows arm64 的跨 target fixture 与 PE verifier 只证明编译、收集和静态依赖契约，不冒充目标架构运行时 E2E。toolcall E2E 必须从根 workspace 按 `@s-agent/bootstrap` 的真实依赖关系构建前置 package，不能依赖工作区中预存的 `dist`。完整链路至少覆盖：
 
 `pnpm test:sea-runtime-tools:e2e` 是 SEA 单文件交付的 host E2E：它构建当前 target 的 SEA，把产物复制到不含 sidecar 的隔离目录，验证首次解压、二次复用、版本/SHA/执行权限，再把解压路径交给同一套真实 Bash toolcall E2E。该命令不得在用户默认 storage root 留下 runtime-tool 缓存或临时目录，也不得作为 desktop Electron 打包的前置步骤。
 

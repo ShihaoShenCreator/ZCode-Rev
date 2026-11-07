@@ -7,7 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { buildRewardsUrl, resolveRewardsOrigin, ZCODE_ENV } from "@zcode/shared";
+import { buildRewardsUrl, resolveRewardsOrigin, ZCODE_ENV } from "@s-agent/shared";
 import { usePlatform } from "@/hooks/usePlatform.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { useZCodeStore } from "@/store/StoreProvider.js";

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import { AutomationCreateLimitError, isAutomationCreateLimitError } from "@zcode/contracts";
-import { AUTOMATION_CREATE_LIMIT_ERROR_CODE, zcodeProtocolMethods } from "@zcode/shared";
+import { AutomationCreateLimitError, isAutomationCreateLimitError } from "@s-agent/contracts";
+import { AUTOMATION_CREATE_LIMIT_ERROR_CODE, zcodeProtocolMethods } from "@s-agent/shared";
 import {
   AUTOMATION_CREATE_BOUND_SESSION_CHECK_ERROR,
   AUTOMATION_CREATE_FROM_AUTOMATION_RUN_ERROR,

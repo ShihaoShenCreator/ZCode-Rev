@@ -3,7 +3,7 @@ import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-
 import { disconnectRemoteSource } from "#e2e/helpers/remote-project-actions";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { clearAppData, readSettings, seedSettings } from "../../../helpers/desktop-app.js";
 import { waitForRendererAfterColdRestart } from "../../../helpers/ssh-remote-lifecycle.js";
 import {

@@ -3,14 +3,14 @@ import { createServer, type Server } from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
 import { createPdfProviderFixture } from "./helpers/pdf-provider-fixture.js";
-import type { ModelSelection as ModelRef, ProviderRegistry } from "@zcode/provider";
+import type { ModelSelection as ModelRef, ProviderRegistry } from "@s-agent/provider";
 import {
   createInMemorySessionEventStore,
   createNodeToolArtifactStore,
   createSqliteSessionStore,
-} from "@zcode/adapters/storage";
+} from "@s-agent/adapters/storage";
 import {
   createModelId,
   createModelProviderId,
@@ -19,8 +19,8 @@ import {
   createSessionId,
   DefaultRuntimeConfig,
   type PdfDocumentPort,
-} from "@zcode/contracts";
-import { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import { AgentRuntime } from "@s-agent/core";
 
 import { createSessionFacade } from "../src/app/session-facade.js";
 

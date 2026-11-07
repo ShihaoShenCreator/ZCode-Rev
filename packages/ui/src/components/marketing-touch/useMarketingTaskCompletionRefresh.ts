@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect } from "react";
-import type { SessionSummary } from "@zcode/shared/zcode-protocol-v4";
+import type { SessionSummary } from "@s-agent/shared/zcode-protocol-v4";
 import { useServices } from "@/hooks/useServices.js";
 import {
   acquireSessionsIndex,

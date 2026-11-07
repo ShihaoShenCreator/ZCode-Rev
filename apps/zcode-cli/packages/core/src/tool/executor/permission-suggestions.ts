@@ -1,5 +1,5 @@
-import { PermissionCapabilityGroup, type PermissionUpdate } from "@zcode/contracts";
-import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@zcode/shared";
+import { PermissionCapabilityGroup, type PermissionUpdate } from "@s-agent/contracts";
+import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@s-agent/shared";
 
 const PROJECT_RULE_INPUT_KEYS = ["command", "url", "file_path", "path", "pattern"] as const;
 

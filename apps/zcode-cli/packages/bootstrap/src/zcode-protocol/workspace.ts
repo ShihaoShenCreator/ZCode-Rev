@@ -1,4 +1,4 @@
-import { parseRemoteWorkspaceIdentity, type ZCodeWorkspaceRef } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity, type ZCodeWorkspaceRef } from "@s-agent/shared";
 
 export function buildWorkspaceRef(input: {
   workspaceIdentity?: string;

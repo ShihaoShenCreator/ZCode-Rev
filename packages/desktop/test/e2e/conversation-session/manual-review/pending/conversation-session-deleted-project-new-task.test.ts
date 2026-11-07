@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { ServiceChannels } from "@zcode/shared";
-import type { ProjectTree } from "@zcode/services";
+import { ServiceChannels } from "@s-agent/shared";
+import type { ProjectTree } from "@s-agent/services";
 import { clearAppData } from "#e2e/helpers/desktop-app";
 import {
   prepareV4ConversationE2E,

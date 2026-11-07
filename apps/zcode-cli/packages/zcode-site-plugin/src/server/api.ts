@@ -1,7 +1,7 @@
 import type { SitesFailureReason, SitesResult } from "../contract.ts";
 
 /**
- * 宿主在每条发给 stdio 官方 MCP 的消息上附的身份结果，键与 `@zcode/shared` 的
+ * 宿主在每条发给 stdio 官方 MCP 的消息上附的身份结果，键与 `@s-agent/shared` 的
  * OFFICIAL_MCP_AUTH_META_KEY 一致（跨进程协议常量，单测比对）。这里不 import shared 的主入口，
  * 免得把整个 shared 打进 server.mjs。
  */

@@ -10,10 +10,10 @@ import {
   RemoteServiceAccess,
   connectViaProtocol,
   createAcknowledgedWebRemoteControlRelayProtocol,
-} from "@zcode/client";
-import { ServiceChannels } from "@zcode/shared";
-import { V4_WIRE_PROTOCOL_VERSION } from "@zcode/shared/zcode-protocol-v4";
-import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND } from "@zcode/shared/test-ids";
+} from "@s-agent/client";
+import { ServiceChannels } from "@s-agent/shared";
+import { V4_WIRE_PROTOCOL_VERSION } from "@s-agent/shared/zcode-protocol-v4";
+import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND } from "@s-agent/shared/test-ids";
 import { createDeviceSwitchDesktopBridge } from "./remote-device-switch.helpers.mjs";
 import { taskSnapshotFrame } from "./remote-task-open.fixture.mjs";
 import { setup, assertEventually } from "./remote-login-v2.helpers.mjs";

@@ -3,7 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { clearAppData } from "#e2e/helpers/desktop-app";
 import {
   execInRemoteContainer,

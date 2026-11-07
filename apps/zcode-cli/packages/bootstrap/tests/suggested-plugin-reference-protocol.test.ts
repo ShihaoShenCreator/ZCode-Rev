@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   updateZCodePluginMarketplace: vi.fn(),
 }));
 
-vi.mock("@zcode/core", () => ({
+vi.mock("@s-agent/core", () => ({
   buildPluginReferenceCatalog: mocks.buildPluginReferenceCatalog,
 }));
 
@@ -24,8 +24,8 @@ import {
   zcodePluginsResolveSuggestedReferenceParamsSchema,
   zcodePluginsResolveSuggestedReferenceResultSchema,
   zcodeProtocolNotifications,
-} from "@zcode/shared";
-import type { PluginReferenceCatalogEntry } from "@zcode/contracts";
+} from "@s-agent/shared";
+import type { PluginReferenceCatalogEntry } from "@s-agent/contracts";
 import { resolveSuggestedPluginReference } from "../src/zcode-protocol/plugin-reference-catalog.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";
 

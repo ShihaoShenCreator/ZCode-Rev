@@ -5,7 +5,7 @@
 本文是 V4 conversation 的当前产品协议。schema 以
 `packages/shared/src/zcode-protocol-v4/` 为准，CLI 裁决与投影以
 `apps/zcode-cli/packages/bootstrap/src/zcode-protocol-v4/` 为准，UI 消费以
-`packages/ui/src/v4/` 为准。旧 `@zcode/protocol`、legacy task stream 和 renderer conversation
+`packages/ui/src/v4/` 为准。旧 `@s-agent/protocol`、legacy task stream 和 renderer conversation
 reducer 只存在于历史文档或兼容层，不得覆盖本文语义。
 
 目标：把 conversation session 的产品行为定义成稳定协议，让产品、开发、QA 和 E2E 用同一套语言讨论状态、动作、裁决、副作用和证据。本文只定义协议层，不展开完整 rule table，也不声明自动化覆盖完成。
@@ -76,7 +76,7 @@ CLI / agent runtime
     |-- input routing
     `-- session control
           |
-          | @zcode/shared/zcode-protocol-v4 semantics
+          | @s-agent/shared/zcode-protocol-v4 semantics
           v
 Host / service
 |-- trusted connection context
@@ -86,7 +86,7 @@ Host / service
 |-- latest projection cache (soft state)
 `-- no new conversation semantics
           |
-          | @zcode/rpc transport
+          | @s-agent/rpc transport
           v
 Renderer / Web UI
 |-- render projection
@@ -95,9 +95,9 @@ Renderer / Web UI
 `-- local-only UI state
 ```
 
-当前 conversation schema 位于 `@zcode/shared` 的 `zcode-protocol-v4` 模块。旧
+当前 conversation schema 位于 `@s-agent/shared` 的 `zcode-protocol-v4` 模块。旧
 `packages/shared/src/zcode-protocol/index.ts` 仍服务非 V4 兼容面，但不是 V4 conversation 产品语义的
-新增入口。`@zcode/rpc` 只负责 channel、call/listen、request/response、连接、日志和遥测，不拥有
+新增入口。`@s-agent/rpc` 只负责 channel、call/listen、request/response、连接、日志和遥测，不拥有
 conversation 产品语义。`productTurnId`、phase、actions、inputRouting、revision、seq 和 command ACK
 属于 V4 protocol/projection，不属于 RPC。
 
@@ -184,7 +184,7 @@ Renderer/Web 发起的会话动作应表达为 command intent，而不是直接�
 ```text
 UI local intent
   -> command(commandId, clientId, baseRevision, type, payload)
-  -> transport by @zcode/rpc
+  -> transport by @s-agent/rpc
   -> host attachment injects {connectionId, trusted clientMode}
   -> guard / dedupe / enqueue / execute in CLI CommandInbox
   <- ACK accepted | rejected | stale | duplicate | failed

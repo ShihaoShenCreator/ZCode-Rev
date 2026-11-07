@@ -1,4 +1,4 @@
-import { PersistedToolSearchContentSchema } from "@zcode/contracts";
+import { PersistedToolSearchContentSchema } from "@s-agent/contracts";
 import {
   COMPLETED_TOOL_PART_METADATA_SCHEMA_VERSION,
   type CompletedToolPartMetadata,

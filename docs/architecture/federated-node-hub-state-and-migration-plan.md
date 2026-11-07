@@ -313,7 +313,7 @@ Authority profile:
    └─ NodeId / version / capability / endpoint
 
 统一 RPC / frame 层
-└─ @zcode/rpc IMessagePassingProtocol + typed runtime schema
+└─ @s-agent/rpc IMessagePassingProtocol + typed runtime schema
 
 Transport adapter
 ├─ MessagePort

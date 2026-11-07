@@ -21,7 +21,7 @@ import {
   type ModelSelection,
   type SessionInfo,
   type SessionStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 import { resolveProjectMemoryRoot } from "../src/memory/project-root.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";

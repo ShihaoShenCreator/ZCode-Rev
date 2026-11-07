@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { ModelErrorCode } from "@zcode/contracts";
+import { ModelErrorCode } from "@s-agent/contracts";
 import type { AiSdkModelRuntime } from "../src/model/runner.js";
 import {
   TestAiSdkModelAdapter as AiSdkModelAdapter,

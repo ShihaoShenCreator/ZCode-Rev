@@ -10,7 +10,7 @@ import {
   type PermissionUpdate,
   type ProjectId,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ExecutableToolCall, ToolExecutionResult } from "../types.js";
 import { createErrorResult } from "./errors.js";
 import { applyPermissionUpdates } from "./permission-rules.js";

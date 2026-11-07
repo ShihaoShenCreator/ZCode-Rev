@@ -13,12 +13,12 @@ import {
   type ModelNetworkStatusEvent,
   type ModelRequestAdmission,
   type ModelStatusSink,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   AiSdkModelAdapter,
   ProviderBusinessError,
   type AiSdkModelRuntime,
-} from "@zcode/adapters/model";
+} from "@s-agent/adapters/model";
 import {
   ApiKeyAccessConfig,
   ModelConfig,
@@ -30,7 +30,7 @@ import {
   ProviderConfig,
   type RegistryModelConfig,
   type RegistryProviderConfig,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { createActorModelActivity } from "../src/app/workflow-driver-concurrency.js";
 import {
   createWorkflowConcurrencyGovernor,

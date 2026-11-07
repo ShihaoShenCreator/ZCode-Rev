@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { PassThrough } from "node:stream";
 import { describe, expect, it, vi } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   BUILTIN_MODEL_PROVIDER_IDS,
   ZCODE_SESSION_RUNTIME_PREFERENCES_REQUEST_TIMEOUT_MS,
@@ -27,7 +27,7 @@ import {
   zcodeWorkspaceUpdateInteractionPreferencesResultSchema,
   type ZCodeProtocolMessage,
   type ZCodeProtocolNotification,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   V4_METHODS,
   V4_NOTIFICATIONS,
@@ -42,7 +42,7 @@ import {
   v4ConversationResyncResultSchema,
   v4UsageStatsResultSchema,
   workspaceConfigTopic,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   SessionEventType,
   createTraceId,
@@ -61,15 +61,15 @@ import {
   type McpPort,
   type McpServerConfig,
   type ExecutionShellSelection,
-} from "@zcode/contracts";
-import { InMemoryWorkspaceHookPolicyProvider } from "@zcode/core";
+} from "@s-agent/contracts";
+import { InMemoryWorkspaceHookPolicyProvider } from "@s-agent/core";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
   type Provider,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 import { ZCodeProtocolNdjsonConnection } from "../src/zcode-protocol/transport.js";
 import { shouldCloseSessionForExpectedPersistence } from "../src/zcode-protocol/server-operations.js";

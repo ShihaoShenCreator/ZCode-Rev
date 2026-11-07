@@ -5,12 +5,12 @@ import {
   providerProvisioningEnvelopeSchema,
   type ProviderProvisioningCredentialEntry,
   type ProviderProvisioningEnvelope,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   PersonalProviderConfigRepository,
   ProviderConfigLayerSnapshot,
-} from "@zcode/provider";
-import { decodeProviderConfigFile, encodeProviderConfigFile } from "@zcode/provider-node";
+} from "@s-agent/provider";
+import { decodeProviderConfigFile, encodeProviderConfigFile } from "@s-agent/provider-node";
 import {
   createCredentialCipherProvider,
   type CredentialCipherProvider,

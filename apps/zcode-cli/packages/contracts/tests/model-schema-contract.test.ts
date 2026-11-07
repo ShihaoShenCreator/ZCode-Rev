@@ -6,7 +6,7 @@ import type {
   EnumOptionSpecData,
   LimitOptionSpecData,
   ModelOptionSpecsData,
-} from "@zcode/shared/model-config";
+} from "@s-agent/shared/model-config";
 import type {
   ModelInputFormat,
   ModelOutputFormat,

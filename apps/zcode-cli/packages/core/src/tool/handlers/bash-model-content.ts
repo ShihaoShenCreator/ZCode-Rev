@@ -3,7 +3,7 @@ import {
   parseImageDataUrl,
   type BashOutput,
   type ModelMessageContent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   formatCompactPersistedOutputContent,
   truncateMiddleForModel,

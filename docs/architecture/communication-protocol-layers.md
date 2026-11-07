@@ -46,7 +46,7 @@
 
 当前有三种主要形式：
 
-### `@zcode/rpc`
+### `@s-agent/rpc`
 
 通用的 Service 调用协议，支持 `call`、`response`、`listen` 和事件通知。它主要用于：
 
@@ -75,7 +75,7 @@ Host 与 `zcode-cli` 使用的 JSON 请求/响应/通知外壳，典型结构如
 
 ### Typed IPC / `postMessage`
 
-Main 的控制消息不经过通用 `@zcode/rpc`，而是直接发送带有 `type` 的结构化对象，例如：
+Main 的控制消息不经过通用 `@s-agent/rpc`，而是直接发送带有 `type` 的结构化对象，例如：
 
 ```ts
 {
@@ -130,11 +130,11 @@ Main 与 Host 之间传递的是进程和连接控制，例如：
 
 | 链路 | 第 3 层：内容 | 第 2 层：信封 | 第 1 层：通道 |
 | --- | --- | --- | --- |
-| Renderer → Host | Service API、V4 命令/查询/订阅 | `@zcode/rpc` | `MessagePort` |
+| Renderer → Host | Service API、V4 命令/查询/订阅 | `@s-agent/rpc` | `MessagePort` |
 | Renderer → Main | 平台操作 | Electron IPC channel | Electron IPC |
 | Main → Host | Host 控制消息 | typed `{ type, ... }` | `postMessage` |
 | Host → 本地 CLI | V4、少量 legacy 操作 | ZCode Protocol JSON | stdio NDJSON |
-| Host → `zcode-server` | 远程 Service API，参数可携带 V4 | `@zcode/rpc` | SSH stdio 或 WebSocket |
+| Host → `zcode-server` | 远程 Service API，参数可携带 V4 | `@s-agent/rpc` | SSH stdio 或 WebSocket |
 | `zcode-server` → 远端 CLI | V4、少量 legacy 操作 | ZCode Protocol JSON | stdio NDJSON |
 | 手机 → Relay → Main | 远控 Service/V4 调用 | relay envelope + `rpc-frame` | WebSocket |
 
@@ -147,12 +147,12 @@ Main 与 Host 之间传递的是进程和连接控制，例如：
         │
         ▼
 Renderer
-  第 2 层：@zcode/rpc 调用 sendConversationCommandV4(...)
+  第 2 层：@s-agent/rpc 调用 sendConversationCommandV4(...)
   第 1 层：MessagePort
         │
         ▼
 Window Host
-  第 2 层：远程 @zcode/rpc Service 调用
+  第 2 层：远程 @s-agent/rpc Service 调用
   第 1 层：SSH stdio / WebSocket
         │
         ▼
@@ -180,7 +180,7 @@ V4 调用 = 调用 Service API，把这条命令送到下一跳
 
 - [代码架构总览](./zcode-code-architecture-overview.md)
 - [Message Flow](./message-flow.md)
-- [`@zcode/rpc` 分层实现](../../packages/rpc/src/index.ts)
+- [`@s-agent/rpc` 分层实现](../../packages/rpc/src/index.ts)
 - [V4 command schema](../../packages/shared/src/zcode-protocol-v4/command.ts)
 - [V4 transport schema](../../packages/shared/src/zcode-protocol-v4/transport.ts)
 - [远程 RPC 连接](../../packages/server/src/remote/connect.ts)

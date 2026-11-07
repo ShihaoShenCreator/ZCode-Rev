@@ -210,7 +210,7 @@ CLI 异常边界（errorId 唯一事实源）
   → RUM JS 错误
 ```
 
-- 共享公开契约为 `@zcode/shared/process-diagnostic`，并从 ZCode Protocol 入口导出。
+- 共享公开契约为 `@s-agent/shared/process-diagnostic`，并从 ZCode Protocol 入口导出。
   CLI / SEA 构建 alias 必须精确声明该子路径，避免被通用 shared alias 拼到 index.ts 后。
   字段为 `version/errorId/kind/origin/name/message/stack/occurredAt`；kind/origin 只接受
   uncaughtException / unhandledRejection。名称最多 128 字符，消息 4000，栈 16000，

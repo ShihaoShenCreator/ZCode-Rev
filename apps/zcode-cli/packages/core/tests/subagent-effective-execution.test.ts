@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createSessionId, type ModelSelection } from "@zcode/contracts";
+import { createSessionId, type ModelSelection } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestModelFactory } from "./test-runtime-model.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

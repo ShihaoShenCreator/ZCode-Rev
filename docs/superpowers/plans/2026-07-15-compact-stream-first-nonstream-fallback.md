@@ -108,7 +108,7 @@ node scripts/audit-conversation-session-case-coverage.mjs --check --json
 ### 验收
 
 ```bash
-pnpm --filter @zcode/core exec vitest run \
+pnpm --filter @s-agent/core exec vitest run \
   tests/compact-summary-model-request.test.ts \
   tests/runtime-compact.test.ts \
   tests/media-budget.test.ts \
@@ -151,7 +151,7 @@ pnpm --filter @zcode/core exec vitest run \
 ### 验收
 
 ```bash
-pnpm --filter @zcode/adapters exec vitest run \
+pnpm --filter @s-agent/adapters exec vitest run \
   tests/runner.test.ts \
   tests/runner-retry.test.ts \
   tests/openai-responses-json-compat.test.ts

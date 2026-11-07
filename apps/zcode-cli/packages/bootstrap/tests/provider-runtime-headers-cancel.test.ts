@@ -4,7 +4,7 @@ import { createWorkspaceZCodeApp } from "../src/zcode-protocol/workspace-model-r
 import { createProviderRuntimeHeadersPort } from "../src/zcode-protocol/provider-runtime-headers.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";
 import type { ZCodeAppOptions } from "../src/app/types.js";
-import type { ZCodeProviderRuntimeHeadersRequestParams } from "@zcode/shared";
+import type { ZCodeProviderRuntimeHeadersRequestParams } from "@s-agent/shared";
 const workspace = {
   workspacePath: "/work",
   workspaceIdentity: "ssh:host:/work",
@@ -186,7 +186,7 @@ it("闲时 scope 经过执行投影和私有反向 RPC 保留，SSH workspace �
     zcodeSessionSendParamsSchema,
     zcodeProviderRuntimeHeadersRequestParamsSchema,
     zcodeProviderRuntimeHeadersResponseSchema,
-  } = await import("@zcode/shared");
+  } = await import("@s-agent/shared");
   const accountScope = "a".repeat(64);
   const execution = createModelExecutionContext(
     zcodeSessionSendParamsSchema.parse({

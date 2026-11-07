@@ -7,7 +7,7 @@ import {
   type ModelRequest,
   type ModelResult,
   type ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 import {
   evaluateMemoryAgentToolPolicy,

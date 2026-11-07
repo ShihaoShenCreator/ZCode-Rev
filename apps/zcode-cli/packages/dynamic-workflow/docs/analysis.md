@@ -1,7 +1,7 @@
 # Dynamic Workflow: The Analyzer (spec)
 
 Status: implemented. This document describes the static analysis in
-`@zcode/dynamic-workflow` as built; its sibling `execution-engine.md` covers what happens
+`@s-agent/dynamic-workflow` as built; its sibling `execution-engine.md` covers what happens
 after a script is accepted.
 
 ## What the analyzer does

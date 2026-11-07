@@ -1,6 +1,6 @@
-import { createConfig } from "@zcode/adapters/config";
-import { openStartupSqliteSessionStore } from "@zcode/adapters/storage";
-import type { SessionInfo } from "@zcode/contracts";
+import { createConfig } from "@s-agent/adapters/config";
+import { openStartupSqliteSessionStore } from "@s-agent/adapters/storage";
+import type { SessionInfo } from "@s-agent/contracts";
 import type { ListZCodeSessionsOptions, ResolveLatestSessionOptions } from "./app/types.js";
 import { getSessionDbPath, isClosableSessionStore } from "./app/session-store.js";
 

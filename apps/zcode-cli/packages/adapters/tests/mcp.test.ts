@@ -1,7 +1,7 @@
 import { delimiter, dirname } from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { UnauthorizedError } from "@modelcontextprotocol/client";
-import { ZCODE_TOOL_ENV_PASSTHROUGH_ENV_KEY } from "@zcode/shared";
+import { ZCODE_TOOL_ENV_PASSTHROUGH_ENV_KEY } from "@s-agent/shared";
 import type { SharedZCodeCredentialStore } from "../src/auth/shared-credentials.js";
 
 const {

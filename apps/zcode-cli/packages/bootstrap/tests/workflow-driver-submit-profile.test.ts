@@ -6,8 +6,8 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { SUBMIT_RESULT_TOOL_NAME } from "@zcode/contracts";
-import { GENERIC_SUBMIT_PROFILE, type ActorSubmitProfile } from "@zcode/dynamic-workflow";
+import { SUBMIT_RESULT_TOOL_NAME } from "@s-agent/contracts";
+import { GENERIC_SUBMIT_PROFILE, type ActorSubmitProfile } from "@s-agent/dynamic-workflow";
 import { TYPED_TOOL_EPILOGUE } from "../src/app/workflow-driver-helpers.js";
 import { actorSubmitProfilesFor, runDriverScript } from "./workflow-driver.helpers.js";
 

@@ -2,7 +2,7 @@
 // Test imports
 // ============================================================
 import { describe, it, expect } from "vitest";
-import { createToolCallId } from "@zcode/contracts";
+import { createToolCallId } from "@s-agent/contracts";
 import { TurnMachineImpl } from "../src/agent/turn-machine.js";
 import { TurnPhase } from "../src/agent/turn-state.js";
 

@@ -1,10 +1,10 @@
-import { AiSdkModelAdapter } from "@zcode/adapters/model";
+import { AiSdkModelAdapter } from "@s-agent/adapters/model";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { ApiProviderModelRuntime } from "../../src/app/provider-registry-model-runtime.js";
 import { createApiKeyProviderConfig } from "../provider-config-fixtures.js";
 

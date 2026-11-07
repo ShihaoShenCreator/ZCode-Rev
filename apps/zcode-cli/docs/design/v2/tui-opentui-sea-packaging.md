@@ -2,7 +2,7 @@
 
 ## Goal
 
-Replace the Ink-based `@zcode/tui` implementation with the Node.js runtime path of
+Replace the Ink-based `@s-agent/tui` implementation with the Node.js runtime path of
 OpenTUI while preserving zcode's release model: one SEA executable per supported
 platform and architecture.
 
@@ -26,15 +26,15 @@ baseline for this migration.
 
 The CLI SEA entry remains CommonJS. zcode currently targets Node.js 24.14.0, and
 that version executes the injected SEA main script as CommonJS. OpenTUI and
-`@zcode/tui` remain ESM packages, so the CJS entry must load them with dynamic
+`@s-agent/tui` remain ESM packages, so the CJS entry must load them with dynamic
 `import()`.
 
 There are two load paths:
 
-- Normal development/install path: dynamically import `@zcode/tui` through Node's
+- Normal development/install path: dynamically import `@s-agent/tui` through Node's
   package resolver.
 - SEA path: extract embedded TUI runtime assets into a stable user cache
-  directory, then dynamically import the extracted `@zcode/tui` entry by
+  directory, then dynamically import the extracted `@s-agent/tui` entry by
   `file://` URL.
 
 OpenTUI native artifacts must exist as real files. They are not spawned helper
@@ -46,10 +46,10 @@ TUI package is imported.
 
 Each SEA target embeds a target-specific runtime bundle:
 
-- `@zcode/tui/dist`
-- `@zcode/tui/package.json`
-- Runtime workspace dependencies declared by `@zcode/tui`, currently
-  `@zcode/i18n` and `@zcode/contracts`, including each package's `dist` and
+- `@s-agent/tui/dist`
+- `@s-agent/tui/package.json`
+- Runtime workspace dependencies declared by `@s-agent/tui`, currently
+  `@s-agent/i18n` and `@s-agent/contracts`, including each package's `dist` and
   `package.json`
 - `@mbears/opentui-core`
 - `@mbears/opentui-react`
@@ -66,7 +66,7 @@ package install rather than a temporary pile of random files.
 
 Workspace runtime packages must be discovered from the workspace package
 manifests and traversed with the same dependency closure as third-party runtime
-packages. The collector must not maintain a partial `@zcode/*` allowlist: adding
+packages. The collector must not maintain a partial `@s-agent/*` allowlist: adding
 a workspace package to `dependencies` means its built package surface is part of
 the SEA runtime. Type-only or build-only workspace packages belong in
 `devDependencies` so they do not inflate the extracted runtime.
@@ -89,7 +89,7 @@ The full directory includes zcode version, target key, and manifest hash:
 <cache>/sea-assets/<version>/<target>/<hash>/
   manifest.json
   node_modules/
-    @zcode/tui/
+    @s-agent/tui/
     @mbears/opentui-core/
     @mbears/opentui-react/
     @mbears/opentui-core-darwin-arm64/
@@ -130,7 +130,7 @@ a message that names the missing package and suggests running `pnpm install`.
 
 ## Milestones
 
-1. Replace `@zcode/tui` with a small OpenTUI shell that keeps the public TypeScript
+1. Replace `@s-agent/tui` with a small OpenTUI shell that keeps the public TypeScript
    API stable.
 2. Add a CLI loader that chooses between normal package import and SEA extracted
    import.
@@ -143,11 +143,11 @@ a message that names the missing package and suggests running `pnpm install`.
 ## Regression Coverage
 
 - The SEA asset manifest must contain `package.json` and `dist/index.js` for
-  `@zcode/tui`, `@zcode/i18n`, and `@zcode/contracts`.
+  `@s-agent/tui`, `@s-agent/i18n`, and `@s-agent/contracts`.
 - Workspace source files must not be copied into the runtime bundle.
 - The Linux x64 manifest case represents the platform-independent workspace
   dependency closure; target-specific tests continue to cover native OpenTUI
   package selection for all supported targets.
 - A host-target extraction test must materialize only the collected SEA assets
-  into an isolated directory and successfully import `@zcode/tui` from that
+  into an isolated directory and successfully import `@s-agent/tui` from that
   directory, without falling back to repository `node_modules`.

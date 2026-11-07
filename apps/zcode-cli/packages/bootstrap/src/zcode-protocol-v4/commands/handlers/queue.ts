@@ -7,8 +7,8 @@ import type {
   CommandEnvelope,
   CommandPayloadMap,
   CommandResult,
-} from "@zcode/shared/zcode-protocol-v4";
-import { isHighspeedProviderId } from "@zcode/shared";
+} from "@s-agent/shared/zcode-protocol-v4";
+import { isHighspeedProviderId } from "@s-agent/shared";
 import { createModelExecutionContext } from "../../../session-execution/index.js";
 import { mapAttachmentRefsToTurnAttachments } from "../attachment-refs.js";
 import { inputIntentMetadataFromQueueItem } from "../input-intent.js";

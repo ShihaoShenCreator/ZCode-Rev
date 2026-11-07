@@ -3,7 +3,7 @@ import {
   createGroupMemberDirectory,
   type GroupMemberPage,
 } from "#src/bots/providers/groupMemberDirectory.js";
-import { channelContentPartsSchema, channelContentText, botGroupCardSchema } from "@zcode/shared";
+import { channelContentPartsSchema, channelContentText, botGroupCardSchema } from "@s-agent/shared";
 import {
   isFeishuBotSender,
   isGroupControlCard,
@@ -13,7 +13,7 @@ import {
   readGroupMentionText,
 } from "#src/bots/providers/feishuGroupMessages.js";
 /* eslint-disable max-lines -- Feishu provider 集中承载鉴权、消息解析、卡片发送和 reaction typing 适配，后续按能力拆分。 */
-import { botTopicMessageSchema } from "@zcode/shared";
+import { botTopicMessageSchema } from "@s-agent/shared";
 import { readTopicHistory, TopicHistoryPermissionError } from "#src/bots/topicHistory.js";
 import type {
   BotInboundAttachment,
@@ -22,7 +22,7 @@ import type {
   BotOutboundMessage,
   BotProvider,
   SelectionPrompt,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   BotProviderAdapter,
   BotStreamingReplyCardHandle,

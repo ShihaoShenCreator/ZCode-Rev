@@ -607,7 +607,7 @@ describe("stageRelease", () => {
     // 真实官方插件的 package.json 都是 tracked 文件，是"该目录属于当前 checkout"的判据。
     await writeFile(
       join(pluginDir, "package.json"),
-      JSON.stringify({ name: `@zcode/${name}`, private: true }),
+      JSON.stringify({ name: `@s-agent/${name}`, private: true }),
       "utf8",
     );
     const manifest: Record<string, unknown> = {

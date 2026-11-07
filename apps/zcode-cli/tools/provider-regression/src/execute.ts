@@ -1,13 +1,13 @@
-import { builtInTools } from "@zcode/core";
+import { builtInTools } from "@s-agent/core";
 import {
   createSessionId,
   createTraceId,
   type Model,
   type ModelInputMessage,
   type ModelRequest,
-} from "@zcode/contracts";
-import type { AiSdkModelAdapter } from "@zcode/adapters/model";
-import type { ProviderRegistry } from "@zcode/provider";
+} from "@s-agent/contracts";
+import type { AiSdkModelAdapter } from "@s-agent/adapters/model";
+import type { ProviderRegistry } from "@s-agent/provider";
 import { executeSessionCase } from "#regression/session";
 import type { RegressionRow } from "#contract";
 import type { TestList } from "#regression/config";

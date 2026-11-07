@@ -101,7 +101,7 @@ Windows Helper 的入口和必需产物由 producer 在根 `package.json` 声明
 
 - `schema` 必须精确等于 `1`；未知 schema fail closed。
 - 路径必须是 `/` 分隔、无 `.`/`..`、无绝对路径、无符号链接逃逸的 canonical relative path。
-- package name 仍必须为 `@zcode/zcode-cua`。
+- package name 仍必须为 `@s-agent/zcode-cua`。
 - package version 是 provenance 信息，由实际 producer package 读取，不在 consumer 重复硬编码。
 - producer commit 仍由 `pnpm-workspace.yaml` 的完整 Git SHA 固定；运行时 contract 不能替代 Git pin。
 - `pnpm build` 必须生成 Helper entry；`pnpm pack --dry-run` 必须包含 entry、native build
@@ -273,7 +273,7 @@ Windows live smoke 在自动化门禁后运行，覆盖 WGC、pointer、clipboar
 pnpm exec vitest run packages/desktop/test/windows-cua-helper-assets.test.ts
 pnpm exec vitest run packages/services/test/windowsCuaDevRuntime.test.ts
 pnpm exec vitest run packages/services/test/windowsCuaDevHelperHost.test.ts
-pnpm --filter @zcode/zcode-cua-plugin test
+pnpm --filter @s-agent/zcode-cua-plugin test
 pnpm typecheck
 pnpm lint
 ```

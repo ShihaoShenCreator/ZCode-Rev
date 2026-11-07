@@ -7,7 +7,7 @@ import { promisify } from "node:util";
 import {
   SOURCE_SERVER_RELEASE_DESCRIPTOR_FILE_NAME,
   sourceServerReleaseDescriptorSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const run = promisify(execFile);
 

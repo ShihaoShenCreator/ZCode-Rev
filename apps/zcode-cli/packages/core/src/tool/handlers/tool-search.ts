@@ -6,7 +6,7 @@ import {
   ToolSearchInputSchema,
   ToolSearchOutputJsonSchema,
   ToolSearchOutputSchema,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry } from "../types.js";
 import { searchTools } from "../search/search.js";
 

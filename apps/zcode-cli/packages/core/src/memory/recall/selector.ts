@@ -3,7 +3,7 @@ import {
   type Model,
   type ModelInputMessage,
   type ModelRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 import type { RuntimeMessageEntry } from "../../agent/message-history.js";
 import { findLatestReadFileState } from "../../tool/read-file-state.js";

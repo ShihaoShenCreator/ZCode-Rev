@@ -3,7 +3,7 @@ import {
   createEventId,
   type PluginUiAppToolCallRequestedPayload,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   zcodeMcpUiClaimAppToolCallParamsSchema,
   zcodeMcpUiRegisterAppToolsParamsSchema,
@@ -12,7 +12,7 @@ import {
   type ZCodeMcpUiAppToolAcceptedResult,
   type ZCodeMcpUiRegisterAppToolsResult,
   type ZCodeMcpUiUnregisterAppToolsResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   ProtocolRequestError,
   parseParams,

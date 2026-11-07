@@ -17,7 +17,7 @@ import {
   TID_CHAT_THOUGHT_LEVEL_SELECT_TRIGGER,
   TID_CHAT_THOUGHT_LEVEL_SELECT_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

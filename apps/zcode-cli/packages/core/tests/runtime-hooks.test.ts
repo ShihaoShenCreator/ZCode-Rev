@@ -11,7 +11,7 @@ import {
   type CoordinatorResponsePort,
   type SubagentPort,
   type SubagentSendMessageRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

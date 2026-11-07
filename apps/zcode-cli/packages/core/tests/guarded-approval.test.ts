@@ -11,7 +11,7 @@ import {
   type PermissionBrokerRequest,
   type PermissionRuleset,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { createToolRegistry } from "../src/tool/registry.js";
 import { bashToolEntry } from "../src/tool/handlers/bash.js";

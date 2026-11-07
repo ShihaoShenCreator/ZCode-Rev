@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId, SessionEventType } from "@zcode/contracts";
+import { createSessionId, SessionEventType } from "@s-agent/contracts";
 import type { PermissionDecisionResult } from "../src/permission/service.js";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import { resolveProjectMemoryRoot } from "../src/memory/project-root.js";

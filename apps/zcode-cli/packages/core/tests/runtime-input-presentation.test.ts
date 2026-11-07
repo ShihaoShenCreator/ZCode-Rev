@@ -1,5 +1,5 @@
 import { cloneMessageForFork } from "../src/runtime/helpers/steering.js";
-import { createMessageId, createSessionId } from "@zcode/contracts";
+import { createMessageId, createSessionId } from "@s-agent/contracts";
 import { findLatestMemoryRecallQuery } from "../src/memory/recall/index.js";
 import { buildPostCompactRuntimeEntries } from "../src/runtime/helpers/compact.js";
 import { readFile } from "node:fs/promises";

@@ -1,5 +1,5 @@
 import { normalizeAgentProfiles, type AgentProfile } from "./profile.js";
-import type { TraceContext } from "@zcode/contracts";
+import type { TraceContext } from "@s-agent/contracts";
 
 export interface AgentDefinitionsSnapshot {
   readonly activeAgents: readonly Readonly<AgentProfile>[];

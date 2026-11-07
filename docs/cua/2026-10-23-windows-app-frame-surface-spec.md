@@ -654,7 +654,7 @@ WSF 编号是本 spec 的需求 ID；实施时先登记到 harness 矩阵与 `pa
 | WSF-17 候选/装饰子集     | 无 owner 的同 exe 遮挡窗以失败原因进入候选，不进入 capture_surfaces；SysShadow 类名 fixture 直接过滤；layered+TRANSPARENT fixture 降权汇总且不进候选/来源                                                   |
 | 生命周期                 | popup 关闭由状态文件确认，随后 MCP 新帧不再含弹层或合成证据；所有本轮 fixture/helper 正常退出                                                                                                               |
 
-可重复入口：`ZCODE_CUA_HARNESS_E2E=1 pnpm exec vitest run packages/zcode-cua/test/matrix/windows-frame-surface.cua.test.ts`（PowerShell 用 `$env:ZCODE_CUA_HARNESS_E2E='1'` 设置）；仅跑探针可用 `ZCODE_CUA_WINDOWS_FRAME_COMPOSITE_LIVE=1 pnpm --filter @zcode/zcode-cua smoke:windows:frame-composite --output <本地证据目录>`。目录包含报告（系统版本、时间、产物 SHA-256、HWND/PID/父属关系、逐点结果）和六幅 PNG。以上不代表 WSF-01–17 全量产品验收。
+可重复入口：`ZCODE_CUA_HARNESS_E2E=1 pnpm exec vitest run packages/zcode-cua/test/matrix/windows-frame-surface.cua.test.ts`（PowerShell 用 `$env:ZCODE_CUA_HARNESS_E2E='1'` 设置）；仅跑探针可用 `ZCODE_CUA_WINDOWS_FRAME_COMPOSITE_LIVE=1 pnpm --filter @s-agent/zcode-cua smoke:windows:frame-composite --output <本地证据目录>`。目录包含报告（系统版本、时间、产物 SHA-256、HWND/PID/父属关系、逐点结果）和六幅 PNG。以上不代表 WSF-01–17 全量产品验收。
 
 验证记录：定向单测 95/95、真机 harness 1/1、typecheck、lint（0 error）和架构检查通过。`test:unit:affected --base 19b1bfe645` 选中 2616/2616，按仓库合同跳过全量 UT；上述定向测试另行执行。旧 screen-capture smoke 因 broker 已无 `list_displays` 在准备阶段失败，换回 HEAD 原始 fixture 后同样失败，不算本轮通过项。宿主 pnpm 11 会自动尝试重装现有依赖；验证命令临时使用 `pnpm_config_pm_on_fail=ignore`、`pnpm_config_verify_deps_before_run=warn`，未改安装目录或仓库配置。原始结果见 真机证据 JSON（`2026-10-25-windows-frame-harness.json`，仅存本地）。
 

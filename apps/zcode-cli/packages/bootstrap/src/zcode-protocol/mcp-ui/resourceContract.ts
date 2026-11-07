@@ -5,7 +5,7 @@
 /** UI 请求的归属范围：会话 + MCP server（归属真相）+ pluginId（只做展示 / 日志；非插件 server 时等于 serverName）。 */
 export interface McpUiPluginScope {
   workspace?: { workspacePath: string; workspaceIdentity?: string };
-  instance: import("@zcode/shared/mcp-apps").McpAppInstance;
+  instance: import("@s-agent/shared/mcp-apps").McpAppInstance;
   sessionId: string;
   pluginId: string;
   serverName: string;

@@ -1,4 +1,4 @@
-import type { ISourceServerManagementService } from "@zcode/services";
+import type { ISourceServerManagementService } from "@s-agent/services";
 import {
   buildAggregatedSourceStatusMap,
   type AggregatedSourceStatus,

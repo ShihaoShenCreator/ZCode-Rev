@@ -1,5 +1,5 @@
 import { LaptopIcon, ServerIcon } from "lucide-react";
-import { TID_CONFIRM_DIALOG_CONFIRM } from "@zcode/shared/test-ids";
+import { TID_CONFIRM_DIALOG_CONFIRM } from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import { DialogDescription, DialogTitle } from "@/components/ui/dialog.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

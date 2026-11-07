@@ -39,7 +39,7 @@ import {
   TID_SIDE_PANE_FULL_VIEW_MINIMIZE,
   TID_SIDE_PANE_FULL_VIEW_RUNNING,
   TID_V4_COMPOSER_INPUT,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { cn } from "@/components/lib/utils.js";
 import { Button } from "@/components/ui/button.js";
 import {

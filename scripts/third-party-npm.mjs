@@ -128,7 +128,7 @@ export function productionPackages(projects, isInstallable = () => true) {
     for (const [alias, info] of Object.entries(deps ?? {})) {
       const name = info.name ?? alias;
       if (!isInstallable(name, info.version)) continue;
-      if (!own.has(name) && !name.startsWith("@zcode/") && !info.version.startsWith("link:")) {
+      if (!own.has(name) && !name.startsWith("@s-agent/") && !info.version.startsWith("link:")) {
         required.set(`${name}@${info.version}`, { name, version: info.version });
       }
       dependencies(info.dependencies);

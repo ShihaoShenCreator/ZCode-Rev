@@ -1,5 +1,5 @@
-import type { McpAppsSamplingParams, McpAppsSamplingResult } from "@zcode/shared/mcp-apps";
-import { mcpAppsSamplingParamsSchema, mcpAppsSamplingResultSchema } from "@zcode/shared/mcp-apps";
+import type { McpAppsSamplingParams, McpAppsSamplingResult } from "@s-agent/shared/mcp-apps";
+import { mcpAppsSamplingParamsSchema, mcpAppsSamplingResultSchema } from "@s-agent/shared/mcp-apps";
 import {
   createChildTraceContext,
   runWithModelInvocationContext,

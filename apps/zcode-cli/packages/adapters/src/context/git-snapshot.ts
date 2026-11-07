@@ -3,7 +3,7 @@ import { constants } from "node:fs";
 import { access, realpath, stat } from "node:fs/promises";
 import { dirname, join, posix, win32 } from "node:path";
 import { promisify } from "node:util";
-import type { GitContext } from "@zcode/contracts";
+import type { GitContext } from "@s-agent/contracts";
 import { getWindowsEnvValue, splitWindowsPath } from "../exec/windows-executable.js";
 
 const DEFAULT_GIT_COMMAND_TIMEOUT_MS = 3000;

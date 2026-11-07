@@ -1,7 +1,7 @@
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { generateText } from "ai";
 import { describe, expect, it } from "vitest";
-import type { ModelInputMessage } from "@zcode/contracts";
+import type { ModelInputMessage } from "@s-agent/contracts";
 import { toAiSdkMessages } from "../src/model/index.js";
 
 const cases = [

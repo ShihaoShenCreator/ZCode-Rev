@@ -85,8 +85,8 @@ import {
   type ZCodeUserInputRequestParams,
   type ZCodeUserInputResponse,
   zcodeContextUsageBreakdownSchema,
-} from "@zcode/shared";
-import { errorAttributionSchema } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import { errorAttributionSchema } from "@s-agent/shared/zcode-protocol-v4";
 import { logger } from "@/logger.js";
 
 const MODEL_CONFIG_ID = "model";

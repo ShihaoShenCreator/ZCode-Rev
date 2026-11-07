@@ -8,7 +8,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_SETTINGS_BACK_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   DEFAULT_WORKSPACE,

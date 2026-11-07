@@ -13,7 +13,7 @@
 - `z-code` 在当前 `feat/cua-helper-app` 分支原地开发。
 - `zcode-cua` 在本地 `main` 上开发；先保留安全分支，再把 `main` 指向最新 `origin/main`。
 - Windows 移植变更在 `zcode-cua/main` 最终只有一个新 commit；不改写上游 commit，不 push。
-- producer contract schema 固定为 `1`，package name 固定为 `@zcode/zcode-cua`。
+- producer contract schema 固定为 `1`，package name 固定为 `@s-agent/zcode-cua`。
 - consumer 固定完整 Git SHA，不再重复硬编码 package version。
 - Windows raw input 必须验证唯一前台 PID；不能用 UIA、标题、basename 或枚举第一项猜测身份。
 - Windows Helper 只服务本地 desktop continuous；SSH、WSL、Docker、remote workspace 和手机 `/remote` 不创建独立 runtime。
@@ -105,7 +105,7 @@ Expected: 所有命令 exit 0。若 baseline 失败，停止并记录失败，�
 ```ts
 it("publishes the current Windows helper runtime contract", () => {
   const packageJson = JSON.parse(readFileSync(resolve(packageRoot, "package.json"), "utf8"));
-  expect(packageJson.name).toBe("@zcode/zcode-cua");
+  expect(packageJson.name).toBe("@s-agent/zcode-cua");
   expect(packageJson.zcodeCuaRuntime).toEqual({
     schema: 1,
     windows: {
@@ -451,7 +451,7 @@ Write-Output $producerCommit
 
 ```ts
 {
-  name: "@zcode/zcode-cua",
+  name: "@s-agent/zcode-cua",
   version: "0.5.2",
   zcodeCuaRuntime: {
     schema: 1,
@@ -557,7 +557,7 @@ Expected: 不复制当前工作区历史 `bundled-tools` 也能生成资源。�
 ```powershell
 pnpm exec vitest run packages/services/test/windowsCuaDevHelperHost.test.ts
 pnpm exec vitest run packages/services/test/windowsCuaProductHelper.integration.test.ts
-pnpm --filter @zcode/zcode-cua-plugin test
+pnpm --filter @s-agent/zcode-cua-plugin test
 ```
 
 Expected: exit 0；真实 child integration 在 prerequisites 缺失时明确 skip。

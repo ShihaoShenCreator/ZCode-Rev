@@ -1,9 +1,9 @@
 import { mkdirSync, appendFileSync } from "node:fs";
 import { mkdir, appendFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { createLocalTtftLogQueue, formatTimestamp } from "@zcode/shared";
+import { createLocalTtftLogQueue, formatTimestamp } from "@s-agent/shared";
 import { cleanupExpiredLogFiles, LOG_RETENTION_DAYS } from "./logRetention.js";
-import { getAppConfigDir, maybeThrowInjectedFsFault } from "@zcode/services/node";
+import { getAppConfigDir, maybeThrowInjectedFsFault } from "@s-agent/services/node";
 
 function getLogDir() {
   const e2eLogDir =

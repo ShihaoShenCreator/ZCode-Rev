@@ -181,19 +181,19 @@ Engineering Infrastructure
 | 顶层区域  | 能力群                                                              | 维护边界                                                                                                |
 | --------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Renderer  | 对话与任务体验（Conversation & Task Experience）                    | Composer、Projection Store、Timeline、会话动作、任务导航、附件体验                                      |
-| Renderer  | 模型与账户体验（Model & Account Experience）                        | Provider Settings、Model Selector、套餐状态/购买、套餐用量界面                                          |
+| Renderer  | 模型与账户体验（Model & Account Experience）                        | Provider Settings、Model Selector、通用 Provider 用量展示；原生套餐状态/购买/套餐用量界面已按 S-Agent 去集成规格退役          |
 | Renderer  | 扩展体验（Extension Experience）                                    | Plugin/Skill/MCP 等扩展设置、市场与导入入口                                                             |
 | Renderer  | 浏览器与开发工作台体验（Browser & Workbench Experience）            | Browser、File、Terminal、Git/Diff 产品界面                                                              |
 | Renderer  | 办公套件与计算机操作孵化（Office Suite & Computer Use Incubation）  | PDF/Office 预览与编辑路线图、Computer Use 任务体验、人工接管与安全确认                                  |
-| Renderer  | 自动化体验（Automation Experience）                                 | 定时自动化、闲时任务与 Bot 配置/历史界面                                                                |
+| Renderer  | 自动化体验（Automation Experience）                                 | 定时自动化与 Bot 配置/历史界面；闲时任务新建/调度已退役，仅保留本地历史记录只读入口                              |
 | Renderer  | UI 平台（UI Platform）                                              | 设计系统、主题、国际化、响应式、Settings/Onboarding                                                     |
 | Renderer  | 数据洞察与反馈体验（Insights & Feedback Experience）                | App Usage 图表、Feedback 入口、Resource Manager（资源管理器）展示                                                     |
-| Host      | 账户与权益（Account & Entitlements）                                | OAuth/Credential、Plan Identity、Start/Coding/Team Plan、支付、远端 quota/monitor                       |
+| Host      | 账户与权益（Account & Entitlements）                                | OAuth/Credential、通用凭据与 entitlement 校验；原生 Z.ai/BigModel 套餐身份、支付、远端 quota/monitor 已按 S-Agent 去集成规格退役 |
 | Host      | 扩展管理与同步（Extension Management & Sync）                       | Plugin 安装升级、资源贡献、跨本地/远程同步                                                              |
 | Host      | 浏览器与计算机操作平台（Browser & Computer Use Platform）           | BrowserView/WebContentsView、CDP backend、Computer Use Helper 生命周期、可信 broker、系统观察与输入执行 |
 | Host      | 工作区与交付（Workspace & Delivery）                                | workspace identity、Local/Remote Host、手机远控、continuous/replayable                                  |
 | Host      | 工作台服务（Workbench Services）                                    | File/Terminal/Git 服务                                                                                  |
-| Host      | 自动化与渠道运行时（Automation & Channel Runtime）                  | scheduler、automation record、off-peak、Bots、第三方渠道                                                |
+| Host      | 自动化与渠道运行时（Automation & Channel Runtime）                  | scheduler、automation record、Bots、第三方渠道；off-peak 同步/调度已按 S-Agent 去集成规格退役                                        |
 | Host      | 客户端平台（Client Platform）                                       | Electron 生命周期、客户端更新、Feedback ticket 与诊断包                                                 |
 | Host      | 数据与可观测性（Data & Observability）                              | App Usage bridge、产品埋点、Conversation telemetry、ARMS、性能可靠性、日志与进程监控                    |
 | ZCode CLI | 智能体核心（Agent Core）                                            | runtime 装配、turn 状态机、上下文、memory、compact、stream recovery、goal/target、故障收口              |
@@ -210,11 +210,15 @@ Engineering Infrastructure
 
 ## 套餐、App Usage 与可观测性边界
 
+> **S-Agent 退役说明：** 原生 Z.ai/BigModel 套餐（Personal Coding Plan、Team Plan、Start Plan）的
+> 状态/购买/额度链路已按 [S-Agent 去集成规格](../../specs/s-agent-product-and-provider-retirement.md)
+> 退役；下图中套餐相关行仅保留为历史语义。App Usage 与通用可观测性边界仍然有效。
+
 ```text
 Renderer
-  套餐状态/购买 UI ─────────────> Host Subscription & Billing
-  套餐用量 UI <────────────────── Host Plan Quota & Monitor <── Coding / Team Plan backend
-  Start Plan UI <──────────────── Host Start Plan balance       （不走 monitor）
+  套餐状态/购买 UI（已退役）─────────────> Host Subscription & Billing（已退役）
+  套餐用量 UI（已退役）<───────────────── Host Plan Quota & Monitor（已退役）
+  Start Plan UI（已退役）<─────────────── Host Start Plan balance（已退役）
 
   App Usage Dashboard
           ^
@@ -233,10 +237,10 @@ ZCode CLI |
   Model / Turn / Tool lifecycle facts
 ```
 
-- Personal Coding Plan、Team Plan、Start Plan 是三套不同 entitlement 身份，必须拆成独立节点。
-- Start Plan 使用 OAuth zcode JWT 与 balance/daily quota；它不使用 Coding Plan monitor API。
-- Team Plan 使用 organization/project/project-key 隔离，不能退化为个人 Coding Plan 的显示标签。
-- Plan Quota & Monitor 是远端商业套餐数据；失败时不得回退 App Usage。
+- ~~Personal Coding Plan、Team Plan、Start Plan 是三套不同 entitlement 身份，必须拆成独立节点。~~（已退役）
+- ~~Start Plan 使用 OAuth zcode JWT 与 balance/daily quota；它不使用 Coding Plan monitor API。~~（已退役）
+- ~~Team Plan 使用 organization/project/project-key 隔离，不能退化为个人 Coding Plan 的显示标签。~~（已退役）
+- ~~Plan Quota & Monitor 是远端商业套餐数据；失败时不得回退 App Usage。~~（已退役）
 - App Usage 是本地产品使用统计。权威源是 ZCode CLI 默认
   `~/.zcode/cli/db/db.sqlite` 中独立语义的 `model_usage`、`turn_usage`、`tool_usage` 表，
   经 `usage/stats` 协议提供给 Host 和 Renderer；它不是计费账本。
@@ -294,7 +298,7 @@ Conversation Runtime
         +--> 发送消息 / 当前会话（Composer / Conversation）
         +--> 子智能体配置（Subagent Profiles）
         +--> 定时自动化（Scheduled Automation）
-        +--> 闲时任务、机器人（Off-Peak / Bots）
+        +--> 机器人（Bots）；闲时任务已按 S-Agent 去集成规格退役
 
 上下文与输出预算 ──> 模型运行时（Model Runtime）
         |
@@ -305,7 +309,7 @@ Conversation Runtime
 - `contextWindow - maxOutputTokens` 共同决定输入预算和 compact 阈值；模型输出上限也进入 provider adapter 请求。
 - 目录 schema 可以描述 text、image、video、audio、PDF 模态；当前 Agent 请求链已对 image、video 与 PDF 做能力 gating，audio 仍不是已交付的输入链路。能力图记录“模型目录声明”和“模型/provider wire 的有效能力”两层边界，不把目录声明误写成已经完整落地的音频运行时支持。
 - 模型选择器可以复用候选构建和 UI 组件，但各入口的草稿与提交状态必须隔离：会话选择写当前 runtime / projection，自动化写 automation record，Subagent 写 profile / override。
-- OAuth、Credential、Coding Plan、Usage 和 Quota 影响 provider 可用性与额度，但由“账户与权益（Account & Entitlements）”独立维护，通过关系边连接模型能力，不与模型目录或模型运行时共用权威状态。
+- OAuth、Credential 与通用 Usage 影响 provider 可用性与额度，由“账户与权益（Account & Entitlements）”独立维护，通过关系边连接模型能力，不与模型目录或模型运行时共用权威状态；原生 Coding Plan/Quota 集成已按 S-Agent 去集成规格退役。
 
 ## Office 与 Computer Use 孵化边界
 

@@ -9,15 +9,15 @@
 //      它撞破 wire schema 的 .max、订阅者 500 op / 1 MiB 任何一道，那条订阅就此静默。
 // 界不从 CLI 这一侧注入（投影调归约时不传 limits），所以这里跑的是**真界 1024**。
 import { describe, expect, it } from "vitest";
-import type { EventId, SessionEvent, SessionId, TraceId } from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+import type { EventId, SessionEvent, SessionId, TraceId } from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import type {
   ConversationDelta,
   ConversationSnapshot,
   ConversationTopicFrame,
   WorkflowRunUpdatedDelta,
   WorkflowRunsState,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   PROTOCOL_V4_LIMITS,
   WORKFLOW_RUNS_LEGACY_LIMITS,
@@ -27,7 +27,7 @@ import {
   conversationTopicFrameSchema,
   utf8JsonByteLength,
   workflowRunUpdateWithinWireBounds,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ConversationTopicPublisher } from "../src/zcode-protocol-v4/index.js";
 
 const RUN_ID = "dwfrun-1";

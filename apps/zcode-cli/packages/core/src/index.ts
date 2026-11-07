@@ -212,7 +212,7 @@ export type {
   LogEntry,
   SessionEvent,
   SessionEventSink,
-} from "@zcode/contracts";
-export { LogLevel, SessionEventType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+export { LogLevel, SessionEventType } from "@s-agent/contracts";
 
 export { normalizeGenUiInput } from "./agent/message-history.js";

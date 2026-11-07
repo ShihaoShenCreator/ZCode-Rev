@@ -9,7 +9,7 @@ import { OutputCollector } from "../src/exec/output-collector.js";
 import { BashFileOutput } from "../src/exec/bash-file-output.js";
 import * as outputEncoding from "../src/exec/outputEncoding.js";
 import { resolveWindowsGitBashShell } from "../src/exec/bash-shell-provider.js";
-import type { ExecutionEvent, ExecutionRequest, ExecutionShellSelection } from "@zcode/contracts";
+import type { ExecutionEvent, ExecutionRequest, ExecutionShellSelection } from "@s-agent/contracts";
 
 const shells: ExecutionShellSelection[] =
   process.platform === "win32"

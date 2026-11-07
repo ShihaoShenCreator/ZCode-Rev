@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { InMemoryJournalStore, canonicalJson, fnv1a, inputHash } from "../../src/engine/index.js";
 import { runJournalStoreContract } from "../../src/testing/journal-contract.js";
 
-// 内存实现跑通共享契约；SQLite 实现在 @zcode/adapters 经 `@zcode/dynamic-workflow/testing` 跑同一份。
+// 内存实现跑通共享契约；SQLite 实现在 @s-agent/adapters 经 `@s-agent/dynamic-workflow/testing` 跑同一份。
 runJournalStoreContract(() => new InMemoryJournalStore());
 
 describe("canonicalJson", () => {

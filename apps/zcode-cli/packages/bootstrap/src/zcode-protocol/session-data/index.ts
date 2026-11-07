@@ -1,12 +1,12 @@
 // 项目数据彻底删除的 CLI 执行面（v4/storage/sessionData/*）。
 // 规格：docs/superpowers/specs/2026-10-24-project-management.md「彻底删除数据」。
-import type { SessionId } from "@zcode/contracts";
+import type { SessionId } from "@s-agent/contracts";
 import {
   v4SessionDataParamsSchema,
   type V4SessionDataMeasureResult,
   type V4SessionDataParams,
   type V4SessionDataPurgeResult,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { createSessionResidentPoolHost, deactivateSessionRecord } from "../session-residency.js";
 import { parseParams, type ZCodeProtocolAgentServerContext } from "../server-types.js";
 import type { SessionDataHost } from "./contract.js";

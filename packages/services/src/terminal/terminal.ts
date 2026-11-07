@@ -1,5 +1,5 @@
-import type { Event } from "@zcode/rpc";
-import { ServiceChannels } from "@zcode/shared";
+import type { Event } from "@s-agent/rpc";
+import { ServiceChannels } from "@s-agent/shared";
 import { createServiceDescriptor } from "../descriptors.js";
 import type { TerminalFontFamilySource, TerminalThemeProfile } from "./terminalProfile.js";
 

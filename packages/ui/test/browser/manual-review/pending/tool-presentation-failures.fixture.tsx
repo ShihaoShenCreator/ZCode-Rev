@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { FileMediaPreview, IPlatformService } from "@zcode/shared";
+import type { FileMediaPreview, IPlatformService } from "@s-agent/shared";
 import { ToolCallBody } from "@/ToolCallBlocks/ToolCallBody.js";
 import { ToolPresentationCapabilitiesProvider } from "@/ToolCallBlocks/presentationCapabilities.js";
 import { OpenSplitButton } from "@/OpenSplitButton.js";

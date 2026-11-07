@@ -35,7 +35,7 @@ import {
   type CronUpdateInput,
   type CronUpdateOutput,
   type ToolPermissionSpec,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry, ToolExecutionContext, ToolHandler } from "../types.js";
 
 const CRON_TOOL_TIMEOUT_MS = 30_000;

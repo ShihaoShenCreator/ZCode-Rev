@@ -811,7 +811,7 @@ text result。Anthropic transport 收到显式 schema 时使用 native `output_c
 模型 ID 未命中 SDK 静态能力表后退化为 JSON tool；selector 在现有 compatibility fetch 边界恢复
 SDK 合并掉的 manifest/query 两条 user message。前者只命中非流式显式 schema，后者只命中
 selector 的精确 schema 和文本边界；普通 generate 与 stream request 不变。不得修改
-`@zcode/protocol`。
+`@s-agent/protocol`。
 
 以下已知 dynamic system prompt 差异只登记，不在本功能中修改：
 

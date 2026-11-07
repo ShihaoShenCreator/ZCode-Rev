@@ -1,6 +1,6 @@
-import { HostResponseTypes, type NetworkCaptureBatch } from "@zcode/shared";
-import { createNodeNetworkCapture } from "@zcode/shared/node";
-import { localRuntimeNetworkCapture } from "@zcode/services/node";
+import { HostResponseTypes, type NetworkCaptureBatch } from "@s-agent/shared";
+import { createNodeNetworkCapture } from "@s-agent/shared/node";
+import { localRuntimeNetworkCapture } from "@s-agent/services/node";
 
 export function createHostNetworkCapture(
   port: { postMessage(message: unknown): void } | undefined,

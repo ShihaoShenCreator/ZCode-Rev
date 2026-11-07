@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toolResultDisplayPayloadSchema } from "@zcode/contracts";
+import { toolResultDisplayPayloadSchema } from "@s-agent/contracts";
 import { createToolResultDisplay } from "../src/tool/executor/result-display.js";
 const base = {
   stdout: "head",

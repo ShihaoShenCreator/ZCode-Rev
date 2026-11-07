@@ -1,4 +1,4 @@
-import { parseRemoteWorkspaceIdentity, remoteHostIdFromWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity, remoteHostIdFromWorkspaceIdentity } from "@s-agent/shared";
 import type {
   BotProjectConnection,
   BotProjectRuntimePort,

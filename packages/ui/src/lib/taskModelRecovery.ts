@@ -1,5 +1,5 @@
-import type { ZCodeConfigOption, ZCodeTaskMeta } from "@zcode/shared";
-import { getZCodeAgentModeSelectOptions } from "@zcode/shared";
+import type { ZCodeConfigOption, ZCodeTaskMeta } from "@s-agent/shared";
+import { getZCodeAgentModeSelectOptions } from "@s-agent/shared";
 import {
   decodeCustomModelValue,
   encodeCustomModelValue,

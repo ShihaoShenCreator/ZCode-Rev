@@ -2,9 +2,8 @@ import {
   normalizeTelemetryUiMode,
   ZCODE_AGENT_PROVIDER,
   type TelemetryUiMode,
-  type PlanIdentitySnapshot,
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { buildPromptTelemetryExtraDetail } from "@/lib/messageTelemetry.js";
 import { encodeCustomModelValue } from "@/lib/zcodeCustomModelValue.js";
 import { legacyTelemetryProviderId } from "@/lib/providerTelemetryIdentity.js";
@@ -23,7 +22,7 @@ export function resolveLegacyConversationModelValue(params: {
   return encodeCustomModelValue(legacyTelemetryProviderId(configProvider), modelName);
 }
 
-export { resolveLegacyRuntimeModelValue } from "@zcode/shared/conversation-telemetry";
+export { resolveLegacyRuntimeModelValue } from "@s-agent/shared/conversation-telemetry";
 
 /** V4 config.provider 是实际模型 provider id；agentProvider 表示 ZCode 运行时。 */
 export function buildV4ConversationPromptTelemetryExtraDetail(params: {
@@ -33,7 +32,6 @@ export function buildV4ConversationPromptTelemetryExtraDetail(params: {
   modelName?: string | null;
   askMode?: string | null;
   providerBaseURL?: string | null;
-  planIdentitySnapshot?: PlanIdentitySnapshot | null;
 }): Record<string, string> {
   const agentProvider = params.agentProvider ?? ZCODE_AGENT_PROVIDER;
   const base = buildPromptTelemetryExtraDetail({
@@ -41,7 +39,6 @@ export function buildV4ConversationPromptTelemetryExtraDetail(params: {
     modelName: resolveLegacyConversationModelValue(params),
     provider: agentProvider,
     providerBaseURL: params.providerBaseURL,
-    planIdentitySnapshot: params.planIdentitySnapshot,
   });
   return {
     ...base,

@@ -1,4 +1,4 @@
-import type { McpServerConfig, McpServerStatus } from "@zcode/contracts";
+import type { McpServerConfig, McpServerStatus } from "@s-agent/contracts";
 import { matchesModelVisibleMcpServerName } from "../mcp/name.js";
 
 export interface ParsedAgentMcpServers {

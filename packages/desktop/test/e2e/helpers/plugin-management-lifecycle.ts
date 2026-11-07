@@ -8,14 +8,14 @@ import {
   type ZCodePluginsMarketplaceMutationResult,
   type ZCodePluginsOverviewResult,
   type ZCodePluginsReferenceCatalogResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_PLUGIN_STORE_BROWSE,
   TID_SETTINGS_PAGE,
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clickTestIdByDom,

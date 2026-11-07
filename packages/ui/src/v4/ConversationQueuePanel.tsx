@@ -23,8 +23,8 @@ import {
   TID_V4_QUEUE_PAUSED_BANNER,
   TID_V4_QUEUE_RESUME,
   testId,
-} from "@zcode/shared/test-ids";
-import type { QueueState } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/test-ids";
+import type { QueueState } from "@s-agent/shared/zcode-protocol-v4";
 import { ArrowUpFromLine, GripVertical, PencilIcon, Trash2Icon } from "lucide-react";
 import { ControlHintTooltip } from "@/ControlHintTooltip.js";
 import { Button } from "@/components/ui/button.js";

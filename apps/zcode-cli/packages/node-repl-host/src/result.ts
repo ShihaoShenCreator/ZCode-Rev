@@ -3,10 +3,10 @@ import {
   ZCODE_MCP_NODE_REPL_BROWSER_USE_META_KEY,
   ZCODE_MCP_NODE_REPL_COMPUTER_USE_META_KEY,
   ZCODE_MCP_NODE_REPL_CUA_APP_META_KEY,
-} from "@zcode/contracts/mcp";
-import { isOfficialCuaImageRefText } from "@zcode/zcode-cua/frame-contract";
-import { CUA_APP_ASSOCIATIONS_META_KEY } from "@zcode/zcode-cua/host-display-contract";
-import { matchBrowserScreenshotImageIndices, type NodeReplRunResult } from "@zcode/core/repl";
+} from "@s-agent/contracts/mcp";
+import { isOfficialCuaImageRefText } from "@s-agent/zcode-cua/frame-contract";
+import { CUA_APP_ASSOCIATIONS_META_KEY } from "@s-agent/zcode-cua/host-display-contract";
+import { matchBrowserScreenshotImageIndices, type NodeReplRunResult } from "@s-agent/core/repl";
 import type { NodeReplCallFacts } from "./call-ledger/contract.js";
 import type { CallToolResult } from "@modelcontextprotocol/server";
 

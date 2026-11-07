@@ -3,7 +3,7 @@ import {
   TID_SETTINGS_DYNAMIC_WORKFLOW_MODE_ITEM,
   TID_SETTINGS_DYNAMIC_WORKFLOW_MODE_TRIGGER,
   type DynamicWorkflowMode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_AUTOMATIONS_OPEN,
   TID_CHAT_ATTACHMENT_BUTTON,
@@ -13,7 +13,7 @@ import {
   TID_TASK_SETTINGS_BUTTON,
   TID_V4_COMPOSER_INPUT,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clickTestIdByDom,
   clickTestIdByWebDriver,

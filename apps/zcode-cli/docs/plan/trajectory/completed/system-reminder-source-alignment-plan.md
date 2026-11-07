@@ -6,9 +6,9 @@
 
 **核心边界：** 这是 system-reminder source/content 计划，不是 user message 结构调整计划。实现过程中可以新增 source helper、formatter、descriptor 和 source-level tests，但不能把多条 user message 合并成同一条 `content[]`，不能改变 session store / UI transcript 结构，也不能实现 attachment bubble-up、cache-control finalization 或 provider request projection。
 
-**Tech Stack：** TypeScript, Vitest, `@zcode/core`, `@zcode/contracts`, `@zcode/adapters`, prompt-trajectory.
+**Tech Stack：** TypeScript, Vitest, `@s-agent/core`, `@s-agent/contracts`, `@s-agent/adapters`, prompt-trajectory.
 
-**Phase completion gate:** 每个 phase / round 结束前必须跑 prompt-trajectory e2e，并检查输出目录里的 `trajectory.jsonl` 与派生 `*.openai_request_body.json`。该 e2e 必须包含覆盖当轮改动的 targeted testcase / fixture；只跑既有无关 testcase 不算验收。验收口径是最终 provider-visible messages 的内容、顺序、结构和 metadata stripping 符合本 phase 预期；不能只依赖 source diff、unit tests 或 runner 成功退出。因为 prompt-trajectory 读取 built `dist` artifacts，运行前需要先 build 相关 package（至少 `@zcode/core`）。如果某个动态行为当前无法被 prompt-trajectory 表达，必须在 phase 记录具体 runner 缺口，并用 focused tests 覆盖到位。
+**Phase completion gate:** 每个 phase / round 结束前必须跑 prompt-trajectory e2e，并检查输出目录里的 `trajectory.jsonl` 与派生 `*.openai_request_body.json`。该 e2e 必须包含覆盖当轮改动的 targeted testcase / fixture；只跑既有无关 testcase 不算验收。验收口径是最终 provider-visible messages 的内容、顺序、结构和 metadata stripping 符合本 phase 预期；不能只依赖 source diff、unit tests 或 runner 成功退出。因为 prompt-trajectory 读取 built `dist` artifacts，运行前需要先 build 相关 package（至少 `@s-agent/core`）。如果某个动态行为当前无法被 prompt-trajectory 表达，必须在 phase 记录具体 runner 缺口，并用 focused tests 覆盖到位。
 
 **当前状态：** Active system-reminder source/content 工作已完成。SR0-SR12 均已实现并完成 focused tests / prompt-trajectory evidence；剩余 ToolSearch/deferred tools、MCP instructions/resources、skill discovery、bubble-up、content merge、cache-control finalization 均保持独立或 postponed，不属于本 plan 未完成项。
 
@@ -165,8 +165,8 @@ Descriptor rules:
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/system-reminder-source.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/system-reminder-source.test.ts --run
+pnpm --filter @s-agent/core typecheck
 ```
 
 ## Phase SR1: Existing Reminder Source Inventory
@@ -231,8 +231,8 @@ pnpm --filter @zcode/core typecheck
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/system-reminder-source.test.ts tests/runtime-hooks.test.ts tests/runtime-memory.test.ts tests/runtime-trace.test.ts tests/context-builder.test.ts tests/runtime-tool-loop.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/system-reminder-source.test.ts tests/runtime-hooks.test.ts tests/runtime-memory.test.ts tests/runtime-trace.test.ts tests/context-builder.test.ts tests/runtime-tool-loop.test.ts --run
+pnpm --filter @s-agent/core typecheck
 ```
 
 ## Phase SR2: Runtime-Local Date Change
@@ -273,11 +273,11 @@ pnpm --filter @zcode/core typecheck
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest tests/local-date.test.ts --run
-pnpm --filter @zcode/core exec vitest tests/system-reminder-source.test.ts tests/runtime-trace.test.ts tests/runtime-persistence.test.ts --run
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/contracts typecheck
-pnpm --filter @zcode/adapters typecheck
+pnpm --filter @s-agent/contracts exec vitest tests/local-date.test.ts --run
+pnpm --filter @s-agent/core exec vitest tests/system-reminder-source.test.ts tests/runtime-trace.test.ts tests/runtime-persistence.test.ts --run
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/contracts typecheck
+pnpm --filter @s-agent/adapters typecheck
 pnpm --dir apps/zcode-cli/packages/core exec oxlint src/runtime/deps.ts src/runtime/types.ts src/runtime/internal.ts src/runtime/agent-runtime.ts src/runtime/helpers/conversation.ts src/runtime/methods/turn.ts src/runtime/methods/resume.ts src/system-reminder/source.ts tests/runtime-trace.test.ts tests/runtime-persistence.test.ts
 pnpm --dir apps/zcode-cli/packages/contracts exec oxlint src/index.ts src/time/local-date.ts tests/local-date.test.ts
 pnpm --dir apps/zcode-cli/packages/adapters exec oxlint src/context/index.ts
@@ -330,8 +330,8 @@ pnpm --dir apps/zcode-cli/packages/adapters exec oxlint src/context/index.ts
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts --run
+pnpm --filter @s-agent/core typecheck
 ```
 
 ## Phase SR4: MessageHistory Semantic Metadata
@@ -406,8 +406,8 @@ pnpm --filter @zcode/core typecheck
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/message-history.test.ts tests/runtime-reminders.test.ts tests/session-history-hydrator.test.ts tests/session-history-rewind.test.ts tests/runtime-trace.test.ts tests/runtime-tool-loop.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/message-history.test.ts tests/runtime-reminders.test.ts tests/session-history-hydrator.test.ts tests/session-history-rewind.test.ts tests/runtime-trace.test.ts tests/runtime-tool-loop.test.ts --run
+pnpm --filter @s-agent/core typecheck
 pnpm --dir apps/zcode-cli/packages/core exec oxlint src/agent/message-history.ts src/agent/session-history-hydrator.ts src/runtime/helpers/conversation.ts src/runtime/methods/context.ts src/runtime/methods/hooks.ts src/runtime/methods/memory-recall.ts src/runtime/methods/turn.ts src/runtime/methods/turn-loop.ts src/runtime/methods/resume.ts src/runtime/methods/background-notifications.ts src/runtime/methods/steering.ts src/runtime/methods/rewind.ts src/runtime/methods/rewind-message.ts src/runtime/methods/turn-tool-warnings.ts tests/message-history.test.ts tests/runtime-reminders.test.ts tests/session-history-hydrator.test.ts tests/runtime-trace.test.ts tests/runtime-tool-loop.test.ts
 ```
 
@@ -466,8 +466,8 @@ pnpm --dir apps/zcode-cli/packages/core exec oxlint src/agent/message-history.ts
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/system-reminder-source.test.ts tests/runtime-reminders.test.ts tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts tests/session-history-hydrator.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/system-reminder-source.test.ts tests/runtime-reminders.test.ts tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts tests/session-history-hydrator.test.ts --run
+pnpm --filter @s-agent/core typecheck
 pnpm --dir apps/zcode-cli/packages/core exec oxlint src/system-reminder/source.ts src/runtime/helpers/conversation.ts src/runtime/methods/turn-loop.ts src/runtime/internal-methods.ts src/runtime/methods/index.ts src/agent/session-history-hydrator.ts tests/runtime-reminders.test.ts tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts tests/session-history-hydrator.test.ts
 ```
 
@@ -508,8 +508,8 @@ pnpm --dir apps/zcode-cli/packages/core exec oxlint src/system-reminder/source.t
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/runtime-persistence.test.ts tests/session-history-hydrator.test.ts tests/runtime-trace.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/runtime-persistence.test.ts tests/session-history-hydrator.test.ts tests/runtime-trace.test.ts --run
+pnpm --filter @s-agent/core typecheck
 pnpm --dir apps/zcode-cli/packages/core exec oxlint src/system-reminder/prompt-attachment.ts src/runtime/helpers/conversation.ts src/agent/session-history-hydrator.ts tests/runtime-persistence.test.ts tests/session-history-hydrator.test.ts
 ```
 
@@ -536,8 +536,8 @@ pnpm --dir apps/zcode-cli/packages/core exec oxlint src/system-reminder/prompt-a
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/runtime-tool-loop.test.ts tests/session-history-hydrator.test.ts tests/system-reminder-source.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/runtime-tool-loop.test.ts tests/session-history-hydrator.test.ts tests/system-reminder-source.test.ts --run
+pnpm --filter @s-agent/core typecheck
 ```
 
 ## Phase SR8: Evidence + Docs
@@ -568,10 +568,10 @@ pnpm --filter @zcode/core typecheck
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/system-reminder-source.test.ts tests/runtime-trace.test.ts tests/runtime-hooks.test.ts tests/runtime-memory.test.ts tests/runtime-tool-loop.test.ts --run
-pnpm --filter @zcode/prompt-trajectory run:testcases -- --cases testcases --out-root out/system-reminder-sources --model test/fake --upstream-base-url <local-fake-openai-base-url> --api-key fake
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/contracts typecheck
+pnpm --filter @s-agent/core exec vitest tests/system-reminder-source.test.ts tests/runtime-trace.test.ts tests/runtime-hooks.test.ts tests/runtime-memory.test.ts tests/runtime-tool-loop.test.ts --run
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- --cases testcases --out-root out/system-reminder-sources --model test/fake --upstream-base-url <local-fake-openai-base-url> --api-key fake
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/contracts typecheck
 pnpm typecheck
 pnpm lint
 ```
@@ -639,14 +639,14 @@ pnpm lint
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/runtime-reminders.test.ts tests/runtime-trace.test.ts tests/runtime-persistence.test.ts tests/runtime-tool-loop.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/runtime-reminders.test.ts tests/runtime-trace.test.ts tests/runtime-persistence.test.ts tests/runtime-tool-loop.test.ts --run
+pnpm --filter @s-agent/core typecheck
 pnpm --dir apps/zcode-cli/packages/core exec oxlint src/runtime/helpers/conversation.ts src/runtime/helpers/runtime-reminders.ts src/runtime/helpers/index.ts src/runtime/methods/turn-loop.ts tests/runtime-reminders.test.ts tests/runtime-trace.test.ts tests/runtime-persistence.test.ts
-pnpm --filter @zcode/core build
-pnpm --filter @zcode/prompt-trajectory exec node --import tsx --test tests/*.test.ts
-pnpm --filter @zcode/prompt-trajectory typecheck
-pnpm --filter @zcode/prompt-trajectory lint
-pnpm --filter @zcode/prompt-trajectory run:testcases -- --cases testcases --out-root out/system-reminder-sr9
+pnpm --filter @s-agent/core build
+pnpm --filter @s-agent/prompt-trajectory exec node --import tsx --test tests/*.test.ts
+pnpm --filter @s-agent/prompt-trajectory typecheck
+pnpm --filter @s-agent/prompt-trajectory lint
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- --cases testcases --out-root out/system-reminder-sr9
 ```
 
 After prompt-trajectory finishes, inspect the latest `apps/zcode-cli/tools/prompt-trajectory/out/system-reminder-sr9/test*/**/trajectory.jsonl` and `apps/zcode-cli/tools/prompt-trajectory/out/system-reminder-sr9/test*/**/trajectories/*.openai_request_body.json`; confirm every provider-visible message matches SR9 expectations before asking for user confirmation.
@@ -685,8 +685,8 @@ SR10 implementation evidence:
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/system-reminder-source.test.ts tests/runtime-reminders.test.ts tests/runtime-trace.test.ts tests/runtime-tool-loop.test.ts --run
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/system-reminder-source.test.ts tests/runtime-reminders.test.ts tests/runtime-trace.test.ts tests/runtime-tool-loop.test.ts --run
+pnpm --filter @s-agent/core typecheck
 ```
 
 ## Phase SR11: Queued System Notification / Subagent Notification Wrapper
@@ -727,9 +727,9 @@ SR11 research conclusion:
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/subagent-explore.test.ts tests/session-history-hydrator.test.ts tests/runtime-tool-loop.test.ts tests/system-reminder-source.test.ts --run
-pnpm --filter @zcode/prompt-trajectory record -- --fixture testcases/system-reminder-sr11-subagent-notification/fixture.json --out out/system-reminder-sr11-subagent-notification/test20260604-sr11
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/subagent-explore.test.ts tests/session-history-hydrator.test.ts tests/runtime-tool-loop.test.ts tests/system-reminder-source.test.ts --run
+pnpm --filter @s-agent/prompt-trajectory record -- --fixture testcases/system-reminder-sr11-subagent-notification/fixture.json --out out/system-reminder-sr11-subagent-notification/test20260604-sr11
+pnpm --filter @s-agent/core typecheck
 ```
 
 ## Phase SR12: Synthetic Attachment Meta Text Shape
@@ -779,9 +779,9 @@ pnpm --filter @zcode/core typecheck
 **Verification:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/runtime-persistence.test.ts tests/session-history-hydrator.test.ts tests/runtime-trace.test.ts --run
-pnpm --filter @zcode/prompt-trajectory run:testcases -- --cases testcases --out-root out
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core exec vitest tests/runtime-persistence.test.ts tests/session-history-hydrator.test.ts tests/runtime-trace.test.ts --run
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- --cases testcases --out-root out
+pnpm --filter @s-agent/core typecheck
 pnpm typecheck
 pnpm lint
 ```

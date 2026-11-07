@@ -1,5 +1,5 @@
-import type { ToolSearchExecutionContext, ModelCallWrapper } from "@zcode/contracts";
-import type { McpToolUiDescriptor } from "@zcode/shared/mcp-apps";
+import type { ToolSearchExecutionContext, ModelCallWrapper } from "@s-agent/contracts";
+import type { McpToolUiDescriptor } from "@s-agent/shared/mcp-apps";
 // ============================================================
 // Tool Types - Core tool types for registry and executor
 // ============================================================
@@ -56,7 +56,7 @@ import type {
   WorkflowEscalatePort,
   WorkflowPort,
   WorkflowSubmitPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { RuntimeTaskRegistry } from "../runtime-task/registry.js";
 import type { SystemReminderSource } from "../system-reminder/source.js";
 import type {

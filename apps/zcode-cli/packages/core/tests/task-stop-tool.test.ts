@@ -5,7 +5,7 @@ import {
   createSessionId,
   createToolCallId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import {
   isErrorForToolResult,

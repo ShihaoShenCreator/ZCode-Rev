@@ -23,14 +23,14 @@ import type {
   SourceServerConnectionState,
   SourceServerManagementSnapshot,
   RemoteWorkspaceSessionEntry,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   buildSshRemoteHostKey,
   createUuid,
   parseRemoteWorkspaceIdentity,
   stripRemoteTargetSecrets,
-} from "@zcode/shared";
-import type { IServiceAccessor } from "@zcode/services";
+} from "@s-agent/shared";
+import type { IServiceAccessor } from "@s-agent/services";
 import {
   bindRemoteWorkspaceIdentity,
   bindRemoteWorkspacePath,

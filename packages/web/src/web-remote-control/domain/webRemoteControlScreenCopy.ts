@@ -1,4 +1,4 @@
-import type { WebRemoteControlFailure, WebRemoteControlFailureReason } from "@zcode/shared";
+import type { WebRemoteControlFailure, WebRemoteControlFailureReason } from "@s-agent/shared";
 
 export type WebRemoteControlScreenLocale = "zh-CN" | "en-US";
 

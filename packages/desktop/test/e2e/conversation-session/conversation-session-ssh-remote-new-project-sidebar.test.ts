@@ -1,8 +1,8 @@
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
-import { ServiceChannels } from "@zcode/shared";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
-import type { WindowHostControllerTaskListResult } from "@zcode/services";
+import { ServiceChannels } from "@s-agent/shared";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
+import type { WindowHostControllerTaskListResult } from "@s-agent/services";
 import { releaseControlledReplay } from "#e2e/helpers/controlled-replay";
 import {
   holdProjectUnread,

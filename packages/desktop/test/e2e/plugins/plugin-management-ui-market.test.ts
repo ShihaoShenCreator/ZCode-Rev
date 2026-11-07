@@ -2,7 +2,7 @@ import { startDraftFromProject } from "../helpers/project-sidebar.js";
 import { selectUpstreamModel } from "../helpers/upstream-provider.js";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_SIDE_PANE_TOGGLE } from "@zcode/shared/test-ids";
+import { TID_SIDE_PANE_TOGGLE } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, getE2EAppDataPaths } from "../helpers/desktop-app.js";
 import {
   getV4PaneSnapshot,

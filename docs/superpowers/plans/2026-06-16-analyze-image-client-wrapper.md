@@ -6,7 +6,7 @@
 
 **Architecture:** 公开工具面只暴露 `AnalyzeImage`，不把 provider-native `analyze_image` 暴露到主 turn。`AnalyzeImage` handler 复用现有图片读取/压缩能力，把本地图片和用户问题发到 `querySource: "analyze_image_tool"` 的内部流式模型请求；adapter 只在这个内部请求的工具名为 `analyze_image` 时把函数工具投影成 provider-native `analyze_image`。主 turn 中未经请求的 `server_tool_use analyze_image` 仍按 provider anomaly 隔离，不进入 Bash 或任意本地工具调度。
 
-**Tech Stack:** TypeScript、Zod、Vercel AI SDK v6、`@zcode/contracts`、`@zcode/core` tool runtime、Vitest、现有 model-io/fake-fetch 验证链路。
+**Tech Stack:** TypeScript、Zod、Vercel AI SDK v6、`@s-agent/contracts`、`@s-agent/core` tool runtime、Vitest、现有 model-io/fake-fetch 验证链路。
 
 ---
 
@@ -113,7 +113,7 @@ describe("analyze-image contracts", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts test -- analyze-image.test.ts
+pnpm --filter @s-agent/contracts test -- analyze-image.test.ts
 ```
 
 Expected: fail，错误包含 `Cannot find module` 或 `AnalyzeImageInputSchema` 未导出。
@@ -269,7 +269,7 @@ export * from "./analyze-image.js";
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts test -- analyze-image.test.ts
+pnpm --filter @s-agent/contracts test -- analyze-image.test.ts
 ```
 
 Expected: pass。
@@ -297,8 +297,8 @@ Add to `apps/zcode-cli/packages/core/tests/analyze-image.test.ts`:
 
 ```ts
 import { AgentRuntime } from "../src/runtime/agent-runtime.js";
-import { createSessionId } from "@zcode/contracts";
-import { SessionEventType, ModelRole, type ModelRef } from "@zcode/contracts";
+import { createSessionId } from "@s-agent/contracts";
+import { SessionEventType, ModelRole, type ModelRef } from "@s-agent/contracts";
 import { createTestSessionEventStore } from "./helpers/session-event-store.js";
 
 const modelRef: ModelRef = {
@@ -463,7 +463,7 @@ Use the same local `createRuntime(...)` helper shape as the WebSearch tests in `
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- analyze-image.test.ts
+pnpm --filter @s-agent/core test -- analyze-image.test.ts
 ```
 
 Expected: fail，错误包含 `AnalyzeImage` 未注册或 handler 文件不存在。
@@ -482,7 +482,7 @@ import {
   type ModelNetworkStatusEvent,
   type ModelStatusSink,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolExecutionContext } from "../types.js";
 
 const ANALYZE_IMAGE_TOOL_NAME = "AnalyzeImage";
@@ -608,7 +608,7 @@ import {
   type ModelUsage,
   type ModelToolCall,
   type ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry, ToolHandler } from "../types.js";
 import { inferImageMimeFromPath, readImageFile } from "./read-image.js";
 import {
@@ -913,7 +913,7 @@ expect(
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- analyze-image.test.ts main-tool-pool.test.ts
+pnpm --filter @s-agent/core test -- analyze-image.test.ts main-tool-pool.test.ts
 ```
 
 Expected: pass。
@@ -1059,7 +1059,7 @@ it("does not rewrite public AnalyzeImage function tools", async () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- websearch.test.ts registry.test.ts
+pnpm --filter @s-agent/adapters test -- websearch.test.ts registry.test.ts
 ```
 
 Expected: fail，原因是 `AnalyzeImage` provider-native 分支不存在，request body rewrite 不存在。
@@ -1074,7 +1074,7 @@ import {
   isWebSearchCapableBaseURL,
   type JsonSchema,
   type ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 ```
 
 Replace provider-native dispatch:
@@ -1240,7 +1240,7 @@ expect(JSON.stringify(capturedMainBody.tools)).not.toContain('"type":"analyze_im
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- websearch.test.ts registry.test.ts runner.test.ts
+pnpm --filter @s-agent/adapters test -- websearch.test.ts registry.test.ts runner.test.ts
 ```
 
 Expected: pass。
@@ -1311,7 +1311,7 @@ it("drops malformed provider-injected analyze_image input before tool input norm
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- registry.test.ts
+pnpm --filter @s-agent/adapters test -- registry.test.ts
 ```
 
 Expected before implementation: fail，当前实现仍保留 `server_tool_use analyze_image`。
@@ -1360,7 +1360,7 @@ The side request does not rely on `tool_call` events from provider-native `analy
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- registry.test.ts
+pnpm --filter @s-agent/adapters test -- registry.test.ts
 ```
 
 Expected: pass，且 test output 不包含 `model.tool_input.normalize_failed`。
@@ -1384,7 +1384,7 @@ git commit -m "fix(zcode-cli): isolate unauthorized analyze_image provider tool 
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- analyze-image.test.ts main-tool-pool.test.ts
+pnpm --filter @s-agent/core test -- analyze-image.test.ts main-tool-pool.test.ts
 ```
 
 Expected:
@@ -1399,7 +1399,7 @@ PASS apps/zcode-cli/packages/core/tests/main-tool-pool.test.ts
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- runner.test.ts registry.test.ts websearch.test.ts
+pnpm --filter @s-agent/adapters test -- runner.test.ts registry.test.ts websearch.test.ts
 ```
 
 Expected:
@@ -1425,9 +1425,9 @@ expect(JSON.stringify(capturedMainTurn.tools)).not.toContain('"type":"analyze_im
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts test -- analyze-image.test.ts
-pnpm --filter @zcode/core test -- analyze-image.test.ts main-tool-pool.test.ts
-pnpm --filter @zcode/adapters test -- runner.test.ts registry.test.ts websearch.test.ts
+pnpm --filter @s-agent/contracts test -- analyze-image.test.ts
+pnpm --filter @s-agent/core test -- analyze-image.test.ts main-tool-pool.test.ts
+pnpm --filter @s-agent/adapters test -- runner.test.ts registry.test.ts websearch.test.ts
 ```
 
 Expected: all pass。

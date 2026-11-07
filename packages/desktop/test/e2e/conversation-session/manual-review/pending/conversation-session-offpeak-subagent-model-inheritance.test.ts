@@ -12,7 +12,7 @@ import {
   TID_OFFPEAK_FORM_TITLE,
   TID_OFFPEAK_TAB,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

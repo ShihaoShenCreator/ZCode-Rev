@@ -10,7 +10,7 @@ import {
   TID_WORKSPACE_HEADER,
   TID_WORKSPACE_MORE_BUTTON,
   TID_WORKSPACE_PATH,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, getE2EAppDataPaths } from "../../../helpers/desktop-app.js";
 import {
   addMarketplaceSourceThroughAgent,

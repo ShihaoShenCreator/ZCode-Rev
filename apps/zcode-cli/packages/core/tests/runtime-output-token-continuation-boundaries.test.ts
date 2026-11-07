@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId } from "@zcode/contracts";
+import { createSessionId } from "@s-agent/contracts";
 import type { AgentRuntime } from "../src/runtime.js";
 import { createToolRegistry } from "../src/tool/registry.js";
 import {

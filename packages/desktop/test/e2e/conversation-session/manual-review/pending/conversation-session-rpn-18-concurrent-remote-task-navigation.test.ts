@@ -1,4 +1,4 @@
-import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@zcode/rpc";
+import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@s-agent/rpc";
 import { join } from "node:path";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import {
@@ -7,9 +7,9 @@ import {
   ServiceChannels,
   buildRemoteHostWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
-} from "@zcode/shared";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
-import type { ProjectTree } from "@zcode/services";
+} from "@s-agent/shared";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
+import type { ProjectTree } from "@s-agent/services";
 import { clearAppData, clickTestIdByDom } from "#e2e/helpers/desktop-app";
 import { getToastMessages } from "#e2e/helpers/conversation-session-toast";
 import {

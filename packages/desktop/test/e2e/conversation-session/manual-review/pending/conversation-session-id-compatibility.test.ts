@@ -1,6 +1,6 @@
 import { projectSectionSelector } from "#e2e/helpers/project-sidebar";
 import { randomUUID } from "node:crypto";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { admitCreateBeforeExit } from "#e2e/helpers/session-creation-resend";
 import { startE2ENetworkCaptureProxy } from "#e2e/helpers/network-capture-proxy";
 import { verifySessionCreationRetries } from "#e2e/helpers/session-creation-retries";
@@ -13,7 +13,7 @@ import {
   TID_V4_COMPOSER_INPUT,
   TID_V4_COMPOSER_SEND,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { chromium } from "playwright-core";
 import { openMobilePairingPage, seedMobileFixtureLogin } from "#e2e/helpers/mobile-pairing";
 import { obtainUnreadPairingUrl, showMobileTaskHome } from "#e2e/helpers/web-remote-unread";

@@ -122,7 +122,7 @@
 **Interfaces:**
 - Consumes:
   - `AgentRuntime` from `apps/zcode-cli/packages/core/src/runtime.ts`
-  - `createSessionId`, `ModelRole`, `ModelRefSource`, `modelMessageContentToText` from `@zcode/contracts`
+  - `createSessionId`, `ModelRole`, `ModelRefSource`, `modelMessageContentToText` from `@s-agent/contracts`
 - Produces:
   - Failing tests that describe final child provider request shape before implementation.
 
@@ -154,7 +154,7 @@ import {
   createModelProviderId,
   createSessionId,
   modelMessageContentToText,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../src/runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 
@@ -514,7 +514,7 @@ Keep the exact body text consistent with the new builder from Phase 2. The old e
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts apps/zcode-cli/packages/core/tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts apps/zcode-cli/packages/core/tests/subagent-explore.test.ts
 ```
 
 Expected before implementation:
@@ -535,7 +535,7 @@ Expected before implementation:
 
 **Interfaces:**
 - Consumes:
-  - `EnvInfo` from `@zcode/contracts`
+  - `EnvInfo` from `@s-agent/contracts`
   - `isEnvInfoGitRepository(info: EnvInfo): boolean` from `apps/zcode-cli/packages/core/src/context/sections/env-info.ts`
 - Produces:
   - `buildSubagentCommonNotes(): string`
@@ -585,7 +585,7 @@ This keeps subagent git repo detection tied to the same logic main uses today.
 Create `apps/zcode-cli/packages/core/src/subagent/system-prompt.ts`:
 
 ```ts
-import type { EnvInfo } from "@zcode/contracts";
+import type { EnvInfo } from "@s-agent/contracts";
 import { isEnvInfoGitRepository } from "../context/sections/env-info.js";
 
 export interface SubagentEnvironmentContextOptions {
@@ -725,7 +725,7 @@ If `deps.ts` currently exports `buildExploreSystemPrompt`, replace that export o
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts
+pnpm --filter @s-agent/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts
 ```
 
 Expected after Task 2 only:
@@ -856,7 +856,7 @@ Do not put currentDate into the four subagent system messages. If `currentDate` 
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts apps/zcode-cli/packages/core/tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts apps/zcode-cli/packages/core/tests/subagent-explore.test.ts
 ```
 
 Expected:
@@ -940,7 +940,7 @@ Expected:
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts apps/zcode-cli/packages/core/tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run apps/zcode-cli/packages/core/tests/subagent-prompt-assembly.test.ts apps/zcode-cli/packages/core/tests/subagent-explore.test.ts
 ```
 
 Expected:
@@ -952,7 +952,7 @@ Expected:
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run apps/zcode-cli/packages/core/tests/context-builder.test.ts apps/zcode-cli/packages/core/tests/runtime-trace.test.ts
+pnpm --filter @s-agent/core exec vitest run apps/zcode-cli/packages/core/tests/context-builder.test.ts apps/zcode-cli/packages/core/tests/runtime-trace.test.ts
 ```
 
 Expected:
@@ -1072,7 +1072,7 @@ packages/desktop/test/e2e/helpers/conversation-session-network.ts
 Run the new spec with the local foreground Electron window, not only the container runner:
 
 ```bash
-ZCODE_E2E_SPEC=./test/e2e/conversation-session/conversation-session-subagent-prompt-assembly.test.ts pnpm --filter @zcode/desktop test:e2e
+ZCODE_E2E_SPEC=./test/e2e/conversation-session/conversation-session-subagent-prompt-assembly.test.ts pnpm --filter @s-agent/desktop test:e2e
 ```
 
 Expected:
@@ -1101,7 +1101,7 @@ The final implementation report must include:
 
 ```text
 E2E command:
-ZCODE_E2E_SPEC=./test/e2e/conversation-session/conversation-session-subagent-prompt-assembly.test.ts pnpm --filter @zcode/desktop test:e2e
+ZCODE_E2E_SPEC=./test/e2e/conversation-session/conversation-session-subagent-prompt-assembly.test.ts pnpm --filter @s-agent/desktop test:e2e
 
 E2E result:
 PASS
@@ -1139,7 +1139,7 @@ If the local machine cannot run foreground Electron E2E, do not mark the task co
 - Main thread prompt assembly is unchanged.
 - Focused prompt tests pass.
 - A conversation-session E2E spec covers this prompt assembly behavior.
-- The E2E spec has been run through the local foreground Electron window with `ZCODE_E2E_SPEC=./test/e2e/conversation-session/conversation-session-subagent-prompt-assembly.test.ts pnpm --filter @zcode/desktop test:e2e`, and the result is PASS.
+- The E2E spec has been run through the local foreground Electron window with `ZCODE_E2E_SPEC=./test/e2e/conversation-session/conversation-session-subagent-prompt-assembly.test.ts pnpm --filter @s-agent/desktop test:e2e`, and the result is PASS.
 - `pnpm audit:conversation-session-coverage` passes after catalog/matrix updates.
 - `pnpm typecheck` and `pnpm lint` have been run, with any unrelated baseline failures explicitly reported.
 - No automatic commit is created. The final state remains reviewable in the working tree until the user explicitly asks to commit.

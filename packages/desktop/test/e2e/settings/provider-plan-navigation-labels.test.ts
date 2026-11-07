@@ -1,12 +1,13 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { BUILTIN_MODEL_PROVIDER_IDS } from "@zcode/shared";
+import { BUILTIN_MODEL_PROVIDER_IDS } from "@s-agent/shared";
 import {
+  TID_CHAT_MODEL_SELECT_TRIGGER,
   TID_MODEL_PROVIDER_NAV_ITEM,
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   DEFAULT_WORKSPACE,
@@ -20,25 +21,7 @@ import { prepareV4ConversationE2E } from "../helpers/v4-conversation.js";
 import { skipOccupationOnboardingIfPresent } from "../helpers/occupation-onboarding.js";
 import { sel } from "../helpers/selectors.js";
 
-async function visibleNav(key: string) {
-  const selector = sel(testId(TID_MODEL_PROVIDER_NAV_ITEM, key));
-  await browser.waitUntil(
-    async () => {
-      for (const item of await $$(selector)) {
-        if (await item.isDisplayed()) return true;
-      }
-      return false;
-    },
-    { timeout: 15000, timeoutMsg: `导航未出现：${key}` },
-  );
-  // 响应式布局保留隐藏副本，只操作当前可见导航。
-  for (const item of await $$(selector)) {
-    if (await item.isDisplayed()) return item;
-  }
-  throw new Error(`可见导航已消失：${key}`);
-}
-
-describe("套餐导航名称与身份回归", () => {
+describe("S-Agent no longer exposes retired account-provider surfaces", () => {
   let originalSize: Awaited<ReturnType<typeof setCurrentElectronRendererContentSize>> | undefined;
   afterEach(async () => {
     if (originalSize) await restoreElectronRendererContentSize(originalSize);
@@ -50,7 +33,7 @@ describe("套餐导航名称与身份回归", () => {
 
   for (const family of ["bigmodel", "zai"] as const) {
     for (const locale of ["zh-CN", "en-US"] as const) {
-      it(`PN-01/02: ${family} ${locale} 导航、详情及窄屏名称一致`, async function () {
+      it(`ignores legacy ${family} settings in ${locale}`, async function () {
         this.timeout(180000);
         await skipOccupationOnboardingIfPresent();
         await prepareV4ConversationE2E({ skipProvider: true });
@@ -83,67 +66,40 @@ describe("套餐导航名称与身份回归", () => {
           locale === "zh-CN" ? "dark" : "light",
         );
         await clickTestIdByDom(TID_TASK_SETTINGS_BUTTON);
+
+        const modelPicker = $(sel(TID_CHAT_MODEL_SELECT_TRIGGER));
+        await modelPicker.waitForDisplayed({ timeout: 15000 });
+        await modelPicker.click();
+        await browser.waitUntil(
+          async () => (await $("body").getText()).length > 0,
+          { timeout: 10000, timeoutMsg: "模型选择菜单未打开" },
+        );
+        expect(await $("body").getText()).not.toMatch(/Z\.ai|BigModel|Coding Plan|Start Plan/i);
+        await browser.keys("Escape");
+
         await clickTestIdByDom(testId(TID_SETTINGS_SECTION_NAV, "modelProvider"));
-        const id =
-          family === "bigmodel"
-            ? BUILTIN_MODEL_PROVIDER_IDS.bigmodelStartPlan
-            : BUILTIN_MODEL_PROVIDER_IDS.zaiStartPlan;
-        const entries = [
-          {
-            key: `preset:${id}`,
-            label: family === "bigmodel" ? "BigModel" : "Z.ai",
-            title: family === "bigmodel" ? "BigModel" : "Z.ai",
-          },
-          {
-            key: `coding-plan:${id}`,
-            label: "Start Plan",
-            title: "Start Plan",
-          },
+        const retiredProviderIds = [
+          BUILTIN_MODEL_PROVIDER_IDS.zaiIndividualCodingPlan,
+          BUILTIN_MODEL_PROVIDER_IDS.zaiTeamCodingPlan,
+          BUILTIN_MODEL_PROVIDER_IDS.zaiStartPlan,
+          BUILTIN_MODEL_PROVIDER_IDS.bigmodelIndividualCodingPlan,
+          BUILTIN_MODEL_PROVIDER_IDS.bigmodelTeamCodingPlan,
+          BUILTIN_MODEL_PROVIDER_IDS.bigmodelStartPlan,
         ];
-        for (const entry of entries) {
-          const button = await visibleNav(entry.key);
-          await expect(button).toHaveAttribute("aria-label", entry.label);
-          await expect(button).toHaveText(entry.label);
-          await button.click();
-          await expect(await visibleNav(entry.key)).toHaveAttribute("aria-selected", "true");
-          await browser.waitUntil(
-            async () =>
-              browser.execute(
-                (title) =>
-                  Array.from(document.querySelectorAll("h3")).some(
-                    (node) =>
-                      node.textContent?.trim() === title && node.getBoundingClientRect().width > 0,
-                  ),
-                entry.title,
-              ),
-            { timeout: 15000, timeoutMsg: `详情标题错误：${entry.title}` },
-          );
+        for (const providerId of retiredProviderIds) {
+          for (const key of [
+            `preset:${providerId}`,
+            `coding-plan:${providerId}`,
+            `team-plan:${providerId}`,
+          ]) {
+            expect(await $$(sel(testId(TID_MODEL_PROVIDER_NAV_ITEM, key)))).toHaveLength(0);
+          }
         }
-        if (process.env.ZCODE_E2E_ARTIFACT_DIR) {
-          await browser.saveScreenshot(
-            join(process.env.ZCODE_E2E_ARTIFACT_DIR, `plan-nav-${family}-${locale}-wide.png`),
-          );
-        }
-        await setCurrentElectronRendererContentSize(600, 800);
-        for (const entry of entries) {
-          const button = await visibleNav(entry.key);
-          await expect(button).toHaveAttribute("aria-label", entry.label);
-          await browser.electron.execute((electron) => {
-            electron.BrowserWindow.getAllWindows()
-              .find((window) => window.isVisible())
-              ?.focus();
-          });
-          await $("body").moveTo({ xOffset: -250, yOffset: -350 });
-          await button.moveTo();
-          await $('[data-slot="tooltip-content"]').waitForDisplayed({ timeout: 10000 });
-          await expect($('[data-slot="tooltip-content"]')).toHaveText(entry.label);
-          await browser.keys("Escape");
-        }
-        if (process.env.ZCODE_E2E_ARTIFACT_DIR) {
-          await browser.saveScreenshot(
-            join(process.env.ZCODE_E2E_ARTIFACT_DIR, `plan-nav-${family}-${locale}-narrow.png`),
-          );
-        }
+
+        await clickTestIdByDom(testId(TID_SETTINGS_SECTION_NAV, "usage"));
+        const usageBody = await $("body").getText();
+        expect(usageBody).toMatch(locale === "zh-CN" ? /时间范围/ : /Time range/);
+        expect(usageBody).not.toMatch(/Z\.ai|BigModel|Coding Plan|Start Plan/i);
       });
     }
   }

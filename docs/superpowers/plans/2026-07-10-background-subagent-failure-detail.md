@@ -107,7 +107,7 @@
 - Produces: replay artifacts and verification output.
 
 - [x] Re-run explicit-fixture WDIO and default replay for `conversation-session-background-subagent-rate-limit.test.ts`.
-- [x] Run `pnpm --filter @zcode/desktop typecheck:e2e`.
+- [x] Run `pnpm --filter @s-agent/desktop typecheck:e2e`.
 - [x] Run the conversation coverage audit.
 - [x] Run `pnpm typecheck`, `pnpm lint`, and `git diff --check`.
 

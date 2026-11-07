@@ -4,7 +4,7 @@ import {
   ResumeWorkflowRunOutputSchema,
   type DynamicWorkflowRunPort,
   type DynamicWorkflowRunResumeResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { registerBuiltInTools } from "../src/tool/handlers/index.js";
 import { resumeWorkflowRunToolEntry } from "../src/tool/handlers/resume-workflow-run.js";
 import { createToolRegistry } from "../src/tool/registry.js";

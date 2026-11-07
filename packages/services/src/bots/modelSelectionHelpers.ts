@@ -1,6 +1,6 @@
 import {
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const BOT_NATIVE_MODEL_PROVIDER_PREFIX = "native:";
 

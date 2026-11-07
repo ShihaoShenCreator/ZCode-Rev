@@ -251,9 +251,9 @@ manifest、desktop 构建脚本/配置、根 lockfile、Git HEAD 及 E2E build �
 `ZCODE_E2E_FORCE_DESKTOP_BUILD=1` 可强制失效，不能复用仅靠文件存在判断的旧产物。
 
 缓存正确性补充（2026-07-17）：fingerprint 必须描述最终 bundle 的完整语义，不能只靠
-Git HEAD 和一份手写源码目录清单。默认输入从 `@zcode/desktop` 沿
+Git HEAD 和一份手写源码目录清单。默认输入从 `@s-agent/desktop` 沿
 `pnpm-workspace.yaml` 的 workspace 依赖图递归收集各 package manifest 与 `src`，因此
-`@zcode/server` 等被 tsup 内联的依赖与后续新增 workspace 依赖都会自动进入 key；根目录
+`@s-agent/server` 等被 tsup 内联的依赖与后续新增 workspace 依赖都会自动进入 key；根目录
 `.env`、`.env.local`、`.env.production`、`.env.production.local` 也作为 Vite/tsup
 生产构建的实际配置文件参与哈希。构建期环境至少覆盖 coverage、endpoint、OAuth、CDN、
 环境门禁和 build metadata 变量，并区分“未设置”和“显式空值”。控制流保持：
@@ -596,7 +596,7 @@ launcher/capability 合同，并把旧 service 吞掉的初始化失败提升为
 4. 历史中间阶段将 Windows 非 targeted 默认改为 4 shard，补 runner 纯单测，再跑完整全量；
    后续实验曾继续提高到 10/4/2 资源分级，当前已改为默认 1、显式参数选择并行数。
 5. 若完整墙钟仍高于首次基线 50%，按 P2 顺序回到归因与方案设计。
-6. 最终执行 `pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck`、
+6. 最终执行 `pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck`、
    `pnpm lint`，并检查没有 E2E Electron/host/agent/Chromedriver 遗留进程。
 
 ## 验收门槛

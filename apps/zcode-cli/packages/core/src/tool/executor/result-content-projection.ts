@@ -2,8 +2,8 @@ import {
   modelMessageContentToText,
   type ModelMessageContent,
   type ModelMessageContentBlock,
-} from "@zcode/contracts";
-import { findOfficialCuaFrameContentPair } from "@zcode/zcode-cua/frame-contract";
+} from "@s-agent/contracts";
+import { findOfficialCuaFrameContentPair } from "@s-agent/zcode-cua/frame-contract";
 import type { ToolEntry, ToolResultSerialization } from "../types.js";
 
 const TOOL_REFERENCE_TEXT_TRUNCATION_MARKER = "[Tool result text truncated by resultBudget]";

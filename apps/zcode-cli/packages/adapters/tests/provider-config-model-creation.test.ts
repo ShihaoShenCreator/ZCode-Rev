@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ModelNetworkStatusEvent } from "@zcode/contracts";
+import type { ModelNetworkStatusEvent } from "@s-agent/contracts";
 import {
   ApiKeyAccessConfig,
   ModelConfig,
@@ -11,7 +11,7 @@ import {
   ProviderConfig,
   type RegistryModelConfig,
   type RegistryProviderConfig,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { AiSdkModelAdapter } from "../src/model/runner.js";
 import type { AiSdkModelRuntime } from "../src/model/runner-runtime.js";
 

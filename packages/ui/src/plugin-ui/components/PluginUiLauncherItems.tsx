@@ -1,7 +1,7 @@
 import { documentViewerInstance } from "@/plugin-ui/contract.js";
 import { useOptionalPlatform } from "@/hooks/usePlatform.js";
 import { toast } from "@/components/ui/toast.js";
-import { isRemoteWorkspaceIdentity } from "@zcode/shared";
+import { isRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { useRecommendedUiPlugins } from "@/plugin-ui/adapters/useRecommendedUiPlugins.js";
 import {
   resolveItemDisplayName,

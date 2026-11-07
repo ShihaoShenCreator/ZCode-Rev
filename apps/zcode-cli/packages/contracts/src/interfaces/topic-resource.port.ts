@@ -4,9 +4,9 @@ import type { TraceContext } from "../tracing/tracer.js";
 export interface TopicResourcePort {
   /** 同一可信 Host 渠道的显式发送能力；缺省不允许 CLI 自行寻找其他机器人凭据。 */
   reply?(
-    request: import("@zcode/shared").ChannelReplyRequest,
+    request: import("@s-agent/shared").ChannelReplyRequest,
     context: { signal: AbortSignal; trace?: TraceContext },
-  ): Promise<import("@zcode/shared").ChannelReplyResult>;
+  ): Promise<import("@s-agent/shared").ChannelReplyResult>;
   read(
     request: {
       taskId: string;

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@zcode/pdf-plugin",
+  "name": "@s-agent/pdf-plugin",
   "version": "0.2.2",
   "private": true,
   "description": "PDF production skills and a PDF viewer panel, published as an official ZCode plugin.",
@@ -13,7 +13,7 @@
     "test:e2e": "node ../office-runtime/scripts/e2e.mjs"
   },
   "devDependencies": {
-    "@zcode/office-runtime": "workspace:*"
+    "@s-agent/office-runtime": "workspace:*"
   },
   "office": {
     "title": {

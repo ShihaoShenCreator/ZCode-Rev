@@ -12,7 +12,7 @@ import {
   createWorkflowProgram,
   interpret,
   type RunSettlement,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { runWorkflowScript } from "../src/index.js";
 import { AutoDriver } from "./auto-driver.js";
 import { askSpecsFor, runScript, TEST_CWD } from "./helpers.js";

@@ -14,7 +14,7 @@ import {
 } from "../src/runtime/methods/turn-loop-state.js";
 import { sendMessageToolEntry } from "../src/tool/handlers/send-message.js";
 import { workflowToolEntry } from "../src/tool/handlers/workflow.js";
-import { CoreErrorType, type OffPeakPort, type TraceId } from "@zcode/contracts";
+import { CoreErrorType, type OffPeakPort, type TraceId } from "@s-agent/contracts";
 import type { ToolExecutionContext } from "../src/tool/types.js";
 
 function createContext(port?: OffPeakPort): ToolExecutionContext {

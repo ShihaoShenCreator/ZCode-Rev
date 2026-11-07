@@ -1,10 +1,10 @@
 import { mkdir, stat, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
-import { buildServerRemoteWorkspaceIdentity, type RemoteTarget } from "@zcode/shared";
+import { buildServerRemoteWorkspaceIdentity, type RemoteTarget } from "@s-agent/shared";
 import {
   TID_COMPOSER_WORK_OUTSIDE_PROJECT,
   TID_COMPOSER_WORKSPACE_TRIGGER,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

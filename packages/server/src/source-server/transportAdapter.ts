@@ -8,15 +8,15 @@ import {
   type SourceServerInstallProgress,
   type PublicZCodeErrorCode,
   type RemoteTarget,
-} from "@zcode/shared";
-import type { IRemoteBackend } from "@zcode/server/remote/backend.js";
-import { createRemoteBackend } from "@zcode/server/remote/create-backend.js";
-import { detectRemoteTarTool } from "@zcode/server/remote/remoteAssetPreflight.js";
+} from "@s-agent/shared";
+import type { IRemoteBackend } from "@s-agent/server/remote/backend.js";
+import { createRemoteBackend } from "@s-agent/server/remote/create-backend.js";
+import { detectRemoteTarTool } from "@s-agent/server/remote/remoteAssetPreflight.js";
 import {
   probeSourceServer,
   SourceServerProbeEnvironmentError,
-} from "@zcode/server/source-server/sourceServerProbe.js";
-import { buildSourceServerReleaseDownloadCommand } from "@zcode/server/source-server/sourceServerReleaseDownload.js";
+} from "@s-agent/server/source-server/sourceServerProbe.js";
+import { buildSourceServerReleaseDownloadCommand } from "@s-agent/server/source-server/sourceServerReleaseDownload.js";
 import {
   collectCommand,
   duplexFromStdio,
@@ -26,9 +26,9 @@ import {
   readStructuredCommandError,
   throwIfAborted,
   type RemoteExecResult,
-} from "@zcode/server/source-server/sourceServerTransportRuntime.js";
+} from "@s-agent/server/source-server/sourceServerTransportRuntime.js";
 
-export type { RemoteExecResult } from "@zcode/server/source-server/sourceServerTransportRuntime.js";
+export type { RemoteExecResult } from "@s-agent/server/source-server/sourceServerTransportRuntime.js";
 
 export interface SourceServerProbeResult {
   platform: string;

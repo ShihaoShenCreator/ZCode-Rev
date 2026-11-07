@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import { Emitter } from "@zcode/rpc";
-import type { IBroadcastService, VirtualProject } from "@zcode/services";
+import { Emitter } from "@s-agent/rpc";
+import type { IBroadcastService, VirtualProject } from "@s-agent/services";
 import { createZCodeStore } from "@/store/index.js";
 import { StoreContext, useZCodeStore } from "@/store/StoreProvider.js";
 import { TabStoreProvider } from "@/store/TabStoreProvider.js";

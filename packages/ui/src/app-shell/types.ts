@@ -14,8 +14,8 @@ import type {
   RemoteWorkspaceSessionEntry,
   UpdateStatePayload,
   UserInfo,
-} from "@zcode/shared";
-import type { IFeedbackService, IServiceAccessor } from "@zcode/services";
+} from "@s-agent/shared";
+import type { IFeedbackService, IServiceAccessor } from "@s-agent/services";
 import type { SavedWorkflowsOpenTarget } from "@/settings/saved-workflows/SavedWorkflowsSection.js";
 import type { SavedWorkflowHubTarget } from "@/v4/savedWorkflowHubContext.js";
 import type { WebRemoteControlWorkspaceSwitcherApi } from "@/root/types.js";
@@ -189,7 +189,7 @@ export interface AppProps {
   allowOpenWorkspace?: boolean;
   webRemoteControlWorkspaceSwitcher?: WebRemoteControlWorkspaceSwitcherApi;
   initialSidebarFileTreeOpen?: boolean;
-  initialWebRemoteControlMobileNavigationIntent?: import("@zcode/shared").WebRemoteControlMobileNavigationIntent;
+  initialWebRemoteControlMobileNavigationIntent?: import("@s-agent/shared").WebRemoteControlMobileNavigationIntent;
   webRemoteControlTerminalTransportState?: WebRemoteControlTerminalTransportState;
   allowRemoteWorkspace?: boolean;
   remoteWorkspaceSessions?: RemoteWorkspaceSessionEntry[];
@@ -266,9 +266,9 @@ export interface WorkspaceShellLayoutProps extends Omit<AppProps, "baseFeedbackS
     workspacePath: string;
     label: string;
     remoteSessionId?: string;
-    remoteTarget?: import("@zcode/shared").RemoteTarget;
+    remoteTarget?: import("@s-agent/shared").RemoteTarget;
     workspaceIdentity?: string;
-    workspacePurpose?: import("@zcode/shared").WorkspacePurpose;
+    workspacePurpose?: import("@s-agent/shared").WorkspacePurpose;
     localWorkspacePath?: string;
     availability?: import("@/store/tabStore.js").WorkspaceAvailability;
   }>;
@@ -327,7 +327,7 @@ export interface WorkspaceShellLayoutProps extends Omit<AppProps, "baseFeedbackS
   handleStartDraftInWorkspace: (
     targetWorkspacePath: string,
     targetWorkspaceIdentity?: string,
-    targetWorkspacePurpose?: import("@zcode/shared").WorkspacePurpose,
+    targetWorkspacePurpose?: import("@s-agent/shared").WorkspacePurpose,
     createSource?: SessionCreateSource,
   ) => void;
   handleOpenCommandCenter: () => void;

@@ -71,7 +71,7 @@ registry 解析），provider 不在 registry（刚加/竞态/远端）时回落
 
 **Layer A — v4 协议（additive）** `packages/shared/src/zcode-protocol-v4/command.ts:65`
 
-- `switchModelConfig` 加 `runtimeModel?`（可选）。schema 复用 `@zcode/shared/zcode-protocol` 的 `zcodeModelRuntimeConfigSchema`（共享包内引用，非 CLI 服务桥；若嫌耦合可定义 v4 mirror——决策见 §5）。
+- `switchModelConfig` 加 `runtimeModel?`（可选）。schema 复用 `@s-agent/shared/zcode-protocol` 的 `zcodeModelRuntimeConfigSchema`（共享包内引用，非 CLI 服务桥；若嫌耦合可定义 v4 mirror——决策见 §5）。
 - `createSession.config` 同样支持携带（首发即用正确 provider），`applyRequestedSessionConfig` 消费。
 
 **Layer B — CLI binder + handler**

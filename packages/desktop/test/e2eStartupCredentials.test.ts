@@ -45,17 +45,6 @@ describe("desktop e2e startup credentials", () => {
     expect(fixture.zcodejwttoken).toBe("fake-zcode-jwt");
   });
 
-  it("远程回放优先保持匿名，不采用本地账号 mock", () => {
-    expect(
-      createE2EStartupCredentialSeed({
-        specs: ["provider-family-responsive.test.ts"],
-        remoteProfile: true,
-        accountMock: true,
-        legacyAuthToken: "fake-auth-token",
-        restoredOAuthCredentials,
-      }),
-    ).toEqual({});
-  });
   it.each([
     "automations-custom-monthly-interval.test.ts",
     "automations-custom-yearly-schedule.test.ts",
@@ -113,15 +102,6 @@ describe("desktop e2e startup credentials", () => {
     expect(
       createE2EStartupCredentialSeed({
         specs: [spec],
-        legacyAuthToken: "fake-auth-token",
-        restoredOAuthCredentials,
-      }).zcodejwttoken,
-    ).toBe("fake-zcode-jwt");
-  });
-  it("供应商响应式 spec 保留本地 balance mock 所需的 JWT", () => {
-    expect(
-      createE2EStartupCredentialSeed({
-        specs: ["/repo/packages/desktop/test/e2e/provider-family-responsive.test.ts"],
         legacyAuthToken: "fake-auth-token",
         restoredOAuthCredentials,
       }).zcodejwttoken,

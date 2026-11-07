@@ -171,7 +171,7 @@ workspace Agent 长期留到窗口关闭，形成另一种资源滞留。
 - 不改变 SSH pool 的缓存策略。
 - 不新增 UI、设置项或用户可配置 TTL；本期 TTL 固定为 60 秒并通过内部常量测试。
 - 不把 task、stream、queue、snapshot、permission 或 elicitation 状态下沉到 Desktop Main。
-- 不改变 App 与 Agent 的 `@zcode/protocol`，除非实施时证明现有 service RPC 无法表达 workspace runtime
+- 不改变 App 与 Agent 的 `@s-agent/protocol`，除非实施时证明现有 service RPC 无法表达 workspace runtime
   release；若必须修改，需单独更新协议 spec 和 runtime schema。
 - 不承诺 WSL distro 在 ZCode 退出后显示 `Stopped`；验收对象是 ZCode-owned Host、server 和 Agent。
 

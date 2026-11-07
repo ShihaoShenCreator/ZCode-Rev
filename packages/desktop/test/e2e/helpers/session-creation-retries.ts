@@ -4,8 +4,8 @@ import assert from "node:assert/strict";
 import { createHash, randomUUID } from "node:crypto";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import { BUILTIN_MODEL_PROVIDER_IDS, resolveWorkspaceKey } from "@zcode/shared";
-import type { CommandAck, CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import { BUILTIN_MODEL_PROVIDER_IDS, resolveWorkspaceKey } from "@s-agent/shared";
+import type { CommandAck, CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { projectStorage } from "../../../../services/src/project-storage/index.js";
 import { createWorkerSelectionIntegration } from "#e2e/helpers/worker-selection-integration";
 

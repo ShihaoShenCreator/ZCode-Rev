@@ -1,6 +1,6 @@
 import { access, readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_MCP_SERVER_ROW,
   TID_SETTINGS_BACK_BUTTON,
@@ -9,7 +9,7 @@ import {
   TID_SUBAGENT_ROW,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

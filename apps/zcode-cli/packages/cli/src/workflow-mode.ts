@@ -5,7 +5,7 @@ import {
   DYNAMIC_WORKFLOW_MODES,
   normalizeDynamicWorkflowMode,
   type DynamicWorkflowMode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export const DEFAULT_CLI_WORKFLOW_MODE: DynamicWorkflowMode = "disabled";
 

@@ -1,5 +1,5 @@
-import type { SkillDataSyncPayload } from "@zcode/shared";
-import { ServiceChannels } from "@zcode/shared";
+import type { SkillDataSyncPayload } from "@s-agent/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import { createServiceDescriptor } from "../descriptors.js";
 import type { IDataSyncCategoryService } from "../data-sync/contract.js";
 

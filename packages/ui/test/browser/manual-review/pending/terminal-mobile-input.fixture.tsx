@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { IServiceAccessor, ITerminalService } from "@zcode/services";
+import type { IServiceAccessor, ITerminalService } from "@s-agent/services";
 import { TerminalSession } from "@/terminal/TerminalSession.js";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 import "@/styles.css";

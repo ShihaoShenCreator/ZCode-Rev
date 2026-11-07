@@ -1,5 +1,5 @@
 import { afterEach, expect, it, vi } from "vitest";
-import { ProjectAccessTokenTransientError } from "@zcode/shared";
+import { ProjectAccessTokenTransientError } from "@s-agent/shared";
 import { ZaiBusinessTokenCache } from "../src/auth/zai-business-token-cache.js";
 afterEach(() => vi.useRealTimers());
 it("无 TTL 的成功响应只做有限缓存", async () => {

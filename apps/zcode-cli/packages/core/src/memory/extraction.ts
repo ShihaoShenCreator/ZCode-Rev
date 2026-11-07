@@ -1,4 +1,4 @@
-import type { MessageId, MessageWithParts, ToolPart } from "@zcode/contracts";
+import type { MessageId, MessageWithParts, ToolPart } from "@s-agent/contracts";
 import { INTERRUPT_MARKER_SOURCE } from "../agent/message-history.js";
 import { isHiddenReminderMessage } from "../runtime/helpers/conversation.js";
 import { resolveContainedMemoryFilePath } from "./memory-file-path.js";

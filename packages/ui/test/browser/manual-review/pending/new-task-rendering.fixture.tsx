@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Event, ProxyChannel } from "@zcode/rpc";
+import { Event, ProxyChannel } from "@s-agent/rpc";
 import { useRemoteWorkspaceHistory } from "@/root/useRemoteWorkspaceHistory.js";
 import { createRoot } from "react-dom/client";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
@@ -15,7 +15,7 @@ import {
 import { useRootWorkspaceActions } from "@/root/useRootWorkspaceActions.js";
 import { useZCodeSessionStore } from "@/store/zcodeSessionStore.js";
 import type { ProjectTree, ProjectSidebarProps } from "@/project-sidebar/contract.js";
-import type { IServiceAccessor } from "@zcode/services";
+import type { IServiceAccessor } from "@s-agent/services";
 import { attachTaskListRowActivity } from "@/v4/taskListRowActivity.js";
 import "@/styles.css";
 

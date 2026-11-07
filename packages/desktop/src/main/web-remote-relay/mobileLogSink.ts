@@ -5,7 +5,7 @@
 
 import { appendFile, mkdir, readdir, stat, unlink } from "node:fs/promises";
 import { join } from "node:path";
-import type { WebRemoteControlMobileLogEntry } from "@zcode/shared";
+import type { WebRemoteControlMobileLogEntry } from "@s-agent/shared";
 
 export const MOBILE_LOG_SINK_DEFAULTS = {
   maxFileBytes: 4 * 1024 * 1024,

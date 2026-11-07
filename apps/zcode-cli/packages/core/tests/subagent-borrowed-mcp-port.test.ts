@@ -4,7 +4,7 @@ import type {
   McpPort,
   McpServerStatus,
   McpToolDescriptor,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createBorrowedSubagentMcpAccess } from "../src/subagent/borrowed-mcp-port.js";
 
 describe("borrowed subagent MCP port", () => {

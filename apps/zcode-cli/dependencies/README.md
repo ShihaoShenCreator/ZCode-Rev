@@ -51,7 +51,7 @@ From the repository root:
 
 ```sh
 # Prepare the host tools in packages/desktop/bundled-tools/<platform>-<arch>.
-pnpm --filter @zcode/desktop prepare:native-search
+pnpm --filter @s-agent/desktop prepare:native-search
 
 # Prepare a specific target, optionally into a separate staging directory.
 node scripts/prepare-native-search-tools.mjs --platform linux --arch x64 --output-dir /tmp/zcode-native-search

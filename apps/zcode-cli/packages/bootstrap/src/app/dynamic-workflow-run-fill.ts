@@ -25,7 +25,7 @@
 // 编辑过的草稿，一个几毫秒前由本次调用独占创建、谁都还没见过的文件不在其列。
 
 import { rm, writeFile } from "node:fs/promises";
-import type { DynamicWorkflowRunFillHoleRequest, FillWorkflowHoleResult } from "@zcode/contracts";
+import type { DynamicWorkflowRunFillHoleRequest, FillWorkflowHoleResult } from "@s-agent/contracts";
 import {
   analyzeWorkflowScript,
   checkSiteStability,
@@ -37,7 +37,7 @@ import {
   spliceHoleBody,
   type SiteTable,
   type WorkflowProgram,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { compileProgram } from "./dynamic-workflow-run-compile.js";
 import { mapFillDiagnostics, unboundFillModelDiagnostics } from "./dynamic-workflow-run-holes.js";
 import type { RunRegistryEntry } from "./dynamic-workflow-run-observation.js";

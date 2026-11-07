@@ -6,7 +6,7 @@ import type {
   DataSyncImportItem,
   DataSyncImportResultItem,
   DataSyncListItem,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { CommandFileParser } from "#src/commands/commandFileParser.js";
 import {
   readCommandEnabledOverridesFromUserConfig,

@@ -2,8 +2,8 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   InMemorySessionEventStore,
   SessionEventType,
@@ -12,8 +12,8 @@ import {
   type ModelRequest,
   type ToolCallResultPayload,
   type ToolCallStartedPayload,
-} from "@zcode/contracts";
-import { AgentRuntime, createToolRegistry } from "@zcode/core";
+} from "@s-agent/contracts";
+import { AgentRuntime, createToolRegistry } from "@s-agent/core";
 import { createTestModelFactory } from "../../core/tests/test-runtime-model.js";
 
 describe("fallback Read snapshots through SQLite", () => {

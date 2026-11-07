@@ -117,7 +117,7 @@ Also assert that `GLM-5.2-variant/other-model` remains image-unsupported, provin
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/model-selection.test.ts
+pnpm --filter @s-agent/bootstrap exec vitest run tests/model-selection.test.ts
 ```
 
 Expected: the three neutral suffixed-variant cases fail because the current broad GLM fallback returns `{ supportsImages: false }`; existing tests remain green.
@@ -129,12 +129,12 @@ Expected: the three neutral suffixed-variant cases fail because the current broa
 - Test: `apps/zcode-cli/packages/bootstrap/tests/model-selection.test.ts`
 
 **Interfaces:**
-- Consumes: `normalizeModelIdForProviderRequest(modelId: string): string` from `@zcode/adapters/model`.
+- Consumes: `normalizeModelIdForProviderRequest(modelId: string): string` from `@s-agent/adapters/model`.
 - Produces: `isGlm52SuffixedVariant(modelId: string): boolean`, used only by the provider-aware media fallback.
 
 - [ ] **Step 1: Import provider-request model ID normalization**
 
-Extend the existing `@zcode/adapters/model` import with:
+Extend the existing `@s-agent/adapters/model` import with:
 
 ```ts
 normalizeModelIdForProviderRequest,
@@ -181,7 +181,7 @@ Add the required Chinese bug-cause comment immediately above it:
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/model-selection.test.ts
+pnpm --filter @s-agent/bootstrap exec vitest run tests/model-selection.test.ts
 ```
 
 Expected: all model-selection tests pass, including the new neutral suffixed-variant and canonical normalization cases.
@@ -191,7 +191,7 @@ Expected: all model-selection tests pass, including the new neutral suffixed-var
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/media-capability.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/media-capability.test.ts
 ```
 
 Expected: all tests pass; explicit false still strips, while unknown remains unchanged by capability projection before the separate media-budget projection runs.
@@ -228,7 +228,7 @@ expect(runtimeModelInputMediaCapabilities).toBeUndefined();
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/zcode-protocol.test.ts -t "clears active session"
+pnpm --filter @s-agent/bootstrap exec vitest run tests/zcode-protocol.test.ts -t "clears active session"
 ```
 
 Expected: both parameterized cases FAIL because the current patch omits `modelInputMediaCapabilities`, leaving each captured runtime value at `{ [capabilityKey]: false }`.
@@ -260,7 +260,7 @@ If `resolveProviderModelLimits(...)` cannot find the model, return `{ modelInput
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/zcode-protocol.test.ts -t "clears active session"
+pnpm --filter @s-agent/bootstrap exec vitest run tests/zcode-protocol.test.ts -t "clears active session"
 ```
 
 Expected: PASS; the patch includes the key and the captured runtime capability becomes `undefined`.
@@ -270,7 +270,7 @@ Expected: PASS; the patch includes the key and the captured runtime capability b
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap exec vitest run tests/zcode-protocol.test.ts -t "refreshes active session context window when provider registry changes the current model|clears active session"
+pnpm --filter @s-agent/bootstrap exec vitest run tests/zcode-protocol.test.ts -t "refreshes active session context window when provider registry changes the current model|clears active session"
 ```
 
 Expected: both active-session refresh tests pass, including context/max-token clearing and media-capability clearing.
@@ -289,7 +289,7 @@ Expected: both active-session refresh tests pass, including context/max-token cl
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-model-switch-image-strip.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-model-switch-image-strip.test.ts
 ```
 
 Expected: fixture check passes; the explicit text-only GLM-5.2 request contract remains complete.
@@ -299,7 +299,7 @@ Expected: fixture check passes; the explicit text-only GLM-5.2 request contract 
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop typecheck:e2e
+pnpm --filter @s-agent/desktop typecheck:e2e
 ```
 
 Expected: exit code `0`.
@@ -309,7 +309,7 @@ Expected: exit code `0`.
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap typecheck
+pnpm --filter @s-agent/bootstrap typecheck
 pnpm typecheck
 pnpm lint
 ```

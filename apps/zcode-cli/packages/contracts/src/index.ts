@@ -100,9 +100,9 @@ export {
   MEDIA_BUDGET_CURRENT_IMAGE_TOO_LARGE_ERROR_CODE,
   MEDIA_BUDGET_CURRENT_VIDEO_TOO_LARGE_ERROR_CODE,
   VIDEO_INPUT_MAX_BYTES,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export * from "./tracing/local-turn-preparation.js";
-export type { LocalTtftDetail } from "@zcode/shared";
+export type { LocalTtftDetail } from "@s-agent/shared";
 
 export * from "./interfaces/permission-full-access.js";

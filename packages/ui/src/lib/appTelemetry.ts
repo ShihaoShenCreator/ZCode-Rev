@@ -11,7 +11,7 @@ import {
   type BuiltinModelProviderId,
   type IPlatformService,
   type TelemetryUiMode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger } from "@/logger.js";
 
 export function resolveProviderTelemetryLabel(providerId: string): string {

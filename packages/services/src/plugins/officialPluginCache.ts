@@ -11,7 +11,7 @@ export const DEFAULT_ENABLED_OFFICIAL_PLUGIN_IDS: ReadonlySet<string> = new Set(
   "browser-use@zcode-plugins-official",
   "document-skills@zcode-plugins-official",
   // 宿主不贡献 skill/command/subagent，列在这里只为与 definitions 的 defaultEnabled 逐一对应
-  // （见 @zcode/shared 的同名集合注释）；这份没有机械对照单测兜着，漏掉只会静默分叉。
+  // （见 @s-agent/shared 的同名集合注释）；这份没有机械对照单测兜着，漏掉只会静默分叉。
   "node-repl-host@zcode-plugins-official",
   "skill-creator@zcode-plugins-official",
   "zcode-guide@zcode-plugins-official",

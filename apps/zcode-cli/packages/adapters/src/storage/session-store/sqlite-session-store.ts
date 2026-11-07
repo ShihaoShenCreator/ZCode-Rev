@@ -1,4 +1,4 @@
-import type { MigrationResult } from "@zcode/shared/sqlite-migrations";
+import type { MigrationResult } from "@s-agent/shared/sqlite-migrations";
 import { mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
 import * as permissionFullAccessRepository from "./repositories/permission-full-access.js";
@@ -62,9 +62,9 @@ import type {
   UpdateSessionInput,
   UpdateScriptWorkflowRunInput,
   UsageStorePort,
-} from "@zcode/contracts";
-// 端口留在领域包 @zcode/dynamic-workflow，这里只做类型引用：adapters 运行时不依赖它。
-import type { JournalStorePort } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+// 端口留在领域包 @s-agent/dynamic-workflow，这里只做类型引用：adapters 运行时不依赖它。
+import type { JournalStorePort } from "@s-agent/dynamic-workflow";
 import {
   accountSessionTargetUsage,
   clearSessionTarget,

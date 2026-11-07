@@ -11,13 +11,13 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createInMemorySessionEventStore, createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createInMemorySessionEventStore, createSqliteSessionStore } from "@s-agent/adapters/storage";
 import type {
   DwfArtifactItem,
   DwfRunIntrospectionQueries,
   DwfRunLifeSpan,
   DwfRunSessionListItem,
-} from "@zcode/adapters/storage";
+} from "@s-agent/adapters/storage";
 import {
   CoreErrorType,
   ESCALATE_TOOL_NAME,
@@ -43,7 +43,7 @@ import {
   type ToolArtifactStorePort,
   type ToolArtifactWriteRequest,
   type WorkflowEscalatePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   AgentRuntime,
   PermissionService,
@@ -51,14 +51,14 @@ import {
   createToolExecutor,
   createToolRegistry,
   defaultPermissionConfig,
-} from "@zcode/core";
+} from "@s-agent/core";
 import {
   reduceWorkflowRunsState,
   WORKFLOW_RUN_EVENTS_PAGE_LIMITS,
   workflowRunsStateSchema,
   type WorkflowRunProgressEnvelope,
   type WorkflowRunsState,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   holeSiteId,
   InMemoryJournalStore,
@@ -69,7 +69,7 @@ import {
   type RunRecord,
   type RunStatus,
   type RunStopReason,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 
 import {
   createDynamicWorkflowRunService,
@@ -93,7 +93,7 @@ import {
   unsupportedExecutionPort,
   type PlannedResponse,
 } from "./workflow-driver.helpers.js";
-import type { ExecutionPort } from "@zcode/contracts";
+import type { ExecutionPort } from "@s-agent/contracts";
 import { mkdtempSync, readFileSync } from "node:fs";
 /**
  * 独立的 run cwd：harness 把入口文件写到 `<cwd>/.zcode/workflow-runs/<runId>.mjs` 且保留，
@@ -105,8 +105,8 @@ const TEST_CWD: string = mkdtempSync(join(tmpdir(), "dwf-bootstrap-test-cwd-"));
 // 编译本身是真的——其余用例依赖真实的 lowering 与 schema 合成。
 const { compiledScripts } = vi.hoisted(() => ({ compiledScripts: [] as string[] }));
 
-vi.mock("@zcode/dynamic-workflow", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@zcode/dynamic-workflow")>();
+vi.mock("@s-agent/dynamic-workflow", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@s-agent/dynamic-workflow")>();
   return {
     ...actual,
     createWorkflowProgram: (scriptText: string) => {

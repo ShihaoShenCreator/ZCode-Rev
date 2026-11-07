@@ -1,5 +1,5 @@
-import { expandCustomCommandPrompt, type CustomCommandContent } from "@zcode/contracts";
-import { BUILTIN_ZCODE_SLASH_COMMAND_HELP_ENTRIES } from "@zcode/shared";
+import { expandCustomCommandPrompt, type CustomCommandContent } from "@s-agent/contracts";
+import { BUILTIN_ZCODE_SLASH_COMMAND_HELP_ENTRIES } from "@s-agent/shared";
 import { DYNAMIC_WORKFLOW_SKILL_NAME } from "./app/bundled-skills.js";
 
 /**

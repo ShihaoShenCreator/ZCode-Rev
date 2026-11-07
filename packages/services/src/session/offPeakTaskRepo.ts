@@ -20,7 +20,7 @@ import {
   type ZCodeOffPeakTaskCreateParams,
   type ZCodeOffPeakTaskStatus,
   type ZCodeTaskMode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { getTasksIndexDatabasePath } from "#src/paths.js";
 import { runTasksDatabaseMigrations } from "#src/session/tasksDatabase/migrations.js";
 

@@ -6,14 +6,14 @@ import type {
   DataSyncImportResultItem,
   DataSyncListItem,
   HookDataSyncPayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   WORKSPACE_HOOK_EVENT_NAMES,
   workspaceHookMatcherConfigSchema,
   workspaceHooksConfigSchema,
   type WorkspaceHookDefinition,
   type WorkspaceHookEventName,
-} from "@zcode/shared/workspace-hook-discovery";
+} from "@s-agent/shared/workspace-hook-discovery";
 import { readJsonObjectFileForUpdate, updateJsonObjectFile } from "#src/fs/atomicFileUtils.js";
 import { checkRemoteSyncDirectoryWriteAccess } from "#src/remote-sync/remoteSyncWriteAccess.js";
 import { resolveUserHomeDir } from "#src/subagents/subagentStorage.js";

@@ -1,11 +1,11 @@
-import type { McpServerConfig } from "@zcode/contracts";
+import type { McpServerConfig } from "@s-agent/contracts";
 import {
   resetCapturedZCodeCuaBrokerCredentialsForTest,
   sanitizeZCodeRuntimeEnvInPlace,
   ZCODE_CUA_OFFICIAL_PLUGIN_ID,
   ZCODE_CUA_PLUGIN_AUTHORITY_ENV_KEY,
   ZCODE_PLUGIN_ID_ENV_KEY,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { describe, expect, it } from "vitest";
 import {
   injectZCodeCuaBrokerMcpServers,

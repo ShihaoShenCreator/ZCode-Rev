@@ -1,10 +1,10 @@
-import { recordArmsCustomEventForE2E } from "@zcode/ui";
+import { recordArmsCustomEventForE2E } from "@s-agent/ui";
 import {
   DesktopCommandIds,
   buildLocalMediaPreviewUrl,
   unwrapRemoteWorkspaceBindResult,
   type IPlatformService,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 import { desktopBrowserPlatformBridge } from "./desktopBrowserPlatformBridge.js";
 import { createDesktopPluginSandboxPlatform } from "./plugin-sandbox/desktopPluginSandboxPlatform.js";

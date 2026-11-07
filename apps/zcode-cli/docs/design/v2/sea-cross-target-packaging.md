@@ -153,7 +153,7 @@ Windows 官方 `node.exe` 通常带 Authenticode 签名。脚本构建 Windows t
 
 - host target 构建完成后运行 `--version` smoke test。
 - foreign target 不在 host 上执行，只检查二进制已生成并完成注入流程。
-- OpenTUI SEA asset manifest 必须包含 `@zcode/tui` 的完整 runtime dependency
+- OpenTUI SEA asset manifest 必须包含 `@s-agent/tui` 的完整 runtime dependency
   closure，包括 workspace package 的 `package.json` 与 `dist`；具体契约见
   `tui-opentui-sea-packaging.md`。
 - macOS host 构建 macOS target 时，在 smoke test 前完成 ad-hoc 签名。
@@ -180,12 +180,12 @@ Windows 官方 `node.exe` 通常带 Authenticode 签名。脚本构建 Windows t
 - host target smoke 判断只匹配当前 platform 和 arch。
 - macOS ad-hoc 签名只在 macOS host 构建 macOS target 时执行，并使用 `codesign --force --sign -`。
 - Windows Authenticode 移除覆盖 PE32/PE32+、未签名 no-op、尾部证书表 truncate 和越界目录报错。
-- OpenTUI runtime asset manifest 覆盖 `@zcode/tui`、`@zcode/i18n`、
-  `@zcode/contracts` 的 workspace runtime closure，并排除 workspace 源文件。
+- OpenTUI runtime asset manifest 覆盖 `@s-agent/tui`、`@s-agent/i18n`、
+  `@s-agent/contracts` 的 workspace runtime closure，并排除 workspace 源文件。
 - CLI bundle 版本注入读取仓库根 `package.json`，即使 `packages/cli/package.json` 版本不同也不改变 `zcode --version` 的构建时版本。
 - `build:sea` workspace 脚本必须在 `build-sea.mjs --all` 前通过 Turbo `--force`
   重建 CLI 之外的 workspace，再通过 package-local `pnpm build` 直接重建 CLI；
   CLI 必须排除在 Turbo build 外，避免把同目录中的已有 SEA 产物写入 `dist/**` cache。
 - package 脚本必须从仓库根解析 Turbo，但将 Turbo 的工作目录保持为
   `apps/zcode-cli`；dry-run 回归测试需证明命令可执行、任务集合非空且不包含
-  `@zcode/cli`。
+  `@s-agent/cli`。

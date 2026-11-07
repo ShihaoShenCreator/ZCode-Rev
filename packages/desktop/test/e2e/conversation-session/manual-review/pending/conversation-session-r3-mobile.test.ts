@@ -5,8 +5,8 @@ import { execFile } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
-import { parseRemoteWorkspaceIdentity, parseWebRemoteControlAppPayload } from "@zcode/shared";
-import { BufferReader, deserialize, VSBuffer } from "@zcode/rpc";
+import { parseRemoteWorkspaceIdentity, parseWebRemoteControlAppPayload } from "@s-agent/shared";
+import { BufferReader, deserialize, VSBuffer } from "@s-agent/rpc";
 import type { Page, WebSocketRoute } from "playwright-core";
 import {
   TID_TASK_ITEM,
@@ -15,7 +15,7 @@ import {
   TID_V4_SESSION_PANE,
   TID_SSH_CONNECT_TRIGGER,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, DEFAULT_WORKSPACE } from "../../../helpers/desktop-app.js";
 import { openWorkspaceDraftFromSidebar } from "#e2e/helpers/workspace-agent-warmup";
 import { disconnectRemoteSource } from "#e2e/helpers/remote-project-actions";

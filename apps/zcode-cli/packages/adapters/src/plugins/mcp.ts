@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { findOfficialMcpReservedHeaders } from "@zcode/shared";
+import { findOfficialMcpReservedHeaders } from "@s-agent/shared";
 import type {
   McpOAuthConfig,
   McpServerConfig,
@@ -8,9 +8,9 @@ import type {
   PluginDiagnostic,
   PluginManifest,
   PluginOptionValues,
-} from "@zcode/contracts";
-import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE } from "@zcode/contracts";
-import { ZCODE_PLUGIN_ID_ENV_KEY } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE } from "@s-agent/contracts";
+import { ZCODE_PLUGIN_ID_ENV_KEY } from "@s-agent/shared";
 import type { LoadedPlugin } from "./types.js";
 import { isNotFoundError, isPluginOptionValue, isRecord, resolveInside } from "./helpers.js";
 import { buildOfficialProvenance, parseZCodeOfficialAuth } from "./mcp-official-auth.js";

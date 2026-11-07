@@ -13,19 +13,19 @@ import type {
   SessionId,
   TraceId,
   TurnId,
-} from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import type {
   ConversationDelta,
   ConversationSnapshot,
   ConversationTopicFrame,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   PROTOCOL_V4_LIMITS,
   applyConversationDeltas,
   conversationTopicFrameSchema,
   utf8JsonByteLength,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   appendConversationSubscriberBuffer,
   ConversationTopicPublisher,

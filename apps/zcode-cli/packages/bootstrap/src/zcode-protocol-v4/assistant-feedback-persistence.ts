@@ -6,7 +6,7 @@ import {
   type SessionId,
   type SessionStorePort,
   type TraceId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export interface PersistAssistantFeedbackInput {
   sessionStore: SessionStorePort;

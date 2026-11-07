@@ -3,15 +3,15 @@ import type {
   NetworkCaptureBridge,
   ResourceUsageSnapshot,
   StorageManagementBridge,
-} from "@zcode/shared";
-import "@zcode/ui/styles.css";
+} from "@s-agent/shared";
+import "@s-agent/ui/styles.css";
 import {
   ResourceManagerApp,
   ZCodeIntlProvider,
   applyUiFontSizePx,
   loadUiFontSizePx,
   subscribeToUiFontSizeStorageChanges,
-} from "@zcode/ui";
+} from "@s-agent/ui";
 
 declare global {
   interface Window {

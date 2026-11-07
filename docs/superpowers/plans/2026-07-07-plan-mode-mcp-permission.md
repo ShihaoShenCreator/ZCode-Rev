@@ -6,7 +6,7 @@
 
 **Architecture:** 不改 MCP registry、metadata、protocol 或 UI。MCP 工具继续由 `apps/zcode-cli/packages/core/src/mcp/index.ts` 注册，权限层通过 `permission.permission === "mcp"` 形成的 `capability.permissionName` 识别 MCP；Plan mode 只新增一个 MCP 专用 permission 分支，避免把普通 unknown tool 或伪 `mcp__` 名称一起放过。
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/core` permission service, MCP bridge, ZCode runtime tool loop.
+**Tech Stack:** TypeScript, Vitest, `@s-agent/core` permission service, MCP bridge, ZCode runtime tool loop.
 
 ## Global Constraints
 
@@ -299,7 +299,7 @@ const fakeMcpNameCapability: PermissionToolCapability = {
 Run:
 
 ```sh
-pnpm --filter @zcode/core exec vitest run tests/permission-service.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/permission-service.test.ts
 ```
 
 Expected before implementation:
@@ -390,7 +390,7 @@ expected ... ruleId ... "mode.plan.mcp"
 Run:
 
 ```sh
-pnpm --filter @zcode/core exec vitest run tests/permission-service.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/permission-service.test.ts
 ```
 
 Expected:
@@ -456,7 +456,7 @@ Test Files  1 passed (1)
 Run:
 
 ```sh
-pnpm --filter @zcode/core exec vitest run tests/mcp-tool-bridge.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/mcp-tool-bridge.test.ts
 ```
 
 Expected:
@@ -498,7 +498,7 @@ import {
   type PermissionBrokerPort,
   type SessionEventStorePort,
   type SessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 ```
 
 - [ ] **Step 2: 增加 Plan mode MCP 执行测试**
@@ -743,7 +743,7 @@ import {
 Run:
 
 ```sh
-pnpm --filter @zcode/core exec vitest run tests/mcp-runtime.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/mcp-runtime.test.ts
 ```
 
 Expected:
@@ -772,7 +772,7 @@ Test Files  1 passed (1)
 Run:
 
 ```sh
-pnpm --filter @zcode/core exec vitest run \
+pnpm --filter @s-agent/core exec vitest run \
   tests/permission-service.test.ts \
   tests/mcp-tool-bridge.test.ts \
   tests/mcp-runtime.test.ts
@@ -789,7 +789,7 @@ Test Files  3 passed (3)
 Run:
 
 ```sh
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts -t "continues later tool calls after a blocking permission denial"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts -t "continues later tool calls after a blocking permission denial"
 ```
 
 Expected:
@@ -808,13 +808,13 @@ Purpose:
 Run:
 
 ```sh
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 ```
 
 Expected:
 
 ```text
-No TypeScript errors from @zcode/core
+No TypeScript errors from @s-agent/core
 ```
 
 - [ ] **Step 4: 跑根 lint**
@@ -941,11 +941,11 @@ fix(zcode-cli): allow non-destructive mcp tools in plan mode
 提交前必须重新运行：
 
 ```sh
-pnpm --filter @zcode/core exec vitest run \
+pnpm --filter @s-agent/core exec vitest run \
   tests/permission-service.test.ts \
   tests/mcp-tool-bridge.test.ts \
   tests/mcp-runtime.test.ts
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 pnpm lint
 ```
 

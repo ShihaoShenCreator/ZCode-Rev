@@ -6,17 +6,17 @@ import {
   createConfig,
   ZCodeConfigFileSchema,
   type ConfigFactoryOptions,
-} from "@zcode/adapters/config";
-import { resolveWorkspaceHookTrustStorePath } from "@zcode/adapters/storage";
+} from "@s-agent/adapters/config";
+import { resolveWorkspaceHookTrustStorePath } from "@s-agent/adapters/storage";
 import type {
   McpPort,
   McpServerConfig,
   McpServerStatus,
   WorkspaceMcpAdmissionUpdatedPayload,
-} from "@zcode/contracts";
-import { sanitizeHookDisplayText } from "@zcode/core";
-import { normalizeMcpStdioCommand } from "@zcode/shared";
-import { atomicWritePrivateTextFile, withFileLock } from "@zcode/shared/node";
+} from "@s-agent/contracts";
+import { sanitizeHookDisplayText } from "@s-agent/core";
+import { normalizeMcpStdioCommand } from "@s-agent/shared";
+import { atomicWritePrivateTextFile, withFileLock } from "@s-agent/shared/node";
 import type { WorkspaceMcpTrustContract, WorkspaceMcpTrustReview } from "./contract.js";
 
 export type { WorkspaceMcpTrustContract, WorkspaceMcpTrustReview } from "./contract.js";

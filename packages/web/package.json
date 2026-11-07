@@ -1,5 +1,5 @@
 {
-  "name": "@zcode/web",
+  "name": "@s-agent/web",
   "private": true,
   "type": "module",
   "imports": {
@@ -12,9 +12,9 @@
     "lint:fix": "oxlint --fix"
   },
   "dependencies": {
-    "@zcode/client": "workspace:*",
-    "@zcode/shared": "workspace:*",
-    "@zcode/ui": "workspace:*",
+    "@s-agent/client": "workspace:*",
+    "@s-agent/shared": "workspace:*",
+    "@s-agent/ui": "workspace:*",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },

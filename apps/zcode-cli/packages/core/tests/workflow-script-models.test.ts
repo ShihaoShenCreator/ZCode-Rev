@@ -13,8 +13,8 @@ import {
   type ModelCatalogEntry,
   type ModelCatalogPort,
   parseWorkflowSettingsAdjustment,
-} from "@zcode/contracts";
-import { MODEL_UNRESOLVED_CODE } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import { MODEL_UNRESOLVED_CODE } from "@s-agent/dynamic-workflow";
 import { amendWorkflowToolEntry } from "../src/tool/handlers/amend-workflow.js";
 import { createWorkflowToolEntry } from "../src/tool/handlers/create-workflow.js";
 import { analyzeScript } from "../src/tool/handlers/workflow-script-analysis.js";

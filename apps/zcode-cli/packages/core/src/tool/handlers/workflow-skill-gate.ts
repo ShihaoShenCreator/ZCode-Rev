@@ -12,7 +12,7 @@
 // 这正是 Edit 要求 Read 的同一种语义（compact 后 readFileState 只留下补回给模型的文件）。探针缺席
 // （没有 Skill 工具的会话、单元测试直接造的 context）时门不生效：不能把一个无法满足的前提摆在模型面前。
 
-import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@zcode/contracts";
+import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@s-agent/contracts";
 import type { ToolHandlerFailure, ToolInputResolutionContext } from "../types.js";
 
 /**

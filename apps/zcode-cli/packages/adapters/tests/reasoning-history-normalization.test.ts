@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ModelInputMessage, ModelMessageContentBlock } from "@zcode/contracts";
+import type { ModelInputMessage, ModelMessageContentBlock } from "@s-agent/contracts";
 import {
   isThinkingSignatureRejection,
   normalizeReasoningHistory,

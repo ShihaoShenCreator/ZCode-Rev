@@ -2,7 +2,7 @@ import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "n
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { WORKFLOW_DRAFTS_DIR } from "@zcode/contracts";
+import { WORKFLOW_DRAFTS_DIR } from "@s-agent/contracts";
 import {
   WORKFLOW_DRAFT_FALLBACK_SLUG,
   resolveWorkflowDraftName,

@@ -7,7 +7,7 @@ import {
   type ExecutionRequest,
   type ExecutionShellDialect,
   windowsPathToGitBashPath,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export interface CwdCapturePlan {
   command: ExecutionCommand;

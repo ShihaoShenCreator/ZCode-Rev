@@ -4,9 +4,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { createSharedZCodeCredentialStore } from "@zcode/adapters/auth";
-import { AiSdkModelAdapter } from "@zcode/adapters/model";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSharedZCodeCredentialStore } from "@s-agent/adapters/auth";
+import { AiSdkModelAdapter } from "@s-agent/adapters/model";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import { createZCodeApp } from "../src/app/create-app.js";
 import { startProcessProviderRegistryRuntime } from "../src/app/process-provider-registry-runtime.js";
 

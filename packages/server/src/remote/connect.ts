@@ -1,6 +1,6 @@
-import { SocketProtocol, ChannelClient, ChannelServer, type IServerChannel } from "@zcode/rpc";
-import type { IServiceAccessor } from "@zcode/services";
-import { RemoteServiceAccess } from "@zcode/client";
+import { SocketProtocol, ChannelClient, ChannelServer, type IServerChannel } from "@s-agent/rpc";
+import type { IServiceAccessor } from "@s-agent/services";
+import { RemoteServiceAccess } from "@s-agent/client";
 import {
   SERVICE_AUTHORITY_MODE_ENV,
   TOPIC_RESOURCE_RELAY_CHANNEL,
@@ -11,13 +11,13 @@ import {
   ZCODE_REMOTE_HTTP_PROXY_ENV_KEY,
   ZCODE_REMOTE_NO_PROXY_ENV_KEY,
   ZCODE_REMOTE_RUNTIME_NETWORK_AUTHORITY_ENV_KEY,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { IRemoteBackend } from "./backend.js";
 import { wrapStdioStream } from "./stdio-socket.js";
 import { performHandshake } from "./handshake.js";
 import { deployServer } from "./deploy.js";
 import type { DeployOptions } from "./deploy.js";
-import { assertSupportedRemoteEnvironment } from "@zcode/server/remote/remotePlatformSupport.js";
+import { assertSupportedRemoteEnvironment } from "@s-agent/server/remote/remotePlatformSupport.js";
 import { quotePosixShellArg } from "./posixShell.js";
 import { formatWslProxyForLog } from "./wslProxy.js";
 

@@ -3,9 +3,9 @@ import {
   RESPOND_TO_COORDINATOR_TOOL_NAME,
   SESSION_ENTRY_MODEL_SELECTION,
   parseModelSelectionValue,
-} from "@zcode/contracts";
-import type { SubagentRunOptions } from "@zcode/contracts";
-import { inheritPermissionMode } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import type { SubagentRunOptions } from "@s-agent/contracts";
+import { inheritPermissionMode } from "@s-agent/contracts";
 import {
   defaultScheduler,
   PermissionService,

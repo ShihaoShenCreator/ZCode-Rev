@@ -1,18 +1,18 @@
 import { tmpdir } from "node:os";
-import * as executionAdapters from "@zcode/adapters/exec";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import * as executionAdapters from "@s-agent/adapters/exec";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   SESSION_ENTRY_MODEL_SELECTION,
   createProjectId,
   createSessionId,
   type Model,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { describe, expect, it, vi } from "vitest";
 import { createZCodeApp } from "../src/app/create-app.js";
 import { createApiKeyProviderConfig } from "./provider-config-fixtures.js";

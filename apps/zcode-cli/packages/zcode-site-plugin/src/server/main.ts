@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { resolveRuntimeZCodeEndpointOrigin } from "@zcode/shared/zcodeEndpoint";
+import { resolveRuntimeZCodeEndpointOrigin } from "@s-agent/shared/zcodeEndpoint";
 import { createSitesApi } from "./api.ts";
 import { createSitesServer } from "./server.ts";
 

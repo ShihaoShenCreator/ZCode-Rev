@@ -11,8 +11,8 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { createInMemorySessionEventStore, createSqliteSessionStore } from "@zcode/adapters/storage";
-import { conversationTopic, type WorkflowRunsState } from "@zcode/shared/zcode-protocol-v4";
+import { createInMemorySessionEventStore, createSqliteSessionStore } from "@s-agent/adapters/storage";
+import { conversationTopic, type WorkflowRunsState } from "@s-agent/shared/zcode-protocol-v4";
 import type {
   DynamicWorkflowRunProgressPayload,
   EventId,
@@ -21,8 +21,8 @@ import type {
   SessionEventStorePort,
   SessionId,
   TraceId,
-} from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import { createConversationV4Gateway } from "../src/zcode-protocol/v4-bridge.js";
 import type {
   ZCodeProtocolAgentServerContext,

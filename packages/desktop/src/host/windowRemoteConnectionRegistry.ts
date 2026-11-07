@@ -8,7 +8,7 @@ import {
   type WorkspacePurpose,
   type WindowHostAttachmentScope,
   type WindowHostRemoteWorkspaceDescriptor,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export interface WindowRemoteAssetDirs {
   mockCdnDir?: string;

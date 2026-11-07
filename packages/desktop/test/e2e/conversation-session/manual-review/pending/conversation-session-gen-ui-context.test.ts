@@ -1,5 +1,5 @@
 import { chromium, type Browser, type Page } from "playwright-core";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 import { obtainUnreadPairingUrl, showMobileTaskHome } from "../../../helpers/web-remote-unread.js";
 import { openMobilePairingPage } from "../../../helpers/mobile-pairing.js";
 import { WEB_REMOTE_CONTROL_FIXTURE_CREDENTIALS } from "../../../helpers/web-remote-control-session-events-fixture.js";

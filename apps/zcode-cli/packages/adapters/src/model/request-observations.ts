@@ -1,4 +1,4 @@
-import type { ModelRequestObservation } from "@zcode/contracts";
+import type { ModelRequestObservation } from "@s-agent/contracts";
 
 const MAX_TRACKED_REQUESTS = 64;
 

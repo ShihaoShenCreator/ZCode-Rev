@@ -31,7 +31,7 @@ test:unit:affected、test:coverage 或 lint-staged 测试入口。
 - 工程执行工具回归：pnpm test:engineering-tools。
 - 架构及推送工具：pnpm test:architecture；schema：pnpm db:schema:check。
 - Node 工程测试：按受影响文件执行 node --test。
-- CUA：pnpm --filter @zcode/zcode-cua test；Agent CLI 按 apps/zcode-cli/AGENTS.md 执行。
+- CUA：pnpm --filter @s-agent/zcode-cua test；Agent CLI 按 apps/zcode-cli/AGENTS.md 执行。
 - 桌面与浏览器验收保留既有入口及生命周期，不由工程检查代替。
 
 工程 Vitest 使用独立进程串行执行真实 IO 测试，避免并发 Git、构建和原生模块互相干扰。

@@ -1,9 +1,9 @@
-import { channelReplyHostRequestSchema } from "@zcode/shared";
-import type { IServerChannel, CancellationToken } from "@zcode/rpc";
+import { channelReplyHostRequestSchema } from "@s-agent/shared";
+import type { IServerChannel, CancellationToken } from "@s-agent/rpc";
 import {
   zcodeTopicResourceRelayRequestSchema,
   zcodeTopicResourceRelayKeySchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   createTopicResourceRelay,
   type TopicResourceRelayDependencies,

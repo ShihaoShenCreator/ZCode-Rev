@@ -4,7 +4,7 @@
  * 从 zcodeSessionStore.ts 拆分出来，封装所有任务导航相关的初始状态和 action。
  * 通过 createNavigationSlice(set, get) 返回可直接展开到 store 的对象。
  */
-import { Emitter } from "@zcode/rpc";
+import { Emitter } from "@s-agent/rpc";
 import {
   createTaskNavigationHistory,
   goBack as navGoBack,

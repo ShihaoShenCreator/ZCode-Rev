@@ -1,4 +1,4 @@
-import type { ZCodeProvider } from "@zcode/shared";
+import type { ZCodeProvider } from "@s-agent/shared";
 
 export function resolveWorkspaceHeaderProvider(
   activeTaskProvider: ZCodeProvider | null,

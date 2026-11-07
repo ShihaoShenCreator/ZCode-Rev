@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile, writeFile, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 import { createWorkerSelectionIntegration } from "#e2e/helpers/worker-selection-integration";
 

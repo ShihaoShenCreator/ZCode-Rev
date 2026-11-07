@@ -19,13 +19,13 @@
 ## 非目标
 
 - 不把 subagent、compact、web_search_tool 等 sidecar 默认合并进主会话 trajectory。
-- 不新增 production runtime 依赖；该能力只属于 `@zcode/prompt-trajectory` 测试工具。
+- 不新增 production runtime 依赖；该能力只属于 `@s-agent/prompt-trajectory` 测试工具。
 - 不改动 runtime model-io 记录格式。
 
 ## 命令契约
 
 ```bash
-pnpm --filter @zcode/prompt-trajectory model-io -- \
+pnpm --filter @s-agent/prompt-trajectory model-io -- \
   --input ~/.zcode/cli/debug/model-io-<session>.jsonl \
   --out tools/prompt-trajectory/out/<run>
 ```
@@ -109,7 +109,7 @@ pnpm --filter @zcode/prompt-trajectory model-io -- \
 验证命令：
 
 ```bash
-pnpm --filter @zcode/prompt-trajectory exec node --import tsx --test 'tests/*.test.ts'
-pnpm --filter @zcode/prompt-trajectory typecheck
-pnpm --filter @zcode/prompt-trajectory exec oxlint --no-ignore src tests scripts
+pnpm --filter @s-agent/prompt-trajectory exec node --import tsx --test 'tests/*.test.ts'
+pnpm --filter @s-agent/prompt-trajectory typecheck
+pnpm --filter @s-agent/prompt-trajectory exec oxlint --no-ignore src tests scripts
 ```

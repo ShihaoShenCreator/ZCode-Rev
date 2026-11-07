@@ -1,9 +1,9 @@
-import type { IFileService } from "@zcode/services";
+import type { IFileService } from "@s-agent/services";
 import {
   REMOTE_WORKSPACE_DIRECTORY_UNAVAILABLE_ERROR_CODE,
   REMOTE_WORKSPACE_DIRECTORY_UNRESPONSIVE_ERROR_CODE,
   REMOTE_WORKSPACE_PREPARATION_TIMEOUT_MS,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 interface RemoteWorkspaceIdentityInput {
   workspacePath: string;

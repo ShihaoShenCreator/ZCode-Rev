@@ -7,8 +7,8 @@ import { Buffer } from "node:buffer";
 import { selectUpstreamModel } from "#e2e/helpers/upstream-provider";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
-import { TID_TASK_ARCHIVE, TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
+import { TID_TASK_ARCHIVE, TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom } from "../helpers/desktop-app.js";
 import {
   connectSSHWorkspaceAndSendFirstTurn,

@@ -19,7 +19,7 @@ import {
   SessionEventType,
   STREAM_RECOVERY_DISCARDED_ERROR_NAME,
   STREAM_RECOVERY_DISCARDED_FINISH,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   AutomationPort,
   CreateSessionInput,
@@ -49,7 +49,7 @@ import type {
   ToolArtifactWriteRequest,
   TodoItem,
   UpdateSessionInput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { MessageHistoryImpl } from "../src/agent/message-history.js";
 import { hydrateMessageHistoryFromSession } from "../src/agent/session-history-hydrator.js";

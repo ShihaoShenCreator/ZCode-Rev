@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { run } from "../src/run.js";
-import type { RunContext } from "@zcode/shared-types";
+import type { RunContext } from "@s-agent/shared-types";
 
 type CapturedWriteStream = NodeJS.WriteStream & {
   output: () => string;

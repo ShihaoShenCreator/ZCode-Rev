@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { ModelInputFormat, ModelInputMessage, ToolArtifactStorePort } from "@zcode/contracts";
+import type { ModelInputFormat, ModelInputMessage, ToolArtifactStorePort } from "@s-agent/contracts";
 import { projectMessagesWithMediaAttachmentPaths } from "../src/runtime/helpers/media-attachment-path.js";
 import { projectMessagesForInputFormat as projectMessages } from "../src/runtime/helpers/media-capability.js";
 

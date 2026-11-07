@@ -2,7 +2,7 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { TID_V4_TIMELINE, TID_GIT_PANE } from "@zcode/shared/test-ids";
+import { TID_V4_TIMELINE, TID_GIT_PANE } from "@s-agent/shared/test-ids";
 import { Key } from "webdriverio";
 import { DEFAULT_WORKSPACE, clearAppData } from "../../../helpers/desktop-app.js";
 import {

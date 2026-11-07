@@ -8,8 +8,8 @@ import {
   type SessionId,
   type TraceId,
   type TurnId,
-} from "@zcode/contracts";
-import { PROTOCOL_V4_LIMITS, utf8JsonByteLength } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { PROTOCOL_V4_LIMITS, utf8JsonByteLength } from "@s-agent/shared/zcode-protocol-v4";
 import {
   coldHydrationJsonByteLength,
   ConversationTopicPublisher,
@@ -22,8 +22,8 @@ const wireByteProbe = vi.hoisted(() => ({
   snapshotSequences: [] as number[],
 }));
 
-vi.mock("@zcode/shared/zcode-protocol-v4", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@zcode/shared/zcode-protocol-v4")>();
+vi.mock("@s-agent/shared/zcode-protocol-v4", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@s-agent/shared/zcode-protocol-v4")>();
   return {
     ...actual,
     utf8JsonByteLength(value: unknown): number {

@@ -325,6 +325,6 @@ retry scheduled
 
 - Repo Wiki Lane、Account Runtime Headers、Services Deadline/Retry 定向测试通过；
 - Bootstrap Transport 全文件 13 项通过，Server workspace cancellation 定向测试通过；
-- `@zcode/bootstrap` typecheck、根 `pnpm typecheck`、根 `pnpm lint`、修改文件 lint 与
+- `@s-agent/bootstrap` typecheck、根 `pnpm typecheck`、根 `pnpm lint`、修改文件 lint 与
   `git diff --check` 通过；
 - CLI 全仓 `format:check` 仍报告 296 个既存格式基线文件，本次修改的 CLI 文件已单独格式化且检查无新增问题。

@@ -1,14 +1,14 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { McpPort } from "@zcode/contracts";
+import type { McpPort } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 import {
   zcodeMcpListResultSchema,
   zcodeMcpListParamsSchema,
   zcodeProtocolMethods,
   zcodeProtocolSessionMethodContracts,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { listMcpServers } from "../src/zcode-protocol/mcp.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";
 
@@ -178,7 +178,7 @@ describe("mcp/list connection revalidation", () => {
   });
 });
 
-import { convertToZCodeAgentMcpServer, zcodeProtocolMcpServerSchema } from "@zcode/shared";
+import { convertToZCodeAgentMcpServer, zcodeProtocolMcpServerSchema } from "@s-agent/shared";
 import { protocolMcpServersToRuntimeMcpConfig } from "../src/zcode-protocol/protocol-mcp-config.js";
 
 it("preserves workspace provenance and cwd from Host DTO to runtime; rejects arbitrary runtime source", () => {

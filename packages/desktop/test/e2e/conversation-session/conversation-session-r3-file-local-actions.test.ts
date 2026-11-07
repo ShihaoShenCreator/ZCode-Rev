@@ -10,7 +10,7 @@ import {
   TID_WORKSPACE_FILE_TREE_PANEL,
   TID_WORKSPACE_FILE_TREE_ROW,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

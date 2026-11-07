@@ -14,21 +14,21 @@ import { dirname, join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { Readable, Writable } from "node:stream";
 import { describe, expect, it, vi } from "vitest";
-import { createNodeLoggerFactory } from "@zcode/adapters/logging";
+import { createNodeLoggerFactory } from "@s-agent/adapters/logging";
 import {
   createInMemorySessionEventStore,
   createNodeToolArtifactStore,
   createSqliteSessionStore,
-} from "@zcode/adapters/storage";
-import { createNodeWorkflowStore } from "@zcode/adapters/workflow";
-import { DEFAULT_EXPERT_WORKFLOW_STRATEGY } from "@zcode/core";
+} from "@s-agent/adapters/storage";
+import { createNodeWorkflowStore } from "@s-agent/adapters/workflow";
+import { DEFAULT_EXPERT_WORKFLOW_STRATEGY } from "@s-agent/core";
 import {
   createNodeProviderRuntimePathEnv,
   encodeProviderConfigFile,
   serializeZCodeBuiltinRelease,
-} from "@zcode/provider-node";
-import { ModelConfigRules, ProviderConfigMap, ProviderTemplateMap } from "@zcode/provider";
-import { zcodeStorageStartupStateSchema } from "@zcode/shared";
+} from "@s-agent/provider-node";
+import { ModelConfigRules, ProviderConfigMap, ProviderTemplateMap } from "@s-agent/provider";
+import { zcodeStorageStartupStateSchema } from "@s-agent/shared";
 import {
   LogLevel,
   SESSION_ENTRY_BASH_SHELL_SELECTION,
@@ -45,7 +45,7 @@ import {
   type ExecutionPort,
   type TargetChangedPayload,
   type WorkflowRunSnapshot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { resolveLatestSession, runZCodeProtocolAgent } from "../src/index.js";
 import { ProductProjection } from "../src/zcode-protocol-v4/product-projection.js";
 import { synthesizeEventsFromMessages } from "../src/zcode-protocol-v4/transcript-hydration.js";

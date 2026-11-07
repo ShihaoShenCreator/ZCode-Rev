@@ -1,69 +1,4 @@
-import type { ZCodeOffPeakTask } from "@zcode/shared";
-import type { IntlInstance } from "@/i18n/IntlProvider.js";
-import type { OffPeakTakeNumberAvailabilityStatus } from "@/store/offPeakTaskStore.js";
-
-export type OffPeakCreateBlockReason = "plan" | "quota" | "unavailable";
-
-/** 闲时创建禁用原因属于长提示，不能沿用通用短 Tooltip 的单行布局。 */
-export const OFF_PEAK_CREATE_TOOLTIP_CLASSNAME =
-  "max-w-[220px] [&>span]:break-words [&>span]:whitespace-normal [&>span]:text-wrap-pretty";
-
-/** 只有服务端成功确认可取号才放行创建，其余资格与依赖状态全部 fail-closed。 */
-export function resolveOffPeakCreateBlockReason({
-  availabilityStatus,
-  canTakeNumber,
-  grayEnabled,
-  noPlan,
-}: {
-  availabilityStatus: OffPeakTakeNumberAvailabilityStatus;
-  canTakeNumber: boolean | undefined;
-  grayEnabled: boolean;
-  noPlan: boolean;
-}): OffPeakCreateBlockReason | null {
-  if (!grayEnabled) return null;
-  if (availabilityStatus === "loading" || availabilityStatus === "error") {
-    return "unavailable";
-  }
-  if (noPlan) return "plan";
-  if (availabilityStatus !== "ready") return "unavailable";
-  return canTakeNumber === true ? null : "quota";
-}
-
-/** 将服务端绝对恢复点转换成只包含小时/分钟的本地化剩余时长。 */
-export function formatOffPeakRemainingWait(
-  nextTakeAt: number,
-  now: number,
-  intl: IntlInstance,
-): string {
-  const remainingMs = nextTakeAt - now;
-  if (remainingMs <= 0) {
-    return intl.formatMessage({
-      id: "offPeak.create.remaining.lessThanMinute",
-    });
-  }
-
-  // 旧 Tooltip 直接展示年月日，文案过长且用户还要自行换算等待时间。
-  // 向上取整分钟，避免在仍需等待几十秒时显示 0 分钟或低估服务端恢复点。
-  const totalMinutes = Math.ceil(remainingMs / 60_000);
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-  if (hours > 0 && minutes > 0) {
-    return intl.formatMessage(
-      { id: "offPeak.create.remaining.hoursMinutes" },
-      { hours, minutes },
-    );
-  }
-  if (hours > 0) {
-    return intl.formatMessage(
-      { id: "offPeak.create.remaining.hours" },
-      { hours },
-    );
-  }
-  return intl.formatMessage(
-    { id: "offPeak.create.remaining.minutes" },
-    { minutes },
-  );
-}
+import type { ZCodeOffPeakTask } from "@s-agent/shared";
 
 export type OffPeakStatusIconKind =
   | "moon"
@@ -78,36 +13,6 @@ export interface OffPeakStatusFooterPresentation {
   className: string;
   labelId: string;
   labelValues?: Record<string, string>;
-}
-
-/**
- * 只同步仍保持自动默认值的创建态标题。
- * locale 切换后不能覆盖用户输入、模板草稿或已保存任务标题。
- */
-export function resolveLocalizedOffPeakCreateTitle({
-  currentTitle,
-  hasInitialTitle,
-  isEditing,
-  nextDefaultTitle,
-  previousDefaultTitle,
-  titleTouched,
-}: {
-  currentTitle: string;
-  hasInitialTitle: boolean;
-  isEditing: boolean;
-  nextDefaultTitle: string;
-  previousDefaultTitle: string;
-  titleTouched: boolean;
-}): string {
-  if (
-    isEditing ||
-    hasInitialTitle ||
-    titleTouched ||
-    currentTitle !== previousDefaultTitle
-  ) {
-    return currentTitle;
-  }
-  return nextDefaultTitle;
 }
 
 /** 闲时卡片状态图标与文案的唯一映射，避免带位次的 paused 被误画成 queued 月亮。 */

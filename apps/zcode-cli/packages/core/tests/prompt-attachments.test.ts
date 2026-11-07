@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createFileSystemError, createSessionId, VIDEO_INPUT_MAX_BYTES } from "@zcode/contracts";
+import { createFileSystemError, createSessionId, VIDEO_INPUT_MAX_BYTES } from "@s-agent/contracts";
 import { buildProviderRequestMessages } from "../src/runtime/helpers/provider-request-messages.js";
 import {
   buildRuntimeUserEntriesFromTurn,

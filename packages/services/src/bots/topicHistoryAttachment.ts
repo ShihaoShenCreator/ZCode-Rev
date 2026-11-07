@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import { PROTOCOL_V4_LIMITS } from "@zcode/shared/zcode-protocol-v4";
-import type { BotTopicHistoryBatch, ZCodePromptFileAttachment } from "@zcode/shared";
+import { PROTOCOL_V4_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
+import type { BotTopicHistoryBatch, ZCodePromptFileAttachment } from "@s-agent/shared";
 
 /** 历史正文只写一份附件；服务端归档用于权限和检查点，不再生成模型隐藏消息。 */
 export function createTopicHistoryAttachment(

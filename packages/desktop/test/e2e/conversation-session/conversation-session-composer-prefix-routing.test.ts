@@ -1,6 +1,6 @@
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_V4_COMPOSER_INPUT } from "@zcode/shared/test-ids";
+import { TID_V4_COMPOSER_INPUT } from "@s-agent/shared/test-ids";
 import { DEFAULT_WORKSPACE } from "../helpers/desktop-app.js";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";
 import { startDraftFromProject } from "#e2e/helpers/project-sidebar";

@@ -64,7 +64,7 @@ fixture JSON
 - 路径合同单测扫描 `packages/desktop/test/e2e`，禁止重新提交裸 `/tmp`。
 - fixture checker 验证受影响 case 的 manifest/provider 合同。
 - 定向 replay 覆盖 BG25、BG21、permission、tool-cross-product 等真实文件消费者。
-- 完成前执行 `pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck` 和 `pnpm lint`。
+- 完成前执行 `pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck` 和 `pnpm lint`。
 
 ## 非目标
 

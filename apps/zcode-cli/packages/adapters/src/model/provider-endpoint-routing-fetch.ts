@@ -1,4 +1,4 @@
-import type { ProviderEndpointRoutingPort, TraceContext } from "@zcode/contracts";
+import type { ProviderEndpointRoutingPort, TraceContext } from "@s-agent/contracts";
 
 const TRACE_HEADER = "x-zcode-trace-id";
 

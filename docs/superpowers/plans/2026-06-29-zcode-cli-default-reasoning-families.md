@@ -53,7 +53,7 @@ it("synthesizes Anthropic MiMo thinking toggle defaults for dynamic providers wi
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap test -- tests/zcode-protocol.test.ts
+pnpm --filter @s-agent/bootstrap test -- tests/zcode-protocol.test.ts
 ```
 
 Expected: new tests fail because catalog overrides do not contain reasoning for Qwen/Kimi/MiMo without metadata.
@@ -108,7 +108,7 @@ For OpenAI-compatible providers, return Qwen `enable_thinking` defaults before t
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap test -- tests/zcode-protocol.test.ts
+pnpm --filter @s-agent/bootstrap test -- tests/zcode-protocol.test.ts
 ```
 
 Expected: all `zcode-protocol.test.ts` tests pass.

@@ -20,8 +20,8 @@
 - [x] Phase 7 compact/visibility regression covered by `runtime-compact.test.ts`.
 - [x] Phase 8 coverage docs updated and coverage audit passed.
 - [x] Phase 9 focused tests, root `pnpm typecheck`, root `pnpm lint`, direct core/adapters/bootstrap `tsc`, and `git diff --check` executed.
-- [ ] Phase 9 `apps/zcode-cli` package-level `pnpm typecheck` / `turbo run typecheck` is blocked by current workspace dependency resolution: `@zcode/shared@workspace:*` is referenced by `packages/adapters`, but the workspace only contains `@zcode/shared-types`.
-- [x] Phase 9 E2E formalization gates executed with the correct package scripts: `pnpm --filter @zcode/desktop typecheck:e2e` and `pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts`.
+- [ ] Phase 9 `apps/zcode-cli` package-level `pnpm typecheck` / `turbo run typecheck` is blocked by current workspace dependency resolution: `@s-agent/shared@workspace:*` is referenced by `packages/adapters`, but the workspace only contains `@s-agent/shared-types`.
+- [x] Phase 9 E2E formalization gates executed with the correct package scripts: `pnpm --filter @s-agent/desktop typecheck:e2e` and `pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts`.
 
 ## Global Constraints
 

@@ -1,7 +1,7 @@
 // MRO02：真实 ProjectService / RemoteProjectService / SQLite，网络和模型由用例控制。
 import { mkdir, mkdtemp } from "node:fs/promises";
 import { join } from "node:path";
-import { ServiceChannels } from "@zcode/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import { Emitter } from "../../../../../rpc/src/index.ts";
 import { TaskIndexRepo } from "../../../../../services/src/session/taskIndexRepo.ts";
 import {

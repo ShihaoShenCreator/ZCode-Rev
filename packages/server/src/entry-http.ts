@@ -2,7 +2,7 @@ import {
   createServerHostServices,
   createTopicResourcePeers,
   getAppConfigDir,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import {
   materializeBundledZCodeBuiltinProviderConfig,
   readBundledZCodeBuiltinProviderConfig,

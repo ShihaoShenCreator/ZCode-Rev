@@ -303,12 +303,12 @@ apps/zcode-cli/packages/contracts/src/telemetry/
 └── index.ts               既有 v1 Model Call/Attempt 与统一导出入口
 ```
 
-`@zcode/telemetry` 只放 Scope、Recorder、OTel 映射和 Exporter 实现。
+`@s-agent/telemetry` 只放 Scope、Recorder、OTel 映射和 Exporter 实现。
 Core/Adapter 只依赖 Contracts，不 import OTel 或 ARMS。
 
 当前先在 `agent-execution.ts` 内聚 v2 schema，避免为了目录形式拆出相互跳转的小文件；
 当 Model v1 迁移到 v2 命名时，再按 `common/operations/model-api/ports` 做机械拆分，
-但外部统一入口仍保持 `@zcode/contracts/telemetry`。
+但外部统一入口仍保持 `@s-agent/contracts/telemetry`。
 
 Schema 使用四层组合，不做一个充满 Optional 字段的巨型接口：
 

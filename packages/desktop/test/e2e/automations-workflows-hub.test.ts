@@ -26,7 +26,7 @@ import {
   TID_WORKFLOW_PROJECT_GROUP,
   TID_WORKFLOWS_CREATE_VIA_CHAT,
   TID_WORKFLOWS_EMPTY,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_AUTOMATIONS_OPEN,
   TID_CHAT_SUMMARY_PANEL,
@@ -35,7 +35,7 @@ import {
   TID_V4_COMPOSER_BACKGROUND_WORK_TRIGGER,
   TID_V4_TIMELINE,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

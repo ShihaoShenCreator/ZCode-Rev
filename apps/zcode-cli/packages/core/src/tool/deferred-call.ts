@@ -5,7 +5,7 @@ import {
   DeferredToolCallInputSchema,
   TOOL_SEARCH_NAME,
   type ToolSearchExecutionContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ExecutableToolCall } from "./types.js";
 import type { ToolRegistry } from "./registry.js";
 import { deferredToolCallEntry } from "./handlers/deferred-tool-call.js";

@@ -9,7 +9,7 @@ import {
 } from "#e2e/helpers/permission-interaction-id";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 import { clearAppData } from "../../../helpers/desktop-app.js";
 import {
   getUpstreamRequestRecordCount,

@@ -1,7 +1,7 @@
 import { DatabaseSync } from "node:sqlite";
 import { basename, join } from "node:path";
 import { readFile, writeFile } from "node:fs/promises";
-import { TID_TASK_SETTINGS_BUTTON, TID_SETTINGS_BACK_BUTTON } from "@zcode/shared/test-ids";
+import { TID_TASK_SETTINGS_BUTTON, TID_SETTINGS_BACK_BUTTON } from "@s-agent/shared/test-ids";
 import { DEFAULT_WORKSPACE, waitForWorkspaceApp } from "../helpers/desktop-app.js";
 import { restartIntoWorkspacePreservingProfile } from "#e2e/helpers/model-provider-restart-runtime";
 

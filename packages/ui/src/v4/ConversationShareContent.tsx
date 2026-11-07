@@ -3,7 +3,7 @@ import type {
   ConversationShareWorkflowContentBlock,
   ShareWorkflowArtifact,
   Locale,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { buildWorkflowTimeline } from "@/components/workflow-timeline/timeline-model.js";
 import { WorkflowTimeline } from "@/components/workflow-timeline/WorkflowTimeline.js";
 import { WorkflowCompletionCard } from "@/components/workflow-timeline/WorkflowCompletionCard.js";

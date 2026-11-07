@@ -147,7 +147,7 @@ Windows 安装版位于 `C:\Users\<用户名>\AppData\...`，必须与 `stack` �
 `url` 与 `name` 只保留 `protocol//host` 加归一化路由，丢弃 query 与 fragment；路由分段中的
 ID、hash、邮箱形态归一为占位符。`message`（statusText 或错误摘要）按文本脱敏规则处理。
 
-上述规则的文本实现是 `@zcode/shared` 的 `redactTelemetryText`，与 CLI
+上述规则的文本实现是 `@s-agent/shared` 的 `redactTelemetryText`，与 CLI
 [`error-sanitizer`](../trace/cli-agent-telemetry.md) 保持同一套模式；新增自动采集器或新增
 携带自由文本的字段时必须同步扩展本节与该实现。
 

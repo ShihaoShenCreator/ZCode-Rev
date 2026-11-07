@@ -6,7 +6,7 @@
 // legacy `Workflow`（不带 runStatus）逐字节不变。
 
 import { describe, expect, it } from "vitest";
-import type { DynamicWorkflowRunError } from "@zcode/contracts";
+import type { DynamicWorkflowRunError } from "@s-agent/contracts";
 import {
   formatTaskNotification,
   formatWorkflowProviderStopError,

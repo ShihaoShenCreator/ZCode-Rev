@@ -1,4 +1,4 @@
-import { ReadOutputSchema } from "@zcode/contracts";
+import { ReadOutputSchema } from "@s-agent/contracts";
 import { findLatestReadFileState } from "./read-file-state.js";
 import type { ReadFileStateEntry, ReadFileStateMap } from "./types.js";
 

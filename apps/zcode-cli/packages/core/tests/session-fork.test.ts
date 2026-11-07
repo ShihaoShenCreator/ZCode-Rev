@@ -10,9 +10,9 @@ import type {
   SessionId,
   SessionStorePort,
   TraceContext,
-} from "@zcode/contracts";
-import { SESSION_ENTRY_MODEL_SELECTION } from "@zcode/contracts";
-import { HIGHSPEED_PROVIDER_IDS } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { SESSION_ENTRY_MODEL_SELECTION } from "@s-agent/contracts";
+import { HIGHSPEED_PROVIDER_IDS } from "@s-agent/shared";
 import {
   activeSessionMessages,
   hydrateMessageHistoryFromSession,

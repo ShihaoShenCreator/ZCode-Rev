@@ -1,4 +1,4 @@
-import { normalizeTelemetryUiMode } from "@zcode/shared";
+import { normalizeTelemetryUiMode } from "@s-agent/shared";
 /* oxlint-disable eslint(max-lines) -- 旧 message/ARMS builders 共用同一 prompt 生命周期与时钟；拆散 fact 状态机会增加跨模块同步漂移。 */
 import {
   legacyTelemetryModelValue,
@@ -11,8 +11,8 @@ import type {
   ZCodeContextCompactionTimelineMeta,
   ZCodeStreamEvent,
   ZCodeUsage,
-} from "@zcode/shared";
-import type { ConversationTelemetryFact } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import type { ConversationTelemetryFact } from "@s-agent/shared/zcode-protocol-v4";
 import {
   activatePromptTelemetry,
   activateDetachedAgentStepTelemetry,
@@ -75,7 +75,7 @@ export type TelemetryPlatform = Pick<
 >;
 
 export interface ConversationPromptTelemetrySeed {
-  localTtft?: import("@zcode/shared").LocalTtftContext;
+  localTtft?: import("@s-agent/shared").LocalTtftContext;
   /** 用户触发原始发送动作的 renderer 时钟。 */
   sendTime: number;
   /** 发送瞬间冻结的旧版模型/模式/套餐字段。 */

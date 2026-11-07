@@ -3,7 +3,7 @@ import type { CreateTaskRequest } from "@/app-shell/types.js";
 import { ServiceProvider, useComposerClientNamespace } from "@/hooks/useServices.js";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type RefObject } from "react";
 import type { PanelImperativeHandle } from "react-resizable-panels";
-import type { IServiceAccessor } from "@zcode/services";
+import type { IServiceAccessor } from "@s-agent/services";
 import {
   closestCenter,
   DndContext,
@@ -19,7 +19,7 @@ import {
   isRemoteWorkspaceIdentity,
   type BrowserViewScreenshotSurfacePreparePayload,
   type GitChangeSourceId,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { FileManagerPane } from "@/WorkspaceFileTree.js";
 import type { FileManagerTarget } from "@/lib/workspaceSidePane.js";
 import { useZCodeSessionStore } from "@/store/zcodeSessionStore.js";

@@ -14,7 +14,7 @@ import { describe, expect, it } from "vitest";
 
 import { registerMcpTools } from "../src/mcp/index.js";
 import { createToolRegistry } from "../src/tool/registry.js";
-import type { McpPort } from "@zcode/shared";
+import type { McpPort } from "@s-agent/shared";
 
 describe("formatMcpToolResult structuredContent projection", () => {
   // 最小 mock port（与 mcp-tool-bridge.test.ts 的 createMockMcpPort 同形）；

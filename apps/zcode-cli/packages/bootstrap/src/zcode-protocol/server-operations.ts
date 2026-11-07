@@ -2,18 +2,18 @@ import {
   isAuxiliarySessionKind,
   isReadonlyAgentSessionKind,
   OFF_PEAK_EXECUTION_TOOL_DENYLIST,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 /* eslint-disable max-lines -- ZCode Protocol 的 session/workspace 方法共享同一个 server context 与 snapshot helpers，迁移期先集中维护。 */
 import { observeSessionDebug } from "./session-debug.js";
 import {
   TASK_LIST_SESSION_TYPES,
   isTaskListSessionType,
 } from "../zcode-protocol-v4/task-list-session-membership.js";
-import { resolveEffectiveBashShellSelection } from "@zcode/adapters/exec";
+import { resolveEffectiveBashShellSelection } from "@s-agent/adapters/exec";
 import { inputIntentMetadata } from "../zcode-protocol-v4/commands/input-intent.js";
 import { createModelExecutionContext } from "./model-execution.js";
 import type { SendInputOptions } from "../app/types.js";
-import { repairPersistedRemoteSessionPaths, type TurnAttachment } from "@zcode/core";
+import { repairPersistedRemoteSessionPaths, type TurnAttachment } from "@s-agent/core";
 import {
   CoreErrorType,
   SESSION_ENTRY_TARGET_COMPLETION_VERIFICATION,
@@ -44,7 +44,7 @@ import {
   type TurnId,
   type UsageStorePort,
   type WorkspaceId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   subagentRuntimeConfigSchema,
   DEFAULT_ZCODE_MODEL_CONTEXT_BUDGET_STRATEGY,
@@ -92,7 +92,7 @@ import {
   type ZCodeSessionPersistence,
   type ZCodeWorkspaceRef,
   type ZCodeStateUpdatedNotification,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   buildSessionSnapshot,
   buildWorkspaceRef,

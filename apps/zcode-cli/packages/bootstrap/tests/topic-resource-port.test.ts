@@ -1,6 +1,6 @@
-import type { TraceContext } from "@zcode/contracts";
+import type { TraceContext } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
-import { zcodeProtocolMethods, zcodeProtocolMessageSchema } from "@zcode/shared";
+import { zcodeProtocolMethods, zcodeProtocolMessageSchema } from "@s-agent/shared";
 import { createProtocolTopicResourcePort } from "../src/zcode-protocol/topic-resource-port.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";
 

@@ -1,4 +1,4 @@
-import { sessionLifecycleSnapshotSchema, type SessionLifecycleSnapshot } from "@zcode/shared";
+import { sessionLifecycleSnapshotSchema, type SessionLifecycleSnapshot } from "@s-agent/shared";
 import {
   getNetworkErrorCodes,
   isNetworkFailure,
@@ -6,18 +6,18 @@ import {
 import {
   ZCODE_PROVIDER_CONFIG_NETWORK_ERROR,
   zcodeProviderRuntimeHeadersErrorCode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { RemoteConversationTelemetry } from "#src/conversation-telemetry/remoteConversationTelemetry.js";
 import {
   remoteConversationTelemetryEventSchema,
   type RemoteConversationTelemetryEvent,
-} from "@zcode/shared/conversation-telemetry";
-import { resolveWorkspaceTelemetryDetail } from "@zcode/shared";
-import { isAuxiliarySessionKind } from "@zcode/shared";
+} from "@s-agent/shared/conversation-telemetry";
+import { resolveWorkspaceTelemetryDetail } from "@s-agent/shared";
+import { isAuxiliarySessionKind } from "@s-agent/shared";
 import {
   pluginUiToolResultNotificationSchema,
   type PluginUiToolResultNotification,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import { supportsHistoryFirst, ensureGenUiContextSupport } from "./independentPlanSupport.js";
 import { supportsResidentRowsRange } from "./resident-rows-range/contract.js";
 import {
@@ -26,26 +26,26 @@ import {
   offPeakLifecycleNotificationSchema,
   type OffPeakLifecycleNotification,
   type OffPeakControlParams,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   requiresRequestVerification,
   type RequestVerificationConfig,
   allowRequestVerificationHeaders,
   requestVerificationInteractionAvailable,
-} from "@zcode/shared";
-import { zcodeMcpUiSamplingResultSchema } from "@zcode/shared";
-import { MCP_APPS_SAMPLING_TRANSPORT_TIMEOUT_MS } from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared";
+import { zcodeMcpUiSamplingResultSchema } from "@s-agent/shared";
+import { MCP_APPS_SAMPLING_TRANSPORT_TIMEOUT_MS } from "@s-agent/shared/mcp-apps";
 import {
   channelReplyRequestSchema,
   type ChannelReplyHostRequest,
   type ChannelReplyResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { requestPluginReferenceCatalog } from "#src/zcode-agent/pluginReferenceCatalogRequest.js";
 import {
   localTtftFactsSchema,
   sessionDebugSnapshotSchema,
   type LocalTtftFacts,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 /* oxlint-disable eslint(max-lines) -- ZCode Protocol transport、通知 wiring 和 app-facing session 方法必须共享同一个 client/emitter 上下文。 */
 import { ensureIndependentPlanSupport } from "./independentPlanSupport.js";
 import { isRemoteInputPredictionEnabled } from "./inputPredictionSwitch.js";
@@ -57,17 +57,17 @@ import {
   type ZCodeTopicResourceReadParams,
   type ZCodeProtocolTrace,
   type ZCodePromptAttachment,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { Emitter } from "@zcode/rpc";
-import type { IDisposable } from "@zcode/rpc";
+import { Emitter } from "@s-agent/rpc";
+import type { IDisposable } from "@s-agent/rpc";
 import type {
   AccountProviderConfigSnapshot,
   ModelSelectionView,
   ProviderSource,
-} from "@zcode/provider";
-import { completeNewModelSelection } from "@zcode/provider";
+} from "@s-agent/provider";
+import { completeNewModelSelection } from "@s-agent/provider";
 import type { OffPeakClientConfig } from "#src/coding-plan-subscription/codingPlanSubscription.js";
 import {
   subagentRuntimeConfigSchema,
@@ -190,7 +190,7 @@ import {
   type ZCodeToolExecResource,
   type ZCodePluginOperationProgressNotification,
   type ZCodeTaskMode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { createServiceLogger } from "#src/logger/serviceLogger.js";
 import { createOfficialMcpIssuanceAudit } from "#src/official-mcp/officialMcpIssuanceAudit.js";
 import type {
@@ -214,7 +214,7 @@ import type {
   ZCodeWorkspacePresentation,
   ZCodeWorkspaceRef,
   ZCodeSessionRuntimePreferencesResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   IZCodeAgentService,
   ZCodeAgentBackgroundBashOutputParams,
@@ -387,7 +387,7 @@ import {
   type SessionsIndexTopicWireCandidate,
   type WorkspaceConfigTopicWireCandidate,
   type CommandEnvelope,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   readTrustedZCodeAgentV4Connection,
   readTrustedZCodeAgentV4UnsubscribeRoute,
@@ -415,14 +415,14 @@ import {
   type CuaOperationWorkspaceTarget,
   type CuaOperationStateReporter,
 } from "./cuaOperationTurnTracker.js";
-import type { PipSessionEvent } from "@zcode/zcode-cua/pip-session";
+import type { PipSessionEvent } from "@s-agent/zcode-cua/pip-session";
 import { registerMemoryDiagnosticsProvider } from "#src/memoryDiagnostics.js";
 
 import {
   zcodeMcpUiResourceSubscriptionResultSchema as mcpUiEmptyResultSchema,
   zcodeMcpUiCloseInstanceResultSchema,
   zcodeMcpUiOpenInstanceResultSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 const logger = createServiceLogger("zcode-agent-service");
 const cuaOperationLogger = createServiceLogger("cua-operation-turn");
 const PLUGIN_MANAGEMENT_WORKSPACE_DIR_NAME = "plugin-workspace";
@@ -1109,7 +1109,7 @@ interface CreateZCodeAgentServiceBaseOptions extends Omit<
   sessionRuntimePreferencesAuthority?: "local" | "external";
   prepareProjectExecution?: (
     projectId: string,
-  ) => Promise<import("@zcode/shared").ProjectExecutionSnapshot>;
+  ) => Promise<import("@s-agent/shared").ProjectExecutionSnapshot>;
   prepareSessionCreation?: (
     target: Omit<ZCodeAgentSessionTarget, "sessionId"> & {
       sessionId?: string;

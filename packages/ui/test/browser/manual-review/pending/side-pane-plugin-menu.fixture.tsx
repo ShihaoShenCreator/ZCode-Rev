@@ -1,8 +1,8 @@
 import { PlatformProvider } from "@/hooks/usePlatform.js";
-import { parseClientConfigSnapshot, type IPlatformService } from "@zcode/shared";
+import { parseClientConfigSnapshot, type IPlatformService } from "@s-agent/shared";
 import { useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { IServiceAccessor } from "@zcode/services";
+import type { IServiceAccessor } from "@s-agent/services";
 import { AnimatedSidePanePanel } from "@/app-shell/AnimatedSidePanePanel.js";
 import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable.js";
 import { TooltipProvider } from "@/components/ui/tooltip.js";

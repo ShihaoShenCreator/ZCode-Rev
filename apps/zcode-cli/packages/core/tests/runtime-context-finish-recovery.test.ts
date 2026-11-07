@@ -8,7 +8,7 @@ import {
   getModelUsageTotalTokens,
   type ModelResult,
   type UsageStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestSessionEventStore } from "./test-event-store.js";
 import {
   OUTPUT_TOKEN_CONTINUE_PROMPT,

@@ -1,5 +1,5 @@
 // RV01–RV03：真实 Web 入口与浏览器导航；模拟 relay/桌面响应，不验证外部资源路由服务。
-// 启动：pnpm --filter @zcode/web exec vite --host 127.0.0.1 --port 5178 --strictPort
+// 启动：pnpm --filter @s-agent/web exec vite --host 127.0.0.1 --port 5178 --strictPort
 // 运行：node packages/web/test/e2e/manual-review/pending/remote-version.mjs
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";

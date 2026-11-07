@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { BUILTIN_MODEL_PROVIDER_IDS } from "@zcode/shared";
-import { TID_LOGIN_TRIGGER, TID_TASK_SETTINGS_BUTTON } from "@zcode/shared/test-ids";
+import { BUILTIN_MODEL_PROVIDER_IDS } from "@s-agent/shared";
+import { TID_LOGIN_TRIGGER, TID_TASK_SETTINGS_BUTTON } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-electron-reload";
 import { skipOccupationOnboardingIfPresent } from "#e2e/helpers/occupation-onboarding";

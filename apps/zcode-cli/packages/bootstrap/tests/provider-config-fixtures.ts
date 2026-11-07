@@ -6,7 +6,7 @@ import {
   type ModelId,
   type ProviderApiType,
   type ZhipuAccountMode,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 
 interface CommonProviderFixtureInput {
   readonly label?: string | null;

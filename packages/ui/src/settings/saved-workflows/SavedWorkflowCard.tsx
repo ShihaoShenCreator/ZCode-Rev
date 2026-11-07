@@ -8,8 +8,8 @@ import {
   TID_WORKFLOW_ACTION_MOVE,
   type ZCodeSavedWorkflowEntry,
   type ZCodeSavedWorkflowRun,
-} from "@zcode/shared";
-import { testId } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { testId } from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import {
   DropdownMenu,

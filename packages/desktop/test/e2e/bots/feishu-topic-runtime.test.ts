@@ -1,4 +1,4 @@
-import type { IZCodeTaskService } from "@zcode/services";
+import type { IZCodeTaskService } from "@s-agent/services";
 import { setRendererViewport, clearRendererViewport } from "#e2e/helpers/renderer-viewport";
 import { restartWithSeededOpenAIProviders } from "#e2e/helpers/custom-openai-provider";
 import {

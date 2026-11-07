@@ -3,8 +3,8 @@ import { GENERAL_PURPOSE_AGENT_TYPE, buildGeneralPurposeSystemPrompt } from "./g
 import { EXPLORE_AGENT_TYPE } from "./explore.js";
 import { formatExploreAllowedToolsForAgentDescription } from "./explore-tools.js";
 import { filterSubagentChildToolNames } from "./tool-policy.js";
-import type { ModelSelection, AgentProfile } from "@zcode/shared";
-export { parseAgentProfileFromMarkdown } from "@zcode/shared";
+import type { ModelSelection, AgentProfile } from "@s-agent/shared";
+export { parseAgentProfileFromMarkdown } from "@s-agent/shared";
 export type {
   AgentProfile,
   AgentPermissionMode,
@@ -12,7 +12,7 @@ export type {
   AgentMemoryScope,
   AgentProfileParseDiagnostic,
   AgentProfileLoadResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export const DEFAULT_SUBAGENT_TYPE = GENERAL_PURPOSE_AGENT_TYPE;
 

@@ -1,5 +1,5 @@
-import { formatJson } from "@zcode/core";
-import type { GlobalOptions, RunContext } from "@zcode/shared-types";
+import { formatJson } from "@s-agent/core";
+import type { GlobalOptions, RunContext } from "@s-agent/shared-types";
 import {
   formatDiagnosticJson,
   formatDiagnosticLines,

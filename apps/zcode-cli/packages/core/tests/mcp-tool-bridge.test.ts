@@ -9,7 +9,7 @@ import {
   type ImageProcessorPort,
   type McpPort,
   type ToolArtifactStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   resetCapturedZCodeCuaBrokerCredentialsForTest,
   ZCODE_CUA_OFFICIAL_MCP_NAMESPACE_NAME as ZCODE_CUA_OFFICIAL_MCP_SERVER_NAME,
@@ -17,7 +17,7 @@ import {
   ZCODE_CUA_OFFICIAL_PLUGIN_ID,
   ZCODE_CUA_PLUGIN_AUTHORITY_ENV_KEY,
   ZCODE_PLUGIN_ID_ENV_KEY,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   MCP_IMAGE_INLINE_BASE64_BYTES,
   MCP_IMAGE_INLINE_RAW_BYTES,
@@ -26,7 +26,7 @@ import {
 import { createToolRegistry } from "../src/tool/registry.js";
 import type { ToolEntry, ToolExecutionContext } from "../src/tool/types.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
-import { OFFICIAL_CUA_FRAME_INTEGRITY_META_KEY } from "@zcode/zcode-cua/frame-contract";
+import { OFFICIAL_CUA_FRAME_INTEGRITY_META_KEY } from "@s-agent/zcode-cua/frame-contract";
 import { createTestSessionEventStore } from "./test-event-store.js";
 
 const TEST_PLUGIN_AUTHORITY = "test-plugin-authority";

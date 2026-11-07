@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { join } from "node:path";
-import { createServiceLogger } from "@zcode/services/node";
+import { createServiceLogger } from "@s-agent/services/node";
 import { runtimeIdentitySchema, type ReleaseManifest, type RuntimeIdentity } from "../contracts.js";
 import { requestControl } from "../ipc/controlClient.js";
 import type { ServerLayout } from "./paths.js";

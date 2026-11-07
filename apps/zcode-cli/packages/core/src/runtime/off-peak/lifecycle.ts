@@ -1,5 +1,5 @@
-import type { OffPeakLifecycleEvent, OffPeakLifecycleState, OffPeakOutcome } from "@zcode/shared";
-export type { OffPeakLifecycleEvent, OffPeakLifecycleState, OffPeakOutcome } from "@zcode/shared";
+import type { OffPeakLifecycleEvent, OffPeakLifecycleState, OffPeakOutcome } from "@s-agent/shared";
+export type { OffPeakLifecycleEvent, OffPeakLifecycleState, OffPeakOutcome } from "@s-agent/shared";
 
 /** 工作事实由 Runtime 登记表、CommandInbox 与通知队列提供；此处不再维护副本。 */
 export interface OffPeakWorkSnapshot {

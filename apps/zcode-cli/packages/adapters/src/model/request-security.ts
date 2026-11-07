@@ -1,5 +1,5 @@
-import type { Logger, ModelRequestObservation } from "@zcode/contracts";
-import type { RegistryProviderConfig } from "@zcode/provider";
+import type { Logger, ModelRequestObservation } from "@s-agent/contracts";
+import type { RegistryProviderConfig } from "@s-agent/provider";
 
 export interface ModelRequestObservationSource {
   take(requestId: string): ModelRequestObservation[];

@@ -1,5 +1,5 @@
 // ML01–ML07、ML09、MD01–MD06、MD11–MD13：真实 Web 入口 + 浏览器 OAuth 回跳/登录门禁；外部 OAuth/relay 使用受控响应。
-// 启动：VITE_WEB_REMOTE_CONTROL_ROUTE_PATH=/remote/__test__ pnpm --filter @zcode/web exec vite --host 127.0.0.1 --port 5178 --strictPort
+// 启动：VITE_WEB_REMOTE_CONTROL_ROUTE_PATH=/remote/__test__ pnpm --filter @s-agent/web exec vite --host 127.0.0.1 --port 5178 --strictPort
 // 运行：node packages/web/test/e2e/manual-review/pending/remote-login-v2.mjs
 // 截图保留 pending，不代表真实 OAuth/手机/OSS 验收，不自动转正。
 import assert from "node:assert/strict";

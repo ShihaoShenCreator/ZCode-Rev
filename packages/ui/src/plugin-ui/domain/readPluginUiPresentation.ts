@@ -1,4 +1,4 @@
-import { mcpToolDisplayUiSchema } from "@zcode/shared/mcp-apps";
+import { mcpToolDisplayUiSchema } from "@s-agent/shared/mcp-apps";
 import type { PluginUiPresentation } from "../contract.js";
 
 /**

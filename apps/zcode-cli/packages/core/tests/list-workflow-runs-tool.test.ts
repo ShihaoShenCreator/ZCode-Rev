@@ -6,7 +6,7 @@ import {
   type DynamicWorkflowRunListQuery,
   type DynamicWorkflowRunListResult,
   type DynamicWorkflowRunPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService } from "../src/permission/service.js";
 import { resolveRuntimePermissionCapability } from "../src/tool/executor/permission-capability.js";
 import { listWorkflowRunsToolEntry } from "../src/tool/handlers/list-workflow-runs.js";

@@ -27,7 +27,7 @@ import {
   createTurnId,
   isCoreError,
   modelMessageContentToText,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { toMcpToolName } from "../src/mcp/index.js";
 import { PermissionService } from "../src/permission/index.js";

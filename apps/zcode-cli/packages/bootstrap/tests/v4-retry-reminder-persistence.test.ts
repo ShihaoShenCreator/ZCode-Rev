@@ -7,8 +7,8 @@ import {
   createSessionId,
   type Model,
   type ModelRequest,
-} from "@zcode/contracts";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { createSqliteSessionStore } from "../../adapters/src/storage/session-store/sqlite-session-store.js";
 import type { AgentRuntimeInternal } from "../../core/src/runtime/internal.js";
 import { createTestAgentRuntime } from "../../core/tests/test-agent-runtime.js";

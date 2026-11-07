@@ -33,7 +33,7 @@ import {
   type GetWorkflowRunOutput,
   type GetWorkflowRunToolResultDisplayPayload,
   type ToolResultDisplayPayload,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 import { boundDisplayText } from "./display-text.js";
 

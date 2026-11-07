@@ -1,4 +1,4 @@
-import type { Model, ModelInputMessage } from "@zcode/contracts";
+import type { Model, ModelInputMessage } from "@s-agent/contracts";
 import { ContextBuilder, buildMetaUserAttachments } from "../context/builder.js";
 import {
   type ContextBuilderConfig,

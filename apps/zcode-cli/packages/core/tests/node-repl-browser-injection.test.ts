@@ -5,8 +5,8 @@ import type {
   BrowserControlPort,
   BrowserCommandResult,
   ToolArtifactStorePort,
-} from "@zcode/contracts";
-import type { JsOutput } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import type { JsOutput } from "@s-agent/contracts";
 
 const IAB = {
   id: "iab-runtime-1",

@@ -3,11 +3,11 @@ import { rm } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { afterEach, describe, expect, it } from "vitest";
-import { createWorkspaceHookBundleSnapshot } from "@zcode/contracts";
+import { createWorkspaceHookBundleSnapshot } from "@s-agent/contracts";
 import {
   buildWorkspaceHookBundleSnapshot,
   readWorkspaceHookProjectSources,
-} from "@zcode/shared/workspace-hook-discovery";
+} from "@s-agent/shared/workspace-hook-discovery";
 import { createWorkspaceHookReviewMutationPort } from "../src/app/workspace-hook-review-mutation.js";
 
 const roots: string[] = [];

@@ -9,7 +9,7 @@
 
 import { mkdir, open, rm, type FileHandle } from "node:fs/promises";
 import { basename, join } from "node:path";
-import type { Locale } from "@zcode/shared";
+import type { Locale } from "@s-agent/shared";
 import {
   MobileLogPullError,
   type MobileLogPullErrorCode,

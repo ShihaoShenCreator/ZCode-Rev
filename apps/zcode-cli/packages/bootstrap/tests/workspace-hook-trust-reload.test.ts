@@ -2,8 +2,8 @@ import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { HookEventName, createWorkspaceHookBundleSnapshot } from "@zcode/contracts";
-import type { Logger } from "@zcode/contracts";
+import { HookEventName, createWorkspaceHookBundleSnapshot } from "@s-agent/contracts";
+import type { Logger } from "@s-agent/contracts";
 import { createWorkspaceHookRuntimeSecurity } from "../src/app/workspace-hook-trust.js";
 
 const WORKSPACE = "local:/workspace";

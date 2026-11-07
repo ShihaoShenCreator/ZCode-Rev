@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import { describe, expect, it } from "vitest";
 import {
   createRegistryBackedTestApp,
@@ -34,7 +34,7 @@ describe("Session 完整选择的实际保存与冷恢复", () => {
       runtimeConfig: { workingDirectory: root, mcp: { enabled: false }, modelSelection: initial },
       modelExecutor: {
         async generateText(
-          request: import("@zcode/contracts").ModelRequest,
+          request: import("@s-agent/contracts").ModelRequest,
           execution: { providerId: string; modelId: string },
         ) {
           executions.push({ ...execution, reasoningLevel: request.options?.reasoningLevel });

@@ -5,7 +5,7 @@
 // 整段情势报告就开始说一些它并不知道的事。
 
 import { describe, expect, it } from "vitest";
-import type { GetWorkflowRunOutput } from "@zcode/contracts";
+import type { GetWorkflowRunOutput } from "@s-agent/contracts";
 import { buildWorkflowRunSummary } from "../src/tool/handlers/get-workflow-run-summary.js";
 import {
   formatRelativeAge,

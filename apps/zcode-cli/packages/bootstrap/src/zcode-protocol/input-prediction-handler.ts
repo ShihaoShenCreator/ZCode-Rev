@@ -6,7 +6,7 @@
 // - 按 (sessionId, revision, draft) 小 LRU 缓存终态结果，重连/重发不重复打模型；
 // - 会话不在内存 / 轮数不够 → suppress_no_context；无模型、超时、模型失败 → unavailable。
 // 只读、不做 CAS：预测是建议，不是状态。
-import type { Logger, MessageWithParts, SessionId, SessionStorePort } from "@zcode/contracts";
+import type { Logger, MessageWithParts, SessionId, SessionStorePort } from "@s-agent/contracts";
 import {
   decideInputPrediction,
   generateInputPredictionCandidates,
@@ -14,13 +14,13 @@ import {
   normalizeInputPredictionDraft,
   type InputPredictionModelCall,
   type InputPredictionTurnContext,
-} from "@zcode/core";
-import { isConversationRealUserTurnStarter } from "@zcode/shared";
+} from "@s-agent/core";
+import { isConversationRealUserTurnStarter } from "@s-agent/shared";
 import {
   emptyInputPredictionResult,
   v4ConversationInputPredictionParamsSchema,
   type V4ConversationInputPredictionResult,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type { ZCodeProtocolSessionRecord } from "./server-types.js";
 
 /** 终态结果缓存条数（跨会话共享）。 */

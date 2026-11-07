@@ -8,8 +8,8 @@
 import type {
   ModelRequestSessionType as ModelRequestSessionTypeValue,
   ResolvedModelApiCallObservation,
-} from "@zcode/contracts";
-import { ModelApiActorKind, ModelApiOperation, ModelRequestSessionType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { ModelApiActorKind, ModelApiOperation, ModelRequestSessionType } from "@s-agent/contracts";
 import { isOpenCodeGoBaseUrl } from "./opencode-session.js";
 import {
   MODEL_QUERY_SOURCE_HEADER,

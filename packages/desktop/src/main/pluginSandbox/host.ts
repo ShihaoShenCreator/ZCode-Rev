@@ -1,6 +1,6 @@
-import type { Locale } from "@zcode/shared";
-import { PlatformChannels } from "@zcode/shared";
-import type { PluginSandboxHandle, PluginSandboxRegisterInput } from "@zcode/shared/mcp-apps";
+import type { Locale } from "@s-agent/shared";
+import { PlatformChannels } from "@s-agent/shared";
+import type { PluginSandboxHandle, PluginSandboxRegisterInput } from "@s-agent/shared/mcp-apps";
 import {
   BrowserWindow,
   clipboard,

@@ -7,7 +7,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import type { ModelSelection } from "@zcode/shared/model-selection";
+import type { ModelSelection } from "@s-agent/shared/model-selection";
 import { createModelCatalogPort } from "../src/app/model-catalog-port.js";
 import type { ProviderRegistryModelSource } from "../src/app/provider-registry-model-runtime.js";
 

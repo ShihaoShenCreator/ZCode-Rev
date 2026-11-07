@@ -1,5 +1,5 @@
-import { ApiKeyAccessConfig, ProviderConfig } from "@zcode/provider";
-import { NodePersonalProviderConfigRepository } from "@zcode/provider-node";
+import { ApiKeyAccessConfig, ProviderConfig } from "@s-agent/provider";
+import { NodePersonalProviderConfigRepository } from "@s-agent/provider-node";
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
@@ -8,7 +8,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 import { restartIntoWorkspace, seedReplayProvider } from "#e2e/helpers/model-provider-restart";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";

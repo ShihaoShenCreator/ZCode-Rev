@@ -3,7 +3,7 @@ import {
   getCurrentModelInvocationContext,
   type ModelInvocationContext,
   type SessionTaskType,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 
 import { resolveProjectMemoryRoot } from "../src/memory/project-root.js";

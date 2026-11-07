@@ -11,7 +11,7 @@ import {
   type MessagePart,
   type MessageWithParts,
   type ToolState,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   buildMemoryExtractionPrompt,
   createMemoryExtractionScheduler,

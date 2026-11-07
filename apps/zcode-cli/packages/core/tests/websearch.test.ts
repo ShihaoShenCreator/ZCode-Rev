@@ -9,7 +9,7 @@ import {
   WebSearchInputSchema,
   createSessionId,
   type ModelSelection,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { registerBuiltInTools } from "../src/tool/handlers/index.js";

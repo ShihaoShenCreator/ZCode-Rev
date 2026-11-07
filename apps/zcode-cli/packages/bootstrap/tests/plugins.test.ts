@@ -5,10 +5,10 @@ import { createServer, type Server } from "node:http";
 import { tmpdir } from "node:os";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { createConfig } from "@zcode/adapters/config";
-import { DEFAULT_ENABLED_OFFICIAL_PLUGIN_IDS } from "@zcode/shared";
-import { ZCODE_PLUGIN_HOST_COMMAND } from "@zcode/contracts";
-import type { Logger } from "@zcode/contracts";
+import { createConfig } from "@s-agent/adapters/config";
+import { DEFAULT_ENABLED_OFFICIAL_PLUGIN_IDS } from "@s-agent/shared";
+import { ZCODE_PLUGIN_HOST_COMMAND } from "@s-agent/contracts";
+import type { Logger } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { resolveStartupPlugins } from "../src/app/startup-marks.js";
 import {

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
-import { getZCodeCopy } from "@zcode/i18n";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { LoginRequiredPanel } from "../src/app-components.js";
 import { ContentPane, MessageRow } from "../src/app-transcript-components.js";
 import { EmptyTranscriptLogo, ZCODE_LOGO_LINES } from "../src/app-empty-transcript.js";

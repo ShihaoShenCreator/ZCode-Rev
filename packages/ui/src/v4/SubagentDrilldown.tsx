@@ -5,8 +5,8 @@
 // - 展示：不虚拟化，只取窗口最近 N 条 assistant 文本输出；工具调用由 Agent 摘要/子工具列表表达；
 // - 只读：不下发 onFork/onRetry/onEdit，行内动作面不出现。
 import { memo, useEffect, useMemo, useState } from "react";
-import { TID_V4_SUBAGENT_DRILLDOWN, testId } from "@zcode/shared/test-ids";
-import type { ConversationRow } from "@zcode/shared/zcode-protocol-v4";
+import { TID_V4_SUBAGENT_DRILLDOWN, testId } from "@s-agent/shared/test-ids";
+import type { ConversationRow } from "@s-agent/shared/zcode-protocol-v4";
 import { ConversationRowView } from "@/v4/ConversationRowView.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import type { ConversationRowRenderContext } from "@/v4/conversationRowContext.js";

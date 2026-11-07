@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { zcodeProtocolMethods } from "@zcode/shared";
+import { zcodeProtocolMethods } from "@s-agent/shared";
 import { createProtocolBrowserControlBroker } from "../src/zcode-protocol/browser-control-broker.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";
 

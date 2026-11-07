@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vitest";
-import { type BashOutput, type ExecutionRequest, type ExecutionPort } from "@zcode/contracts";
+import { type BashOutput, type ExecutionRequest, type ExecutionPort } from "@s-agent/contracts";
 import { NodeExecutionAdapter } from "../../adapters/src/exec/index.js";
 import { bashHandler, bashToolEntry } from "../src/tool/handlers/bash.js";
 import type { ToolExecutionContext } from "../src/tool/types.js";

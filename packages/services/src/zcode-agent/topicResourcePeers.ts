@@ -1,5 +1,5 @@
-import type { IChannel } from "@zcode/rpc";
-import { zcodeTopicResourceRelayRequestSchema } from "@zcode/shared";
+import type { IChannel } from "@s-agent/rpc";
+import { zcodeTopicResourceRelayRequestSchema } from "@s-agent/shared";
 import type { IZCodeAgentService } from "./zcodeAgent.js";
 import { readTrustedZCodeAgentV4Connection } from "./zcodeAgentConnectionScope.js";
 

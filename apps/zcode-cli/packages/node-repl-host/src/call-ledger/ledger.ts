@@ -6,7 +6,7 @@
 // 主线程，只由真正收到调用请求的 broker 写入，Worker 发来的任何消息都改不了它。
 
 import { randomBytes } from "node:crypto";
-import type { NodeReplCuaAppIdentity, NodeReplImage, NodeReplRequestMeta } from "@zcode/core/repl";
+import type { NodeReplCuaAppIdentity, NodeReplImage, NodeReplRequestMeta } from "@s-agent/core/repl";
 
 /** 一次 js 调用里由 broker 记下的可信事实。 */
 export interface NodeReplCallFacts {

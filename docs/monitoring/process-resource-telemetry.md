@@ -755,7 +755,7 @@ HAVING COUNT(DISTINCT device_mid) >= 100
   6 文件、51 case（含 macOS 真实 Node 子进程和 16.5 秒 Bash 资源烟测）；架构门禁 12 case。
   按本票用户要求未执行全量 UT。两个新增回归均已验证先失败后通过：PRT-026 文档缺属性表，
   以及全仓门禁漏枚举 CONTRACT.md。
-- `pnpm typecheck`、`pnpm --filter @zcode/desktop typecheck:e2e` 通过；`pnpm lint` 为
+- `pnpm typecheck`、`pnpm --filter @s-agent/desktop typecheck:e2e` 通过；`pnpm lint` 为
   0 error / 42 条存量 warning；修改文件格式检查通过。
 - `pnpm architecture:check` 与 `pnpm architecture:check --changed` 通过，baseline / new 均为 0。
   门禁原本将磁盘上已存在的 `packages/services/src/storage/CONTRACT.md` 误报为缺失：文件枚举只收

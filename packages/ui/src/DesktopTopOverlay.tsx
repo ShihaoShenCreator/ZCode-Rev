@@ -1,5 +1,5 @@
 import { SidebarTooltipProvider } from "@/ControlHintTooltip.js";
-import type { IPlatformService, UpdateStatePayload } from "@zcode/shared";
+import type { IPlatformService, UpdateStatePayload } from "@s-agent/shared";
 import { cn } from "@/components/lib/utils.js";
 import {
   ArrowLeftIcon,

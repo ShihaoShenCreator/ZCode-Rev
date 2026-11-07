@@ -1,12 +1,12 @@
 import { join } from "node:path";
-import { marketingDeliverySchema } from "@zcode/shared";
+import { marketingDeliverySchema } from "@s-agent/shared";
 import {
   TID_LOGIN_TRIGGER,
   TID_LOGOUT_BUTTON,
   TID_CONFIRM_DIALOG_CONFIRM,
   TID_LOGIN_USE_API_KEY_BUTTON,
   TID_LOGIN_API_KEY_SKIP_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { waitForDefaultWorkspaceReady } from "../helpers/desktop-app.js";
 import { assertOverlayWindowControls } from "../helpers/overlay-window-controls.js";
 
@@ -203,7 +203,7 @@ describe("Rewards website embedded integration", () => {
       const entry = document.querySelector('[data-testid="rewards-menu-item"]');
       return entry?.previousElementSibling?.getAttribute("data-testid");
     });
-    expect(order).toBe("sidebar-coding-plan-upgrade-button");
+    expect(order).toBe("sidebar-app-usage-button");
     await entry.click();
     await $('[data-testid="rewards-webview"]').waitForDisplayed();
     await assertOverlayWindowControls('[data-testid="rewards-surface"]');

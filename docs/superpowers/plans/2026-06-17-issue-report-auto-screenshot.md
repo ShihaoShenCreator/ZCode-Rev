@@ -34,7 +34,7 @@
 
 ```ts
 import { describe, expect, it, vi } from "vitest";
-import type { IPlatformService, WindowScreenshotResult } from "@zcode/shared";
+import type { IPlatformService, WindowScreenshotResult } from "@s-agent/shared";
 import { captureFeedbackScreenshotDraft } from "@/feedback/feedbackScreenshotDraft.js";
 
 const screenshot: WindowScreenshotResult = {
@@ -81,7 +81,7 @@ Expected: FAIL because `@/feedback/feedbackScreenshotDraft.js` does not exist.
 - [x] **Step 3: Write minimal implementation**
 
 ```ts
-import type { IPlatformService } from "@zcode/shared";
+import type { IPlatformService } from "@s-agent/shared";
 import type { FeedbackAttachmentDraft } from "@/feedback/feedbackStore.js";
 
 export async function captureFeedbackScreenshotDraft(

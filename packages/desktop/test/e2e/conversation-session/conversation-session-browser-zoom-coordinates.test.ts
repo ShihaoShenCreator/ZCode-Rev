@@ -2,14 +2,14 @@ import { createServer, type Server } from "node:http";
 import type { AddressInfo } from "node:net";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { PlatformChannels } from "@zcode/shared";
+import { PlatformChannels } from "@s-agent/shared";
 import {
   TID_BROWSER_RESPONSIVE_BUTTON,
   TID_SIDE_PANE_TOGGLE,
   TID_BROWSER_RESPONSIVE_VIEWPORT,
   TID_BROWSER_RESPONSIVE_ZOOM_OPTION,
   TID_BROWSER_RESPONSIVE_ZOOM_SELECT,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByWebDriver } from "../helpers/desktop-app.js";
 import {
   prepareV4ConversationE2E,

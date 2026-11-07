@@ -1,8 +1,8 @@
 import { mkdir } from "node:fs/promises";
-import { ModelConfig, ModelOptionSpecsConfig } from "@zcode/provider";
-import { NodePersonalProviderConfigRepository } from "@zcode/provider-node";
+import { ModelConfig, ModelOptionSpecsConfig } from "@s-agent/provider";
+import { NodePersonalProviderConfigRepository } from "@s-agent/provider-node";
 import { join } from "node:path";
-import { encodeCustomModelValue } from "@zcode/shared";
+import { encodeCustomModelValue } from "@s-agent/shared";
 import {
   TID_CHAT_MODEL_SELECT_ITEM,
   TID_CHAT_MODEL_SELECT_GROUP,
@@ -23,7 +23,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   getE2EAppDataPaths,

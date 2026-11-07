@@ -12,8 +12,8 @@ import {
   createSessionId,
   type SessionEvent,
   type SessionEventSink,
-} from "@zcode/contracts";
-import type { TurnResult } from "@zcode/core";
+} from "@s-agent/contracts";
+import type { TurnResult } from "@s-agent/core";
 import { createActorToolActivity } from "../src/app/workflow-driver-tool-activity.js";
 import { deriveToolTarget, summarizeToolCall } from "../src/app/workflow-driver-tool-target.js";
 import { statsFromTurn } from "../src/app/workflow-driver-helpers.js";

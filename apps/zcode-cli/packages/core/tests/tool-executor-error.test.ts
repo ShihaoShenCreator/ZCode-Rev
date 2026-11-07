@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CoreErrorType, createCoreError } from "@zcode/contracts";
+import { CoreErrorType, createCoreError } from "@s-agent/contracts";
 import { stringifyToolResultOutput } from "../src/runtime/helpers/tool-result.js";
 import { createTurnFailureError } from "../src/runtime/helpers/turn-errors.js";
 import { ErrorPayloadRole, withErrorPayloadRole } from "../src/errors/error-payload.js";

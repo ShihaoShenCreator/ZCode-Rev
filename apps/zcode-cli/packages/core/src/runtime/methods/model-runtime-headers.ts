@@ -1,7 +1,7 @@
-import type { RequestVerificationReason } from "@zcode/shared";
+import type { RequestVerificationReason } from "@s-agent/shared";
 import { traceContextToLogContext } from "../deps.js";
-import type { ModelRequestAuth } from "@zcode/contracts";
-import type { ZCodeProviderAccountAccess } from "@zcode/shared";
+import type { ModelRequestAuth } from "@s-agent/contracts";
+import type { ZCodeProviderAccountAccess } from "@s-agent/shared";
 import type { Model, TraceContext } from "../deps.js";
 import type { AgentRuntimeInternal } from "../internal.js";
 

@@ -1,4 +1,4 @@
-import { TID_CHAT_WORKFLOW_RUN_DIGEST } from "@zcode/shared";
+import { TID_CHAT_WORKFLOW_RUN_DIGEST } from "@s-agent/shared";
 import { clearAppData } from "../helpers/desktop-app.js";
 import {
   approveV4Permission,

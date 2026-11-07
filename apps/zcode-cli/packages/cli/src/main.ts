@@ -1,4 +1,4 @@
-import { STORAGE_MIGRATION_COMMAND } from "@zcode/shared/sqlite-migrations";
+import { STORAGE_MIGRATION_COMMAND } from "@s-agent/shared/sqlite-migrations";
 import { interceptTuiStderr, isTuiInvocation } from "./tui-stderr.js";
 import { interceptKnownRuntimeWarnings } from "./runtime-warnings.js";
 import { installStderrConsoleBoundary } from "./protocol-console.js";

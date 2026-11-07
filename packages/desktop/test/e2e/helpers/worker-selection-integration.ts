@@ -9,15 +9,15 @@ import {
   createAccountProviderConfigSnapshot,
   createFailClosedAccountProviderConfigSnapshot,
   type ModelSelectionViewInput,
-} from "@zcode/provider";
-import { NodeProviderRegistryRuntime, createNodeModelSelectionFacade } from "@zcode/provider-node";
+} from "@s-agent/provider";
+import { NodeProviderRegistryRuntime, createNodeModelSelectionFacade } from "@s-agent/provider-node";
 import {
   createZCodeAgentService,
   createZCodeTaskServiceAdapter,
   getDataBaseDir,
   setDataBaseDir,
-} from "@zcode/services/node";
-import { BUILTIN_MODEL_PROVIDER_IDS } from "@zcode/shared";
+} from "@s-agent/services/node";
+import { BUILTIN_MODEL_PROVIDER_IDS } from "@s-agent/shared";
 import { TaskIndexRepo } from "../../../../services/src/session/taskIndexRepo.js";
 import { createZCodeTaskIndexSyncer } from "../../../../services/src/zcode-agent/zcodeTaskIndexSyncer.js";
 import { getE2EAppDataPaths } from "./desktop-app.js";

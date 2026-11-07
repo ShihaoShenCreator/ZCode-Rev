@@ -24,7 +24,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "visualize",
-    packageName: "@zcode/visualize-plugin",
+    packageName: "@s-agent/visualize-plugin",
     requiresRuntime: false,
     requiredSeedPaths: [
       "skills/visualize/SKILL.md",
@@ -60,7 +60,7 @@ export const officialSeaPlugins = [
     // （无 skill、无市场 listing）。它必须始终随发布物嵌入，否则任一能力启用时都没有宿主可跑。
     marketplace: "zcode-plugins-official",
     name: "node-repl-host",
-    packageName: "@zcode/node-repl-host",
+    packageName: "@s-agent/node-repl-host",
     requiresRuntime: true,
     requiredRuntimePaths: ["dist/mcp/server.js"],
     rootPath: join("packages", "node-repl-host"),
@@ -69,7 +69,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "android-emulator",
-    packageName: "@zcode/android-emulator-plugin",
+    packageName: "@s-agent/android-emulator-plugin",
     requiresRuntime: true,
     requiredRuntimePaths: ["dist/mcp/server.js"],
     rootPath: join("packages", "android-emulator-plugin"),
@@ -78,7 +78,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "documents",
-    packageName: "@zcode/documents-plugin",
+    packageName: "@s-agent/documents-plugin",
     // 0.2.0 起带查看面板：SEA 必须在嵌入前校验 office-runtime 构建出的 server 与面板资源。
     requiresRuntime: true,
     requiredRuntimePaths: officeViewerRuntimePaths,
@@ -94,7 +94,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "image-search",
-    packageName: "@zcode/image-search-plugin",
+    packageName: "@s-agent/image-search-plugin",
     requiresRuntime: false,
     requiredSeedPaths: [".mcp.json"],
     rootPath: join("packages", "image-search-plugin"),
@@ -104,7 +104,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "pdf",
-    packageName: "@zcode/pdf-plugin",
+    packageName: "@s-agent/pdf-plugin",
     // 0.2.0 起带查看面板：SEA 必须在嵌入前校验 office-runtime 构建出的 server 与面板资源。
     requiresRuntime: true,
     requiredRuntimePaths: officeViewerRuntimePaths,
@@ -120,7 +120,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "presentations",
-    packageName: "@zcode/presentations-plugin",
+    packageName: "@s-agent/presentations-plugin",
     // 0.2.0 起带查看面板：SEA 必须在嵌入前校验 office-runtime 构建出的 server 与面板资源。
     requiresRuntime: true,
     requiredRuntimePaths: officeViewerRuntimePaths,
@@ -136,7 +136,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "spreadsheets",
-    packageName: "@zcode/spreadsheets-plugin",
+    packageName: "@s-agent/spreadsheets-plugin",
     // 0.2.0 起带查看面板：SEA 必须在嵌入前校验 office-runtime 构建出的 server 与面板资源。
     requiresRuntime: true,
     requiredRuntimePaths: officeViewerRuntimePaths,
@@ -153,7 +153,7 @@ export const officialSeaPlugins = [
     // browser-use 使用真实 node_repl MCP runtime，SEA 必须校验并嵌入 server.js。
     marketplace: "zcode-plugins-official",
     name: "browser-use",
-    packageName: "@zcode/browser-use-plugin",
+    packageName: "@s-agent/browser-use-plugin",
     requiresRuntime: true,
     // Browser Use 的 runtime、client、API 文档和 skills 是同一发布单元；
     // SEA 构建必须在嵌入前拒绝任一缺失项，不能把损坏产物留到用户启动时才发现。
@@ -166,7 +166,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "ios-simulator",
-    packageName: "@zcode/ios-simulator-plugin",
+    packageName: "@s-agent/ios-simulator-plugin",
     requiresRuntime: true,
     requiredRuntimePaths: ["dist/mcp/server.js"],
     rootPath: join("packages", "ios-simulator-plugin"),
@@ -175,7 +175,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "restore-legacy-sessions",
-    packageName: "@zcode/restore-legacy-sessions-plugin",
+    packageName: "@s-agent/restore-legacy-sessions-plugin",
     requiresRuntime: false,
     rootPath: join("packages", "restore-legacy-sessions-plugin"),
     version: "0.1.0",
@@ -183,7 +183,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "skill-creator",
-    packageName: "@zcode/skill-creator-plugin",
+    packageName: "@s-agent/skill-creator-plugin",
     requiresRuntime: false,
     rootPath: join("packages", "skill-creator-plugin"),
     version: "0.1.0",
@@ -191,7 +191,7 @@ export const officialSeaPlugins = [
   {
     marketplace: "zcode-plugins-official",
     name: "plugin-creator",
-    packageName: "@zcode/plugin-creator-plugin",
+    packageName: "@s-agent/plugin-creator-plugin",
     requiresRuntime: false,
     rootPath: join("packages", "plugin-creator-plugin"),
     version: "0.1.1",
@@ -204,7 +204,7 @@ export const officialSeaPlugins = [
     // 0.3.0：`/workflow` 与 dynamic-workflows 技能移出本插件（见 sea-bundled-skill-assets.mjs）。
     marketplace: "zcode-plugins-official",
     name: "zcode-guide",
-    packageName: "@zcode/zcode-guide-plugin",
+    packageName: "@s-agent/zcode-guide-plugin",
     requiresRuntime: false,
     requiredSeedPaths: ["skills/zcode-configuration-guide/SKILL.md"],
     rootPath: join("packages", "zcode-guide-plugin"),
@@ -215,7 +215,7 @@ export const officialSeaPlugins = [
     // 由插件自己的 build 脚本构建）。版本与 package.json / plugin.json / official-plugin-definitions.ts 同步 bump。
     marketplace: "zcode-plugins-official",
     name: "zcode-site",
-    packageName: "@zcode/zcode-site-plugin",
+    packageName: "@s-agent/zcode-site-plugin",
     requiresRuntime: true,
     requiredRuntimePaths: ["dist/server.mjs", "dist/ui/panel.html"],
     requiredSeedPaths: [

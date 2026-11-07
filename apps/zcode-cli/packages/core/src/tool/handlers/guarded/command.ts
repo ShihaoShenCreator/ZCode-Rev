@@ -1,4 +1,4 @@
-import type { ExecutionShellSelection } from "@zcode/contracts";
+import type { ExecutionShellSelection } from "@s-agent/contracts";
 import { analyzeBashCommand } from "../bash-command-parser.js";
 import { analyzeCmdCommand } from "./cmd.js";
 import { matchGit, type RuleMatch } from "./git.js";

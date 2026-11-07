@@ -1,10 +1,10 @@
 # M1-M5 对外接口
 
-本文档整理 @zcode/contracts 和 @zcode/core 包的所有对外接口（public API）。
+本文档整理 @s-agent/contracts 和 @s-agent/core 包的所有对外接口（public API）。
 
 ---
 
-## 一、@zcode/contracts
+## 一、@s-agent/contracts
 
 ### 1.1 interfaces/shared.ts
 
@@ -442,7 +442,7 @@ const ModelRefSource = {
 
 ---
 
-## 二、@zcode/core
+## 二、@s-agent/core
 
 ### 2.1 agent/turn-state.ts
 
@@ -722,7 +722,7 @@ interface RuntimeFactory {
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        @zcode/core                               │
+│                        @s-agent/core                               │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐│
 │  │ AgentRuntime│  │ TurnMachine │  │ PermissionService        ││
 │  └──────┬──────┘  └──────┬──────┘  └───────────┬─────────────┘│
@@ -730,7 +730,7 @@ interface RuntimeFactory {
 │         └──────────────────┼─────────────────────┘               │
 │                            │                                     │
 │         ┌─────────────────▼─────────────────┐                  │
-│         │           @zcode/contracts           │                  │
+│         │           @s-agent/contracts           │                  │
 │         │  ┌─────────────┬────────────────┐  │                  │
 │         │  │    ports    │    events      │  │                  │
 │         │  │  SessionPort │ SessionEvent   │  │                  │

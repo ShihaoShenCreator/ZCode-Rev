@@ -3,7 +3,7 @@ import { getConversationShareErrorDetails } from "@/lib/conversationShareError.j
 import { useEffect, useRef, useState } from "react";
 import { useZCodeSessionStore } from "@/store/zcodeSessionStore.js";
 import type { CreateTaskOptions } from "@/app-shell/types.js";
-import type { IPlatformService, ZCodeTaskClientMode } from "@zcode/shared";
+import type { IPlatformService, ZCodeTaskClientMode } from "@s-agent/shared";
 import { readV4ComposerDraft, V4_DRAFT_SCOPE_ROOT } from "@/v4/composer/composerDraftStore.js";
 import { readComposerWorkspaceScope } from "@/v4/composer/composerDraftStore.js";
 import { useComposerClientNamespace } from "@/hooks/useServices.js";
@@ -59,7 +59,7 @@ export function useRootPlatformEffects({
 }: {
   initialWorkspaceAbsPath?: string;
   initialWorkspaceIdentity?: string;
-  initialWorkspacePurpose?: import("@zcode/shared").WorkspacePurpose;
+  initialWorkspacePurpose?: import("@s-agent/shared").WorkspacePurpose;
   initialTaskId?: string;
   initialTaskDraft?: CreateTaskOptions;
   clientMode?: ZCodeTaskClientMode;
@@ -68,7 +68,7 @@ export function useRootPlatformEffects({
     workspacePath: string,
     options?: {
       workspaceIdentity?: string;
-      workspacePurpose?: import("@zcode/shared").WorkspacePurpose;
+      workspacePurpose?: import("@s-agent/shared").WorkspacePurpose;
     },
   ) => void;
   setIsBootstrappingInitialWorkspace: (value: boolean) => void;

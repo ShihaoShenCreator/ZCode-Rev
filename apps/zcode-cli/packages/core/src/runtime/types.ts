@@ -1,7 +1,7 @@
-import type { ToolSearchExecutionContext, ToolSearchMode } from "@zcode/contracts";
-import type { RequestVerificationReason } from "@zcode/shared";
+import type { ToolSearchExecutionContext, ToolSearchMode } from "@s-agent/contracts";
+import type { RequestVerificationReason } from "@s-agent/shared";
 import type { GetAgentDefinitions, LoadAgentDefinitions } from "../subagent/definitions.js";
-import type { RuntimeInputPresentation, TurnExecutionModelFallbackReason } from "@zcode/contracts";
+import type { RuntimeInputPresentation, TurnExecutionModelFallbackReason } from "@s-agent/contracts";
 /* eslint-disable max-lines -- Runtime 类型集中承载 core/runtime 对外结构，拆分需要单独迁移。 */
 import { PermissionService, ToolScheduler } from "./deps.js";
 import type {
@@ -22,9 +22,9 @@ import type {
   StableForkTargetMetadata,
   WorkspaceHookBundleSnapshot,
   WorkspaceId,
-} from "@zcode/contracts";
-import type { ZCodeProviderAccountAccess } from "@zcode/shared";
-import type { EffectiveModelSelectionResult } from "@zcode/shared/model-selection";
+} from "@s-agent/contracts";
+import type { ZCodeProviderAccountAccess } from "@s-agent/shared";
+import type { EffectiveModelSelectionResult } from "@s-agent/shared/model-selection";
 import type { RuntimeMessageEntry } from "../agent/message-history.js";
 import type { ProviderToolRound } from "./provider-tool-rounds/contract.js";
 import type {
@@ -532,7 +532,7 @@ export interface ExecuteTurnOptionsBase {
 }
 
 export type ExecuteTurnOptions = ExecuteTurnOptionsBase &
-  import("@zcode/contracts").TurnBackgroundAttribution;
+  import("@s-agent/contracts").TurnBackgroundAttribution;
 
 /**
  * Core prompt admission 的调用参数。Bootstrap 只提供输入事实和期望投递语义，
@@ -794,7 +794,7 @@ export interface ExecuteToolsOptions {
   signal?: AbortSignal;
   traceContext?: TraceContext;
   /** 仅透传给当前 turn 同步等待的 Agent child。 */
-  subagentModelOverride?: import("@zcode/contracts").SubagentRunOptions["modelOverride"];
+  subagentModelOverride?: import("@s-agent/contracts").SubagentRunOptions["modelOverride"];
   model?: Model;
   onBatchStart?: (toolCallIds: string[]) => Promise<void>;
 }

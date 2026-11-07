@@ -8,8 +8,8 @@
 // 各写一份的话，总有一天确认窗里能选的模型与弹层里能选的不一样。
 
 import { useCallback, useMemo } from "react";
-import { completeNewModelSelection } from "@zcode/provider";
-import { ZCODE_AGENT_PROVIDER, type ZCodeConfigOption } from "@zcode/shared";
+import { completeNewModelSelection } from "@s-agent/provider";
+import { ZCODE_AGENT_PROVIDER, type ZCodeConfigOption } from "@s-agent/shared";
 import { useModelSelectionView } from "@/hooks/useModelSelectionView.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { buildRegistryModelSelectGroups } from "@/lib/modelSelectionGroups.js";

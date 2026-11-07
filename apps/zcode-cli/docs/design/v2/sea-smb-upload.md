@@ -39,7 +39,7 @@
 - `node packages/cli/scripts/upload-sea-smb.mjs --dest-root /Volumes/shared/zcode/deps`
 - `node packages/cli/scripts/upload-sea-smb.mjs --dist packages/cli/dist`
 - `node packages/cli/scripts/upload-sea-smb.mjs --version 0.12.3`
-- `pnpm --filter @zcode/cli upload:sea`
+- `pnpm --filter @s-agent/cli upload:sea`
 
 默认值：
 
@@ -87,7 +87,7 @@ TTY 下可以复用单行刷新；非 TTY 下输出离散进度行，避免长�
 ## 错误行为
 
 - 根 `package.json` 不存在、无法解析或 `version` 无效：中止。
-- 缺少任一 SEA binary：中止，并提示先运行 `pnpm --filter @zcode/cli build:sea`。
+- 缺少任一 SEA binary：中止，并提示先运行 `pnpm --filter @s-agent/cli build:sea`。
 - 默认 SMB 挂载根不存在：中止，并提示先挂载 `smb://10.0.0.100/shared`。
 - 目标版本已存在且用户选择放弃：不修改目标目录，退出成功。
 - 目标版本已存在且非交互又未传 `--force`：中止。

@@ -7,7 +7,7 @@ import {
   SessionEventType,
   createSessionId,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestModelSelection } from "./test-model-selection.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

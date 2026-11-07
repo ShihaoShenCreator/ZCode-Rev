@@ -6,14 +6,14 @@ import { createTestAgentRuntime } from "./helpers/test-agent-runtime.js";
  * 换成可预测的脚本，用以验证 submit 桥接、三值→二值裁决映射、turn-stop、同 turn repair、nudge。
  */
 
-import { createInMemorySessionEventStore } from "@zcode/adapters/storage";
+import { createInMemorySessionEventStore } from "@s-agent/adapters/storage";
 import {
   SUBMIT_RESULT_TOOL_NAME,
   type ExecutionPort,
   type FileSystemPort,
   type SessionStorePort,
-} from "@zcode/contracts";
-import { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import { AgentRuntime } from "@s-agent/core";
 import {
   InMemoryJournalStore,
   buildAskSpecs,
@@ -30,11 +30,11 @@ import {
   type RunEvent,
   type RunSettlement,
   type ValidateFn,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runWorkflowScript } from "@zcode/dynamic-workflow-runtime";
+import { runWorkflowScript } from "@s-agent/dynamic-workflow-runtime";
 import { workflowActorToolPolicy } from "../src/app/workflow-actor-tools.js";
 import {
   createWorkflowEscalationRegistry,

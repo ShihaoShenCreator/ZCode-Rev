@@ -1,4 +1,4 @@
-import { classifyConversationShareError } from "@zcode/shared";
+import { classifyConversationShareError } from "@s-agent/shared";
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";

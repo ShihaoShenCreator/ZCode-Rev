@@ -5,7 +5,7 @@ import type {
   ZCodePluginInfo,
   ZCodePluginMarketplaceSummary,
   ZCodePluginsOverviewResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 /**
  * marketplace 插件分类的纯映射（docs/remote/data-sync.md「插件 · marketplace 插件」）。

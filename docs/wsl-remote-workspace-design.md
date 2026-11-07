@@ -81,12 +81,12 @@ packages/server/src/remote/
 // packages/server/src/remote/wsl-backend.ts
 import { spawn, execSync } from "node:child_process";
 import { createReadStream } from "node:fs";
-import { Emitter } from "@zcode/rpc";
+import { Emitter } from "@s-agent/rpc";
 import type {
   IRemoteBackend,
   RemoteEnvironment,
   StdioStream,
-} from "@zcode/server/remote/backend.js";
+} from "@s-agent/server/remote/backend.js";
 
 export interface WSLBackendOptions {
   distribution?: string;  // WSL 分发版名称，如 "Ubuntu"

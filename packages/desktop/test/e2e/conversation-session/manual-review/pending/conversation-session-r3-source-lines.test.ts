@@ -4,7 +4,7 @@ import {
   buildRemoteEnvironmentKey,
   parseRemoteWorkspaceIdentity,
   providerProvisioningResultSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { clearAppData, DEFAULT_WORKSPACE } from "../../../helpers/desktop-app.js";
 import { disconnectRemoteSource } from "#e2e/helpers/remote-project-actions";
 import { openWorkspaceDraftFromSidebar } from "#e2e/helpers/workspace-agent-warmup";

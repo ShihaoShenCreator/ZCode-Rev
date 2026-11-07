@@ -7,7 +7,7 @@
 //
 // 缺省跑快档；ZCODE_FAULT_MATRIX=full 展开全矩阵（helpers/fault-matrix-cells.ts）。
 
-import { SessionEventType } from "@zcode/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import { describe, expect, it } from "vitest";
 import {
   startFakeProviderServer,

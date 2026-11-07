@@ -1,4 +1,4 @@
-import type { UserInputQuestionPayload } from "@zcode/shared/zcode-protocol-v4";
+import type { UserInputQuestionPayload } from "@s-agent/shared/zcode-protocol-v4";
 
 /**
  * MCP elicitation（server → client `elicitation/create`）与 ZCode 用户提问通道的映射

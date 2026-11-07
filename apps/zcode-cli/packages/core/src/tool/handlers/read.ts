@@ -32,7 +32,7 @@ import {
   type FileSystemPort,
   type FileSystemStatResult,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { resolveWorkspacePath } from "../path-policy.js";
 import {
   findLatestReadFileState,

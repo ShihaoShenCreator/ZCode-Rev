@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { AppUsageQueryResult } from "@zcode/contracts";
+import type { AppUsageQueryResult } from "@s-agent/contracts";
 import {
   buildAppUsageSnapshot,
   resolveTzOffsetMs,

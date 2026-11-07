@@ -16,7 +16,7 @@ const pnpmRunEnv = {
   ...process.env,
   ZCODE_ENV: await resolveBuiltinProviderBuildEnvironment({ root: repoRoot }),
   // pnpm 11 的 verify-deps-before-run 会在 apps/zcode-cli 子 workspace
-  // 执行每个 run 前触发 pnpm install；子 workspace 运行时依赖根仓库 @zcode/shared，
+  // 执行每个 run 前触发 pnpm install；子 workspace 运行时依赖根仓库 @s-agent/shared，
   // 自动 install 无法解析根 workspace 包，导致 dev:desktop:test 和 E2E onPrepare 失败。
   PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN: "false",
 };
@@ -29,27 +29,27 @@ const cuaPluginRuntimeStagingEnv = {
   ZCODE_CUA_DEV_MODE: "1",
 };
 // 修复原因：桌面 Agent 构建有普通 pnpm 和 bootstrap:with-remote 直跑 tsc 两条路径。
-// 过去两条路径分别维护依赖顺序，新增 @zcode/telemetry 后只更新了 bootstrap 依赖，
+// 过去两条路径分别维护依赖顺序，新增 @s-agent/telemetry 后只更新了 bootstrap 依赖，
 // 干净 CI 中 telemetry/dist 尚不存在，bootstrap 会因无法解析类型入口而失败。
 // 两条路径统一从这一份有序清单派生，避免后续新增 workspace 依赖时再次漂移。
 const cliWorkspaceBuilds = [
-  { packageName: "@zcode/shared-types", packageDir: "shared-types" },
-  { packageName: "@zcode/contracts", packageDir: "contracts" },
+  { packageName: "@s-agent/shared-types", packageDir: "shared-types" },
+  { packageName: "@s-agent/contracts", packageDir: "contracts" },
   // dynamic-workflow 的 tsc 构建依赖 gitignored 的 libs.generated.ts，
   // 而 bare-tsc 路径（runBootstrapWithRemoteBuild）不会执行 package build script，
-  // 所以需要先跑生成脚本；必须排在 @zcode/core 之前，core 依赖 dynamic-workflow。
+  // 所以需要先跑生成脚本；必须排在 @s-agent/core 之前，core 依赖 dynamic-workflow。
   {
-    packageName: "@zcode/dynamic-workflow",
+    packageName: "@s-agent/dynamic-workflow",
     packageDir: "dynamic-workflow",
     prepareScript: "scripts/generate-libs.mjs",
   },
   // dynamic-workflow-runtime 的类型入口是 dist/index.d.ts，必须先于 bootstrap 构建。
-  { packageName: "@zcode/dynamic-workflow-runtime", packageDir: "dynamic-workflow-runtime" },
-  { packageName: "@zcode/core", packageDir: "core" },
-  { packageName: "@zcode/adapters", packageDir: "adapters" },
-  { packageName: "@zcode/i18n", packageDir: "i18n" },
-  { packageName: "@zcode/telemetry", packageDir: "telemetry" },
-  { packageName: "@zcode/bootstrap", packageDir: "bootstrap" },
+  { packageName: "@s-agent/dynamic-workflow-runtime", packageDir: "dynamic-workflow-runtime" },
+  { packageName: "@s-agent/core", packageDir: "core" },
+  { packageName: "@s-agent/adapters", packageDir: "adapters" },
+  { packageName: "@s-agent/i18n", packageDir: "i18n" },
+  { packageName: "@s-agent/telemetry", packageDir: "telemetry" },
+  { packageName: "@s-agent/bootstrap", packageDir: "bootstrap" },
 ];
 // 官方插件 manifest 可以在 server.js 缺失时被 filesystem seed，直到 session
 // 连接 MCP 才报错，造成“Helper ready 但 CUA 工具不存在”的半启动状态。所有普通 Dev 必需的
@@ -60,30 +60,30 @@ const cliWorkspaceBuilds = [
 // 入口的插件打进 archive。凡 plugin.json 声明了 mcpServers 的官方插件都必须登记在此。
 const requiredDevPluginRuntimeBuilds = [
   {
-    packageName: "@zcode/android-emulator-plugin",
+    packageName: "@s-agent/android-emulator-plugin",
     artifactPath: "android-emulator-plugin/dist/mcp/server.js",
   },
   {
-    packageName: "@zcode/ios-simulator-plugin",
+    packageName: "@s-agent/ios-simulator-plugin",
     artifactPath: "ios-simulator-plugin/dist/mcp/server.js",
   },
   {
     // node_repl 宿主：Browser Use 与 Computer Use 共用，产物归属独立包。
-    packageName: "@zcode/node-repl-host",
+    packageName: "@s-agent/node-repl-host",
     artifactPath: "node-repl-host/dist/mcp/server.js",
   },
   {
     // browser-use 自己的 runtime 只剩 browser-client；宿主不再由它携带。
-    packageName: "@zcode/browser-use-plugin",
+    packageName: "@s-agent/browser-use-plugin",
     artifactPath: "browser-use-plugin/scripts/browser-client.mjs",
   },
   // 文档插件的查看面板 server 由 office-runtime 构建；dev 若不构建，面板入口可见但 MCP 启动失败。
   ...["documents", "pdf", "presentations", "spreadsheets"].map((name) => ({
-    packageName: `@zcode/${name}-plugin`,
+    packageName: `@s-agent/${name}-plugin`,
     artifactPath: `${name}-plugin/dist/server.mjs`,
   })),
   // Sites 面板的 MCP server 由插件自己构建；不构建时面板入口可见但 MCP 启动失败。
-  { packageName: "@zcode/zcode-site-plugin", artifactPath: "zcode-site-plugin/dist/server.mjs" },
+  { packageName: "@s-agent/zcode-site-plugin", artifactPath: "zcode-site-plugin/dist/server.mjs" },
 ];
 const defaultBuildFilters = [
   ...cliWorkspaceBuilds.map(({ packageName }) => packageName),
@@ -162,7 +162,7 @@ if (useBootstrapWithRemoteBuild) {
 if (!useTurboBuild) {
   // Linux 容器 demo 里没有仓库级 turbo 根，`turbo --cwd apps/zcode-cli`
   // 会把 apps/zcode-cli 当根目录，并拒绝 turbo.json 中指向 ../../packages/shared 的 inputs。
-  // 同时 agent 子 workspace 不包含根 packages/shared，但 agent 包依赖 @zcode/shared。
+  // 同时 agent 子 workspace 不包含根 packages/shared，但 agent 包依赖 @s-agent/shared。
   // 因此默认改用仓库根 workspace 的明确 pnpm 包顺序构建，避免 WDIO 前置构建卡在子 workspace 解析。
   for (const filter of defaultBuildFilters) {
     runCommand("pnpm", ["--filter", filter, "build"], {
@@ -172,7 +172,7 @@ if (!useTurboBuild) {
   }
 
   await verifyRequiredDevPluginRuntimeArtifacts();
-  runCommand("pnpm", ["--filter", "@zcode/cli", "build:desktop-agent"], {
+  runCommand("pnpm", ["--filter", "@s-agent/cli", "build:desktop-agent"], {
     env: pnpmRunEnv,
     stdio: "inherit",
   });
@@ -191,7 +191,7 @@ runCommand(
     "apps/zcode-cli",
     "run",
     "build:desktop-agent",
-    "--filter=@zcode/cli",
+    "--filter=@s-agent/cli",
   ],
   {
     env: pnpmRunEnv,

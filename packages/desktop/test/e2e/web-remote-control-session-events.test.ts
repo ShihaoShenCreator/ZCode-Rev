@@ -2,13 +2,13 @@ import { chmod, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import { once } from "node:events";
 import { join } from "node:path";
 import { WebSocket } from "ws";
-import { acquireFileLock } from "@zcode/shared/node";
-import { type WebRemoteControlStatus } from "@zcode/shared";
+import { acquireFileLock } from "@s-agent/shared/node";
+import { type WebRemoteControlStatus } from "@s-agent/shared";
 import {
   TID_CONFIRM_DIALOG_CONFIRM,
   TID_LOGIN_TRIGGER,
   TID_LOGOUT_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 
 async function remoteStatus() {

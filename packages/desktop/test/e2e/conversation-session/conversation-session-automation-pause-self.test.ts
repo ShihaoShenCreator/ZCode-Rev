@@ -14,7 +14,7 @@ import {
   TID_AUTOMATIONS_OPEN,
   TID_TASK_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

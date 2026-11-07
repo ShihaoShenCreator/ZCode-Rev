@@ -12,7 +12,7 @@ import {
   resolveWorkspaceKey,
   type ZCodeSavedWorkflowEntry,
   type ZCodeSavedWorkflowScope,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { useWorkspaceServicesResolution } from "@/hooks/useWorkspaceServices.js";
 import {
   selectWorkflowRunSavedState,

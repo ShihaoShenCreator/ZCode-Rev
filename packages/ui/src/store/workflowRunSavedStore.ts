@@ -9,7 +9,7 @@ import type {
   ZCodeSavedWorkflowEntry,
   ZCodeWorkflowsForRunCandidate,
   ZCodeWorkflowsForRunResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger } from "@/logger.js";
 
 /**

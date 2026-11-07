@@ -10,8 +10,8 @@ import { rm } from "node:fs/promises";
 import { createConnection, createServer, type Socket } from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Logger } from "@zcode/contracts";
-import type { NodeReplRequestMeta } from "@zcode/core/repl";
+import type { Logger } from "@s-agent/contracts";
+import type { NodeReplRequestMeta } from "@s-agent/core/repl";
 import type { NodeReplCallLedger, NodeReplCallLedgerEntry } from "./ledger.js";
 
 const MAX_REQUEST_BYTES = 1024 * 1024;

@@ -1,10 +1,10 @@
-import { isStartPlanModelProviderId } from "@zcode/shared";
-import type { IUsageStatsService } from "@zcode/services";
+import { isStartPlanModelProviderId } from "@s-agent/shared";
+import type { IUsageStatsService } from "@s-agent/services";
 import type {
   UsageEntitlementSnapshot,
   ZCodeAccountAccess,
   ZCodeProviderAccountAccess,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export interface UsageEntitlementRequestOptions {
   invalidateBalanceCache?: boolean;

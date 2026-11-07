@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
-import type { BrowserControlPort, TraceContext } from "@zcode/contracts";
+import type { BrowserControlPort, TraceContext } from "@s-agent/contracts";
 import {
   zcodeBrowserExecuteResultSchema,
   zcodeBrowserListResultSchema,
   zcodeProtocolMethods,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   protocolTraceFromTraceContext,
   requireSession,

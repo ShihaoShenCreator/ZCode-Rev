@@ -9,8 +9,8 @@ import {
   type IPlatformService,
   type UserInfo,
   type ZCodeTaskClientMode,
-} from "@zcode/shared";
-import type { IServiceAccessor } from "@zcode/services";
+} from "@s-agent/shared";
+import type { IServiceAccessor } from "@s-agent/services";
 import type {
   CreateTaskOptions,
   CreateTaskRequest,

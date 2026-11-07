@@ -2,8 +2,8 @@ import type {
   ModelInvocationContext,
   ModelRequestAuth,
   ModelRequestAuthSourceInput,
-} from "@zcode/contracts";
-import type { ZCodeProviderAccountAccess } from "@zcode/shared";
+} from "@s-agent/contracts";
+import type { ZCodeProviderAccountAccess } from "@s-agent/shared";
 
 /** 派发快照只固定票据与登录作用域；短期 PAT 必须在每个 HTTP attempt 向原 owner 解析。 */
 export async function refreshOffPeakRequestAuth(params: {

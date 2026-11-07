@@ -1,4 +1,4 @@
-import type { ZCodeTaskMeta } from "@zcode/shared";
+import type { ZCodeTaskMeta } from "@s-agent/shared";
 import { isTaskListRowActive } from "@/v4/taskListRowActivity.js";
 
 export type TaskListTimeSortBy = "created" | "updated";

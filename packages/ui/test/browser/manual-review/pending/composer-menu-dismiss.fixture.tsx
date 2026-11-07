@@ -8,7 +8,7 @@ import {
   SidePaneFullViewConversationHost,
   useConversationPanePresentation,
 } from "@/side-pane-full-view/index.js";
-import type { PluginSandboxHandle } from "@zcode/shared/mcp-apps";
+import type { PluginSandboxHandle } from "@s-agent/shared/mcp-apps";
 import "@/styles.css";
 
 const params = new URLSearchParams(location.search);

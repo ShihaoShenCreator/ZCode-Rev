@@ -1,6 +1,6 @@
-import { IZCodeAgentService, type IBotsService, type ServiceCollection } from "@zcode/services";
-import { createTopicResourceRelayChannel } from "@zcode/services/node";
-import type { WindowHostAttachmentScope, ZCodeTopicResourceRelayRequest } from "@zcode/shared";
+import { IZCodeAgentService, type IBotsService, type ServiceCollection } from "@s-agent/services";
+import { createTopicResourceRelayChannel } from "@s-agent/services/node";
+import type { WindowHostAttachmentScope, ZCodeTopicResourceRelayRequest } from "@s-agent/shared";
 
 /** 反向请求必须属于发起它的物理连接，并仍绑定当前 logical session，不能只比较文件路径。 */
 export function createWindowTopicResourceRelay(deps: {

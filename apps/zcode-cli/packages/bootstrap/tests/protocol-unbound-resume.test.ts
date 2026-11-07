@@ -1,25 +1,25 @@
 import { describe, expect, it } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import { createLegacySelectionStoreFixture } from "./helpers/legacy-selection-store.js";
-import { ProviderRegistry } from "@zcode/provider";
+import { ProviderRegistry } from "@s-agent/provider";
 import {
   createSessionId,
   createProjectId,
   createMessageId,
   createPartId,
   SESSION_ENTRY_MODEL_SELECTION,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   zcodeProtocolMethods,
   zcodeSessionForkResultSchema,
   zcodeSessionStateSnapshotSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   V4_METHODS,
   conversationTopic,
   routedTopicWireFrameSchema,
   conversationTopicFrameSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 import {
   createRegistryBackedTestApp,

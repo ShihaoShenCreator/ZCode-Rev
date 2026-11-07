@@ -204,7 +204,7 @@ wire (MCS / non-MCS): user [<system-reminder>boundary</system-reminder>, questio
 ```
 
 ```bash
-pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-side-chat-reminder.test.ts'
+pnpm --filter @s-agent/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-side-chat-reminder.test.ts'
 ```
 
 正式回归仅保留 UI、持久化和 provider 请求断言；运行报告与网络证据由共享 E2E runner

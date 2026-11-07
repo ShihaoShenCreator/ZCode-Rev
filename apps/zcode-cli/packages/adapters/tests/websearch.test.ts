@@ -6,7 +6,7 @@ import {
   WEBSEARCH_PROVIDER_NATIVE_SPEC,
   WEBSEARCH_TOOL_CONTRACT,
   type ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { describe, expect, it } from "vitest";
 import { toAiSdkTools } from "../src/model/index.js";
 

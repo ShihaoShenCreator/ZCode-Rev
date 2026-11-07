@@ -1,4 +1,4 @@
-import type { ZCodeSessionEvent } from "@zcode/shared";
+import type { ZCodeSessionEvent } from "@s-agent/shared";
 
 const MAX_TRACKED_SESSION_EVENT_IDS = 10_000;
 

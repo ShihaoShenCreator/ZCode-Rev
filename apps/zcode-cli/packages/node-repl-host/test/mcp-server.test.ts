@@ -11,8 +11,8 @@ import {
   ZCODE_MCP_NODE_REPL_BROWSER_USE_META_KEY,
   ZCODE_MCP_NODE_REPL_COMPUTER_USE_META_KEY,
   ZCODE_MCP_NODE_REPL_CUA_APP_META_KEY,
-} from "@zcode/contracts";
-import { CUA_APP_ASSOCIATIONS_META_KEY } from "@zcode/zcode-cua/host-display-contract";
+} from "@s-agent/contracts";
+import { CUA_APP_ASSOCIATIONS_META_KEY } from "@s-agent/zcode-cua/host-display-contract";
 import {
   captureComputerUseRuntimeFromEnvironment,
   createInProcessNodeReplExecutor,

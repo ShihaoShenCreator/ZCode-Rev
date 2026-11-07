@@ -1,4 +1,4 @@
-import type { ZCodeTaskChangeSummary } from "@zcode/shared";
+import type { ZCodeTaskChangeSummary } from "@s-agent/shared";
 
 export function formatGroupedTaskHoverChangeParts(
   summary: ZCodeTaskChangeSummary | null,

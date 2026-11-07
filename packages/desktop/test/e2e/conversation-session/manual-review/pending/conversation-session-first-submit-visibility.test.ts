@@ -1,7 +1,7 @@
 import { DatabaseSync } from "node:sqlite";
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
-import { TID_V4_SESSION_PANE, testId } from "@zcode/shared/test-ids";
+import { TID_V4_SESSION_PANE, testId } from "@s-agent/shared/test-ids";
 import {
   prepareV4ConversationE2E,
   sendV4Prompt,

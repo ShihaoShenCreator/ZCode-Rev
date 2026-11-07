@@ -1,4 +1,4 @@
-import { BUILTIN_MODEL_PROVIDER_IDS, ServiceChannels } from "@zcode/shared";
+import { BUILTIN_MODEL_PROVIDER_IDS, ServiceChannels } from "@s-agent/shared";
 import {
   installHandoffRpcProbe,
   callHandoffHost,
@@ -22,7 +22,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

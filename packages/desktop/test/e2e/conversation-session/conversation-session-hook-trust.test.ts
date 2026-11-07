@@ -25,7 +25,7 @@ import {
   TID_V4_WORKSPACE_HOOK_PENDING_DISMISS,
   TID_V4_WORKSPACE_HOOK_PENDING_REVIEW,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

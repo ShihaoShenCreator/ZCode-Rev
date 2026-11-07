@@ -2,7 +2,7 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { countRendererReloadAcks } from "#e2e/helpers/remote-renderer-ready-evidence";
 import { waitForV4Pane } from "#e2e/helpers/v4-conversation";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 import { clearAppData } from "../helpers/desktop-app.js";
 import {
   connectSSHWorkspaceAndSendFirstTurn,

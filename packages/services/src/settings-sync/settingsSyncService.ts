@@ -20,7 +20,7 @@ import type {
   SettingsSyncSourceScope,
   SettingsSyncSourceRootSummary,
   SettingsSyncTaskImportResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { copyFile, cp, link, lstat, mkdir, readFile, readdir, rm, symlink } from "node:fs/promises";
 import { homedir } from "node:os";
 import { basename, dirname, join, relative, resolve } from "node:path";

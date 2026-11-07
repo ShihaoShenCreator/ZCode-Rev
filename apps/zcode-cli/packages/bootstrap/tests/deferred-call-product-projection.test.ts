@@ -1,10 +1,10 @@
 import { expect, it } from "vitest";
-import { DEFERRED_TOOL_CALL_NAME, SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { DEFERRED_TOOL_CALL_NAME, SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { ConversationTopicPublisher, ProductProjection } from "../src/zcode-protocol-v4/index.js";
 import {
   applyConversationDeltas,
   type ConversationSnapshot,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 
 it.each([false, true])(
   "scheduled identity owns tool rows and plan/CUA consumers (wrapped=%s)",

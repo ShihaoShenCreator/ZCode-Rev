@@ -23,8 +23,8 @@ import {
   zcodeProtocolMethods,
   zcodePluginsReferenceCatalogParamsSchema,
   zcodePluginsReferenceCatalogResultSchema,
-} from "@zcode/shared";
-import type { PluginReferenceCatalog } from "@zcode/contracts";
+} from "@s-agent/shared";
+import type { PluginReferenceCatalog } from "@s-agent/contracts";
 import { getPluginReferenceCatalog } from "../src/zcode-protocol/plugin-reference-catalog.js";
 import type {
   ZCodeProtocolAgentServerContext,

@@ -29,7 +29,7 @@ export interface StageOptions {
   notices: { thirdParty: string; node: string; nodeSource: string };
   /** 依赖闭包解析与复制的来源 node_modules */
   workspaceNodeModulesDir: string;
-  /** 未被 pnpm 链接到 node_modules 的 workspace 包（例如 @zcode/tui）。 */
+  /** 未被 pnpm 链接到 node_modules 的 workspace 包（例如 @s-agent/tui）。 */
   workspacePackageDirs?: ReadonlyMap<string, string>;
   /** 发行目录的输出父目录 */
   outputDir: string;

@@ -6,7 +6,7 @@ import {
   createSessionId,
   type SkillMetadata,
   type SkillPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 

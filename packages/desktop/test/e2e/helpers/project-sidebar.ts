@@ -13,7 +13,7 @@ import {
   TID_WORKSPACE_FILE_TREE_PANEL,
   testId,
   virtualProjectActionTestId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 
 /** 开始真实项目拖拽；调用方继续验证并通过 Escape / releaseActions 取消。 */
 export async function startProjectPointerDrag(selector: string) {

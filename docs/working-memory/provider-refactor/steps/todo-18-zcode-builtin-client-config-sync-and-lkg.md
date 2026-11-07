@@ -484,7 +484,7 @@ publish Source changed
 
 2026-08-25 已按本文完成：
 
-- `@zcode/provider-node` 增加严格两层 Release Schema、Bundled/Active 候选选择、原子 Active Source、
+- `@s-agent/provider-node` 增加严格两层 Release Schema、Bundled/Active 候选选择、原子 Active Source、
   跨进程刷新控制文件与 Remote Synchronizer；
 - 正式 `config/provider/zcode-builtin.json` 已迁为 `revision=1` 的两层 Release；
 - Services Environment 组合根使用当前 Endpoint、App Version、平台参数和既有 `ApiClient` 后台读取

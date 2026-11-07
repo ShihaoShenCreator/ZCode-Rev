@@ -5,8 +5,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { waitForWorkspaceApp, DEFAULT_WORKSPACE } from "../../../helpers/desktop-app.js";
 import { restartIntoWorkspacePreservingProfile } from "#e2e/helpers/model-provider-restart-runtime";
 import { loginWithApiKey } from "#e2e/helpers/v4-conversation";
-import { TID_AUTOMATIONS_OPEN } from "@zcode/shared/test-ids";
-import { ServiceChannels } from "@zcode/shared";
+import { TID_AUTOMATIONS_OPEN } from "@s-agent/shared/test-ids";
+import { ServiceChannels } from "@s-agent/shared";
 import {
   installHandoffRpcProbe,
   callHandoffHost,

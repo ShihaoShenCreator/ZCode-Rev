@@ -1,12 +1,12 @@
 import {
   applySqliteSchemaMigration,
   ensureSqliteSchemaMigrationTable,
-} from "@zcode/shared/sqlite-migrations";
+} from "@s-agent/shared/sqlite-migrations";
 import { SQLITE_MIGRATIONS } from "../src/storage/session-store/migrations.js";
 /**
  * SQLite 版 JournalStorePort（dwf_* 表）的测试。
  *
- * 两层：共享契约套件（与内存实现同一份，来自 `@zcode/dynamic-workflow/testing`）+
+ * 两层：共享契约套件（与内存实现同一份，来自 `@s-agent/dynamic-workflow/testing`）+
  * 内存实现根本表达不了的 SQLite 专属语义——跨进程重开后记录还在、事件序号接着长、
  * run 删除级联清掉 actor/node/event。后者才是 roadmap step 8 的真正目的。
  */
@@ -22,8 +22,8 @@ import type {
   JournalStorePort,
   NodeRecord,
   RunRecord,
-} from "@zcode/dynamic-workflow";
-import { runJournalStoreContract } from "@zcode/dynamic-workflow/testing";
+} from "@s-agent/dynamic-workflow";
+import { runJournalStoreContract } from "@s-agent/dynamic-workflow/testing";
 import type { DwfRunIntrospectionQueries, DwfRunSessionListItem } from "../src/storage/index.js";
 import { createDwfJournalStore, createSqliteSessionStore } from "../src/storage/index.js";
 import { runSqliteSessionMigrations } from "../src/storage/session-store/migration-runner.js";

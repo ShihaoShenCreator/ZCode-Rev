@@ -11,8 +11,8 @@ import {
   RESPOND_TO_COORDINATOR_TOOL_NAME,
   RESUME_WORKFLOW_RUN_TOOL_NAME,
   SAVE_WORKFLOW_TOOL_NAME,
-} from "@zcode/contracts";
-import { createSessionId } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { createSessionId } from "@s-agent/contracts";
 import { describe, expect, it } from "vitest";
 import { AgentRuntime } from "../src/runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

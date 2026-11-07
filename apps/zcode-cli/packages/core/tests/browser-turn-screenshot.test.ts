@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { BrowserCommandResult, SessionId, TurnId } from "@zcode/contracts";
+import type { BrowserCommandResult, SessionId, TurnId } from "@s-agent/contracts";
 import {
   consumeBrowserTurnState,
   recordBrowserTurnPageActivity,

@@ -1,7 +1,7 @@
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE } from "@zcode/contracts";
+import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE } from "@s-agent/contracts";
 import { describe, expect, it } from "vitest";
 import { createNodePluginAdapter } from "../src/plugins/index.js";
 

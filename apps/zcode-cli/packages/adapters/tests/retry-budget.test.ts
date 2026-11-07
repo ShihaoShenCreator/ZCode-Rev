@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ModelFailureReason, ModelRetryBudget, type ModelNetworkStatusEvent } from "@zcode/contracts";
+import { ModelFailureReason, ModelRetryBudget, type ModelNetworkStatusEvent } from "@s-agent/contracts";
 import type { AiSdkModelRuntime } from "../src/model/runner-runtime.js";
 import { executeAdapterGenerateText, executeAdapterStreamText } from "./test-adapter-model.js";
 import {

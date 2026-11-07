@@ -133,9 +133,9 @@ Todo 55 还必须补齐并实跑以下最终语义代表：
 ### 5.1 每个 Case
 
 ```bash
-pnpm --filter @zcode/desktop typecheck:e2e
+pnpm --filter @s-agent/desktop typecheck:e2e
 
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts \
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts \
   --spec './test/e2e/<path>/<case>.test.ts'
 ```
 
@@ -151,7 +151,7 @@ Conversation replay Case 还必须：
 按风险递增：
 
 1. Provider/Account/Selection/Provisioning 定向单测；
-2. `pnpm --filter @zcode/desktop typecheck:e2e`；
+2. `pnpm --filter @s-agent/desktop typecheck:e2e`；
 3. 四类 Smoke WDIO；
 4. 上述六组 Provider WDIO；
 5. Remote Provisioning 正式 Case；
@@ -237,7 +237,7 @@ Conversation replay Case 还必须：
 
 - Provider/Provisioning/Selection 定向单测：8 个文件、64 条通过；
 - 受影响的 9 个 Conversation Fixture 检查全部通过；
-- `pnpm --filter @zcode/desktop typecheck:e2e` 通过；
+- `pnpm --filter @s-agent/desktop typecheck:e2e` 通过；
 - `pnpm typecheck` 通过；
 - `pnpm lint` 通过，仅保留仓库既有 warning；
 - `pnpm test:unit`：1501 个 Test Files、12797 条 Tests 通过，1 个文件与 25 条测试按既有配置跳过；

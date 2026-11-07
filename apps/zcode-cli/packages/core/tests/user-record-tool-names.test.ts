@@ -1,8 +1,8 @@
 // user 角色记录的工具名单（docs/design/v2/session-persistence.md `MessageInfo.User.tools`）：
 // 只有用户输入记录写 tools；隐藏提醒、合成通知和 compact 摘要不写。
 import { describe, expect, it } from "vitest";
-import type { MessageInfo, TraceContext } from "@zcode/contracts";
-import { createMessageId, createTraceId, createTurnId } from "@zcode/contracts";
+import type { MessageInfo, TraceContext } from "@s-agent/contracts";
+import { createMessageId, createTraceId, createTurnId } from "@s-agent/contracts";
 import { systemReminderAttachmentEntry } from "../src/agent/message-history.js";
 import { persistCompactSummary } from "../src/runtime/methods/compact-persistence.js";
 import {

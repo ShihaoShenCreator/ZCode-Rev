@@ -16,7 +16,7 @@ import {
   MessageCirclePlus,
 } from "lucide-react";
 import { ProjectFolderIcon } from "@/project-sidebar/ProjectFolderIcon.js";
-import { sourceServerConnectionStateSchema } from "@zcode/shared";
+import { sourceServerConnectionStateSchema } from "@s-agent/shared";
 import type {
   ProjectTask,
   VirtualProject,

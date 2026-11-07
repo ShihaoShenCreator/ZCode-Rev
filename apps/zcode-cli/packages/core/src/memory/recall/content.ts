@@ -1,4 +1,4 @@
-import type { FileSystemPort } from "@zcode/contracts";
+import type { FileSystemPort } from "@s-agent/contracts";
 
 import type { MemoryManifestEntry, RecalledMemory } from "./types.js";
 

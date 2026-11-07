@@ -90,7 +90,7 @@ worker spec -> reset(scenario, marketingTouch) -> 同一 mock origin
 升级页的本地 mock origin 写入 renderer 构建产物。新建 run 时需正常构建，不能复用
 上一次 run 的 `ZCODE_E2E_SKIP_BUILD=1` 产物，否则 webview 会访问已关闭的旧端口。
 
-- `pnpm --filter @zcode/desktop typecheck:e2e`
+- `pnpm --filter @s-agent/desktop typecheck:e2e`
 - `pnpm typecheck`
 - `pnpm lint`
 - `pnpm test:e2e -- --spec ./test/e2e/coding-plan-upgrade-personal-sold-out.test.ts`

@@ -3,8 +3,8 @@ import {
   SessionEventType,
   type SessionEvent,
   type TurnInputIntentMetadata,
-} from "@zcode/contracts";
-import { queueItemSchema } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { queueItemSchema } from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 import { inputIntentMetadataFromQueueItem } from "../src/zcode-protocol-v4/commands/input-intent.js";
 

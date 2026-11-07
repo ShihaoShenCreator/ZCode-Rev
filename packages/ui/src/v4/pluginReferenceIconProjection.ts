@@ -1,6 +1,6 @@
 import { resolvePluginIconSource } from "@/lib/pluginIconSource.js";
-import type { ZCodePluginReferenceCatalogEntry } from "@zcode/shared";
-import type { ConversationRowsPartition } from "@zcode/shared/zcode-protocol-v4";
+import type { ZCodePluginReferenceCatalogEntry } from "@s-agent/shared";
+import type { ConversationRowsPartition } from "@s-agent/shared/zcode-protocol-v4";
 import { memoizeByRows, type ConversationStoreStatus } from "@/v4/conversationProjectionStore.js";
 
 export function isSessionPluginCatalogReady(

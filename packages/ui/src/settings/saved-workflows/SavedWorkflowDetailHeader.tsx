@@ -5,8 +5,8 @@ import {
   TID_WORKFLOW_ACTION_DELETE,
   TID_WORKFLOW_ACTION_MOVE,
   type ZCodeSavedWorkflowEntry,
-} from "@zcode/shared";
-import { testId } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { testId } from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import {
   DropdownMenu,

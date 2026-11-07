@@ -1,4 +1,4 @@
-import { TID_CHAT_MODEL_SELECT_TRIGGER } from "@zcode/shared/test-ids";
+import { TID_CHAT_MODEL_SELECT_TRIGGER } from "@s-agent/shared/test-ids";
 import {
   E2E_BIGMODEL_PLAN_PROVIDER_ID,
   E2E_PLAN_FIRST_MODEL,

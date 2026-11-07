@@ -1,11 +1,11 @@
-import type { Logger } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
 import {
   createMemorySampleWriteGate,
   memoryUsageToSampleFields,
   zcodeProtocolNotifications,
   type MemorySample,
   type ZCodeProtocolNotification,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   createZCodeProcessResourceSampler,
   type ZCodeProcessResourceSampler,

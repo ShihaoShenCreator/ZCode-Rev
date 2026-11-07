@@ -4,12 +4,12 @@ import {
   createRootTraceContext,
   SessionEventType,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   DELIVERY_PROFILES,
   filterConversationDeltasForProfile,
   conversationSnapshotSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 
 describe("guarded continuous/replayable share authoritative pending approval", () => {

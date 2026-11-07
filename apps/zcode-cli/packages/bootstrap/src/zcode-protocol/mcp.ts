@@ -2,14 +2,14 @@ import { createWorkspaceMcpTrust } from "../workspace-mcp-trust/index.js";
 import {
   zcodeWorkspaceMcpTrustParamsSchema,
   type ZCodeWorkspaceMcpTrustResult,
-} from "@zcode/shared";
-import { createConfig, resolvePath } from "@zcode/adapters/config";
-import type { Logger, McpConnectionSnapshot, McpPort, McpServerStatus } from "@zcode/contracts";
+} from "@s-agent/shared";
+import { createConfig, resolvePath } from "@s-agent/adapters/config";
+import type { Logger, McpConnectionSnapshot, McpPort, McpServerStatus } from "@s-agent/contracts";
 import {
   zcodeMcpListParamsSchema,
   zcodeMcpListResultSchema,
   type ZCodeMcpListResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   listMcpServerStatuses,
   omitMcpServers,

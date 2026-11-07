@@ -1,12 +1,12 @@
 // MRO01：真实 Web 入口与 RPC 帧；受控桌面 bridge 成功/失败，不发送模型请求。
-// 启动：pnpm --filter @zcode/web exec vite --host 127.0.0.1 --port 5178 --strictPort
+// 启动：pnpm --filter @s-agent/web exec vite --host 127.0.0.1 --port 5178 --strictPort
 // 运行：pnpm exec tsx packages/web/test/e2e/manual-review/pending/remote-task-open.mjs
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
-import { ServiceChannels } from "@zcode/shared";
-import { V4_WIRE_PROTOCOL_VERSION } from "@zcode/shared/zcode-protocol-v4";
+import { ServiceChannels } from "@s-agent/shared";
+import { V4_WIRE_PROTOCOL_VERSION } from "@s-agent/shared/zcode-protocol-v4";
 import { Emitter } from "../../../../../rpc/src/index.ts";
 import { taskSnapshotFrame } from "./remote-task-open.fixture.mjs";
 import { createDeviceSwitchDesktopBridge } from "./remote-device-switch.helpers.mjs";

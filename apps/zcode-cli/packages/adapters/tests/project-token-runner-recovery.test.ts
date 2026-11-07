@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { APICallError } from "@ai-sdk/provider";
-import { runWithModelInvocationContext } from "@zcode/contracts";
-import { projectAccessTokenFingerprint } from "@zcode/shared";
+import { runWithModelInvocationContext } from "@s-agent/contracts";
+import { projectAccessTokenFingerprint } from "@s-agent/shared";
 import { TestAiSdkModelAdapter, TestProviderConfigFixture } from "./test-provider-config.js";
 
 const scope = "a".repeat(64);

@@ -1,4 +1,4 @@
-import type { ZCodeSessionStateSnapshot } from "@zcode/shared";
+import type { ZCodeSessionStateSnapshot } from "@s-agent/shared";
 import type {
   ZCodeSessionWorkspaceTarget,
   ZCodeTaskTarget,

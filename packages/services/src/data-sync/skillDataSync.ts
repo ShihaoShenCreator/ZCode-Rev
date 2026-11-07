@@ -6,7 +6,7 @@ import type {
   DataSyncImportResultItem,
   DataSyncListItem,
   SkillDataSyncPayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { pathExists, updateJsonObjectFile } from "#src/fs/atomicFileUtils.js";
 import { createServiceLogger } from "#src/logger/serviceLogger.js";
 import { checkRemoteSyncDirectoriesWriteAccess } from "#src/remote-sync/remoteSyncWriteAccess.js";

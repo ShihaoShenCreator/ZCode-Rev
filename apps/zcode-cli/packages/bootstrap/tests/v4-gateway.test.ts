@@ -7,7 +7,7 @@
 //   4. 重订阅替换（R-01）：旧订阅调度状态被清理、不再产帧
 //   5. disposeSession / dispose：定时器与 publisher 全量回收
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import type {
   EventId,
   SessionEvent,
@@ -15,14 +15,14 @@ import type {
   SessionId,
   TraceId,
   TurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   SessionEventType,
   createMessageId,
   createPartId,
   createProjectId,
   createSessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   CommandAck,
   CommandEnvelope,
@@ -33,12 +33,12 @@ import type {
   RoutedTopicWireFrame,
   V4ConversationFileChangesResult,
   V4ConversationFileRewindPreviewResult,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   DELIVERY_PROFILES,
   PROTOCOL_V4_LIMITS,
   utf8JsonByteLength,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   ConversationTopicPublisher,
   ConversationV4Gateway,

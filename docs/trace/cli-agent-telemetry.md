@@ -192,7 +192,7 @@ Trace A: triggering span -- Link ----> Trace B: detached_operation(root)
 
 ### 5.1 使用 Typed Writer
 
-业务代码依赖 `@zcode/contracts/telemetry` 中的窄接口。Writer 的每个 Setter 对应一个明确事实，
+业务代码依赖 `@s-agent/contracts/telemetry` 中的窄接口。Writer 的每个 Setter 对应一个明确事实，
 内部负责 Attribute Key、校验、脱敏、Event、Metric 和外部兼容别名。
 
 ```ts

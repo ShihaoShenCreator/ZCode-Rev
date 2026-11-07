@@ -4,7 +4,7 @@ ZCode's Agent CLI provides an interactive terminal and non-interactive task exec
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm --filter @zcode/cli... build
+pnpm --filter @s-agent/cli... build
 node apps/zcode-cli/packages/cli/dist/zcode.cjs doctor --json
 ```
 
@@ -22,4 +22,4 @@ Useful entry points:
 - [Design specifications](docs/design/v2/)
 - [Contributor instructions](AGENTS.md)
 
-Run `pnpm --filter @zcode/cli dev` for source development. CLI code validation follows the contributor instructions; CLI tests are separate from the root unit-test suite.
+Run `pnpm --filter @s-agent/cli dev` for source development. CLI code validation follows the contributor instructions; CLI tests are separate from the root unit-test suite.

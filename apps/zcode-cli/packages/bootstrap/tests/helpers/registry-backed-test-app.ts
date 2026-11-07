@@ -2,15 +2,15 @@ import {
   createModel as createExecutableModel,
   type AiSdkModelAdapter,
   type CreateAiSdkModelOptions,
-} from "@zcode/adapters/model";
-import { type ModelEvent, type ModelRequest, type ModelResult } from "@zcode/contracts";
+} from "@s-agent/adapters/model";
+import { type ModelEvent, type ModelRequest, type ModelResult } from "@s-agent/contracts";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
   type Provider,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { createZCodeApp } from "../../src/app/create-app.js";
 import type { ZCodeApp, ZCodeAppOptions } from "../../src/app/types.js";
 import { createApiKeyProviderConfig } from "../provider-config-fixtures.js";

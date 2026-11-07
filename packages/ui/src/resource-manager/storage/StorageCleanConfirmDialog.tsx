@@ -1,10 +1,10 @@
 import { Loader2 } from "lucide-react";
-import { type StorageCategoryId } from "@zcode/shared";
+import { type StorageCategoryId } from "@s-agent/shared";
 import {
   TID_RESOURCE_MANAGER_STORAGE_CONFIRM_ACCEPT,
   TID_RESOURCE_MANAGER_STORAGE_CONFIRM_CANCEL,
   TID_RESOURCE_MANAGER_STORAGE_CONFIRM_DIALOG,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   AlertDialog,
   AlertDialogAction,

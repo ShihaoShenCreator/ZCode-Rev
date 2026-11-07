@@ -40,7 +40,7 @@ import {
   type SubagentTaskSnapshot,
   type SubagentWaitOptions,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { mkdir, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
@@ -126,7 +126,7 @@ export interface ExploreSubagentPortOptions {
   profiles?: readonly AgentProfile[];
   getAgentDefinitions?: GetAgentDefinitions;
   builtInModelSelectionOverrides?: Partial<
-    Record<"general-purpose" | "Explore", import("@zcode/shared").ModelSelection>
+    Record<"general-purpose" | "Explore", import("@s-agent/shared").ModelSelection>
   >;
   runtimeTaskRegistry?: RuntimeTaskRegistry;
   createAgentId?: () => string;

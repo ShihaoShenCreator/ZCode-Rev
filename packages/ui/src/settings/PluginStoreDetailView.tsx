@@ -16,7 +16,7 @@ import {
   Maximize2,
   RotateCcw,
 } from "lucide-react";
-import type { ZCodePluginComponentKind, ZCodePluginsDescribeResult } from "@zcode/shared";
+import type { ZCodePluginComponentKind, ZCodePluginsDescribeResult } from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog.js";
 import { resolvePluginUiSurfaceTitle } from "@/plugin-ui/index.js";

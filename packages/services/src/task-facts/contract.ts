@@ -1,5 +1,5 @@
-import type { ZCodeTaskMeta, ZCodeWorkspaceTaskListChanged } from "@zcode/shared";
-import type { SessionSummary, SessionsIndexReconcileResult } from "@zcode/shared/zcode-protocol-v4";
+import type { ZCodeTaskMeta, ZCodeWorkspaceTaskListChanged } from "@s-agent/shared";
+import type { SessionSummary, SessionsIndexReconcileResult } from "@s-agent/shared/zcode-protocol-v4";
 
 export interface TaskWorkspace {
   workspacePath: string;

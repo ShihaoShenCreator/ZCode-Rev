@@ -11,7 +11,7 @@ import {
   type WorkflowNodeStatus,
   type WorkflowPhaseSnapshot,
   type WorkflowRunSnapshot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export interface WorkflowGraphNodeChange {
   nodeId: string;

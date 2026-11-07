@@ -1,4 +1,4 @@
-import { TOOL_SEARCH_BETA, type Model, type ToolSearchCapability } from "@zcode/contracts";
+import { TOOL_SEARCH_BETA, type Model, type ToolSearchCapability } from "@s-agent/contracts";
 
 const ANTHROPIC_MESSAGES_API_TYPE = "anthropic-messages";
 

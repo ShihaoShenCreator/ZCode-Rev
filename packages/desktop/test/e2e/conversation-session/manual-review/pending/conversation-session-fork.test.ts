@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import { TID_V4_FORK } from "@zcode/shared/test-ids";
+import { TID_V4_FORK } from "@s-agent/shared/test-ids";
 import { clearAppData, DEFAULT_WORKSPACE, clickTestIdByDom } from "../../../helpers/desktop-app.js";
 import {
   waitForUpstreamNetworkCapture,

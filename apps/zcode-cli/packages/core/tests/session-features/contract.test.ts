@@ -1,5 +1,5 @@
 import { expectTypeOf, it } from "vitest";
-import type { ModelRequestSessionFeature } from "@zcode/contracts";
+import type { ModelRequestSessionFeature } from "@s-agent/contracts";
 import type { AgentRuntimeInternal } from "../../src/runtime/internal.js";
 import {
   readSessionFeatures,

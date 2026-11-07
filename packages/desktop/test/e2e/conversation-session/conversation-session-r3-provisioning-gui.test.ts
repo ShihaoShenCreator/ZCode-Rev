@@ -20,7 +20,7 @@ import {
   parseRemoteWorkspaceIdentity,
   providerProvisioningResultSchema,
   type AppSettings,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_CONFIRM_DIALOG_CONFIRM,
   TID_SETTINGS_BACK_BUTTON,
@@ -28,7 +28,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   getE2EAppDataPaths,

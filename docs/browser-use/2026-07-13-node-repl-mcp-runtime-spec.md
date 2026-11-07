@@ -69,7 +69,7 @@ MCP runtime 仍写入旧版本的漂移。
 
 ### 2.1 `js`
 
-模型侧输入合同复用 `@zcode/contracts` 的 `JsInputJsonSchema`，禁止 MCP server 另写一份会漂移的
+模型侧输入合同复用 `@s-agent/contracts` 的 `JsInputJsonSchema`，禁止 MCP server 另写一份会漂移的
 JSON Schema：
 
 - `code: string`，必填。
@@ -223,7 +223,7 @@ stdin/stdout/stderr、exit/kill/chdir，以免破坏 MCP stdio 或关闭 child�
 - browser bootstrap 不再让模型把 `scripts/browser-client.mjs` 相对到 `skills/control-browser`；插件根目录
   由 `node_repl` MCP child 的只读 `process.env.ZCODE_PLUGIN_ROOT` 提供，并在 Skill 模板内用
   `pathToFileURL(join(...))` 转为可移植的 ESM import URL。
-- `node_repl` MCP 的模型输入 schema 复用 `@zcode/contracts`；新调用强制提供用户可读 title，执行层继续
+- `node_repl` MCP 的模型输入 schema 复用 `@s-agent/contracts`；新调用强制提供用户可读 title，执行层继续
   接受旧 code-only 调用，避免 UI 再次退回固定完成文案，同时保持历史兼容。
 - 已按本规格做黑盒合同核验：ZCode 的 tools/list、严格 schema、空代码、
   module dir 首次/重复结果及非法路径 `-32602` 边界均符合预期。

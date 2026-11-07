@@ -29,7 +29,7 @@
   dist/js_eval/helper_lifecycle/package_smoke/e2e 全部 skipped（看起来只有一个 job 失败，实际整条流水线没验）。
 - `dist/` 是 git-tracked 且就是包本体：改 src 必须同一 commit 重建 dist。重建前确认 `node_modules`
   不是软链（worktree 常软链到主克隆；是则 `rm node_modules` 摘链后 `corepack pnpm install --frozen-lockfile`）。
-- producer pin 只能用脚本改：`pnpm --filter @zcode/zcode-cua-plugin bump:producer <完整40位sha>`（在 z-code 仓库跑；
+- producer pin 只能用脚本改：`pnpm --filter @s-agent/zcode-cua-plugin bump:producer <完整40位sha>`（在 z-code 仓库跑；
   producer worktree 场景先 `export ZCODE_CUA_REPO=/Users/dev/.codex/worktrees/cua-refactor/zcode-cua`）。
   手改 `pnpm-workspace.yaml` 的 SHA 会被 `check-cua-baseline.mjs` 拒绝；pin 目标必须已推到远端。**必须全 sha**（短前缀会造混合 sha）。
 - 两仓库都提交后立刻 push（并发会话 amend 吞 commit 的历史教训；pin 只信远端 ref）。
@@ -439,7 +439,7 @@ git -C /Users/dev/.codex/worktrees/cua-refactor/zcode-cua push -u origin feat/wi
 
 **Interfaces:**
 - Produces:
-  - `getStableCuaPipeName(): string`——进程级 singleton，首次调用用 `mintBrokerSocketPath({ env: process.env })` 铸造（与 `windowsCuaHelperHostSupport.ts` 的 `defaultSocketPathFactory` 同源，import 路径 `@zcode/zcode-cua/broker/socketPath`，照抄该文件现有 import）。
+  - `getStableCuaPipeName(): string`——进程级 singleton，首次调用用 `mintBrokerSocketPath({ env: process.env })` 铸造（与 `windowsCuaHelperHostSupport.ts` 的 `defaultSocketPathFactory` 同源，import 路径 `@s-agent/zcode-cua/broker/socketPath`，照抄该文件现有 import）。
   - `resolveStableCuaWinRecipe(): Promise<StableCuaWinRecipe | null>`——`{ command, entryPath, root, addonPath, commandEnv }`；内部 `resolveWindowsCuaRuntime()`（`#src/cua-permission-broker/windowsCuaDevRuntime.js`），成功缓存、失败返回 null 并 warn 一次；并发调用共享同一 in-flight promise。
 
 - [ ] **Step 1: 写失败测试**
@@ -481,7 +481,7 @@ Expected: FAIL（模块不存在）。
 - [ ] **Step 3: 实现**
 
 ```ts
-import { mintBrokerSocketPath } from "@zcode/zcode-cua/broker/socketPath";
+import { mintBrokerSocketPath } from "@s-agent/zcode-cua/broker/socketPath";
 import { createServiceLogger } from "#src/logger/serviceLogger.js";
 import { resolveWindowsCuaRuntime } from "#src/cua-permission-broker/windowsCuaDevRuntime.js";
 
@@ -766,7 +766,7 @@ Expected: 输出远端 ref 与完整 sha（Task 3 已 push）。
 
 ```bash
 export ZCODE_CUA_REPO=/Users/dev/.codex/worktrees/cua-refactor/zcode-cua
-pnpm --filter @zcode/zcode-cua-plugin bump:producer <上一步的完整40位sha>
+pnpm --filter @s-agent/zcode-cua-plugin bump:producer <上一步的完整40位sha>
 ```
 
 **禁止**手改 `pnpm-workspace.yaml` 的 SHA（`check-cua-baseline.mjs` 会拒），**禁止**短前缀。

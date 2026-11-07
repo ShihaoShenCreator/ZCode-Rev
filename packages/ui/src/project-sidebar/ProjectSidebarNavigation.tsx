@@ -1,5 +1,5 @@
 import { Blocks, CalendarClock } from "lucide-react";
-import { TID_AUTOMATIONS_OPEN } from "@zcode/shared/test-ids";
+import { TID_AUTOMATIONS_OPEN } from "@s-agent/shared/test-ids";
 import type { ProjectSidebarProps } from "@/project-sidebar/contract.js";
 import { Button } from "@/components/ui/button.js";
 import { NewTaskButtonGroup } from "@/NewTaskButtonGroup.js";

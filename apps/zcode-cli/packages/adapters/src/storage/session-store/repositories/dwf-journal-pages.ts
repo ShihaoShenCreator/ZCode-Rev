@@ -15,7 +15,7 @@
  */
 
 import type { DatabaseSync } from "node:sqlite";
-import type { StoredEvent } from "@zcode/dynamic-workflow";
+import type { StoredEvent } from "@s-agent/dynamic-workflow";
 import { decodeEvent } from "./dwf-journal-codecs.js";
 
 /** 分页袋：cursor 严格大于、两道界同时生效。 */

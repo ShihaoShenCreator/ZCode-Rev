@@ -12,7 +12,7 @@ import {
   type HookInput,
   type HookJSONOutput,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createConfiguredHookRunner } from "../src/hooks/index.js";
 import { matchesHookMatcher } from "../src/hooks/output.js";
 

@@ -1,5 +1,5 @@
 import { resolveDeferredToolCall } from "../../tool/deferred-call.js";
-import type { ToolSearchExecutionContext } from "@zcode/contracts";
+import type { ToolSearchExecutionContext } from "@s-agent/contracts";
 import { TurnMachineImpl, createPartId } from "../deps.js";
 import type {
   MessageId,

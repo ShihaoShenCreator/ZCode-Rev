@@ -6,8 +6,8 @@ import {
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
-import { TID_V4_SESSION_PANE, testId } from "@zcode/shared/test-ids";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
+import { TID_V4_SESSION_PANE, testId } from "@s-agent/shared/test-ids";
 import { clearAppData, waitForWorkspaceApp } from "../helpers/desktop-app.js";
 import {
   getUpstreamRequestRecordCount,

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import type { ProjectTree } from "@zcode/services";
-import type { ZCodeProvider, ZCodeTaskMeta } from "@zcode/shared";
+import type { ProjectTree } from "@s-agent/services";
+import type { ZCodeProvider, ZCodeTaskMeta } from "@s-agent/shared";
 import { buildSessionMentionMarkdown } from "@/mentions/mentionMarkdown.js";
 import { filterMentionItemsWithOptions } from "@/mentions/mentionSearch.js";
 import type { MentionCategoryResult, MentionItem } from "@/mentions/mentionTypes.js";

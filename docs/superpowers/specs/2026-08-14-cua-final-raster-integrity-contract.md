@@ -23,7 +23,7 @@ revision 同时包含 0.5.7 producer surface 简化、最终栅格/Zoom 权威�
 
 `x/y` 是模型实际收到的那张图的整数像素。模型不选择 Retina、DPI、
 逻辑点、物理像素、crop、缩放、窗口原点或显示器坐标系；这些差异全部由
-`@zcode/zcode-cua` 和 Helper 内部处理。
+`@s-agent/zcode-cua` 和 Helper 内部处理。
 
 该约束只定义“模型从图像选点”这条路径。模型直接使用可访问性树中的
 `state_id/index` 时仍可传 element target；element target 不携带图像坐标，也不得作为

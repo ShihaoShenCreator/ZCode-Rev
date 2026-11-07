@@ -2,8 +2,8 @@ import { copyFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import assert from "node:assert/strict";
 import { webContents, type BrowserWindow } from "electron";
-import { getGenUiOutputDirectory } from "@zcode/shared/node";
-import type { IGenUiService } from "@zcode/services";
+import { getGenUiOutputDirectory } from "@s-agent/shared/node";
+import type { IGenUiService } from "@s-agent/services";
 
 export async function prepareOutputFiles(root: string) {
   // 回归：打开 Home 一类包含应用数据目录的工作区，固定 Gen UI 输出仍须可读。

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { BackgroundBashOutputResult } from "@zcode/shared";
+import type { BackgroundBashOutputResult } from "@s-agent/shared";
 import { readBackgroundBashOutputFromOwner as readOutput } from "../src/zcode-protocol/background-work-owner.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";
 

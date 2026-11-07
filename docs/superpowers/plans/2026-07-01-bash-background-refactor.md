@@ -6,7 +6,7 @@
 
 **Architecture:** 保留现有 `ExecutionPort.run()`、`ExecutionPort.start()`、`getBackgroundTask()`、`cancelBackgroundTask()` 作为公共 execution 边界；新增能力只作为 Bash handler 与 Node execution adapter 之间的窄结构化 capability，不扩展公共 `ExecutionPort`。Bash auto-background 只负责“同一个前台进程超时后转后台任务”，完成后仍通过 `BackgroundTaskTracker` 走现有 task-notification、runtime wake、runtime command queue 和 post-turn goal driver。
 
-**Tech Stack:** TypeScript, Vitest, pnpm, `@zcode/contracts`, `@zcode/adapters`, `@zcode/core`, current workspace source only.
+**Tech Stack:** TypeScript, Vitest, pnpm, `@s-agent/contracts`, `@s-agent/adapters`, `@s-agent/core`, current workspace source only.
 
 ## Global Constraints
 
@@ -515,7 +515,7 @@ import type {
   ExecutionRequest,
   ExecutionResult,
   ExecutionRunOptions,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export type BashAutoBackgroundRunResult =
   | {

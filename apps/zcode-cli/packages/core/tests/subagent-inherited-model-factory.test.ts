@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { Model } from "@zcode/contracts";
+import type { Model } from "@s-agent/contracts";
 import {
   createInheritedSubagentModelFactory,
   modelSelectionFromActiveModel,

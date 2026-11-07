@@ -379,7 +379,7 @@ async function bootstrapWebApp() {
 |--------------------|-----|------|
 | `oauth_pending_nonce` | UUID | CSRF 防护 |
 
-> 存储 key 与 `OAuthCredentialRepo` 现有命名一致。前端展示使用 `@zcode/shared` 的 `UserInfo` 类型，不从 `@zcode/ui` 反向导入类型。
+> 存储 key 与 `OAuthCredentialRepo` 现有命名一致。前端展示使用 `@s-agent/shared` 的 `UserInfo` 类型，不从 `@s-agent/ui` 反向导入类型。
 
 ## Token 交换接口
 

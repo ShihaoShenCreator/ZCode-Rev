@@ -1,5 +1,5 @@
-import type { IPluginManagementService } from "@zcode/services";
-import type { ZCodePluginScope } from "@zcode/shared";
+import type { IPluginManagementService } from "@s-agent/services";
+import type { ZCodePluginScope } from "@s-agent/shared";
 import { logger } from "@/logger.js";
 import {
   buildWorkspaceKey,

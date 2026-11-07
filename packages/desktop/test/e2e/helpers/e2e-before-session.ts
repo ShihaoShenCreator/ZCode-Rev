@@ -2,7 +2,7 @@ export interface E2EBeforeSessionSetupOptions {
   cid: string;
   specs: string[];
   configureAgentServerEnv: () => void;
-  configureCodingPlanTeamMockForSpecs: (specs: string[]) => Promise<void>;
+  resetCodingPlanTeamMockStateForSpecs: (specs: string[]) => Promise<void>;
   recordBeforeSession: (cid: string, specs: string[]) => void;
   resetHome: (specs: string[]) => Promise<void>;
   startCodingPlanTeamMockIfNeeded: (specs: string[]) => Promise<void>;
@@ -19,10 +19,9 @@ export async function runE2EBeforeSessionSetup(options: E2EBeforeSessionSetupOpt
   // agent server，子进程才能继承 worker 专属的 ZCODE_LOG_DIR，而不会写到共享日志文件。
   options.configureAgentServerEnv();
   await options.startCodingPlanTeamMockIfNeeded(options.specs);
-  // Bug 根因：Coding Plan mock 由 launcher 进程在整个 WDIO run 内共享；只在创建
-  // server 时读取 configured specs，会让 AUTH-04 的 OAuth/catalog 模式污染后续 spec。
-  // 每个 worker session 启动 Electron 前按自己的 spec 重置模式，保持 case 隔离。
-  await options.configureCodingPlanTeamMockForSpecs(options.specs);
+  // Coding Plan mock 在一次 WDIO run 内共享；每个 worker 启动 Electron 前都要重置，
+  // 避免前一个 case 的套餐场景、额度和请求记录污染当前 case。
+  await options.resetCodingPlanTeamMockStateForSpecs(options.specs);
   await options.startUpstreamHttpIfNeeded(options.specs);
   // 混合批次的 ToolSearch 不能关闭其他 worker 的账号数据面回放；代理在当前
   // worker 的上游网络配置完成后启动，避免被通用 replay 初始化恢复成直连。

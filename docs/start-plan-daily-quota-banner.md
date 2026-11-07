@@ -1,5 +1,7 @@
 # Start Plan 额度桶提醒
 
+> 已退役：仅保留历史行为与验证证据。当前 S-Agent 不再查询或展示 Start Plan 额度提醒。
+
 ## 已确认行为
 
 - 删除 50% / 20% 提醒。按当前模型对应的每个有效额度桶独立计算 `remaining_units / total_units`；`0 < ratio <= 10%` 时可提醒。

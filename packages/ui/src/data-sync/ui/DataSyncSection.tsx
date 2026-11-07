@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRightLeft, Info, LoaderCircle, Plug, RotateCcw, Server, Upload } from "lucide-react";
-import type { DeviceSyncState, SourceServerManagementSnapshot } from "@zcode/shared";
+import type { DeviceSyncState, SourceServerManagementSnapshot } from "@s-agent/shared";
 import type {
   DeviceAdditionReturnTarget,
   RemoteConnectionOpenPreference,

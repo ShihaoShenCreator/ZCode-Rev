@@ -124,7 +124,7 @@ Case-local artifacts：
 - default replay：必跑。
 - Docker：先做单 spec replay-isolated 证明；只有通过后才可用 `e2e:docker:admit` 加入
   conversation preset。
-- 收尾门禁：`pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
+- 收尾门禁：`pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
 
 ## Verification Record
 

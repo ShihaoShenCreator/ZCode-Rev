@@ -3,7 +3,7 @@ import type {
   MessagePart,
   MessageId,
   MessageWithParts,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { invalidateRuntimeTokenUsage } from "./message-history.js";
 
 export function compactActiveSessionMessages(

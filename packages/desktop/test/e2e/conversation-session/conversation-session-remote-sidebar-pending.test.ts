@@ -2,7 +2,7 @@ import { execFile } from "node:child_process";
 import { mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
-import { ServiceChannels, parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { ServiceChannels, parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { clearAppData, readSettings } from "#e2e/helpers/desktop-app";
 import { waitForRemoteDeviceLocated } from "#e2e/helpers/remote-project-actions";
 import {

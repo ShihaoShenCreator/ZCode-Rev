@@ -1,7 +1,7 @@
 import { runConfirmedProcess } from "#e2e/helpers/confirmed-process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { buildServerRemoteWorkspaceIdentity } from "@zcode/shared";
+import { buildServerRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_SETTINGS_PAGE,
   TID_SETTINGS_BACK_BUTTON,
@@ -10,7 +10,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

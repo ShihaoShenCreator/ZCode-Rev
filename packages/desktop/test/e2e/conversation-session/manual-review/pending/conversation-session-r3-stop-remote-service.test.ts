@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
-import { TID_CONFIRM_DIALOG_CONFIRM, TID_SETTINGS_BACK_BUTTON } from "@zcode/shared/test-ids";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
+import { TID_CONFIRM_DIALOG_CONFIRM, TID_SETTINGS_BACK_BUTTON } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom } from "#e2e/helpers/desktop-app";
 import { getToastMessages } from "#e2e/helpers/conversation-session-toast";
 import {

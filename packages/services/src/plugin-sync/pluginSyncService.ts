@@ -3,8 +3,8 @@ import { existsSync } from "node:fs";
 import { cp, lstat, mkdir, readFile, readdir, rm } from "node:fs/promises";
 import { homedir, tmpdir } from "node:os";
 import { dirname, isAbsolute, join, resolve } from "node:path";
-import type { PluginSyncMarketplaceMirrorInspection } from "@zcode/shared";
-import { PLUGIN_DATA_SYNC_MAX_ITEM_BYTES } from "@zcode/shared";
+import type { PluginSyncMarketplaceMirrorInspection } from "@s-agent/shared";
+import { PLUGIN_DATA_SYNC_MAX_ITEM_BYTES } from "@s-agent/shared";
 import type { IPluginSyncService } from "./pluginSync.js";
 import {
   createPluginSyncArchive,

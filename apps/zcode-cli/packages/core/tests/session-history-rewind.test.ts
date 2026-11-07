@@ -12,7 +12,7 @@ import {
   type MessageWithParts,
   type TokenUsageInfo,
   type TraceId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { MessageHistoryImpl } from "../src/agent/message-history.js";
 import {
   activeSessionMessages,

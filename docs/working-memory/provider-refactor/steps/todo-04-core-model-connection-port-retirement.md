@@ -46,7 +46,7 @@ Adapter private execution
 3. Connection 是 Adapter 请求实现细节，不是 Tool/Runtime 的查询服务；
 4. API Key 和 Header 不应为了能力判断进入 Core；
 5. 本 Todo 不重构 Telemetry，不新增脱敏 Connection、Observation 或 Context DTO；
-6. 若 Adapter 内部仍需连接参数，使用私有类型，不能从 `@zcode/contracts` 导出。
+6. 若 Adapter 内部仍需连接参数，使用私有类型，不能从 `@s-agent/contracts` 导出。
 
 ## 3. 当前消费者与目标处理
 

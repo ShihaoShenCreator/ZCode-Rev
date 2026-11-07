@@ -6,12 +6,12 @@ import {
   IProviderProvisioningTargetService,
   IZCodeAgentService,
   ISourceServerWorkspaceService,
-} from "@zcode/services";
-import { createServerHostServices, disposeServiceResourcesAndWait } from "@zcode/services/node";
+} from "@s-agent/services";
+import { createServerHostServices, disposeServiceResourcesAndWait } from "@s-agent/services/node";
 import {
   buildServerRemoteWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { createCoreHttpServer } from "../../../../../zcode-server-cli/src/server-core/http.js";
 
 const testHome = process.env.HOME;

@@ -1,8 +1,8 @@
-import type { ToolSearchExecutionContext } from "@zcode/contracts";
+import type { ToolSearchExecutionContext } from "@s-agent/contracts";
 import { getTurnTools } from "./turn-tool-visibility.js";
 import { isOffPeakUserTakeover, refreshOffPeakTurnAfterTakeover } from "../off-peak/turn.js";
 
-import { beginLocalTurnPreparation } from "@zcode/contracts";
+import { beginLocalTurnPreparation } from "@s-agent/contracts";
 import {
   CompactTrigger,
   CoreErrorType,

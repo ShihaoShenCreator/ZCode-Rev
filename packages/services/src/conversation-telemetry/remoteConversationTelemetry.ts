@@ -2,10 +2,10 @@ import {
   ZCODE_AGENT_PROVIDER,
   sanitizeTelemetryEventDetail,
   type TelemetryEventPayload,
-} from "@zcode/shared";
-import { ConversationTelemetryEngine } from "@zcode/shared/conversation-telemetry";
-import { buildPromptTelemetryExtraDetail } from "@zcode/shared/conversation-telemetry/messageTelemetry";
-import type { ConversationTelemetryFact } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import { ConversationTelemetryEngine } from "@s-agent/shared/conversation-telemetry";
+import { buildPromptTelemetryExtraDetail } from "@s-agent/shared/conversation-telemetry/messageTelemetry";
+import type { ConversationTelemetryFact } from "@s-agent/shared/zcode-protocol-v4";
 
 /** 只消费执行服务的 live facts，不依赖手机 attachment 或桌面 pane 的寿命。 */
 export class RemoteConversationTelemetry {

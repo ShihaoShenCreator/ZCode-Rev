@@ -9,7 +9,7 @@
 
 - 当前分支相对 `origin/staging` 的提交和文件差异；
 - `docs/working-memory/provider-refactor` 下的 `design`、`steps`、`plan`、`research`、Bugfix 和实施记录；
-- 当前 `@zcode/provider`、`@zcode/provider-node`、Services、UI、CLI Bootstrap、Adapter 和 Built-in Config；
+- 当前 `@s-agent/provider`、`@s-agent/provider-node`、Services、UI、CLI Bootstrap、Adapter 和 Built-in Config；
 - 与 Provider 核心行为直接相关的测试；
 - Todo 32 的设计、实现提交和验证记录。
 

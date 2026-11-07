@@ -292,4 +292,4 @@ function shouldExposeWebSearch(this: AgentRuntimeInternal, model?: Model): boole
   if (!model) return true;
   return model.properties.supportsNativeWebSearch;
 }
-import { resolveExecutionState } from "@zcode/shared";
+import { resolveExecutionState } from "@s-agent/shared";

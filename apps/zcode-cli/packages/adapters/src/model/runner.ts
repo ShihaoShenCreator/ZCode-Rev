@@ -7,7 +7,7 @@ import {
   ModelErrorCode,
   ModelProtocolError,
   getCurrentModelInvocationContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   Logger,
   Model,
@@ -18,8 +18,8 @@ import type {
   ModelStatusSink,
   ModelStreamEvent,
   ModelTextResult,
-} from "@zcode/contracts";
-import type { RegistryModelConfig, RegistryProviderConfig } from "@zcode/provider";
+} from "@s-agent/contracts";
+import type { RegistryModelConfig, RegistryProviderConfig } from "@s-agent/provider";
 import {
   AiSdkModelExecution,
   type AiSdkResolvedModel,
@@ -64,7 +64,7 @@ export interface AiSdkModelAdapterOptions {
   observeTransport?: (transport: typeof globalThis.fetch) => typeof globalThis.fetch;
   defaultHeaders?: AiSdkModelExecutionConfig["defaultHeaders"];
   requestSecurityState?: ModelRequestSecurityState;
-  endpointRoutingPort?: import("@zcode/contracts").ProviderEndpointRoutingPort;
+  endpointRoutingPort?: import("@s-agent/contracts").ProviderEndpointRoutingPort;
   network?: AiSdkNetworkConfig;
   runtime?: AiSdkModelRuntime;
   env?: EnvRecord;

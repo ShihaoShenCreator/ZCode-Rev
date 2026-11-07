@@ -1,4 +1,4 @@
-import type { McpServerStatus, ZCodeMcpServer, ZCodeMcpServerStatusSnapshot } from "@zcode/shared";
+import type { McpServerStatus, ZCodeMcpServer, ZCodeMcpServerStatusSnapshot } from "@s-agent/shared";
 
 type MappedMcpServerStatus = {
   authorization?: ZCodeMcpServerStatusSnapshot["authorization"];

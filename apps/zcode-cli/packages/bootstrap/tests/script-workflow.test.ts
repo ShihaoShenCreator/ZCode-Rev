@@ -3,15 +3,15 @@ import { chmod, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
-import { createRootTraceContext, createSessionId, type Model } from "@zcode/contracts";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
+import { createRootTraceContext, createSessionId, type Model } from "@s-agent/contracts";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { createRegistryBackedTestApp as createZCodeApp } from "./helpers/registry-backed-test-app.js";
 import { readWorkflowScriptDocument } from "../src/app/script-workflow-meta.js";
 import { runScriptWorkflowChild } from "../src/app/script-workflow-process.js";

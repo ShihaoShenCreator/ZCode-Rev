@@ -6,7 +6,7 @@ import {
 } from "../src/tool/handlers/node-repl.js";
 import { registerBuiltInTools } from "../src/tool/handlers/index.js";
 import type { ToolExecutionContext } from "../src/tool/types.js";
-import { JsInputJsonSchema, JsRuntimeInputSchema, type JsOutput } from "@zcode/contracts";
+import { JsInputJsonSchema, JsRuntimeInputSchema, type JsOutput } from "@s-agent/contracts";
 
 function ctx(sessionId: string): ToolExecutionContext {
   return {

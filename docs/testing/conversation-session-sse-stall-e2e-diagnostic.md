@@ -81,7 +81,7 @@ capture 状态退出 `pending` 后判定，并断言响应为 200；不等待被
 ```bash
 desktop_dir="$PWD/packages/desktop"
 E2E_PROVIDER_REPLAY_FIXTURE_PATH="$desktop_dir/test/e2e/fixtures/upstream/common.json,$desktop_dir/test/e2e/fixtures/upstream/conversation-session/conversation-session-sse-stall-diagnostic.json" \
-  pnpm --filter @zcode/desktop test:e2e:serial -- \
+  pnpm --filter @s-agent/desktop test:e2e:serial -- \
   --spec ./test/e2e/conversation-session/conversation-session-sse-stall-diagnostic.test.ts
 ```
 

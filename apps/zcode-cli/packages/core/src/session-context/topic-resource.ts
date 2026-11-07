@@ -1,10 +1,10 @@
 import { z } from "zod";
-import { PROTOCOL_V4_LIMITS } from "@zcode/shared/zcode-protocol-v4";
+import { PROTOCOL_V4_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
 import type {
   MessageWithParts,
   ReadSessionContextInput,
   ReadSessionContextOutput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolExecutionContext } from "../tool/types.js";
 
 const identitySchema = z.object({

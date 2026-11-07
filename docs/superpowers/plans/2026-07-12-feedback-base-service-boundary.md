@@ -79,7 +79,7 @@ Expected: FAIL because `Root` does not yet pass `baseFeedbackService` and `App` 
 - Test: `packages/ui/test/feedbackBaseServiceBoundary.test.ts`
 
 **Interfaces:**
-- Consumes: `IFeedbackService` from `@zcode/services` and `RootProps.services.feedbackService`.
+- Consumes: `IFeedbackService` from `@s-agent/services` and `RootProps.services.feedbackService`.
 - Produces: required `AppProps.baseFeedbackService: IFeedbackService`; `WorkspaceShellLayoutProps` excludes that application-level dependency.
 
 - [ ] **Step 1: Add the typed application-level dependency**
@@ -87,7 +87,7 @@ Expected: FAIL because `Root` does not yet pass `baseFeedbackService` and `App` 
 Change the service type import and props in `packages/ui/src/app-shell/types.ts`:
 
 ```ts
-import type { IFeedbackService, IServiceAccessor } from "@zcode/services";
+import type { IFeedbackService, IServiceAccessor } from "@s-agent/services";
 
 export interface AppProps {
   services: IServiceAccessor;
@@ -105,7 +105,7 @@ Insert `baseFeedbackService` immediately after `services`. Replace only the `ext
 Update the type import, prop declaration, destructuring, and `StableWorkspaceApp` invocation in `packages/ui/src/root/RootWorkspaceContent.tsx`:
 
 ```ts
-import type { IFeedbackService, IServiceAccessor } from "@zcode/services";
+import type { IFeedbackService, IServiceAccessor } from "@s-agent/services";
 
 interface RootWorkspaceContentProps {
   workspaceScopedServices: IServiceAccessor;

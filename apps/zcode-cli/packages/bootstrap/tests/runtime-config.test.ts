@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { createConfig } from "@zcode/adapters/config";
-import { ZCODE_CUA_OFFICIAL_PLUGIN_ID, ZCODE_PLUGIN_ID_ENV_KEY } from "@zcode/shared";
-import { ProviderRegistry } from "@zcode/provider";
+import { createConfig } from "@s-agent/adapters/config";
+import { ZCODE_CUA_OFFICIAL_PLUGIN_ID, ZCODE_PLUGIN_ID_ENV_KEY } from "@s-agent/shared";
+import { ProviderRegistry } from "@s-agent/provider";
 import {
   resolveAppRuntimeConfig as resolveProductionAppRuntimeConfig,
   runtimeConfigLogContext,

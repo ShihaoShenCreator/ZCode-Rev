@@ -4,7 +4,7 @@ import type {
   ZCodeSavedWorkflowScope,
   ZCodeWorkflowsForRunCandidate,
   ZCodeWorkflowsSaveResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { WorkflowRunSavedState } from "@/store/workflowRunSavedStore.js";
 import type {
   SavedWorkflowLaunchError,

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId, createTraceId, DYNAMIC_WORKFLOW_SKILL_NAME } from "@zcode/contracts";
-import type { SkillContent, SkillLoadOutcome, SkillLoadRequest, SkillPort } from "@zcode/contracts";
+import { createSessionId, createTraceId, DYNAMIC_WORKFLOW_SKILL_NAME } from "@s-agent/contracts";
+import type { SkillContent, SkillLoadOutcome, SkillLoadRequest, SkillPort } from "@s-agent/contracts";
 import { createContextBuilder } from "../src/context/index.js";
 import { registerBuiltInTools } from "../src/tool/handlers/index.js";
 import {

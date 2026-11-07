@@ -7,7 +7,7 @@
 // `applyInputAdjustments`，换回调整后的入参。放在 permission flow 的尾部而不是 handler 里，是因为
 // 调整属于「用户批准了什么」，而 handler 只该面对一份已经落定的入参——与 `resolveInput` 同一条理由。
 
-import { traceContextToLogContext, type TraceContext } from "@zcode/contracts";
+import { traceContextToLogContext, type TraceContext } from "@s-agent/contracts";
 import type {
   ExecutableToolCall,
   ToolEntry,

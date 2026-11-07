@@ -35,7 +35,7 @@ node e2e/compact-microcompact/run.mjs --case=fake
 Run only the output-token Continue E2E:
 
 ```bash
-pnpm -r --filter @zcode/bootstrap... build
+pnpm -r --filter @s-agent/bootstrap... build
 pnpm --filter zcode-cli exec tsx ../../apps/zcode-cli/e2e/compact-microcompact/run.mjs --case=output-token-continuation
 ```
 

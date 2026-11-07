@@ -6,7 +6,7 @@ import type {
   WorkflowGraphRecord,
   WorkflowRunListItem,
   WorkflowStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { ExpertWorkflowRuntime, DEFAULT_EXPERT_WORKFLOW_STRATEGY } from "../src/workflow/expert.js";
 
 class MemoryWorkflowStore implements WorkflowStorePort {

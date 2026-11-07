@@ -1,6 +1,6 @@
 import { updatePreparationResultSchema } from "../contracts.js";
 import { isControlEndpointUnavailable, requestControl } from "../ipc/controlClient.js";
-import { createServiceLogger } from "@zcode/services/node";
+import { createServiceLogger } from "@s-agent/services/node";
 import { isAbsolute } from "node:path";
 import { currentServerTarget } from "./manifest.js";
 import type { ServerLayout } from "./paths.js";
@@ -12,7 +12,7 @@ import {
   SOURCE_SERVER_DOWNGRADE_UNCONFIRMED_ERROR_CODE,
   SOURCE_SERVER_UPDATE_RUNNING_TASKS_ERROR_CODE,
   type SourceServerInstallProgress,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { ControlRequestError } from "../ipc/controlError.js";
 import type { ReleaseManifest } from "../contracts.js";
 

@@ -5,7 +5,7 @@ import {
   runSqliteSessionMigrationsAsync,
   type SqliteMigrationProgress,
 } from "../src/storage/session-store/migration-runner.js";
-import { runSessionDatabaseIdentityMigration } from "@zcode/shared/sqlite-migrations";
+import { runSessionDatabaseIdentityMigration } from "@s-agent/shared/sqlite-migrations";
 
 it.each(["source-first", "agent-first"])(
   "%s：两端共用同一 checksum，结构接管不生成业务代际",

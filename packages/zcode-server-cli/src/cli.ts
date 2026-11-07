@@ -4,8 +4,8 @@ import { access, mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, isAbsolute, join, resolve } from "node:path";
 import type { Readable, Writable } from "node:stream";
-import { isPublicZCodeErrorCode, ZCODE_VERSION } from "@zcode/shared";
-import { SourceServerWorkspaceAliasRepo } from "@zcode/services/node";
+import { isPublicZCodeErrorCode, ZCODE_VERSION } from "@s-agent/shared";
+import { SourceServerWorkspaceAliasRepo } from "@s-agent/services/node";
 import {
   CORE_KILL_TIMEOUT_MS,
   CORE_READY_TIMEOUT_MS,

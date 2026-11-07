@@ -1,4 +1,4 @@
-import type { McpPort, PermissionBrokerResult, SessionEvent } from "@zcode/contracts";
+import type { McpPort, PermissionBrokerResult, SessionEvent } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { createMcpAppProvidedToolEntry } from "../../mcp/app-tools.js";
 import { createMcpToolEntry } from "../../mcp/index.js";

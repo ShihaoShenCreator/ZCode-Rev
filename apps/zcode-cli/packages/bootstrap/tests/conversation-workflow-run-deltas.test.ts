@@ -5,13 +5,13 @@ import type {
   ConversationDelta,
   WorkflowRunEntryLimits,
   WorkflowRunsState,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   WORKFLOW_RUNS_LEGACY_LIMITS,
   diffWorkflowRunsState,
   reduceWorkflowRunsState,
   utf8JsonByteLength,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   encodeConversationDeltasForLegacy,
   workflowRunDeltaGrowthUpperBound,

@@ -7,7 +7,7 @@ import {
   CoreErrorType,
   SessionEventType,
   createImageProcessorError,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { isErrorForToolResult } from "../src/runtime/helpers/tool-result.js";
 import { decideBashCwdPolicy } from "../src/tool/handlers/bash-cwd-policy.js";
 import { bashHandler, bashToolEntry, createBashToolEntry } from "../src/tool/handlers/bash.js";
@@ -27,7 +27,7 @@ import type {
   ExecutionShellSelection,
   SessionEvent,
   ToolExecutionSpanWriter,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createReadFileStatePathKey } from "../src/tool/read-file-state.js";
 import type { ReadFileStateMap, ToolExecutionContext } from "../src/tool/types.js";
 

@@ -420,7 +420,7 @@ Cover:
 
 1. only `platform="win32"` accepts `ZCODE_CUA_DEV_ROOT`;
 2. empty, relative or nonexistent roots fail with a structured reason;
-3. `package.json.name` must equal `@zcode/zcode-cua`;
+3. `package.json.name` must equal `@s-agent/zcode-cua`;
 4. `dist/windows-helper.js` and `build/Release/ax_native.node` must both be files;
 5. resolved command is `process.execPath`;
 6. child env includes `ELECTRON_RUN_AS_NODE=1` but no broker token yet;
@@ -678,7 +678,7 @@ Expected: pass with the real named pipe and addon.
 Run the existing plugin tests with:
 
 ```powershell
-pnpm --filter @zcode/zcode-cua-plugin test
+pnpm --filter @s-agent/zcode-cua-plugin test
 ```
 
 Expected:

@@ -5,8 +5,8 @@ import type {
   RemoteTarget,
   SSHConfigAliasOption,
   WSLDistro,
-} from "@zcode/shared";
-import { DEFAULT_REMOTE_ASSET_INSTALL_MODE } from "@zcode/shared";
+} from "@s-agent/shared";
+import { DEFAULT_REMOTE_ASSET_INSTALL_MODE } from "@s-agent/shared";
 import { usePlatform } from "@/hooks/usePlatform.js";
 import {
   loadRemoteConnectionDockerOptions,

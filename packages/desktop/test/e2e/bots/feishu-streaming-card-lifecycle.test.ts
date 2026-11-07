@@ -1,8 +1,8 @@
 import { createBotProjectFixture } from "./helpers/bots-service-harness.js";
 import { readFile } from "node:fs/promises";
 
-import type { BotsConfigFile, BotsStateFile, ZCodeStreamEvent } from "@zcode/shared";
-import { createBotsService } from "@zcode/services/node";
+import type { BotsConfigFile, BotsStateFile, ZCodeStreamEvent } from "@s-agent/shared";
+import { createBotsService } from "@s-agent/services/node";
 import { createBotModelSelectionView } from "./helpers/bots-service-harness.js";
 import { resolveE2ERuntimePath } from "../helpers/e2e-runtime-paths.js";
 

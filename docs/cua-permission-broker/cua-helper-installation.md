@@ -96,7 +96,7 @@ TCC 身份或 release 可交付性。
 ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR=/absolute/path/to/zcode-cua \
   pnpm build:cua-helper -- --version <version>
 ZCODE_CUA_RUNTIME_PACKAGE_DIR=/absolute/path/to/zcode-cua \
-  pnpm --filter @zcode/cli build
+  pnpm --filter @s-agent/cli build
 ```
 
 两个变量只覆盖本次构建输入，不修改 lockfile。未设置时继续使用仓库固定依赖；不能只覆盖

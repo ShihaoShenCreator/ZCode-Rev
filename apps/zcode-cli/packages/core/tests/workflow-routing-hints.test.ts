@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@zcode/contracts";
-import { FACADE_DTS } from "@zcode/dynamic-workflow";
+import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@s-agent/contracts";
+import { FACADE_DTS } from "@s-agent/dynamic-workflow";
 import { AMEND_WORKFLOW_TOOL_DESCRIPTION } from "../src/tool/handlers/amend-workflow-description.js";
 import { CREATE_WORKFLOW_TOOL_DESCRIPTION } from "../src/tool/handlers/create-workflow-description.js";
 import { EVAL_WORKFLOW_SNIPPET_TOOL_DESCRIPTION } from "../src/tool/handlers/eval-workflow-snippet-description.js";

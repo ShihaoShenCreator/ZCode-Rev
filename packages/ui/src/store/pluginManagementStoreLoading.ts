@@ -1,9 +1,9 @@
-import type { IPluginManagementService } from "@zcode/services";
+import type { IPluginManagementService } from "@s-agent/services";
 import {
   remoteHostIdFromWorkspaceIdentity,
   parseRemoteWorkspaceIdentity,
   type ZCodePluginScope,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger } from "@/logger.js";
 import type { PluginManagementState } from "@/store/pluginManagementStore.js";
 

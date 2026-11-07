@@ -10,15 +10,15 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   createMessageId,
   createPartId,
   type MessageId,
   type MessagePart,
   type SessionId,
-} from "@zcode/contracts";
-import { WorkflowError } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import { WorkflowError } from "@s-agent/dynamic-workflow";
 import {
   seedActorTranscript,
   type ActorTranscriptStore,

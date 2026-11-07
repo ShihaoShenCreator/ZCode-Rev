@@ -10,7 +10,7 @@ import {
   cronUpdateHandler,
   cronUpdateToolEntry,
 } from "../src/tool/handlers/cron.js";
-import { CoreErrorType, type AutomationPort, type TraceId } from "@zcode/contracts";
+import { CoreErrorType, type AutomationPort, type TraceId } from "@s-agent/contracts";
 import type { ToolExecutionContext } from "../src/tool/types.js";
 import { createTestRuntimeModel } from "./test-runtime-model.js";
 

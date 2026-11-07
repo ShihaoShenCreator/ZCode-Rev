@@ -1,5 +1,5 @@
-import type { IBotsService, ServiceCollection } from "@zcode/services";
-import type { DynamicWorkflowMode, WindowHostAttachmentScope } from "@zcode/shared";
+import type { IBotsService, ServiceCollection } from "@s-agent/services";
+import type { DynamicWorkflowMode, WindowHostAttachmentScope } from "@s-agent/shared";
 import {
   connectServerRemoteOverDuplex,
   type ServerRemoteConnection,

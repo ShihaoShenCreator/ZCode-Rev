@@ -1,6 +1,6 @@
 import { SessionLifecycleError } from "../session-lifecycle/index.js";
 import { closeSessionRuntime, getSessionLifecycle } from "./session-residency.js";
-import { isReadonlyAgentSessionKind } from "@zcode/shared";
+import { isReadonlyAgentSessionKind } from "@s-agent/shared";
 import { readBackgroundBashOutputFromOwner } from "./background-work-owner.js";
 // v4 网关 binder。
 // 定位：ConversationV4Gateway 是域无关的通道运行时，本文件把它绑到协议服务器上下文：
@@ -18,8 +18,8 @@ import {
   parseRemoteWorkspaceIdentity,
   type ZCodeSessionContextUsage,
   type ZCodeWorkspaceRef,
-} from "@zcode/shared";
-import { createExternalTurnFaultError, normalizeGenUiInput } from "@zcode/core";
+} from "@s-agent/shared";
+import { createExternalTurnFaultError, normalizeGenUiInput } from "@s-agent/core";
 import {
   V4_NOTIFICATIONS,
   conversationInputIntentSchema,
@@ -30,7 +30,7 @@ import {
   type V4ConversationFileChangesResult,
   type V4ConversationFileRewindPreviewResult,
   type SessionSummary,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { V4CommandExecutor } from "../zcode-protocol-v4/commands/executor.js";
 import { V4QueuePromotionLeaseUnavailableError } from "../zcode-protocol-v4/commands/handlers/queue.js";
 import { V4CapabilityUnsupportedError } from "../zcode-protocol-v4/commands/handlers/interaction-background.js";
@@ -77,7 +77,7 @@ import {
   SessionEventType,
   createEventId,
   createSessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   CollaborationMode,
   DynamicWorkflowRunProgressPayload,
@@ -94,7 +94,7 @@ import type {
   TraceId,
   TurnId,
   WorkspaceId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { HYDRATION_TRACE_ID } from "../zcode-protocol-v4/projection-state.js";
 import { cloneModelSelection, derivedSessionModelSelection } from "./fork-model-selection.js";
 import { resolveWorkspaceRefFromId } from "./mapper.js";
@@ -254,7 +254,7 @@ async function previewConversationFileRewind(
 
 interface InputCommandForAdmission {
   inputOrigin?: "desktop" | "mobile";
-  conversationQuotes?: import("@zcode/contracts").TurnInputIntentMetadata["conversationQuotes"];
+  conversationQuotes?: import("@s-agent/contracts").TurnInputIntentMetadata["conversationQuotes"];
   botGroupSource?: ConversationInputIntent["botGroupSource"];
   kind: ConversationInputIntent["kind"];
   text: string;
@@ -339,7 +339,7 @@ export function resolveInputCommandForAdmission(
       genUiContext?: ConversationInputIntent["genUiContext"];
       highspeedMeta?: ConversationInputIntent["highspeed"];
       inputOrigin?: "desktop" | "mobile";
-      conversationQuotes?: import("@zcode/contracts").TurnInputIntentMetadata["conversationQuotes"];
+      conversationQuotes?: import("@s-agent/contracts").TurnInputIntentMetadata["conversationQuotes"];
       botGroupSource?: ConversationInputIntent["botGroupSource"];
     };
     return {

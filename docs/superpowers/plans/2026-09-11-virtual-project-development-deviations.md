@@ -115,7 +115,7 @@
 ### D16：桌面 E2E 前置构建发现 CLI alias 清单遗漏新迁移子路径
 
 - 原预期：shared exports 已声明迁移模块，CLI 构建也应能解析。
-- 实际：首次桌面 E2E 在 app 构建后、CLI bundle 构建时失败：手工 alias 将 `@zcode/shared/sqlite-migrations` 拼成 `src/index.ts/sqlite-migrations`。该轮未进入 GUI，不记为界面测试失败或通过。
+- 实际：首次桌面 E2E 在 app 构建后、CLI bundle 构建时失败：手工 alias 将 `@s-agent/shared/sqlite-migrations` 拼成 `src/index.ts/sqlite-migrations`。该轮未进入 GUI，不记为界面测试失败或通过。
 - 处理：删除手工维护的 shared 子路径清单，直接从 shared package exports 派生精确 alias，把通用入口放在最后；补全部 exports 的构建契约测试。
 - 验证：构建契约 11 个测试通过；完整前置构建通过，后续实际桌面 E2E 两例通过，见 D18。
 
@@ -213,7 +213,7 @@
 ### D30：并行 typecheck 覆盖 E2E Host bundle，导致启动进程退出
 
 - 原预期：类型检查与完整构建/GUI 验证互相独立，可以并行执行。
-- 实际：packages/desktop/tsconfig.host.json 开启 emit，outDir 与 tsup 都是 out/host。typecheck 把打包后的 index.js 覆盖为源码导入版本。Electron Host fork 后约 126ms 以 code 1 退出，页面仅 root-startup-loading。检查产物并在隔离 HOME 运行，复现 ERR_MODULE_NOT_FOUND（@zcode/rpc/src/foundation.js）。
+- 实际：packages/desktop/tsconfig.host.json 开启 emit，outDir 与 tsup 都是 out/host。typecheck 把打包后的 index.js 覆盖为源码导入版本。Electron Host fork 后约 126ms 以 code 1 退出，页面仅 root-startup-loading。检查产物并在隔离 HOME 运行，复现 ERR_MODULE_NOT_FOUND（@s-agent/rpc/src/foundation.js）。
 - 处理：本次验证串行执行 typecheck → 完整构建 → E2E，后续 E2E 运行期间禁止会重写 out 的类型检查/构建。未用延长 UI 等待掩盖 Host 启动失败。
 - 验证：run desktop-e2e-20260910194608389-p65882-0bfd4916e3bf8f3b 为启动失败，不能用于业务验收；串行 typecheck 完成后强制重建，run `desktop-e2e-20260910195101440-p67448-3e05911527984db6` 四例通过。
 

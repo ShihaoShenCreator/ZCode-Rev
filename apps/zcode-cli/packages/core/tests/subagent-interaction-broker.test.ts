@@ -7,7 +7,7 @@ import {
   type PermissionBrokerRequest,
   type PermissionBrokerRequestOptions,
   type PermissionBrokerResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSubagentInteractionBroker } from "../src/runtime/helpers/subagent-interaction-broker.js";
 
 describe("createSubagentInteractionBroker", () => {

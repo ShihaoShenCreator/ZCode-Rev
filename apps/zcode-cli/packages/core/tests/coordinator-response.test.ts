@@ -1,4 +1,4 @@
-import { createSessionId, createTraceId, createTurnId, type TraceContext } from "@zcode/contracts";
+import { createSessionId, createTraceId, createTurnId, type TraceContext } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { createCoordinatorResponsePort } from "../src/subagent/coordinator-response.js";
 

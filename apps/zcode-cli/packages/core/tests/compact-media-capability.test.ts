@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId, type ModelInputFormat, type ModelInputMessage } from "@zcode/contracts";
+import { createSessionId, type ModelInputFormat, type ModelInputMessage } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestImageArtifactStore } from "./test-image-artifact-store.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

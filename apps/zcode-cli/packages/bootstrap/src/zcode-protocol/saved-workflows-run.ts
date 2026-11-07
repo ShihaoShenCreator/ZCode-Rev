@@ -2,7 +2,7 @@
 // 「Saving the run, and running it again」）：把这次 run 跑过的脚本存成定义，以及回答
 // 「这次 run 对应哪个已保存工作流」。
 //
-// 与 saved-workflows.ts 同一条纪律（解析器、序列化器、名字规则与类型检查器都只从 @zcode/core 取，
+// 与 saved-workflows.ts 同一条纪律（解析器、序列化器、名字规则与类型检查器都只从 @s-agent/core 取，
 // 不变式 3），分文件只为守住 400 行的门。
 //
 // 为什么保存**不收脚本**只收 runId：要写下去的正文是这次 run 实际执行的那一份，而它在 journal
@@ -12,7 +12,7 @@ import {
   SavedWorkflowMetaSchema,
   isValidSavedWorkflowName,
   type SavedWorkflowScope,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   analyzeScript,
   findSavedWorkflowShadowing,
@@ -23,15 +23,15 @@ import {
   savedWorkflowPath,
   savedWorkflowRoot,
   type ResolvedSavedWorkflow,
-} from "@zcode/core";
+} from "@s-agent/core";
 import {
   zcodeWorkflowsForRunParamsSchema,
   zcodeWorkflowsSaveParamsSchema,
   type ZCodeSavedWorkflowEntry,
   type ZCodeWorkflowsForRunResult,
   type ZCodeWorkflowsSaveResult,
-} from "@zcode/shared";
-import type { RunRecord } from "@zcode/dynamic-workflow";
+} from "@s-agent/shared";
+import type { RunRecord } from "@s-agent/dynamic-workflow";
 import { resolveDynamicWorkflowJournalStore } from "../app/dynamic-workflow-run-service.js";
 import { parseParams, type ZCodeProtocolAgentServerContext } from "./server-types.js";
 

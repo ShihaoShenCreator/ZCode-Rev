@@ -1,4 +1,4 @@
-import type { HostRemoteConversationTelemetryResponse } from "@zcode/shared";
+import type { HostRemoteConversationTelemetryResponse } from "@s-agent/shared";
 import { ingestToolExecResource } from "./desktopResourceTelemetry.js";
 import { ingestMcpResourceSamples } from "./processResourceMcpTelemetrySource.js";
 /* eslint-disable max-lines -- host process 统一处理 main↔host 生命周期、日志、ZCode Agent，拆分前先保持跨进程消息收口。 */
@@ -25,12 +25,12 @@ import {
   RUNTIME_ZCODE_DEBUG,
   serializeLaunchMarks,
   ZCODE_DESKTOP_CONTEXT_PROMPT_ENABLED_ENV,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   PluginSandboxHandle,
   PluginSandboxRegisterRequestPayload,
   PluginSandboxRegisterResultPayload,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import type { UtilityProcess as ElectronUtilityProcess, MessagePortMain } from "electron";
 import {
   app,

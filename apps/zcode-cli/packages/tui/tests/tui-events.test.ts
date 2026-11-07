@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { applySessionEventToState } from "../src/app-events.js";
 import {
   appendAgentResult,

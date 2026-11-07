@@ -7,7 +7,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { InMemoryJournalStore } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore } from "@s-agent/dynamic-workflow";
 import { retuneRunConcurrency } from "../src/app/dynamic-workflow-run-retune.js";
 import type { RunRegistryEntry } from "../src/app/dynamic-workflow-run-observation.js";
 import { createWorkflowRunControl } from "../src/app/workflow-run-control.js";

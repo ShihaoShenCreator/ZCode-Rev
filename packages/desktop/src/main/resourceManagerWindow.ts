@@ -13,7 +13,7 @@ import {
   type ResourceUsageProcess,
   type ResourceUsageSnapshot,
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger } from "./logger.js";
 import { configureNetworkCaptureHost, observeNetworkWindow } from "./resourceManagerNetwork.js";
 import { normalizeElectronCpuToMachinePercent } from "./electronCpuNormalization.js";

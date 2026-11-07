@@ -19,7 +19,7 @@ import type { spawn as spawnType } from "node:child_process";
 import { runWorkflowScript } from "../src/index.js";
 import { AutoDriver } from "./auto-driver.js";
 import { askSpecsFor, TEST_CWD } from "./helpers.js";
-import { InMemoryJournalStore } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore } from "@s-agent/dynamic-workflow";
 
 // 包一层真 spawn：只截获 options，子进程照常启动——桥接、结算全走真实路径。
 const spawnCalls: Array<{ options: Record<string, unknown> }> = [];

@@ -14,8 +14,8 @@ import {
   type FileSystemStatResult,
   type FileSystemWriteTextRequest,
   type PermissionRuleset,
-} from "@zcode/contracts";
-import { EditInputSchema, EditOutputSchema } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { EditInputSchema, EditOutputSchema } from "@s-agent/contracts";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import {
   createErrorResult,

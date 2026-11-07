@@ -16,8 +16,8 @@ import {
   type ModelNetworkStatusEvent,
   type ModelRequest,
   type ModelToolContract,
-} from "@zcode/contracts";
-import { AiSdkModelAdapterError } from "@zcode/adapters/model";
+} from "@s-agent/contracts";
+import { AiSdkModelAdapterError } from "@s-agent/adapters/model";
 import {
   startFakeProviderServer,
   type FakeProviderServer,

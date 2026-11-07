@@ -7,7 +7,7 @@ import {
   ServiceChannels,
   type SourceServerManagementSnapshot,
   parseRemoteWorkspaceIdentity,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_CONFIRM_DIALOG_CONFIRM,
   TID_REMOTE_KIND_SSH,
@@ -24,7 +24,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clickTestIdByDom,
   clickTestIdByWebDriver,

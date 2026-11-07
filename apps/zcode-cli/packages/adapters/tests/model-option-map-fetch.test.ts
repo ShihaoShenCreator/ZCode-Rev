@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { compileModelOptionMaps } from "@zcode/model-option-map";
+import { compileModelOptionMaps } from "@s-agent/model-option-map";
 import { createModelOptionMapFetch } from "../src/model/model-option-map-fetch.js";
 
 describe("createModelOptionMapFetch", () => {

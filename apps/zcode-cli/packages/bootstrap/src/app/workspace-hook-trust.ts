@@ -1,6 +1,6 @@
 import {
   createDefaultFileWorkspaceHookTrustStore,
-} from "@zcode/adapters/storage";
+} from "@s-agent/adapters/storage";
 import {
   InMemoryWorkspaceHookPolicyProvider,
   WorkspaceHookTrustCoordinator,
@@ -10,21 +10,21 @@ import {
   type WorkspaceHookReviewTarget,
   type WorkspaceHookRuntimeAdmissionPort,
   type WorkspaceHookPolicyProvider,
-} from "@zcode/core";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/core";
+import { SessionEventType } from "@s-agent/contracts";
 import type {
   Logger,
   SessionId,
   WorkspaceHookBundleSnapshot,
   WorkspaceHookPolicy,
   WorkspaceHookAdmissionUpdatedPayload,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   WorkspaceHookReviewDecision,
   WorkspaceHookReviewRequestPayload,
   WorkspaceHookTrustRevokeTarget,
-} from "@zcode/shared/zcode-protocol-v4";
-import type { WorkspaceHookRuntimeRoot } from "@zcode/shared/workspace-hook-discovery";
+} from "@s-agent/shared/zcode-protocol-v4";
+import type { WorkspaceHookRuntimeRoot } from "@s-agent/shared/workspace-hook-discovery";
 import {
   WorkspaceHookReviewController,
   type WorkspaceHookReviewCommandResult,

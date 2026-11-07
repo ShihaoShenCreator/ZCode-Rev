@@ -1,5 +1,5 @@
-import type { BrowserCommand, BrowserCommandResult } from "@zcode/shared";
-import { browserSnapshotSchema } from "@zcode/shared";
+import type { BrowserCommand, BrowserCommandResult } from "@s-agent/shared";
+import { browserSnapshotSchema } from "@s-agent/shared";
 import { EVALUATE_SCRIPT, SNAPSHOT_SCRIPT, VIEWPORT_SCRIPT } from "./browserCommandScripts.js";
 import {
   DEFAULT_NAVIGATE_SETTLE_MS,

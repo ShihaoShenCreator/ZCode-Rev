@@ -1,4 +1,4 @@
-import { NodePersonalProviderConfigRepository } from "@zcode/provider-node";
+import { NodePersonalProviderConfigRepository } from "@s-agent/provider-node";
 import { getE2EAppDataPaths, waitForWorkspaceApp } from "./desktop-app.js";
 import { reloadElectronSessionSafely } from "./e2e-electron-reload.js";
 import { flushElectronStorageData } from "./e2e-electron-storage.js";

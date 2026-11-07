@@ -1,5 +1,7 @@
 # Coding Plan 购买漏斗埋点设计
 
+> **S-Agent 退役说明：** Coding Plan 购买入口与漏斗已退役；本文仅保留历史埋点语义，不代表当前产品仍支持账号、套餐或购买流程。
+
 > 当前入口归属以 [购买埋点](./coding-plan-purchase-telemetry.md) 的 2026-09-09 规则为准：
 > App 显式入口点击上报一次；下文原生面板打开及 OAuth 恢复时上报的描述为历史语义。
 
@@ -476,7 +478,7 @@ New task 首页和 Automations 闲时任务资格提示统一创建：
 执行：
 
 ```bash
-pnpm --filter @zcode/ui test
+pnpm --filter @s-agent/ui test
 pnpm typecheck
 pnpm lint
 ```

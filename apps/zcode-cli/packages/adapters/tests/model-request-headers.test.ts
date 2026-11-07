@@ -2,7 +2,7 @@ import { generateText } from "ai";
 import { describe, expect, it } from "vitest";
 import { mergeModelRequestHeaders } from "../src/model/model-request-headers.js";
 import { AiSdkModelExecution } from "../src/model/model-execution.js";
-import { createRegistryProviderConfig, parseProviderConfig } from "@zcode/provider";
+import { createRegistryProviderConfig, parseProviderConfig } from "@s-agent/provider";
 
 describe("模型 Header 合并与绑定边界", () => {
   it("默认值、用户值、鉴权值依次覆盖，保留其他字段且不改变输入", () => {

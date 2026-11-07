@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import type { ZCodeAppOptions } from "@zcode/bootstrap";
-import type { RunContext } from "@zcode/shared-types";
+import type { ZCodeAppOptions } from "@s-agent/bootstrap";
+import type { RunContext } from "@s-agent/shared-types";
 import { run, type RunDependencies } from "../src/run.js";
 import { WORKFLOW_MODE_SCOPE_ERROR } from "../src/workflow-mode.js";
 

@@ -26,7 +26,7 @@ import {
   type ReadPartsOutput,
   type ReadPdfOutput,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   ToolExecutionContext,
   ToolExecutionModelContext,

@@ -3,7 +3,7 @@ import {
   ZCODE_COMMAND_AGENT_SOURCES,
   type ZCodeProvider,
   type CommandAgentSource,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export const COMMAND_AGENT_SOURCES = [
   ...ZCODE_COMMAND_AGENT_SOURCES,

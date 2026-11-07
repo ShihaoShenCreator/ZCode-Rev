@@ -1,4 +1,4 @@
-import { CoreErrorType, createCoreError, isCoreError } from "@zcode/contracts";
+import { CoreErrorType, createCoreError, isCoreError } from "@s-agent/contracts";
 import {
   projectExecutionErrorPayload,
   selectExecutionErrorMessage,

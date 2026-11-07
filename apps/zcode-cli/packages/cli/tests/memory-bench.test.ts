@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { EventEmitter } from "node:events";
 import { setImmediate as nextTask, setTimeout as delay } from "node:timers/promises";
 import test from "node:test";
-import type { RunContext } from "@zcode/shared-types";
+import type { RunContext } from "@s-agent/shared-types";
 import { run, type RunDependencies } from "../src/run.js";
 import type { CliShutdownProcess } from "../src/shutdown.js";
 

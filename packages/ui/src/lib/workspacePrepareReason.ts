@@ -1,4 +1,4 @@
-import type { ZCodeProvider } from "@zcode/shared";
+import type { ZCodeProvider } from "@s-agent/shared";
 
 type DraftWorkspacePrepareReason = "mount" | "select-provider";
 type WorkspacePrepareReason =

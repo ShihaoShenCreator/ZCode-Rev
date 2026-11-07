@@ -7,7 +7,7 @@ import {
   type PermissionBrokerRequest,
   type PermissionBrokerResult,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { askUserQuestionToolEntry } from "../src/tool/handlers/ask-user-question.js";
 import { createToolRegistry } from "../src/tool/registry.js";

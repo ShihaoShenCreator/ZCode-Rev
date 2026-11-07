@@ -2,13 +2,13 @@ import type {
   AiSdkModelExecutionConfig,
   AiSdkNetworkConfig,
   EnvRecord,
-} from "@zcode/adapters/model";
-import type { ProviderEndpointRoutingPort } from "@zcode/contracts";
+} from "@s-agent/adapters/model";
+import type { ProviderEndpointRoutingPort } from "@s-agent/contracts";
 import {
   resolveRuntimeZCodeEnv,
   resolveRuntimeZCodeEndpointOrigin,
   ZCODE_APP_VERSION_ENV,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   createRuntimePlatformHeaders,
   normalizePrintableHeaderValue,

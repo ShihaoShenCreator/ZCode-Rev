@@ -1,5 +1,5 @@
-import { SessionEventType } from "@zcode/contracts";
-import type { WorkspaceHookReviewFlow, WorkspaceHookReviewFlowRegistry } from "@zcode/core";
+import { SessionEventType } from "@s-agent/contracts";
+import type { WorkspaceHookReviewFlow, WorkspaceHookReviewFlowRegistry } from "@s-agent/core";
 import type { WorkspaceHookReviewHostPort } from "./workspace-hook-review-types.js";
 import type { WorkspaceHookReviewTelemetry } from "./workspace-hook-review-telemetry.js";
 

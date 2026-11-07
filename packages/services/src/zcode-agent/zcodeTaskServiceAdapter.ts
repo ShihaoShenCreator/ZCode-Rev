@@ -1,4 +1,4 @@
-import { isAuxiliarySessionKind } from "@zcode/shared";
+import { isAuxiliarySessionKind } from "@s-agent/shared";
 import { createBotTopicAdmission } from "#src/zcode-agent/botTopicAdmission.js";
 import {
   readBotGroupRuntimeSnapshot,
@@ -16,7 +16,7 @@ import {
   Event,
   emitNetworkTelemetryObservation,
   type NetworkObservation,
-} from "@zcode/rpc";
+} from "@s-agent/rpc";
 import {
   coalesceConsecutiveZCodeAssistants,
   createSessionTraceId,
@@ -121,7 +121,7 @@ import {
   type ZCodeUserInputRequestParams,
   type ZCodeUserInputResponse,
   type ZCodeAgentMcpServer,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   ZCodeTaskListQuery,
   ZCodeTaskListResult,
@@ -153,7 +153,7 @@ import type {
   ZCodeTaskIndexTerminalEvent,
 } from "./zcodeTaskIndexSyncer.js";
 import { readModelTrajectory } from "./modelTrajectory.js";
-import { errorAttributionSchema, type CommandPayloadMap } from "@zcode/shared/zcode-protocol-v4";
+import { errorAttributionSchema, type CommandPayloadMap } from "@s-agent/shared/zcode-protocol-v4";
 import {
   assertV4CommandAckOk,
   createHostCommandEnvelope,

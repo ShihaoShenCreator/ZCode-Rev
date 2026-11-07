@@ -1,4 +1,4 @@
-import type { RequestVerificationReason } from "@zcode/shared";
+import type { RequestVerificationReason } from "@s-agent/shared";
 import type { AiSdkModelTextRequest, ResolvedAiSdkModel } from "../runner-runtime.js";
 import type { ProviderBusinessError, AiSdkProviderKind } from "../model-execution.js";
 export class RequestVerificationRetry {

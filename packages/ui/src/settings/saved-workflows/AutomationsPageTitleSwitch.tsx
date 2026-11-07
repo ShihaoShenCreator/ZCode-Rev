@@ -1,6 +1,6 @@
 import { useCallback, type KeyboardEvent } from "react";
-import { TID_AUTOMATIONS_PAGE_TAB } from "@zcode/shared";
-import { testId } from "@zcode/shared/test-ids";
+import { TID_AUTOMATIONS_PAGE_TAB } from "@s-agent/shared";
+import { testId } from "@s-agent/shared/test-ids";
 import { cn } from "@/components/lib/utils.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 

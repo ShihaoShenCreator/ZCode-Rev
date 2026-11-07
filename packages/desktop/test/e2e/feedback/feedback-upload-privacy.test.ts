@@ -1,7 +1,7 @@
 import { mkdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { build } from "esbuild";
-import { TID_FEEDBACK_LOGS_OPT_IN } from "@zcode/shared/test-ids";
+import { TID_FEEDBACK_LOGS_OPT_IN } from "@s-agent/shared/test-ids";
 import { readSettings, seedSettings, waitForDefaultWorkspaceReady } from "#e2e/helpers/desktop-app";
 import { startHelpConfigFixture } from "#e2e/helpers/help-client-config-fixture";
 

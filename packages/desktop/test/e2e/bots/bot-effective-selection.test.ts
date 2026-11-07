@@ -2,7 +2,7 @@ import {
   BUILTIN_MODEL_PROVIDER_IDS,
   encodeCustomModelValue,
   type ModelSelection,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   createBotModelSelectionView,
   createBotsServiceHarness,

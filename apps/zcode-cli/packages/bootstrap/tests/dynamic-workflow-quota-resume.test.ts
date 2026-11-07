@@ -8,8 +8,8 @@
  */
 
 import { describe, expect, it, vi } from "vitest";
-import type { DynamicWorkflowRunResumeResult } from "@zcode/contracts";
-import type { RunRecord } from "@zcode/dynamic-workflow";
+import type { DynamicWorkflowRunResumeResult } from "@s-agent/contracts";
+import type { RunRecord } from "@s-agent/dynamic-workflow";
 import {
   WORKFLOW_QUOTA_RESUME_MARGIN_MS,
   WORKFLOW_QUOTA_RESUME_MAX_SPACING_MS,

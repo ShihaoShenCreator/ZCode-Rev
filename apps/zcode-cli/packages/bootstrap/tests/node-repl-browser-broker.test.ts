@@ -1,11 +1,11 @@
 import { randomUUID } from "node:crypto";
 import { createConnection } from "node:net";
-import type { BrowserControlPort, Logger, McpServerConfig } from "@zcode/contracts";
+import type { BrowserControlPort, Logger, McpServerConfig } from "@s-agent/contracts";
 import {
   NODE_REPL_BROWSER_BROKER_SOCKET_ENV,
   NODE_REPL_BROWSER_BROKER_TOKEN_ENV,
   nodeReplBrowserBrokerResponseSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   createNodeReplBrowserBroker,

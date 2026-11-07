@@ -1,4 +1,4 @@
-import { requestSecuritySensitiveHeaders } from "@zcode/shared";
+import { requestSecuritySensitiveHeaders } from "@s-agent/shared";
 const HEADER_REDACTION_VALUE = "[redacted]";
 
 const redactedHeaderNames = new Set([

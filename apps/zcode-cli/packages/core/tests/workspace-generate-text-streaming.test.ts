@@ -6,9 +6,9 @@ import type {
   ModelOptions,
   ModelRequest,
   SessionTaskType,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
-import { createSessionId, getCurrentModelInvocationContext } from "@zcode/contracts";
+import { createSessionId, getCurrentModelInvocationContext } from "@s-agent/contracts";
 import { createRuntimeModel } from "../src/runtime/methods/runtime-model.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 import { createTestModelFormatProperties } from "./test-runtime-model.js";

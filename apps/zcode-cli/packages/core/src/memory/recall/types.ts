@@ -1,4 +1,4 @@
-import type { ModelInputMessage } from "@zcode/contracts";
+import type { ModelInputMessage } from "@s-agent/contracts";
 
 export const MEMORY_RECALL_TYPES = ["user", "feedback", "project", "reference"] as const;
 

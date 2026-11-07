@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { SessionEventType } from "@zcode/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import { appendEvent } from "../src/runtime/methods/events.js";
 import {
   appendTurnOutcomeEvent,

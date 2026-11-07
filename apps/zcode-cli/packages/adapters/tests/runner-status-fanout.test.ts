@@ -3,7 +3,7 @@ import {
   createModelId,
   createModelProviderId,
   type ModelNetworkStatusEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createStatusContext, publishModelStatus } from "../src/model/runner-status.js";
 
 const event: ModelNetworkStatusEvent = {

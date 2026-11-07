@@ -2,7 +2,7 @@ import type {
   ZCodeSavedWorkflowMeta,
   ZCodeSavedWorkflowScope,
   ZCodeWorkflowsForRunCandidate,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ZCodeAgentWorkspaceTarget } from "./zcodeAgentPluginParams.js";
 
 // 已保存工作流的 GUI 中枢：五个 workspace 级、无会话的方法。

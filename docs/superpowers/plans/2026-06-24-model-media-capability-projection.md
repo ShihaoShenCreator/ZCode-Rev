@@ -6,7 +6,7 @@
 
 **Architecture:** 不在发送图片、拖拽图片、Read/Bash/MCP tool 输出等入口分支做限制；真实 session history 保留原始媒体，provider-visible messages 在 core runtime 最后一跳投影成文字。adapter 侧继续保留第二道兜底，确保绕过 core 的调用也不会把明确 unsupported media 发给 AI SDK provider。
 
-**Tech Stack:** TypeScript, `@zcode/core` runtime, `@zcode/adapters` AI SDK adapter, `@zcode/contracts` model catalog/protocol schemas, Vitest, pnpm.
+**Tech Stack:** TypeScript, `@s-agent/core` runtime, `@s-agent/adapters` AI SDK adapter, `@s-agent/contracts` model catalog/protocol schemas, Vitest, pnpm.
 
 ## Global Constraints
 
@@ -118,7 +118,7 @@
 
   ```ts
   import { describe, expect, it } from "vitest";
-  import type { ModelInputMessage } from "@zcode/contracts";
+  import type { ModelInputMessage } from "@s-agent/contracts";
   import { projectMessagesForMediaCapabilities } from "../src/runtime/helpers/media-capability.js";
 
   describe("model request media capability projection", () => {
@@ -201,7 +201,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/core exec vitest run tests/media-capability.test.ts
+  pnpm --filter @s-agent/core exec vitest run tests/media-capability.test.ts
   ```
 
   Expected: fail because `media-capability.ts` does not exist.
@@ -231,7 +231,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/core exec vitest run tests/media-capability.test.ts
+  pnpm --filter @s-agent/core exec vitest run tests/media-capability.test.ts
   ```
 
   Expected: all tests pass.
@@ -327,7 +327,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/core exec vitest run tests/media-budget.test.ts
+  pnpm --filter @s-agent/core exec vitest run tests/media-budget.test.ts
   ```
 
   Expected: TypeScript or runtime failure because `modelInputMediaCapabilities` is not defined and projection is not applied.
@@ -382,7 +382,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/core exec vitest run tests/media-capability.test.ts tests/media-budget.test.ts
+  pnpm --filter @s-agent/core exec vitest run tests/media-capability.test.ts tests/media-budget.test.ts
   ```
 
   Expected: all tests pass.
@@ -449,7 +449,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/bootstrap exec vitest run tests/model-selection.test.ts
+  pnpm --filter @s-agent/bootstrap exec vitest run tests/model-selection.test.ts
   ```
 
   Expected: fail because `resolveRuntimeModelInputCapabilities` does not exist.
@@ -507,7 +507,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/bootstrap exec vitest run tests/model-selection.test.ts tests/runtime-config.test.ts
+  pnpm --filter @s-agent/bootstrap exec vitest run tests/model-selection.test.ts tests/runtime-config.test.ts
   ```
 
   Expected: all tests pass.
@@ -592,7 +592,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/adapters exec vitest run tests/model-transform.test.ts tests/model-transform-tool-media.test.ts
+  pnpm --filter @s-agent/adapters exec vitest run tests/model-transform.test.ts tests/model-transform-tool-media.test.ts
   ```
 
   Expected: unsupported image test fails due current `ERROR: Cannot read...` text.
@@ -629,8 +629,8 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/adapters exec vitest run tests/model-transform.test.ts tests/model-transform-tool-media.test.ts
-  pnpm --filter @zcode/bootstrap exec vitest run tests/model-config.test.ts
+  pnpm --filter @s-agent/adapters exec vitest run tests/model-transform.test.ts tests/model-transform-tool-media.test.ts
+  pnpm --filter @s-agent/bootstrap exec vitest run tests/model-config.test.ts
   ```
 
   Expected: all tests pass.
@@ -664,7 +664,7 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts
+  pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts
   ```
 
   Expected: all tests pass.
@@ -681,9 +681,9 @@
   Run:
 
   ```bash
-  pnpm --filter @zcode/core exec vitest run tests/media-capability.test.ts tests/media-budget.test.ts tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts
-  pnpm --filter @zcode/adapters exec vitest run tests/model-transform.test.ts tests/model-transform-tool-media.test.ts
-  pnpm --filter @zcode/bootstrap exec vitest run tests/model-selection.test.ts tests/model-config.test.ts tests/runtime-config.test.ts
+  pnpm --filter @s-agent/core exec vitest run tests/media-capability.test.ts tests/media-budget.test.ts tests/runtime-tool-loop.test.ts tests/runtime-trace.test.ts
+  pnpm --filter @s-agent/adapters exec vitest run tests/model-transform.test.ts tests/model-transform-tool-media.test.ts
+  pnpm --filter @s-agent/bootstrap exec vitest run tests/model-selection.test.ts tests/model-config.test.ts tests/runtime-config.test.ts
   ```
 
   Expected: all listed tests pass.

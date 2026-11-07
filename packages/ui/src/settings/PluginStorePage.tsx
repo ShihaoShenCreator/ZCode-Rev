@@ -1,4 +1,4 @@
-import { withPluginTelemetry } from "@zcode/services";
+import { withPluginTelemetry } from "@s-agent/services";
 import { usePlatform } from "@/hooks/usePlatform.js";
 import { reportAppTelemetryEvent } from "@/lib/appTelemetry.js";
 /* eslint-disable max-lines -- 插件商店容器统一编排列表/详情、市场源对话框、卸载确认、试用跳转与技能刷新收尾，集中维护保证交互一致。 */
@@ -44,7 +44,7 @@ import {
   resolvePluginDisplayName,
   type StorePluginItem,
 } from "@/settings/pluginStoreListing.js";
-import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE_ID } from "@zcode/shared";
+import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE_ID } from "@s-agent/shared";
 import { PluginUninstallConfirmDialog } from "@/settings/PluginUninstallConfirmDialog.js";
 import { usePluginUninstall } from "@/settings/usePluginUninstall.js";
 import { claimMarketplaceAutoRefresh } from "@/settings/officialMarketplaceAutoRefresh.js";

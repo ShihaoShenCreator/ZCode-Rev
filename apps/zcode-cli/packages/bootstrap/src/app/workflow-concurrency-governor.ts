@@ -3,7 +3,7 @@
 // ============================================================
 // 一个 CLI 进程里所有 run 加主代理
 // 共用一个 provider 配额，所以治理器是**进程级**的：每个 `${providerId}/${modelId}` 一个桶，
-// 桶里一台纯 AIMD 状态机（`ConcurrencyController`，@zcode/dynamic-workflow）+ 一条按 run 轮转的
+// 桶里一台纯 AIMD 状态机（`ConcurrencyController`，@s-agent/dynamic-workflow）+ 一条按 run 轮转的
 // 准入队列。
 //
 // 闸门粒度是**模型请求的每一次尝试**：runner 每次尝试前 `acquire`、尝试结束 `release`，
@@ -14,7 +14,7 @@
 // 这里是治理器里**唯一**会碰时钟与定时器的地方：控制器只收 `now`；冷却到期要唤醒等待者，
 // 所以需要一个 setTimeout（可注入，unref）。
 
-import { resolveWorkflowModelFailurePolicy } from "@zcode/adapters/model";
+import { resolveWorkflowModelFailurePolicy } from "@s-agent/adapters/model";
 import {
   ModelErrorCode,
   type ModelNetworkStatusEvent,
@@ -22,13 +22,13 @@ import {
   type ModelRequestAdmissionTicket,
   type ModelRequestFailedStatusEvent,
   type ModelRequestTarget,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   ConcurrencyController,
   type ConcurrencyChange,
   type ConcurrencyControllerSnapshot,
   type ConcurrencyThrottleReason,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import {
   resolveWorkflowDefaultConcurrency,
   WORKFLOW_CONCURRENCY_AUTO_GROWTH_FACTOR,

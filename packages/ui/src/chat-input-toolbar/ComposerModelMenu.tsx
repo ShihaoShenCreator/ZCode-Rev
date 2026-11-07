@@ -1,6 +1,5 @@
 import { useRef, useState, type ReactNode } from "react";
 import { ScrollFadeViewport } from "@/components/ui/scroll-fade-viewport.js";
-import type { ComposerPlanGroup } from "@/lib/composerPlanGroups.js";
 import type { ModelSelectGroup } from "@/ModelConfigSelect.js";
 import { isNoThoughtLevel } from "@/chat-input-toolbar/thoughtLevelOptions.js";
 import { ComposerEffortHeading } from "@/chat-input-toolbar/ComposerEffortHeading.js";
@@ -36,11 +35,11 @@ const HIGHSPEED_BUBBLES = Array.from({ length: 32 }, (_, index) => ({
 
 export interface ComposerModelOptions {
   providerMenu?: {
-    groups: readonly ComposerPlanGroup[];
+    groups: readonly ModelSelectGroup[];
     selectedKey?: string;
     pending: boolean;
     error: string | null;
-    onSelect: (group: ComposerPlanGroup) => void;
+    onSelect: (group: ModelSelectGroup) => void;
   };
   providerLabel: string;
   modelsLabel: string;
@@ -57,7 +56,9 @@ export function getComposerThoughtDisplay(options: ComposerModelOptions) {
   const thinking = options.levels.filter((level) => !isNoThoughtLevel(level));
   const progress =
     current && !isNoThoughtLevel(current)
-      ? ((thinking.findIndex((level) => level.value === current.value) + 1) / thinking.length) * 100
+      ? ((thinking.findIndex((level) => level.value === current.value) + 1) /
+          thinking.length) *
+        100
       : 0;
   return { label: current?.label ?? "—", progress };
 }
@@ -119,11 +120,18 @@ export function ComposerModelMenu({
   onSelectModel: (value: string) => void;
 }) {
   // 无可用模型的分组仍可浏览配置；实际选择始终由 Composer owner 回传。
-  const [browse, setBrowse] = useState<{ key: string; selection: string } | null>(null);
-  const menuGroups: readonly ComposerPlanGroup[] = options.providerMenu?.groups ?? groups;
+  const [browse, setBrowse] = useState<{
+    key: string;
+    selection: string;
+  } | null>(null);
+  const menuGroups = options.providerMenu?.groups ?? groups;
   const selected =
-    menuGroups.find((group) => group.key === options.providerMenu?.selectedKey) ??
-    menuGroups.find((group) => group.items.some((item) => item.value === normalizedValue));
+    menuGroups.find(
+      (group) => group.key === options.providerMenu?.selectedKey,
+    ) ??
+    menuGroups.find((group) =>
+      group.items.some((item) => item.value === normalizedValue),
+    );
   const group =
     (browse?.selection === normalizedValue
       ? menuGroups.find((item) => item.key === browse.key)
@@ -131,23 +139,31 @@ export function ComposerModelMenu({
     selected ??
     menuGroups[0];
   // 视觉只由选中模型名称派生，避免供应商名或内部 value 含 highspeed 时误触发。
-  const modelName = selected?.items.find((item) => item.value === normalizedValue)?.name ?? "";
+  const modelName =
+    selected?.items.find((item) => item.value === normalizedValue)?.name ?? "";
   const highspeed = isGlmHighspeedModel(modelName);
-  const currentGroupSelected = group?.key === selected?.key && Boolean(selected);
-  const currentIndex = options.levels.findIndex((level) => level.value === options.value);
+  const currentGroupSelected =
+    group?.key === selected?.key && Boolean(selected);
+  const currentIndex = options.levels.findIndex(
+    (level) => level.value === options.value,
+  );
   const { label } = getComposerThoughtDisplay(options);
   const sliderRef = useRef<HTMLInputElement>(null);
   const catalogPending = groups.length === 0 && Boolean(normalizedValue);
   const showEffort = options.levels.length > 0 || catalogPending;
   const [hoveredStop, setHoveredStop] = useState<string | null>(null);
   const sliderDisabled =
-    Boolean(options.providerMenu?.pending) || !currentGroupSelected || options.levels.length < 2;
+    Boolean(options.providerMenu?.pending) ||
+    !currentGroupSelected ||
+    options.levels.length < 2;
   const sliderProgress =
     options.levels.length > 1 && currentIndex >= 0 && currentGroupSelected
       ? (currentIndex / (options.levels.length - 1)) * 100
       : 0;
   const sliderFilled =
-    currentGroupSelected && currentIndex >= 0 && !isNoThoughtLevel(options.levels[currentIndex]!);
+    currentGroupSelected &&
+    currentIndex >= 0 &&
+    !isNoThoughtLevel(options.levels[currentIndex]!);
   const selectSliderValue = (index: number) => {
     const level = options.levels[index];
     if (!sliderDisabled && level && level.value !== options.value)
@@ -160,30 +176,24 @@ export function ComposerModelMenu({
         error={options.providerMenu?.error}
         disabled={options.providerMenu?.pending}
         loading={options.providerMenu?.pending}
-        isDisabled={(candidate) => Boolean((candidate as ComposerPlanGroup).connection?.disabled)}
-        separatorBeforeKey={
-          options.providerMenu
-            ? menuGroups.find(
-                (candidate) =>
-                  !candidate.connection && !candidate.key.startsWith("registry-provider:account:"),
-              )?.key
-            : undefined
-        }
+        isDisabled={(candidate) => candidate.items.length === 0}
         group={group}
         label={options.providerLabel}
         providerFooter={providerFooter}
         onSelect={(candidate) => {
           if (options.providerMenu) {
-            options.providerMenu.onSelect(candidate as ComposerPlanGroup);
+            options.providerMenu.onSelect(candidate);
             return;
           }
           setBrowse({ key: candidate.key, selection: normalizedValue });
           // 复用唯一选择链路，供应商页只负责导航，不缓存模型状态。
           const model =
             candidate.items.find(
-              (item) => item.value === normalizedValue && !isItemLocked(item.value),
+              (item) =>
+                item.value === normalizedValue && !isItemLocked(item.value),
             ) ?? candidate.items.find((item) => !isItemLocked(item.value));
-          if (model && model.value !== normalizedValue) onSelectModel(model.value);
+          if (model && model.value !== normalizedValue)
+            onSelectModel(model.value);
         }}
       >
         <DropdownMenuSeparator className="bg-border/50" />
@@ -215,7 +225,8 @@ export function ComposerModelMenu({
                 aria-disabled={sliderDisabled}
                 onSelect={(event) => event.preventDefault()}
                 onFocus={(event) => {
-                  if (event.target === event.currentTarget) sliderRef.current?.focus();
+                  if (event.target === event.currentTarget)
+                    sliderRef.current?.focus();
                 }}
               >
                 <ComposerEffortHeading
@@ -246,7 +257,10 @@ export function ComposerModelMenu({
                       <div className="absolute inset-0 rounded-full border border-foreground/10" />
                       <div
                         className="composer-thought-slider-fill absolute inset-y-0 left-0 overflow-hidden rounded-full"
-                        data-max={sliderFilled && currentIndex === options.levels.length - 1}
+                        data-max={
+                          sliderFilled &&
+                          currentIndex === options.levels.length - 1
+                        }
                         data-highspeed={highspeed && currentGroupSelected}
                         style={{
                           width: sliderFilled
@@ -261,24 +275,28 @@ export function ComposerModelMenu({
                             data-testid="composer-thought-bubbles"
                             className="composer-thought-bubbles absolute inset-0"
                           >
-                            {(highspeed ? HIGHSPEED_BUBBLES : EFFORT_BUBBLES).map(
-                              (bubble, index) => (
+                            {(highspeed
+                              ? HIGHSPEED_BUBBLES
+                              : EFFORT_BUBBLES
+                            ).map((bubble, index) => (
+                              <span
+                                key={index}
+                                className="composer-thought-bubble absolute inset-x-0"
+                                style={{
+                                  top: bubble.top,
+                                  animationDuration: `${bubble.duration}s`,
+                                  animationDelay: `${bubble.delay}s`,
+                                }}
+                              >
                                 <span
-                                  key={index}
-                                  className="composer-thought-bubble absolute inset-x-0"
+                                  className="block rounded-full bg-white"
                                   style={{
-                                    top: bubble.top,
-                                    animationDuration: `${bubble.duration}s`,
-                                    animationDelay: `${bubble.delay}s`,
+                                    width: bubble.size,
+                                    height: bubble.size,
                                   }}
-                                >
-                                  <span
-                                    className="block rounded-full bg-white"
-                                    style={{ width: bubble.size, height: bubble.size }}
-                                  />
-                                </span>
-                              ),
-                            )}
+                                />
+                              </span>
+                            ))}
                           </div>
                         ) : null}
                       </div>
@@ -290,7 +308,8 @@ export function ComposerModelMenu({
                           data-composer-thought-stop
                           data-filled={sliderFilled && index <= currentIndex}
                           data-hovered={
-                            !sliderDisabled && hoveredStop === `${normalizedValue}:${level.value}`
+                            !sliderDisabled &&
+                            hoveredStop === `${normalizedValue}:${level.value}`
                           }
                           className="composer-thought-slider-stop size-1 shrink-0 rounded-full"
                         />
@@ -298,7 +317,9 @@ export function ComposerModelMenu({
                     </div>
                     <div
                       className="composer-thought-slider-thumb absolute top-0.5 size-7 rounded-full shadow-sm"
-                      style={{ left: `calc((100% - 28px) * ${sliderProgress / 100})` }}
+                      style={{
+                        left: `calc((100% - 28px) * ${sliderProgress / 100})`,
+                      }}
                     />
                   </div>
                   <input
@@ -314,7 +335,9 @@ export function ComposerModelMenu({
                     aria-label={options.effortLabel}
                     aria-valuetext={currentGroupSelected ? label : "—"}
                     data-testid="composer-thought-slider"
-                    data-levels={JSON.stringify(options.levels.map((level) => level.value))}
+                    data-levels={JSON.stringify(
+                      options.levels.map((level) => level.value),
+                    )}
                     className="composer-thought-range absolute inset-0 m-0 h-8 w-full cursor-pointer appearance-none bg-transparent outline-none aria-disabled:cursor-default"
                     onPointerDown={(event) => {
                       // 拦截冒泡会让 Radix 的内部点击标记残留，导致第一次外部点击无法关闭菜单。
@@ -331,7 +354,9 @@ export function ComposerModelMenu({
                       );
                       const level = options.levels[index];
                       const center =
-                        rect.left + 14 + (trackWidth * index) / (options.levels.length - 1);
+                        rect.left +
+                        14 +
+                        (trackWidth * index) / (options.levels.length - 1);
                       setHoveredStop(
                         !sliderDisabled &&
                           event.pointerType !== "touch" &&
@@ -345,7 +370,8 @@ export function ComposerModelMenu({
                     onKeyDown={(event) => {
                       if (event.key !== "Escape") {
                         event.stopPropagation();
-                        if (sliderDisabled && event.key !== "Tab") event.preventDefault();
+                        if (sliderDisabled && event.key !== "Tab")
+                          event.preventDefault();
                       }
                     }}
                     // 原因：缺失档位时 range 的物理位置仍为 0；Home 或点击首格不触发 change，
@@ -368,7 +394,9 @@ export function ComposerModelMenu({
                     onPointerUp={(event) => {
                       selectSliderValue(Number(event.currentTarget.value));
                     }}
-                    onChange={(event) => selectSliderValue(Number(event.currentTarget.value))}
+                    onChange={(event) =>
+                      selectSliderValue(Number(event.currentTarget.value))
+                    }
                   />
                 </div>
               </DropdownMenuItem>

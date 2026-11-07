@@ -7,7 +7,7 @@ import {
   TID_TASK_ITEM,
   TID_V4_COMPOSER_INPUT,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   getUpstreamRequestRecordCount,
   getUpstreamRequestEvidence,

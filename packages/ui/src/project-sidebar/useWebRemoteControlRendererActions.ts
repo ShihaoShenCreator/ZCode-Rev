@@ -3,7 +3,7 @@ import type {
   IPlatformService,
   WebRemoteControlRendererActionRequest,
   WebRemoteControlRendererActionResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { useBaseWorkspaceServices } from "@/hooks/useWorkspaceServices.js";
 import { resolveRemoteWorkspaceSessionIdForTarget } from "@/hooks/useResolvedRemoteWorkspaceSessionId.js";
 import { mutateProjectTask } from "@/project-sidebar/task-mutation.js";

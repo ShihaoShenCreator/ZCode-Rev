@@ -79,9 +79,9 @@ summarize_tool_results
 Focused validation used for this slice:
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/context-builder.test.ts tests/runtime-trace.test.ts tests/runtime-hooks.test.ts tests/runtime-memory.test.ts tests/mcp-runtime.test.ts --run
-pnpm --filter @zcode/bootstrap exec vitest tests/session-persistence.test.ts --run
-pnpm --filter @zcode/prompt-trajectory typecheck
+pnpm --filter @s-agent/core exec vitest tests/context-builder.test.ts tests/runtime-trace.test.ts tests/runtime-hooks.test.ts tests/runtime-memory.test.ts tests/mcp-runtime.test.ts --run
+pnpm --filter @s-agent/bootstrap exec vitest tests/session-persistence.test.ts --run
+pnpm --filter @s-agent/prompt-trajectory typecheck
 ```
 
 ## Residual Follow-Ups

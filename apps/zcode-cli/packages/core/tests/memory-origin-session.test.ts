@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId, createTraceId } from "@zcode/contracts";
+import { createSessionId, createTraceId } from "@s-agent/contracts";
 
 import { stampMemoryOriginSessionId } from "../src/memory/origin-session.js";
 import { editHandler } from "../src/tool/handlers/edit.js";

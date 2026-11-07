@@ -1,8 +1,8 @@
 import { useWorkspaceServices } from "@/hooks/useWorkspaceServices.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { useCallback, useRef, useState } from "react";
-import type { IServiceAccessor } from "@zcode/services";
-import type { ZCodeProvider } from "@zcode/shared";
+import type { IServiceAccessor } from "@s-agent/services";
+import type { ZCodeProvider } from "@s-agent/shared";
 import { toast } from "@/components/ui/toast.js";
 import {
   buildWorkspaceSessionReloadDraftError,

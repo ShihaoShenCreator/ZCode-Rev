@@ -52,7 +52,7 @@ if (
           "--dir",
           join(root, "apps/zcode-cli"),
           "--filter",
-          `@zcode/${name}`,
+          `@s-agent/${name}`,
           name === "cli" ? "build:desktop-agent" : "build",
         ],
         { stdio: "inherit" },
@@ -70,7 +70,7 @@ const alias = {
   "@": join(root, "packages/ui/src"),
   ...Object.fromEntries(
     Object.entries(sharedExports).map(([key, value]) => [
-      key === "." ? "@zcode/shared" : `@zcode/shared/${key.slice(2)}`,
+      key === "." ? "@s-agent/shared" : `@s-agent/shared/${key.slice(2)}`,
       resolve(shared, "..", value),
     ]),
   ),

@@ -1,7 +1,7 @@
 import { useToolPresentationCapabilities } from "@/ToolCallBlocks/presentationCapabilities.js";
 import { BotIcon } from "lucide-react";
 import { useCallback, useMemo, type ReactNode } from "react";
-import type { AgentColor } from "@zcode/shared";
+import type { AgentColor } from "@s-agent/shared";
 import { MessageResponse } from "@/components/ai-elements/message.js";
 import { cn } from "@/components/lib/utils.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

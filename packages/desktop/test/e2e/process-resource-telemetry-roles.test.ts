@@ -2,7 +2,7 @@ import {
   ARMS_CUSTOM_EVENT_PROPERTY_LIMIT,
   PROCESS_RESOURCE_EVENT_NAMES,
   checkProcessResourceEventProperties,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { clearAppData, waitForDefaultWorkspaceReady } from "./helpers/desktop-app.js";
 
 /**

@@ -21,7 +21,7 @@ import {
   type SessionEntryInfo,
   type SessionId,
   type ToolSearchExecutionContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { traceContextToLogContext, type ToolExecutionResult, type TraceContext } from "../deps.js";
 import type { ToolEntry } from "../../tool/types.js";
 import type { AgentRuntimeInternal } from "../internal.js";

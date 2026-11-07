@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, LoaderCircle } from "lucide-react";
-import type { SourceServerOperationLog } from "@zcode/shared";
+import type { SourceServerOperationLog } from "@s-agent/shared";
 import { cn } from "@/components/lib/utils.js";
 import { Button } from "@/components/ui/button.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

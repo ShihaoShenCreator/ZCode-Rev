@@ -6,7 +6,7 @@
 
 **Architecture:** Add a narrow `skill-sync` RPC service registered on local and remote service collections. The UI opens one reusable dialog from SSH workspace header, `Settings > Skills`, and the connected SSH directory step; the dialog uses base services for local export and the current remote workspace services for remote status/import.
 
-**Tech Stack:** TypeScript, React, Zustand service context, `@zcode/rpc` ProxyChannel services, Node `fs/promises`, Node `zlib`, Vitest, existing shadcn/radix UI primitives.
+**Tech Stack:** TypeScript, React, Zustand service context, `@s-agent/rpc` ProxyChannel services, Node `fs/promises`, Node `zlib`, Vitest, existing shadcn/radix UI primitives.
 
 ---
 
@@ -123,8 +123,8 @@ import type {
   SkillSyncCandidateListResult,
   SkillSyncImportResult,
   SkillSyncRemoteStatusResult,
-} from "@zcode/shared";
-import { ServiceChannels } from "@zcode/shared";
+} from "@s-agent/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import { createServiceDescriptor } from "../descriptors.js";
 
 export interface ISkillSyncService {
@@ -486,7 +486,7 @@ import type {
   SkillSyncCandidateListResult,
   SkillSyncImportResult,
   SkillSyncRemoteStatusResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ISkillSyncService } from "./skillSync.js";
 import {
   createSkillSyncArchive,
@@ -678,8 +678,8 @@ Expected: fail because component does not exist.
 Create `packages/ui/src/settings/RemoteSkillSyncDialog.tsx`. The public props must be:
 
 ```tsx
-import type { RemoteTarget, SkillSyncCandidate, SkillSyncRemoteStatus } from "@zcode/shared";
-import type { ISkillSyncService } from "@zcode/services";
+import type { RemoteTarget, SkillSyncCandidate, SkillSyncRemoteStatus } from "@s-agent/shared";
+import type { ISkillSyncService } from "@s-agent/services";
 
 interface RemoteSkillSyncDialogProps {
   open: boolean;

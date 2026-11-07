@@ -1,10 +1,7 @@
-import { useCodingPlanEntryGate } from "@/settings/CodingPlanEntryButton.js";
 /* eslint-disable max-lines -- 定时任务主视图集中维护列表、创建/编辑整页路由与启停/删除操作，集中更利于交互一致。 */
 import {
   useCallback,
   useEffect,
-  useMemo,
-  useRef,
   useState,
   type ComponentType,
   type SVGProps,
@@ -12,12 +9,11 @@ import {
 import { CircleCheck, RotateCcw, TriangleAlert } from "lucide-react";
 import {
   AUTOMATION_CREATE_LIMIT,
-  BUILTIN_MODEL_PROVIDER_IDS,
   isAutomationCreateLimitError,
   resolveWorkspaceKey,
   type ZCodeAutomation,
   type ZCodeOffPeakTask,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_AUTOMATION_ACTION_DELETE,
   TID_AUTOMATION_ACTION_TOGGLE,
@@ -25,9 +21,8 @@ import {
   TID_AUTOMATION_CARD_MENU,
   TID_AUTOMATIONS_LIST,
   TID_AUTOMATIONS_STATUS_FILTER,
-  TID_OFFPEAK_CREATE_BUTTON,
   TID_OFFPEAK_TAB,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import {
   DropdownMenu,
@@ -45,38 +40,15 @@ import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { useServices } from "@/hooks/useServices.js";
 import { useConfirmDialog } from "@/hooks/useConfirmDialog.js";
 import { usePlatform } from "@/hooks/usePlatform.js";
-import {
-  OFF_PEAK_CREATE_TOOLTIP_CLASSNAME,
-  formatOffPeakRemainingWait,
-  resolveOffPeakCreateBlockReason,
-  type OffPeakCreateBlockReason,
-} from "@/settings/offPeakUiPresentation.js";
 import { useProviderSettingsView } from "@/hooks/useProviderSettingsView.js";
-import { useOffPeakEligibility } from "@/hooks/useOffPeakEligibility.js";
 import { useSettings } from "@/hooks/useSettingService.js";
 import { logger } from "@/logger.js";
-import {
-  createIdleTimeCodingPlanFunnelContext,
-  resolveCodingPlanEntryPlanStateFromProviderSettings,
-} from "@/lib/codingPlanFunnelTelemetry.js";
 import {
   useAutomationManagementStore,
   type AutomationRunNowResult,
 } from "@/store/automationManagementStore.js";
-import {
-  isCurrentOffPeakCodingPlanSupported,
-  resolveOffPeakCreateErrorMessageId,
-  useOffPeakTaskStore,
-  type OffPeakCreateDraft,
-} from "@/store/offPeakTaskStore.js";
-import {
-  createAndReportOffPeakTask,
-  freezeOffPeakCreateTelemetrySnapshot,
-  reportOffPeakCreateResult,
-} from "@/lib/offPeakTelemetry.js";
+import { useOffPeakTaskStore } from "@/store/offPeakTaskStore.js";
 import { OffPeakTaskList } from "@/settings/OffPeakTaskList.js";
-import { OffPeakTemplateIcon } from "@/settings/OffPeakTemplateIcon.js";
-import { OffPeakEditView, type OffPeakEditSubmit } from "@/settings/OffPeakEditView.js";
 import {
   formatAutomationCardNextRun,
   hasAutomationFailureState,
@@ -99,7 +71,6 @@ import {
   AutomationRunNowIcon,
   AutomationTrashIcon,
 } from "@/settings/AutomationDesignPrimitives.js";
-import { useCodingPlanUpgradeDialog } from "@/settings/CodingPlanUpgradeDialogProvider.js";
 import { SETTINGS_FRAME_CONTENT_CLASSNAME } from "@/settings/SettingsPageParts.js";
 import { useTabStore } from "@/store/TabStoreProvider.js";
 import { isWorkspaceTab } from "@/store/tabStore.js";
@@ -119,9 +90,7 @@ import {
   resolveAutomationSelectionTelemetry,
 } from "@/lib/automationTelemetry.js";
 import {
-  materializeOffPeakTemplateDraft,
   materializeScheduledTemplateDraft,
-  resolveOffPeakTemplateText,
   resolveAutomationTemplateText,
   type ScheduledAutomationTemplate,
 } from "@/settings/automationTemplateCatalog.js";
@@ -183,43 +152,6 @@ function toast(message: string, options?: ToastOptions): number {
   });
 }
 
-function OffPeakCreateButton({
-  greyReason,
-  greyTooltip,
-  onCreate,
-}: {
-  greyReason: OffPeakCreateBlockReason | null;
-  greyTooltip?: string;
-  onCreate: () => void;
-}) {
-  const { intl } = useZCodeIntl();
-  // disabled 按钮 pointer-events-none，tooltip 必须挂在外层可指针元素上。
-  const button = (
-    <Button
-      type="button"
-      variant="default"
-      size="default"
-      data-testid={TID_OFFPEAK_CREATE_BUTTON}
-      disabled={greyReason !== null}
-      onClick={onCreate}
-    >
-      {intl.formatMessage({ id: "offPeak.createButton" })}
-    </Button>
-  );
-
-  if (!greyTooltip) return button;
-  return (
-    <ControlHintTooltip
-      title={greyTooltip}
-      side="top"
-      align="center"
-      className={OFF_PEAK_CREATE_TOOLTIP_CLASSNAME}
-    >
-      <span className="inline-flex">{button}</span>
-    </ControlHintTooltip>
-  );
-}
-
 /** 创建表单的预填草稿(来自「More ideas」模板)。 */
 export interface AutomationDraft {
   templateId?: string;
@@ -232,11 +164,9 @@ export interface AutomationDraft {
 type AutomationsView =
   | { mode: "list" }
   | { mode: "create"; draft: AutomationDraft | null }
-  | { mode: "edit"; automation: ZCodeAutomation }
-  | { mode: "offpeak-create"; draft?: OffPeakCreateDraft }
-  | { mode: "offpeak-edit"; task: ZCodeOffPeakTask };
+  | { mode: "edit"; automation: ZCodeAutomation };
 
-/** 主视图标签页：Scheduled 常驻，Idle-time 受灰度控制（D31）；不设 All 混排视图。 */
+/** 主视图标签页：Scheduled 常驻，Idle-time 为本地历史只读列表；不设 All 混排视图。 */
 export type AutomationsTab = "scheduled" | "idle";
 
 const SCHEDULED_ONLY_AUTOMATION_TABS: readonly AutomationsTab[] = ["scheduled"];
@@ -273,27 +203,6 @@ export function resolveAutomationTabNavigation({
   return {
     status: "settled",
     tab: visibleTabs.includes(requestedTab) ? requestedTab : "scheduled",
-  };
-}
-
-export function resolveAutomationTemplateVisibility({
-  hasAnyTasks,
-  offPeakCreationEnabled,
-  tab,
-}: {
-  hasAnyTasks: boolean;
-  offPeakCreationEnabled: boolean;
-  tab: AutomationsTab;
-}): {
-  showOffPeakTemplates: boolean;
-  showScheduledTemplates: boolean;
-} {
-  // 移除 All tab 后空首页仍默认落在 Scheduled，导致闲时模板被 tab 条件误隐藏。
-  // 无任务时恢复两类模板并列展示；有任务后继续由 Scheduled / Idle tab 分流。
-  const showAllTemplates = !hasAnyTasks;
-  return {
-    showOffPeakTemplates: offPeakCreationEnabled && (showAllTemplates || tab === "idle"),
-    showScheduledTemplates: showAllTemplates || tab === "scheduled",
   };
 }
 
@@ -363,28 +272,9 @@ export function resolveAutomationDetailNavigation(
   return target ? { status: "found", target } : { status: "missing" };
 }
 
-/** D49：openAutomationId 里 `offpeak-` 前缀 id 的判别（生成点唯一：offPeakTaskService 的 offpeak-${uuid}）。 */
-export function isOffPeakDetailNavigationId(automationId: string | null | undefined): boolean {
+/** openAutomationId 里 `offpeak-` 前缀 id 的判别（生成点唯一：offPeakTaskService 的 offpeak-${uuid}）。 */
+function isOffPeakDetailNavigationId(automationId: string | null | undefined): boolean {
   return Boolean(automationId?.trim().startsWith("offpeak-"));
-}
-
-/** D49：闲时轮尾卡跳转的并行解析路径；与 cron 的 resolveAutomationDetailNavigation 对称。 */
-export function resolveOffPeakDetailNavigation(
-  tasks: readonly ZCodeOffPeakTask[],
-  offPeakTaskId: string | null | undefined,
-  listReady: boolean,
-  listError: string | null = null,
-):
-  | { status: "pending" }
-  | { status: "unavailable" }
-  | { status: "missing" }
-  | { status: "found"; target: ZCodeOffPeakTask } {
-  const targetId = offPeakTaskId?.trim();
-  if (!targetId || !listReady) return { status: "pending" };
-  // review：store.refresh 吞错保留旧列表；列表不可信时不能做 found/missing 终审。
-  if (listError) return { status: "unavailable" };
-  const target = tasks.find((task) => task.offPeakTaskId === targetId) ?? null;
-  return target ? { status: "found", target } : { status: "missing" };
 }
 
 interface AutomationActionsMenuProps {
@@ -533,13 +423,15 @@ export function AutomationsSection({
   const platform = usePlatform();
   const { clientScenesService, offPeakTaskService, zcodeAgentService } = useServices();
   const confirmDialog = useConfirmDialog();
-  const { openCodingPlanUpgrade } = useCodingPlanUpgradeDialog();
   const providerSettingsRead = useProviderSettingsView();
   const providerSettingsView =
     providerSettingsRead.state.status === "ready" ? providerSettingsRead.state.view : null;
-  const { status: entryStatus, label: entryLabel, retry: retryEntry } = useCodingPlanEntryGate();
   const { settings: sharedSettings, update: updateSharedSettings } = useSettings();
-  useOffPeakEligibility(sharedSettings, providerSettingsView?.revision);
+  // 闲时任务已退役：这里只负责加载本地历史记录供 Idle-time 只读列表展示。
+  const offPeakInitialize = useOffPeakTaskStore((state) => state.initialize);
+  useEffect(() => {
+    void offPeakInitialize({ offPeakTaskService });
+  }, [offPeakInitialize, offPeakTaskService]);
 
   const automations = useAutomationManagementStore((state) => state.automations);
   const automationCreateLimitReached = automations.length >= AUTOMATION_CREATE_LIMIT;
@@ -560,30 +452,9 @@ export function AutomationsSection({
   const automationTemplates = useAutomationTemplates(clientScenesService);
   const offPeakTasks = useOffPeakTaskStore((state) => state.tasks);
   const offPeakStoreLoading = useOffPeakTaskStore((state) => state.loading);
-  const offPeakGrayConfig = useOffPeakTaskStore((state) => state.grayConfig);
-  const offPeakCodingPlanSupport = useOffPeakTaskStore((state) => state.codingPlanSupport);
-  const offPeakTakeNumberAvailability = useOffPeakTaskStore(
-    (state) => state.takeNumberAvailability,
-  );
-  const offPeakTakeNumberAvailabilityStatus = useOffPeakTaskStore(
-    (state) => state.takeNumberAvailabilityStatus,
-  );
   const offPeakOperationId = useOffPeakTaskStore((state) => state.operationId);
   const offPeakRefresh = useOffPeakTaskStore((state) => state.refresh);
-  const offPeakRefreshCodingPlanSupport = useOffPeakTaskStore(
-    (state) => state.refreshCodingPlanSupport,
-  );
-  const offPeakRefreshTakeNumberAvailability = useOffPeakTaskStore(
-    (state) => state.refreshTakeNumberAvailability,
-  );
-  const offPeakCreate = useOffPeakTaskStore((state) => state.createTask);
-  const offPeakUpdate = useOffPeakTaskStore((state) => state.updateTask);
-  const offPeakPause = useOffPeakTaskStore((state) => state.pauseTask);
-  const offPeakContinue = useOffPeakTaskStore((state) => state.continueTask);
-  const offPeakCancel = useOffPeakTaskStore((state) => state.cancelTask);
   const offPeakDelete = useOffPeakTaskStore((state) => state.deleteTask);
-  const offPeakDeleteHistory = useOffPeakTaskStore((state) => state.deleteHistory);
-  const consumePendingCreateDraft = useOffPeakTaskStore((state) => state.consumePendingCreateDraft);
 
   const [refreshing, setRefreshing] = useState(false);
   const [view, setView] = useState<AutomationsView>({ mode: "list" });
@@ -626,18 +497,9 @@ export function AutomationsSection({
     return activeTab && isWorkspaceTab(activeTab) ? activeTab : undefined;
   });
   const currentWorkspaceIsRemote = isRemoteAutomationWorkspace(activeWorkspaceTab);
-  // 灰度中途翻转：只藏创建入口；有非终态存量仍展示并跑到终态。
-  const offPeakGrayEnabled = offPeakGrayConfig?.enabled === true;
-  const offPeakCreationEnabled = offPeakGrayEnabled && !currentWorkspaceIsRemote;
-  // 扫描全部 provider 会把未选中的 Coding Plan 当成当前执行凭证。
-  // mock 演示字段仍可覆盖；真实路径只接受与当前 family/selectedKey 一致的脱敏 resolver 快照。
-  const offPeakNoPlan =
-    offPeakGrayConfig?.codingPlanActive === false ||
-    (offPeakGrayConfig?.codingPlanActive === undefined &&
-      !offPeakStoreLoading &&
-      !isCurrentOffPeakCodingPlanSupported(offPeakCodingPlanSupport, sharedSettings));
-  const offPeakVisible =
-    !currentWorkspaceIsRemote && (offPeakGrayEnabled || offPeakTasks.length > 0);
+  // Off-Peak 创建/调度已退役：Idle-time 标签只承载本地历史只读列表，
+  // 有历史记录才出现；远端 workspace 不展示本机历史。
+  const offPeakVisible = !currentWorkspaceIsRemote && offPeakTasks.length > 0;
   const hasAnyTasks = automations.length > 0 || offPeakTasks.length > 0;
   const visibleTabs = resolveVisibleAutomationTabs({
     hasAnyTasks,
@@ -647,52 +509,12 @@ export function AutomationsSection({
     tab === "scheduled" ? automations.length > 0 : offPeakTasks.length > 0;
   const visibleAutomations = filterAutomationsByStatus(automations, statusFilter);
   const visibleOffPeakTasks = filterOffPeakTasksByStatus(offPeakTasks, statusFilter);
-  const { showOffPeakTemplates, showScheduledTemplates } = resolveAutomationTemplateVisibility({
-    hasAnyTasks,
-    offPeakCreationEnabled,
-    tab,
-  });
-  const hasVisibleTemplates = showOffPeakTemplates || showScheduledTemplates;
-  const showTaskTemplateSeparator = hasVisibleTaskCards && hasVisibleTemplates;
+  // 闲时模板已随创建入口退役；空首页默认落在 Scheduled，仍展示定时模板。
+  const showScheduledTemplates = !hasAnyTasks || tab === "scheduled";
+  const showTaskTemplateSeparator = hasVisibleTaskCards && showScheduledTemplates;
   const [loadedWorkspaceKey, setLoadedWorkspaceKey] = useState<string | null>(null);
   // 相对时间基准;刷新列表时更新,避免频繁 setInterval。
   const [now, setNow] = useState(() => Date.now());
-
-  // 创建准入 fail-closed。只有服务端成功返回 canTakeNumber=true 才放行；资格不符、
-  // loading/idle/error 与额度 false 都禁入，避免依赖异常被吞掉后直到真实创建才报错。
-  const offPeakCreateGrey = useMemo(() => {
-    const reason = resolveOffPeakCreateBlockReason({
-      availabilityStatus: offPeakTakeNumberAvailabilityStatus,
-      canTakeNumber: offPeakTakeNumberAvailability?.canTakeNumber,
-      grayEnabled: offPeakGrayEnabled,
-      noPlan: offPeakNoPlan,
-    });
-    const tooltip =
-      reason === "plan"
-        ? intl.formatMessage({ id: "offPeak.create.codingPlanOnly" })
-        : reason === "unavailable"
-          ? intl.formatMessage({ id: "offPeak.create.availabilityUnavailable" })
-          : reason === "quota" && offPeakTakeNumberAvailability?.nextTakeAt !== undefined
-            ? intl.formatMessage(
-                { id: "offPeak.create.limitReachedAt" },
-                {
-                  time: formatOffPeakRemainingWait(
-                    offPeakTakeNumberAvailability.nextTakeAt,
-                    now,
-                    intl,
-                  ),
-                },
-              )
-            : undefined;
-    return { reason, tooltip };
-  }, [
-    intl,
-    now,
-    offPeakGrayEnabled,
-    offPeakNoPlan,
-    offPeakTakeNumberAvailability,
-    offPeakTakeNumberAvailabilityStatus,
-  ]);
 
   // 列表按当前项目加载(主视图由 WorkspaceShellLayout 传入当前 workspace)。
   useEffect(() => {
@@ -719,8 +541,8 @@ export function AutomationsSection({
   useEffect(() => {
     const nextTab = resolveAutomationTabAfterOffPeakChange(tab, offPeakVisible);
     if (nextTab === tab) return;
-    // 后台关闭闲时灰度后，Idle tab 会被隐藏；旧状态若继续停在 idle，
-    // 定时任务列表也会被 tab === "idle" 一并隐藏。回到 Scheduled，确保定时任务始终可访问。
+    // 当前项目没有闲时历史（或切到远端 workspace）时 Idle tab 会被隐藏；旧状态若继续停在
+    // idle，定时任务列表也会被 tab === "idle" 一并隐藏。回到 Scheduled，确保定时任务始终可访问。
     setTab(nextTab);
   }, [offPeakVisible, tab]);
 
@@ -738,8 +560,8 @@ export function AutomationsSection({
       onOpenAutomationConsumed?.();
       return;
     }
-    // 闲时详情导航由下方 offpeak 分支统一 setTab("idle") + 消费；这里若先按
-    // 当前（可能尚未加载的）可见 tab 回退到 scheduled 并消费，会把 pending 的详情导航一并清掉。
+    // offpeak- 前缀深链由下方专用 effect 统一 setTab("idle") + 消费；这里若先按
+    // 当前（可能尚未加载的）可见 tab 回退到 scheduled 并消费，会把 pending 的深链一并清掉。
     if (isOffPeakDetailNavigationId(openAutomationId)) return;
     const currentWorkspaceKey = workspacePath
       ? resolveWorkspaceKey({ workspacePath, workspaceIdentity })
@@ -770,32 +592,7 @@ export function AutomationsSection({
     workspacePath,
   ]);
 
-  // 服务端给出准确恢复时间；到点后重查。刷新期间及失败后继续禁入，直到成功返回 true。
-  useEffect(() => {
-    const nextTakeAt = offPeakTakeNumberAvailability?.nextTakeAt;
-    if (offPeakTakeNumberAvailability?.canTakeNumber !== false || nextTakeAt === undefined) return;
-    const delay = Math.max(0, nextTakeAt - Date.now()) + 100;
-    const timer = setTimeout(() => {
-      setNow(Date.now());
-      void offPeakRefreshTakeNumberAvailability(offPeakTaskService);
-    }, delay);
-    return () => clearTimeout(timer);
-  }, [offPeakRefreshTakeNumberAvailability, offPeakTaskService, offPeakTakeNumberAvailability]);
-
-  // 额度 Tooltip 曾改成不会递减的绝对日期；按远端实现推进分钟边界，保持剩余时长准确。
-  useEffect(() => {
-    const nextTakeAt = offPeakTakeNumberAvailability?.nextTakeAt;
-    if (offPeakTakeNumberAvailability?.canTakeNumber !== false || nextTakeAt === undefined) return;
-    const remainingMs = nextTakeAt - Date.now();
-    if (remainingMs <= 0) return;
-    const minuteMs = 60_000;
-    const remainderMs = remainingMs % minuteMs;
-    const delay = (remainderMs === 0 ? minuteMs : remainderMs) + 50;
-    const timer = setTimeout(() => setNow(Date.now()), delay);
-    return () => clearTimeout(timer);
-  }, [now, offPeakTakeNumberAvailability]);
-
-  // 位次/状态轮询刷新（host offPeakTaskSync 写库，renderer 每 10s 读快照；无任务不轮）。
+  // 位次/状态轮询刷新（renderer 每 10s 读本地历史快照；无任务不轮）。
   useEffect(() => {
     if (view.mode !== "list" || offPeakTasks.length === 0) return;
     const timer = setInterval(() => {
@@ -807,81 +604,18 @@ export function AutomationsSection({
   const handleRefresh = useCallback(async () => {
     setRefreshing(true);
     try {
-      await Promise.all([
-        refresh(zcodeAgentService),
-        offPeakRefresh(offPeakTaskService),
-        ...(offPeakGrayEnabled ? [offPeakRefreshCodingPlanSupport(offPeakTaskService)] : []),
-      ]);
+      await Promise.all([refresh(zcodeAgentService), offPeakRefresh(offPeakTaskService)]);
       setNow(Date.now());
     } finally {
       setRefreshing(false);
     }
-  }, [
-    offPeakGrayEnabled,
-    offPeakRefresh,
-    offPeakRefreshCodingPlanSupport,
-    offPeakTaskService,
-    refresh,
-    zcodeAgentService,
-  ]);
-
-  // New task 页模板卡跳转过来：消费预填草稿 → 切 idle tab + 打开创建表单预填。
-  useEffect(() => {
-    const draft = consumePendingCreateDraft();
-    if (!draft) return;
-    if (currentWorkspaceIsRemote) return;
-    setTab("idle");
-    setView({ mode: "offpeak-create", draft });
-  }, [consumePendingCreateDraft, currentWorkspaceIsRemote]);
+  }, [offPeakRefresh, offPeakTaskService, refresh, zcodeAgentService]);
 
   useEffect(() => {
     if (!currentWorkspaceIsRemote) return;
+    // 远端 workspace 不展示本机闲时历史；切走时收回 Idle tab，避免定时任务列表被隐藏。
     setTab((current) => (current === "idle" ? "scheduled" : current));
-    setView((current) =>
-      current.mode === "offpeak-create" || current.mode === "offpeak-edit"
-        ? { mode: "list" }
-        : current,
-    );
   }, [currentWorkspaceIsRemote]);
-
-  const handleOpenCodingPlanUpgrade = useCallback(() => {
-    const providerId =
-      sharedSettings?.providerFamilyDomain === "bigmodel"
-        ? BUILTIN_MODEL_PROVIDER_IDS.bigmodelIndividualCodingPlan
-        : BUILTIN_MODEL_PROVIDER_IDS.zaiIndividualCodingPlan;
-    const eventText = intl.formatMessage({
-      id: "settings.modelProvider.codingPlan.upgrade",
-    });
-    // 埋点缺失原因：Automations 的闲时入口此前绕过了购买漏斗 context，只打开弹窗。
-    // 这里在用户点击时冻结入口套餐状态，后续 OAuth 只刷新鉴权，不重建 funnel。
-    openCodingPlanUpgrade({
-      providerId,
-      initialAudience: "personal",
-      funnelContext: createIdleTimeCodingPlanFunnelContext({
-        providerId,
-        eventText,
-        entryPlanState: resolveCodingPlanEntryPlanStateFromProviderSettings(providerSettingsView),
-      }),
-    });
-  }, [intl, openCodingPlanUpgrade, providerSettingsView, sharedSettings?.providerFamilyDomain]);
-
-  const showCodingPlanRequiredToast = useCallback(() => {
-    toast(entryLabel ?? intl.formatMessage({ id: "offPeak.create.codingPlanToast" }), {
-      durationMs: 8000,
-      position: "top-center",
-      variant: "info",
-      actionLabel:
-        entryStatus === "loading"
-          ? undefined
-          : (entryLabel ??
-            intl.formatMessage({
-              id: "settings.modelProvider.codingPlan.upgrade",
-            })),
-      onAction: entryStatus === "error" ? retryEntry : handleOpenCodingPlanUpgrade,
-      dismissible: true,
-      dismissLabel: intl.formatMessage({ id: "common.close" }),
-    });
-  }, [handleOpenCodingPlanUpgrade, intl, entryStatus, entryLabel, retryEntry]);
 
   const showAutomationCreateLimitToast = useCallback(() => {
     toast(
@@ -892,53 +626,23 @@ export function AutomationsSection({
     );
   }, [intl]);
 
-  // 会话内 OffPeakCreate 由 agent 直接落库，不经过 UI store；store 的 loading 初值也
-  // 是 false（"未加载"与"已加载"不可分）。因此每次 offpeak 导航都强制刷新列表，并以
-  // 「本次导航 id 的刷新已完成」作为唯一就绪信号，避免拿陈旧/空列表误判 targetNotFound。
-  const [offPeakNavRefreshed, setOffPeakNavRefreshed] = useState<{
-    id: string | null;
-    error: string | null;
-  }>({ id: null, error: null });
   useEffect(() => {
+    // Off-Peak 已退役：offpeak- 前缀深链不再有详情整页，落到 Idle-time 本地历史列表并消费，
+    // 顺带刷新一次历史；不能落进 cron 解析（必然 missing 并误报 targetNotFound）。
     if (!isOffPeakDetailNavigationId(openAutomationId)) return;
-    let disposed = false;
-    void offPeakRefresh(offPeakTaskService).finally(() => {
-      if (disposed) return;
-      // review：refresh 不 reject，失败只写 store.error；把它随就绪信号一起带出。
-      setOffPeakNavRefreshed({
-        id: openAutomationId ?? null,
-        error: useOffPeakTaskStore.getState().error ?? null,
-      });
-    });
-    return () => {
-      disposed = true;
-    };
-  }, [openAutomationId, offPeakRefresh, offPeakTaskService]);
+    setTab("idle");
+    void offPeakRefresh(offPeakTaskService);
+    onOpenAutomationConsumed?.();
+  }, [
+    offPeakRefresh,
+    offPeakTaskService,
+    onOpenAutomationConsumed,
+    openAutomationId,
+  ]);
 
   useEffect(() => {
-    // 闲时轮尾卡携带 offpeak- 前缀 id，从并行路径解析进 offpeak-edit 视图；
-    // 不能落进 cron 解析（必然 missing 并误报 targetNotFound）。
-    if (isOffPeakDetailNavigationId(openAutomationId)) {
-      const result = resolveOffPeakDetailNavigation(
-        offPeakTasks,
-        openAutomationId,
-        offPeakNavRefreshed.id === openAutomationId,
-        offPeakNavRefreshed.error,
-      );
-      if (result.status === "pending") return;
-      if (result.status === "found") {
-        setTab("idle");
-        setView({ mode: "offpeak-edit", task: result.target });
-      } else if (result.status === "unavailable") {
-        // 列表刷新失败：落到闲时 tab 并提示加载失败，不误报"任务不存在"。
-        setTab("idle");
-        toast(intl.formatMessage({ id: "offPeak.nav.listUnavailable" }));
-      } else {
-        toast(intl.formatMessage({ id: "automations.error.targetNotFound" }));
-      }
-      onOpenAutomationConsumed?.();
-      return;
-    }
+    // offpeak- 前缀深链由上方专用 effect 落到 Idle-time 历史列表，不参与 cron 详情解析。
+    if (isOffPeakDetailNavigationId(openAutomationId)) return;
     const currentWorkspaceKey = workspacePath
       ? resolveWorkspaceKey({ workspacePath, workspaceIdentity })
       : null;
@@ -959,8 +663,6 @@ export function AutomationsSection({
     automations,
     intl,
     loadedWorkspaceKey,
-    offPeakNavRefreshed,
-    offPeakTasks,
     onOpenAutomationConsumed,
     openAutomationId,
     workspaceIdentity,
@@ -1237,30 +939,6 @@ export function AutomationsSection({
     [onOpenSession],
   );
 
-  const handleOffPeakOpen = useCallback((task: ZCodeOffPeakTask) => {
-    // 有 session 的卡片主点击不能直接跳会话：会使 Settings/History
-    // 无法稳定到达。卡片主路径始终进入任务详情，会话只保留为显式次级动作。
-    setView({ mode: "offpeak-edit", task });
-  }, []);
-
-  const handleOffPeakCancel = useCallback(
-    async (task: ZCodeOffPeakTask) => {
-      const confirmed = await confirmDialog({
-        title: intl.formatMessage({ id: "offPeak.cancel.title" }),
-        description: intl.formatMessage(
-          { id: "offPeak.cancel.description" },
-          { title: task.title || task.prompt },
-        ),
-        confirmLabel: intl.formatMessage({ id: "offPeak.action.cancel" }),
-      });
-      if (!confirmed) return;
-      await offPeakCancel(task.offPeakTaskId, offPeakTaskService);
-      const message = useOffPeakTaskStore.getState().error;
-      if (message) toast(message);
-    },
-    [confirmDialog, intl, offPeakCancel, offPeakTaskService],
-  );
-
   const handleOffPeakDelete = useCallback(
     async (task: ZCodeOffPeakTask) => {
       const confirmed = await confirmDialog({
@@ -1273,96 +951,8 @@ export function AutomationsSection({
       await offPeakDelete(task.offPeakTaskId, offPeakTaskService);
       const message = useOffPeakTaskStore.getState().error;
       if (message) toast(message);
-      setView((prev) =>
-        prev.mode === "offpeak-edit" && prev.task.offPeakTaskId === task.offPeakTaskId
-          ? { mode: "list" }
-          : prev,
-      );
     },
     [confirmDialog, intl, offPeakDelete, offPeakTaskService],
-  );
-
-  const handleOffPeakDeleteHistory = useCallback(
-    async (task: ZCodeOffPeakTask) => {
-      await offPeakDeleteHistory(task.offPeakTaskId, offPeakTaskService);
-      const message = useOffPeakTaskStore.getState().error;
-      if (message) toast(message);
-    },
-    [offPeakDeleteHistory, offPeakTaskService],
-  );
-
-  const handleOffPeakSubmit = useCallback(
-    async (input: OffPeakEditSubmit) => {
-      const current = view;
-      const telemetrySnapshot =
-        current.mode === "offpeak-create"
-          ? freezeOffPeakCreateTelemetrySnapshot({
-              source: current.draft?.telemetrySource,
-              model: input.modelSelection.modelId,
-              providerId: input.modelSelection.providerId,
-            })
-          : null;
-      if (current.mode !== "offpeak-edit" && offPeakCreateGrey.reason !== null) {
-        if (offPeakCreateGrey.reason === "plan") {
-          showCodingPlanRequiredToast();
-        } else if (offPeakCreateGrey.reason === "unavailable") {
-          toast(intl.formatMessage({ id: "offPeak.error.unavailable" }));
-        } else {
-          toast(offPeakCreateGrey.tooltip ?? intl.formatMessage({ id: "offPeak.error.quota" }));
-        }
-        if (telemetrySnapshot) {
-          void reportOffPeakCreateResult(platform, telemetrySnapshot, {
-            ok: false,
-            failureStage: "client_validation",
-            errorCategory: "client_validation",
-            errorCode: "",
-            providerName: "",
-          });
-        }
-        return false;
-      }
-      if (current.mode === "offpeak-edit") {
-        const updated = await offPeakUpdate(
-          current.task.offPeakTaskId,
-          {
-            title: input.title,
-            prompt: input.prompt,
-            permissionMode: input.permissionMode,
-            modelSelection: input.modelSelection,
-          },
-          offPeakTaskService,
-        );
-        if (!updated) {
-          toast(intl.formatMessage({ id: "offPeak.error.generic" }));
-        }
-        return updated;
-      }
-
-      const result =
-        telemetrySnapshot !== null
-          ? await createAndReportOffPeakTask(platform, telemetrySnapshot, () =>
-              offPeakCreate(input, offPeakTaskService),
-            )
-          : await offPeakCreate(input, offPeakTaskService);
-      if (!result.ok) {
-        toast(
-          intl.formatMessage({
-            id: resolveOffPeakCreateErrorMessageId(result),
-          }),
-        );
-      }
-      return result.ok;
-    },
-    [
-      intl,
-      offPeakCreate,
-      offPeakCreateGrey,
-      offPeakTaskService,
-      offPeakUpdate,
-      platform,
-      showCodingPlanRequiredToast,
-      view,
-    ],
   );
 
   if (!workspacePath) {
@@ -1370,42 +960,6 @@ export function AutomationsSection({
       <div className="rounded-lg border border-card-border bg-card px-3 py-2 text-ui-base text-foreground-subtle">
         {intl.formatMessage({ id: "automations.noWorkspace" })}
       </div>
-    );
-  }
-
-  // 闲时任务创建/编辑整页（表单范式）。
-  if (view.mode === "offpeak-create" || view.mode === "offpeak-edit") {
-    const editingTask =
-      view.mode === "offpeak-edit"
-        ? (offPeakTasks.find((task) => task.offPeakTaskId === view.task.offPeakTaskId) ?? view.task)
-        : null;
-    return (
-      <>
-        <OffPeakEditView
-          editing={editingTask}
-          initialDraft={view.mode === "offpeak-create" ? (view.draft ?? null) : null}
-          modelSelectionView={
-            offPeakGrayConfig?.modelSelectionView ?? { revision: 0, providers: [] }
-          }
-          defaultWorkspacePath={workspacePath ?? ""}
-          defaultWorkspaceIdentity={workspaceIdentity}
-          saving={
-            offPeakOperationId?.startsWith("offpeak:create") ||
-            offPeakOperationId?.startsWith("offpeak:update") ||
-            false
-          }
-          createBlocked={view.mode === "offpeak-create" && offPeakCreateGrey.reason !== null}
-          createBlockedTooltip={offPeakCreateGrey.tooltip}
-          onBack={() => setView({ mode: "list" })}
-          onSubmit={handleOffPeakSubmit}
-          onOpenSession={onOpenSession}
-          onDelete={(task) => void handleOffPeakDelete(task)}
-          onDeleteHistory={(task) => void handleOffPeakDeleteHistory(task)}
-          onPause={(task) => void offPeakPause(task.offPeakTaskId, offPeakTaskService)}
-          onContinue={(task) => void offPeakContinue(task.offPeakTaskId, offPeakTaskService)}
-          showToast={toast}
-        />
-      </>
     );
   }
 
@@ -1498,7 +1052,7 @@ export function AutomationsSection({
     <div data-automations-content className={cn(SETTINGS_FRAME_CONTENT_CLASSNAME, "flex flex-col")}>
       {pageHeader}
 
-      {/* Tab：Scheduled 常驻；Idle 仅在灰度命中或有闲时存量时出现（D31），不再提供 All 混排视图。
+      {/* Tab：Scheduled 常驻；Idle 仅在有本地闲时历史记录时出现，只读展示，不再提供 All 混排视图。
          有任务时右上对齐创建（4866-1735）；空态创建入口在大卡内（4889-2013），不重复顶栏按钮。 */}
       {visibleTabs.length > 0 ? (
         <div className="mt-8 flex items-center justify-between">
@@ -1545,13 +1099,6 @@ export function AutomationsSection({
               <AutomationCreateDropdown
                 onViaChat={handleCreateViaChat}
                 onManually={handleCreateManually}
-              />
-            ) : null}
-            {showOffPeakTemplates ? (
-              <OffPeakCreateButton
-                greyReason={offPeakCreateGrey.reason}
-                greyTooltip={offPeakCreateGrey.tooltip}
-                onCreate={() => setView({ mode: "offpeak-create" })}
               />
             ) : null}
           </div>
@@ -1620,12 +1167,12 @@ export function AutomationsSection({
                     <OffPeakTaskList
                       tasks={visibleOffPeakTasks}
                       busyOperationId={offPeakOperationId}
-                      onOpen={handleOffPeakOpen}
-                      onPause={(task) => void offPeakPause(task.offPeakTaskId, offPeakTaskService)}
-                      onContinue={(task) =>
-                        void offPeakContinue(task.offPeakTaskId, offPeakTaskService)
-                      }
-                      onCancel={(task) => void handleOffPeakCancel(task)}
+                      // Off-Peak 远端暂停/继续/取消与详情整页已退役：列表只保留本地历史展示、
+                      // 跳会话与删除记录；卡片主点击不再进入已删除的编辑视图。
+                      onOpen={() => {}}
+                      onPause={() => {}}
+                      onContinue={() => {}}
+                      onCancel={() => {}}
                       onDelete={(task) => void handleOffPeakDelete(task)}
                       onOpenSession={handleOffPeakOpenSession}
                     />
@@ -1842,14 +1389,6 @@ export function AutomationsSection({
                         onViaChat={handleCreateViaChat}
                         onManually={handleCreateManually}
                       />
-                      {/* 有闲时任务时右上已有创建入口，空卡不再重复（4866-1735 vs 4889-2013）。 */}
-                      {offPeakCreationEnabled && offPeakTasks.length === 0 ? (
-                        <OffPeakCreateButton
-                          greyReason={offPeakCreateGrey.reason}
-                          greyTooltip={offPeakCreateGrey.tooltip}
-                          onCreate={() => setView({ mode: "offpeak-create" })}
-                        />
-                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -1880,106 +1419,6 @@ export function AutomationsSection({
             >
               <div className="h-px w-full bg-card-border" />
             </div>
-          ) : null}
-
-          {/* Idle-time task template（灰度命中；Figma 4889-2013；与 New task 页同源文案 D30-4）。 */}
-          {showOffPeakTemplates ? (
-            <section
-              data-automations-idle-templates
-              aria-busy={automationTemplates.loading}
-              className="flex w-full flex-col gap-4"
-            >
-              <h2 className="text-ui-base font-medium leading-5 text-foreground-subtle">
-                {intl.formatMessage({ id: "offPeak.templates.sectionTitle" })}
-              </h2>
-              {automationTemplates.loading ? (
-                <AutomationTemplateSkeletonGrid
-                  label={intl.formatMessage({ id: "common.loading" })}
-                />
-              ) : automationTemplates.offPeak.length === 0 ? (
-                <div
-                  data-automation-template-empty-state
-                  className="flex min-h-[114px] w-full items-center justify-center rounded-xl border border-card-border bg-background p-3 text-center text-ui-base font-normal text-foreground-subtlest"
-                >
-                  {intl.formatMessage({ id: "automations.templates.unavailable" })}
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2">
-                  {automationTemplates.offPeak.map((template) => {
-                    const planLocked = offPeakCreateGrey.reason === "plan";
-                    const card = (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (planLocked) {
-                            showCodingPlanRequiredToast();
-                            return;
-                          }
-                          const materializedDraft = materializeOffPeakTemplateDraft(
-                            template,
-                            locale,
-                          );
-                          setView({
-                            mode: "offpeak-create",
-                            draft: template.customize
-                              ? {
-                                  telemetrySource: {
-                                    eventRegion: "app.automations",
-                                    templateId: template.id,
-                                  },
-                                }
-                              : {
-                                  title: materializedDraft.title,
-                                  prompt: materializedDraft.prompt,
-                                  telemetrySource: {
-                                    eventRegion: "app.automations",
-                                    templateId: template.id,
-                                  },
-                                },
-                          });
-                        }}
-                        // Grid wrapper 虽已拉伸到行高，卡片本体仍需 h-full 才能继承同一行的最大高度；只设 min-height 时短文案卡会矮一截。
-                        className="flex h-full min-h-[114px] w-full flex-col gap-2 overflow-hidden rounded-xl border border-card-border bg-background p-3 text-left transition-colors hover:bg-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-input-border-focused"
-                      >
-                        <div className="flex items-center gap-0.5 text-foreground">
-                          <OffPeakTemplateIcon
-                            className="size-4 shrink-0"
-                            iconName={template.iconName}
-                            name={template.icon}
-                          />
-                          <span className="truncate px-1 text-ui-base font-medium leading-5 text-foreground">
-                            {resolveOffPeakTemplateText(
-                              template,
-                              "title",
-                              locale,
-                              intl.formatMessage,
-                            )}
-                          </span>
-                        </div>
-                        <p className="text-wrap-phrase line-clamp-2 flex-1 text-ui-base font-normal leading-5 text-foreground-subtle">
-                          {resolveOffPeakTemplateText(
-                            template,
-                            "description",
-                            locale,
-                            intl.formatMessage,
-                          )}
-                        </p>
-                        <div className="text-ui-base font-normal leading-5 text-foreground-subtle">
-                          {intl.formatMessage({
-                            id: "offPeak.form.soonestAvailable",
-                          })}
-                        </div>
-                      </button>
-                    );
-                    return (
-                      <div key={template.id} className="h-full">
-                        {card}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </section>
           ) : null}
 
           {/* Scheduled task template：Client Scenes 候选目录；点击只预填新建整页。闲时任务 tab 不显示。 */}

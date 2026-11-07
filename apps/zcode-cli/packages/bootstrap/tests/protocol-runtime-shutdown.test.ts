@@ -3,13 +3,13 @@ import { ProtocolRuntimeResources } from "../src/zcode-protocol/runtime-resource
 import { cleanupProtocolRuntime } from "../src/zcode-protocol/runtime-cleanup.js";
 import { acquireProtocolStartupResource } from "../src/zcode-protocol/startup-resource.js";
 import { createFakeApp } from "./helpers/fake-zcode-app.js";
-import type { Logger } from "@zcode/contracts";
-import { createInMemorySessionEventStore } from "@zcode/adapters/storage";
+import type { Logger } from "@s-agent/contracts";
+import { createInMemorySessionEventStore } from "@s-agent/adapters/storage";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 
 const telemetry = vi.hoisted(() => ({ shutdown: vi.fn(async () => {}) }));
-vi.mock("@zcode/telemetry", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@zcode/telemetry")>()),
+vi.mock("@s-agent/telemetry", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@s-agent/telemetry")>()),
   shutdownPreparedModelTelemetry: telemetry.shutdown,
 }));
 

@@ -16,7 +16,7 @@
  */
 
 import type { DatabaseSync } from "node:sqlite";
-import type { NodeRecord } from "@zcode/dynamic-workflow";
+import type { NodeRecord } from "@s-agent/dynamic-workflow";
 import { decodeNode, type DwfNodeRow } from "./dwf-journal-codecs.js";
 import { listArtifactFieldItems } from "./dwf-journal-fields.js";
 import { pageEventRows } from "./dwf-journal-pages.js";

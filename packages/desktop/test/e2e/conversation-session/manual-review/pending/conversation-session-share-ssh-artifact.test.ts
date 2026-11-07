@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import {
   conversationSharePreviewDataSchema,
   createConversationShareSuccessEnvelopeSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   clearAppData,
   clickTestIdByDom,

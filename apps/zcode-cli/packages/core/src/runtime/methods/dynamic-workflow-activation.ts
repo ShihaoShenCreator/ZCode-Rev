@@ -16,7 +16,7 @@ import {
   type SessionEntryInfo,
   type SessionId,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { traceContextToLogContext } from "../deps.js";
 import type { AgentRuntimeInternal } from "../internal.js";
 import type { AgentRuntimeConfig } from "../types.js";

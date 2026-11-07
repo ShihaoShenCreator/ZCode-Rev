@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { getCurrentModelInvocationContext } from "@zcode/contracts";
+import { getCurrentModelInvocationContext } from "@s-agent/contracts";
 import { sampleModel } from "./sample-model.js";
 import { createModelStatusSink } from "./model-status.js";
 import type { AgentRuntimeInternal } from "../internal.js";

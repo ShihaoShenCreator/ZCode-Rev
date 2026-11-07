@@ -1,4 +1,4 @@
-import { normalizeRemoteConnectionError } from "@zcode/shared";
+import { normalizeRemoteConnectionError } from "@s-agent/shared";
 /* eslint-disable max-lines -- 远程连接、OAuth 回调、遥测和通知 IPC 共用窗口级上下文，集中注册避免跨文件状态漂移。 */
 import { app, BrowserWindow, ipcMain, shell, type WebContents } from "electron";
 import armsRum from "@arms/rum-electron";
@@ -22,7 +22,7 @@ import {
   type WindowHostRemoteWorkspaceDescriptor,
   type BindRemoteWorkspaceSessionContextResult,
   type TelemetryEventPayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { dispatchTaskNotification } from "./desktopNotifications.js";
 import {
   clearOAuthRoutesForWindow,
@@ -248,7 +248,7 @@ export function registerRemoteIpcHandlers(options: {
     context: {
       workspacePath: string;
       workspaceIdentity?: string;
-      workspacePurpose?: import("@zcode/shared").WorkspacePurpose;
+      workspacePurpose?: import("@s-agent/shared").WorkspacePurpose;
     },
     expectedWebContentsId?: number,
   ) => Promise<BindRemoteWorkspaceSessionContextResult>;

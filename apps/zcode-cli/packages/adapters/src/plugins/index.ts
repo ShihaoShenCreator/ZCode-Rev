@@ -17,13 +17,13 @@ import type {
   PluginOperationOptions,
   PluginPort,
   SkillRoot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   HookEventName as HookEventNameValue,
   HookMatcherConfigSchema,
   ZCODE_INLINE_PLUGIN_MARKETPLACE,
   ZCODE_OFFICIAL_PLUGIN_MARKETPLACE,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   directoryExists,
   fileExists,

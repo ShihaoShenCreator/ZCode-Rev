@@ -2,7 +2,7 @@
 // 验证自旧 server-operations compactSession/goalSession 搬运的状态机 barrier 在原生层保真：
 // compact 去重幂等、active /goal 入队、重复 set 收敛 replace、goal 续跑的锁生命周期。
 import { describe, expect, it, vi } from "vitest";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";
 import type {
   V4CommandCoreHost,

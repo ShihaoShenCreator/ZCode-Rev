@@ -62,7 +62,7 @@
 
 ## 用户剪枝确认
 
-供应商设置补充：CTP-12 `packages/desktop/test/e2e/provider-family-responsive.test.ts` 覆盖真实应用中的长名称宽窄布局、Start tooltip、快捷切换与设置持久化。状态：formal，用户于 2026-09-04 确认转正；正式入口 1 passed，证据 `packages/desktop/.e2e-artifacts/desktop-e2e-20260904060754282-p39563-0c1b2374a55285ca/summary.json`；作为供应商设置正式覆盖，不扩展使用统计业务覆盖，也不代表手机远控验证。
+供应商设置补充（已退役）：CTP-12 曾验证原生 Team/Start 连接布局与持久化；随 Z.AI/BigModel 原生 Provider 退役，原运行证据仅作历史记录，不再作为当前覆盖。
 
 | Decision | Proposed answer | Status |
 | --- | --- | --- |

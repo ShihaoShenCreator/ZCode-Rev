@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { createSessionId, createTurnId, type Model } from "@zcode/contracts";
+import { createSessionId, createTurnId, type Model } from "@s-agent/contracts";
 import type { RuntimeMessageEntry } from "../src/agent/message-history.js";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { prepareRuntimeProviderRequest } from "../src/runtime/helpers/runtime-provider-request-messages.js";

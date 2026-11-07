@@ -24,8 +24,8 @@ import {
   type ZCodeContextUsageBreakdownItem,
   type InputId,
   type SessionCreateSource,
-} from "@zcode/shared";
-import type { SessionConfigState, SubmissionMode } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import type { SessionConfigState, SubmissionMode } from "@s-agent/shared/zcode-protocol-v4";
 import type { ZCodeUiError } from "@/lib/zcodeUiError.js";
 import type {
   AutomationsNavigationTab,

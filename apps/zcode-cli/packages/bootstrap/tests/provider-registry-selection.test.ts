@@ -4,7 +4,7 @@ import {
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import {
   listRegistryBackedModels,
   resolveRegistryOwnedModelSelection,

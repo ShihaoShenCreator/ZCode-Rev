@@ -25,7 +25,7 @@ import {
   type SessionEvent,
   type SessionInfo,
   type ModelCatalogPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime, saveSavedWorkflow } from "../src/index.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 

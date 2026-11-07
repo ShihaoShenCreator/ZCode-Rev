@@ -12,19 +12,19 @@ import { Readable } from "node:stream";
 import {
   ZCODE_OFFICIAL_ENDPOINT_ENV_KEY,
   ZCODE_OFFICIAL_ENDPOINT_TOKEN_ENV_KEY,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   ExecutionPort,
   ExecutionRequest,
   Logger,
   OfficialMcpAuthHeadersResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   supportsBackgroundTaskWaiter,
   supportsBashBackgroundLifecycle,
   type BackgroundTaskWaiterExecutionPort,
   type BashBackgroundLifecycleExecutionPort,
-} from "@zcode/core";
+} from "@s-agent/core";
 import {
   OFFICIAL_COMMAND_ROUTES,
   OFFICIAL_ENDPOINT_ERROR_HEADER,

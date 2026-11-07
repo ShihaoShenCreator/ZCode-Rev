@@ -271,7 +271,7 @@ async executeTurn(input: string, attachments?: TurnAttachment[]): Promise<TurnRe
 **文件**: `packages/adapters/src/model/transform.ts`
 
 ```typescript
-import type { ToolCall } from '@zcode/core';
+import type { ToolCall } from '@s-agent/core';
 
 export function extractToolCalls(result: GenerateTextResult): ToolCall[] {
   const calls: ToolCall[] = [];

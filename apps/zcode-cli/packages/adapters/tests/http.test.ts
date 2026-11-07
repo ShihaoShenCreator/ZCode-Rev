@@ -4,8 +4,8 @@ import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createRootTraceContext, isHttpClientPortError } from "@zcode/contracts";
-import { ZCODE_TOOL_ENV_PASSTHROUGH_ENV_KEY } from "@zcode/shared";
+import { createRootTraceContext, isHttpClientPortError } from "@s-agent/contracts";
+import { ZCODE_TOOL_ENV_PASSTHROUGH_ENV_KEY } from "@s-agent/shared";
 import {
   createNodeHttpClientAdapter,
   createNodeWebFetchHttpClientAdapter,

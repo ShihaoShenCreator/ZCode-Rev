@@ -335,7 +335,7 @@ Root 仅持有当前项目的恢复互斥；取消项目意图后立即释放。
 2026-09-16：
 
 - 定向/相关单测：96 个文件、673 个用例通过。覆盖项目用途过滤、同路径隔离、展开与排序、恢复保留数据、手动/后台恢复互斥、连接后目录选择、原目录跨升级保留、凭据门禁、收起后不重试、移动端历史投影与连接地址脱敏。
-- `pnpm typecheck`、`pnpm --filter @zcode/desktop typecheck:e2e` 通过；`pnpm lint` 0 错误，57 条存量警告，没有新增警告。
+- `pnpm typecheck`、`pnpm --filter @s-agent/desktop typecheck:e2e` 通过；`pnpm lint` 0 错误，57 条存量警告，没有新增警告。
 - `pnpm architecture:check --changed`：0 违规。Feature graph 节点唯一，新增悬空边为 0；全图存在 4 条相同的基线悬空边，本轮未处理无关图谱数据。
 - 全局 `audit:conversation-session-coverage` 未通过：37 项既有问题（27 个旧 pending fixture 元数据、旧矩阵统计/引用和生成文档）。在审计输入与 HEAD 一致的原型 worktree 上对照运行，37 项完全相同，新增问题为 0；未改写无关基线数据。
 - 新增本地 Electron E2E：`packages/desktop/test/e2e/conversation-session/conversation-session-rpn-project-navigation.test.ts`，已通过。

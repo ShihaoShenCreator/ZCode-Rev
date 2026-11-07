@@ -1,4 +1,4 @@
-import type { ExecutionOutputPreview } from "@zcode/contracts";
+import type { ExecutionOutputPreview } from "@s-agent/contracts";
 
 const SHORT_PREVIEW_LINES = 5;
 const FULL_PREVIEW_LINES = 100;

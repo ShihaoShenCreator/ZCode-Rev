@@ -20,8 +20,8 @@ import {
   type ToolArtifactStorePort,
   type ToolArtifactReadRequest,
   type ToolArtifactWriteRequest,
-} from "@zcode/contracts";
-import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@s-agent/shared";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createConfiguredHookRunner, createInMemoryHookRunner } from "../src/hooks/index.js";
 import { createToolExecutor } from "../src/tool/executor.js";

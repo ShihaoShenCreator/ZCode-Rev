@@ -13,8 +13,8 @@ import { execFile } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
-import { TID_DOCKER_CONTAINER_INPUT, TID_REMOTE_KIND_DOCKER } from "@zcode/shared/test-ids";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
+import { TID_DOCKER_CONTAINER_INPUT, TID_REMOTE_KIND_DOCKER } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom } from "../../../helpers/desktop-app.js";
 import {
   selectUpstreamProviderModelById,

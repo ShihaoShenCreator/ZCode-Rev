@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ModelErrorCode, ModelProtocolError, ModelRetryBudget } from "@zcode/contracts";
+import { ModelErrorCode, ModelProtocolError, ModelRetryBudget } from "@s-agent/contracts";
 import {
   matchExecutionSelectionCreationFallback,
   matchExecutionSelectionFallback,

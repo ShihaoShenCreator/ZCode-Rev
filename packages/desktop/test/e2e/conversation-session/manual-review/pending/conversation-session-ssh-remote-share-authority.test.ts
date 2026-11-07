@@ -16,7 +16,7 @@ import {
   type SSHLifecycleProvider,
 } from "#e2e/helpers/ssh-remote-lifecycle";
 import { runSSHCommand, waitForRemoteTab } from "#e2e/helpers/ssh-remote-p0";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { selectV4TaskById, waitForV4TimelineContaining } from "#e2e/helpers/v4-conversation";
 import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-electron-reload";
 

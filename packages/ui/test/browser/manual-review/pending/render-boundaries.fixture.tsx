@@ -19,7 +19,7 @@ import { useZCodeSessionStore } from "@/store/zcodeSessionStore.js";
 import { AssistantCodeCommentFeatureProvider } from "@/AssistantCodeCommentFeatureProvider.js";
 import { projectAssistantCodeComments } from "@/lib/assistantCodeComment.js";
 import { useConversationTimelineFind } from "@/v4/useConversationTimelineFind.js";
-import type { ConversationRow } from "@zcode/shared/zcode-protocol-v4";
+import type { ConversationRow } from "@s-agent/shared/zcode-protocol-v4";
 import type { ConversationFindMatchState } from "@/v4/legacyChatViewTypes.js";
 import "@/styles.css";
 

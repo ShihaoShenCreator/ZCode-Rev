@@ -7,7 +7,7 @@
 //   3. run service 级装配跑通同一格：走真 submit / waitForTask，观察面同形。
 
 import { describe, expect, it } from "vitest";
-import { collectSites, createWorkflowProgram } from "@zcode/dynamic-workflow";
+import { collectSites, createWorkflowProgram } from "@s-agent/dynamic-workflow";
 import { startFakeProviderServer } from "./helpers/fake-provider-server.js";
 import { healthy } from "./helpers/fault-programs.js";
 import {

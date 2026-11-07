@@ -1,4 +1,4 @@
-import type { LogContext, LogEntry, LogRedactor } from "@zcode/contracts";
+import type { LogContext, LogEntry, LogRedactor } from "@s-agent/contracts";
 
 export interface SerializedLogError {
   name: string;

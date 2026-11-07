@@ -53,6 +53,6 @@ Provider Registry / Active Model.properties
 ## 验证
 
 - 真实 Built-in Config 解析：K3、K2.7 Code、K3-256K 三项媒体能力。
-- `@zcode/provider-node` 定向单测与 typecheck。
+- `@s-agent/provider-node` 定向单测与 typecheck。
 - 根 `pnpm typecheck`、`pnpm lint`。
 - 配置与文档格式检查、`git diff --check`。

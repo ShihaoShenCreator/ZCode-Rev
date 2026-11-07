@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { persistHighspeedTimingOnTurnTerminal } from "../src/zcode-protocol/v4-bridge.js";
 
 // 回归背景：turn 终态钩子对所有 turn 触发，且投影对普通 turn 也写入 model/tool 耗时，

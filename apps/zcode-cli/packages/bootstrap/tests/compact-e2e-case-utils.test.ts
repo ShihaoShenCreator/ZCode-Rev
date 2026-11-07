@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import * as provider from "@zcode/provider";
+import * as provider from "@s-agent/provider";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createApp, writeProviderConfig } from "../../../e2e/compact-microcompact/case-utils.mjs";
 

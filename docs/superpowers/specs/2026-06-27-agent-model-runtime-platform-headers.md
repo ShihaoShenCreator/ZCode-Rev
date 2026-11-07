@@ -23,7 +23,7 @@ agent runtime 所在机器的操作系统、CPU 架构和系统版本，用来�
 
 ## 非目标
 
-- 不修改 `@zcode/protocol`，这些环境信息不需要从 app 传给 agent。
+- 不修改 `@s-agent/protocol`，这些环境信息不需要从 app 传给 agent。
 - 不改变 `x-request-id`、`x-zcode-trace-id`、`x-session-id`、`x-query-id` 的请求级归因语义。
 - 不把手机 `/remote` 的设备信息写入 agent 模型请求 header。
 - 不新增环境变量或用户可见设置。
@@ -53,6 +53,6 @@ header 生成阶段构造，和 `User-Agent`、`X-ZCode-App-Version`、`X-Title`
 
 ## 验证
 
-- 执行 `pnpm --dir apps/zcode-cli --filter @zcode/bootstrap test -- model-config`。
-- 执行 `pnpm --dir apps/zcode-cli --filter @zcode/adapters test -- runner-options`。
+- 执行 `pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap test -- model-config`。
+- 执行 `pnpm --dir apps/zcode-cli --filter @s-agent/adapters test -- runner-options`。
 - 按仓库要求执行 `pnpm typecheck` 和 `pnpm lint`。

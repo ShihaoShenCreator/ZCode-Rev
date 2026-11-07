@@ -5,8 +5,8 @@ import {
   AiSdkModelAdapter,
   type AiSdkModelExecutionConfig,
   type EnvRecord,
-} from "@zcode/adapters/model";
-import type { Logger, ModelStatusSink } from "@zcode/contracts";
+} from "@s-agent/adapters/model";
+import type { Logger, ModelStatusSink } from "@s-agent/contracts";
 
 interface CreateModelAdapterBaseOptions {
   env?: EnvRecord;

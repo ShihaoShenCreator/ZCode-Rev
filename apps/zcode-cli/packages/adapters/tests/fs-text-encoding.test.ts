@@ -1,7 +1,7 @@
 import { mkdtemp, open, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
 import iconv from "iconv-lite";
 import { afterEach, describe, expect, it, vi } from "vitest";
 

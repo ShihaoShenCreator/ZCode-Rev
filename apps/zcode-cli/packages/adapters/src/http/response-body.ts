@@ -1,4 +1,4 @@
-import { createHttpClientError } from "@zcode/contracts";
+import { createHttpClientError } from "@s-agent/contracts";
 
 /**
  * 读正文所需的最小形状：原生 fetch 的 `Response` 与 adapter 自己读出的 `IncomingResponse` 都满足它。

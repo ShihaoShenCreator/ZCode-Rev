@@ -1,5 +1,5 @@
-import { normalizeGenUiInput } from "@zcode/core";
-import { PERMISSION_FULL_ACCESS_OPTION_ID } from "@zcode/shared/zcode-protocol-v4";
+import { normalizeGenUiInput } from "@s-agent/core";
+import { PERMISSION_FULL_ACCESS_OPTION_ID } from "@s-agent/shared/zcode-protocol-v4";
 // ProductProjection —— CLI 权威投影第二 reducer。
 // 输入：CLI 事件日志（SessionEvent，权威事实源）；输出：ConversationDelta[]。
 // 快照推进复用协议规范 apply（applyConversationDeltas）——投影演进与 delta 流
@@ -54,7 +54,7 @@ import type {
   WorkspaceHookReviewRequestedPayload,
   WorkspaceHookReviewSettledPayload,
   WorkspaceHookReviewSupersededPayload,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   DEFERRED_TOOL_CALL_NAME,
   AMEND_WORKFLOW_TOOL_NAME,
@@ -63,7 +63,7 @@ import {
   ModelErrorCode,
   SessionEventType,
   getModelUsageContextTokens,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   clearSettledOutputPreviews,
   projectToolActivity,
@@ -84,8 +84,8 @@ import {
   resolveZCodeBackgroundTaskControlKind,
   zcodeBackgroundTaskNotificationToolUpdateStatus,
   type ZCodeParsedBackgroundTaskNotification,
-} from "@zcode/shared";
-import { verdictWorkspaceHookReviewRequest } from "@zcode/shared/workspace-hook-review-monotonicity";
+} from "@s-agent/shared";
+import { verdictWorkspaceHookReviewRequest } from "@s-agent/shared/workspace-hook-review-monotonicity";
 import type {
   ApiRetryState,
   AssistantTextRow,
@@ -117,7 +117,7 @@ import type {
   UserInputQuestionPayload,
   UserInputRow,
   WorkflowRunProgressEnvelope,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   PROTOCOL_V4_LIMITS,
   applyConversationDeltas,
@@ -126,7 +126,7 @@ import {
   diffWorkflowRunsState,
   reduceWorkflowRunsState,
   workspaceHookReviewRequestPayloadSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   SESSION_ALLOW_PERMISSION_OPTION_KIND,
   buildProtocolPermissionOptions,
@@ -322,8 +322,8 @@ export interface ConversationEditTarget {
   coveredByStableCompact: boolean;
   intent: {
     inputOrigin?: "desktop" | "mobile";
-    genUiContext?: import("@zcode/contracts").TurnInputIntentMetadata["genUiContext"];
-    conversationQuotes?: import("@zcode/contracts").TurnInputIntentMetadata["conversationQuotes"];
+    genUiContext?: import("@s-agent/contracts").TurnInputIntentMetadata["genUiContext"];
+    conversationQuotes?: import("@s-agent/contracts").TurnInputIntentMetadata["conversationQuotes"];
     botGroupSource?: CanonicalUserIntentFact["botGroupSource"];
     kind: "sendText" | "sendGoalCommand";
     text: string;
@@ -4761,7 +4761,7 @@ export class ProductProjection {
   // 一条引擎 RunEvent 一条会话事件，归约成键级整体替换的权威态。走 reducer 而不是侧通道，
   // 所以持久、可回放、冷恢复免费（先例：subagents 键）。
   //
-  // 归约本体在 @zcode/shared 的 workflow-runs-reducer（与状态 schema 同居）：TUI 镜像要用
+  // 归约本体在 @s-agent/shared 的 workflow-runs-reducer（与状态 schema 同居）：TUI 镜像要用
   // 同一份归约，两处各写一份就是两个时钟（docs/dynamic-workflow/launch.md「The inline card」）。
   // 留在这里的只有投影的非纯部分——从事件信封取载荷、把新旧状态之差发成键级增量。
   private onDynamicWorkflowRunProgress(event: SessionEvent): ConversationDelta[] {

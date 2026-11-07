@@ -140,7 +140,7 @@ SSH、Host、Source、Agent、权限工具及 Web 页面均真实运行。
 - `pnpm typecheck`、Lint、架构检查通过；手机 fixture 的工程回归 6/6 通过。Windows/Linux 未执行原生运行验证。
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/ui-shell/manual-review/pending/command-center-history-search.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json pnpm --filter @s-agent/desktop test:e2e -- --spec './test/e2e/ui-shell/manual-review/pending/command-center-history-search.test.ts'
 ```
 
 > `retired:` 逐处标记已退役 App 单测，仅供追溯；原通过记录不代表现行覆盖。独立断言缺口需由后续验收补齐。
@@ -909,7 +909,7 @@ Desktop 数据面代理和 CLI 隔离 HTTP harness 实际从 fixture 读取响�
 CLI 捕获额外记录实际消费的 `fixtureId`。本版使用受控阶段回放，不依赖 legacy 共享响应池。
 
 ```bash
-pnpm --filter @zcode/desktop test:e2e -- --spec 'test/e2e/conversation-session/conversation-session-toolsearch*.test.ts'
+pnpm --filter @s-agent/desktop test:e2e -- --spec 'test/e2e/conversation-session/conversation-session-toolsearch*.test.ts'
 ```
 
 上述正式默认入口：8 spec / 29 项通过，0 failed/skip（7 Desktop、14 CLI/TUI、8 Runtime/HTTP）。
@@ -984,7 +984,7 @@ PTY 按键 / 产品入口 → CLI → Runtime → 本地受控 HTTP
 运行命令：
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop test:e2e -- --spec 'test/e2e/conversation-session/manual-review/pending/conversation-session-toolsearch*.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @s-agent/desktop test:e2e -- --spec 'test/e2e/conversation-session/manual-review/pending/conversation-session-toolsearch*.test.ts'
 ```
 
 根目录 `pnpm typecheck`、Desktop `typecheck:e2e`、`pnpm lint`、变更文件格式检查与 `architecture:check --changed` 均通过；lint 保留 43 条既有 warning，无新增错误。6 份受控 provider manifest 的规范目标路径、fixture/harness 路径及 syntheticReason 均已校验；尚未做静态 replay fixture 转正。手机远控环境仍待提供；其余未覆盖分支见上方剩余边界。修改留在工作区，未提交。
@@ -2566,7 +2566,7 @@ payload capture 与独立 diff。`verified-dual` 表示 `/event/report` 与 main
 | TDP13 | TEL05       | verified-dual | `20260718-tdp-all-final/TDP13/diff.json`，plan TTFT 正/负边界                                                   |
 | TDP14 | TEL06       | verified-dual | `20260718-tdp-all-final/TDP14/diff.json`，error 可见/抑制/去重                                                  |
 | TDP15 | TEL07       | verified-dual | `20260718-tdp-all-final/TDP15/diff.json`，feedback 三态；持久化/回滚由 focused test 辅证                        |
-| TDP16 | TEL08       | verified-dual | `20260718-tdp-all-final/TDP16/diff.json`，quota 状态正断言且目标 telemetry 为 0；购买流程排除                   |
+| TDP16 | TEL08       | retired       | 旧套餐额度断言场景已随 Z.AI/BigModel 套餐身份遥测退役；历史证据 `20260718-tdp-all-final/TDP16/diff.json` 不代表当前验收 |
 | TDP17 | TEL06       | partial       | 旧 `20260718-tdp-all-final/TDP17/diff.json` 仅证明旧 UI 恢复合同；2026-09-08 模型调用内补发需要重新取得运行证据 |
 | TDP18 | TEL09       | verified-dual | `20260718-tdp-all-final/TDP18/diff.json`，duplicate/live-only 零回放                                            |
 | TDP19 | TEL09       | verified-dual | `20260718-tdp-all-final/TDP19/diff.json`，workspace/remote 隔离与 Web no-op 正断言                              |
@@ -3887,14 +3887,16 @@ PJM07（pending，2026-10-24）：确认对话框勾选「同时删除它们的 
 
 AMT 验证：4 个相关单测文件 / 15 项通过；桌面 E2E `desktop-e2e-20260911073739200-p10328-ec7ec1db666a0f0c` 2/2 通过，真实历史正文/标题及开启归档后的列表、选中态、另一条同名未读均验证。Host getTaskMeta 0.4ms 完成早于 V4 冷恢复约 1 秒，日志无标题 readSession 请求。root typecheck、desktop typecheck:e2e、fixture check、格式检查、lint（48 个既有 warnings / 0 errors）、architecture（baseline 0 / new 0）通过。代码涉及 ui 与 project-sidebar，CLI/Host 事实归属、owner/lease、continuous/replayable 边界不变；实现净减约 50 行。真实手机配对、SSH/WSL、Windows/Linux GUI 未复跑，远端身份与 attachment 迟到结果由单测覆盖。保持 pending。
 
-## Start Plan bucket 提醒
+## Start Plan bucket 提醒（已退役）
+
+以下是旧 Start Plan 提醒实现的历史浏览器证据；随对应功能和 fixture 一并退役，不再作为当前覆盖要求。
 
 | Case  | Status           | Evidence                                                                             | Boundary                                                                                                          |
 | ----- | ---------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| SPB01 | verified-browser | `packages/ui/test/browser/manual-review/pending/start-plan-bucket-reminder.test.mjs` | 真实 hook/Banner + 测试权益服务，桌面/手机宽度、中英文/明暗；不宣称 desktop full-app E2E                          |
-| SPB02 | verified-browser | 同上；`retired:packages/ui/test/startPlanQuotaReminderStore.test.ts`                 | 退役单测的独立断言待补；历史记录：重载复用同一客户端存储；不同设备不共享                                          |
-| SPB03 | verified-browser | 同上；`retired:packages/ui/test/startPlanBucketQuota.test.ts`                        | 退役单测的独立断言待补；历史记录：多桶耗尽，1005 另以状态单测回归                                                 |
-| SPB04 | verified-browser | 同上；`retired:packages/ui/test/startPlanQuotaReminderStore.test.ts`                 | 退役单测的独立断言待补；历史记录：CR-01：独立设备/快照时间，关闭、切任务、Renderer 重载与新周期；不含物理设备重启 |
+| SPB01 | retired         | 旧 `start-plan-bucket-reminder.test.mjs` 浏览器证据                                  | 历史行为：额度桶阈值与多语言展示；不再执行                                                                        |
+| SPB02 | retired         | 旧浏览器/单测证据                                                                     | 历史行为：客户端周期去重与 Renderer 重载；不再执行                                                                |
+| SPB03 | retired         | 旧浏览器/单测证据                                                                     | 历史行为：多桶耗尽与额度错误提示；不再执行                                                                        |
+| SPB04 | retired         | 旧浏览器/单测证据                                                                     | 历史行为：快照时间、关闭、切任务与新周期；不再执行                                                                |
 
 2026-09-10：Windows Chrome 浏览器交互 8/8、相关单测 47/47 通过，包含同周期余额回升再降低不重复提醒。
 截图及浏览器日志保存于执行机器 `%TEMP%/zcode-start-plan-reminder`；根 typecheck、lint（0 errors，46 条既有 warnings）、desktop typecheck:e2e、architecture check（0 新增/基线违规）通过。
@@ -5044,7 +5046,7 @@ WRL01（`pending-promotion-contract-release-state-1-1-20261016-02001f1247`）1/1
 | conversation-session | `test/e2e/conversation-session/conversation-session-model-config.test.ts`                                                    | PASSED                  | `pending-promotion-formal-isolated-136-20261019` / `pending-promotion-formal-default-136-20261019`                                                                                                                                                                                                 |
 | conversation-session | `test/e2e/conversation-session/conversation-session-model-provider-effective-selection.test.ts`                              | PROMOTED                | `pending-resume-52cd-g-135-isolated-20261019` / `pending-resume-52cd-g-135-default-20261019`                                                                                                                                                                                                       |
 | conversation-session | `test/e2e/conversation-session/conversation-session-model-provider-list-filtering.test.ts`                                   | PASSED                  | `pending-promotion-formal-isolated-134-20261019` / `pending-promotion-formal-default-134-20261019`                                                                                                                                                                                                 |
-| conversation-session | `test/e2e/conversation-session/conversation-session-model-provider-plan-surface.test.ts`                                     | PASSED                  | `pending-promotion-formal-isolated-133-20261019` / `pending-promotion-formal-default-133-20261019`                                                                                                                                                                                                 |
+| conversation-session | `test/e2e/conversation-session/conversation-session-model-provider-plan-surface.test.ts`                                     | RETIRED (HISTORICAL)    | Former plan recommendation/identity scenario; test removed, execution record retained as history                                                                                                                                                                                                |
 | conversation-session | `test/e2e/conversation-session/conversation-session-model-provider-regression-gaps.test.ts`                                  | PROMOTED                | `pending-resume-52cd-g-132-isolated-20261019` / `pending-resume-52cd-g-132-default-20261019`                                                                                                                                                                                                       |
 | conversation-session | `test/e2e/conversation-session/conversation-session-model-provider-session-isolation.test.ts`                                | PASSED                  | `pending-promotion-formal-isolated-131-20261019` / `pending-promotion-formal-default-131-20261019`                                                                                                                                                                                                 |
 | conversation-session | `test/e2e/conversation-session/conversation-session-model-switch-auto-compact.test.ts`                                       | PASSED                  | `pending-promotion-formal-isolated-130-20261019` / `pending-promotion-formal-default-130-20261019`                                                                                                                                                                                                 |

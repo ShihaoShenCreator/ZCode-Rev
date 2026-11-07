@@ -1,11 +1,11 @@
-import { requestVerificationTimeoutMessage } from "@zcode/shared";
+import { requestVerificationTimeoutMessage } from "@s-agent/shared";
 import { randomUUID } from "node:crypto";
 import {
   zcodeProtocolMethods,
   zcodeProtocolNotifications,
   zcodeProviderRuntimeHeadersResponseSchema,
   type ZCodeWorkspaceRef,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ZCodeAppOptions } from "../app/types.js";
 import {
   ProtocolRequestError,

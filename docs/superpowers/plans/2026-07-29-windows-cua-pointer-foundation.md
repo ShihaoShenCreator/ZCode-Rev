@@ -1262,7 +1262,7 @@ Run:
 ```powershell
 cd C:\Users\dev\z-code
 pnpm exec vitest run packages/services/test/cua
-pnpm --filter @zcode/zcode-cua-plugin test
+pnpm --filter @s-agent/zcode-cua-plugin test
 pnpm typecheck
 pnpm lint
 ```

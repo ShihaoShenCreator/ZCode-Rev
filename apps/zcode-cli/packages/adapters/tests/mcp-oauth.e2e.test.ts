@@ -9,7 +9,7 @@ import type {
   OAuthTokens,
 } from "@modelcontextprotocol/sdk/shared/auth.js";
 import { auth } from "@modelcontextprotocol/sdk/client/auth.js";
-import type { Logger } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   createSharedZCodeCredentialStore,

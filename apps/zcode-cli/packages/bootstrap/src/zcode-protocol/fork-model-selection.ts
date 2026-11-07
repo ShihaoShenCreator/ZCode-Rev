@@ -1,7 +1,7 @@
 // 会话派生（stable fork / 编辑前分叉 / 辅助对话）的常驻 Selection 推导。
 // 从 v4-bridge 抽出：这些函数是纯选型推导，与网关接线无关，需要独立回归测试。
-import type { ModelSelection } from "@zcode/contracts";
-import { isHighspeedProviderId } from "@zcode/shared";
+import type { ModelSelection } from "@s-agent/contracts";
+import { isHighspeedProviderId } from "@s-agent/shared";
 
 export function cloneModelSelection(
   selection: ModelSelection | undefined,

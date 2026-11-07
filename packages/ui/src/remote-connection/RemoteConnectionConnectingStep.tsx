@@ -1,4 +1,4 @@
-import { redactFeedbackText } from "@zcode/shared";
+import { redactFeedbackText } from "@s-agent/shared";
 import { usePlatform } from "@/hooks/usePlatform.js";
 import { RemotePasswordInput } from "@/remote-connection/RemotePasswordInput.js";
 import {
@@ -14,7 +14,7 @@ import {
   type SourceServerInstallPreview,
   type SourceServerOperationLog,
   type SourceServerRunningTask,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 /* eslint-disable max-lines -- 连接阶段清单、日志和错误恢复共享同一视图状态，保持原子交互。 */
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import {
@@ -25,8 +25,8 @@ import {
   MinusIcon,
   XIcon,
 } from "lucide-react";
-import { type RemoteTarget } from "@zcode/shared";
-import { TID_SSH_ERROR } from "@zcode/shared/test-ids";
+import { type RemoteTarget } from "@s-agent/shared";
+import { TID_SSH_ERROR } from "@s-agent/shared/test-ids";
 import { cn } from "@/components/lib/utils.js";
 import { Button } from "@/components/ui/button.js";
 import type { RemoteConnectionLogEntry } from "@/hooks/useRemoteConnectionLogs.js";

@@ -1,4 +1,4 @@
-import { TOOL_SEARCH_DEFAULT_RESULTS, type ToolSearchCandidate } from "@zcode/contracts";
+import { TOOL_SEARCH_DEFAULT_RESULTS, type ToolSearchCandidate } from "@s-agent/contracts";
 import { toModelVisibleMcpNamePart } from "../../mcp/name.js";
 
 function tokenize(tool: ToolSearchCandidate) {

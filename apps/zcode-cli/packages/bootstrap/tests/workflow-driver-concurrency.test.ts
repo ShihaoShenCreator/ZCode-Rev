@@ -17,7 +17,7 @@ import {
   type ModelRequestAdmissionTicket,
   type SessionEvent,
   type SessionEventSink,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   InMemoryJournalStore,
   type ActorRef,
@@ -27,7 +27,7 @@ import {
   type RunStallInfo,
   type WorkflowError,
   type WorkflowReportSink,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { createWorkflowEscalationRegistry } from "../src/app/workflow-escalation-registry.js";
 import { createAgentRuntimeWorkflowDriver } from "../src/app/workflow-driver.js";
 import {

@@ -1,6 +1,6 @@
 import { ToolPresentation } from "@/ToolCallBlocks/ToolPresentation.js";
 import { useMemo, type ComponentType } from "react";
-import type { ToolCallDisplay, ToolCallRow } from "@zcode/shared/zcode-protocol-v4";
+import type { ToolCallDisplay, ToolCallRow } from "@s-agent/shared/zcode-protocol-v4";
 import type { Theme } from "@/useTheme.js";
 import type { ToolCallBlockRenderContext } from "@/ToolCallBlocks/fileSummaryTypes.js";
 import { CreateWorkflowToolCallBlock } from "@/ToolCallBlocks/renderers/create-workflow.js";

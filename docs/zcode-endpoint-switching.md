@@ -37,7 +37,7 @@ For Web dev server, desktop host services, scripts, and CLI testing, set `ZCODE_
 example:
 
 ```bash
-ZCODE_BASE_URL=https://zcode.z.ai pnpm --filter @zcode/web dev
+ZCODE_BASE_URL=https://zcode.z.ai pnpm --filter @s-agent/web dev
 ZCODE_BASE_URL=http://localhost:3030 zcode auth login
 ```
 

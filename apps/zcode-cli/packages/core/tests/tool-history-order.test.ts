@@ -5,7 +5,7 @@ import {
   createSessionId,
   type MessageWithParts,
   type ToolPart,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { MessageHistoryImpl } from "../src/agent/message-history.js";
 import { hydrateMessageHistoryFromSession } from "../src/agent/session-history-hydrator.js";
 import { clonePartForFork } from "../src/runtime/helpers/steering.js";

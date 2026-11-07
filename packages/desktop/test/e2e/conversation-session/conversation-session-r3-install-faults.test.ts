@@ -8,7 +8,7 @@ import {
   parseRemoteWorkspaceIdentity,
   sourceServerReleaseDescriptorSchema,
   type SourceServerReleaseArchive,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   selectSourceServerReleaseArchive,
   withSourceServerReleaseFileFault,

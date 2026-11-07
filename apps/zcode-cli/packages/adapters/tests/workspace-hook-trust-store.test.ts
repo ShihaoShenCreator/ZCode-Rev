@@ -2,7 +2,7 @@ import { chmod, mkdir, mkdtemp, readFile, readdir, rename, rm, stat, writeFile }
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { WorkspaceHookTrustRecord } from "@zcode/contracts";
+import type { WorkspaceHookTrustRecord } from "@s-agent/contracts";
 import {
   createFileWorkspaceHookTrustStore,
   resolveWorkspaceHookTrustStorePath,

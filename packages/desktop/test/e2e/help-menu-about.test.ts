@@ -5,12 +5,12 @@ import {
   PlatformChannels,
   type UpdateStatePayload,
   type UpdateCheckResultPayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_WORKSPACE_HELP_MENU_TRIGGER,
   TID_TASK_SETTINGS_BUTTON,
   TID_SETTINGS_PAGE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clickTestIdByWebDriver,

@@ -5,8 +5,8 @@ import {
   type RepairRemoteSessionPathsInput,
   type SessionInfo,
   type SessionStorePort,
-} from "@zcode/contracts";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 
 export const REMOTE_SESSION_PATH_CORRUPTION_REASON = "remote_session_workspace_path_corrupted";
 

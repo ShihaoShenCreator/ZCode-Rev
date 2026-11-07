@@ -11,8 +11,7 @@ export async function createMarketingTouchFixture() {
   const events: unknown[] = [];
   const handleTelemetry = createTelemetryReportFixture();
   let held = true;
-  let claimed = false;
-  let claimFailure: unknown = null;
+  let bannerConfirmed = false;
   let popupVisible = true;
   let actionDelivery: { campaign_id: string; [key: string]: unknown } | null = null;
   let actionSequence = 0;
@@ -87,16 +86,15 @@ export async function createMarketingTouchFixture() {
         const chunks: Buffer[] = [];
         for await (const chunk of req) chunks.push(Buffer.from(chunk));
         const options = JSON.parse(Buffer.concat(chunks).toString() || "{}");
-        // 旧用例挂起的 claim 不能在 reset 后改写下一用例的服务端投放。
+        // 旧用例挂起的请求不能在 reset 后改写下一用例的服务端投放。
         generation++;
         assetGate.reset();
         queryHeld = false;
         queryWaiters.splice(0).forEach((done) => done());
         waiters.splice(0).forEach((done) => done());
         held = options.held === true;
-        claimed = options.banner !== true;
+        bannerConfirmed = options.banner !== true;
         popupVisible = options.popup === true;
-        claimFailure = null;
         actionDelivery = null;
         overrideDeliveries = Array.isArray(options.deliveries) ? options.deliveries : null;
         queryStatus = 200;
@@ -113,16 +111,6 @@ export async function createMarketingTouchFixture() {
         const options = JSON.parse(Buffer.concat(body).toString() || "{}");
         queryStatus = options.queryStatus ?? 200;
         reportStatus = options.reportStatus ?? 200;
-        json({ ok: true });
-        return true;
-      }
-      if (path === "/__e2e/marketing/claim-failure") {
-        const body: Buffer[] = [];
-        for await (const chunk of req) body.push(Buffer.from(chunk));
-        claimFailure = JSON.parse(Buffer.concat(body).toString());
-        claimed = false;
-        actionDelivery = null;
-        held = false;
         json({ ok: true });
         return true;
       }
@@ -245,7 +233,7 @@ export async function createMarketingTouchFixture() {
         return true;
       }
       if (path === "/__e2e/marketing/redeliver-banner") {
-        claimed = false;
+        bannerConfirmed = false;
         json({ ok: true });
         return true;
       }
@@ -256,8 +244,7 @@ export async function createMarketingTouchFixture() {
       }
       if (
         path.startsWith("/api/v1/marketing/") ||
-        path.startsWith("/marketing-assets/") ||
-        path.startsWith("/api/v1/zcode-plan/billing/")
+        path.startsWith("/marketing-assets/")
       ) {
         requests.push(path);
         requestDetails.push({
@@ -292,7 +279,7 @@ export async function createMarketingTouchFixture() {
         if (event.campaign_id === actionDelivery?.campaign_id) actionDelivery = null;
         // 是否继续投放由服务端 fixture 决定；重新下发保留原 campaign_id。
         if (event.campaign_id === "independent") popupVisible = false;
-        if (event.campaign_id === "banner-1") claimed = true;
+        if (event.campaign_id === "banner-1") bannerConfirmed = true;
         json({ code: 0 });
         return true;
       }
@@ -317,7 +304,7 @@ export async function createMarketingTouchFixture() {
         };
         const result = {
           layout: "v1",
-          title: text("E2E claim succeeded"),
+          title: text("E2E campaign action succeeded"),
           description: { format: "html", content: "<p><b>E2E result</b></p>" },
           hero,
           buttons: [close],
@@ -332,7 +319,7 @@ export async function createMarketingTouchFixture() {
               (actionDelivery
                 ? [actionDelivery]
                 : [
-                    ...(!claimed
+                    ...(!bannerConfirmed
                       ? [
                           {
                             campaign_id: "banner-1",
@@ -351,10 +338,10 @@ export async function createMarketingTouchFixture() {
                               buttons: [
                                 { ...close, text: { ...text(""), format: "" } },
                                 {
-                                  text: { ...text(""), format: "" },
+                                  text: text("Open settings"),
                                   action: {
-                                    type: "claim_zcode_plan",
-                                    args: { plan_id: "weekend-plan-e2e" },
+                                    type: "navigate",
+                                    args: { page: "settings", section: "general" },
                                   },
                                 },
                               ],
@@ -380,20 +367,6 @@ export async function createMarketingTouchFixture() {
         if (queryHeld) await new Promise<void>((done) => queryWaiters.push(done));
         json(snapshot);
         return true;
-      }
-      if (path === "/api/v1/zcode-plan/billing/claim") {
-        const requestGeneration = generation;
-        if (held) await new Promise<void>((done) => waiters.push(done));
-        if (requestGeneration !== generation) {
-          json({ code: 409, data: { message: "Fixture case reset" } });
-          return true;
-        }
-        claimed = true;
-        if (claimFailure) {
-          json(claimFailure);
-          claimFailure = null;
-          return true;
-        }
       }
       return false;
     },

@@ -6,7 +6,7 @@ import {
 import { traceContextToLogContext } from "../deps.js";
 import { refreshOffPeakWork } from "../off-peak/runtime.js";
 import type { RuntimeCommand, TaskNotificationRuntimeCommand } from "../command-queue.js";
-import { uuidv7 } from "@zcode/shared";
+import { uuidv7 } from "@s-agent/shared";
 import type { AgentRuntimeInternal } from "../internal.js";
 import {
   persistBackgroundTaskNotificationBatch,

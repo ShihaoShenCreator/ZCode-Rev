@@ -1,5 +1,5 @@
 import type { ModelToolReferenceContentBlock } from "../tools/tool-search.js";
-import { zcodeProviderRuntimeHeadersErrorCode } from "@zcode/shared";
+import { zcodeProviderRuntimeHeadersErrorCode } from "@s-agent/shared";
 // ============================================================
 // Model Protocol - provider-neutral model contracts
 // ============================================================

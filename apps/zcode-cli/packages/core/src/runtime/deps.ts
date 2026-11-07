@@ -2,14 +2,14 @@ export { basename, join, resolve as resolvePath } from "node:path";
 import {
   createChildTraceContext as createContractChildTraceContext,
   traceContextToLogContext as contractTraceContextToLogContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   LogContext as ContractLogContext,
   QueryId as ContractQueryId,
   SessionId as ContractSessionId,
   TraceContext as ContractTraceContext,
   TurnId as ContractTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export function createQueryId(): ContractQueryId {
   return `query_${crypto.randomUUID()}` as ContractQueryId;
@@ -109,7 +109,7 @@ export {
   SESSION_ENTRY_USER_INPUT_AUTO_RESOLUTION,
   SESSION_ENTRY_WORKSPACE_CHECKPOINT,
   SESSION_ENTRY_WORKSPACE_FILE_REWIND,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 export type {
   CollaborationMode,
   GoalStatus,
@@ -246,7 +246,7 @@ export type {
   RewindTargetEvaluation,
   WorkspaceCheckpointArtifact,
   CompletedToolPartMetadata,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 export type { ToolCall, TurnAttachment, TurnState } from "../agent/turn-state.js";
 export {
   activeSessionMessages,

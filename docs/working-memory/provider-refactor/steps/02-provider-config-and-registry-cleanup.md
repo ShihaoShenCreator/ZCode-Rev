@@ -267,7 +267,7 @@ Bootstrap 全量测试还暴露了与本轮无关的既有债务：Session Persi
 Telemetry 与 Overlay 针对性回归 12 个文件、160 条通过；ZCode Protocol 专项 109 条通过。根目录
 typecheck、Bootstrap 独立 typecheck、Prompt Trajectory typecheck 与根 lint 通过，lint 仍为
 0 error、36 条基线 warning。Compact E2E dry-run 与 Memory evidence 测试通过；当前 Node 22 无法
-直接加载最新 staging 中引用根 `@zcode/shared` 源码的 Bootstrap build，实际 Compact fake suite
+直接加载最新 staging 中引用根 `@s-agent/shared` 源码的 Bootstrap build，实际 Compact fake suite
 留给仓库声明的 Node 24 / CI 运行时复核。
 
 Bootstrap 全量运行中，本轮相关的 Runtime Config 与 Telemetry Harness 失败已经修复；剩余失败
@@ -316,7 +316,7 @@ Snapshot revision CAS 退出后，这些字段没有生产写入或行为消费�
 Mapper、Core Invocation Context 和 Adapter Request Auth 只保留实际生效的请求鉴权材料。Core 源码也已
 加入 M2 跨包结构门禁，防止旧 revision 名称从更内层重新出现。
 
-最后的 Entry 覆盖审计把 `@zcode/provider`、`@zcode/provider-node`、Prompt CLI 与 TUI 也纳入同一结构
+最后的 Entry 覆盖审计把 `@s-agent/provider`、`@s-agent/provider-node`、Prompt CLI 与 TUI 也纳入同一结构
 门禁。扩展扫描确认这些入口没有旧 Provider Snapshot、Workspace Catalog 或 Runtime Overlay 回退。
 Workspace 交互状态的实现术语统一为 Model Preferences；一个零调用者的 legacy reasoning 迁移函数也已
 删除。M2 门禁、Runtime Model Metadata 与 ZCode Protocol 定向回归共 151 条通过，Bootstrap 独立

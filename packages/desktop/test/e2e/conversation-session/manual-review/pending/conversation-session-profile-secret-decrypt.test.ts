@@ -2,7 +2,7 @@
 // 冷启动后从侧栏项目菜单点“连接”：连接屏要求补充密码，补充后连上原项目，并覆盖原凭据。
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { TID_SSH_DIALOG, TID_SSH_PASSWORD_INPUT } from "@zcode/shared/test-ids";
+import { TID_SSH_DIALOG, TID_SSH_PASSWORD_INPUT } from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

@@ -34,8 +34,6 @@ function dispatch(
       return handlers.navigate?.(action, actionId);
     case "open_external":
       return handlers.open_external?.(action);
-    case "claim_plan":
-      return handlers.claim_plan?.(action);
     case "dismiss_content":
       return handlers.dismiss_content?.(action);
   }

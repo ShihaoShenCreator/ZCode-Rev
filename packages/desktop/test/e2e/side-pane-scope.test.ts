@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { TID_BROWSER_ADDRESS_INPUT } from "@zcode/shared/test-ids";
+import { TID_BROWSER_ADDRESS_INPUT } from "@s-agent/shared/test-ids";
 import { clearAppData } from "#e2e/helpers/desktop-app";
 import { openFirstBrowserTab, clickCloseButton } from "#e2e/helpers/browser-side-pane";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";

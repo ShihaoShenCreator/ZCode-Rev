@@ -5,7 +5,7 @@
 // R-19（10 §4.2.3）追加：同值切换 → V4CommandNoopError(config.unchanged)；
 // applyRequestedSessionConfig（createSession.config 消费共用件）。
 import { describe, expect, it, vi } from "vitest";
-import { parseCommandEnvelope, type CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import { parseCommandEnvelope, type CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import {
   V4CommandExecutor,
   V4SessionNotFoundError,

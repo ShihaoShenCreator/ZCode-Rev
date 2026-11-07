@@ -19,7 +19,7 @@ ZCode 官方内置 skill 通过官方插件随 CLI 打包。用户在输入框�
 ## 非目标
 
 - 不修改 `SKILL.md` 正文或 frontmatter 解析格式。
-- 不改 `@zcode/protocol`、`@zcode/contracts`、`ISkillsService` 参数。
+- 不改 `@s-agent/protocol`、`@s-agent/contracts`、`ISkillsService` 参数。
 - 不影响模型可见的 skill selection metadata。
 - 不改变 skill 名称、路径、启用状态、排序或过滤规则。
 

@@ -9,11 +9,11 @@ import {
   type SessionTaskType,
   type SessionStorePort,
   type TraceContext,
-} from "@zcode/contracts";
-import type { McpTelemetryTracker } from "@zcode/adapters";
-import type { SessionDataFilesPort } from "@zcode/adapters/storage";
-import type { WorkspaceHookPolicyProvider } from "@zcode/core";
-import type { AccountProviderConfigSnapshot } from "@zcode/provider";
+} from "@s-agent/contracts";
+import type { McpTelemetryTracker } from "@s-agent/adapters";
+import type { SessionDataFilesPort } from "@s-agent/adapters/storage";
+import type { WorkspaceHookPolicyProvider } from "@s-agent/core";
+import type { AccountProviderConfigSnapshot } from "@s-agent/provider";
 import {
   zcodeProtocolErrorCodes,
   type AppToolSearchMode,
@@ -30,12 +30,12 @@ import {
   type ZCodeSessionMode,
   type ZCodeSessionPersistence,
   type ZCodeWorkspaceRef,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ZCodeApp, ZCodeAppOptions } from "../app/types.js";
 import type { V4InteractionRegistry } from "../zcode-protocol-v4/interaction-registry.js";
 import type { ConversationV4Gateway } from "../zcode-protocol-v4/v4-gateway.js";
 import type { SessionResidentPool, SessionResidentPoolOptions } from "./session-resident-pool.js";
-import type { DynamicWorkflowMode } from "@zcode/shared";
+import type { DynamicWorkflowMode } from "@s-agent/shared";
 
 export interface ParamsSchema<T> {
   parse(input: unknown): T;

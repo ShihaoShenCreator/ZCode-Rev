@@ -3,7 +3,7 @@ import {
   createRootTraceContext,
   createSessionId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { MemoryFileSystem } from "./memory-test-utils.js";
 import {
   formatPlanFileReference,

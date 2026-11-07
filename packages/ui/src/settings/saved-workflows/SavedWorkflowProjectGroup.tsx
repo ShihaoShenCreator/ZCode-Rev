@@ -6,8 +6,8 @@ import {
   TID_WORKFLOW_PROJECT_GROUP,
   resolveWorkspaceKey,
   type ZCodeSavedWorkflowEntry,
-} from "@zcode/shared";
-import { testId } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { testId } from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import { toast } from "@/components/ui/toast.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

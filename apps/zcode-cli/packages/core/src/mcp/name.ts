@@ -1,4 +1,4 @@
-import type { McpToolDescriptor } from "@zcode/contracts";
+import type { McpToolDescriptor } from "@s-agent/contracts";
 
 export const MCP_TOOL_NAME_PREFIX = "mcp__";
 

@@ -1,4 +1,4 @@
-import type { ZCodePromptAttachment } from "@zcode/shared";
+import type { ZCodePromptAttachment } from "@s-agent/shared";
 
 export function deriveSessionTitle(
   content: string,

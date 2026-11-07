@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { chromium, type Browser, type BrowserContext, type Page } from "playwright-core";
-import { ServiceChannels, parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { ServiceChannels, parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_TASK_ITEM,
   TID_TASK_NEW_BUTTON,
@@ -9,8 +9,8 @@ import {
   TID_V4_COMPOSER_SEND,
   TID_V4_STOP,
   testId,
-} from "@zcode/shared/test-ids";
-import type { ProjectTask, ProjectTree } from "@zcode/services";
+} from "@s-agent/shared/test-ids";
+import type { ProjectTask, ProjectTree } from "@s-agent/services";
 import { clearAppData } from "#e2e/helpers/desktop-app";
 import { releaseControlledReplay } from "#e2e/helpers/controlled-replay";
 import { openMobilePairingPage, redactMobileDiagnosticText } from "#e2e/helpers/mobile-pairing";

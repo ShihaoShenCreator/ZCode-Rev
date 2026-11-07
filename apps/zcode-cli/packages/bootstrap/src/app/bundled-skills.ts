@@ -9,8 +9,8 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import type { Logger, SkillRoot } from "@zcode/contracts";
-import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@zcode/contracts";
+import type { Logger, SkillRoot } from "@s-agent/contracts";
+import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@s-agent/contracts";
 import { candidateBaseDirs } from "./bundled-plugins.js";
 
 /**

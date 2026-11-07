@@ -1,12 +1,12 @@
 import { readdir, readFile, stat, unlink } from "node:fs/promises";
 import { basename, dirname, isAbsolute, join } from "node:path";
-import { encodeCustomModelValue } from "@zcode/shared";
+import { encodeCustomModelValue } from "@s-agent/shared";
 import {
   TID_CHAT_ERROR_BANNER,
   TID_CHAT_MODEL_SELECT_TRIGGER,
   TID_CHAT_MODEL_SELECT_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, getE2EAppDataPaths, waitForTestIdByDom } from "../helpers/desktop-app.js";
 import {
   assertUpstreamRequestCapture,

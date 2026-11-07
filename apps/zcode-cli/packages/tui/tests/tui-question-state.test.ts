@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { KeyEvent } from "@mbears/opentui-core";
-import type { AskUserQuestionInput, PermissionBrokerResult } from "@zcode/contracts";
+import type { AskUserQuestionInput, PermissionBrokerResult } from "@s-agent/contracts";
 import { createQuestionPromptState, handleQuestionKey } from "../src/app-question-state.js";
 import type { ApprovalPrompt } from "../src/app-model.js";
 

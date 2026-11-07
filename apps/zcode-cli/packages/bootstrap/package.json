@@ -1,5 +1,5 @@
 {
-  "name": "@zcode/bootstrap",
+  "name": "@s-agent/bootstrap",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -26,23 +26,23 @@
     "lint:fix": "oxlint --write src"
   },
   "dependencies": {
-    "@zcode/adapters": "workspace:*",
-    "@zcode/contracts": "workspace:*",
-    "@zcode/core": "workspace:*",
-    "@zcode/dynamic-workflow": "workspace:*",
-    "@zcode/dynamic-workflow-runtime": "workspace:*",
-    "@zcode/i18n": "workspace:*",
-    "@zcode/provider": "workspace:*",
-    "@zcode/provider-node": "workspace:*",
-    "@zcode/shared": "workspace:*",
-    "@zcode/telemetry": "workspace:*",
+    "@s-agent/adapters": "workspace:*",
+    "@s-agent/contracts": "workspace:*",
+    "@s-agent/core": "workspace:*",
+    "@s-agent/dynamic-workflow": "workspace:*",
+    "@s-agent/dynamic-workflow-runtime": "workspace:*",
+    "@s-agent/i18n": "workspace:*",
+    "@s-agent/provider": "workspace:*",
+    "@s-agent/provider-node": "workspace:*",
+    "@s-agent/shared": "workspace:*",
+    "@s-agent/telemetry": "workspace:*",
     "diff": "^9.0.0",
     "zod": "4.6.5"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
     "@types/yazl": "^3.3.1",
-    "@zcode/formal-proof": "workspace:*",
+    "@s-agent/formal-proof": "workspace:*",
     "yazl": "^3.3.1"
   }
 }

@@ -1,4 +1,4 @@
-import type { ZCodeTaskPersistStatus, ZCodeTaskRuntimeStatus } from "@zcode/shared";
+import type { ZCodeTaskPersistStatus, ZCodeTaskRuntimeStatus } from "@s-agent/shared";
 
 interface TaskRestoreTimestampedMessageLike {
   role: "user" | "assistant";

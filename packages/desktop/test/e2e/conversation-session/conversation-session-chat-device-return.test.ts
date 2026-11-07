@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
-import type { ProjectTree, RemoteProjectDirectory } from "@zcode/services";
-import { ServiceChannels, type SourceServerManagementSnapshot } from "@zcode/shared";
+import type { ProjectTree, RemoteProjectDirectory } from "@s-agent/services";
+import { ServiceChannels, type SourceServerManagementSnapshot } from "@s-agent/shared";
 import {
   TID_COMPOSER_WORKSPACE_TRIGGER,
   TID_COMPOSER_REMOTE_CONNECTION,
@@ -11,7 +11,7 @@ import {
   TID_TASK_ITEM,
   TID_VIRTUAL_PROJECT_CREATE_TASK,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData } from "#e2e/helpers/desktop-app";
 import {
   getV4ComposerAttachments,

@@ -1,11 +1,11 @@
 import { readFile } from "node:fs/promises";
-import { BIGMODEL_PROVIDER_ID, ZAI_PROVIDER_ID } from "@zcode/shared";
+import { BIGMODEL_PROVIDER_ID, ZAI_PROVIDER_ID } from "@s-agent/shared";
 import {
   TID_LOGIN_TRIGGER,
   TID_OAUTH_ERROR,
   TID_OAUTH_LOGIN_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

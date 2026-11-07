@@ -20,7 +20,6 @@ const text = z.object({
   content: z.string().max(20_000),
 });
 export const marketingNavigationSchema = z.discriminatedUnion("page", [
-  z.object({ page: z.literal("upgrade") }).strict(),
   z.object({ page: z.literal("rewards") }).strict(),
   z
     .object({
@@ -56,7 +55,6 @@ export const marketingNavigationSchema = z.discriminatedUnion("page", [
 export const marketingActionSchema = z.discriminatedUnion("type", [
   z.object({ type: z.literal("close") }),
   z.object({ type: z.literal("open_url"), args: z.object({ url }) }),
-  z.object({ type: z.literal("claim_zcode_plan"), args: z.object({ plan_id: id }) }),
   z.object({ type: z.literal("navigate"), args: marketingNavigationSchema }),
   z.object({
     type: z.literal("copy_text"),

@@ -1,5 +1,5 @@
 import { constants } from "node:os";
-import { Emitter, type Event } from "@zcode/rpc";
+import { Emitter, type Event } from "@s-agent/rpc";
 
 interface CloseEventController {
   event: Event<number>;

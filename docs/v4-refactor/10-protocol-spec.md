@@ -391,7 +391,7 @@ interface TopicDeclaration<S, D> {
   keyPattern: string; // "conversation/*"
   snapshotSchema: ZodSchema<S>;
   deltaSchema: ZodSchema<D>;
-  coalesce: (deltas: D[]) => D[]; // 纯函数，@zcode/protocol 内，黄金测试复用
+  coalesce: (deltas: D[]) => D[]; // 纯函数，@s-agent/protocol 内，黄金测试复用
   resync: "snapshot"; // 溢出/断号时的重对齐动作（当前所有 topic 均为 snapshot）
 }
 ```
@@ -1242,7 +1242,7 @@ interface StatePatch {
 - 未声明 `workflowRunDeltas`（§2）的订阅者收不到这两个 op：publisher 为它把整批 `workflowRun.*` 降级
   成一条整键 `state.updated{workflowRuns}`，并按旧界钳位（[05 §1.1](./05-transport-and-backpressure.md)）。
 
-coalesce 规则（`@zcode/protocol` 纯函数）：
+coalesce 规则（`@s-agent/protocol` 纯函数）：
 
 1. 相邻同 `(rowId, path)` 的 `row.delta` → append 拼接；
 2. 相邻 `state.updated` → patch 键浅合并（键内整体替换，安全）；

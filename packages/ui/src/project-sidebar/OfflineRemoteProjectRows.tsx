@@ -1,4 +1,4 @@
-import { resolveWorkspaceKey } from "@zcode/shared";
+import { resolveWorkspaceKey } from "@s-agent/shared";
 import type { WorkspaceTabState } from "@/store/tabStore.js";
 import { useRemoteProjectConnectionPresentation } from "@/project-sidebar/useRemoteProjectConnectionPresentation.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

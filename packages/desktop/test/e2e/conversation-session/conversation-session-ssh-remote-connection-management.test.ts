@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_SETTINGS_BACK_BUTTON,
   TID_SETTINGS_PAGE,
@@ -10,7 +10,7 @@ import {
   TID_REMOTE_KIND_SSH,
   TID_CONFIRM_DIALOG_CONFIRM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

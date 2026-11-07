@@ -1,9 +1,9 @@
-import { InternalChannels } from "@zcode/shared";
+import { InternalChannels } from "@s-agent/shared";
 import type {
   PluginSandboxPlatformPort,
   PluginSandboxPortsEvent,
   PluginSandboxTransportPort,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 
 /**
  * 桌面 renderer 的插件沙箱平台端口：原生操作委托 preload 命名空间，那条 JSON-RPC 端口从 preload 经
@@ -18,7 +18,7 @@ export function createDesktopPluginSandboxPlatform(): PluginSandboxPlatformPort 
     ...(bridge.setExecutionActive ? { setExecutionActive: bridge.setExecutionActive } : {}),
     ...(bridge.copyImage
       ? {
-          copyImage: (input: import("@zcode/shared/mcp-apps").PluginSandboxCaptureRequest) =>
+          copyImage: (input: import("@s-agent/shared/mcp-apps").PluginSandboxCaptureRequest) =>
             bridge.copyImage!(input),
         }
       : {}),

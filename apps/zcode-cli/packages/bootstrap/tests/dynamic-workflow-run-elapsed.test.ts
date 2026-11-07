@@ -10,9 +10,9 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
-import type { JournalStorePort, RunRecord } from "@zcode/dynamic-workflow";
-import type { DwfRunLifeSpan } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
+import type { JournalStorePort, RunRecord } from "@s-agent/dynamic-workflow";
+import type { DwfRunLifeSpan } from "@s-agent/adapters/storage";
 import { runLineageActiveMs } from "../src/app/dynamic-workflow-run-elapsed.js";
 import { resolveDynamicWorkflowJournalStore } from "../src/app/dynamic-workflow-run-journal.js";
 

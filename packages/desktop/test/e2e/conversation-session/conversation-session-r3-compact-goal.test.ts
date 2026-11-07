@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { TID_CHAT_SUMMARY_PANEL, TID_V4_COMPOSER_INPUT } from "@zcode/shared/test-ids";
+import { TID_CHAT_SUMMARY_PANEL, TID_V4_COMPOSER_INPUT } from "@s-agent/shared/test-ids";
 import { clearAppData, setInputValueByTestIdDom } from "../helpers/desktop-app.js";
 import {
   getUpstreamRequestRecordCount,

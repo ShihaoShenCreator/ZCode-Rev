@@ -7,7 +7,7 @@ import {
   TID_SSH_DIALOG,
   TID_SSH_ERROR,
   TID_SSH_SUCCESS,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { AlertTriangleIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button.js";
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog.js";

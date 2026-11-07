@@ -70,7 +70,7 @@ Current limitations:
   `file` parts after submit.
 - Clipboard I/O currently lives in the CLI composition layer. This keeps TUI
   pure, but a future adapter split may move the platform reader under
-  `@zcode/adapters` without changing the `TuiReadClipboardImage` contract.
+  `@s-agent/adapters` without changing the `TuiReadClipboardImage` contract.
 - The clipboard reader snapshots inline data URLs only; it does not persist
   large clipboard media into an attachment artifact store yet.
 
@@ -184,7 +184,7 @@ The CLI composition layer supplies this function. The current implementation is
 `packages/cli/src/clipboard-image.ts`; it is allowed to use Node platform I/O
 because it sits outside the TUI boundary and exposes only `TuiReadClipboardImage`
 to the controller. If this reader grows beyond CLI composition, move it into
-`@zcode/adapters` as `clipboard` or as a small platform adapter backed by the
+`@s-agent/adapters` as `clipboard` or as a small platform adapter backed by the
 existing execution/file-system boundaries.
 Clipboard readers may return the captured image data URL as-is; runtime
 attachment resolution is responsible for resizing provider-bound images so their
@@ -249,7 +249,7 @@ P0 status:
 - Remaining post-P0 work is artifact-backed large media, byte-range placeholder
   binding, non-image attachment UX, and model-capability-aware client warnings.
 
-1. Extend `@zcode/tui` types so prompt handlers accept
+1. Extend `@s-agent/tui` types so prompt handlers accept
    `string | { text: string; attachments?: TurnAttachment[] }`.
 2. Add `readClipboardImage?: TuiReadClipboardImage` to `TuiOptions`.
 3. Add `draftAttachments` and `nextDraftAttachmentId` to `TuiScreen`.

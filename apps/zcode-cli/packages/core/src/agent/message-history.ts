@@ -1,4 +1,4 @@
-import { genUiModelContextSchema, type GenUiModelContext } from "@zcode/shared/gen-ui";
+import { genUiModelContextSchema, type GenUiModelContext } from "@s-agent/shared/gen-ui";
 // ============================================================
 // Message History - Maintains conversation context across turns
 // ============================================================
@@ -15,7 +15,7 @@ import {
   type ModelToolCall,
   type ModelReasoningContentBlock,
   type TokenUsageInfo,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   buildPromptAttachmentReminderBodies,
   type PromptAttachmentReminderInput,

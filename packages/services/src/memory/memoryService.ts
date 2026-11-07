@@ -1,4 +1,4 @@
-import type { Memory, MemoryConfig } from "@zcode/shared";
+import type { Memory, MemoryConfig } from "@s-agent/shared";
 import {
   type IMemoryService,
   type ProjectMemoryFileSummary,

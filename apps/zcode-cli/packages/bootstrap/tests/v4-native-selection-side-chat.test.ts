@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { startPromptTurn } from "../src/zcode-protocol-v4/commands/prompt-turn.js";
 import {
   V4CommandExecutor,

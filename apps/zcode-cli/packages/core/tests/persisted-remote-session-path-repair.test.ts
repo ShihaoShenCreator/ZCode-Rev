@@ -7,7 +7,7 @@ import {
   type SessionStorePort,
   type UpdateSessionInput,
   type WorkspaceId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   REMOTE_SESSION_PATH_CORRUPTION_REASON,
   repairPersistedRemoteSessionPaths,

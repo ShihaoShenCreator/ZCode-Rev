@@ -16,7 +16,7 @@ import {
   type WebRemoteControlMobileLogLevel,
   type WebRemoteControlMobileLogPullRequestPayload,
   type WebRemoteControlMobileLogPullResponsePayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const gunzipAsync = promisify(gunzip);
 

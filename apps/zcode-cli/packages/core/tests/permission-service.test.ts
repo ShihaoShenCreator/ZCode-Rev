@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@zcode/shared";
+import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@s-agent/shared";
 import {
   PermissionService,
   type PermissionContext,

@@ -117,8 +117,8 @@ Chrome WebDriver session 在业务页面和用例断言前退出。因此这里�
 
 ### 6.4 回归结果
 
-- `@zcode/provider`：13 个文件、115 个测试通过；typecheck 通过。
-- `@zcode/provider-node`：4 个文件、20 个测试通过；typecheck 通过。并发包测试曾令既有 file watcher
+- `@s-agent/provider`：13 个文件、115 个测试通过；typecheck 通过。
+- `@s-agent/provider-node`：4 个文件、20 个测试通过；typecheck 通过。并发包测试曾令既有 file watcher
   测试额外收到一次 `watch-error`，串行复跑稳定通过，新增完整性测试始终通过。
 - Services 定向：5 个文件、30 个测试通过。
 - 真实 Built-in Bootstrap 集成：1 个文件、3 个测试通过。

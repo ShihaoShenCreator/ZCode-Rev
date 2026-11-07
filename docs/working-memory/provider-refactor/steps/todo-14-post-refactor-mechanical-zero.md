@@ -107,7 +107,7 @@ Config、Capability snapshot 或 Provider options 通道。
 这些类型描述已发布旧 Provider store，不是当前 Provider Domain。目标边界固定为：
 
 ```text
-@zcode/shared public contracts
+@s-agent/shared public contracts
         `- 不再导出 Legacy Provider store DTO/helper
 
 packages/services/src/model-provider/legacy-*

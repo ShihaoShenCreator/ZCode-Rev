@@ -1,5 +1,5 @@
-import { BUILTIN_MODEL_PROVIDER_IDS } from "@zcode/shared";
-import { buildProviderResponsiveStartBalance } from "./provider-family-responsive.js";
+import { BUILTIN_MODEL_PROVIDER_IDS } from "@s-agent/shared";
+import { buildStartPlanBalance } from "./start-plan-balance.js";
 
 /** 专属展示夹具；不改变其他套餐 E2E 的默认响应。 */
 export interface EntitlementPresentation {
@@ -121,7 +121,7 @@ export function presentationResponse(path: string, state: EntitlementPresentatio
     };
   }
   if (path === "/api/v1/zcode-plan/billing/balance") {
-    const result = buildProviderResponsiveStartBalance("GLM-5.3");
+    const result = buildStartPlanBalance("GLM-5.3");
     if (state.start === "none")
       return { ...result, data: { ...result.data, plans: [], balances: [] } };
     if (state.start === "active") return result;

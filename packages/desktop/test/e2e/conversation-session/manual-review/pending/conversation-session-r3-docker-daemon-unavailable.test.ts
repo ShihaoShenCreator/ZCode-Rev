@@ -12,7 +12,7 @@ import {
   TID_DOCKER_CONTAINER_INPUT,
   TID_REMOTE_KIND_DOCKER,
   TID_SSH_DIALOG,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 import { readRemoteDockerContainer } from "#e2e/helpers/remote-docker-target";
 import {

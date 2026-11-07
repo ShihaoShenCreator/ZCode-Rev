@@ -6,7 +6,7 @@ import {
   createModelProviderId,
   type ModelInputMessage,
   type ModelToolContract,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { afterEach, describe, expect, it } from "vitest";
 
 import {

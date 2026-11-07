@@ -1,7 +1,7 @@
 import { startDraftFromProject } from "#e2e/helpers/project-sidebar";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { ZCodePluginInfo } from "@zcode/shared";
+import type { ZCodePluginInfo } from "@s-agent/shared";
 import { clearAppData, getE2EAppDataPaths, waitForWorkspaceApp } from "../helpers/desktop-app.js";
 import {
   addMarketplaceSourceThroughAgent,

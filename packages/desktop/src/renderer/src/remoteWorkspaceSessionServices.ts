@@ -1,5 +1,5 @@
-import type { IHighspeedCardService, IServiceAccessor } from "@zcode/services";
-import type { RemoteTarget } from "@zcode/shared";
+import type { IHighspeedCardService, IServiceAccessor } from "@s-agent/services";
+import type { RemoteTarget } from "@s-agent/shared";
 
 /**
  * 高速卡与闲时任务只在本地生效（2026-10-21 产品决定），远程 workspace 一律不得路由到远端。

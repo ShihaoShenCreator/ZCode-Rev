@@ -1,6 +1,6 @@
 import { rm, stat } from "node:fs/promises";
 import { join } from "node:path";
-import type { BrowserRecordingArtifact, BrowserViewportSize } from "@zcode/shared";
+import type { BrowserRecordingArtifact, BrowserViewportSize } from "@s-agent/shared";
 
 export interface BrowserWebmRecorderFactoryInput {
   outputPath: string;

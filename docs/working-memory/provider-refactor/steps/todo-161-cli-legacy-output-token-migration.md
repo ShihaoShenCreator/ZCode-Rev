@@ -45,7 +45,7 @@ Standalone Provider Runtime
 - [x] 使用临时 CLI 配置目录及离线 Provider fixture，覆盖旧文件读取 → 首次导入 → 正式文件保存与重读 → Registry 合成；断言显式输出值保留、API map 仍继承、旧文件内容不变。
 - [x] 正式配置存在时，改变旧文件输出值并重启，确认不重新导入；本项不承诺持续读取评测旧配置。
 - [x] 通过本地 scripted Provider 捕获实际 CLI 模型请求，证明迁移值进入对应 API 输出预算字段；不以 JSON 保存成功代替请求生效验证，不使用真实 Key 或付费模型。
-- [x] 按根与 CLI 规则运行受影响测试、typecheck、lint、架构检查并自审；明确区分既有失败、本次结果与未验证项。测试命令可从 `pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/legacy-cli-personal-provider-config-importer.test.ts` 开始，不能用根单测代替 CLI 验证。
+- [x] 按根与 CLI 规则运行受影响测试、typecheck、lint、架构检查并自审；明确区分既有失败、本次结果与未验证项。测试命令可从 `pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/legacy-cli-personal-provider-config-importer.test.ts` 开始，不能用根单测代替 CLI 验证。
 
 ## 2026-09-17 实施与验证记录
 

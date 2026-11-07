@@ -7,8 +7,8 @@ import {
   TID_SETTINGS_DYNAMIC_WORKFLOW_MODE_TRIGGER,
   type AppSettings,
   type DynamicWorkflowMode,
-} from "@zcode/shared";
-import { testId } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { testId } from "@s-agent/shared/test-ids";
 import {
   DynamicWorkflowAlwaysOnIcon,
   DynamicWorkflowOffIcon,

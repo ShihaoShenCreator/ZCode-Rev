@@ -8,7 +8,7 @@
 
 **Architecture:** 保持当前 `ContextBuilder -> MessageHistory` prefix 模型：system prompt blocks、skills listing、context meta-user 仍在初始化时进入内存 `MessageHistory`，reset/compact 继续依赖 `countContextPrefixMessages(...)` 保留 prefix。本 plan 只修改最终发送给 model provider 的 request-level userContext 文案结构、字段顺序、custom/compact/Explore 表现和验证覆盖。完整 request prefix projection 拆分（把 system / skills / userContext 移出 `MessageHistory`，改为每次 request 前投影）不在本计划内，作为未来可能的重构方向。
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/core`, prompt-trajectory.
+**Tech Stack:** TypeScript, Vitest, `@s-agent/core`, prompt-trajectory.
 
 ---
 
@@ -130,10 +130,10 @@ IMPORTANT: this context may or may not be relevant to your tasks. You should not
 ### Verification
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/context-builder.test.ts --run
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/core build
-pnpm --filter @zcode/prompt-trajectory run:testcases -- --cases testcases/request-user-context --out-root out/request-user-context-pvc1
+pnpm --filter @s-agent/core exec vitest tests/context-builder.test.ts --run
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/core build
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- --cases testcases/request-user-context --out-root out/request-user-context-pvc1
 ```
 
 Expected: final request body has `# user_instructions` before `# currentDate`; no other instruction section title; no standalone `# projectContext` / `## 项目信息` outside `# user_instructions`.
@@ -169,10 +169,10 @@ Expected: final request body has `# user_instructions` before `# currentDate`; n
 ### Verification
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/context-builder.test.ts tests/runtime-trace.test.ts tests/runtime-compact.test.ts --run
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/core build
-pnpm --filter @zcode/prompt-trajectory run:testcases -- --cases testcases/request-user-context --out-root out/request-user-context-pvc2
+pnpm --filter @s-agent/core exec vitest tests/context-builder.test.ts tests/runtime-trace.test.ts tests/runtime-compact.test.ts --run
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/core build
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- --cases testcases/request-user-context --out-root out/request-user-context-pvc2
 ```
 
 Evidence: `apps/zcode-cli/tools/prompt-trajectory/out/request-user-context-pvc2/test20260605-142700`；`custom-system-project`、`compact-prefix` 的 derived request body 均为 `# user_instructions -> Project context -> # currentDate`，且每个 provider request 中 userContext prefix 只出现一次。
@@ -207,10 +207,10 @@ Evidence: `apps/zcode-cli/tools/prompt-trajectory/out/request-user-context-pvc2/
 ### Verification
 
 ```bash
-pnpm --filter @zcode/core exec vitest tests/subagent-explore.test.ts tests/runtime-trace.test.ts --run
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/core build
-pnpm --filter @zcode/prompt-trajectory run:testcases -- --cases testcases/request-user-context --out-root out/request-user-context-pvc3
+pnpm --filter @s-agent/core exec vitest tests/subagent-explore.test.ts tests/runtime-trace.test.ts --run
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/core build
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- --cases testcases/request-user-context --out-root out/request-user-context-pvc3
 ```
 
 Evidence: `apps/zcode-cli/tools/prompt-trajectory/out/request-user-context-pvc3/test20260605-144412`；`explore-trim/0002-non-incremental-change.openai_request_body.json` 是 Explore child request，包含 `# currentDate`，不包含 `# user_instructions` / `Project context:`；parent initial/final request 仍保留完整 request-level userContext。

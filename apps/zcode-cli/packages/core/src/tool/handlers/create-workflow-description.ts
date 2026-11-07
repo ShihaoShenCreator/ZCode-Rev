@@ -7,7 +7,7 @@
 // 先读技能。路由规则留在这里而不是技能里，因为它决定的是「要不要调这个工具」，在技能加载之前
 // 就得被读到。
 
-import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@zcode/contracts";
+import { DYNAMIC_WORKFLOW_SKILL_NAME } from "@s-agent/contracts";
 
 const INTRO =
   "Create and run a dynamic workflow: a TypeScript script that orchestrates multiple model-driven subagents with plain control flow (loops, conditionals, fan-out) and typed intermediate results. The script is typechecked, the user is asked to confirm it, and the run starts in the background; you are notified with its final result when it settles. Compilation errors come back as diagnostics.";

@@ -33,7 +33,7 @@
 - 相关 11 个 Vitest 文件共 103 项通过（含上述 Node 契约入口）；类型、格式、架构检查通过，
   Lint 0 错误、42 条既有警告。
 - CLI build / SEA 原有测试 50 项通过、1 项既有失败：SEA/TUI 提取闭包缺
-  `@zcode/shared/src/index.ts`。已在干净 `hotfix/3.12.2` 基线复现相同错误，不扩大本次修复。
+  `@s-agent/shared/src/index.ts`。已在干净 `hotfix/3.12.2` 基线复现相同错误，不扩大本次修复。
 - 实际构建通过：CLI desktop-agent、Desktop main/host/preload/scheduler、HTTP Server、远程 Server、Server CLI。
   CLI 最终旁置 JSON 与选中源文件逐字节一致。
   已解析三个 Server 最终 JS，确认嵌入字符串与选中 JSON 完全一致。

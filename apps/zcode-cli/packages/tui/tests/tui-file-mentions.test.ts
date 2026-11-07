@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getZCodeCopy } from "@zcode/i18n";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { toPromptInput } from "../src/app-input.js";
 import { FileMentionPanel } from "../src/app-file-mention-panel.js";
 import {

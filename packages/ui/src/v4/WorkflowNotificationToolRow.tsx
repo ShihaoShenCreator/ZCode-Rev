@@ -5,7 +5,7 @@ import type {
   WorkflowBlockedMeta,
   WorkflowNotificationMeta,
   WorkflowRunHole,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { CodeBlock, CodeBlockHeader } from "@/components/ai-elements/code-block.js";
 import { WorkflowNotificationHoleRow } from "@/v4/WorkflowNotificationHoleRow.js";
 import { ToolLayout } from "@/ToolCallBlocks/ToolLayout.js";

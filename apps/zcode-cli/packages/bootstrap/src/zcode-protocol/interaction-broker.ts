@@ -19,7 +19,7 @@ import {
   type PermissionBrokerRequestOptions,
   type PermissionBrokerResult,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   MCP_ELICITATION_INTERACTION,
   MCP_ELICITATION_TOOL_NAME,
@@ -35,7 +35,7 @@ import {
   type ZCodePermissionResponse,
   type ZCodeUserInputQuestion,
   type ZCodeUserInputResponse,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   V4InteractionAnswer,
   V4InteractionRegistrationOptions,

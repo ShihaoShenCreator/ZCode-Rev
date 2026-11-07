@@ -8,13 +8,13 @@
  *   2. `journalActorResolvedModel` —— 实际用上的模型 → dwf_actor 记录（读改写，不整条覆盖）。
  *
  * 为什么独立成文件而不并入 dynamic-workflow-run-service.test.ts：那份用例在运行时 import
- * `@zcode/core`（真实 AgentRuntime），本仓当前环境下会被 `@zcode/zcode-cua` 卡住。这两层都
+ * `@s-agent/core`（真实 AgentRuntime），本仓当前环境下会被 `@s-agent/zcode-cua` 卡住。这两层都
  * 只依赖类型，所以能单独跑——而它们恰是这个特性里唯一有分支的逻辑。
  */
 
 import { describe, expect, it } from "vitest";
-import type { ModelSelection } from "@zcode/contracts";
-import { InMemoryJournalStore } from "@zcode/dynamic-workflow";
+import type { ModelSelection } from "@s-agent/contracts";
+import { InMemoryJournalStore } from "@s-agent/dynamic-workflow";
 import {
   WorkflowActorModelUnboundError,
   WorkflowActorPinnedModelError,

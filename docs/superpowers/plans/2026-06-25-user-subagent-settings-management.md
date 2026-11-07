@@ -6,7 +6,7 @@
 
 **Architecture:** 先把 subagent 的用户级文件路径、profile 字段、启用状态从 UI/service 的临时实现收敛到 runtime 实际消费的边界，再接入 Settings UI。P0 只管理 global/user agents；workspace/project agents、plugin agents、structured MCP object editor 和 provider-visible agent 列表载体调整都不进入本计划。
 
-**Tech Stack:** TypeScript、React、Zustand、@zcode/services、@zcode/shared、zcode-cli bootstrap/core、Vitest、Tailwind semantic tokens、现有 Settings 页面组件。
+**Tech Stack:** TypeScript、React、Zustand、@s-agent/services、@s-agent/shared、zcode-cli bootstrap/core、Vitest、Tailwind semantic tokens、现有 Settings 页面组件。
 
 ## Global Constraints
 
@@ -15,7 +15,7 @@
 - GUI 的 enabled/disabled 状态必须被 zcode-cli runtime 启动时消费；不能只影响 Settings 列表或 mention 面板。
 - built-in agents `general-purpose` 和 `Explore` 在 P0 只读展示，不支持编辑/删除。
 - workspace/project agents 如果需要继续供 mention 使用，必须从 runtime 实际路径 `<workspace>/.zcode/agents` 读取；Settings P0 不提供编辑入口。
-- 不让 `packages/services` 直接依赖 `@zcode/core` 或 runtime 具体实现。
+- 不让 `packages/services` 直接依赖 `@s-agent/core` 或 runtime 具体实现。
 - 涉及 `packages/ui` 必须遵守根目录 `DESIGN.md`：使用 semantic color tokens、现有 Button/Input/Switch/Select/Dialog primitives、紧凑 settings 布局、支持 Zai Light/Dark 和响应式。
 - UI 文案必须走 i18n：`packages/ui/src/i18n/locales/zh-CN.ts` 与 `packages/ui/src/i18n/locales/en-US.ts` 同步补齐。
 - 不自动提交；执行本计划时只有用户明确允许后才提交 commit。
@@ -42,7 +42,7 @@
   - 保留旧字段兼容，但把 `tools` 等字段转为 string array 语义。
 - Create: `packages/services/src/subagents/subagentMarkdown.ts`
   - Service 侧 Markdown parse/serialize helper。
-  - 不依赖 `@zcode/core`。
+  - 不依赖 `@s-agent/core`。
 - Create: `packages/services/src/subagents/subagentStorage.ts`
   - 统一解析 user/global agent root、project agent root、state file path。
   - 读取 `~/.zcode/cli/config.json` 中的 `storage.dir`，fallback 到 `~/.zcode`。
@@ -260,13 +260,13 @@ const toolSummary = agent.tools?.length ? agent.tools.join(", ") : "";
 Run:
 
 ```bash
-pnpm --filter @zcode/shared lint
-pnpm --filter @zcode/ui test -- --run test/subagentsMentionProvider.test.ts
+pnpm --filter @s-agent/shared lint
+pnpm --filter @s-agent/ui test -- --run test/subagentsMentionProvider.test.ts
 ```
 
 Expected:
 
-- `@zcode/shared lint` PASS。
+- `@s-agent/shared lint` PASS。
 - mention provider test 如有 fixture 编译错误，更新 fixture 字段后 PASS。
 
 ---
@@ -280,7 +280,7 @@ Expected:
 
 **Interfaces:**
 
-- Consumes: `SubAgentConfig` from `@zcode/shared`。
+- Consumes: `SubAgentConfig` from `@s-agent/shared`。
 - Produces:
   - `parseSubagentMarkdown(content: string, path: string, scope: AgentScope): AgentSummary | SubagentMarkdownDiagnostic`
   - `serializeSubagentMarkdown(config: SubAgentConfig): string`
@@ -322,7 +322,7 @@ it("serializes user subagent markdown with runtime profile fields", () => {
 
 ```ts
 import YAML from "yaml";
-import type { SubAgentConfig } from "@zcode/shared";
+import type { SubAgentConfig } from "@s-agent/shared";
 
 export function serializeSubagentMarkdown(config: SubAgentConfig): string {
   const frontmatter: Record<string, unknown> = {
@@ -362,13 +362,13 @@ export interface SubagentMarkdownDiagnostic {
 Run:
 
 ```bash
-pnpm --filter @zcode/services test -- --run test/subagentsService.test.ts
+pnpm --filter @s-agent/services test -- --run test/subagentsService.test.ts
 ```
 
 Expected:
 
 - 新增 parser/serializer tests PASS。
-- 如果 `@zcode/services` 当前没有 test script，用根命令运行：
+- 如果 `@s-agent/services` 当前没有 test script，用根命令运行：
 
 ```bash
 pnpm test -- --run packages/services/test/subagentsService.test.ts
@@ -553,8 +553,8 @@ P0 只让 user disabled 影响 runtime。Project disabled 留给 P1。
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts
-pnpm --filter @zcode/core test -- --run tests/subagent-profile.test.ts
+pnpm --filter @s-agent/bootstrap test -- --run tests/subagents.test.ts
+pnpm --filter @s-agent/core test -- --run tests/subagent-profile.test.ts
 ```
 
 Expected:
@@ -596,7 +596,7 @@ it("settings user-only list hides workspace agents", async () => {
 
 - [ ] **Step 2: 添加 built-in readonly summaries**
 
-Service 不能依赖 `@zcode/core`。在 service 内定义与 runtime built-ins 同名的 summary 常量：
+Service 不能依赖 `@s-agent/core`。在 service 内定义与 runtime built-ins 同名的 summary 常量：
 
 ```ts
 const BUILT_IN_AGENT_SUMMARIES: AgentSummary[] = [
@@ -659,7 +659,7 @@ Run:
 
 ```bash
 pnpm test -- --run packages/services/test/subagentsService.test.ts
-pnpm --filter @zcode/ui test -- --run test/subagentsMentionProvider.test.ts
+pnpm --filter @s-agent/ui test -- --run test/subagentsMentionProvider.test.ts
 ```
 
 Expected:
@@ -719,7 +719,7 @@ function getAgentLoadKey(
 Run:
 
 ```bash
-pnpm --filter @zcode/ui test -- --run test/subagentsMentionProvider.test.ts
+pnpm --filter @s-agent/ui test -- --run test/subagentsMentionProvider.test.ts
 ```
 
 Expected:
@@ -828,7 +828,7 @@ export type SettingsSectionId =
 Run:
 
 ```bash
-pnpm --filter @zcode/ui test -- --run test/settingsPageConfig.test.ts test/settingsNavigation.test.ts
+pnpm --filter @s-agent/ui test -- --run test/settingsPageConfig.test.ts test/settingsNavigation.test.ts
 ```
 
 Expected: PASS。
@@ -918,7 +918,7 @@ Call store/hook `setEnabled(agent.id, enabled)`。On failure show toast and keep
 Run:
 
 ```bash
-pnpm --filter @zcode/ui test -- --run test/subagentsSettingsSection.test.tsx
+pnpm --filter @s-agent/ui test -- --run test/subagentsSettingsSection.test.tsx
 ```
 
 Expected:
@@ -1044,7 +1044,7 @@ Follow `DESIGN.md`:
 Run:
 
 ```bash
-pnpm --filter @zcode/ui test -- --run test/subagentsSettingsSection.test.tsx
+pnpm --filter @s-agent/ui test -- --run test/subagentsSettingsSection.test.tsx
 ```
 
 Expected:
@@ -1118,7 +1118,7 @@ Do not block valid agents from rendering.
 Run:
 
 ```bash
-pnpm --filter @zcode/ui test -- --run test/subagentsSettingsSection.test.tsx
+pnpm --filter @s-agent/ui test -- --run test/subagentsSettingsSection.test.tsx
 ```
 
 Expected:
@@ -1204,8 +1204,8 @@ If implementation changes current diff facts, update 历史差异审计文档（
 Run:
 
 ```bash
-pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts
-pnpm --filter @zcode/core test -- --run tests/subagent-profile.test.ts
+pnpm --filter @s-agent/bootstrap test -- --run tests/subagents.test.ts
+pnpm --filter @s-agent/core test -- --run tests/subagent-profile.test.ts
 ```
 
 Expected: PASS。
@@ -1228,7 +1228,7 @@ Expected: PASS。
 Run:
 
 ```bash
-pnpm --filter @zcode/ui test -- --run \
+pnpm --filter @s-agent/ui test -- --run \
   test/settingsPageConfig.test.ts \
   test/settingsNavigation.test.ts \
   test/subagentsMentionProvider.test.ts \
@@ -1243,8 +1243,8 @@ Run:
 
 ```bash
 pnpm test -- --run packages/services/test/subagentsService.test.ts
-pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts
-pnpm --filter @zcode/core test -- --run tests/subagent-profile.test.ts
+pnpm --filter @s-agent/bootstrap test -- --run tests/subagents.test.ts
+pnpm --filter @s-agent/core test -- --run tests/subagent-profile.test.ts
 ```
 
 Expected: PASS。
@@ -1298,6 +1298,6 @@ Expected:
 - [ ] Mention provider is not accidentally narrowed to settings user-only mode.
 - [ ] Workspace editing is not exposed in UI.
 - [ ] Built-in agents are readonly.
-- [ ] No service import from `@zcode/core`.
+- [ ] No service import from `@s-agent/core`.
 - [ ] i18n keys exist in both zh-CN and en-US.
 - [ ] `pnpm typecheck` and `pnpm lint` are included in validation.

@@ -1,6 +1,6 @@
 import { Cloud, FolderOpen, Plus } from "lucide-react";
-import { type SourceServerManagementSnapshot } from "@zcode/shared";
-import { TID_VIRTUAL_PROJECT_ADD } from "@zcode/shared/test-ids";
+import { type SourceServerManagementSnapshot } from "@s-agent/shared";
+import { TID_VIRTUAL_PROJECT_ADD } from "@s-agent/shared/test-ids";
 import type { RemoteConnectionOpenPreference } from "@/app-shell/types.js";
 import { Button } from "@/components/ui/button.js";
 import {

@@ -1,5 +1,5 @@
-import type { ConversationShareFailureIssue } from "@zcode/services";
-import { conversationShareRejectionSchema, type ConversationShareRejection } from "@zcode/shared";
+import type { ConversationShareFailureIssue } from "@s-agent/services";
+import { conversationShareRejectionSchema, type ConversationShareRejection } from "@s-agent/shared";
 
 export interface ConversationShareErrorDetails {
   name: string;

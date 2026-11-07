@@ -32,7 +32,7 @@ The broker must fail closed:
   downloads it and fails closed if that bundle is missing or invalid.
 - **Re-verify before every launch (not just at install).** The install verifies the bundle and clears its quarantine xattr, so `open` will not re-assess it via Gatekeeper. Verifying only at install checks one inode while a later `launch` could run a different one — a same-UID attacker can overwrite `…/computer-use/ZCode Computer Use.app/Contents/MacOS/…` after install and get it launched with TCC (peer/token gates only decide _who connects_, not _which binary started_). So `cuaHelperHost.doStart` re-runs `verifyInstalled` (signature / Team / bundle / version) on the resolved `Helper.app` immediately before `launcher.launch`, minimizing the TOCTOU window; a failing verify never launches.
 - A direct `zcode` CLI run (not launched by ZCode desktop) that has a global `zcode-cua` but no resolvable broker socket **omits `zcode-cua` (fail-closed) on macOS** rather than running it without the Helper-owned broker. This is unconditional — it does not require `ZCODE_CUA_PERMISSION_BROKER_UNAVAILABLE` to be set. A `zcode-cua` whose own per-server `env` already carries the broker socket (desktop `session/create` path) is kept; local dev can opt into running raw with `ZCODE_CUA_HELPER_ALLOW_UNAUTHENTICATED_LOCAL=1`.
-- The `zcode-cua` matcher (`@zcode/shared` `mcp.ts`, single source of truth for both injection entries) must recognize every form that resolves to the real package — including `python -m zcode_cua.server` (dot submodule) and local paths with a trailing separator (`…/zcode-cua/`) — because a missed match is fail-open (no broker injected → raw TCC owner), while an over-match is fail-closed (harmless broker injection).
+- The `zcode-cua` matcher (`@s-agent/shared` `mcp.ts`, single source of truth for both injection entries) must recognize every form that resolves to the real package — including `python -m zcode_cua.server` (dot submodule) and local paths with a trailing separator (`…/zcode-cua/`) — because a missed match is fail-open (no broker injected → raw TCC owner), while an over-match is fail-closed (harmless broker injection).
 
 ## `open_application` Result Contract
 
@@ -95,10 +95,10 @@ Remote/mobile attachment never originates this probe and never creates a Helper.
 
 ## Shared node_repl SDK contract
 
-The bundled `@zcode/zcode-cua-plugin` is a skill/docs/SDK package. `scripts/computer-use-client.mjs`
+The bundled `@s-agent/zcode-cua-plugin` is a skill/docs/SDK package. `scripts/computer-use-client.mjs`
 bootstraps `agent.computerUse` inside each fresh shared `node_repl` Worker. It never exposes broker
 socket/token/native modules to the Worker; the shared host validates the authenticated request context and
-delegates to the pinned `@zcode/zcode-cua` runtime. There is no independent CUA MCP launcher or model-visible
+delegates to the pinned `@s-agent/zcode-cua` runtime. There is no independent CUA MCP launcher or model-visible
 `mcp__computer-use__*` projection. Release provenance remains owned by the signed SEA bundle,
 codesign/notarization and the existing Helper/runtime attestation gates.
 

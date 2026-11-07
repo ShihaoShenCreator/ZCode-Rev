@@ -1236,7 +1236,7 @@ exceptions:
       - packages/ui/src/browser-use/EmbeddedBrowserPermissionPrompts.tsx
       - packages/ui/src/hooks/useStartPlanRecommendation.ts
       - packages/ui/src/settings/DynamicWorkflowModeSetting.tsx
-    reason: 已准入的存量文件只把 TID 导入从 @zcode/shared 根入口改为 @zcode/shared/test-ids 子路径（根入口不再导出 test-ids，以收窄受影响单测范围）；行为与模块边界不变，接管 ui 目录不在本次范围内。
+    reason: 已准入的存量文件只把 TID 导入从 @s-agent/shared 根入口改为 @s-agent/shared/test-ids 子路径（根入口不再导出 test-ids，以收窄受影响单测范围）；行为与模块边界不变，接管 ui 目录不在本次范围内。
   - id: settings-personalization-section-new-file
     rule: unmanaged-new-file
     paths: [packages/ui/src/settings/PersonalizationSection.tsx]

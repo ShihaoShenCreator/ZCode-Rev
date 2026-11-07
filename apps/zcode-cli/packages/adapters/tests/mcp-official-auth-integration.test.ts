@@ -17,7 +17,7 @@ import type {
   McpServerConfig,
   OfficialMcpAuthHeadersPort,
   OfficialMcpTrustedOriginRegistry,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createMcpAdapter } from "../src/mcp/index.js";
 import { createNodePluginAdapter } from "../src/plugins/index.js";
 

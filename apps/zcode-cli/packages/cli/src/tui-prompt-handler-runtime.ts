@@ -2,7 +2,7 @@
 // 「读 dotenv → 定位要恢复的会话 → 装 bootstrap 模块 → 起 Provider Registry
 // 常驻运行时 → 读默认模型选择」这段进程级准备拆到本文件；
 // 公开面仍从 tui-prompt-handler.ts 导出。
-import type { ZCodeAppOptions } from "@zcode/bootstrap";
+import type { ZCodeAppOptions } from "@s-agent/bootstrap";
 import { loadBootstrapModule } from "./bootstrap-loader.js";
 import { loadCliDotenv } from "./env.js";
 import { createCliProviderRefreshReporter } from "./provider-runtime-env.js";

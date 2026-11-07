@@ -1,4 +1,4 @@
-import type { ProviderEndpointRoutingPort } from "@zcode/contracts";
+import type { ProviderEndpointRoutingPort } from "@s-agent/contracts";
 import type { ProviderEndpointRoutingFactoryOptions } from "../provider-endpoint-routing-options.js";
 import { createStaticProviderEndpointRoutingPort } from "../official-coding-plan-gateway.js";
 

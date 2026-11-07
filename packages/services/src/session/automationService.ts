@@ -6,8 +6,8 @@ import type {
   ZCodeAutomationCreateParams,
   ZCodeAutomationRun,
   ZCodeAutomationUpdateParams,
-} from "@zcode/shared";
-import { resolveWorkspaceKey } from "@zcode/shared";
+} from "@s-agent/shared";
+import { resolveWorkspaceKey } from "@s-agent/shared";
 import { AutomationRepo } from "#src/session/automationRepo.js";
 import {
   assertValidAutomationIntervalCarrier,

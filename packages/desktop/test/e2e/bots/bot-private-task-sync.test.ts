@@ -1,4 +1,4 @@
-import type { BotProvider, ZCodeStreamEvent } from "@zcode/shared";
+import type { BotProvider, ZCodeStreamEvent } from "@s-agent/shared";
 import {
   createBotsServiceHarness,
   createFeishuConfig,

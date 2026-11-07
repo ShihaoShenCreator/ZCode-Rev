@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import type { BotsStateFile } from "@zcode/shared";
+import type { BotsStateFile } from "@s-agent/shared";
 import {
   createBotsServiceHarness,
   createFeishuCallback,

@@ -186,8 +186,8 @@ OAuth 业务逻辑放在 host process，遵循 AGENTS.md 规范。按照「新�
 
 ```ts
 // packages/services/src/oauth/oauth.ts（新建）
-import { createServiceDescriptor } from '@zcode/rpc'
-import { ServiceChannels } from '@zcode/shared'
+import { createServiceDescriptor } from '@s-agent/rpc'
+import { ServiceChannels } from '@s-agent/shared'
 
 export interface IOAuthService {
   // 发起 OAuth：生成 state + PKCE，返回完整的 authorize URL 和 state

@@ -1,5 +1,5 @@
 import { contextBridge } from "electron";
-import { installRewardsPageBridge, isTrustedRewardsUrl } from "@zcode/shared";
+import { installRewardsPageBridge, isTrustedRewardsUrl } from "@s-agent/shared";
 
 // 普通网页和三方导航不能继承邀请页的 bridge；仅宿主批准的开发模式允许 localhost。
 if (

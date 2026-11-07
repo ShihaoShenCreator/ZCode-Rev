@@ -1,4 +1,4 @@
-import type { BotGroupInputSource } from "@zcode/shared";
+import type { BotGroupInputSource } from "@s-agent/shared";
 import {
   createBotsServiceHarness,
   createFeishuConfig,

@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import {
   decodeZCodeBuiltinRelease,
   NodePersonalProviderConfigRepository,
-} from "@zcode/provider-node";
+} from "@s-agent/provider-node";
 import {
   TID_MODEL_PROVIDER_ADD_PROVIDER_BUTTON,
   TID_MODEL_PROVIDER_TEMPLATE_ITEM,
@@ -14,7 +14,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 import { restartIntoWorkspace, seedReplayProvider } from "#e2e/helpers/model-provider-restart";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";

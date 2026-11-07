@@ -4,7 +4,7 @@
 
 在不依赖本地 `zcode-cua` 源码目录、不控制 SSH/WSL/Docker/远程工作区的前提下，让
 Windows x64/arm64 的 ZCode 安装包能够按需启动本机 Computer Use Helper，并复用现有
-`@zcode/protocol`、CUA broker、官方 `zcode-cua` 插件和桌面本地 host 生命周期。
+`@s-agent/protocol`、CUA broker、官方 `zcode-cua` 插件和桌面本地 host 生命周期。
 
 源码开发仍允许使用 `ZCODE_CUA_DEV_ROOT` 覆盖产品资源；产品安装包默认只读取自身
 `resources/tools/cua-helper`，不搜索相邻目录、不下载 Helper、不回退到 macOS 实现。
@@ -16,12 +16,12 @@ Windows 沿用 macOS 已验证的“Agent 只连接 broker、Helper 独立持有
 授权主体要求，因此 Helper 由安装包内的 Electron Node 运行时启动，原生
 `ax_native.node` 作为安装资源发布。
 
-`@zcode/zcode-cua` 是 Helper JavaScript、native source、addon 与版本校验的唯一包身份；不得再为同一 Git 提交声明 helper-runtime alias。macOS/Windows CI 必须从 canonical 包重建目标架构 addon，缺少 `binding.gyp` 或对应平台源码时 fail closed。
+`@s-agent/zcode-cua` 是 Helper JavaScript、native source、addon 与版本校验的唯一包身份；不得再为同一 Git 提交声明 helper-runtime alias。macOS/Windows CI 必须从 canonical 包重建目标架构 addon，缺少 `binding.gyp` 或对应平台源码时 fail closed。
 
 ```text
 构建期
 
-固定提交的 @zcode/zcode-cua（或构建期显式 ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR）
+固定提交的 @s-agent/zcode-cua（或构建期显式 ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR）
   ├─ package.json:zcodeCuaRuntime.windows.entry
   ├─ package.json:zcodeCuaRuntime.windows.nativeAddon
   └─ 外置运行依赖 express / sharp
@@ -105,7 +105,7 @@ manifest schema 版本为 `1`，字段固定为：
 ```json
 {
   "schemaVersion": 1,
-  "packageName": "@zcode/zcode-cua",
+  "packageName": "@s-agent/zcode-cua",
   "packageVersion": "0.5.2",
   "platform": "win32",
   "arch": "x64",
@@ -207,14 +207,14 @@ $env:ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR='D:\path\to\zcode-cua'
 $env:ZCODE_SKIP_REMOTE_ASSETS='1'
 $env:ZCODE_TARGET_OS='win32'
 $env:ZCODE_TARGET_ARCH='x64'
-pnpm --filter @zcode/desktop build
-pnpm --filter @zcode/desktop exec electron-builder `
+pnpm --filter @s-agent/desktop build
+pnpm --filter @s-agent/desktop exec electron-builder `
   --config electron-builder.config.js --win --x64 --dir
 Remove-Item Env:ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR
 ```
 
 本机通过显式 `ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR` 选择本地 producer 完成
-`@zcode/zcode-cua` staging；workspace/lockfile 仍保持远端可获取的精确 pinned dependency，目标为
+`@s-agent/zcode-cua` staging；workspace/lockfile 仍保持远端可获取的精确 pinned dependency，目标为
 win32/x64，addon PE machine 为 `0x8664`。产物资源目录为
 `<workspace>\packages\desktop\dist\win-unpacked\resources`，manifest 为
 `resources\tools\cua-helper\runtime-manifest.json`。GitHub 下载中断后复用了已缓存并按

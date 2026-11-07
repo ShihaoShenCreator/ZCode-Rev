@@ -618,7 +618,7 @@ Temporarily execute the baseline branch before applying capture scale:
 
 ```powershell
 $env:ZCODE_SCREENSHOT_SMOKE_SCALE_FACTOR='1.25'
-pnpm --filter @zcode/desktop test:browser-screenshot-surface-smoke
+pnpm --filter @s-agent/desktop test:browser-screenshot-surface-smoke
 ```
 
 Expected: non-zero exit with `stale tiled surface detected` or a corner sentinel mismatch.
@@ -650,7 +650,7 @@ Run:
 
 ```powershell
 $env:ZCODE_SCREENSHOT_SMOKE_SCALE_FACTOR='1.25'
-pnpm --filter @zcode/desktop test:browser-screenshot-surface-smoke
+pnpm --filter @s-agent/desktop test:browser-screenshot-surface-smoke
 Remove-Item Env:ZCODE_SCREENSHOT_SMOKE_SCALE_FACTOR
 ```
 

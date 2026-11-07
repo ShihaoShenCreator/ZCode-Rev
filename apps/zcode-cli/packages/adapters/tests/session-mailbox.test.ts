@@ -1,5 +1,5 @@
 import { mkdir, mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
-import type { SessionId } from "@zcode/contracts";
+import type { SessionId } from "@s-agent/contracts";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";

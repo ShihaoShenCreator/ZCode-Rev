@@ -1,4 +1,4 @@
-import type { ZCodePersistedFileChange } from "@zcode/shared";
+import type { ZCodePersistedFileChange } from "@s-agent/shared";
 import type { CodeViewerSource } from "@/lib/codeViewer.js";
 import type { CodeViewerWorkspaceScope } from "@/lib/codeViewerWorkspaceScope.js";
 

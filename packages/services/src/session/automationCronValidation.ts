@@ -1,4 +1,4 @@
-import type { ZCodeAutomationScheduleRule } from "@zcode/shared";
+import type { ZCodeAutomationScheduleRule } from "@s-agent/shared";
 import { Cron } from "croner";
 
 /** 校验 cron 表达式是否合法（5 段，本地时区）。 */

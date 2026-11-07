@@ -17,7 +17,7 @@ import {
   SAVE_WORKFLOW_TOOL_NAME,
   SUBMIT_RESULT_TOOL_NAME,
   type JsonSchema,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry } from "../types.js";
 import { deferredToolCallEntry } from "./deferred-tool-call.js";
 import { toolSearchToolEntry } from "./tool-search.js";

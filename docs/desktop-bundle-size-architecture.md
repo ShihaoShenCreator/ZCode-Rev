@@ -3,7 +3,7 @@
 桌面端打包现在改成“两套资源明确分层”：
 
 - desktop 本地 agent 运行时按当前平台准备后进入安装包
-- remote 专用资源由 `@zcode/server-cli stage:remote-assets` 产出到 `mock-cdn/releases/...`，不再进入安装包
+- remote 专用资源由 `@s-agent/server-cli stage:remote-assets` 产出到 `mock-cdn/releases/...`，不再进入安装包
 
 ## 目录约定
 
@@ -50,7 +50,7 @@
 
 ## Source Server 准备链路
 
-1. `@zcode/server-cli stage:remote-assets` 构建 Server CLI/Core 与 Agent bundle。
+1. `@s-agent/server-cli stage:remote-assets` 构建 Server CLI/Core 与 Agent bundle。
 2. 按 linux/darwin × x64/arm64 收集目标 Node、node-pty、官方插件和 native tools。
 3. 每个平台生成一个完整 archive，并写入统一 `source-server-release.json`。
 4. 开发态与生产态使用同一 archive 安装合同，不再生成散组件、wrapper 或 legacy manifest。

@@ -2,7 +2,7 @@
 import type {
   BrowserPlaywrightAction,
   BrowserPlaywrightModifier,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger } from "../logger.js";
 import {
   dispatchClickAt,

@@ -1,14 +1,14 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { Page } from "playwright-core";
-import type { ProjectTree, VirtualProject } from "@zcode/services";
+import type { ProjectTree, VirtualProject } from "@s-agent/services";
 import {
   buildRemoteHostWorkspaceIdentity,
   parseWebRemoteControlAppPayload,
   ServiceChannels,
   type WebRemoteControlAppPayload,
-} from "@zcode/shared";
-import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND, TID_V4_STOP } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND, TID_V4_STOP } from "@s-agent/shared/test-ids";
 import { clearAppData, DEFAULT_WORKSPACE } from "#e2e/helpers/desktop-app";
 import { releaseControlledReplay } from "#e2e/helpers/controlled-replay";
 import { resolveE2ERuntimePath } from "#e2e/helpers/e2e-runtime-paths";

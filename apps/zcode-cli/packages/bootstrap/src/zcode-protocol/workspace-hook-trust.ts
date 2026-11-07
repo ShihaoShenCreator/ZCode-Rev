@@ -1,13 +1,13 @@
 import { resolve } from "node:path";
-import { workspaceHookPolicySchema } from "@zcode/contracts";
-import type { WorkspaceHookPolicyProvider } from "@zcode/core";
+import { workspaceHookPolicySchema } from "@s-agent/contracts";
+import type { WorkspaceHookPolicyProvider } from "@s-agent/core";
 import {
   zcodeWorkspaceHookTrustGrantParamsSchema,
   zcodeWorkspaceHookTrustGrantReasonCodeSchema,
   zcodeWorkspaceHookTrustGrantResultSchema,
   type ZCodeWorkspaceHookTrustGrantReasonCode,
   type ZCodeWorkspaceHookTrustGrantResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   grantWorkspaceHookTrust,
   type WorkspaceHookTrustCliStatus,

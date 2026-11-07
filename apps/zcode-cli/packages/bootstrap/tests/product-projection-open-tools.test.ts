@@ -7,13 +7,13 @@ import {
   type SessionId,
   type TraceId,
   type TurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   applyConversationDeltas,
   type ConversationDelta,
   type ConversationSnapshot,
   type ToolCallRow,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 
 const SESSION_ID = "open-tool-index-session";

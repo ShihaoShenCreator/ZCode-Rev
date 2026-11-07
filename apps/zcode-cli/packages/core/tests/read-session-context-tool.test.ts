@@ -17,7 +17,7 @@ import {
   type ModelTextResult,
   type SessionId,
   type SessionInfo,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   buildReferencedSessionContextReminderBody,
   extractSessionReferences,

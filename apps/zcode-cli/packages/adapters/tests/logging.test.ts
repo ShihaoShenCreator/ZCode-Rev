@@ -2,7 +2,7 @@ import { mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { LogLevel } from "@zcode/contracts";
+import { LogLevel } from "@s-agent/contracts";
 import {
   LOG_CLEANUP_STARTUP_DELAY_MS,
   cleanupLogRetention,

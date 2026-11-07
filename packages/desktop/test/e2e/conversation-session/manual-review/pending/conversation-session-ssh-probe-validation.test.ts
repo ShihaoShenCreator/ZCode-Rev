@@ -4,8 +4,8 @@ import {
   parseRemoteWorkspaceIdentity,
   ServiceChannels,
   type SourceServerManagementSnapshot,
-} from "@zcode/shared";
-import { TID_SETTINGS_BACK_BUTTON } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { TID_SETTINGS_BACK_BUTTON } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, readSettings } from "#e2e/helpers/desktop-app";
 import {
   execInRemoteContainer,

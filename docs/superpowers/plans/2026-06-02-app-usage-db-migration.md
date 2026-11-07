@@ -337,7 +337,7 @@ import {
   createToolCallId,
   createTraceId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../src/storage/index.js";
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -477,7 +477,7 @@ import type {
   AppUsageDayModelRow,
   AppUsageModelRow,
   AppUsageToolRow,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 // 说明：按本地日归桶用固定偏移 tzOffsetMs，dayIndex = floor((started_at + off)/DAY)。
 // DST 跨日边界存在最多 1 小时误差，对用量统计可接受。
@@ -676,8 +676,8 @@ export async function queryAppUsage(
 
 ```typescript
 async queryAppUsage(
-  input: import("@zcode/contracts").AppUsageQueryInput,
-): Promise<import("@zcode/contracts").AppUsageQueryResult> {
+  input: import("@s-agent/contracts").AppUsageQueryInput,
+): Promise<import("@s-agent/contracts").AppUsageQueryResult> {
   return usageRepository.queryAppUsage(this.db, input);
 }
 ```
@@ -714,7 +714,7 @@ git commit -m "feat(adapters): aggregate app usage from sqlite usage tables"
 
 ```typescript
 import { describe, expect, it } from "vitest";
-import type { AppUsageQueryResult } from "@zcode/contracts";
+import type { AppUsageQueryResult } from "@s-agent/contracts";
 import {
   buildAppUsageSnapshot,
   resolveTzOffsetMs,
@@ -833,14 +833,14 @@ Expected: FAIL（模块不存在）。
 创建 `apps/zcode-cli/packages/bootstrap/src/zcode-protocol/usage-stats-builder.ts`：
 
 ```typescript
-import type { AppUsageQueryResult } from "@zcode/contracts";
+import type { AppUsageQueryResult } from "@s-agent/contracts";
 import type {
   AppUsageHeatmap,
   AppUsageHeatmapCell,
   AppUsageHeatmapWeek,
   AppUsageRange,
   AppUsageSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const DAY_MS = 86_400_000;
 
@@ -1108,7 +1108,7 @@ export type ZCodeUsageStatsResult = z.infer<typeof zcodeUsageStatsResultSchema>;
 import {
   zcodeUsageStatsParamsSchema,
   // ...已有 import
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   buildAppUsageSnapshot,
   resolveTzOffsetMs,
@@ -1193,7 +1193,7 @@ async getAppUsageStats(params: ZCodeAgentAppUsageParams) {
 },
 ```
 
-在该文件顶部 import 加 `zcodeUsageStatsResultSchema`（来自 `@zcode/shared`）。
+在该文件顶部 import 加 `zcodeUsageStatsResultSchema`（来自 `@s-agent/shared`）。
 
 定义参数类型 `ZCodeAgentAppUsageParams`（放在该 service 现有参数类型旁，复用其 `ZCodeAgentWorkspaceTarget` 基类）：
 
@@ -1210,7 +1210,7 @@ export interface ZCodeAgentAppUsageParams extends ZCodeAgentWorkspaceTarget {
 getAppUsageStats(params: ZCodeAgentAppUsageParams): Promise<AppUsageSnapshot>;
 ```
 
-> `AppUsageRange` / `AppUsageSnapshot` 从 `@zcode/shared` 导入。
+> `AppUsageRange` / `AppUsageSnapshot` 从 `@s-agent/shared` 导入。
 
 > **架构说明（实现者必读）**：usage 表位于全局 session 库（`~/.zcode/sessions/default.db`），任意 workspace 的 agent client 查询到的都是全应用范围数据。`getAppUsageStats` 沿用 `getClient(params)` 拿到当前活动 workspace 的 client 即可；它需要一个 `ZCodeAgentWorkspaceTarget`。宿主服务（Task 5）会传入当前活动 workspace 目标，与其它 `zcodeAgentService` 调用一致。
 
@@ -1243,7 +1243,7 @@ git commit -m "feat(protocol): add usage/stats method end to end"
 
 - [ ] **Step 1: 更新接口入参类型**
 
-`packages/services/src/usage-stats/usageStats.ts` 第 15 行 `getAppUsageSnapshot` 的入参 `AppUsageRequest` 现已是新类型（range: AppUsageRange，Task 0 已改）。确认该文件 import 的 `AppUsageRequest` / `AppUsageSnapshot` 来自 `@zcode/shared` 的新定义即可，无需改签名文字。
+`packages/services/src/usage-stats/usageStats.ts` 第 15 行 `getAppUsageSnapshot` 的入参 `AppUsageRequest` 现已是新类型（range: AppUsageRange，Task 0 已改）。确认该文件 import 的 `AppUsageRequest` / `AppUsageSnapshot` 来自 `@s-agent/shared` 的新定义即可，无需改签名文字。
 
 - [ ] **Step 2: 改 `createUsageStatsService` 依赖与方法体**
 
@@ -1345,13 +1345,13 @@ git commit -m "feat(services): app usage reads agent db via protocol; drop local
 在 `usageStatsUiParts.tsx` 找到 `RANGE_OPTIONS` 定义，改为：
 
 ```typescript
-import type { AppUsageRange } from "@zcode/shared";
+import type { AppUsageRange } from "@s-agent/shared";
 export const RANGE_OPTIONS: AppUsageRange[] = ["7d", "30d"];
 ```
 
 - [ ] **Step 2: `useAppUsageStats` 形参类型改 `AppUsageRange`**
 
-`packages/ui/src/hooks/useUsageStats.ts`：把 `useAppUsageStats(range: UsageStatsRange)`（第 163 行）改为 `range: AppUsageRange`，并在顶部 import 加 `AppUsageRange`（来自 `@zcode/shared`）。`useUsageStats` / `useCodingPlanUsageStats` 保持 `UsageStatsRange` / `CodingPlanUsageRange` 不动。
+`packages/ui/src/hooks/useUsageStats.ts`：把 `useAppUsageStats(range: UsageStatsRange)`（第 163 行）改为 `range: AppUsageRange`，并在顶部 import 加 `AppUsageRange`（来自 `@s-agent/shared`）。`useUsageStats` / `useCodingPlanUsageStats` 保持 `UsageStatsRange` / `CodingPlanUsageRange` 不动。
 
 - [ ] **Step 3: 面板默认值与 tabs 类型**
 
@@ -1503,7 +1503,7 @@ git commit -m "feat(ui): real-token summary cards for app usage"
 - [ ] **Step 1: `UsageHeatmap` props 与单元格字段适配**
 
 `usageStatsUiParts.tsx` 中 `UsageHeatmap` 组件：
-- props `weeks` 类型从 `UsageStatsHeatmapWeek[]` 改为 `AppUsageHeatmapWeek[]`（import 自 `@zcode/shared`）。
+- props `weeks` 类型从 `UsageStatsHeatmapWeek[]` 改为 `AppUsageHeatmapWeek[]`（import 自 `@s-agent/shared`）。
 - 单元格 tooltip 与配色：用 `cell.totalTokens`（替换原 `totalEstimatedTokens`/`activityScore`），tooltip 文案改用新 i18n：
 
 ```tsx

@@ -1,12 +1,12 @@
 import { mkdtemp, rm, readFile, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { createZCodeApp } from "@zcode/bootstrap";
-import type { AiSdkModelAdapter } from "@zcode/adapters/model";
-import type { ProviderRegistry } from "@zcode/provider";
-import type { TurnAttachment, ToolEntry } from "@zcode/core";
+import { createZCodeApp } from "@s-agent/bootstrap";
+import type { AiSdkModelAdapter } from "@s-agent/adapters/model";
+import type { ProviderRegistry } from "@s-agent/provider";
+import type { TurnAttachment, ToolEntry } from "@s-agent/core";
 import { z } from "zod";
-import type { ModelStreamingPayload, SessionEvent } from "@zcode/contracts";
+import type { ModelStreamingPayload, SessionEvent } from "@s-agent/contracts";
 import type { RegressionRow } from "#contract";
 import type { TestList } from "#regression/config";
 import type { RegressionCase } from "#regression/cases";

@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { IServiceAccessor } from "@zcode/services";
-import type { IPlatformService } from "@zcode/shared";
+import type { IServiceAccessor } from "@s-agent/services";
+import type { IPlatformService } from "@s-agent/shared";
 import { AssistantPreviewCards } from "@/AssistantPreviewCards.js";
 import { PlatformProvider } from "@/hooks/usePlatform.js";
 import { ServiceProvider } from "@/hooks/useServices.js";

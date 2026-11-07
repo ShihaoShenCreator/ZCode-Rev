@@ -123,8 +123,8 @@ $env:ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR=$zcodeCuaRoot
 $env:ZCODE_SKIP_REMOTE_ASSETS='1'
 $env:ZCODE_TARGET_OS='win32'
 $env:ZCODE_TARGET_ARCH='x64'
-pnpm --filter @zcode/desktop build
-pnpm --filter @zcode/desktop exec electron-builder `
+pnpm --filter @s-agent/desktop build
+pnpm --filter @s-agent/desktop exec electron-builder `
   --config electron-builder.config.js --win --x64 --dir
 Remove-Item Env:ZCODE_CUA_HELPER_RUNTIME_PACKAGE_DIR
 ```
@@ -241,7 +241,7 @@ held input、等待 Helper/fixture 干净退出；默认关闭或预检失败时
 再验证官方 plugin 的 fail-closed 边界：
 
 ```powershell
-pnpm --filter @zcode/zcode-cua-plugin test
+pnpm --filter @s-agent/zcode-cua-plugin test
 ```
 
 该命令会直接执行 `tests/zcode-cua-plugin-host-authority.node-test.ts`。该文件只包含 Host authority 凭据边界测试；脚本不再依赖 Node 的 `--test-name-pattern`，因此文件缺失、无法加载或断言失败都会使验证命令失败，不能产生零匹配的假绿。
@@ -372,7 +372,7 @@ timer；两个 WPF fixture 均保留 UTF-8 BOM 回归断言。最小化信号只
 6 skipped files、2105 passed / 67 skipped / 18 todo tests，native rebuild、build、
 typecheck、lint 均 exit 0；screen、pointer、clipboard、30-tool surface 四套实机 smoke
 全部 exit 0，剪贴板文本和光标均恢复，无 Helper/fixture 孤儿。ZCode focused integration
-为 4 files / 175 passed / 1 skipped，`pnpm --filter @zcode/zcode-cua-plugin test`
+为 4 files / 175 passed / 1 skipped，`pnpm --filter @s-agent/zcode-cua-plugin test`
 共 6 tests，主仓 typecheck/lint 均 exit 0。裸跑 plugin 的 `node --test` 不是有效门禁，
 因为它缺少 package `build` 前置；必须使用上述 package test 命令。
 

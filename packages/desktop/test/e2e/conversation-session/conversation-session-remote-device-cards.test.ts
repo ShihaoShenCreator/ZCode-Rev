@@ -1,8 +1,8 @@
 import { mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createServer } from "node:net";
-import { buildRemoteHostWorkspaceIdentity, ServiceChannels } from "@zcode/shared";
-import type { RemoteProjectDirectory } from "@zcode/services";
+import { buildRemoteHostWorkspaceIdentity, ServiceChannels } from "@s-agent/shared";
+import type { RemoteProjectDirectory } from "@s-agent/services";
 import { callHandoffHost, installHandoffRpcProbe } from "#e2e/helpers/remote-project-handoff-probe";
 import {
   TID_CONFIRM_DIALOG_CONFIRM,
@@ -10,7 +10,7 @@ import {
   TID_TASK_SETTINGS_BUTTON,
   TID_SETTINGS_SECTION_NAV,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, waitForWorkspaceApp } from "../helpers/desktop-app.js";
 import { prepareV4ConversationE2E } from "../helpers/v4-conversation.js";
 import { selectTaskOrganizeMode } from "../helpers/workspace-agent-warmup.js";

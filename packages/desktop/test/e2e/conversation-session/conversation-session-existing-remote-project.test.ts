@@ -1,7 +1,7 @@
-import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@zcode/rpc";
+import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@s-agent/rpc";
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
-import { ServiceChannels, InternalChannels, buildRemoteHostWorkspaceIdentity } from "@zcode/shared";
+import { ServiceChannels, InternalChannels, buildRemoteHostWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_VIRTUAL_PROJECT_CREATE_TASK,
   TID_TASK_SETTINGS_BUTTON,
@@ -9,8 +9,8 @@ import {
   TID_SETTINGS_BACK_BUTTON,
   TID_REMOTE_KIND_SSH,
   testId,
-} from "@zcode/shared/test-ids";
-import type { RemoteProjectDirectory, ProjectTree, VirtualProject } from "@zcode/services";
+} from "@s-agent/shared/test-ids";
+import type { RemoteProjectDirectory, ProjectTree, VirtualProject } from "@s-agent/services";
 import { clickTestIdByDom, clearAppData } from "#e2e/helpers/desktop-app";
 import { prepareV4ConversationE2E, selectV4TaskById } from "#e2e/helpers/v4-conversation";
 import {

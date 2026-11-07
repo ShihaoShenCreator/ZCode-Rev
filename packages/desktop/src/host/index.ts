@@ -1,4 +1,4 @@
-import { normalizeRemoteConnectionError, sanitizeRemoteConnectionLog } from "@zcode/shared";
+import { normalizeRemoteConnectionError, sanitizeRemoteConnectionLog } from "@s-agent/shared";
 import { join } from "node:path";
 /* eslint-disable max-lines -- Host 入口集中编排 local/remote service wiring，本次退出保护需要在同一处桥接 host 上报。 */
 /* eslint-disable max-lines -- host process 入口集中维护 local/remote 初始化和资源回收，realtime bridge 接入后先保持同文件收口。 */
@@ -16,7 +16,7 @@ import { join } from "node:path";
  * 3. 后续远端 connect / scoped attachment 都由同一 Host 处理
  */
 import { createHostDatabaseStartup } from "./database-startup/hostDatabaseStartup.js";
-import { isOffPeakTerminalStatus } from "@zcode/shared";
+import { isOffPeakTerminalStatus } from "@s-agent/shared";
 import { createHostNetworkCapture } from "./hostNetworkCapture.js";
 import { randomUUID } from "node:crypto";
 import { createPluginSandboxRegistrationBridge } from "./pluginSandbox/index.js";
@@ -28,7 +28,7 @@ import {
   type IChannelServer,
   LoggingChannelServer,
   NetworkTelemetryChannelServer,
-} from "@zcode/rpc";
+} from "@s-agent/rpc";
 import { registerHostNetworkTelemetry, stopHostNetworkTelemetry } from "./hostNetworkTelemetry.js";
 import { registerHostServiceResourceTelemetry } from "./hostServiceResourceTelemetry.js";
 import { resolveResourceTelemetryEnvironmentKey } from "./hostResourceTelemetryEnvironment.js";
@@ -65,7 +65,7 @@ import {
   type ZCodeAgentV4ClientMode,
   collectServiceMemoryDiagnostics,
   createWebRemoteProjectTreeActivityBridge,
-} from "@zcode/services";
+} from "@s-agent/services";
 import {
   createLocalServices,
   createProjectWorkspaceNavigation,
@@ -93,7 +93,7 @@ import {
   type BotProjectConnection,
   type HostApiNetworkTransport,
   type OffPeakRequestAuthBuilder,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import { createHostResourceUsageResponder } from "./hostResourceUsage.js";
 import {
   assertBoundSessionDispatchable,
@@ -128,7 +128,7 @@ import {
   type ZCodeAutomationRun,
   type ZCodeAutomationRunOutcome,
   type ModelSelection,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   parseHostIncomingMessageEvent,
   rejectUnavailableAttachedServicePort,
@@ -136,8 +136,8 @@ import {
 // remote backend 相关模块延迟加载：ssh2 的 CJS 依赖链（asn1 等）在 asar 打包后路径断裂，
 // 静态 import 会导致 local 模式的 host process 也崩溃。
 // 改为动态 import，仅 remote 模式时才加载。
-import type { IRemoteBackend } from "@zcode/server/remote";
-import type { Locale, RemoteTarget } from "@zcode/shared";
+import type { IRemoteBackend } from "@s-agent/server/remote";
+import type { Locale, RemoteTarget } from "@s-agent/shared";
 import { wrapElectronPort } from "./electronPort.js";
 import { createTaskRealtimeBridgeForHostInit } from "./taskRealtimeBridge.js";
 import { resolveRpcLogLevel } from "./rpcLogLevel.js";
@@ -202,7 +202,7 @@ import {
 } from "./sourceServerManagementService.js";
 import { resolveSourceServerReleaseAsset } from "./sourceServerReleaseResolver.js";
 import { resolveAutomationSubmissionModelSelection } from "./automationModelSelection.js";
-import { createRemoteConnectionProgressContext } from "@zcode/server/remote/remoteConnectionProgressContext.js";
+import { createRemoteConnectionProgressContext } from "@s-agent/server/remote/remoteConnectionProgressContext.js";
 import {
   createRemotePromptAttachmentTransferService,
   type RemotePromptAttachmentTransferService,
@@ -225,7 +225,7 @@ interface HostRemoteConnectionCapabilities {
   recordWorkspaceOpen?: (input: {
     workspacePath: string;
     workspaceIdentity: string;
-    workspacePurpose?: import("@zcode/shared").WorkspacePurpose;
+    workspacePurpose?: import("@s-agent/shared").WorkspacePurpose;
     legacyWorkspaceIdentity?: string;
     signal?: AbortSignal;
   }) => Promise<void>;
@@ -1906,7 +1906,7 @@ async function createWindowRemoteConnectionHandle(params: {
     }
   };
   let connection: HostRemoteConnection;
-  let managedProfile: import("@zcode/shared").ConnectionProfile | undefined;
+  let managedProfile: import("@s-agent/shared").ConnectionProfile | undefined;
   let reusedConnectionTarget: RemoteTarget | undefined;
   let managerStateSubscription: { dispose(): void } | undefined;
   let managerConnectionInvalidatedSubscription: { dispose(): void } | undefined;

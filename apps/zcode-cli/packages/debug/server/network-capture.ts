@@ -1,4 +1,4 @@
-import { requestSecuritySensitiveHeaders } from "@zcode/shared";
+import { requestSecuritySensitiveHeaders } from "@s-agent/shared";
 import { existsSync } from "node:fs";
 import type { IncomingHttpHeaders } from "node:http";
 import { basename, dirname, join, resolve } from "node:path";

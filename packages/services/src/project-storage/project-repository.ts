@@ -7,7 +7,7 @@ import {
   isRemoteWorkspaceIdentity,
   resolveWorkspaceKey,
   ZCODE_AGENT_PROVIDER,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   AutoArchiveInput,
   ProjectDirectories,

@@ -6,7 +6,7 @@ import {
   type WorkflowGraphNode,
   type WorkflowNodeStatus,
   type WorkflowPhaseDefinition,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { workflowDefinitionPhaseMap } from "../definition.js";
 import { phaseNodeId } from "./ids.js";
 

@@ -7,7 +7,7 @@ import {
 import { getTurnTools } from "./turn-tool-visibility.js";
 import { refreshOffPeakTurnAfterTakeover } from "../off-peak/turn.js";
 import { appendRuntimeAgentListing } from "../helpers/agent-listing.js";
-import { beginLocalTurnPreparation } from "@zcode/contracts";
+import { beginLocalTurnPreparation } from "@s-agent/contracts";
 import { buildToolSearchAnnouncement } from "../../tool/search/exposure.js";
 import {
   CompactPhase,

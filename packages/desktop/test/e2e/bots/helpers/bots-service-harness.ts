@@ -1,14 +1,14 @@
-import { remoteHostIdFromWorkspaceIdentity } from "@zcode/shared";
+import { remoteHostIdFromWorkspaceIdentity } from "@s-agent/shared";
 import { readFile } from "node:fs/promises";
 
-import type { ModelSelectionView } from "@zcode/provider";
+import type { ModelSelectionView } from "@s-agent/provider";
 import type {
   BotsConfigFile,
   BotsStateFile,
   ModelSelection,
   ZCodeStreamEvent,
-} from "@zcode/shared";
-import { createBotsService, type IModelSelectionService } from "@zcode/services/node";
+} from "@s-agent/shared";
+import { createBotsService, type IModelSelectionService } from "@s-agent/services/node";
 import { resolveE2ERuntimePath } from "../../helpers/e2e-runtime-paths.js";
 
 const E2E_BOT_WORKSPACE = resolveE2ERuntimePath("bots", "e2e-bot-workspace");

@@ -1,7 +1,7 @@
 import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-electron-reload";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { sourceServerReleaseDescriptorSchema } from "@zcode/shared";
+import { sourceServerReleaseDescriptorSchema } from "@s-agent/shared";
 import { clearAppData, seedSettings } from "../helpers/desktop-app.js";
 import { prepareV4ConversationE2E } from "../helpers/v4-conversation.js";
 import {

@@ -116,7 +116,7 @@ partially functional CUA plugin.
 
 `scripts/build-desktop-agent-cli.mjs` calls the staging entry after building the
 desktop-agent CLI. Both `dev:desktop:prod` and direct
-`@zcode/desktop dev:local-cli` already pass through this script, so there is one
+`@s-agent/desktop dev:local-cli` already pass through this script, so there is one
 startup boundary to maintain.
 
 ### Bootstrap seed

@@ -2,7 +2,7 @@
 // docs/conversation-session-case-catalog.md PLG 组）：
 // 严格 URI 解析、label 欺骗、未知/禁用/冲突 fail closed、live 交集、去重与上限、模板序列化。
 import { describe, expect, it } from "vitest";
-import type { PluginMetadata, PluginReferenceCatalog } from "@zcode/contracts";
+import type { PluginMetadata, PluginReferenceCatalog } from "@s-agent/contracts";
 import {
   buildPluginReferenceCatalog,
   buildPluginReferenceReminderBody,

@@ -19,10 +19,10 @@ import type {
   ModelSelection,
   TurnFileChangeSummary,
   TurnInputIntentMetadata,
-} from "@zcode/contracts";
-import { INTERRUPT_MARKER_SOURCE, joinTaskNotificationBatch } from "@zcode/core";
-import { isHighspeedProviderId } from "@zcode/shared";
-import type { EventId, SessionEvent, SessionId, TraceId, TurnId } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { INTERRUPT_MARKER_SOURCE, joinTaskNotificationBatch } from "@s-agent/core";
+import { isHighspeedProviderId } from "@s-agent/shared";
+import type { EventId, SessionEvent, SessionId, TraceId, TurnId } from "@s-agent/contracts";
 import {
   CompactTimelineStatus,
   CompactTrigger,
@@ -32,13 +32,13 @@ import {
   parseCompletedToolPartMetadata,
   SessionEventType,
   STREAM_RECOVERY_DISCARDED_ERROR_NAME,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   getConversationModelOnlyTurnTriggerSource,
   getConversationMessageProjectionPolicy,
   highspeedMessageMetaSchema,
   isConversationRealUserTurnStarter,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   conversationInputIntentSchema,
   errorAttributionSchema,
@@ -48,7 +48,7 @@ import {
   workflowNotificationMetaSchema,
   type ErrorAttribution,
   type WorkflowLaunchMeta,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { shouldHideInvalidToolCallFromProduct } from "../tool-call-product-visibility.js";
 import { ProductProjection } from "./product-projection.js";
 import { HYDRATION_TRACE_ID } from "./projection-state.js";

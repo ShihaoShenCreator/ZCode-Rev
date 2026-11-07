@@ -6,7 +6,7 @@ import {
   createSessionId,
   type MessageWithParts,
   type ToolPart,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { hydrateReadFileStateFromSession } from "../src/agent/read-file-state-hydrator.js";
 import { READ_FILE_UNCHANGED_STUB } from "../src/tool/handlers/read-text.js";
 import { createReadFileStatePathKey } from "../src/tool/read-file-state.js";

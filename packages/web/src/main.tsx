@@ -1,5 +1,5 @@
 import { createWebPlatform } from "#src/platform/index.js";
-import { mobilePluginDiscoveryTelemetrySchema } from "@zcode/shared";
+import { mobilePluginDiscoveryTelemetrySchema } from "@s-agent/shared";
 import {
   sessionCreateTelemetrySchema,
   WEB_REMOTE_CONTROL_WORKSPACE_RECONNECT_TIMEOUT_MS,
@@ -7,7 +7,7 @@ import {
   resolveWebRemoteControlRelayWsUrl,
   matchesWebRemoteControlRoutePath,
   resolveWebRemoteControlWorkspaceKey,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 /* eslint-disable max-lines -- Web 远程控制启动、错误页和 web 平台桥接暂时集中在入口编排。 */
 import type { ComponentProps } from "react";
 import { createRoot } from "react-dom/client";
@@ -22,19 +22,16 @@ import {
   setWebRemoteControlTerminalTransportState,
   type Theme,
   type WebRemoteControlTerminalTransportState as UiWebRemoteControlTerminalTransportState,
-} from "@zcode/ui";
+} from "@s-agent/ui";
 import "./styles.css";
 import {
   connectViaProtocol,
   connectViaWebSocket,
   createAcknowledgedWebRemoteControlRelayProtocol,
-} from "@zcode/client";
+} from "@s-agent/client";
 
-import { WebCallbackPage } from "./auth/WebCallbackPage.js";
 import { WebLoginPage } from "./auth/WebLoginPage.js";
 import { createWebAuthService } from "./auth/webAuthService.js";
-import { WEB_ZAI_OAUTH_CONFIG, resolveWebAuthDevReturnTo } from "./auth/webZaiOAuthConfig.js";
-import { parseOAuthState, resolveSafeAppReturnTo } from "./auth/oauthStateCodec.js";
 import {
   ConversationShareLandingLoader,
   ConversationShareLandingStatus,
@@ -64,7 +61,7 @@ import type {
   WebRemoteControlAppPayload,
   WebRemoteControlExternalWorkspaceBridge,
   ServerRemoteInfo,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 import {
   WebRemoteControlEntry,
@@ -280,27 +277,7 @@ function isWebOAuthCallback(params: URLSearchParams): boolean {
     isWebRemoteControlOAuthCallback(new URL(window.location.href)) ||
     (["/cn/share/callback", "/share/callback"].includes(window.location.pathname) &&
       params.has("state") &&
-      // BigModel 的 authCode 要先进入回调页，才能由 provider 归一化为 code。
       (params.has("code") || params.has("authCode") || params.has("error")))
-  );
-}
-
-function renderWebAuthCallbackPage(): void {
-  document.title = "ZCode - Web Remote Control Sign In";
-  const callbackState = parseOAuthState(
-    new URLSearchParams(window.location.search).get("state") ?? "",
-  );
-  const safeRetryTarget = resolveSafeAppReturnTo(callbackState?.app_return_to);
-  root.render(
-    <WebCallbackPage
-      authService={webAuthService}
-      onSuccess={({ appReturnTo }) => {
-        window.location.replace(appReturnTo ?? "/remote/v4");
-      }}
-      onRetry={() => {
-        window.location.replace(safeRetryTarget ?? "/remote/v4");
-      }}
-    />,
   );
 }
 
@@ -311,7 +288,8 @@ async function renderConversationSharePage(): Promise<void> {
   document.documentElement.lang = routeLocale;
   // 分享页必须设置 title：否则浏览器标签只显示 index.html 的通用标题。
   // 会话标题要等 preview 加载完，先给一个语言正确的兜底。
-  document.title = routeLocale === "zh-CN" ? "ZCode 会话分享" : "ZCode Conversation Share";
+  document.title =
+    routeLocale === "zh-CN" ? "S-Agent 会话分享" : "S-Agent Conversation Share";
   const shareCode = resolveConversationShareCodeFromPath(window.location.pathname);
   if (!shareCode) {
     root.render(
@@ -357,19 +335,6 @@ async function renderConversationSharePage(): Promise<void> {
       shareCode={shareCode}
       client={client}
       getAccessToken={() => getMockToken() ?? webAuthService.getZCodeJwtToken()}
-      onLogin={(provider) => {
-        if (mockMode) {
-          window.sessionStorage.setItem("zcode:share:mock-auth", "owner");
-          window.location.reload();
-          return;
-        }
-        webAuthService.startLogin({
-          provider,
-          appReturnTo: window.location.href,
-          redirectUri: WEB_ZAI_OAUTH_CONFIG.shareRedirectUri,
-          devReturnTo: resolveWebAuthDevReturnTo(WEB_ZAI_OAUTH_CONFIG, "share"),
-        });
-      }}
       onLogout={onLogout}
       locale={routeLocale}
       theme={resolveWebThemePreference("zai-light")}
@@ -378,8 +343,8 @@ async function renderConversationSharePage(): Promise<void> {
 }
 
 function renderWebLoginPage(): void {
-  document.title = "ZCode - Web Remote Control Sign In";
-  root.render(<WebLoginPage onLogin={(provider) => remoteEntry.startLogin(provider)} />);
+  document.title = "S-Agent - Web Remote Control Sign In";
+  root.render(<WebLoginPage />);
 }
 
 // 访问 window.localStorage 本身在部分浏览器会抛错，统一包在方法里交给调用方兜底。
@@ -402,25 +367,21 @@ const remoteEntry = new WebRemoteControlEntry({
     document.addEventListener("visibilitychange", onVisibilityChange);
     return () => document.removeEventListener("visibilitychange", onVisibilityChange);
   },
-  loginOptions: { devReturnTo: resolveWebAuthDevReturnTo(WEB_ZAI_OAUTH_CONFIG) },
   token: createWebRemoteControlV2TokenClient(window.location.origin),
   connect: (connection) => {
     void bootstrapExternalRelayWebRemoteControl(connection);
   },
   onView: (view) => {
-    if (view.kind === "callback") renderWebAuthCallbackPage();
+    if (view.kind === "callback") renderWebLoginPage();
     else if (view.kind === "login") renderWebLoginPage();
     else if (view.kind === "devices") {
-      document.title = "ZCode - Web Remote Control";
+      document.title = "S-Agent - Web Remote Control";
       root.render(
         <WebRemoteControlDeviceListPage
           view={view}
           onSelect={(sid) => remoteEntry.selectDevice(sid)}
           onRefresh={() => {
             void remoteEntry.refreshDevices();
-          }}
-          onSwitchAccount={() => {
-            void remoteEntry.switchAccount();
           }}
           locale={resolveWebRemoteControlScreenLocale(navigator.language)}
         />,
@@ -816,7 +777,7 @@ function renderWebRemoteControlLoading(
   state: WebRemoteControlTerminalTransportState,
   device: WebRemoteControlConnectingDevice,
 ): void {
-  document.title = "ZCode - Web Remote Control";
+  document.title = "S-Agent - Web Remote Control";
   root.render(
     <WebRemoteControlLoadingScreen
       state={state}
@@ -1795,7 +1756,7 @@ async function bootstrapWebApp() {
     document.documentElement.lang = resolveWebRemoteControlScreenLocale(navigator.language);
   }
   if (isWebOAuthCallback(params)) {
-    renderWebAuthCallbackPage();
+    renderWebLoginPage();
     return;
   }
 

@@ -13,7 +13,7 @@ ZCode 的 Anthropic Messages 请求默认依赖 AI SDK 的 `apiKey` 配置发送
 
 ## 影响面
 
-- Agent 主模型请求：`@zcode/adapters` 的 Anthropic provider registry。
+- Agent 主模型请求：`@s-agent/adapters` 的 Anthropic provider registry。
 - 设置页连通性探测：`packages/services` Anthropic endpoint check。
 - Repo Wiki 模型短请求：手写 Anthropic Messages HTTP 请求。
 

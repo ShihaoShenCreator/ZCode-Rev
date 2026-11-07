@@ -1,5 +1,5 @@
-import type { Logger, McpToolCallResult } from "@zcode/contracts";
-import type { McpAppProvidedToolDefinition, McpAppProvidedToolExecutor } from "@zcode/core";
+import type { Logger, McpToolCallResult } from "@s-agent/contracts";
+import type { McpAppProvidedToolDefinition, McpAppProvidedToolExecutor } from "@s-agent/core";
 import {
   MCP_APPS_APP_TOOL_ARGUMENTS_MAX_BYTES,
   MCP_APPS_APP_TOOL_CALL_TIMEOUT_MS,
@@ -8,7 +8,7 @@ import {
   buildMcpAppsAppToolModelName,
   type McpAppsAppToolCallRequest,
   type McpAppsAppToolDescriptor,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import { randomUUID } from "node:crypto";
 import type {
   McpUiAppToolCallParams,
@@ -37,7 +37,7 @@ export interface McpUiAppToolsHost {
       pluginId: string;
       serverName: string;
       instance: McpUiAppToolInstance;
-      credential: import("@zcode/shared/mcp-apps").McpAppInstance;
+      credential: import("@s-agent/shared/mcp-apps").McpAppInstance;
     },
     call: McpAppsAppToolCallRequest,
   ): void;
@@ -48,7 +48,7 @@ export interface McpUiAppToolsHost {
 }
 
 interface InstanceRecord {
-  credential: import("@zcode/shared/mcp-apps").McpAppInstance;
+  credential: import("@s-agent/shared/mcp-apps").McpAppInstance;
   instance: McpUiAppToolInstance;
   pluginId: string;
   serverName: string;

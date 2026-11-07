@@ -1,6 +1,6 @@
 import { documentViewerInstance } from "@/plugin-ui/contract.js";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { isRemoteWorkspaceIdentity, type ZCodePluginUiSurface } from "@zcode/shared";
+import { isRemoteWorkspaceIdentity, type ZCodePluginUiSurface } from "@s-agent/shared";
 import { useOptionalServices } from "@/hooks/useServices.js";
 import { useOptionalPlatform } from "@/hooks/usePlatform.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

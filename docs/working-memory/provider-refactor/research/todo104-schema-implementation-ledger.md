@@ -222,7 +222,7 @@ Pro 隔离副本核对 Built-in/Facade hash 后同步 Registry 与 I13 spec，�
 ### B2d-合同：跨层唯一 Model 数据定义（2026-09-10）
 
 - 从 `5032dd2019` 继续。B2d分合同/字段两个步骤，本批只完成合同归属，最终驼峰字段/MFJS位置尚未改，不宣称整个B2d完成。
-- 按 spec 将纯Model schema移到 `@zcode/shared/model-config`；Provider/codec/Registry引用公共入口。CLI六个数据类型从共享schema的推导类型别名导出；协议媒体格式用 `.pick()` 复用字段对象，传输字段和值不变。null/optional、完整校验、expression编译、overlay/freeze仍是原逻辑。共用sparseShape移动到shared/config-schema，旧内部文件删除而非保留兼容壳；静态引用扫描已覆盖两个消费文件。
+- 按 spec 将纯Model schema移到 `@s-agent/shared/model-config`；Provider/codec/Registry引用公共入口。CLI六个数据类型从共享schema的推导类型别名导出；协议媒体格式用 `.pick()` 复用字段对象，传输字段和值不变。null/optional、完整校验、expression编译、overlay/freeze仍是原逻辑。共用sparseShape移动到shared/config-schema，旧内部文件删除而非保留兼容壳；静态引用扫描已覆盖两个消费文件。
 - 先新增公共入口/协议字段复用测试和CLI类型相等断言。初跑因公共子路径未提供而失败，属于缺合同的红灯，不作为已复现产品Bug证据。实现后发现真实跨包Zod 4.3/4.4类型不兼容：仅将shared/provider/provider-node固定在现有shared的4.3.6，CLI Zod3与其他包不变，不靠强转绕过。
 - 最终锁文件离线冻结安装成功（无新下载）；28文件442测试通过，包含Model每字段缺省/null、严格来源、序列化、完整性、Builtin以及协议；CLI五文件22条通过，涵盖媒体策略、模型创建与运行时/恢复。CLI首次从根目录启动未匹配到用例，改为CLI真实root后执行，不记作产品失败。新增 `expectTypeOf` 另用真实tsc核验，不把Vitest运行时无操作的类型断言误算成类型证明。
 - root typecheck最终通过；改动依赖版本后旧增量声明曾留下错误推导，重新构建三个合同包后全仓通过，没有修改Service代码。CLI四包typecheck通过、contracts build通过。root lint43既有warning/0error；architecture0违规。Linux桌面生产构建成功，既有chunk-size警告保留。

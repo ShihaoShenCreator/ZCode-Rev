@@ -7,7 +7,7 @@ import { pipeline } from "node:stream/promises";
 import { brotliCompressSync, gzipSync, zstdCompressSync } from "node:zlib";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { ZipFile } from "yazl";
-import { NodeExecutionAdapter, resolveEffectiveBashShellSelection } from "@zcode/adapters/exec";
+import { NodeExecutionAdapter, resolveEffectiveBashShellSelection } from "@s-agent/adapters/exec";
 import {
   createSessionId,
   createTraceId,
@@ -15,8 +15,8 @@ import {
   type BashOutput,
   type EmbeddedSearchBackend,
   windowsPathToGitBashPath,
-} from "@zcode/contracts";
-import { builtInTools, type ToolExecutionContext } from "@zcode/core";
+} from "@s-agent/contracts";
+import { builtInTools, type ToolExecutionContext } from "@s-agent/core";
 import { resolveDefaultEmbeddedSearchBackend } from "../src/app/embedded-search-backend.js";
 
 const bfsPath = process.env.ZCODE_BFS_BINARY;

@@ -8,7 +8,7 @@ import {
   isCoreError,
   type SubmitResultRequest,
   type WorkflowSubmitPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { describe, expect, it } from "vitest";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";

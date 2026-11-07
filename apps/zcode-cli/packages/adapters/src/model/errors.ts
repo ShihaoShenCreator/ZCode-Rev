@@ -8,7 +8,7 @@ import {
   type ModelErrorCode,
   type ModelId,
   type ModelUsage,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export const ModelErrorSource = {
   Network: "network",

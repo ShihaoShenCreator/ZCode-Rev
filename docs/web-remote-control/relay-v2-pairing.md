@@ -1,5 +1,7 @@
 # Relay V2 共享契约与配对
 
+> **当前产品状态**：S-Agent 已退役账号 OAuth 与基于账号的 Web 远控入口。本文保留 Relay V2 的历史协议与实现参考，不表示当前客户端仍提供登录或手机配对入口；当前产品边界以 [S-Agent 品牌与 Provider 去集成规格](../../specs/s-agent-product-and-provider-retirement.md) 为准。
+
 本页定义 [Relay V2](../issues/web-remote-control-relay-v2/01-relay-v2-login-pairing.md) 的最终共享契约、连接行为与验收边界。桌面 device、手机 terminal 与 shared 均只使用 V2。
 
 契约依据：zcode-server `origin/staging` 提交 `5a947caea3a022b12b5d051ef25c807952feefa7` 的 `docs/remote-relay.md`、`internal/domain/relay_v2/proto.go`、`service.go` 和 `internal/interfaces/web/{dto,controller}/remote_v2.go`。HTTP 请求及 WebSocket 消息采用严格字段校验，禁止把 V1 字段意外发到 V2；HTTP 响应采用下述兼容性校验。服务端 Go JSON 解码本身可能忽略多余字段。
@@ -72,7 +74,7 @@ Relay 不保有 task、workspace、stream 或已提交输入；桌面 `desktop-c
 
 ## 共用假 relay
 
-位置：`packages/shared/test/fixtures/fake-relay-v2.ts`，独立测试子路径 `@zcode/shared/testing/fake-relay-v2`。只在 Node 测试进程导入，不从生产 shared 根入口导出，不向浏览器 bundle 引入 Node HTTP 或 `ws`。真实 loopback HTTP/WS 可服务 Node `ws` 与浏览器 WebSocket API 兼容客户端。
+位置：`packages/shared/test/fixtures/fake-relay-v2.ts`，独立测试子路径 `@s-agent/shared/testing/fake-relay-v2`。只在 Node 测试进程导入，不从生产 shared 根入口导出，不向浏览器 bundle 引入 Node HTTP 或 `ws`。真实 loopback HTTP/WS 可服务 Node `ws` 与浏览器 WebSocket API 兼容客户端。
 
 `createFakeRelayV2({users: {测试JWT: 用户ID}, now?, onHttp?, onMessage?})` 返回 `httpUrl`、`wsUrl`、`httpCalls`、`messages`、`sendError(target, code)`、`disconnect(target)` 和异步 `close()`。`now` 返回毫秒；target 可按 `connectionId`、`deviceSid`、`role` 筛选。`onHttp(call)` 返回 `{status, body?}` 或 `{networkError: true}`；`onMessage(record)` 返回 `{pairStatus}`、`{error}`、`{disconnect: true}` 或 `{drop: true}`（忽略该条请求，不改变连接状态、不发 ACK），返回空值走正常行为。测试必须在清理阶段 `await relay.close()`。
 
@@ -590,7 +592,7 @@ GET 设备记录成功 → 账号校验通过 → 读取本地设备名/平台�
 | ML01–ML06 / MD01–MD06 浏览器        | 41项通过：32张入口截图（其中设备列表16张）以及选设备/刷新恢复/最近设备分流/失败后换设备/切账号/矮屏滚动与键盘选择/原登录回跳路径                                                                                                                                                                                           |
 | 截图                                | `.tmp/remote-login-v2-e2e/index.html` 为完整索引；`device-matrix.html` / `device-matrix.png` 为设备列表16张概览，原图保留390px和1024px完整视口；`results.json` 保存逐项结果                                                                                                                                                |
 | 既有版本恢复 RV01–RV03              | 6组配置通过；既有 home-only 动态会话/工作区事件订阅告警仍存在，不声称覆盖其任务操作                                                                                                                                                                                                                                        |
-| 代码与构建                          | `pnpm typecheck`、`pnpm lint`（60 warning / 0 error）、`pnpm architecture:check --changed`、`pnpm --filter @zcode/desktop typecheck:e2e`、当时的 v4 单目录构建通过（该命令已在 07 删除，现使用 OSS 版本目录构建）；当时 Web 模块未纳入 managed architecture；当前范围见“模块边界与架构验收”，检查通过不替代 owner/时序核对 |
+| 代码与构建                          | `pnpm typecheck`、`pnpm lint`（60 warning / 0 error）、`pnpm architecture:check --changed`、`pnpm --filter @s-agent/desktop typecheck:e2e`、当时的 v4 单目录构建通过（该命令已在 07 删除，现使用 OSS 版本目录构建）；当时 Web 模块未纳入 managed architecture；当前范围见“模块边界与架构验收”，检查通过不替代 owner/时序核对 |
 | 双轴评审                            | Standards 与 Spec 的已报问题均关闭；为全局禁止滚动的根容器添加入口滚动层，为键盘提供焦点反馈，补齐离线背景/圆角；Web 入口增加自身 Tailwind 扫描，生产 CSS 与浏览器计算样式均验证状态类存在且生效                                                                                                                           |
 | 全量单测                            | 1921文件/18002项通过，3文件/3项失败，2文件/12项跳过，另1个 Vitest teardown 异常；详见下述边界，不宣称全量通过                                                                                                                                                                                                              |
 | 测试环境真机                        | 未执行：仍需真实手机无码选设备连接、刷新恢复、跨账号归属失败与切换账号；本地受控 OAuth/relay 不替代该项                                                                                                                                                                                                                    |

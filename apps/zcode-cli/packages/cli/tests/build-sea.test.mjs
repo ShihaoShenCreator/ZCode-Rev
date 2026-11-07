@@ -178,10 +178,10 @@ test("keeps package SEA build scripts aligned with the existing all-target contr
 
   assert.equal(
     cliPackage.scripts["build:sea"],
-    "pnpm --dir ../../../.. exec turbo --skip-infer --cwd apps/zcode-cli run build --filter=!@zcode/cli --force && pnpm build && node scripts/build-sea.mjs --all",
+    "pnpm --dir ../../../.. exec turbo --skip-infer --cwd apps/zcode-cli run build --filter=!@s-agent/cli --force && pnpm build && node scripts/build-sea.mjs --all",
   );
   assert.equal(cliPackage.scripts["build:sea:all"], undefined);
-  assert.equal(cliWorkspacePackage.scripts["build:sea"], "pnpm --filter @zcode/cli build:sea");
+  assert.equal(cliWorkspacePackage.scripts["build:sea"], "pnpm --filter @s-agent/cli build:sea");
   assert.equal(cliWorkspacePackage.scripts["build:sea:all"], undefined);
   assert.equal(rootPackage.scripts["build:sea"], "pnpm --dir apps/zcode-cli build:sea");
   assert.equal(
@@ -485,21 +485,21 @@ test("includes TUI workspace runtime package assets", async () => {
 
     // SEA 从缓存目录导入 TUI 时无法回退到 workspace 链接，运行时 workspace
     // 依赖必须和第三方依赖一样完整进入 node_modules 形状的资产闭包。
-    assert.equal(paths.has("node_modules/@zcode/tui/package.json"), true);
-    assert.equal(paths.has("node_modules/@zcode/tui/dist/index.js"), true);
-    assert.equal(paths.has("node_modules/@zcode/i18n/package.json"), true);
-    assert.equal(paths.has("node_modules/@zcode/i18n/dist/index.js"), true);
-    assert.equal(paths.has("node_modules/@zcode/contracts/package.json"), true);
-    assert.equal(paths.has("node_modules/@zcode/contracts/dist/index.js"), true);
-    assert.equal(paths.has("node_modules/@zcode/shared/package.json"), true);
-    assert.equal(paths.has("node_modules/@zcode/shared/dist/index.js"), true);
+    assert.equal(paths.has("node_modules/@s-agent/tui/package.json"), true);
+    assert.equal(paths.has("node_modules/@s-agent/tui/dist/index.js"), true);
+    assert.equal(paths.has("node_modules/@s-agent/i18n/package.json"), true);
+    assert.equal(paths.has("node_modules/@s-agent/i18n/dist/index.js"), true);
+    assert.equal(paths.has("node_modules/@s-agent/contracts/package.json"), true);
+    assert.equal(paths.has("node_modules/@s-agent/contracts/dist/index.js"), true);
+    assert.equal(paths.has("node_modules/@s-agent/shared/package.json"), true);
+    assert.equal(paths.has("node_modules/@s-agent/shared/dist/index.js"), true);
     assert.equal(
-      paths.has("node_modules/@zcode/shared/dist/workspace-hook-trust-store-file.js"),
+      paths.has("node_modules/@s-agent/shared/dist/workspace-hook-trust-store-file.js"),
       true,
     );
-    assert.equal(paths.has("node_modules/@zcode/i18n/src/index.ts"), false);
-    assert.equal(paths.has("node_modules/@zcode/contracts/src/index.ts"), false);
-    assert.equal(paths.has("node_modules/@zcode/shared/src/index.ts"), false);
+    assert.equal(paths.has("node_modules/@s-agent/i18n/src/index.ts"), false);
+    assert.equal(paths.has("node_modules/@s-agent/contracts/src/index.ts"), false);
+    assert.equal(paths.has("node_modules/@s-agent/shared/src/index.ts"), false);
     const zodPackages = manifest.files.filter((file) => file.path.endsWith("/zod/package.json"));
     const zodVersions = await Promise.all(
       zodPackages.map(async (file) => {
@@ -511,7 +511,7 @@ test("includes TUI workspace runtime package assets", async () => {
     );
     assert.deepEqual([...new Set(zodVersions)].sort(), ["3", "4"]);
     // 根 workspace 的源码 exports 不能原样进入只包含 dist 的 SEA runtime。
-    for (const packageName of ["@zcode/shared", "@zcode/model-option-map"]) {
+    for (const packageName of ["@s-agent/shared", "@s-agent/model-option-map"]) {
       const assetKey = `${seaTuiAssetPrefix}node_modules/${packageName}/package.json`;
       const stagedPackage = JSON.parse(await readFile(assets[assetKey], "utf8"));
       assert.equal(stagedPackage.exports["."], "./dist/index.js");
@@ -556,7 +556,7 @@ test("loads TUI from an extracted SEA runtime dependency closure", async () => {
 
     // Windows 锁定进程已加载的 opentui.dll；子进程退出释放 DLL 后，父进程才能清理目录。
     const entryUrl = pathToFileURL(
-      join(runtimeDirectory, "node_modules/@zcode/tui/dist/index.js"),
+      join(runtimeDirectory, "node_modules/@s-agent/tui/dist/index.js"),
     ).href;
     await promisify(execFile)(
       process.execPath,
@@ -1258,7 +1258,7 @@ test("resolves Turbo from the repository while retaining the CLI workspace graph
       "apps/zcode-cli",
       "run",
       "build",
-      "--filter=!@zcode/cli",
+      "--filter=!@s-agent/cli",
       "--force",
       "--dry=json",
     ],

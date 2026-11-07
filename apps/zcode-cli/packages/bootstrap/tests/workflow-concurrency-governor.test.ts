@@ -10,8 +10,8 @@ import type {
   ModelNetworkStatusEvent,
   ModelRef,
   ModelRequestAdmissionTicket,
-} from "@zcode/contracts";
-import type { ConcurrencyChange } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import type { ConcurrencyChange } from "@s-agent/dynamic-workflow";
 import {
   createWorkflowConcurrencyGovernor,
   workflowConcurrencyKey,

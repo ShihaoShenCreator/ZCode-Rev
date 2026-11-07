@@ -1,4 +1,4 @@
-import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@zcode/rpc";
+import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@s-agent/rpc";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import {
@@ -6,7 +6,7 @@ import {
   PlatformChannels,
   InternalChannels,
   buildRemoteHostWorkspaceIdentity,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_VIRTUAL_PROJECT_CREATE_TASK,
   TID_TASK_ITEM,
@@ -16,7 +16,7 @@ import {
   TID_REMOTE_KIND_SSH,
   TID_CONFIRM_DIALOG_CONFIRM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clickTestIdByDom, clearAppData, DEFAULT_WORKSPACE } from "#e2e/helpers/desktop-app";
 import { selectRemoteDeviceMenuItem } from "#e2e/helpers/remote-project-actions";
 import {
@@ -36,7 +36,7 @@ import {
   waitForSSHDirectoryStep,
   waitForRemoteTab,
 } from "#e2e/helpers/ssh-remote-p0";
-import type { RemoteProjectDirectory, VirtualProject } from "@zcode/services";
+import type { RemoteProjectDirectory, VirtualProject } from "@s-agent/services";
 const marker = "E2E_PROJECT_DEVICE_SELECTION";
 const projectName = `${marker}_${Date.now()}`;
 interface DirectoryDelay {

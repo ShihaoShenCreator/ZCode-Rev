@@ -12,7 +12,7 @@ import {
   resolveOffPeakFailureDecision,
 } from "../src/model/offpeak-retry.js";
 import type { ClassifiedModelFailure } from "../src/model/failure-classifier.js";
-import { ModelErrorCode, ModelFailureReason, ModelRetryReason } from "@zcode/contracts";
+import { ModelErrorCode, ModelFailureReason, ModelRetryReason } from "@s-agent/contracts";
 import { executeAdapterGenerateText, executeAdapterStreamText } from "./test-adapter-model.js";
 
 const TEST_QUEUE_PROVIDER_ID = "configured-queue-provider";

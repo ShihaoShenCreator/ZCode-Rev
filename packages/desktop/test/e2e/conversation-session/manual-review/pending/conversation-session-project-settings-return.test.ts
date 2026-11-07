@@ -1,8 +1,8 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { ServiceChannels } from "@zcode/shared";
-import { TID_CONFIRM_DIALOG_CONFIRM, TID_SETTINGS_PAGE } from "@zcode/shared/test-ids";
-import type { RemoteProjectDirectory } from "@zcode/services";
+import { ServiceChannels } from "@s-agent/shared";
+import { TID_CONFIRM_DIALOG_CONFIRM, TID_SETTINGS_PAGE } from "@s-agent/shared/test-ids";
+import type { RemoteProjectDirectory } from "@s-agent/services";
 import { clearAppData, DEFAULT_WORKSPACE, clickTestIdByDom } from "#e2e/helpers/desktop-app";
 import { selectNativeProjectDirectories } from "#e2e/helpers/project-sidebar";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";

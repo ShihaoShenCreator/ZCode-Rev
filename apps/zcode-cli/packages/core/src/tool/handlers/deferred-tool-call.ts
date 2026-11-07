@@ -3,7 +3,7 @@ import {
   DEFERRED_TOOL_CALL_NAME,
   DeferredToolCallInputJsonSchema,
   DeferredToolCallInputSchema,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry } from "../types.js";
 
 const MAX_CONTROL_RESULT_BYTES = 100_000;

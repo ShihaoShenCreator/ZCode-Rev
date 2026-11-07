@@ -1,14 +1,15 @@
 import { SidebarNativeTooltip, ControlHintTooltip } from "@/ControlHintTooltip.js";
 /* oxlint-disable eslint(max-lines) -- footer 聚合账户、主题、模式和快捷键菜单。 */
-import type { Locale, UserInfo } from "@zcode/shared";
+import type { Locale, UserInfo } from "@s-agent/shared";
 import { memo, useCallback, useEffect, useState, type ReactNode } from "react";
-import { DesktopCommandIds } from "@zcode/shared";
+import { DesktopCommandIds } from "@s-agent/shared";
 import {
   TID_LOGIN_MENU_ITEM,
   TID_LOGIN_TRIGGER,
   TID_LOGOUT_BUTTON,
+  TID_SIDEBAR_APP_USAGE_BUTTON,
   TID_TASK_SETTINGS_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.js";
 import { cn } from "@/components/lib/utils.js";
 import { Button } from "@/components/ui/button.js";
@@ -30,6 +31,7 @@ import {
 import {
   Copy,
   PencilRuler,
+  BarChart3,
   Globe,
   Gift,
   Loader2,
@@ -48,13 +50,9 @@ import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { useShortcutCommandLabel } from "@/shortcuts/useShortcutBindings.js";
 import { useZCodeStore } from "@/store/StoreProvider.js";
 import { normalizeInterfaceMode } from "@/lib/interfaceMode.js";
+import { setPendingSettingsUsageIntent } from "@/lib/settingsNavigation.js";
 import type { Theme } from "@/useTheme.js";
 import { WorkspaceWebRemoteControlTrigger } from "@/WorkspaceWebRemoteControlTrigger.js";
-import {
-  WorkspaceSidebarFooterPlanBadge,
-  WorkspaceSidebarFooterUsageSummaryContent,
-  useWorkspaceSidebarFooterUsageSummaryState,
-} from "@/WorkspaceSidebarFooterUsageSummary.js";
 
 const DESKTOP_ZOOM_MIN_LEVEL = -3;
 const DESKTOP_ZOOM_MAX_LEVEL = 5;
@@ -70,7 +68,7 @@ function getSidebarProfileName(user?: UserInfo | null): string {
     return username;
   }
 
-  return "ZCode";
+  return "S-Agent";
 }
 
 function getSidebarProfileBadge(
@@ -96,7 +94,6 @@ export const WorkspaceSidebarFooter = memo(function WorkspaceSidebarFooterCompon
   onThemeChange,
   onSettingsButtonClick,
   onUsageClick,
-  onUpgradeClick,
   onLogin,
   onLogout,
   settingsButtonMode = "settings",
@@ -115,9 +112,6 @@ export const WorkspaceSidebarFooter = memo(function WorkspaceSidebarFooterCompon
   onThemeChange: (value: string) => void;
   onSettingsButtonClick?: () => void;
   onUsageClick?: () => void;
-  onUpgradeClick?: Parameters<
-    typeof WorkspaceSidebarFooterUsageSummaryContent
-  >[0]["onUpgradeClick"];
   onLogin?: () => void;
   onLogout?: () => void;
   settingsButtonMode?: "settings" | "back";
@@ -143,11 +137,6 @@ export const WorkspaceSidebarFooter = memo(function WorkspaceSidebarFooterCompon
   const avatarFallbackText = getAvatarFallbackText(user);
   const avatarKey = user?.avatarUrl ?? user?.id ?? "guest";
   const showAuthRestoreLoading = !user && isRestoringOAuthSession;
-  const usageSummaryState = useWorkspaceSidebarFooterUsageSummaryState({
-    enabled: true,
-    workspaceIdentity,
-    workspacePath,
-  });
   const copyUserId = async () => {
     if (!user?.id) return;
     try {
@@ -278,12 +267,6 @@ export const WorkspaceSidebarFooter = memo(function WorkspaceSidebarFooterCompon
                         className="truncate text-ui-base font-medium"
                       >
                         {profileBadge}
-                      </span>
-                      <span
-                        data-testid="profile-menu-plan"
-                        className="flex shrink-0 [&>span]:border-border/50 [&>span]:bg-transparent [&>span]:font-normal"
-                      >
-                        <WorkspaceSidebarFooterPlanBadge state={usageSummaryState} />
                       </span>
                     </div>
                     {user.id ? (
@@ -429,12 +412,17 @@ export const WorkspaceSidebarFooter = memo(function WorkspaceSidebarFooterCompon
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
             ) : null}
-            {/* Bugfix: 升级入口状态不再以菜单开关为生命周期边界。 */}
-            <WorkspaceSidebarFooterUsageSummaryContent
-              state={usageSummaryState}
-              onUsageClick={usageButtonClick}
-              onUpgradeClick={onUpgradeClick}
-            />
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              data-testid={TID_SIDEBAR_APP_USAGE_BUTTON}
+              onSelect={() => {
+                setPendingSettingsUsageIntent();
+                usageButtonClick?.();
+              }}
+            >
+              <BarChart3 className="size-4" />
+              {intl.formatMessage({ id: "settings.usage.sectionTitle" })}
+            </DropdownMenuItem>
             {user ? (
               <DropdownMenuItem onSelect={() => openRewards?.()} data-testid="rewards-menu-item">
                 <Gift className="size-4" />

@@ -307,7 +307,7 @@ workflow path selection
 
 - `pnpm typecheck`：passed。
 - `oxlint` 对改动文件：0 errors。改动文件中 6 个在 HEAD 已非 formatter-clean，只对新增行做了格式化。
-- `vitest`：`packages/desktop/test`、`packages/shared/test`、`packages/ui/test` 全量 1296 文件，含 `desktopProductIdentity`、`ciNodeVersionConfig`、`notarizeMacosScript`、`publishReleaseScript`、`notifyFeishuScript`、`viteRendererConfig`、`tsupChunkIsolation`、`desktopRuntimeEnv`、`desktopApplicationMenu`、`shared/env`、`ui/windowsCaptionMenuButton`；唯一一次失败是 `desktopApplicationMenu.test.ts` 的手写 `@zcode/shared` mock 缺少新导出 `ZCODE_PRODUCT_FLAVOR`，补上 getter 后通过（`dev-cua-plugin-runtime.test.ts` 在新 worktree 需先构建 zcode-cli 包树，与本改动无关，构建后通过）。
+- `vitest`：`packages/desktop/test`、`packages/shared/test`、`packages/ui/test` 全量 1296 文件，含 `desktopProductIdentity`、`ciNodeVersionConfig`、`notarizeMacosScript`、`publishReleaseScript`、`notifyFeishuScript`、`viteRendererConfig`、`tsupChunkIsolation`、`desktopRuntimeEnv`、`desktopApplicationMenu`、`shared/env`、`ui/windowsCaptionMenuButton`；唯一一次失败是 `desktopApplicationMenu.test.ts` 的手写 `@s-agent/shared` mock 缺少新导出 `ZCODE_PRODUCT_FLAVOR`，补上 getter 后通过（`dev-cua-plugin-runtime.test.ts` 在新 worktree 需先构建 zcode-cli 包树，与本改动无关，构建后通过）。
 - `scripts/ci/ci-lint-pipeline.mjs`：OK；改动的 YAML 可解析。
 - 未执行：真实 CI 上点击 `build:preview:production`，以及 ZPREVIEW-026 的签名产物手工 smoke。
 

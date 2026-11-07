@@ -1,8 +1,8 @@
 import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { ExecutionRequest, ExecutionShellSelection } from "@zcode/contracts";
-import type { ZCodeToolExecResource } from "@zcode/shared";
+import type { ExecutionRequest, ExecutionShellSelection } from "@s-agent/contracts";
+import type { ZCodeToolExecResource } from "@s-agent/shared";
 import { describe, expect, it, vi } from "vitest";
 import { NodeExecutionAdapter } from "../src/exec/node-execution-adapter.js";
 

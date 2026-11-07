@@ -4,7 +4,7 @@ import {
   SessionEventType,
   createSessionId,
   modelMessageContentToText,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { type AgentRuntime } from "../src/runtime.js";
 import { createToolRegistry } from "../src/tool/registry.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

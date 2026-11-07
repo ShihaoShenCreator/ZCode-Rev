@@ -2,9 +2,9 @@
 import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve, win32 } from "node:path";
-import type { ConnectOptions } from "@zcode/server/remote";
-import { listSSHConfigAliasesFromLocalConfig } from "@zcode/services/node";
-import { DEV_HELPER_APP_NAME, HELPER_APP_NAME } from "@zcode/zcode-cua/broker/helperConstants";
+import type { ConnectOptions } from "@s-agent/server/remote";
+import { listSSHConfigAliasesFromLocalConfig } from "@s-agent/services/node";
+import { DEV_HELPER_APP_NAME, HELPER_APP_NAME } from "@s-agent/zcode-cua/broker/helperConstants";
 import {
   ZCODE_APP_VERSION_ENV,
   ZCODE_BUILD_COMMIT_ID_ENV,
@@ -25,14 +25,14 @@ import {
   sanitizeZCodeRuntimeEnv,
   type SourceServerArtifactPolicy,
   type ZCodeRuntimeEnv,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { resolvePlatformKeyForPackagedApp } from "../../scripts/target-platform.mjs";
 import {
   getAppConfigDir,
   getDataBaseDir,
   ZCODE_CUA_BUNDLED_HELPER_APP_PATH_ENV,
   ZCODE_WINDOWS_APP_INSTALL_DIR_ENV,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import {
   resolveRemoteCdnBaseUrls as resolveOrderedRemoteCdnBaseUrls,
   type ResolveRemoteCdnOptions,
@@ -59,12 +59,17 @@ function isTruthyRuntimeEnvOverride(name: string): boolean {
   return value === "1" || value === "true" || value === "yes" || value === "on";
 }
 
-// e2e 运行的是生产构建，默认会和本机正式版 ZCode 共用 app name / userData，
+// e2e 运行的是生产构建，默认会和本机正式版 S-Agent 共用 app name / userData，
 // 触发 Electron 单实例锁后只激活已有窗口，Chromedriver 无法接管测试进程。
 // 这里允许测试显式隔离运行时身份，正常桌面/远控路径保持原来的默认值。
 export const runtimeApplicationName =
   readRuntimeEnvOverride("ZCODE_DESKTOP_APPLICATION_NAME") ??
-  (isLocalDevelopmentRuntime ? "ZCode Dev" : isPreviewPackagedRuntime ? "ZCode Preview" : "ZCode");
+  (isLocalDevelopmentRuntime ? "S-Agent Dev" : isPreviewPackagedRuntime ? "S-Agent Preview" : "S-Agent");
+const runtimeUserDataDirectoryName = isLocalDevelopmentRuntime
+  ? "ZCode Dev"
+  : isPreviewPackagedRuntime
+    ? "ZCode Preview"
+    : "ZCode";
 // Electron 的 app.getPath("home") 不一定跟随测试进程里的 HOME 覆盖。
 // e2e 默认工作区依赖 home 路径，因此提供显式覆盖，避免测试写到开发者真实 ~/ZCodeProject。
 export const runtimeHomePath = readRuntimeEnvOverride("ZCODE_DESKTOP_HOME_DIR");
@@ -76,7 +81,7 @@ export const runtimeUserDataPath =
   readRuntimeEnvOverride("ZCODE_DESKTOP_USER_DATA_DIR") ??
   (shouldUseElectronDefaultUserDataPath
     ? undefined
-    : join(getElectronAppPath("appData"), runtimeApplicationName));
+    : join(getElectronAppPath("appData"), runtimeUserDataDirectoryName));
 export const runtimeSessionDataPath =
   readRuntimeEnvOverride("ZCODE_DESKTOP_SESSION_DATA_DIR") ??
   (runtimeUserDataPath ? join(runtimeUserDataPath, "session") : undefined);
@@ -98,17 +103,17 @@ export type RemoteAssetDirs = Pick<
 type LocalRuntimeEnv = Record<string, string | undefined>;
 
 export async function isDockerDaemonAvailable(): Promise<boolean> {
-  const { isDockerAvailable } = await import("@zcode/server/remote");
+  const { isDockerAvailable } = await import("@s-agent/server/remote");
   return isDockerAvailable();
 }
 
 export async function listAvailableWSLDistros() {
-  const { listWSLDistros } = await import("@zcode/server/remote");
+  const { listWSLDistros } = await import("@s-agent/server/remote");
   return listWSLDistros();
 }
 
 export async function listAvailableDockerContainers() {
-  const { listDockerContainers } = await import("@zcode/server/remote");
+  const { listDockerContainers } = await import("@s-agent/server/remote");
   return listDockerContainers();
 }
 

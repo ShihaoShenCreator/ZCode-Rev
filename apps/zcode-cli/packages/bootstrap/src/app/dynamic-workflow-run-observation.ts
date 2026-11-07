@@ -4,7 +4,7 @@
 // 快照/列表/详情的合成规则。从 dynamic-workflow-run-service.ts 拆出：服务文件承载入口与门，
 // 本文件承载「registry + journal → 对外读面」的纯合成规则（无 I/O、无状态）。
 
-import type { DwfRunListItem, DwfRunSessionListItem } from "@zcode/adapters/storage";
+import type { DwfRunListItem, DwfRunSessionListItem } from "@s-agent/adapters/storage";
 import {
   boundDynamicWorkflowRunEventPayload,
   DYNAMIC_WORKFLOW_SNAPSHOT_MAX_REPORT_BYTES,
@@ -17,7 +17,7 @@ import {
   type DynamicWorkflowRunSnapshot,
   type DynamicWorkflowRunStopReason,
   type DynamicWorkflowRunSummary,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   JournalStorePort,
   RunRecord,
@@ -27,7 +27,7 @@ import type {
   StoredEvent,
   WorkflowErrorCode,
   WorkflowErrorJson,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { artifactsOf } from "./dynamic-workflow-run-artifact-projection.js";
 import { runLineageActiveMs } from "./dynamic-workflow-run-elapsed.js";
 import {

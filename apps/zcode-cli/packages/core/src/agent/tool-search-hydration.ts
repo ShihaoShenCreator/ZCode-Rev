@@ -3,7 +3,7 @@ import {
   ToolSearchAnnouncementSchema,
   compactBoundaryPayloadSchema,
   type Logger,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { compactDiscoveryMetadata } from "../tool/search/history.js";
 
 export function hydrateToolSearchContent(value: unknown, logger?: Logger) {

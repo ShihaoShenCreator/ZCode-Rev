@@ -1,7 +1,7 @@
-import { scopeConversationShareServiceForAttachment } from "@zcode/services/node";
+import { scopeConversationShareServiceForAttachment } from "@s-agent/services/node";
 import { randomUUID, timingSafeEqual } from "node:crypto";
 import { hostname } from "node:os";
-import { resolveServerOsUser } from "@zcode/shared/node";
+import { resolveServerOsUser } from "@s-agent/shared/node";
 import { serve } from "@hono/node-server";
 import { createNodeWebSocket } from "@hono/node-ws";
 import { Hono } from "hono";
@@ -18,20 +18,20 @@ import {
   type ISocket,
   type IChannel,
   type CancellationToken,
-} from "@zcode/rpc";
+} from "@s-agent/rpc";
 import {
   createZCodeAgentConnectionScope,
   IProviderProvisioningTargetService,
   IZCodeAgentService,
   IConversationShareService,
   ServiceCollection,
-} from "@zcode/services";
+} from "@s-agent/services";
 import {
   createServiceLogger,
   type TopicResourcePeers,
   SourceServerWorkspaceIdentityChannelServer,
   type SourceServerWorkspaceIdentityMapper,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import {
   SERVER_REMOTE_PROTOCOL_VERSION,
   TOPIC_RESOURCE_RELAY_CHANNEL,
@@ -40,7 +40,7 @@ import {
   ZCODE_RPC_HOST_CAPABILITY_HEADER,
   ZCODE_VERSION,
   type ServerRemoteInfo,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { createHostCapabilityStore, type HostCapabilityStore } from "./hostCapability.js";
 
 export interface CoreHttpServer {

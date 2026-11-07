@@ -68,10 +68,10 @@
 - 不用 patch-on-patch 的零散判断，统一抽出 branch capability、backend 和 prelude helper。
 - 注释如需解释 bug/差异原因，用中文。
 - 提交前必须执行：
-  - `pnpm --filter @zcode/core typecheck`
-  - `pnpm --filter @zcode/core lint`
-  - `pnpm --filter @zcode/adapters typecheck`
-  - `pnpm --filter @zcode/adapters lint`
+  - `pnpm --filter @s-agent/core typecheck`
+  - `pnpm --filter @s-agent/core lint`
+  - `pnpm --filter @s-agent/adapters typecheck`
+  - `pnpm --filter @s-agent/adapters lint`
   - 相关单测
 
 ## Provider-Visible 合同边界
@@ -185,7 +185,7 @@ git status --short
 执行：
 
 ```bash
-pnpm --filter @zcode/core test -- tool-contracts.test.ts context-builder.test.ts
+pnpm --filter @s-agent/core test -- tool-contracts.test.ts context-builder.test.ts
 ```
 
 期望：
@@ -254,7 +254,7 @@ apps/zcode-cli/packages/core/tests/runtime-embedded-search-capability.test.ts
 测试命令：
 
 ```bash
-pnpm --filter @zcode/core test -- runtime-embedded-search-capability.test.ts
+pnpm --filter @s-agent/core test -- runtime-embedded-search-capability.test.ts
 ```
 
 期望：
@@ -272,7 +272,7 @@ apps/zcode-cli/packages/core/src/embedded-search/capability.ts
 导出：
 
 ```ts
-import type { ModelConnectionInfo, ModelConnectionPort, ModelRef } from "@zcode/contracts";
+import type { ModelConnectionInfo, ModelConnectionPort, ModelRef } from "@s-agent/contracts";
 
 const ENABLE_EMBEDDED_SEARCH_BRANCH = true;
 
@@ -404,7 +404,7 @@ if (isEmbeddedSearchCapableModel(resolvedContext.modelId)) {
 执行：
 
 ```bash
-pnpm --filter @zcode/core test -- runtime-embedded-search-capability.test.ts
+pnpm --filter @s-agent/core test -- runtime-embedded-search-capability.test.ts
 ```
 
 期望：
@@ -637,7 +637,7 @@ apps/zcode-cli/packages/core/tests/context-builder.test.ts
 执行：
 
 ```bash
-pnpm --filter @zcode/core test -- tool-contracts.test.ts context-builder.test.ts
+pnpm --filter @s-agent/core test -- tool-contracts.test.ts context-builder.test.ts
 ```
 
 期望：
@@ -667,7 +667,7 @@ apps/zcode-cli/packages/cli/tests/internal-search.test.ts
 执行：
 
 ```bash
-pnpm --filter @zcode/cli test -- internal-search.test.ts
+pnpm --filter @s-agent/cli test -- internal-search.test.ts
 ```
 
 期望：
@@ -758,7 +758,7 @@ zcode __internal-search find ...
 执行：
 
 ```bash
-pnpm --filter @zcode/cli test -- internal-search.test.ts
+pnpm --filter @s-agent/cli test -- internal-search.test.ts
 ```
 
 期望：
@@ -825,7 +825,7 @@ apps/zcode-cli/packages/adapters/tests/embedded-search-prelude.test.ts
 执行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- embedded-search-prelude.test.ts
+pnpm --filter @s-agent/adapters test -- embedded-search-prelude.test.ts
 ```
 
 期望：
@@ -843,7 +843,7 @@ apps/zcode-cli/packages/adapters/src/exec/embedded-search-prelude.ts
 导出：
 
 ```ts
-import type { ExecutionEmbeddedSearchPrelude } from "@zcode/contracts";
+import type { ExecutionEmbeddedSearchPrelude } from "@s-agent/contracts";
 
 export function applyEmbeddedSearchPrelude(
   command: string,
@@ -921,7 +921,7 @@ apps/zcode-cli/packages/adapters/tests/exec.test.ts
 执行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- embedded-search-prelude.test.ts exec.test.ts
+pnpm --filter @s-agent/adapters test -- embedded-search-prelude.test.ts exec.test.ts
 ```
 
 期望：
@@ -1060,7 +1060,7 @@ apps/zcode-cli/packages/core/tests/bash-handler.test.ts
 执行：
 
 ```bash
-pnpm --filter @zcode/core test -- bash-handler.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts
 ```
 
 期望：
@@ -1133,7 +1133,7 @@ apps/zcode-cli/packages/core/tests/tool-contracts.test.ts
 执行：
 
 ```bash
-pnpm --filter @zcode/core test -- tool-contracts.test.ts context-builder.test.ts
+pnpm --filter @s-agent/core test -- tool-contracts.test.ts context-builder.test.ts
 ```
 
 期望：
@@ -1177,15 +1177,15 @@ find . -name "*.ts"
 执行：
 
 ```bash
-pnpm --filter @zcode/core test -- runtime-embedded-search-capability.test.ts tool-contracts.test.ts context-builder.test.ts bash-handler.test.ts
-pnpm --filter @zcode/adapters test -- embedded-search-prelude.test.ts exec.test.ts
-pnpm --filter @zcode/cli test -- internal-search.test.ts
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/core lint
-pnpm --filter @zcode/adapters typecheck
-pnpm --filter @zcode/adapters lint
-pnpm --filter @zcode/cli typecheck
-pnpm --filter @zcode/cli lint
+pnpm --filter @s-agent/core test -- runtime-embedded-search-capability.test.ts tool-contracts.test.ts context-builder.test.ts bash-handler.test.ts
+pnpm --filter @s-agent/adapters test -- embedded-search-prelude.test.ts exec.test.ts
+pnpm --filter @s-agent/cli test -- internal-search.test.ts
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/core lint
+pnpm --filter @s-agent/adapters typecheck
+pnpm --filter @s-agent/adapters lint
+pnpm --filter @s-agent/cli typecheck
+pnpm --filter @s-agent/cli lint
 ```
 
 期望：
@@ -1247,15 +1247,15 @@ Switches ZCode's default provider-visible surface to the embedded search branch.
 Keeps CMD and legacy shell fallback on the direct Glob/Grep branch, while Bash find/grep are routed through an embedded search backend for supported POSIX shells.
 
 Verification:
-- pnpm --filter @zcode/core test -- runtime-embedded-search-capability.test.ts tool-contracts.test.ts context-builder.test.ts bash-handler.test.ts
-- pnpm --filter @zcode/adapters test -- embedded-search-prelude.test.ts exec.test.ts
-- pnpm --filter @zcode/cli test -- internal-search.test.ts
-- pnpm --filter @zcode/core typecheck
-- pnpm --filter @zcode/core lint
-- pnpm --filter @zcode/adapters typecheck
-- pnpm --filter @zcode/adapters lint
-- pnpm --filter @zcode/cli typecheck
-- pnpm --filter @zcode/cli lint
+- pnpm --filter @s-agent/core test -- runtime-embedded-search-capability.test.ts tool-contracts.test.ts context-builder.test.ts bash-handler.test.ts
+- pnpm --filter @s-agent/adapters test -- embedded-search-prelude.test.ts exec.test.ts
+- pnpm --filter @s-agent/cli test -- internal-search.test.ts
+- pnpm --filter @s-agent/core typecheck
+- pnpm --filter @s-agent/core lint
+- pnpm --filter @s-agent/adapters typecheck
+- pnpm --filter @s-agent/adapters lint
+- pnpm --filter @s-agent/cli typecheck
+- pnpm --filter @s-agent/cli lint
 ```
 
 ## 回滚方案
@@ -1272,8 +1272,8 @@ git revert <commit-sha>
 3. 回滚后重新执行：
 
 ```bash
-pnpm --filter @zcode/core test -- tool-contracts.test.ts context-builder.test.ts bash-handler.test.ts
-pnpm --filter @zcode/adapters test -- exec.test.ts
+pnpm --filter @s-agent/core test -- tool-contracts.test.ts context-builder.test.ts bash-handler.test.ts
+pnpm --filter @s-agent/adapters test -- exec.test.ts
 ```
 
 ## 验收标准

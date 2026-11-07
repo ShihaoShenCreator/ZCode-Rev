@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { EventId, SessionEvent, SessionId, TraceId, TurnId } from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+import type { EventId, SessionEvent, SessionId, TraceId, TurnId } from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import { normalizeConversationEvent } from "../src/zcode-protocol-v4/event-normalizer.js";
 
 function event(

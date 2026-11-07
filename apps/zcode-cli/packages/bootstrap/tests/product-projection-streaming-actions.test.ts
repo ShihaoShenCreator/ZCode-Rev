@@ -16,8 +16,8 @@ import {
   type SessionId,
   type TraceId,
   type TurnId,
-} from "@zcode/contracts";
-import type { ConversationDelta, ConversationSnapshot } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import type { ConversationDelta, ConversationSnapshot } from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 
 const BASE_TIMESTAMP_MS = 1_700_000_000_000;

@@ -1,4 +1,4 @@
-import type { Logger, ModelStreamEvent, ModelToolCall } from "@zcode/contracts";
+import type { Logger, ModelStreamEvent, ModelToolCall } from "@s-agent/contracts";
 import { normalizeModelToolInput } from "./tool-input-normalization.js";
 import { normalizeModelToolName } from "./tool-call-validation.js";
 

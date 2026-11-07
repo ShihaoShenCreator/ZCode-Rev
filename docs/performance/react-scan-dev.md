@@ -10,7 +10,7 @@ CUA 权限浮窗及 Web/手机入口。
 
 ## 加载规则
 
-- React Scan 是 `@zcode/desktop` 的开发依赖，锁定版本，脚本由本地 Vite 服务提供，不依赖 CDN。
+- React Scan 是 `@s-agent/desktop` 的开发依赖，锁定版本，脚本由本地 Vite 服务提供，不依赖 CDN。
 - 仅 `vite serve` 且 mode 非 `production` 时默认启用。
 - `ZCODE_REACT_SCAN=0` 关闭注入。该变量与连接哪个后端的 `ZCODE_ENV` 无关。
 - 使用 head 中的普通 script，先于 React/React DOM 模块执行，避免首次挂载前未安装 hook 而漏报。

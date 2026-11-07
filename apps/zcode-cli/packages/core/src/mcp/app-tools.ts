@@ -1,11 +1,11 @@
 // MCP Apps App-Provided Tools → core 工具条目。条目只描述「模型怎么看见、审批怎么走、结果怎么进模型」；
 // 调用本身交给宿主注入的执行器（bootstrap 的实例信箱：待执行调用投递给托管页面的渲染端，页面执行后回传）。
 
-import type { JsonSchema, McpToolCallResult, McpToolDescriptor } from "@zcode/contracts";
+import type { JsonSchema, McpToolCallResult, McpToolDescriptor } from "@s-agent/contracts";
 import {
   MCP_APPS_APP_TOOL_CALL_TIMEOUT_MS,
   MCP_APPS_APP_TOOL_CLAIM_TIMEOUT_MS,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import type { ToolEntry, ToolExecutionContext } from "../tool/types.js";
 import { normalizeMcpToolResultForModel } from "./image-normalization.js";
 import { McpToolOutputJsonSchema, formatMcpToolResult } from "./index.js";

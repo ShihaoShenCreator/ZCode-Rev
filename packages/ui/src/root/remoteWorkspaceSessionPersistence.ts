@@ -1,5 +1,5 @@
-import type { AppSettings, RemoteWorkspaceSessionEntry } from "@zcode/shared";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import type { AppSettings, RemoteWorkspaceSessionEntry } from "@s-agent/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   buildWorkspaceSessionKey,
   readPersistedWorkspaceSessionEntries,

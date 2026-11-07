@@ -3,7 +3,7 @@ import {
   createCoreError,
   type CollaborationMode,
   type PermissionBrokerResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { PermissionDecisionResult } from "../../permission/service.js";
 import type { ExecutableToolCall, ToolEntry, ToolExecutionResult } from "../types.js";
 import { createErrorResult, createPermissionErrorResult } from "./errors.js";

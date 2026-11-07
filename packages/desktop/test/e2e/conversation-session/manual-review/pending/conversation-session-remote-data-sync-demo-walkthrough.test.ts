@@ -3,7 +3,7 @@ import { execFile } from "node:child_process";
 import { mkdir, readFile, symlink, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { promisify } from "node:util";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_PROMPT_SUGGESTION_PANEL,
   TID_SETTINGS_BACK_BUTTON,
@@ -14,7 +14,7 @@ import {
   TID_VIRTUAL_PROJECT_MENU,
   testId,
   virtualProjectActionTestId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   getE2EAppDataPaths,

@@ -1,10 +1,10 @@
-import type { OffPeakPort, OffPeakTaskSummary } from "@zcode/contracts";
+import type { OffPeakPort, OffPeakTaskSummary } from "@s-agent/contracts";
 import {
   zcodeOffPeakCreateResultSchema,
   zcodeOffPeakListResultSchema,
   zcodeProtocolMethods,
   type ZCodeOffPeakTaskProtocolSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   ZCodeProtocolAgentServerContext,
   ZCodeProtocolSessionRecord,

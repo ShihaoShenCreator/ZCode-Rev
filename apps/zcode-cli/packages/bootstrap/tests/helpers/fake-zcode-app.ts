@@ -1,4 +1,4 @@
-import type { ExecutionShellSelection, SessionId } from "@zcode/contracts";
+import type { ExecutionShellSelection, SessionId } from "@s-agent/contracts";
 import type { ZCodeApp, ZCodeAppOptions } from "../../src/app/types.js";
 
 export function createFakeApp(

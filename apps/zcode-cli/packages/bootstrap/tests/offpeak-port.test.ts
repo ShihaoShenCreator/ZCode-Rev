@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { zcodeProtocolMethods } from "@zcode/shared";
+import { zcodeProtocolMethods } from "@s-agent/shared";
 import {
   createProtocolOffPeakPort,
   OFF_PEAK_CREATE_BOUND_SESSION_CHECK_ERROR,

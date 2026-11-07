@@ -1,4 +1,4 @@
-import type { ModelInputFormat, ModelProperties } from "@zcode/contracts";
+import type { ModelInputFormat, ModelProperties } from "@s-agent/contracts";
 
 export function createTestInputFormat(override: Partial<ModelInputFormat> = {}): ModelInputFormat {
   return {

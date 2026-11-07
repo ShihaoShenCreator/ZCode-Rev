@@ -5,7 +5,7 @@ import {
   type ModelRequest,
   type ModelResult,
   type SessionId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AgentProfile } from "../src/subagent/profile.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

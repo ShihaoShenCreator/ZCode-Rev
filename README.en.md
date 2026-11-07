@@ -1,8 +1,4 @@
-# ZCode
-
-<div align="center">
-  <img src="public/logo/icons/1024x1024.png" alt="ZCode" width="128" height="128" />
-</div>
+# S-Agent
 <p align="center">
   <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=47ag983c-8fcb-4d6d-814b-5395193a712c&amp;qr_code=true">Feishu community</a> ·
   <a href="https://discord.gg/z9aBcQXZQ3">Discord</a>
@@ -11,16 +7,7 @@
   <a href="README.md">简体中文</a> | English
 </p>
 
-ZCode is an AI coding workspace with desktop, browser, and terminal interfaces. This repository contains the clients, backend services, shared UI, and Agent CLI and runtime source code.
-
-## Updates
-
-- **2026-10-30**: Updated to ZCode v3.17.1.
-- 2026-10-19: Updated to ZCode v3.16.2.
-- 2026-10-16: Updated to ZCode v3.16.1.
-- 2026-10-16: Updated to ZCode v3.15.4.
-- 2026-10-10: Updated to ZCode v3.15.1.
-- 2026-9-23: Updated to ZCode v3.14.3.
+S-Agent is an AI coding workspace with desktop, browser, and terminal interfaces. This repository contains the clients, backend services, shared UI, and Agent CLI and runtime source code.
 
 ## Setup
 
@@ -78,32 +65,32 @@ ZCODE_SERVER_WORKSPACE=/path/to/project pnpm dev:web
 
 This starts both the Web development server (default: `http://localhost:5173`) and the backend (default: `http://localhost:3030`). Open the Web development server in your browser. `/ws` and general `/api` requests are proxied to the local backend; `/api/v1/oauth/token` is proxied separately to the configured product service.
 
-After changing Agent source code, run `pnpm --filter @zcode/cli... build` and restart the service. To validate the complete distribution, extract and run it as described under Packaging → ZCode CLI distribution below.
+After changing Agent source code, run `pnpm --filter @s-agent/cli... build` and restart the service. To validate the complete distribution, extract and run it as described under Packaging → S-Agent CLI distribution below.
 
-### ZCode CLI distribution
+### S-Agent CLI distribution
 
-The command-line distribution includes the TUI, Web client, and Agent behind one `zcode` command. With no arguments it starts the TUI; a leading `--web` starts Web mode; all other arguments go to the existing Agent CLI. Both modes run locally without Electron.
+The command-line distribution includes the TUI, Web client, and Agent behind one `s-agent` command. With no arguments it starts the TUI; a leading `--web` starts Web mode; all other arguments go to the Agent CLI. Both modes run locally without Electron. The installer temporarily retains `zcode` as a compatibility alias.
 
 ```bash
 # Start the terminal UI by default
-zcode
+s-agent
 
 # Start the Web interface
-zcode --web
+s-agent --web
 
 # Set the project and port without opening a browser automatically
-zcode --web --workspace /path/to/project --port 3030 --no-open
+s-agent --web --workspace /path/to/project --port 3030 --no-open
 
 # Show CLI or Web options
-zcode --help
-zcode --web --help
+s-agent --help
+s-agent --web --help
 ```
 
 In Web mode, it uses the current directory as the workspace, listens on `127.0.0.1` without token authentication by default, selects an available port, and opens a browser. Use the URL printed in the terminal and press `Ctrl+C` to stop the service. For LAN access, use `--host 0.0.0.0`; listening on a non-local address generates an access token by default. Use the token-bearing URL printed in the terminal. Set a token with `--token`, or disable token authentication with `--no-token`.
 
 When starting the general Web service's HTTP entry directly, configure API/WebSocket authentication with `ZCODE_SERVER_AUTH_TOKEN`. When creating the service programmatically, use the `authToken` option.
 
-See Packaging below for build instructions. `pnpm build:zcode` only creates the distribution; it does not replace an existing `zcode` on `PATH`. If the command still points to an older installation or another checkout, check it with `command -v zcode` on macOS / Linux or `where.exe zcode` on Windows.
+See Packaging below for build instructions. `pnpm build:s-agent` only creates the distribution; it does not replace an existing command on `PATH`. If it still points to another installation or checkout, check it with `command -v s-agent` on macOS / Linux or `where.exe s-agent` on Windows. The `build:zcode` script and installed `zcode` command remain temporarily available as compatibility aliases.
 
 ### CLI Source Development
 
@@ -112,11 +99,11 @@ See the [CLI usage guide (Chinese)](apps/zcode-cli/docs/usage/README.md) for mod
 Use the source entry when developing the TUI or Agent:
 
 ```bash
-pnpm --filter @zcode/cli dev --help
-pnpm --filter @zcode/cli dev
+pnpm --filter @s-agent/cli dev --help
+pnpm --filter @s-agent/cli dev
 
 # Build the CLI and its workspace dependencies
-pnpm --filter @zcode/cli... build
+pnpm --filter @s-agent/cli... build
 node apps/zcode-cli/packages/cli/dist/zcode.cjs --help
 ```
 
@@ -160,45 +147,45 @@ The default target is macOS arm64, and the default output directory is `packages
 
 ### ZCode CLI distribution
 
-Run `pnpm build:zcode` to build the CLI/TUI, backend, and Web client, collect the TUI native libraries, workers, and runtime dependencies, then assemble the distribution. Running the distribution still requires Node.js; use the version specified in `mise.toml`.
+Run `pnpm build:s-agent` to build the CLI/TUI, backend, and Web client, collect the TUI native libraries, workers, and runtime dependencies, then assemble the distribution. Running the distribution still requires Node.js; use the version specified in `mise.toml`. The old `pnpm build:zcode` entry remains available for compatibility.
 
 Before packaging, set the download base URL with `ZCODE_DIST_BASE_URL` in `.env`, `.env.local`, or the process environment, or pass it through `--base-url`. The URL below is a placeholder; replace it with your hosting URL when publishing:
 
 ```bash
-pnpm build:zcode --base-url https://downloads.example.com/zcode/
+pnpm build:s-agent --base-url https://downloads.example.com/s-agent/
 
 # When ZCODE_DIST_BASE_URL is already configured
-pnpm build:zcode
+pnpm build:s-agent
 
 # Repackage existing Agent, backend, and Web build outputs
-pnpm build:zcode --skip-build
+pnpm build:s-agent --skip-build
 
 # Show options for the version, output directory, and more
-pnpm build:zcode --help
+pnpm build:s-agent --help
 ```
 
-The version defaults to the root `package.json` version. Output is written to `dist/zcode/`:
+The version defaults to the root `package.json` version. Output is written to `dist/s-agent/`:
 
-- `releases/<version>/zcode-<version>.tar.gz`: runtime package.
+- `releases/<version>/s-agent-<version>.tar.gz`: runtime package.
 - `releases/<version>/sha256.txt`: checksum file.
 - `latest.json` and `install.sh`: version index and installer.
 
-Upload the entire directory to the configured download base URL. The installer downloads the runtime package from that URL, installs it to `~/.zcode/runtime` by default, and creates the `zcode` command in `~/.local/bin`. Override these directories with `ZCODE_DIST_HOME` and `ZCODE_DIST_BIN_DIR`, respectively.
+Upload the entire directory to the configured download base URL. The installer downloads the runtime package from that URL, installs it to `~/.zcode/runtime` by default to reuse an existing installation, and creates `s-agent` plus the compatibility alias `zcode` in `~/.local/bin`. Set `S_AGENT_DIST_BASE_URL` to configure the download base URL (`ZCODE_DIST_BASE_URL` remains supported). Override the install and command directories with `ZCODE_DIST_HOME` and `ZCODE_DIST_BIN_DIR`, respectively.
 
 Existing Lite users should switch to the new build command, environment variables, and installer. Installation does not remove old Lite directories or migrate/delete session data.
 
 To test a packaged build locally, extract and run it directly without uploading or installing it:
 
 ```bash
-zcode_version=$(node -p "require('./dist/zcode/latest.json').version")
-mkdir -p dist/zcode/debug
-tar -xzf "dist/zcode/releases/$zcode_version/zcode-$zcode_version.tar.gz" \
-  -C dist/zcode/debug
+agent_version=$(node -p "require('./dist/s-agent/latest.json').version")
+mkdir -p dist/s-agent/debug
+tar -xzf "dist/s-agent/releases/$agent_version/s-agent-$agent_version.tar.gz" \
+  -C dist/s-agent/debug
 # Start the TUI by default
-node dist/zcode/debug/zcode/bin/zcode.mjs
+node dist/s-agent/debug/s-agent/bin/s-agent.mjs
 
 # Start Web mode
-node dist/zcode/debug/zcode/bin/zcode.mjs --web \
+node dist/s-agent/debug/s-agent/bin/s-agent.mjs --web \
   --workspace "$PWD" --port 3030 --no-open
 ```
 

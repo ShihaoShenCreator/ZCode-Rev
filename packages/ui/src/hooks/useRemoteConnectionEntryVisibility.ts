@@ -1,4 +1,4 @@
-import type { ZCodeEnv } from "@zcode/shared";
+import type { ZCodeEnv } from "@s-agent/shared";
 
 export function shouldShowRemoteConnectionEntry(params: {
   env: ZCodeEnv;

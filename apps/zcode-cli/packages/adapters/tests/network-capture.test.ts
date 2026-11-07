@@ -1,8 +1,8 @@
 import { createServer, request, type Server } from "node:http";
 import { once } from "node:events";
 import { expect, it, vi } from "vitest";
-import { createNodeNetworkCapture, withoutNetworkCapture } from "@zcode/shared/node";
-import type { NetworkCaptureBatch } from "@zcode/shared";
+import { createNodeNetworkCapture, withoutNetworkCapture } from "@s-agent/shared/node";
+import type { NetworkCaptureBatch } from "@s-agent/shared";
 import { createNetworkProxyFetch } from "../src/network/proxy-fetch.js";
 import { createMcpTransportFetch } from "../src/mcp/network.js";
 

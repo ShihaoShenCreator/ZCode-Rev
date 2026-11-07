@@ -4,7 +4,7 @@ import {
   createSessionId,
   createToolCallId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import { createManualPermissionBroker } from "../src/permission/broker.js";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";

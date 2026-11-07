@@ -6,7 +6,7 @@ import type {
   ToolExecutionResult,
   TraceContext,
 } from "../deps.js";
-import type { AgentTelemetryCausation, ModelApiOperation } from "@zcode/contracts";
+import type { AgentTelemetryCausation, ModelApiOperation } from "@s-agent/contracts";
 import {
   PermissionService,
   createDenyPermissionBroker,

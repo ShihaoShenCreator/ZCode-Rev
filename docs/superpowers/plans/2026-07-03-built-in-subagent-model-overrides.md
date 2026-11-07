@@ -322,7 +322,7 @@ pnpm typecheck
 - [ ] **Step 2：确认测试失败**
 
 ```bash
-pnpm --filter @zcode/services test -- --run test/subagentsService.test.ts
+pnpm --filter @s-agent/services test -- --run test/subagentsService.test.ts
 ```
 
 预期：失败，原因是 `setBuiltInModelOverride` 尚未实现。
@@ -496,7 +496,7 @@ async setBuiltInModelOverride(params: BuiltInSubagentModelOverrideParams): Promi
 - [ ] **Step 7：跑 service 测试**
 
 ```bash
-pnpm --filter @zcode/services test -- --run test/subagentsService.test.ts
+pnpm --filter @s-agent/services test -- --run test/subagentsService.test.ts
 ```
 
 预期：通过。
@@ -565,7 +565,7 @@ it("loads built-in model overrides from shared subagent state", async () => {
 - [ ] **Step 2：确认测试失败**
 
 ```bash
-pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts
+pnpm --filter @s-agent/bootstrap test -- --run tests/subagents.test.ts
 ```
 
 预期：失败，原因是 loader 尚未返回 `builtInModelOverrides`。
@@ -575,7 +575,7 @@ pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts
 在 `apps/zcode-cli/packages/bootstrap/src/subagents.ts` 引入 shared 类型：
 
 ```ts
-import type { BuiltInSubagentModelOverrides } from "@zcode/shared";
+import type { BuiltInSubagentModelOverrides } from "@s-agent/shared";
 ```
 
 扩展 result：
@@ -701,12 +701,12 @@ subagents: {
 builtInModelOverrides?: Partial<Record<"general-purpose" | "Explore", string>>;
 ```
 
-不要让 core 反向依赖 services。若 core 当前允许依赖 `@zcode/shared`，也可以使用 shared 类型；否则保留上面的 core-local 类型。
+不要让 core 反向依赖 services。若 core 当前允许依赖 `@s-agent/shared`，也可以使用 shared 类型；否则保留上面的 core-local 类型。
 
 - [ ] **Step 6：跑 bootstrap 测试**
 
 ```bash
-pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts
+pnpm --filter @s-agent/bootstrap test -- --run tests/subagents.test.ts
 ```
 
 预期：通过。
@@ -1014,7 +1014,7 @@ it("runs built-in Explore on configured concrete model override", async () => {
 - [ ] **Step 5：跑 core targeted tests**
 
 ```bash
-pnpm --filter @zcode/core test -- --run tests/subagent-profile.test.ts tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core test -- --run tests/subagent-profile.test.ts tests/subagent-explore.test.ts
 ```
 
 预期：通过。
@@ -1250,7 +1250,7 @@ getAllowedTools: (input) => {
 - [ ] **Step 5：跑 runtime 测试**
 
 ```bash
-pnpm --filter @zcode/core test -- --run tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core test -- --run tests/subagent-explore.test.ts
 ```
 
 预期：通过。
@@ -1522,7 +1522,7 @@ const handleBuiltInModelChange = async (agent: AgentSummary, nextValue: string) 
 - [ ] **Step 10：跑 UI 测试**
 
 ```bash
-pnpm --filter @zcode/ui test -- --run test/subagentsSection.test.ts
+pnpm --filter @s-agent/ui test -- --run test/subagentsSection.test.ts
 ```
 
 预期：通过。
@@ -1545,10 +1545,10 @@ git commit -m "feat(ui): configure built-in subagent models"
 - [ ] **Step 1：跑 targeted tests**
 
 ```bash
-pnpm --filter @zcode/services test -- --run test/subagentsService.test.ts
-pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts
-pnpm --filter @zcode/core test -- --run tests/subagent-profile.test.ts tests/subagent-explore.test.ts
-pnpm --filter @zcode/ui test -- --run test/subagentsSection.test.ts
+pnpm --filter @s-agent/services test -- --run test/subagentsService.test.ts
+pnpm --filter @s-agent/bootstrap test -- --run tests/subagents.test.ts
+pnpm --filter @s-agent/core test -- --run tests/subagent-profile.test.ts tests/subagent-explore.test.ts
+pnpm --filter @s-agent/ui test -- --run test/subagentsSection.test.ts
 ```
 
 预期：全部通过。
@@ -1635,10 +1635,10 @@ pnpm lint
 - `Explore` allowed tools 已按 effective child model 计算。
 
 验证：
-- `pnpm --filter @zcode/services test -- --run test/subagentsService.test.ts`
-- `pnpm --filter @zcode/bootstrap test -- --run tests/subagents.test.ts`
-- `pnpm --filter @zcode/core test -- --run tests/subagent-profile.test.ts tests/subagent-explore.test.ts`
-- `pnpm --filter @zcode/ui test -- --run test/subagentsSection.test.ts`
+- `pnpm --filter @s-agent/services test -- --run test/subagentsService.test.ts`
+- `pnpm --filter @s-agent/bootstrap test -- --run tests/subagents.test.ts`
+- `pnpm --filter @s-agent/core test -- --run tests/subagent-profile.test.ts tests/subagent-explore.test.ts`
+- `pnpm --filter @s-agent/ui test -- --run test/subagentsSection.test.ts`
 - `pnpm typecheck`
 - `pnpm lint`
 ```

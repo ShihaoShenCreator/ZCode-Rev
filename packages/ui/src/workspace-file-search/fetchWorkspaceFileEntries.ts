@@ -1,5 +1,5 @@
-import type { IFileService } from "@zcode/services";
-import { WORKSPACE_FILE_ENTRIES_CHUNK_SIZE } from "@zcode/shared/workspaceFileEntriesCodec";
+import type { IFileService } from "@s-agent/services";
+import { WORKSPACE_FILE_ENTRIES_CHUNK_SIZE } from "@s-agent/shared/workspaceFileEntriesCodec";
 
 /**
  * 分块拉取 workspace 文件索引的列式 packed 字符串。

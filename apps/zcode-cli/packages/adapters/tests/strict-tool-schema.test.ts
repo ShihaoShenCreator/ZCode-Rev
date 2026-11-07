@@ -3,7 +3,7 @@
 // ============================================================
 
 import { describe, expect, it } from "vitest";
-import type { ModelToolContract } from "@zcode/contracts";
+import type { ModelToolContract } from "@s-agent/contracts";
 import { toAiSdkTools } from "../src/model/index.js";
 import {
   isAnthropicFirstPartyModelId,

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import type { RunContext } from "@zcode/shared-types";
-import type { GlobalOptions } from "@zcode/shared-types";
+import type { RunContext } from "@s-agent/shared-types";
+import type { GlobalOptions } from "@s-agent/shared-types";
 import { runPluginsCommand } from "../src/plugins-command.js";
 import { run } from "../src/run.js";
 

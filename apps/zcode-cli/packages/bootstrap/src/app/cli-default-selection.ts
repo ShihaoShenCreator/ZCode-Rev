@@ -1,4 +1,4 @@
-import { createQueryId, type ModelSelection, type TurnInputIntentMetadata } from "@zcode/contracts";
+import { createQueryId, type ModelSelection, type TurnInputIntentMetadata } from "@s-agent/contracts";
 
 /** CLI 配置命令的会话默认值；Core Session 仍独立负责后台与 Goal 续跑。 */
 export class CliDefaultSelection {

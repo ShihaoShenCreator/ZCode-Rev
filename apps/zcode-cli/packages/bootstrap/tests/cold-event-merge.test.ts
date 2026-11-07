@@ -7,7 +7,7 @@ import {
   type SessionId,
   type TraceId,
   type TurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { ProductProjection } from "../src/zcode-protocol-v4/product-projection.js";
 import { buildColdFileChangeSummaries } from "../src/zcode-protocol-v4/cold-file-change-summaries.js";
 import * as coldEventMerge from "../src/zcode-protocol-v4/cold-event-merge.js";

@@ -1413,7 +1413,7 @@ cd C:\Users\dev\z-code
 $env:ZCODE_CUA_DEV_ROOT='C:\Users\dev\zcode-cua'
 pnpm exec vitest run packages/services/test/windowsCuaDevHelper.integration.test.ts
 pnpm exec vitest run packages/services/test/cua
-pnpm --filter @zcode/zcode-cua-plugin test
+pnpm --filter @s-agent/zcode-cua-plugin test
 Remove-Item Env:ZCODE_CUA_DEV_ROOT
 pnpm typecheck
 pnpm lint

@@ -1,12 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { describe, expect, it, vi } from "vitest";
-import { createModelId, createModelProviderId } from "@zcode/contracts";
+import { createModelId, createModelProviderId } from "@s-agent/contracts";
 import {
   createRegistryModelConfig,
   createRegistryProviderConfig,
   parseProviderConfig,
   parseZCodeBuiltinModelConfigRules,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { AiSdkModelAdapter } from "../src/model/runner.js";
 
 describe("新目录通过真实 SDK 发出的请求", () => {

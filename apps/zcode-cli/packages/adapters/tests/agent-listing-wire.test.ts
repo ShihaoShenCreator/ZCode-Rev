@@ -1,13 +1,13 @@
 import { readFile } from "node:fs/promises";
 import { describe, expect, it, vi } from "vitest";
-import { createModelId, createModelProviderId } from "@zcode/contracts";
+import { createModelId, createModelProviderId } from "@s-agent/contracts";
 import {
   createRegistryModelConfig,
   createRegistryProviderConfig,
   parseModelConfig,
   parseProviderConfig,
   parseZCodeBuiltinModelConfigRules,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { collectAgentListingAttachment } from "../../core/src/subagent/listing.js";
 import { buildProviderRequestMessages } from "../../core/src/runtime/helpers/provider-request-messages.js";
 import type { RuntimeMessageEntry } from "../../core/src/agent/message-history.js";

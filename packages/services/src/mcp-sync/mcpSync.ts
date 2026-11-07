@@ -8,8 +8,8 @@ import type {
   ZCodeMcpListResult,
   WorkspaceMcpTrustDecision,
   ZCodeWorkspaceMcpTrustResult,
-} from "@zcode/shared";
-import { ServiceChannels } from "@zcode/shared";
+} from "@s-agent/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import type { IDataSyncCategoryService } from "../data-sync/contract.js";
 import { createServiceDescriptor } from "../descriptors.js";
 

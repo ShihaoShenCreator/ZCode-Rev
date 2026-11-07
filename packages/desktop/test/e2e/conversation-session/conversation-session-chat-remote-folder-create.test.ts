@@ -5,13 +5,13 @@ import {
   buildServerRemoteWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
   type SourceServerManagementSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_COMPOSER_WORKSPACE_TRIGGER,
   TID_COMPOSER_REMOTE_CONNECTION,
   TID_SETTINGS_PAGE,
-} from "@zcode/shared/test-ids";
-import type { ProjectTree, RemoteProjectDirectory } from "@zcode/services";
+} from "@s-agent/shared/test-ids";
+import type { ProjectTree, RemoteProjectDirectory } from "@s-agent/services";
 import {
   prepareV4ConversationE2E,
   setV4ComposerText,

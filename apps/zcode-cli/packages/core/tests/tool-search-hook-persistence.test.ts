@@ -9,7 +9,7 @@ import {
   type Model,
   type ModelRequest,
   type ModelResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../../adapters/src/storage/session-store/sqlite-session-store.js";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import type { HookCallback } from "../src/hooks/types.js";

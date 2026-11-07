@@ -3,7 +3,7 @@ import type {
   SessionId,
   ToolCallId,
   TurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export interface SubagentInteractionOriginContext {
   agentId: string;

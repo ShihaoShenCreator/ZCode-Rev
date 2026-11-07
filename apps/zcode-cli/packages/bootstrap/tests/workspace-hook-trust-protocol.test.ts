@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { InMemoryWorkspaceHookPolicyProvider } from "@zcode/core";
+import { InMemoryWorkspaceHookPolicyProvider } from "@s-agent/core";
 import { grantWorkspaceHookTrustForProtocol } from "../src/zcode-protocol/workspace-hook-trust.js";
 import { notifyWorkspaceHookTrustGrantSessions } from "../src/zcode-protocol/server.js";
 

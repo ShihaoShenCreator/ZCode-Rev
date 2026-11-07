@@ -6,7 +6,7 @@ import {
   TID_V4_COMPOSER_INPUT,
   TID_V4_STOP,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { Key } from "webdriverio";
 import {
   INCOMING_MESSAGE_MODES,

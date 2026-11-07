@@ -19,7 +19,7 @@ import {
   type HookRunLifecyclePayload,
   type Logger,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   WorkspaceHookTrustCoordinator,
   createConfiguredHookRunner,

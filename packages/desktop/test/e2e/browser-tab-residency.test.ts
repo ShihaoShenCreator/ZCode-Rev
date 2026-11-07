@@ -1,4 +1,4 @@
-import { TID_BROWSER_WEBVIEW } from "@zcode/shared/test-ids";
+import { TID_BROWSER_WEBVIEW } from "@s-agent/shared/test-ids";
 import { clearAppData } from "./helpers/desktop-app.js";
 import { prepareConversationE2E } from "./helpers/conversation-session.js";
 import { reloadElectronSessionPreservingBrowserProfile } from "./helpers/e2e-electron-reload.js";

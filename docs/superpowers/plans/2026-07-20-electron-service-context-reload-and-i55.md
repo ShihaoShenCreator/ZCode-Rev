@@ -63,6 +63,6 @@
 - [x] 运行 Electron lifecycle/reload、window target、偏好 seed focused unit。
 - [x] 对 I55、Turbo switch/recovery 运行 fixture check。
 - [x] 分别运行 I55、I38/I39/I42 目标 E2E；I55 修复后连续 3 次通过，I38/I39/I42 真实 reload 3/3 通过。
-- [x] 运行 `pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
+- [x] 运行 `pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
 - [x] 检查运行后无 Electron/host/agent/Chromedriver 残留并复核最终 diff。
 - [x] 仅暂存本任务文件并提交 Conventional Commit。

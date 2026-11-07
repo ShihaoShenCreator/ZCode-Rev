@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { onboardingRecordFileSchema } from "@zcode/shared";
+import { onboardingRecordFileSchema } from "@s-agent/shared";
 
 /** 远程场景从已完成引导的隔离账号开始；导航专项仍走自己的真实引导链。 */
 export async function seedRemoteOnboardingFixture(options: {

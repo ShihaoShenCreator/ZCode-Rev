@@ -10,7 +10,7 @@ import {
   createTurnId,
   type ExecutionPort,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AgentRuntime } from "../src/runtime.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import {

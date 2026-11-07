@@ -1,6 +1,6 @@
 /**
  * mcp-ui 契约：UI 发起的 MCP 资源读取与工具调用在 agent 侧的处理器接口。
- * 参数与结果形状与 `@zcode/shared` 的 `zcodeMcpReadResource*` / `zcodeMcpUiCallTool*` schema 同构，
+ * 参数与结果形状与 `@s-agent/shared` 的 `zcodeMcpReadResource*` / `zcodeMcpUiCallTool*` schema 同构，
  * 由 contract.test 断言两者一致。
  */
 

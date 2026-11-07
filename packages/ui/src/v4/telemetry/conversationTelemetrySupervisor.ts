@@ -2,8 +2,8 @@ import {
   ConversationTelemetryEngine,
   type TelemetryPlatform,
   type ConversationTelemetryObservation,
-} from "@zcode/shared/conversation-telemetry";
-export * from "@zcode/shared/conversation-telemetry";
+} from "@s-agent/shared/conversation-telemetry";
+export * from "@s-agent/shared/conversation-telemetry";
 import { reportAppTelemetryEvent } from "@/lib/appTelemetry.js";
 import {
   reportChatErrorBannerTelemetry,

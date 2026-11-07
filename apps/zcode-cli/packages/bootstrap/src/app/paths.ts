@@ -1,6 +1,6 @@
 import { basename, join } from "node:path";
-import { createProjectId, type ProjectId } from "@zcode/contracts";
-import { resolveProjectMemoryRoot } from "@zcode/core";
+import { createProjectId, type ProjectId } from "@s-agent/contracts";
+import { resolveProjectMemoryRoot } from "@s-agent/core";
 
 export function getCliStorageRoot(storageRoot: string): string {
   return basename(storageRoot) === "cli" ? storageRoot : join(storageRoot, "cli");

@@ -1,8 +1,8 @@
 // v4/conversation/inputPrediction 的 CLI 处理器（docs/web-remote-control/mobile-input-prediction.md）。
 import { describe, expect, it, vi } from "vitest";
-import type { MessageWithParts } from "@zcode/contracts";
-import type { InputPredictionModelCall } from "@zcode/core";
-import { V4_METHODS } from "@zcode/shared/zcode-protocol-v4";
+import type { MessageWithParts } from "@s-agent/contracts";
+import type { InputPredictionModelCall } from "@s-agent/core";
+import { V4_METHODS } from "@s-agent/shared/zcode-protocol-v4";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 import {
   ConversationInputPredictionHandler,

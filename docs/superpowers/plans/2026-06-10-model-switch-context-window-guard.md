@@ -61,7 +61,7 @@ import {
   encodeCustomModelValue,
   type ModelProviderConfig,
   type ZCodeConfigOption,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { resolveTargetModelContextWindow } from "@/chat-input-toolbar/modelSwitchContextWindowGuard.js";
 
 function createModelOption(
@@ -217,7 +217,7 @@ import {
   type ModelProviderModelEntry,
   type ZCodeConfigOption,
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { decodeCustomModelValue } from "@/lib/zcodeCustomModelValue.js";
 
 export interface TargetModelContextWindow {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { WorkflowRunSnapshot } from "@zcode/contracts";
+import type { WorkflowRunSnapshot } from "@s-agent/contracts";
 import {
   applyWorkflowGraphSeed,
   applyWorkflowNodePromptUpdates,

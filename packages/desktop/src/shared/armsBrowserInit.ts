@@ -1,5 +1,5 @@
 import armsRum from "@arms/rum-electron/browser";
-import type { ZCodeRuntimeEnv } from "@zcode/shared";
+import type { ZCodeRuntimeEnv } from "@s-agent/shared";
 import { buildArmsBrowserInitConfig } from "./armsRumShared.js";
 
 let bootstrapped = false;

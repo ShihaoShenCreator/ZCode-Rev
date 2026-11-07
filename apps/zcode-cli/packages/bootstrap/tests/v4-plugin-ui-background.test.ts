@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { ConversationV4Gateway } from "../src/zcode-protocol-v4/index.js";
 
 const ui = { pluginId: "editor@example", resourceUri: "ui://editor", surface: "editor" };

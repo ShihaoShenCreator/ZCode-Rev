@@ -1,5 +1,5 @@
 import { join, resolve } from "node:path";
-import { traceContextToLogContext, type TraceContext } from "@zcode/contracts";
+import { traceContextToLogContext, type TraceContext } from "@s-agent/contracts";
 import type { ReadFileStateEntry, ReadFileStateMap } from "../deps.js";
 import type { AgentRuntimeInternal } from "../internal.js";
 import {

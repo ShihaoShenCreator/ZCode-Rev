@@ -2,8 +2,8 @@
 // 新建草稿按项目隔离；未归类任务仅在首发接纳后分配下一工作区。
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_CHAT_MODE_SELECT_TRIGGER, TID_V4_COMPOSER_SEND } from "@zcode/shared/test-ids";
-import { ServiceChannels } from "@zcode/shared";
+import { TID_CHAT_MODE_SELECT_TRIGGER, TID_V4_COMPOSER_SEND } from "@s-agent/shared/test-ids";
+import { ServiceChannels } from "@s-agent/shared";
 import {
   installHandoffRpcProbe,
   callHandoffHost,

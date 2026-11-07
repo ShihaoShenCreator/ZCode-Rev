@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
-import type { RuntimeInputPresentation } from "@zcode/contracts";
+import type { RuntimeInputPresentation } from "@s-agent/contracts";
 import type { RuntimeMessageEntry } from "../src/agent/message-history.js";
 import { buildProviderRequestMessages } from "../src/runtime/helpers/provider-request-messages.js";
 import { wrapSystemReminderForSource } from "../src/system-reminder/source.js";

@@ -1,5 +1,5 @@
-import type { Event } from "@zcode/rpc";
-import { ServiceChannels } from "@zcode/shared";
+import type { Event } from "@s-agent/rpc";
+import { ServiceChannels } from "@s-agent/shared";
 import { createServiceDescriptor } from "#src/descriptors.js";
 import type { IProjectService } from "#src/project/contract.js";
 import type { IRemoteProjectService } from "#src/remote-projects/contract.js";

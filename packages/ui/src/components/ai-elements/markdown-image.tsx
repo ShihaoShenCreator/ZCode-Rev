@@ -1,7 +1,7 @@
 "use client";
 
-import type { FileMediaPreview } from "@zcode/shared";
-import { decodeMarkdownArtifactImageSource } from "@zcode/shared";
+import type { FileMediaPreview } from "@s-agent/shared";
+import { decodeMarkdownArtifactImageSource } from "@s-agent/shared";
 import { ImageIcon, ImageOffIcon } from "lucide-react";
 import { Children, isValidElement } from "react";
 import type { ComponentProps, MouseEvent } from "react";

@@ -2,8 +2,8 @@
 // persistUserPrompt / persistAssistantMessage / persistSyntheticUserNoticeForSession
 // 必须把 traceContext.turnId 与 v4 origin 词表落进 message.anchor（additive JSON）。
 import { describe, expect, it } from "vitest";
-import type { MessageInfo, TraceContext } from "@zcode/contracts";
-import { createMessageId, createTraceId, createTurnId } from "@zcode/contracts";
+import type { MessageInfo, TraceContext } from "@s-agent/contracts";
+import { createMessageId, createTraceId, createTurnId } from "@s-agent/contracts";
 import {
   persistAssistantMessage,
   persistSyntheticUserNoticeForSession,

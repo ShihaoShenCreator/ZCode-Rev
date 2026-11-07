@@ -1,4 +1,4 @@
-import type { RequestVerificationReason } from "@zcode/shared";
+import type { RequestVerificationReason } from "@s-agent/shared";
 import { createHash } from "node:crypto";
 import {
   BIGMODEL_PROVIDER_ID,
@@ -8,7 +8,7 @@ import {
   type ZCodeAccountAccess,
   type ZCodeProviderAccountAccess,
   ZAI_PROVIDER_ID,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export interface AccountRequestAuthMaterial {
   /** 私有传输字段兼容旧命名；套餐 OAuth 实际传入短期 Project Token。 */

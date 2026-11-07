@@ -4,16 +4,16 @@ import { createServer, type Server } from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { createNodeExecutionAdapter } from "@zcode/adapters/exec";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
-import { createJimpImageProcessorAdapter } from "@zcode/adapters/image";
+import { createNodeExecutionAdapter } from "@s-agent/adapters/exec";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
+import { createJimpImageProcessorAdapter } from "@s-agent/adapters/image";
 import { createPdfProviderFixture } from "./helpers/pdf-provider-fixture.js";
-import { createPopplerPdfDocumentAdapter } from "@zcode/adapters/pdf";
+import { createPopplerPdfDocumentAdapter } from "@s-agent/adapters/pdf";
 import {
   createInMemorySessionEventStore,
   createNodeToolArtifactStore,
   createSqliteSessionStore,
-} from "@zcode/adapters/storage";
+} from "@s-agent/adapters/storage";
 import {
   createModelId,
   createModelProviderId,
@@ -23,8 +23,8 @@ import {
   createTurnId,
   type ImageProcessorPort,
   type PdfDocumentPort,
-} from "@zcode/contracts";
-import { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import { AgentRuntime } from "@s-agent/core";
 
 const CHAT_MODEL = {
   providerId: createModelProviderId("pdf-capture"),

@@ -6,15 +6,15 @@ import type {
   AccountProviderConnectionResult,
   ProviderConfigSnapshot,
   ProviderSource,
-} from "@zcode/provider";
-import { AccountProviderService, createAccountProviderConfigResolver } from "@zcode/provider";
+} from "@s-agent/provider";
+import { AccountProviderService, createAccountProviderConfigResolver } from "@s-agent/provider";
 import {
   type ApiClient,
   type ProviderFamilyConnectionSelectionSettings,
   type ProviderFamilyDomain,
   type ZCodeAccountAccess,
   type ZCodeProviderAccountAccess,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   CodingPlanAvailabilityProvider,
   CodingPlanAvailabilityResult,

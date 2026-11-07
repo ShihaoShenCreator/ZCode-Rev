@@ -1,5 +1,5 @@
 import { openWorkspaceDraftFromSidebar } from "./helpers/workspace-agent-warmup.js";
-import { BUILTIN_PROVIDER_TEMPLATE_IDS, decodeCustomModelValue } from "@zcode/shared";
+import { BUILTIN_PROVIDER_TEMPLATE_IDS, decodeCustomModelValue } from "@s-agent/shared";
 import {
   TID_CHAT_ERROR_BANNER,
   TID_CHAT_MODEL_SELECT_TRIGGER,
@@ -15,7 +15,7 @@ import {
   TID_V4_COMPOSER_INPUT,
   TID_V4_COMPOSER_SEND,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

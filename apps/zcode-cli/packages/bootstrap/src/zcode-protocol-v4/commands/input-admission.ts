@@ -3,13 +3,13 @@
 // queue / fork-edit-retry 五个命令组共同消费，属于 commands 层的横向能力，
 // 因此与 prompt-turn.ts、record-access.ts 并列放在 commands/ 下，
 // 而不是寄居在某一个 handler 文件里。
-import type { SubmissionMode } from "@zcode/shared/zcode-protocol-v4";
+import type { SubmissionMode } from "@s-agent/shared/zcode-protocol-v4";
 import {
   isHighspeedProviderId,
   resolveExecutionState,
   type ModelSelection,
-} from "@zcode/shared";
-import type { TurnAttachment } from "@zcode/core";
+} from "@s-agent/shared";
+import type { TurnAttachment } from "@s-agent/core";
 import type { SteerTurnOptions } from "../../app/types.js";
 import { parseProviderQualifiedModelSelection } from "../../app/provider-registry-selection.js";
 import type { V4CommandCoreHost, V4SessionRecordView } from "./types.js";

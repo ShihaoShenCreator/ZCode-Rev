@@ -1,5 +1,5 @@
 import { basename, relative, sep } from "node:path";
-import type { FileSystemPort } from "@zcode/contracts";
+import type { FileSystemPort } from "@s-agent/contracts";
 import { parse as parseYaml } from "yaml";
 
 import {

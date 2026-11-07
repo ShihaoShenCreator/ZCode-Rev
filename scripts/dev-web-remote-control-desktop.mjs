@@ -10,7 +10,7 @@ const webRemoteControlUrl =
 
 console.log(`[dev:web-remote-control] desktop ZCODE_WEB_REMOTE_CONTROL_URL=${webRemoteControlUrl}`);
 
-const child = spawn(pnpmCommand, ["--filter", "@zcode/desktop", "dev:local-cli"], {
+const child = spawn(pnpmCommand, ["--filter", "@s-agent/desktop", "dev:local-cli"], {
   stdio: "inherit",
   env: {
     ...process.env,

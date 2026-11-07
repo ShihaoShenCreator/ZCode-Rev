@@ -7,7 +7,7 @@ import {
   type DataSyncImportResultItem,
   type DataSyncListItem,
   type PluginDataSyncPayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { pathExists, updateJsonObjectFile } from "#src/fs/atomicFileUtils.js";
 import { createServiceLogger } from "#src/logger/serviceLogger.js";
 import {

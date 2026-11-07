@@ -341,7 +341,7 @@ contracts/spec/tests: 本文 §3/§4/§5；storage/contract.ts + contract.test.t
 - Renderer 直接 `fs` 扫盘或自建队列 ❌ —— 只走 `IStorageService`。
 - 第二套目录遍历器 ❌ —— desktop main 的 `zcodeDataSizeScanner.ts` 遍历逻辑迁入本模块 adapters，遥测 Worker 改为 import 同一实现。
 - domain 里出现 `fs` / `path.resolve(homedir)` / 定时器 ❌ —— 分类、折叠、清理计划全是纯函数。
-- 深层 import `@zcode/services/src/storage/app/...` ❌ —— 只允许 `contract.ts`。
+- 深层 import `@s-agent/services/src/storage/app/...` ❌ —— 只允许 `contract.ts`。
 
 ### 10.2 模块布局与分层
 

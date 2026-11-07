@@ -1,4 +1,4 @@
-import { beginLocalTurnPreparation, type LocalTtftDetail } from "@zcode/contracts";
+import { beginLocalTurnPreparation, type LocalTtftDetail } from "@s-agent/contracts";
 import { runtimeInputMetadata } from "../../agent/runtime-input-presentation.js";
 import { refreshWorkspaceTrustAdmission } from "./mcp.js";
 import { withConversationQuotes } from "../helpers/conversation-quotes.js";

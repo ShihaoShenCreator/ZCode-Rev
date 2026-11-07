@@ -6,7 +6,7 @@ import {
   createTurnId,
   type PermissionBrokerRequest,
   type PermissionBrokerResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { deriveChildClientPorts } from "../src/runtime/helpers/child-client-ports.js";
 import { createRefreshRuntimeHeadersBeforeModelAttempt } from "../src/runtime/methods/model-runtime-headers.js";
 

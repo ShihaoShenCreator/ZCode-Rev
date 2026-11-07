@@ -8,7 +8,7 @@ import {
   type FilePart,
   type MessageWithParts,
   type ToolArtifactStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { filePartToContentBlock } from "../src/agent/file-part-hydration.js";
 import {
   MessageHistoryImpl,

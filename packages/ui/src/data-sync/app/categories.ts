@@ -8,13 +8,13 @@ import {
   WandSparkles,
   type LucideIcon,
 } from "lucide-react";
-import type { IDataSyncCategoryService, IServiceAccessor } from "@zcode/services";
+import type { IDataSyncCategoryService, IServiceAccessor } from "@s-agent/services";
 import {
   PLUGIN_DATA_SYNC_MAX_ITEM_BYTES,
   SKILL_DATA_SYNC_MAX_ITEM_BYTES,
   type SourceServerWorkspaceHistoryEntry,
   type UserConfigSyncCategory,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { getWorkspaceSourceServerId } from "@/conversation-workspace-target/sourceIdentity.js";
 import {
   refreshSlashCommandsAfterRemoteSync,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId, type SessionTaskType } from "@zcode/contracts";
+import { createSessionId, type SessionTaskType } from "@s-agent/contracts";
 import { resolveModelRetryBudgetFromTaskType } from "../src/runtime/methods/model-request-session-type.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

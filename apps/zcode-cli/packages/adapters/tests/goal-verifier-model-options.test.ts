@@ -8,7 +8,7 @@ import {
   createModelProviderId,
   createSessionId,
   type ModelOptions,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../../core/src/runtime.js";
 import { createModel } from "../src/model/model.js";
 import { createSqliteSessionStore } from "../src/storage/session-store/sqlite-session-store.js";

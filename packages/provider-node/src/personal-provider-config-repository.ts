@@ -6,8 +6,8 @@ import {
   type PersonalProviderConfigRepository,
   type ProviderConfigLayerSnapshot,
   type ProviderConfigLayerUpdate,
-} from "@zcode/provider";
-import { atomicWritePrivateTextFile, withFileLock } from "@zcode/shared/node";
+} from "@s-agent/provider";
+import { atomicWritePrivateTextFile, withFileLock } from "@s-agent/shared/node";
 import {
   decodeProviderConfigFile,
   encodeProviderConfigFile,

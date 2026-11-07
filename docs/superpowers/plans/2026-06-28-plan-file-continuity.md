@@ -6,7 +6,7 @@
 
 **Architecture:** 以 provider-visible tool schema、tool prompt、runtime injected input、tool output、plan-file reminder 组成的 plan-file 合同为唯一目标。模型只看到 `ExitPlanMode({ allowedPrompts? })`；runtime 在 permission/hook/handler 之前从当前 plan file 注入 `{ plan, planFilePath }`；审批通过后的 tool output 使用 `{ plan, isAgent, filePath, hasTaskTool?, planWasEdited?, awaitingLeaderApproval?, requestId? }` shape。Plan file 本身是计划正文的事实来源，session event 只记录 plan file path/status 以支持 compact、resume 和 snapshot。
 
-**Tech Stack:** TypeScript, Zod, Vitest, `@zcode/contracts`, ZCode core runtime/tool executor, session events/reducer, provider-visible prompt trajectory, desktop continuous and web-remote replayable session projection.
+**Tech Stack:** TypeScript, Zod, Vitest, `@s-agent/contracts`, ZCode core runtime/tool executor, session events/reducer, provider-visible prompt trajectory, desktop continuous and web-remote replayable session projection.
 
 ## Global Constraints
 
@@ -305,7 +305,7 @@ it("matches the ExitPlanMode plan-file provider contract", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/tool-contracts.test.ts -t "ExitPlanMode plan-file provider contract"
+pnpm --filter @s-agent/core exec vitest run tests/tool-contracts.test.ts -t "ExitPlanMode plan-file provider contract"
 ```
 
 Expected: FAIL because current schema exposes `plan`.
@@ -327,7 +327,7 @@ it("keeps injected ExitPlanMode plan fields out of provider schema", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/plan-mode-tool.test.ts -t "injected ExitPlanMode plan fields"
+pnpm --filter @s-agent/core exec vitest run tests/plan-mode-tool.test.ts -t "injected ExitPlanMode plan fields"
 ```
 
 Expected: FAIL because `executionInputSchema` does not exist.
@@ -494,7 +494,7 @@ Do not implement `prepareInput` yet; Task 3 adds it.
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/tool-contracts.test.ts tests/plan-mode-tool.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/tool-contracts.test.ts tests/plan-mode-tool.test.ts
 ```
 
 Expected: only tests that require actual plan file enrichment may still fail; schema tests pass.
@@ -562,7 +562,7 @@ it("does not create the plan file when entering plan mode", async () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/plan-mode-tool.test.ts -t "plan file"
+pnpm --filter @s-agent/core exec vitest run tests/plan-mode-tool.test.ts -t "plan file"
 ```
 
 Expected: FAIL because no plan path is reserved.
@@ -573,7 +573,7 @@ Create `apps/zcode-cli/packages/core/src/runtime/helpers/plan-file.ts`:
 
 ```ts
 import path from "node:path";
-import type { FileSystemPort, SessionId } from "@zcode/contracts";
+import type { FileSystemPort, SessionId } from "@s-agent/contracts";
 
 export interface PlanFilePathInput {
   fileSystemPort: FileSystemPort;
@@ -703,7 +703,7 @@ it("still denies non-plan-file writes while in plan mode", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/permission-service.test.ts -t "plan file"
+pnpm --filter @s-agent/core exec vitest run tests/permission-service.test.ts -t "plan file"
 ```
 
 Expected: FAIL because `allowInPlanMode` does not exist.
@@ -779,7 +779,7 @@ Use `EditInputSchema` in `edit.ts`. Do not add this to `ApplyPatch` or `Bash`.
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/plan-mode-tool.test.ts tests/permission-service.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/plan-mode-tool.test.ts tests/permission-service.test.ts
 ```
 
 Expected: PASS.
@@ -854,7 +854,7 @@ it("injects plan and planFilePath from disk before requesting approval", async (
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/plan-mode-tool.test.ts -t "injects plan"
+pnpm --filter @s-agent/core exec vitest run tests/plan-mode-tool.test.ts -t "injects plan"
 ```
 
 Expected: FAIL because `prepareInput` is not implemented.
@@ -998,7 +998,7 @@ Update `turn-loop.ts` to pass `this.approvedPlanFilePath`.
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/plan-mode-tool.test.ts tests/tool-contracts.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/plan-mode-tool.test.ts tests/tool-contracts.test.ts
 ```
 
 Expected: PASS.
@@ -1144,8 +1144,8 @@ The UI and services must receive this under session projection, not as relay/mai
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts exec vitest run
-pnpm --filter @zcode/core exec vitest run tests/plan-mode-tool.test.ts tests/runtime-persistence.test.ts
+pnpm --filter @s-agent/contracts exec vitest run
+pnpm --filter @s-agent/core exec vitest run tests/plan-mode-tool.test.ts tests/runtime-persistence.test.ts
 pnpm vitest run packages/services/test/zcodeSessionService.test.ts
 ```
 
@@ -1201,7 +1201,7 @@ it("re-injects approved plan file contents after compact", async () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-compact.test.ts -t "approved plan file"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-compact.test.ts -t "approved plan file"
 ```
 
 Expected: FAIL because no plan reminder exists.
@@ -1303,7 +1303,7 @@ it("re-injects draft plan file contents when compact runs during plan mode", asy
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-compact.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-compact.test.ts
 ```
 
 Expected: PASS.
@@ -1485,9 +1485,9 @@ Expected assertions in `expect.json`:
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts build
-pnpm --filter @zcode/core build
-pnpm --filter @zcode/bootstrap build
+pnpm --filter @s-agent/contracts build
+pnpm --filter @s-agent/core build
+pnpm --filter @s-agent/bootstrap build
 ```
 
 Expected: all build commands exit `0`.
@@ -1497,7 +1497,7 @@ Expected: all build commands exit `0`.
 Run:
 
 ```bash
-pnpm --filter @zcode/prompt-trajectory run:testcases -- plan-file-exit
+pnpm --filter @s-agent/prompt-trajectory run:testcases -- plan-file-exit
 ```
 
 Expected: new plan-file fixture passes and old SR9 runtime fixture is updated for plan file wording.
@@ -1507,7 +1507,7 @@ Expected: new plan-file fixture passes and old SR9 runtime fixture is updated fo
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/tool-contracts.test.ts -t "ExitPlanMode"
+pnpm --filter @s-agent/core exec vitest run tests/tool-contracts.test.ts -t "ExitPlanMode"
 ```
 
 Expected: PASS and no provider-visible `properties.plan`.
@@ -1548,7 +1548,7 @@ Expected: no unrelated uncommitted changes from this plan. If user WIP exists, l
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/tool-contracts.test.ts tests/plan-mode-tool.test.ts tests/permission-service.test.ts tests/runtime-compact.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/tool-contracts.test.ts tests/plan-mode-tool.test.ts tests/permission-service.test.ts tests/runtime-compact.test.ts
 pnpm vitest run packages/ui/test/zcodeSessionProjection.test.ts packages/ui/test/toolDisplay.test.ts
 ```
 

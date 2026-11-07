@@ -1,4 +1,4 @@
-import { Event as RpcEvent } from "@zcode/rpc";
+import { Event as RpcEvent } from "@s-agent/rpc";
 import type { IConversationShareService } from "#src/conversation-share/conversationShare.js";
 import type { IZCodeAgentService } from "#src/zcode-agent/zcodeAgent.js";
 import {

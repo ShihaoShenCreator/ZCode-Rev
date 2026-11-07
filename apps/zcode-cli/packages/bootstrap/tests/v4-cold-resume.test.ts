@@ -16,12 +16,12 @@ import { tmpdir } from "node:os";
 import { PassThrough } from "node:stream";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   zcodeProtocolMethods,
   zcodeSessionStateSnapshotSchema,
   type ZCodeProtocolMessage,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   V4_METHODS,
   applyConversationDeltas,
@@ -37,7 +37,7 @@ import {
   v4ConversationRowsRangeResultSchema,
   v4SessionsIndexSubscribeResultSchema,
   type ConversationTopicFrame,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type {
   EventId,
   MessageId,
@@ -50,20 +50,20 @@ import type {
   SessionId,
   TraceId,
   WorkspaceId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   CompactTrigger,
   SESSION_ENTRY_MODEL_SELECTION,
   SessionEventType,
   type CompactBoundaryPayload,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
   type Provider,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import {
   ConversationV4Gateway,
   V4SubscribeSessionUnavailableError,

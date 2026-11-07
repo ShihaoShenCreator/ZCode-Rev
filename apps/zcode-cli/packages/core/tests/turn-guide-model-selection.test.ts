@@ -4,7 +4,7 @@ import {
   createModelProviderId,
   type Model,
   type ModelSelection,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { drainInlineGuideForNextRequest } from "../src/runtime/methods/turn-guide-drain.js";
 
 describe("inline Guide model selection", () => {

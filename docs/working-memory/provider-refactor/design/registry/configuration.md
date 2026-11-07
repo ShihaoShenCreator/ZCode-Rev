@@ -714,7 +714,7 @@ Account Built-in Config Source ───> ProviderRegistry
 ```
 
 Built-in 发布文件统一命名为 `config/provider/zcode-builtin.json`。Desktop、CLI/TUI、测试和 SEA 各自显式
-注入可访问的 Source 路径或普通对象，`@zcode/provider` 不读取文件。Provider Config 链不保留
+注入可访问的 Source 路径或普通对象，`@s-agent/provider` 不读取文件。Provider Config 链不保留
 `official.json`、旧环境变量或旧协议字段兼容；原子切换计划见
 [`../../steps/todo-10-zcode-builtin-provider-config-naming-cutover.md`](../../steps/todo-10-zcode-builtin-provider-config-naming-cutover.md)。
 

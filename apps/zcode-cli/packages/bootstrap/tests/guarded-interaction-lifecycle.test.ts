@@ -7,14 +7,14 @@ import {
   type ExecutionRequest,
   type PermissionBrokerResult,
   type SessionEvent,
-} from "@zcode/contracts";
-import { zcodePermissionResponseSchema } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { zcodePermissionResponseSchema } from "@s-agent/shared";
 import {
   createToolExecutor,
   createToolRegistry,
   registerBuiltInTools,
   PermissionService,
-} from "@zcode/core";
+} from "@s-agent/core";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 import { V4InteractionRegistry } from "../src/zcode-protocol-v4/interaction-registry.js";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";

@@ -22,7 +22,7 @@ import {
   RESOLVE_WORKFLOW_QUESTION_TOOL_NAME,
   type EscalateQuestionRequest,
   type WorkflowEscalatePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   InMemoryJournalStore,
   type ActorRef,
@@ -32,7 +32,7 @@ import {
   type SessionRef,
   type WorkflowDriver,
   type WorkflowReportSink,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { toProtocolEvent } from "../src/app/dynamic-workflow-run-launch.js";
 import { workflowActorToolPolicy } from "../src/app/workflow-actor-tools.js";
 import { createAgentRuntimeWorkflowDriver } from "../src/app/workflow-driver.js";

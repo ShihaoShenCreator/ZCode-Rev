@@ -8,14 +8,14 @@ import type {
   CommandEnvelope,
   CommandPayloadMap,
   CommandResult,
-} from "@zcode/shared/zcode-protocol-v4";
-import { isHighspeedProviderId } from "@zcode/shared";
+} from "@s-agent/shared/zcode-protocol-v4";
+import { isHighspeedProviderId } from "@s-agent/shared";
 import {
   RewindStrategy,
   traceContextToLogContext,
   type MessageId,
   type TurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { mapAttachmentRefsToTurnAttachments } from "../attachment-refs.js";
 import { V4PromptRejectedError } from "../prompt-turn.js";
 import { commandAdmissionOf } from "../executor.js";

@@ -1,17 +1,17 @@
 import { DatabaseSync } from "node:sqlite";
-import { createRemoteProjectService } from "@zcode/services/node";
+import { createRemoteProjectService } from "@s-agent/services/node";
 import { requestRemoteProjectConnection } from "#e2e/helpers/remote-project-actions";
 import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-electron-reload";
 import { mkdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { appSettingsSchema } from "@zcode/shared";
+import { appSettingsSchema } from "@s-agent/shared";
 import {
   TID_PROJECT_SECTION,
   TID_CONVERSATION_SECTION,
   TID_SSH_DIALOG,
   TID_SSH_PASSWORD_INPUT,
   TID_SSH_ERROR,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   getE2EAppDataPaths,

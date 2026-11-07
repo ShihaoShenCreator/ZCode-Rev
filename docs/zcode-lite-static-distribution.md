@@ -70,14 +70,14 @@ mobile browser -> relay -> desktop main -> existing host/services -> existing ru
 
 ## 当前普通 Web 支持边界
 
-这里的“普通 Web”指浏览器直接连接 `@zcode/server` 的同源 `/ws`，包括开发环境的 Web 入口和 `zcode-lite serve` 打开的 ZCode Lite 页面；它不包括手机 `/remote`。
+这里的“普通 Web”指浏览器直接连接 `@s-agent/server` 的同源 `/ws`，包括开发环境的 Web 入口和 `zcode-lite serve` 打开的 ZCode Lite 页面；它不包括手机 `/remote`。
 
 当前普通 Web 没有 Desktop 的窗口级 Local Host 进程，因此也没有 Window Host Controller。依赖 Window Host Controller 聚合本地及远程 source 的左侧全局任务列表，暂时不支持普通 Web / ZCode Lite；Controller 不可用时，不在 Web renderer 中另外实现一套聚合或 fallback 逻辑。
 
 ```text
 当前普通 Web / ZCode Lite：
 browser
-  -> @zcode/server /ws
+  -> @s-agent/server /ws
      -> createLocalServices()
         -X-> Window Host Controller
         -X-> 基于 Controller 的左侧全局任务列表
@@ -149,8 +149,8 @@ dist/zcode-lite/
 
 完成后至少验证：
 
-- `pnpm --filter @zcode/server test -- serverInfoHttp.test.ts` 覆盖静态资源和 token 保护。
-- `pnpm --filter @zcode/web build` 确认 Web bootstrap 能读取 `/api/server-info`。
+- `pnpm --filter @s-agent/server test -- serverInfoHttp.test.ts` 覆盖静态资源和 token 保护。
+- `pnpm --filter @s-agent/web build` 确认 Web bootstrap 能读取 `/api/server-info`。
 - `node scripts/build-zcode-lite.mjs --skip-build` 能生成发布目录和 tarball。
 - 解压 tarball 后运行 `node bin/zcode-lite.mjs serve --port 0 --no-open` 能启动 server 并输出 URL。
 - 提交前执行 `pnpm typecheck` 和 `pnpm lint`。

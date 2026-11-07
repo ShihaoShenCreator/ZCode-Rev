@@ -1,12 +1,12 @@
 import { AsyncLocalStorage } from "node:async_hooks";
-import { isOffPeakTicketExpiredCode } from "@zcode/shared";
+import { isOffPeakTicketExpiredCode } from "@s-agent/shared";
 import {
   modelDescriptorOf,
   type Model,
   type ModelRequestAuth,
   type ModelRequestAuthSource,
   type ModelRequestDependencies,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { projectExecutionErrorPayload } from "../helpers/turn-errors.js";
 import type { OffPeakLifecycle } from "./lifecycle.js";
 

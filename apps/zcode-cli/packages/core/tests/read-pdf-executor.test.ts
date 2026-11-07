@@ -9,7 +9,7 @@ import {
   type FileSystemPort,
   type ImageProcessorPort,
   type PdfDocumentPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { type AgentRuntime } from "../src/runtime.js";
 import { createTurnModel } from "../src/runtime/methods/turn-model.js";

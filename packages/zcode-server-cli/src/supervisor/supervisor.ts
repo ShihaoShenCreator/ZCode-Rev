@@ -1,10 +1,10 @@
-import type { SourceServerRunningTask } from "@zcode/shared";
+import type { SourceServerRunningTask } from "@s-agent/shared";
 /* oxlint-disable eslint(max-lines) -- Supervisor 集中维护生命周期、Core 代际和更新回滚状态机，启动恢复锁边界修复不应拆散其原子流程。 */
 
 import { type ChildProcess } from "node:child_process";
 import { mkdir } from "node:fs/promises";
-import { createServiceLogger } from "@zcode/services/node";
-import { SOURCE_SERVER_UPDATE_RUNNING_TASKS_ERROR_CODE } from "@zcode/shared";
+import { createServiceLogger } from "@s-agent/services/node";
+import { SOURCE_SERVER_UPDATE_RUNNING_TASKS_ERROR_CODE } from "@s-agent/shared";
 import {
   CORE_HEARTBEAT_INTERVAL_MS,
   CORE_KILL_TIMEOUT_MS,

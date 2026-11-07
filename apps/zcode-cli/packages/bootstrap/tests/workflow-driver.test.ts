@@ -13,14 +13,14 @@ import { runInNewContext } from "node:vm";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createInMemorySessionEventStore, createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createInMemorySessionEventStore, createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   SUBMIT_RESULT_TOOL_NAME,
   type ModelRequest,
   type SessionId,
   type SessionStorePort,
-} from "@zcode/contracts";
-import { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import { AgentRuntime } from "@s-agent/core";
 import {
   inputHash,
   InMemoryJournalStore,
@@ -28,7 +28,7 @@ import {
   type ActorRef,
   type ActorSessionSeed,
   type WorkflowReportSink,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { workflowActorToolPolicy } from "../src/app/workflow-actor-tools.js";
 import type { ActorTranscriptStore } from "../src/app/workflow-actor-transcript.js";
 import { createWorkflowEscalationRegistry } from "../src/app/workflow-escalation-registry.js";

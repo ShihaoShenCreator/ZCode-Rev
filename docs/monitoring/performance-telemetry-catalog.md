@@ -9,7 +9,7 @@
 >
 > - **ARMS（main 进程）**：`@arms/rum-electron` `sendCustom`，进程级稳定性 / 资源 / 网络；ZCode CLI 资源由 CLI 自采样后转交 main。
 > - **ARMS（renderer/UI）**：`reportArmsCustomEvent` → IPC → main `sendCustom`，`group=ui_perf`。
-> - **ARMS（CLI Agent）**：`@zcode/telemetry` → OTLP/HTTP protobuf，模型 Logical Call / Physical Attempt。
+> - **ARMS（CLI Agent）**：`@s-agent/telemetry` → OTLP/HTTP protobuf，模型 Logical Call / Physical Attempt。
 > - **`/report`（agent_trace）**：`reportAppTelemetryEvent`，消息链路质量与耗时，**非 ARMS**。
 >
 > **V4 接线规范**：聊天 `/report` 和 renderer ARMS 的恢复口径见
@@ -229,7 +229,7 @@ CLI 直接上报的 `zcode.agent.step` OTel Span 属于
 `model` 与 `chat_error_banner.model_id` 共用同一条白名单：只允许 telemetry 显式白名单中的
 内置稳定模型 ID，自定义 provider 的模型（`custom:<providerId>:<modelName>` 编码值）、
 `<providerId>/<modelId>` 复合值中非内置 provider 的部分，以及内置 provider 下未命中白名单的
-模型，统一写为 `custom`；缺失时留空。实现由 `@zcode/shared` 的
+模型，统一写为 `custom`；缺失时留空。实现由 `@s-agent/shared` 的
 `sanitizeTelemetryModelValue` 收口，`uiPerfArmsTelemetry.emit` 在发送前统一改写 `model`
 属性，调用方无需各自处理。白名单来源与内置 provider 双命名空间（运行时 `account:*` 与旧报表身份
 `builtin:*`）的判定规则见 [plan-usage-arms-telemetry](./plan-usage-arms-telemetry.md)。
@@ -287,7 +287,7 @@ telemetry 白名单内的内置稳定模型 ID；自定义或未命中白名单�
 React 错误边界拦截子树渲染异常并阻止其冒泡到 `window.onerror`，Browser RUM SDK 的自动采集
 看不到这类错误，因此单独补一条自定义事件。`boundary_scope` 为根级 `app` 或各 scoped 边界名。
 
-隐私边界：`error_message`、`error_stack`、`component_stack` 在上报前必须经 `@zcode/shared` 的
+隐私边界：`error_message`、`error_stack`、`component_stack` 在上报前必须经 `@s-agent/shared` 的
 `redactTelemetryText`，与 ARMS 自动采集 exception 事件
 （[脱敏边界](./arms-browser-monitoring.md#自动采集事件的脱敏边界)）同一套规则：绝对路径归一为
 `{path}`、邮箱归一为 `{email}`、URL 只留 `protocol//host` 与归一化路由、凭据归一为

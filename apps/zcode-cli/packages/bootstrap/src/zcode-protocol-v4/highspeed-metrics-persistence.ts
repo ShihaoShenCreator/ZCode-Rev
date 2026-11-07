@@ -7,8 +7,8 @@ import {
   type SessionId,
   type SessionStorePort,
   type TraceId,
-} from "@zcode/contracts";
-import { highspeedMessageMetaSchema } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { highspeedMessageMetaSchema } from "@s-agent/shared";
 
 export interface PersistHighspeedMetricsInput {
   sessionStore: SessionStorePort;

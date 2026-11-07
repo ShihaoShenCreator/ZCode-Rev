@@ -5,7 +5,7 @@ import {
   createSessionId,
   createTurnId,
   type ToolArtifactStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   filePartToContentBlock,
   projectPersistedToolMediaContent,

@@ -11,8 +11,8 @@ import {
   TID_V4_HOOK_DETAILS_CONTENT,
   TID_V4_HOOK_DETAILS_TRIGGER,
   testId,
-} from "@zcode/shared/test-ids";
-import type { HookExecutionProjection, HookInvocationRow } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/test-ids";
+import type { HookExecutionProjection, HookInvocationRow } from "@s-agent/shared/zcode-protocol-v4";
 import { cn } from "@/components/lib/utils.js";
 import { Button } from "@/components/ui/button.js";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover.js";

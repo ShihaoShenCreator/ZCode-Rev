@@ -19,7 +19,7 @@ import type {
   NodeKind,
   NodeRecord,
   StoredEvent,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import {
   decodeActor,
   decodeEvent,

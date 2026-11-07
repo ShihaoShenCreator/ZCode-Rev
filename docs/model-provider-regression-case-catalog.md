@@ -18,6 +18,14 @@
 该空占位独立保留在 `test/e2e/conversation-session/manual-review/pending/conversation-session-model-provider-dual-window.test.ts`，
 不计入执行通过或正式覆盖；其余五条已有操作的目录缺口回归仍由 `test/e2e/conversation-session/conversation-session-model-provider-regression-gaps.test.ts` 验证。
 
+## S-Agent Provider 退役
+
+| Case ID | 优先级 | 用户场景与准备 | 操作步骤 | 预期结果 | 不应发生 |
+| --- | --- | --- | --- | --- | --- |
+| F-RETIRE-001 | P0 | 使用干净 profile；另准备一份旧 Z.ai/BigModel 账号配置和凭据作为隔离的兼容性输入，以及一个用户自建的 OpenAI-compatible GLM Provider。 | 打开 Provider 设置、模型选择和使用统计；再选择自建 GLM Provider 发起一次本地 fixture 请求。 | 不显示 Z.ai/BigModel 原生 Provider、账号连接、Coding Plan 购买/用量入口；其他 Provider 保持可用；旧专属账号配置不进入运行时；自建 GLM Provider 可正常选择和请求。 | 读取或发送旧账号凭据、将旧账号配置转换为自定义 Provider、误删/隐藏用户自建 GLM Provider，或改变其他 Provider 的可见性与行为。 |
+
+该 case 取代本目录中依赖 Z.ai/BigModel 原生账号、Start/Coding Plan、套餐额度或购买流程的当前产品预期；这些历史行只保留为迁移前证据，不再是 S-Agent 的运行合同。
+
 ## 一、功能 × 功能
 
 | Case ID          | 优先级 | 用户场景与准备                                                          | 操作步骤                                                                | 预期结果                                                                                                                       | 不应发生                                                                  |

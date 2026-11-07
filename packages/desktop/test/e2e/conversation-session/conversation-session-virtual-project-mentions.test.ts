@@ -12,7 +12,7 @@ import {
   TID_TASK_ITEM,
   TID_CONFIRM_DIALOG_CONFIRM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   setInputValueByTestIdDom,

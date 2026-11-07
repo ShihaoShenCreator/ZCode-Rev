@@ -22,7 +22,7 @@ Electron / Web / mobile remote
   |-- command(commandId, clientId, baseRevision, payload)
   `-- local draft / scroll / focus / optimistic overlay
           |
-          | @zcode/rpc MessagePort / remote attachment
+          | @s-agent/rpc MessagePort / remote attachment
           v
 Host connection scope
   |-- trusted clientMode / connectionId
@@ -30,7 +30,7 @@ Host connection scope
   |-- runtime generation / stale subscription cleanup
   `-- no conversation reducer or second queue
           |
-          | @zcode/shared/zcode-protocol-v4 over stdio
+          | @s-agent/shared/zcode-protocol-v4 over stdio
           v
 ZCode CLI
   |-- transcript + session metadata + goal facts

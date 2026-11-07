@@ -1,5 +1,5 @@
-import { decodeCustomModelValue } from "@zcode/shared";
-import type { ZCodeConfigOption } from "@zcode/shared";
+import { decodeCustomModelValue } from "@s-agent/shared";
+import type { ZCodeConfigOption } from "@s-agent/shared";
 
 const FEEDBACK_MODEL_OPTIONS_PREVIEW_LIMIT = 12;
 

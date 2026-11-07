@@ -83,7 +83,7 @@ seq  1               2..N+1                              N+3               N+4 (
 ## 瞬态事件集合
 
 `TRANSIENT_SESSION_EVENT_TYPES = { model_streaming, tool_call_progress, streaming_tool_ledger_updated, model_network_status }`，
-单一出处 `@zcode/contracts`。新增事件类型时若与消息流同频，必须同时加入该集合并补 reducer 忽略断言。
+单一出处 `@s-agent/contracts`。新增事件类型时若与消息流同频，必须同时加入该集合并补 reducer 忽略断言。
 
 ## 观测
 
@@ -94,7 +94,7 @@ seq  1               2..N+1                              N+3               N+4 (
 ## 实现
 
 - `packages/contracts/src/events/session-event-retention.ts`：瞬态集合 + 纯状态机策略
-- `packages/contracts/src/events/in-memory-session-event-store.ts`：store 实现（`@zcode/adapters/storage` 继续 re-export 同名工厂）
+- `packages/contracts/src/events/in-memory-session-event-store.ts`：store 实现（`@s-agent/adapters/storage` 继续 re-export 同名工厂）
 - `packages/bootstrap/src/zcode-protocol/server-types.ts`：`deps.createSessionEventStore(sessionId)` 注入点，默认 turn-window
 - `packages/bootstrap/src/zcode-protocol/server-operations.ts` / `session-residency.ts`：record 释放调 `deleteSession`
 - `packages/bootstrap/src/zcode-protocol/v4-bridge.ts`：冷恢复游标改读计数器

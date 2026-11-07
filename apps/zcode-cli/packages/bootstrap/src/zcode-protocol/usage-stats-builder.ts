@@ -1,11 +1,11 @@
-import type { AppUsageQueryResult } from "@zcode/contracts";
+import type { AppUsageQueryResult } from "@s-agent/contracts";
 import type {
   AppUsageHeatmap,
   AppUsageHeatmapCell,
   AppUsageHeatmapWeek,
   AppUsageRange,
   AppUsageSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const DAY_MS = 86_400_000;
 

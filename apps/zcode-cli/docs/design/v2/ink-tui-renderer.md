@@ -9,7 +9,7 @@ CJK text, emoji, or styled content.
 
 ## Scope
 
-- Replace the handwritten frame painter in `@zcode/tui` with an Ink component
+- Replace the handwritten frame painter in `@s-agent/tui` with an Ink component
   tree.
 - Keep `runTui()` as the public CLI entrypoint.
 - Keep session, permission, live event, token usage, todo, cancellation, and

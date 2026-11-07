@@ -239,9 +239,9 @@ payload。这里的“已验证”不等于 formal E2E 晋升：新差分 spec �
 也可使用已保存的本轮 capture 独立执行维护：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:telemetry:fields --capture <capture.json> --artifact-dir <report-directory>
+pnpm --filter @s-agent/desktop e2e:telemetry:fields --capture <capture.json> --artifact-dir <report-directory>
 # 只查看依据和建议，不更新合同
-pnpm --filter @zcode/desktop e2e:telemetry:fields --capture <capture.json> --artifact-dir <report-directory> --no-sync
+pnpm --filter @s-agent/desktop e2e:telemetry:fields --capture <capture.json> --artifact-dir <report-directory> --no-sync
 ```
 
 独立命令的输入使用本例 `ZCODE_TELEMETRY_PARITY_CAPTURE_PATH` 生成的

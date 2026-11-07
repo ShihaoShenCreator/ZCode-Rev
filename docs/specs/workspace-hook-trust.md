@@ -557,7 +557,7 @@ core flow registry 是 mutation 契约 owner（supersede/validate 语义），�
 镜像消费方时必须消费本函数。事件 order（sequenceNumber）由 product projection 保持，store
 的连接生命周期仍归 store。
 
-**暴露路径约束（2026-08-07 修订，2026-08-10 扩列）：** 直连 subpath 白名单：`@zcode/shared/workspace-hook-review-monotonicity`（裁决函数）、`@zcode/shared/workspace-hook-mutation`（`WorkspaceHookMutationError`/原子写 API，2026-08-10 起 review controller 直连）。全部消费方必须直连声明的 subpath；`workspace-hook-discovery` barrel **禁止 re-export 上述模块**。根因：D16 首版经 discovery barrel 的 `export *` 暴露，packages/ui 的 Desktop 构建链解析该 re-export 边失败，App 重启后无法打开；且 barrel 会形成“同一 API 双暴露路径”，漂移回潮无法被 import 处发现。cli SEA/esbuild 打包侧（`packages/cli/scripts/build.mjs`）必须为**每个** subpath 声明精确 alias——esbuild 按前缀改写，漏声明会被通用 `@zcode/shared` 改写为 `src/index.ts/<subpath>`（文件当目录）导致 pack 失败；alias 顺序由 `build.test.mjs` 锁定。**新增 subpath 三处同步清单：package.json exports / 消费方 import / build.mjs 精确 alias。**
+**暴露路径约束（2026-08-07 修订，2026-08-10 扩列）：** 直连 subpath 白名单：`@s-agent/shared/workspace-hook-review-monotonicity`（裁决函数）、`@s-agent/shared/workspace-hook-mutation`（`WorkspaceHookMutationError`/原子写 API，2026-08-10 起 review controller 直连）。全部消费方必须直连声明的 subpath；`workspace-hook-discovery` barrel **禁止 re-export 上述模块**。根因：D16 首版经 discovery barrel 的 `export *` 暴露，packages/ui 的 Desktop 构建链解析该 re-export 边失败，App 重启后无法打开；且 barrel 会形成“同一 API 双暴露路径”，漂移回潮无法被 import 处发现。cli SEA/esbuild 打包侧（`packages/cli/scripts/build.mjs`）必须为**每个** subpath 声明精确 alias——esbuild 按前缀改写，漏声明会被通用 `@s-agent/shared` 改写为 `src/index.ts/<subpath>`（文件当目录）导致 pack 失败；alias 顺序由 `build.test.mjs` 锁定。**新增 subpath 三处同步清单：package.json exports / 消费方 import / build.mjs 精确 alias。**
 
 **toggle 错误归属约束（2026-08-10，TR27）：** controller.toggle 的 catch 必须按 `WorkspaceHookMutationError.code` 透传（`snapshot_mismatch` ≠ `config_write_failed`）——mismatch 发生在写盘之前，报成“写入失败”会诱导无效重试并掩盖真实原因（UAT 实测：配置写入路径无故障，用户看到的全是误报）。telemetry 的 toggle_failure 必须携带 errorMessage 原文。
 
@@ -2308,7 +2308,7 @@ Phase 0 安全结论：
 
 已完成：
 
-- 新增 Node-only `@zcode/shared/workspace-hook-discovery` subpath，CLI Adapter 与 Settings Service 共用配置路径发现、Hook schema、configured gate、timeout/max-output 归一与 digest/snapshot builder；主 `@zcode/shared` browser-safe 入口不导出 Node-only 实现；
+- 新增 Node-only `@s-agent/shared/workspace-hook-discovery` subpath，CLI Adapter 与 Settings Service 共用配置路径发现、Hook schema、configured gate、timeout/max-output 归一与 digest/snapshot builder；主 `@s-agent/shared` browser-safe 入口不导出 Node-only 实现；
 - 自动发现继续遵循现有 root-to-cwd 语义，支持 `zcode.json`、`.zcode/config.json` 与末尾追加的显式 `projectConfigPath`；非 Git workspace 只扫描 cwd，不自行扩大父目录发现范围；
 - `loadProjectConfigFile()` 将合法 project Hook 声明保存在独立 `hookCandidate` 通道，并产生 `config_project_hooks_pending_trust`；`normalizeProjectConfig()` 继续从 executable patch 剥离 `hooks`，candidate 不进入 `mergeConfigs()`、configured runner 或 callback construction；
 - 实现 versioned `hookDeclarationDigest` 与 `bundleDigest`：declaration digest 覆盖 source identity/order、event、matcher/order、command/process args、command async/shell、resolved timeout 与 max output；`statusMessage`、unknown passthrough 和 configured gates 不进入 declaration digest；configured gates 与 source root 原始值进入 bundle digest；
@@ -2332,7 +2332,7 @@ Phase 1 安全结论：
 
 #### Phase 2 实施决策（2026-08-06 冻结）
 
-- **分层**：纯 Trust evaluation、Policy 与 security revision 位于 `@zcode/core`，dispatch fast path 只读内存；文件路径、锁、原子 JSON 与损坏恢复位于 `@zcode/adapters`；contracts 只承载 versioned data schema。
+- **分层**：纯 Trust evaluation、Policy 与 security revision 位于 `@s-agent/core`，dispatch fast path 只读内存；文件路径、锁、原子 JSON 与损坏恢复位于 `@s-agent/adapters`；contracts 只承载 versioned data schema。
 - **Trust store 路径**：使用受信任的 user CLI storage root 下 `security/workspace-hook-trust-v1.json`。只读取 user config 的 `storage.dir`；不得使用 project config、workspace 文件、环境变量或 `resolveWorkspaceStorageDir()` 覆盖安全记录位置。
 - **并发与原子性**：单进程 mutation 串行化；跨进程使用同目录 `wx` lock file，持锁后重新读取 current store，再以 temp file `write -> fsync -> close -> rename` 提交精确 persistent grant 或 revoke，避免 lost update 和部分写入。
 - **权限**：security 目录使用 user-only mode，store/temp/lock 文件使用 `0600`；权限设置失败不得退化为宽松写入。
@@ -2620,7 +2620,7 @@ Phase 5 安全结论：
 - 类型与构建检查通过：Shared、Contracts、Adapters、Core、Bootstrap、CLI、Services、UI；Bootstrap 在 telemetry helper 拆分后再次完成 build。
 - 变更范围 lint 与 `git diff --check` 通过。验证环境为 Node `v22.22.2`，仓库声明的 Node `24.14.0` 仅产生 engine warning，不影响上述结果。
 - 实际 CLI smoke 已完成：`status → pending_trust`、exact `grant → trusted_persistent`、exact `revoke → pending_trust`；grant 使用 status 返回的当前 declaration digest，未使用 wildcard 或隐式授权。
-- 最终 Desktop 启动审计发现 CLI esbuild 的通用 `@zcode/shared` alias 会错误吞掉新增 Node-only subpath；已为 `@zcode/shared/workspace-hook-discovery` 增加精确 alias，`pnpm --dir apps/zcode-cli/packages/cli build:desktop-agent` 重新通过。
+- 最终 Desktop 启动审计发现 CLI esbuild 的通用 `@s-agent/shared` alias 会错误吞掉新增 Node-only subpath；已为 `@s-agent/shared/workspace-hook-discovery` 增加精确 alias，`pnpm --dir apps/zcode-cli/packages/cli build:desktop-agent` 重新通过。
 - 新增无害 UAT fixture generator 与逐步人工验收清单；真实 Desktop 中的逐条 Trust、toggle 与 digest-change 操作由产品方手工执行，不以 UI 自动化替代最终验收。
 - 未将既有、与 Workspace Hook Trust 无关的 core 全量基线失败计入本 Phase 退出条件；本 Phase 的退出判断以列出的聚焦回归、类型/构建、lint 和 CLI smoke 为准。
 

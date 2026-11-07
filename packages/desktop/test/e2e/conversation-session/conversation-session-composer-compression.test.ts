@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { NodePersonalProviderConfigRepository } from "@zcode/provider-node";
-import { ZCODE_CUA_OFFICIAL_PLUGIN_ID } from "@zcode/shared";
+import { NodePersonalProviderConfigRepository } from "@s-agent/provider-node";
+import { ZCODE_CUA_OFFICIAL_PLUGIN_ID } from "@s-agent/shared";
 import {
   TID_LOGIN_USE_API_KEY_BUTTON,
   TID_TASK_SETTINGS_BUTTON,
   TID_CHAT_MODEL_SELECT_TRIGGER,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   DEFAULT_WORKSPACE,

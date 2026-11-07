@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import type { AgentExecutionTelemetryPort } from "@zcode/contracts";
-import { createSessionId } from "@zcode/contracts";
+import type { AgentExecutionTelemetryPort } from "@s-agent/contracts";
+import { createSessionId } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 import { createTestModelFactory } from "./test-runtime-model.js";

@@ -55,7 +55,7 @@ Main 的 Host/session 生命周期和 MessagePort 路由，而不是重写远端
 - 不把远端 `zcode-server` 改造成监听端口或 Unix socket 的常驻 Daemon。
 - 不持久化 Host pool、Host readiness、attachment 或 `remoteSessionId`。
 - 不在 App 冷启动时自动连接 SSH。
-- 不修改 App 与 Agent 之间的 `@zcode/protocol`。
+- 不修改 App 与 Agent 之间的 `@s-agent/protocol`。
 - 不改变 task、stream、queue、snapshot、permission、elicitation 或 owner/lease 的产品语义。
 - 不把 task/session/realtime 业务状态下沉到 Desktop Main 或 Relay。
 
@@ -87,7 +87,7 @@ Main 的 Host/session 生命周期和 MessagePort 路由，而不是重写远端
 | Remote kind | 仅 SSH 进入 Host pool。 | SSH password/private-key/agent auth。 | WSL/Docker。 | user |
 | UI | 不新增 Host 级断开入口。 | 现有 workspace/tab 行为。 | 新 UI 和样式。 | user |
 | 持久化 | Host pool 纯内存。 | 现有 remote workspace history。 | Host/Profile schema migration。 | design |
-| 协议 | 只调整 Desktop 内部 channel/platform 消息。 | Main ↔ Host、Renderer ↔ Main。 | `@zcode/protocol`。 | architecture |
+| 协议 | 只调整 Desktop 内部 channel/platform 消息。 | Main ↔ Host、Renderer ↔ Main。 | `@s-agent/protocol`。 | architecture |
 
 ## Domain Scope
 

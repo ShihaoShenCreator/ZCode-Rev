@@ -14,7 +14,7 @@ import {
   resolveWorkspaceKey,
   type ZCodeProvider,
   type ZCodeTaskMeta,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   ZCodeTaskListQuery,
   ZCodeTaskListResult,

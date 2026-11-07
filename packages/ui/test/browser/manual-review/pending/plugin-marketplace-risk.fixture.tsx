@@ -1,6 +1,6 @@
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { IPlatformService } from "@zcode/shared";
+import type { IPlatformService } from "@s-agent/shared";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 import { PlatformProvider } from "@/hooks/usePlatform.js";
 import { AddMarketplaceSourceDialog } from "@/settings/AddMarketplaceSourceDialog.js";

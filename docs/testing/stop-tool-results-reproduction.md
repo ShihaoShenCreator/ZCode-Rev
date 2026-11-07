@@ -37,7 +37,7 @@ sequenceDiagram
 
 ```sh
 ZCODE_E2E_MANUAL_REVIEW=1 ZCODE_E2E_DEEPSEEK_CONTEXT_WINDOW=128000 \
-pnpm --filter @zcode/desktop test:e2e -- --spec \
+pnpm --filter @s-agent/desktop test:e2e -- --spec \
 './test/e2e/conversation-session/conversation-session-stop-tool-results.test.ts'
 ```
 

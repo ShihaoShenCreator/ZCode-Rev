@@ -9,7 +9,7 @@ import {
   createPartId,
   type MessageWithParts,
   type ToolState,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../../adapters/src/storage/session-store/sqlite-session-store.js";
 import { hydrateMessageHistoryFromSession } from "../src/agent/session-history-hydrator.js";
 import { MessageHistoryImpl } from "../src/agent/message-history.js";

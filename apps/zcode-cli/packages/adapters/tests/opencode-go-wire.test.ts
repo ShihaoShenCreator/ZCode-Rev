@@ -7,7 +7,7 @@ import {
   parseProviderConfig,
   parseZCodeBuiltinModelConfigRules,
   type ModelConfigRules,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { AiSdkModelExecution } from "../src/model/model-execution.js";
 import { createGenerateTextOptions } from "../src/model/runner-options.js";
 import { createStatusContext } from "../src/model/runner-status.js";

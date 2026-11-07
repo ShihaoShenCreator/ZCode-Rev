@@ -1,10 +1,10 @@
 import { readFile } from "node:fs/promises";
-import { PlatformChannels } from "@zcode/shared";
+import { PlatformChannels } from "@s-agent/shared";
 import {
   TID_OAUTH_LOGIN_BUTTON,
   TID_LOGIN_USE_API_KEY_BUTTON,
   TID_WORKSPACE_HEADER,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 import { dismissOccupationOnboarding } from "#e2e/helpers/occupation-onboarding";
 

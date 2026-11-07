@@ -4,7 +4,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { ToolScheduler } from "../src/tool/scheduler.js";
 import type { ToolDependency } from "../src/tool/scheduler.js";
-import type { ToolCallId } from "@zcode/contracts";
+import type { ToolCallId } from "@s-agent/contracts";
 
 // -----------------------------------------------
 // Tool Scheduler Tests

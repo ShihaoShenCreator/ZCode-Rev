@@ -3,7 +3,7 @@ import { mkdir } from "node:fs/promises";
 import type { AddressInfo } from "node:net";
 import { join, resolve } from "node:path";
 import ssh2 from "ssh2";
-import { TID_SSH_PASSWORD_INPUT } from "@zcode/shared/test-ids";
+import { TID_SSH_PASSWORD_INPUT } from "@s-agent/shared/test-ids";
 import { clearAppData, setInputValueByTestIdDom } from "#e2e/helpers/desktop-app";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";
 import {

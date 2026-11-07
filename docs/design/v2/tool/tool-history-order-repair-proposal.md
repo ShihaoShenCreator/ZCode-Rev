@@ -98,7 +98,7 @@ ZCODE_E2E_DEEPSEEK_CONTEXT_WINDOW=128000 \
 ZCODE_E2E_DEEPSEEK_MAX_OUTPUT_TOKENS=32768 \
 E2E_PROVIDER_HTTP_MODE=replay \
 E2E_PROVIDER_REPLAY_FIXTURE_PATH="$PWD/packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-tool-history-order.json" \
-pnpm --filter @zcode/desktop test:e2e -- --spec ./test/e2e/conversation-session/conversation-session-tool-history-order.test.ts
+pnpm --filter @s-agent/desktop test:e2e -- --spec ./test/e2e/conversation-session/conversation-session-tool-history-order.test.ts
 ```
 
 ### 2026-09-11：按调用选择最新尝试

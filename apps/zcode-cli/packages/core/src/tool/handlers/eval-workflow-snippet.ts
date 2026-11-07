@@ -24,14 +24,14 @@ import {
   type EvalWorkflowSnippetOutput,
   type ModelMessageContent,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   collectDiagnostics,
   collectSites,
   collectWorldRunCommands,
   createWorkflowProgram,
   SNIPPET_FACADE_DTS,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import type {
   ToolApprovalGate,
   ToolEntry,

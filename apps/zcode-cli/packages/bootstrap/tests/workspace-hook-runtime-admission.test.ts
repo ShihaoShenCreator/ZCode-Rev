@@ -2,14 +2,14 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { createConfig } from "@zcode/adapters/config";
+import { createConfig } from "@s-agent/adapters/config";
 import {
   createDefaultFileWorkspaceHookTrustStore,
   createInMemorySessionEventStore,
   createSqliteSessionStore,
-} from "@zcode/adapters/storage";
-import { createWorkspaceHookTrustRecords } from "@zcode/core";
-import { SessionEventType, type ExecutionPort } from "@zcode/contracts";
+} from "@s-agent/adapters/storage";
+import { createWorkspaceHookTrustRecords } from "@s-agent/core";
+import { SessionEventType, type ExecutionPort } from "@s-agent/contracts";
 import { createRegistryBackedTestApp as createZCodeApp } from "./helpers/registry-backed-test-app.js";
 
 const roots: string[] = [];

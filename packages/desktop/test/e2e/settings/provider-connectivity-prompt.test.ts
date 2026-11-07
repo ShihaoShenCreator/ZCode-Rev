@@ -6,7 +6,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, getE2EAppDataPaths } from "#e2e/helpers/desktop-app";
 import { restartIntoWorkspace, seedReplayProvider } from "#e2e/helpers/model-provider-restart";
 import { prepareV4ConversationE2E, getV4DraftThoughtState } from "#e2e/helpers/v4-conversation";

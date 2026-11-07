@@ -7,13 +7,13 @@ import {
   zcodeTopicResourceRelayMetadataSchema,
   type ZCodeTopicResourceRelayRequest,
   type ZCodePromptAttachment,
-} from "@zcode/shared";
-import { PROTOCOL_V4_LIMITS } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import { PROTOCOL_V4_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
 
 export interface TopicResourceRelayDependencies {
   reply?(
-    request: import("@zcode/shared").ChannelReplyHostRequest,
-  ): Promise<import("@zcode/shared").ChannelReplyResult>;
+    request: import("@s-agent/shared").ChannelReplyHostRequest,
+  ): Promise<import("@s-agent/shared").ChannelReplyResult>;
   validate(request: ZCodeTopicResourceRelayRequest, signal: AbortSignal): Promise<void>;
   read(
     request: ZCodeTopicResourceRelayRequest,

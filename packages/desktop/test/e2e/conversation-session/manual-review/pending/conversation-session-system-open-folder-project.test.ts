@@ -1,7 +1,7 @@
 import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
-import { ServiceChannels } from "@zcode/shared";
-import type { VirtualProject } from "@zcode/services";
+import { ServiceChannels } from "@s-agent/shared";
+import type { VirtualProject } from "@s-agent/services";
 import {
   getE2EAppDataPaths,
   waitForDefaultWorkspaceReady,

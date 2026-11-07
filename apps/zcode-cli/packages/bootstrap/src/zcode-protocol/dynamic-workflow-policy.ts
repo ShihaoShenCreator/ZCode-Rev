@@ -1,7 +1,7 @@
 import {
   zcodeWorkspaceUpdateDynamicWorkflowPolicyParamsSchema,
   type DynamicWorkflowMode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { parseParams, type ZCodeProtocolAgentServerContext } from "./server-types.js";
 
 /**

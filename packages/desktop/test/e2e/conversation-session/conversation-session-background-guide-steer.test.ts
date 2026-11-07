@@ -1,4 +1,4 @@
-import { TID_V4_COMPOSER_INPUT } from "@zcode/shared/test-ids";
+import { TID_V4_COMPOSER_INPUT } from "@s-agent/shared/test-ids";
 import { clearAppData, readSettings } from "../helpers/desktop-app.js";
 import { waitForUpstreamNetworkRequestStarted } from "../helpers/upstream-capture.js";
 import {

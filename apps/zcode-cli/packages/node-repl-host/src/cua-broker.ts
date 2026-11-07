@@ -6,10 +6,10 @@ import { join } from "node:path";
 import type {
   ComputerUseRuntime,
   ComputerUseRuntimeContext,
-} from "@zcode/zcode-cua";
-import type { Logger } from "@zcode/contracts";
-import type { NodeReplCuaAppIdentity, NodeReplRequestMeta } from "@zcode/core/repl";
-import { CUA_APP_ASSOCIATIONS_META_KEY } from "@zcode/zcode-cua/host-display-contract";
+} from "@s-agent/zcode-cua";
+import type { Logger } from "@s-agent/contracts";
+import type { NodeReplCuaAppIdentity, NodeReplRequestMeta } from "@s-agent/core/repl";
+import { CUA_APP_ASSOCIATIONS_META_KEY } from "@s-agent/zcode-cua/host-display-contract";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import type { NodeReplCallLedger } from "./call-ledger/contract.js";
 import { CUA_UNAVAILABLE_IN_SUBAGENT_MESSAGE } from "./cua-bridge.js";

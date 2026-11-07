@@ -1,7 +1,7 @@
 import { mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
-import { TID_SETTINGS_BACK_BUTTON, TID_SETTINGS_PAGE } from "@zcode/shared/test-ids";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
+import { TID_SETTINGS_BACK_BUTTON, TID_SETTINGS_PAGE } from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, readSettings } from "#e2e/helpers/desktop-app";
 import {
   disconnectRemoteSource,

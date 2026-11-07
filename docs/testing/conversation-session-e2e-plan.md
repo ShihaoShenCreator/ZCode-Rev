@@ -20,8 +20,8 @@ F09、G11、G12 的产品语义已于 2026-07-05 裁决，不再属于 undefined
 
 | 层                     | 用途                                 | 运行方式                                                                                                         |
 | ---------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| desktop capture        | 连接线上 DeepSeek，验证真实桌面链路  | `E2E_PROVIDER_HTTP_MODE=capture E2E_PROVIDER_API_KEY=... pnpm --filter @zcode/desktop test:e2e -- --spec <spec>` |
-| desktop replay         | 本地快速认证，使用已录制 SSE fixture | `pnpm --filter @zcode/desktop test:e2e -- --spec <spec>`                                                         |
+| desktop capture        | 连接线上 DeepSeek，验证真实桌面链路  | `E2E_PROVIDER_HTTP_MODE=capture E2E_PROVIDER_API_KEY=... pnpm --filter @s-agent/desktop test:e2e -- --spec <spec>` |
+| desktop replay         | 本地快速认证，使用已录制 SSE fixture | `pnpm --filter @s-agent/desktop test:e2e -- --spec <spec>`                                                         |
 | docker replay-isolated | 隔离网络后的最终可复现认证           | `E2E_NETWORK_MODE=replay-isolated E2E_SPEC=<spec> bash scripts/test-desktop-e2e-container.sh`                    |
 
 当前先放大桌面端 case，Docker 只作为阶段性认证，不阻塞 case 编写。

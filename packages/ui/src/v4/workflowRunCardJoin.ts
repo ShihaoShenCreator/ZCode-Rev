@@ -1,9 +1,9 @@
-import { workflowRunStepCounts, type WorkflowRunState } from "@zcode/shared/zcode-protocol-v4";
-import type { ConversationRow, ConversationRowsPartition } from "@zcode/shared/zcode-protocol-v4";
+import { workflowRunStepCounts, type WorkflowRunState } from "@s-agent/shared/zcode-protocol-v4";
+import type { ConversationRow, ConversationRowsPartition } from "@s-agent/shared/zcode-protocol-v4";
 import {
   ZCODE_WORKFLOWS_FOR_RUN_MAX_CANDIDATES,
   type ZCodeWorkflowsForRunCandidate,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { WorkflowCausalityGraphData } from "@/components/workflow-graph/types.js";
 import type { WorkflowRunCardSummary } from "@/ToolCallBlocks/shared.js";
 import { readWorkflowHoleTarget } from "@/ToolCallBlocks/renderers/createWorkflowHoleInput.js";

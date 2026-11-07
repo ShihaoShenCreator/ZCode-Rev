@@ -9,7 +9,7 @@ import {
   sanitizeZCodeRuntimeEnv,
   sanitizeZCodeRuntimeEnvInPlace,
   type ZCodeRuntimeEnv,
-} from "@zcode/shared/runtime-env";
+} from "@s-agent/shared/runtime-env";
 
 export type CliEnv = Record<string, string | undefined>;
 

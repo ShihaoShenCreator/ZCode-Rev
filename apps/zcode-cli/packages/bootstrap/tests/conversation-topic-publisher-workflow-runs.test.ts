@@ -10,14 +10,14 @@ import type {
   SessionEventType as SessionEventTypeUnion,
   SessionId,
   TraceId,
-} from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import type {
   ConversationDelta,
   ConversationSnapshot,
   ConversationTopicFrame,
   WorkflowRunsState,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   PROTOCOL_V4_LIMITS,
   WORKFLOW_RUNS_LEGACY_LIMITS,
@@ -28,7 +28,7 @@ import {
   workflowRunNodeSchema,
   workflowRunSchema,
   workflowRunsStateSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   ConversationTopicPublisher,
   PROJECTION_TERMINAL_RESERVE_BYTES,

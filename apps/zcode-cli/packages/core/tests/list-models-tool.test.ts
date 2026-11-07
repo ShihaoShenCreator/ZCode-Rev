@@ -11,7 +11,7 @@ import {
   type PermissionRequestedPayload,
   type SessionEvent,
   type ToolExecutionResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { listModelsToolEntry } from "../src/tool/handlers/list-models.js";

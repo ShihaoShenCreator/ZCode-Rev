@@ -1,4 +1,4 @@
-import type { ModelRequestAuth } from "@zcode/contracts";
+import type { ModelRequestAuth } from "@s-agent/contracts";
 import type { ModelExecutionInput, ModelExecutionContext } from "./contract.js";
 
 /** 两种输入协议共用执行材料投影；不把 Secret/Ticket 放入可持久化的 intent。 */

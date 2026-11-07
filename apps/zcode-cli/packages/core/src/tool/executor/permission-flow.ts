@@ -8,7 +8,7 @@ import {
   type PermissionRuleset,
   type TraceContext,
   type ToolExecutionSpanWriter,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { HookRunResult } from "../../hooks/index.js";
 import type {
   ExecutableToolCall,

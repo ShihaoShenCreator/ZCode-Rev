@@ -6,7 +6,7 @@ import {
   type SourceServerManagementSnapshot,
   buildServerRemoteWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_TASK_SETTINGS_BUTTON,
   TID_SETTINGS_BACK_BUTTON,
@@ -16,8 +16,8 @@ import {
   TID_REMOTE_KIND_DOCKER,
   TID_VIRTUAL_PROJECT_CREATE_TASK,
   testId,
-} from "@zcode/shared/test-ids";
-import type { RemoteProjectDirectory, ProjectTree, VirtualProject } from "@zcode/services";
+} from "@s-agent/shared/test-ids";
+import type { RemoteProjectDirectory, ProjectTree, VirtualProject } from "@s-agent/services";
 import { clearAppData, clickTestIdByDom } from "#e2e/helpers/desktop-app";
 import { expandRemoteDeviceRowsNeedingAttention } from "#e2e/helpers/remote-project-actions";
 import {

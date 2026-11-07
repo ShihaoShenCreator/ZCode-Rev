@@ -1,4 +1,4 @@
-import type { WebRemoteControlAppPayload, WebRemoteControlFailure } from "@zcode/shared";
+import type { WebRemoteControlAppPayload, WebRemoteControlFailure } from "@s-agent/shared";
 
 export type WebRemoteControlTerminalTransportState =
   | "idle"

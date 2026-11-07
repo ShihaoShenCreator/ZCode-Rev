@@ -58,12 +58,12 @@ Service authority + SWR cache authority 合并为一次强制重验；普通 foc
 旧的 `ai-writing` 不再作为该入口的 fallback。
 映射细节和失败边界见 `docs/ui/conversation-draft-suggested-prompts.md`。
 
-`AutomationsSection` 与 `OffPeakNewTaskEntry` 还消费两个明确 scene：
+`AutomationsSection` 仍读取两个 scene；Off-Peak scene 已按 S-Agent Provider 去集成规格停止作为活跃 UI 使用：
 
 - `scheduled-task`：prompt item 的 `labels` 是标题、`contents` 是 description/instructions；
   `defaults.cronExpr` 反向引用 `options.cronExpr.items`，cron 只取被引用 item 的 `contents`，
   UI 先校验 Service 合法性和 Automation 编辑器无损往返能力，再用本地调度描述器展示，忽略 cron item `labels`。
-- `off-peak-task`：prompt item 的 `labels` 是标题；仅 New task 首页卡片 description 按 locale
+- `off-peak-task`（历史）：prompt item 的 `labels` 是标题；旧 New task 首页卡片 description 按 locale
   优先取 `descs`，对应语言缺失或空白时回退 `contents`；Automations 卡片 description 与创建草稿的
   instructions 始终取 `contents`；
   Automations 只展示远程目录并在空目录时显示「无可用模板」；New task 首页在远程映射后追加本地

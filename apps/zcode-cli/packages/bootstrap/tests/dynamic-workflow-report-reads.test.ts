@@ -10,7 +10,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { createSqliteSessionStore, type DwfRunSessionListItem } from "@zcode/adapters/storage";
+import { createSqliteSessionStore, type DwfRunSessionListItem } from "@s-agent/adapters/storage";
 import {
   ALL_EVENTS,
   InMemoryJournalStore,
@@ -19,12 +19,12 @@ import {
   type NodeRecord,
   type RunEvent,
   type StoredEvent,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import {
   readWorkflowArtifactField,
   reduceWorkflowRunsState,
   type WorkflowRunsState,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { buildImportedCache, preflightAmendImport } from "../src/app/dynamic-workflow-import.js";
 import { listArtifactItemsFrom } from "../src/app/dynamic-workflow-run-artifact-queries.js";
 import { artifactsOf, snapshotOf } from "../src/app/dynamic-workflow-run-observation.js";

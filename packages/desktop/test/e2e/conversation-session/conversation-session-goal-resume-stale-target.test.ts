@@ -1,8 +1,8 @@
 import { DatabaseSync } from "node:sqlite";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { ServiceChannels } from "@zcode/shared";
-import type { ProjectTree } from "@zcode/services";
+import { ServiceChannels } from "@s-agent/shared";
+import type { ProjectTree } from "@s-agent/services";
 import { clearAppData } from "../helpers/desktop-app.js";
 import {
   callHandoffHost,

@@ -39,7 +39,7 @@ import {
   type SessionInfo,
   type SessionStorePort,
   type TodoItem,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { countContinuePrompts } from "./runtime-output-token-continuation-test-helpers.js";
 import {

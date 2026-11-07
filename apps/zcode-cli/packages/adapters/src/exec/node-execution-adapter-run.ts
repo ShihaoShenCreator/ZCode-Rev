@@ -25,7 +25,7 @@ import type {
   ExecutionResult,
   ExecutionRunOptions,
   ExecutionShellDialect,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 const BASH_TEMP_DIRECTORY_PREFIX = "zcode-bash-";
 const BASH_TEMP_UNAVAILABLE_CODES = new Set([

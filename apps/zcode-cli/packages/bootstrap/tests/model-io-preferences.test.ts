@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { zcodeWorkspaceUpdateModelIoPreferencesResultSchema } from "@zcode/shared";
+import { zcodeWorkspaceUpdateModelIoPreferencesResultSchema } from "@s-agent/shared";
 import { updateModelIoPreferences } from "../src/zcode-protocol/model-io-preferences.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";
 import { createFakeApp } from "./helpers/fake-zcode-app.js";

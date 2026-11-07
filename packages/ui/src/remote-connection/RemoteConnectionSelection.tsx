@@ -6,7 +6,7 @@ import type {
   SourceServerManagementSnapshot,
   SSHConfigAliasOption,
   WSLDistro,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   BoxIcon,
   CloudIcon,

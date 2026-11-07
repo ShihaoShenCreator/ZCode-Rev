@@ -2,8 +2,8 @@
 // canonical user intent（含附件引用、模型 Selection、goal 命令语义）重新发起为一轮。
 // 从 fork-edit-retry.ts 抽出：editUserQuery 与 retryTurn 共用，forkAssistant 不经过这里
 // （fork 只做 conversation-only copy，不 rewind、不重发）。
-import type { CommandEnvelope, CommandPayloadMap } from "@zcode/shared/zcode-protocol-v4";
-import { isHighspeedProviderId } from "@zcode/shared";
+import type { CommandEnvelope, CommandPayloadMap } from "@s-agent/shared/zcode-protocol-v4";
+import { isHighspeedProviderId } from "@s-agent/shared";
 import type { mapAttachmentRefsToTurnAttachments } from "../attachment-refs.js";
 import {
   resolveOrdinaryQueueModelSelection,

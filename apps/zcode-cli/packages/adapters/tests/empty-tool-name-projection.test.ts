@@ -1,7 +1,7 @@
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { createOpenAI } from "@ai-sdk/openai";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
-import { ModelErrorCode } from "@zcode/contracts";
+import { ModelErrorCode } from "@s-agent/contracts";
 import { generateText } from "ai";
 import { describe, expect, it } from "vitest";
 import { AiSdkModelAdapterError } from "../src/model/errors.js";

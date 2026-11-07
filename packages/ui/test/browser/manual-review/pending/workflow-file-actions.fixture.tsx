@@ -4,7 +4,7 @@ import { WorkflowArtifactSidePane } from "@/app-shell/WorkflowArtifactSidePane.j
 import { PlatformProvider } from "@/hooks/usePlatform.js";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 import { saveBrowserFile } from "../../../../../web/src/platform/saveBrowserFile.js";
-import type { IPlatformService } from "@zcode/shared";
+import type { IPlatformService } from "@s-agent/shared";
 import "@/styles.css";
 
 const params = new URLSearchParams(location.search);

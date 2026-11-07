@@ -6,10 +6,10 @@ import {
   type ModelProperties,
   type ModelStreamEvent,
   type ModelTextRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { TestAiSdkModelAdapter } from "./test-provider-config.js";
 import { createTestModelProperties } from "./test-model-format.js";
-import type { ZhipuAccountMode } from "@zcode/provider";
+import type { ZhipuAccountMode } from "@s-agent/provider";
 
 type TestModelTextRequest = ModelTextRequest & {
   modelRequestSessionFeatures?: ModelInvocationContext["modelRequestSessionFeatures"];

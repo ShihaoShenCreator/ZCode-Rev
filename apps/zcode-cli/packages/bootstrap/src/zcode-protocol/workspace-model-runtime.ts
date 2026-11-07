@@ -1,11 +1,11 @@
 /* eslint-disable max-lines -- workspace 模型协议与兼容请求处理仍集中在本文件。 */
-import { createInMemorySessionEventStore } from "@zcode/adapters/storage";
-import type { ModelSelection } from "@zcode/contracts";
+import { createInMemorySessionEventStore } from "@s-agent/adapters/storage";
+import type { ModelSelection } from "@s-agent/contracts";
 import {
   zcodeProviderTestModelConnectivityParamsSchema,
   zcodeWorkspaceReadPresentationParamsSchema,
   type ZCodeWorkspaceRef,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ZCodeApp, ZCodeAppOptions } from "../app/types.js";
 import { listProtocolSlashCommands } from "./slash-commands.js";
 import {
@@ -15,8 +15,8 @@ import {
 } from "./server-types.js";
 import { runSessionModelConfigMutation } from "../zcode-protocol-v4/model-config-mutation.js";
 import { createProviderRuntimeHeadersPort } from "./provider-runtime-headers.js";
-import { offPeakLifecycleNotificationSchema } from "@zcode/shared";
-import { V4_NOTIFICATIONS } from "@zcode/shared/zcode-protocol-v4";
+import { offPeakLifecycleNotificationSchema } from "@s-agent/shared";
+import { V4_NOTIFICATIONS } from "@s-agent/shared/zcode-protocol-v4";
 
 export async function readWorkspacePresentation(
   context: ZCodeProtocolAgentServerContext,

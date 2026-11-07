@@ -1,9 +1,9 @@
-import type { PluginDiagnostic, PluginUiSurfaceDefinition } from "@zcode/contracts";
+import type { PluginDiagnostic, PluginUiSurfaceDefinition } from "@s-agent/contracts";
 import {
   MCP_APPS_RESOURCE_URI_MAX_CHARS,
   MCP_APPS_UI_RESOURCE_SCHEME,
   readSurfaceId,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import type { LoadedPlugin } from "./types.js";
 
 /**

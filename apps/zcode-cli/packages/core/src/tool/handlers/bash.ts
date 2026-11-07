@@ -23,7 +23,7 @@ import {
   type ExecutionRunOptions,
   type ExecutionShellSelection,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   shouldInjectEmbeddedSearchBashPrelude,
   supportsEmbeddedSearchShellSelection,

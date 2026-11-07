@@ -6,14 +6,14 @@ import type {
   IPlatformService,
   RemoteTargetSnapshot,
   RemoteWorkspaceSessionEntry,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   isCredentialDecryptError,
   REMOTE_WORKSPACE_DIRECTORY_UNAVAILABLE_ERROR_CODE,
   REMOTE_WORKSPACE_DIRECTORY_UNRESPONSIVE_ERROR_CODE,
   stripRemoteTargetSecrets,
-} from "@zcode/shared";
-import type { IServiceAccessor } from "@zcode/services";
+} from "@s-agent/shared";
+import type { IServiceAccessor } from "@s-agent/services";
 import { toast } from "@/components/ui/toast.js";
 import {
   buildRemoteWorkspaceSessionMutation,

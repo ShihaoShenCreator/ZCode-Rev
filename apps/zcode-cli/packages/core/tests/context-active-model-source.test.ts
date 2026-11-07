@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { EnvInfo } from "@zcode/contracts";
+import type { EnvInfo } from "@s-agent/contracts";
 import { createContextBuilder } from "../src/context/builder.js";
 import { createSubagentContextBuilder } from "../src/subagent/context-builder.js";
 import { createTestRuntimeModel } from "./test-runtime-model.js";

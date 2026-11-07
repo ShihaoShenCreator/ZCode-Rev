@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ModelCatalogEntry } from "@zcode/contracts";
+import type { ModelCatalogEntry } from "@s-agent/contracts";
 import {
   describeWorkflowSubagentModel,
   formatModelCatalogId,

@@ -9,7 +9,7 @@ import type {
   DynamicWorkflowRunError,
   DynamicWorkflowRunHole,
   DynamicWorkflowRunPendingQuestion,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { escapeXml, truncateTaskNotification } from "./notification.js";
 
 /** run 中通知共用的抬头：让模型不把系统通知读成用户输入。 */

@@ -4,7 +4,7 @@ import { selectCombinedComposerThoughtLevel } from "./composer-model-picker.js";
 // 与旧 conversation-session.ts 的区别：所有定位走 TID_V4_* 常量（testid contract v2，
 // 带 paneId 维度），状态断言读 v4 pane 的 data-* 投影属性，不再依赖旧 ChatView DOM。
 // 旧 helper 的登录/工作区/provider 部分继续复用（desktop-app.ts / upstream-provider.ts）。
-import { encodeCustomModelValue } from "@zcode/shared";
+import { encodeCustomModelValue } from "@s-agent/shared";
 import {
   TID_CHAT_ERROR_DETAILS_BUTTON,
   TID_CHAT_MODE_SELECT_ITEM,
@@ -56,7 +56,7 @@ import {
   TID_V4_TURN_NAVIGATOR_ITEM,
   TID_V4_TURN_NAVIGATOR_TOOLTIP,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clickTestIdByDom,
   DEFAULT_WORKSPACE,

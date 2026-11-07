@@ -1,6 +1,6 @@
 import { useState, type ComponentType } from "react";
 import { createRoot } from "react-dom/client";
-import type { IBroadcastService, IServiceAccessor } from "@zcode/services";
+import type { IBroadcastService, IServiceAccessor } from "@s-agent/services";
 import { ServiceProvider } from "@/hooks/useServices.js";
 import { TabStoreProvider } from "@/store/TabStoreProvider.js";
 import { StoreContext } from "@/store/StoreProvider.js";

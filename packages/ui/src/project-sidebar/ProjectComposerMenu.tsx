@@ -27,13 +27,13 @@ import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { useRemoteConnectionEntryVisibility } from "@/hooks/useRemoteConnectionEntryVisibility.js";
 import { cn } from "@/components/lib/utils.js";
 import { logger } from "@/logger.js";
-import { buildServerRemoteWorkspaceIdentity } from "@zcode/shared";
+import { buildServerRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_COMPOSER_PROJECT_DETACH,
   TID_COMPOSER_REMOTE_CONNECTION,
   TID_COMPOSER_WORK_OUTSIDE_PROJECT,
   TID_COMPOSER_WORKSPACE_TRIGGER,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { runUserAction, runUserActionAsync } from "@/lib/userActionTelemetry.js";
 
 import type { ProjectSidebarProps, RemoteProjectHost } from "@/project-sidebar/contract.js";

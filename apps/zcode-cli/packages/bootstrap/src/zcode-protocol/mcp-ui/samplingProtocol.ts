@@ -1,8 +1,8 @@
 import {
   zcodeMcpUiSamplingParamsSchema,
   zcodeMcpUiCancelSamplingParamsSchema,
-} from "@zcode/shared";
-import { mcpAppsSamplingResultSchema } from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared";
+import { mcpAppsSamplingResultSchema } from "@s-agent/shared/mcp-apps";
 import {
   parseParams,
   requireSession,

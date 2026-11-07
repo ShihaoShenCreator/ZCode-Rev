@@ -1,7 +1,7 @@
-import { normalizeGenUiInput } from "@zcode/core";
-import { genUiModelContextSchema } from "@zcode/shared/gen-ui";
-import type { ZCodeMessagePart, ZCodeMessageWithParts, ZCodeToolState } from "@zcode/shared";
-import type { MessagePart, MessageWithParts, ToolState } from "@zcode/contracts";
+import { normalizeGenUiInput } from "@s-agent/core";
+import { genUiModelContextSchema } from "@s-agent/shared/gen-ui";
+import type { ZCodeMessagePart, ZCodeMessageWithParts, ZCodeToolState } from "@s-agent/shared";
+import type { MessagePart, MessageWithParts, ToolState } from "@s-agent/contracts";
 import { shouldHideInvalidToolCallFromProduct } from "../tool-call-product-visibility.js";
 
 export function mapMessageWithParts(message: MessageWithParts): ZCodeMessageWithParts {

@@ -19,7 +19,7 @@ import {
   TID_TASK_SETTINGS_BUTTON,
   TID_TASK_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

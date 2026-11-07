@@ -9,7 +9,7 @@ import {
   type SpanProcessor,
 } from "@opentelemetry/sdk-trace-base";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import type { AgentTelemetryCausation } from "@zcode/contracts/telemetry";
+import type { AgentTelemetryCausation } from "@s-agent/contracts/telemetry";
 import { AgentExecutionTelemetryRuntime } from "../src/agent-trace-runtime.js";
 import type {
   AgentMetricSpanName,

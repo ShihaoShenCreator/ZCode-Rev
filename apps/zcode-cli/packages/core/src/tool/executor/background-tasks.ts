@@ -5,7 +5,7 @@ import {
   type SessionEvent,
   type TraceContext,
   type TurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { isSubagentDispatchToolName } from "../compat.js";
 import type { ExecutableToolCall } from "../types.js";
 import type { ToolExecutorDeps } from "./types.js";

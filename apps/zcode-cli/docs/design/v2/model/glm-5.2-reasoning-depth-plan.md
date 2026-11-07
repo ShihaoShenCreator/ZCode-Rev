@@ -168,7 +168,7 @@ export function createGlm52AnthropicReasoningProviderOptions(): Record<
 }
 ```
 
-`ModelCapability` is already imported at the top of `reasoning-policy.ts` (`import type { ModelCapability } from "@zcode/contracts";`).
+`ModelCapability` is already imported at the top of `reasoning-policy.ts` (`import type { ModelCapability } from "@s-agent/contracts";`).
 
 - [ ] **Step 4: Run the test to verify it passes**
 

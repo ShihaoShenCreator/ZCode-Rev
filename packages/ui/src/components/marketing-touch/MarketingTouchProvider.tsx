@@ -1,26 +1,23 @@
 import {
-  prepareRequestVerificationClaim,
-  useRequestVerificationPrewarm,
-} from "@/request-security-edition/claim.js";
-import { requestVerificationClaimFailureMessageId } from "@/request-security-edition/errors.js";
-import { useStartPlanEntitlement } from "@/hooks/useStartPlanEntitlement.js";
-import { createContext, useContext, useEffect, useCallback, useState, useRef } from "react";
+  createContext,
+  useContext,
+  useEffect,
+  useCallback,
+  useState,
+  useRef,
+} from "react";
 import type { ReactNode } from "react";
 import { useStore } from "zustand";
-import { useCodingPlanUpgradeDialog } from "@/settings/CodingPlanUpgradeDialogProvider.js";
 import { useOpenRewards } from "@/rewards/RewardsProvider.js";
-import { useWorkspaceSidebarFooterUsageSummaryState } from "@/WorkspaceSidebarFooterUsageSummary.js";
 import { useTabStore, useTabStoreApi } from "@/store/TabStoreProvider.js";
 import { setPendingSettingsSectionIntent } from "@/lib/settingsNavigation.js";
 import { requestPluginStoreOpen } from "@/lib/pluginStoreNavigation.js";
 import {
   requestMarketingNavigation,
-  marketingNavigation,
-  finishMarketingNavigation,
   marketingSettingsSections,
   waitForMarketingCapability,
 } from "@/lib/marketingNavigation.js";
-import { BUILTIN_MODEL_PROVIDER_IDS, ZCODE_ENV } from "@zcode/shared";
+import { ZCODE_ENV } from "@s-agent/shared";
 import { useServices } from "@/hooks/useServices.js";
 import { usePlatform } from "@/hooks/usePlatform.js";
 import { useZCodeStore } from "@/store/StoreProvider.js";
@@ -63,29 +60,12 @@ export function MarketingTouchProvider({
   const platform = usePlatform();
   const openSettingsTab = useTabStore((state) => state.openSettingsTab);
   const tabStore = useTabStoreApi();
-  const { openCodingPlanUpgrade } = useCodingPlanUpgradeDialog();
-  const workspacePath = useTabStore((state) => state.activeWorkspacePath);
-  const workspaceIdentity = useTabStore((state) => state.activeWorkspaceIdentity);
-  const { upgradeTargetProviderId } = useWorkspaceSidebarFooterUsageSummaryState({
-    enabled: true,
-    workspacePath: workspacePath ?? undefined,
-    workspaceIdentity: workspaceIdentity ?? undefined,
-  });
-  const upgradeTargetRef = useRef(upgradeTargetProviderId);
-  upgradeTargetRef.current = upgradeTargetProviderId;
   const user = useZCodeStore((state) => state.user);
   const restoring = useZCodeStore((state) => state.isRestoringOAuthSession);
-  const requestLogin = useZCodeStore((state) => state.requestLoginEntry);
   const openRewards = useOpenRewards();
   const openRewardsRef = useRef(openRewards);
   openRewardsRef.current = openRewards;
   const { intl, locale } = useZCodeIntl();
-  const startEntitlement = useStartPlanEntitlement(
-    BUILTIN_MODEL_PROVIDER_IDS.bigmodelStartPlan,
-    services.usageStatsService,
-  );
-  const refreshStartEntitlementRef = useRef(startEntitlement.refresh);
-  refreshStartEntitlementRef.current = startEntitlement.refresh;
   const identity = user?.id ?? "anonymous";
   const createRuntime = useCallback(() => {
     const service = services.marketingTouchService;
@@ -96,7 +76,6 @@ export function MarketingTouchProvider({
       report: (input) => service.report(input),
       locale,
       canOpen: canOpenMarketingPopup,
-      refresh: () => poller.refresh(),
       prepare: async (delivery) => {
         const assets = services.cloudContentService;
         const visual =
@@ -106,7 +85,12 @@ export function MarketingTouchProvider({
         const success = prepareMarketingHero(visual, assets, locale, desktop);
         const background =
           delivery.resource_position === "banner"
-            ? prepareMarketingHero(delivery.banner.background, assets, locale, desktop)
+            ? prepareMarketingHero(
+                delivery.banner.background,
+                assets,
+                locale,
+                desktop,
+              )
             : undefined;
         let released = false;
         const release = async () => {
@@ -126,9 +110,11 @@ export function MarketingTouchProvider({
             return {
               delivery,
               image: prepared.type === "image" ? prepared.src : undefined,
-              darkImage: prepared.type === "image" ? prepared.darkSrc : undefined,
+              darkImage:
+                prepared.type === "image" ? prepared.darkSrc : undefined,
               bannerHero:
-                prepared.type === "interactive_bundle" || prepared.type === "video"
+                prepared.type === "interactive_bundle" ||
+                prepared.type === "video"
                   ? prepared
                   : undefined,
               hero: null,
@@ -157,10 +143,13 @@ export function MarketingTouchProvider({
               );
               signal.throwIfAborted();
               if (!controller.store.getState().dialog)
-                toast(intl.formatMessage({ id: "manualClaimPlan.claim.share.copyTextSucceeded" }));
+                toast(
+                  intl.formatMessage({ id: "marketingTouch.copySucceeded" }),
+                );
             } else if (action.args.page === "rewards") {
               // 只确认窗口级 Provider 接收意图；登录续接不依赖会在账号变化时销毁的营销实例。
-              if (!openRewardsRef.current) throw new Error("marketing_navigation_unavailable");
+              if (!openRewardsRef.current)
+                throw new Error("marketing_navigation_unavailable");
               await openRewardsRef.current();
             } else {
               const opening = new AbortController();
@@ -168,25 +157,6 @@ export function MarketingTouchProvider({
               signal.addEventListener("abort", abortOpening, { once: true });
               try {
                 await requestMarketingNavigation(action.args, signal, () => {
-                  if (action.args.page === "upgrade") {
-                    if (!desktop) throw new Error("marketing_navigation_unavailable");
-                    const requestId = marketingNavigation.getState().request!.id;
-                    if (
-                      !openCodingPlanUpgrade(
-                        { providerId: upgradeTargetRef.current },
-                        {
-                          signal: opening.signal,
-                          onResult: (opened) =>
-                            finishMarketingNavigation(
-                              requestId,
-                              opened ? undefined : new Error("marketing_upgrade_unavailable"),
-                            ),
-                        },
-                      )
-                    )
-                      throw new Error("marketing_upgrade_unavailable");
-                    return;
-                  }
                   if (action.args.page === "settings") {
                     if (action.args.section)
                       setPendingSettingsSectionIntent(
@@ -202,7 +172,8 @@ export function MarketingTouchProvider({
                     // 市场在工作区内；仅发事件会在设置层后挂载，必须退出设置并激活原工作区。
                     if (
                       !tabs.activateTabByPath(tabs.activeWorkspacePath, {
-                        workspaceIdentity: tabs.activeWorkspaceIdentity ?? undefined,
+                        workspaceIdentity:
+                          tabs.activeWorkspaceIdentity ?? undefined,
                       })
                     )
                       throw new Error("marketing_navigation_unavailable");
@@ -216,16 +187,23 @@ export function MarketingTouchProvider({
             return { status: "success" };
           } catch (error) {
             const timedOut =
-              error instanceof Error && error.message === "marketing_capability_timeout";
+              error instanceof Error &&
+              error.message === "marketing_capability_timeout";
             if (!signal.aborted)
               logger.warn("[marketing-touch] capability failed", {
                 action: action.type,
                 reason: timedOut ? "timeout" : "unavailable",
               });
             return {
-              status: signal.aborted ? "cancelled" : timedOut ? "uncertain" : "failure",
+              status: signal.aborted
+                ? "cancelled"
+                : timedOut
+                  ? "uncertain"
+                  : "failure",
               message: intl.formatMessage({
-                id: timedOut ? "marketingTouch.uncertain" : "marketingTouch.failed",
+                id: timedOut
+                  ? "marketingTouch.uncertain"
+                  : "marketingTouch.failed",
               }),
             };
           }
@@ -241,61 +219,18 @@ export function MarketingTouchProvider({
             };
           }
         }
-        if (!user) {
-          requestLogin();
-          return { status: "cancelled" };
-        }
-        let submitted = false;
-        try {
-          const proof = await prepareRequestVerificationClaim(
-            services.codingPlanSubscriptionService,
-            signal,
-            () => phase("verifying"),
-          );
-          if (!proof)
-            return {
-              status: "cancelled",
-              message: intl.formatMessage({ id: requestVerificationClaimFailureMessageId }),
-            };
-          phase("submitting");
-          submitted = true;
-          const result = await services.codingPlanSubscriptionService.claimManualPlan({
-            planId: action.args.plan_id,
-            ...proof,
-          });
-          signal.throwIfAborted();
-          if (!result.success)
-            return {
-              status: "failure",
-              terminal: [1001, 1002, 1003, 1004, 1005].includes(result.code),
-              message: result.message?.trim()
-                ? result.message
-                : intl.formatMessage({ id: "manualClaimPlan.claim.failure.generic" }),
-            };
-          // 成功已由 claim 确定，后置刷新失败只影响本地权益投影，不能逆转领取结果。
-          void Promise.allSettled([
-            refreshStartEntitlementRef.current({ force: true, silent: true, reason: "purchase" }),
-            // Provider 迁移后旧服务已不存在；统一刷新权威设置视图，不重建第二条凭据刷新链路。
-            services.providerSettingsService.refresh("marketing-plan-claim"),
-          ]).then((results) => {
-            if (results.some((value) => value.status === "rejected"))
-              logger.warn("[marketing-touch] claim succeeded but entitlement refresh failed");
-          });
-          // 领取结果由 Controller 的结果弹窗承载，避免成功 toast 与弹窗重复提示。
-          return { status: "success" };
-        } catch {
-          if (signal.aborted) return { status: "cancelled" };
-          return {
-            status: submitted ? "uncertain" : "failure",
-            message: intl.formatMessage({
-              id: submitted ? "marketingTouch.uncertain" : "marketingTouch.failed",
-            }),
-          };
-        }
+        logger.error("[marketing-touch] unhandled action");
+        return {
+          status: "failure",
+          message: intl.formatMessage({ id: "marketingTouch.failed" }),
+        };
       },
     });
     poller = createMarketingTouchPoller({
-      intervalMs: resolveMarketingTouchPollIntervalMs(import.meta.env.PROD, ZCODE_ENV),
+      intervalMs: resolveMarketingTouchPollIntervalMs(
+        import.meta.env.PROD,
+        ZCODE_ENV,
+      ),
       query: async () => {
         await controller.refresh();
         await controller.showPending();
@@ -311,13 +246,12 @@ export function MarketingTouchProvider({
     restoring,
     locale,
     intl,
-    requestLogin,
     desktop,
     openSettingsTab,
     tabStore,
-    openCodingPlanUpgrade,
   ]);
-  const [runtime, setRuntime] = useState<ReturnType<typeof createRuntime>>(null);
+  const [runtime, setRuntime] =
+    useState<ReturnType<typeof createRuntime>>(null);
   useEffect(() => {
     const runtime = createRuntime();
     setRuntime(runtime);
@@ -357,19 +291,15 @@ export function MarketingBanner() {
   const controller = useContext(Context);
   return controller ? <ConnectedBanner controller={controller} /> : null;
 }
-function ConnectedBanner({ controller }: { controller: MarketingTouchController }) {
+function ConnectedBanner({
+  controller,
+}: {
+  controller: MarketingTouchController;
+}) {
   const state = useStore(controller.store);
   const { dark } = useCloudHeroEnvironment();
   const { intl, locale } = useZCodeIntl();
   const banner = state.banner;
-  useRequestVerificationPrewarm(
-    Boolean(
-      banner?.delivery.resource_position === "banner" &&
-      (banner.image || banner.bannerHero) &&
-      banner.delivery.banner.buttons.find((button) => button.action.type !== "close")?.action
-        .type === "claim_zcode_plan",
-    ),
-  );
   // 与仲裁层（SidebarBottomActivity）共用同一可见性谓词，避免两处判断漂移。
   if (!isMarketingBannerRenderable(banner)) return null;
   const buttons = banner.delivery.banner.buttons;
@@ -378,22 +308,32 @@ function ConnectedBanner({ controller }: { controller: MarketingTouchController 
   return (
     <MarketingBannerView
       src={dark && banner.darkImage ? banner.darkImage : banner.image}
-      bundle={banner.bannerHero?.type === "interactive_bundle" ? banner.bannerHero : undefined}
-      video={banner.bannerHero?.type === "video" ? banner.bannerHero : undefined}
+      bundle={
+        banner.bannerHero?.type === "interactive_bundle"
+          ? banner.bannerHero
+          : undefined
+      }
+      video={
+        banner.bannerHero?.type === "video" ? banner.bannerHero : undefined
+      }
       locale={locale}
       // 纯图片 Banner 允许空文案；动作是否存在不能由标签决定。
       hasAction={Boolean(action)}
       hasClose={Boolean(close)}
       actionLabel={
-        (action && marketingLabel(action.text).trim()) || intl.formatMessage({ id: "common.open" })
+        (action && marketingLabel(action.text).trim()) ||
+        intl.formatMessage({ id: "common.open" })
       }
       closeLabel={
-        (close && marketingLabel(close.text).trim()) || intl.formatMessage({ id: "common.close" })
+        (close && marketingLabel(close.text).trim()) ||
+        intl.formatMessage({ id: "common.close" })
       }
       pending={state.pending}
       pendingLabel={intl.formatMessage({ id: `marketingTouch.${state.phase}` })}
       onClick={() => {
-        void controller.clickBanner().catch(() => logger.warn("[marketing-touch] action failed"));
+        void controller
+          .clickBanner()
+          .catch(() => logger.warn("[marketing-touch] action failed"));
       }}
       onClose={() => {
         void controller.closeBanner();

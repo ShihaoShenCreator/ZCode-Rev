@@ -306,7 +306,7 @@ A direct live stream   -X->  B 绕过 replayable recovery
 - 视觉 E2E 必须先把真实 Anchor 滚入 viewport，再使用 WebDriver pointer/click；禁止用
   `HTMLElement.click()` 打开不可见触发器后把截图当作布局通过证据。打开后同时断言 Popover rect 位于
   viewport 内、列表确定溢出且滚动容器是内部 `ul`；滚到底后必须验证末项可见。
-- 机械门禁：`pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
+- 机械门禁：`pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`。
 
 ## 实施结果（2026-08-19）
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ResolvedModelApiCallObservation } from "@zcode/contracts";
+import type { ResolvedModelApiCallObservation } from "@s-agent/contracts";
 import { resolveModelRequestSessionType } from "../src/model/runner-status.js";
 
 function modelCall(

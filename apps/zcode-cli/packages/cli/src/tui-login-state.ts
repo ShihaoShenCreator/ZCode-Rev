@@ -1,4 +1,4 @@
-import { getZCodeCopy } from "@zcode/i18n";
+import { getZCodeCopy } from "@s-agent/i18n";
 import type { CommandCenterApp } from "./command-center.js";
 
 export function loginRequiredResponse(locale?: string): string {

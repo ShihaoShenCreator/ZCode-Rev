@@ -1,5 +1,5 @@
-import type { ISubagentsService } from "@zcode/services";
-import type { ZCodeProvider } from "@zcode/shared";
+import type { ISubagentsService } from "@s-agent/services";
+import type { ZCodeProvider } from "@s-agent/shared";
 import { getServiceAuthorityId } from "@/store/serviceAuthorityKey.js";
 
 const inFlightAgentLoads = new Map<string, ReturnType<ISubagentsService["list"]>>();

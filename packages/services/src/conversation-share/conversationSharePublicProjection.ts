@@ -4,9 +4,9 @@ import {
   conversationShareContentBlockSchema,
   type ConversationShareContentBlock,
   type ConversationShareArtifactDescriptor,
-} from "@zcode/shared";
-import { toolCallDisplaySchema } from "@zcode/shared/zcode-protocol-v4";
-import type { ArtifactRow, ConversationRow, ToolCallRow } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import { toolCallDisplaySchema } from "@s-agent/shared/zcode-protocol-v4";
+import type { ArtifactRow, ConversationRow, ToolCallRow } from "@s-agent/shared/zcode-protocol-v4";
 
 import { ConversationShareServiceError } from "./conversationShare.js";
 

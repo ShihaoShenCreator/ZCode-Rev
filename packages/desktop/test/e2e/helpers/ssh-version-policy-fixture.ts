@@ -5,7 +5,7 @@ import { join, resolve } from "node:path";
 import { pipeline } from "node:stream/promises";
 import { promisify } from "node:util";
 import { Client } from "ssh2";
-import { sourceServerReleaseDescriptorSchema } from "@zcode/shared";
+import { sourceServerReleaseDescriptorSchema } from "@s-agent/shared";
 import type { SSHConnectionConfig } from "#e2e/helpers/ssh-remote-p0";
 
 const run = promisify(execFile);

@@ -1,4 +1,4 @@
-import type { LogContext, Logger } from "@zcode/contracts";
+import type { LogContext, Logger } from "@s-agent/contracts";
 
 interface AiSdkWarningLoggerOptions {
   model?: unknown;

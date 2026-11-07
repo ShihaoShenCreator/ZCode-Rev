@@ -15,7 +15,7 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog.js";
-import { TID_CONFIRM_DIALOG_CONFIRM } from "@zcode/shared/test-ids";
+import { TID_CONFIRM_DIALOG_CONFIRM } from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import {
   Dialog,

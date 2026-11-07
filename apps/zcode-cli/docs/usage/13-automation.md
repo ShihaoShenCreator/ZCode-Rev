@@ -81,7 +81,7 @@ child.on("close", (code, signal) => {
 源码仓库提供独立的测试辅助工具，未打包进生产 SEA。对兼容格式的已有日志，转换命令为：
 
 ```sh
-pnpm --filter @zcode/prompt-trajectory model-io -- --input /absolute/path/to/model-io-session.jsonl --out /absolute/path/to/derived
+pnpm --filter @s-agent/prompt-trajectory model-io -- --input /absolute/path/to/model-io-session.jsonl --out /absolute/path/to/derived
 ```
 
 转换器默认关注主轮次，展开可恢复的增量并按连续片段处理；它无法补回已裁剪、覆盖或缺失的请求。非增量请求也不能直接解释为 provider 缓存未命中。输出格式及记录工具说明见[轨迹工具](../../tools/prompt-trajectory/README.md)。

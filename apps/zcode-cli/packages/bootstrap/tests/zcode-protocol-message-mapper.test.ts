@@ -6,7 +6,7 @@ import {
   type MessageWithParts,
   type ModelId,
   type ModelProviderId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { mapMessageWithParts } from "../src/zcode-protocol/message-mapper.js";
 
 describe("zcode protocol message mapper", () => {

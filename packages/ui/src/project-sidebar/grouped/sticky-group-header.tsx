@@ -25,7 +25,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu.js";
-import { CRON_DEFAULT_GROUP_ID, OFF_PEAK_DEFAULT_GROUP_ID } from "@zcode/shared";
+import { CRON_DEFAULT_GROUP_ID, OFF_PEAK_DEFAULT_GROUP_ID } from "@s-agent/shared";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { getTaskGroupDisplayTitle } from "@/project-sidebar/grouped/group-title.js";
 import {

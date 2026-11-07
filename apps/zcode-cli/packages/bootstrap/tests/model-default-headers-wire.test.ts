@@ -3,8 +3,8 @@ import {
   createSessionId,
   InMemorySessionEventStore,
   type SessionStorePort,
-} from "@zcode/contracts";
-import { AgentRuntime } from "@zcode/core";
+} from "@s-agent/contracts";
+import { AgentRuntime } from "@s-agent/core";
 import {
   createRegistryModelConfig,
   createRegistryProviderConfig,
@@ -13,7 +13,7 @@ import {
   ModelPropertiesConfig,
   parseProviderConfig,
   type RegistryProviderConfig,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { createRuntimeAiSdkModelExecutionConfig } from "../src/model-config.js";
 import { createModelAdapter } from "../src/model-factory.js";
 

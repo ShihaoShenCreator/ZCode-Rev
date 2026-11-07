@@ -8,7 +8,7 @@ import {
   TID_WORKFLOWS_REFRESH,
   readDynamicWorkflowOfferedMode,
   resolveWorkspaceKey,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { Spinner } from "@/components/ui/spinner.js";
 import { cn } from "@/components/lib/utils.js";

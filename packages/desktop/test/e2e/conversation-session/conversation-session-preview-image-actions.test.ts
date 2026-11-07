@@ -1,6 +1,6 @@
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_WORKSPACE_FILE_TREE_ROW, testId } from "@zcode/shared/test-ids";
+import { TID_WORKSPACE_FILE_TREE_ROW, testId } from "@s-agent/shared/test-ids";
 import { DEFAULT_WORKSPACE, clearAppData } from "#e2e/helpers/desktop-app";
 import { openProjectFileTree } from "#e2e/helpers/project-sidebar";
 import {

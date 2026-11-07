@@ -54,7 +54,7 @@ contracts ← core ← bootstrap ← cli
 
 ## 2. 模块级 Review
 
-### 2.1 @zcode/core（36K 行源码）
+### 2.1 @s-agent/core（36K 行源码）
 
 #### 2.1.1 模块定位
 
@@ -64,8 +64,8 @@ contracts ← core ← bootstrap ← cli
 
 #### 2.1.2 依赖关系与调用链
 
-- 依赖: `@zcode/contracts`, `@zcode/shared-types`, `cheerio`, `diff`
-- 被依赖: `@zcode/bootstrap`, `@zcode/tui`, `@zcode/cli`
+- 依赖: `@s-agent/contracts`, `@s-agent/shared-types`, `cheerio`, `diff`
+- 被依赖: `@s-agent/bootstrap`, `@s-agent/tui`, `@s-agent/cli`
 - **不合理依赖**: core 直接 `import cheerio` 做 HTML 解析（webfetch handler），这是基础设施关注点，应下沉到 adapters
 
 #### 2.1.3 问题清单
@@ -90,11 +90,11 @@ contracts ← core ← bootstrap ← cli
   - 两处字段完全不同！`runtime/types.ts` 的版本只有 4 个字段，`permission/service.ts` 的版本有 9 个字段
   - 同理 `ToolScheduleItem` 在 `agent/turn-state.ts:126` 和 `tool/scheduler.ts:18` 各有一份，字段不同（前者无 toolName，后者有）
 - **风险**: 运行时可能因类型不匹配导致静默数据丢失
-- **建议**: 统一到 `@zcode/contracts`，删除 core 内重复定义
+- **建议**: 统一到 `@s-agent/contracts`，删除 core 内重复定义
 
 ##### P1-1: `deps.ts` 集中重导出 — 隐式耦合
 
-- **证据**: `runtime/deps.ts` 有 209 行，从 `@zcode/contracts` 重导出 50+ 个值和 80+ 个类型，以及从自身其他模块重导出
+- **证据**: `runtime/deps.ts` 有 209 行，从 `@s-agent/contracts` 重导出 50+ 个值和 80+ 个类型，以及从自身其他模块重导出
 - **风险**: 每个 methods 文件 `import { ... } from "../deps.js"` 时看不到真实来源，也不知道自己到底依赖了什么
 - **建议**: 每个子模块直接从 contracts 导入自己需要的类型，删除全局 deps.ts
 
@@ -108,13 +108,13 @@ contracts ← core ← bootstrap ← cli
 
 - **证据**: `context-usage.ts` 中 `estimatedMetric`、`estimatedMetricFromKnown`、`sumMetrics` 都是纯计算函数，通过 `this: AgentRuntimeInternal` 绑定，但实际不使用任何实例状态
 - **风险**: 虚假耦合，无法独立测试，增加 God Object 体积
-- **建议**: 提取为独立模块 `@zcode/core/src/context/usage-metrics.ts`，作为纯函数导出
+- **建议**: 提取为独立模块 `@s-agent/core/src/context/usage-metrics.ts`，作为纯函数导出
 
 ##### P1-4: workflow 模块在 core 中职责过重
 
 - **证据**: `workflow/` 目录下有 `lifecycle.ts`(590行)、`expert/`(10+文件)、`scheduler/`(8+文件)，合计约 5000 行代码
 - **风险**: workflow 本身是一个独立子系统，不应嵌入 core
-- **建议**: 考虑拆为 `@zcode/workflow` 独立包，通过 Port 与 core 交互
+- **建议**: 考虑拆为 `@s-agent/workflow` 独立包，通过 Port 与 core 交互
 
 ##### P2-1: 文件超出 400 行限制
 
@@ -176,7 +176,7 @@ class PersistenceService {
 
 ---
 
-### 2.2 @zcode/contracts（11K 行源码）
+### 2.2 @s-agent/contracts（11K 行源码）
 
 #### 2.2.1 模块定位
 
@@ -205,7 +205,7 @@ class PersistenceService {
 
 - **证据**: 60+ 个源文件，包括完整的 tool schema 定义、workflow script DSL、model catalog 等
 - **风险**: 编译变慢；改动 tool schema 会导致 contracts 整体重编译
-- **建议**: 将 `tools/` 目录拆为 `@zcode/tool-schemas` 独立包，或使用 sub-path exports 已有的 `@zcode/contracts/tools` 做逻辑隔离
+- **建议**: 将 `tools/` 目录拆为 `@s-agent/tool-schemas` 独立包，或使用 sub-path exports 已有的 `@s-agent/contracts/tools` 做逻辑隔离
 
 ##### P2-2: session-store.port.ts 750 行
 
@@ -229,7 +229,7 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 ---
 
-### 2.3 @zcode/adapters（23K 行源码）
+### 2.3 @s-agent/adapters（23K 行源码）
 
 #### 2.3.1 模块定位
 
@@ -239,8 +239,8 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 #### 2.3.2 依赖关系与调用链
 
-- 依赖: `@zcode/contracts`, `ai`, `@ai-sdk/anthropic`, `@ai-sdk/openai`, `cheerio`, `jimp`, `proxy-agent`, `ripgrep`, `zod`
-- 被依赖: `@zcode/bootstrap`, `@zcode/cli`
+- 依赖: `@s-agent/contracts`, `ai`, `@ai-sdk/anthropic`, `@ai-sdk/openai`, `cheerio`, `jimp`, `proxy-agent`, `ripgrep`, `zod`
+- 被依赖: `@s-agent/bootstrap`, `@s-agent/cli`
 - **不合理**: adapters 直接依赖 `cheerio`（webfetch HTML 解析）和 `jimp`（图片处理），这些是 core 中的工具 handler 通过 Port 调用的，但当前 core 直接 import cheerio
 
 #### 2.3.3 问题清单
@@ -265,7 +265,7 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 ---
 
-### 2.4 @zcode/bootstrap（11K 行源码）
+### 2.4 @s-agent/bootstrap（11K 行源码）
 
 #### 2.4.1 模块定位
 
@@ -279,17 +279,17 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 - **证据**: `app/script-workflow-*.ts` 有 11 个文件
 - **风险**: bootstrap 的组装职责与 workflow 运行时逻辑混在一起
-- **建议**: 拆为 `@zcode/workflow-runner` 独立包
+- **建议**: 拆为 `@s-agent/workflow-runner` 独立包
 
 ##### P1-9: zcode-protocol 子系统嵌入 bootstrap
 
 - **证据**: `zcode-protocol/` 下 13 个文件（~4000 行），包含完整的 JSON-RPC server
 - **风险**: 协议层与 bootstrap 耦合
-- **建议**: 拆为 `@zcode/protocol-server` 独立包
+- **建议**: 拆为 `@s-agent/protocol-server` 独立包
 
 ---
 
-### 2.5 @zcode/tui（7.3K 行源码）
+### 2.5 @s-agent/tui（7.3K 行源码）
 
 #### 2.5.1 模块定位
 
@@ -298,9 +298,9 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 #### 2.5.2 问题清单
 
-##### P1-10: tui 依赖 @zcode/core — 跨层调用
+##### P1-10: tui 依赖 @s-agent/core — 跨层调用
 
-- **证据**: `tui/package.json` 中 `"@zcode/core": "workspace:*"`
+- **证据**: `tui/package.json` 中 `"@s-agent/core": "workspace:*"`
 - **风险**: TUI 层不应直接依赖业务核心层，应只依赖 contracts 中的类型
 - **建议**: TUI 通过 contracts 中的接口与 runtime 交互，不直接 import core 实现
 
@@ -312,7 +312,7 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 ---
 
-### 2.6 @zcode/cli（6.8K 行源码）
+### 2.6 @s-agent/cli（6.8K 行源码）
 
 #### 2.6.1 模块定位
 
@@ -325,7 +325,7 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 - **证据**: `cli/src/` 下有 `tui-command.ts`、`tui-command-data.ts`、`tui-command-state.ts`、`tui-login-state.ts`、`tui-prompt-handler.ts`、`tui-runtime-loader.ts`、`tui-startup-locale.ts`、`tui-stderr.ts`、`tui-submit-metadata.ts`、`tui-workflow-panel.ts`、`tui-workspace-git.ts`、`tui-workspace-paths.ts` 共 12 个 tui-* 文件
 - **风险**: CLI 包承担了本应在 tui 包中的职责
-- **建议**: 将 tui-* 文件移入 `@zcode/tui` 包，cli 只负责入口编排
+- **建议**: 将 tui-* 文件移入 `@s-agent/tui` 包，cli 只负责入口编排
 
 ##### P2-5: 测试文件过大
 
@@ -335,7 +335,7 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 ---
 
-### 2.7 @zcode/shared-types（35 行源码）
+### 2.7 @s-agent/shared-types（35 行源码）
 
 #### 2.7.1 问题清单
 
@@ -347,7 +347,7 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 ---
 
-### 2.8 @zcode/i18n（961 行源码）
+### 2.8 @s-agent/i18n（961 行源码）
 
 #### 2.8.1 模块定位
 
@@ -362,7 +362,7 @@ export function evaluateRewindTarget()                     // → core/runtime/h
 
 ### 2.9 插件包
 
-- `@zcode/android-emulator-plugin`、`@zcode/ios-simulator-plugin`、`@zcode/document-skills-plugin`、`@zcode/skill-creator-plugin`
+- `@s-agent/android-emulator-plugin`、`@s-agent/ios-simulator-plugin`、`@s-agent/document-skills-plugin`、`@s-agent/skill-creator-plugin`
 - 基本合理，通过 MCP 协议接入，与主系统解耦
 - **问题**: 无测试覆盖
 
@@ -423,7 +423,7 @@ webfetch.ts → webfetch-cache.ts, webfetch-constants.ts, webfetch-content.ts,
 
 - **改动范围**: `core/src/runtime/types.ts`、`core/src/permission/service.ts`、`core/src/agent/turn-state.ts`、`core/src/tool/scheduler.ts`
 - **迁移步骤**:
-  1. 在 `@zcode/contracts` 中定义权威的 `PermissionDecisionResult`、`ToolScheduleItem`
+  1. 在 `@s-agent/contracts` 中定义权威的 `PermissionDecisionResult`、`ToolScheduleItem`
   2. core 中所有消费方改为从 contracts 导入
   3. 删除 core 中的重复定义
 - **风险**: 低 — 纯类型迁移，编译器会捕获遗漏
@@ -483,7 +483,7 @@ webfetch.ts → webfetch-cache.ts, webfetch-constants.ts, webfetch-content.ts,
 
 - **改动范围**: `core/src/runtime/deps.ts`、所有 `methods/*.ts`
 - **迁移步骤**:
-  1. 每个 methods 文件改为直接从 `@zcode/contracts` 导入所需类型
+  1. 每个 methods 文件改为直接从 `@s-agent/contracts` 导入所需类型
   2. 从自身模块导入所需实现
   3. 逐步缩小 deps.ts，最终删除
 - **风险**: 低 — 纯 import 路径变更
@@ -494,8 +494,8 @@ webfetch.ts → webfetch-cache.ts, webfetch-constants.ts, webfetch-content.ts,
 
 - **改动范围**: `bootstrap/src/app/script-workflow-*.ts`、`bootstrap/src/zcode-protocol/`
 - **迁移步骤**:
-  1. script-workflow → `@zcode/workflow-runner` 包
-  2. zcode-protocol → `@zcode/protocol-server` 包
+  1. script-workflow → `@s-agent/workflow-runner` 包
+  2. zcode-protocol → `@s-agent/protocol-server` 包
   3. bootstrap 通过依赖引用
 - **风险**: 中 — 需调整包间依赖
 - **验证**: `pnpm run typecheck` + `pnpm run test:unit`
@@ -503,7 +503,7 @@ webfetch.ts → webfetch-cache.ts, webfetch-constants.ts, webfetch-content.ts,
 
 #### P1-D: 将 cli 包中 tui-* 文件移入 tui 包
 
-- **改动范围**: `cli/src/tui-*.ts`（12 个文件）、`@zcode/tui`
+- **改动范围**: `cli/src/tui-*.ts`（12 个文件）、`@s-agent/tui`
 - **迁移步骤**:
   1. 识别 tui-* 文件中对 cli 包其他模块的依赖
   2. 通过接口/事件解耦
@@ -514,7 +514,7 @@ webfetch.ts → webfetch-cache.ts, webfetch-constants.ts, webfetch-content.ts,
 
 #### P1-E: TUI 不直接依赖 core
 
-- **改动范围**: `@zcode/tui` 的 import 语句
+- **改动范围**: `@s-agent/tui` 的 import 语句
 - **迁移步骤**:
   1. 审计 tui 对 core 的所有 import
   2. 逐个替换为从 contracts 导入类型 + 通过事件/接口交互
@@ -524,7 +524,7 @@ webfetch.ts → webfetch-cache.ts, webfetch-constants.ts, webfetch-content.ts,
 
 #### P1-F: 合并 shared-types 到 contracts
 
-- **改动范围**: `@zcode/shared-types`、所有引用方
+- **改动范围**: `@s-agent/shared-types`、所有引用方
 - **迁移步骤**:
   1. 将 `JsonValue`、`RunContext`、`GlobalLocale`、`GlobalOptions`、`RuntimeInfo` 移入 contracts
   2. shared-types 保留 re-export 标记 deprecated
@@ -538,7 +538,7 @@ webfetch.ts → webfetch-cache.ts, webfetch-constants.ts, webfetch-content.ts,
 | P2 项 | 改动范围 | PR 粒度 |
 |-------|----------|---------|
 | P2-A: 超 400 行文件拆分 | 8+ 文件 | 每个 1 PR |
-| P2-B: TUI app-*.ts 按子目录组织 | `@zcode/tui/src/` | 1 PR |
+| P2-B: TUI app-*.ts 按子目录组织 | `@s-agent/tui/src/` | 1 PR |
 | P2-C: adapters/model/runner-* 合并 | `adapters/src/model/runner-*.ts` | 1 PR |
 | P2-D: webfetch 9 文件合并为 3 | `core/src/tool/handlers/webfetch*.ts` | 1 PR |
 | P2-E: cli 测试文件拆分 | `cli/tests/cli.unit.test.ts` (4573行) | 1 PR |
@@ -624,5 +624,5 @@ core/src/
 | 2 | 删除 `turn-state.ts` 中重复的 `ToolScheduleItem`，统一使用 `scheduler.ts` 版本 | 0.5h | 消除类型不一致隐患 |
 | 3 | 将 `context-usage.ts` 中 `estimatedMetric`/`sumMetrics` 等纯函数提取为独立模块 | 1h | 减少 God Object 方法数 |
 | 4 | 将 `modelAdapter?: any` 改为 `modelAdapter?: ModelPort` | 2h | 恢复类型安全 |
-| 5 | 每个 methods 文件将 `import { ... } from "../deps.js"` 改为直接从 `@zcode/contracts` 导入 | 3h | 提升可读性 |
+| 5 | 每个 methods 文件将 `import { ... } from "../deps.js"` 改为直接从 `@s-agent/contracts` 导入 | 3h | 提升可读性 |
 | 6 | 合并 `shared-types` 到 `contracts` | 1h | 减少包数量 |

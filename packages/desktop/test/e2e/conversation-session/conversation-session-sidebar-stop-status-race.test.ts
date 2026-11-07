@@ -1,7 +1,7 @@
-import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@zcode/rpc";
-import type { ProjectTree } from "@zcode/services";
-import { ServiceChannels } from "@zcode/shared";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@s-agent/rpc";
+import type { ProjectTree } from "@s-agent/services";
+import { ServiceChannels } from "@s-agent/shared";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 import { clearAppData } from "../helpers/desktop-app.js";
 import {
   callHandoffHost,

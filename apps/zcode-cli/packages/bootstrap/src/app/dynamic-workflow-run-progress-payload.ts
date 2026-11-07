@@ -9,8 +9,8 @@ import {
   boundDynamicWorkflowRunEventPayload,
   type DynamicWorkflowRunEvent,
   type DynamicWorkflowRunProgressPayload,
-} from "@zcode/contracts";
-import type { ActorRef, RunEvent } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import type { ActorRef, RunEvent } from "@s-agent/dynamic-workflow";
 import { isResumableSettlement } from "./dynamic-workflow-run-observation.js";
 import { mintActorSessionId } from "./workflow-driver.js";
 

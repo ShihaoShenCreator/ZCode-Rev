@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ToolSearchCandidate } from "@zcode/contracts";
+import type { ToolSearchCandidate } from "@s-agent/contracts";
 import { searchTools } from "../src/tool/search/search.js";
 import { collectDiscoveredTools, projectToolReferences } from "../src/tool/search/history.js";
 import { buildToolExposure, resolveToolSearchMode } from "../src/tool/search/exposure.js";

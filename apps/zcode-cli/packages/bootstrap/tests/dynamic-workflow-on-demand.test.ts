@@ -2,12 +2,12 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   CREATE_WORKFLOW_TOOL_NAME,
   SESSION_ENTRY_DYNAMIC_WORKFLOW_ACTIVATION,
   type ModelRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createRegistryBackedTestApp as createZCodeApp } from "./helpers/registry-backed-test-app.js";
 
 // DWG-09 的装配层一半（docs/dynamic-workflow/launch.md「On demand: activation」）：`/workflow` 的展开处

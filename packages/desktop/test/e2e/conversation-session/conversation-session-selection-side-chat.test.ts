@@ -7,7 +7,7 @@ import {
   TID_V4_COMPOSER_SEND,
   TID_V4_SESSION_PANE,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, DEFAULT_WORKSPACE } from "../helpers/desktop-app.js";
 import {
   prepareV4ConversationE2E,

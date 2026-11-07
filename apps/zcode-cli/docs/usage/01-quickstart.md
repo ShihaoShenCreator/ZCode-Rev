@@ -6,17 +6,17 @@
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm --filter @zcode/cli... build
+pnpm --filter @s-agent/cli... build
 node apps/zcode-cli/packages/cli/dist/zcode.cjs --version
 node apps/zcode-cli/packages/cli/dist/zcode.cjs doctor --json
 ```
 
-`@zcode/cli...` 包含 CLI 的 workspace 依赖。首次安装会执行仓库的资源准备步骤，需要能访问包和资源下载源。不要把安装脚本被跳过的目录当作完整发行包。
+`@s-agent/cli...` 包含 CLI 的 workspace 依赖。首次安装会执行仓库的资源准备步骤，需要能访问包和资源下载源。不要把安装脚本被跳过的目录当作完整发行包。
 
 需要单文件可执行产物时，在完成构建后执行：
 
 ```sh
-pnpm --filter @zcode/cli sea --target linux-x64
+pnpm --filter @s-agent/cli sea --target linux-x64
 ```
 
 目标包括 `darwin-arm64`、`darwin-x64`、`linux-arm64`、`linux-x64`、`win-arm64`、`win-x64`。产物在 `apps/zcode-cli/packages/cli/dist/`；Windows 文件名使用 `zcode-windows-<arch>.exe`。交叉打包不等于目标平台运行验证。

@@ -1,5 +1,5 @@
 {
-  "name": "@zcode/visualize-plugin",
+  "name": "@s-agent/visualize-plugin",
   "version": "0.1.1",
   "private": true,
   "description": "ZCode Gen UI authoring skill and examples",

@@ -2,15 +2,15 @@ import {
   compareSemverVersions,
   SOURCE_SERVER_LIFECYCLE_CONTROL_MIN_VERSION,
   SOURCE_SERVER_UPDATE_RUNNING_TASKS_ERROR_CODE,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   SourceServerConnectionStateSnapshot,
   SourceServerManagementSnapshot,
   SourceServerRunningTask,
   SourceServerRunningTasksResult,
   SourceServerUpdateTarget,
-} from "@zcode/shared";
-import type { ISourceServerManagementService } from "@zcode/services";
+} from "@s-agent/shared";
+import type { ISourceServerManagementService } from "@s-agent/services";
 import type { RemoteConnectionStatus } from "@/lib/remoteConnectionPresentation.js";
 import { logger } from "@/logger.js";
 

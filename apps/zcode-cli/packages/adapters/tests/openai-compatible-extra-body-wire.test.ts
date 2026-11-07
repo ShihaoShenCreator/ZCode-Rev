@@ -1,7 +1,7 @@
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { generateText } from "ai";
 import { describe, expect, it } from "vitest";
-import type { ModelInputMessage, ModelToolContract } from "@zcode/contracts";
+import type { ModelInputMessage, ModelToolContract } from "@s-agent/contracts";
 import { createGenerateTextOptions } from "../src/model/runner-options.js";
 import type { ResolvedAiSdkModel } from "../src/model/runner-runtime.js";
 import { createTestModelProperties } from "./test-model-format.js";

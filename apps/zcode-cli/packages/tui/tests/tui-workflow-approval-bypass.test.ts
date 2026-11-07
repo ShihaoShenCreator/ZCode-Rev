@@ -9,7 +9,7 @@ import {
   ASK_USER_QUESTION_TOOL_NAME,
   CREATE_WORKFLOW_TOOL_NAME,
   type PermissionBrokerRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTuiPermissionRequester } from "../src/app-permission.js";
 import type { ApprovalPrompt } from "../src/app-model.js";
 

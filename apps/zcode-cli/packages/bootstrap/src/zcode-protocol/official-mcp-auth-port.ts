@@ -6,12 +6,12 @@ import {
   zcodeOfficialMcpAuthHeadersResponseSchema,
   zcodeProtocolMethods,
   type ZCodeWorkspaceRef,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   Logger,
   OfficialMcpAuthHeadersPort,
   OfficialMcpAuthHeadersResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ZCodeProtocolAgentServerContext } from "./server-types.js";
 
 let requestSequence = 0;

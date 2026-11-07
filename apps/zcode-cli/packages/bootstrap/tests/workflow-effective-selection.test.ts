@@ -1,8 +1,8 @@
-import * as executionAdapters from "@zcode/adapters/exec";
+import * as executionAdapters from "@s-agent/adapters/exec";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import { describe, expect, it, vi } from "vitest";
 import {
   createRegistryBackedTestApp,

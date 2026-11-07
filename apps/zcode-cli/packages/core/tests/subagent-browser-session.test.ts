@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createSessionId, type BrowserControlPort } from "@zcode/contracts";
+import { createSessionId, type BrowserControlPort } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestModelFactory } from "./test-runtime-model.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

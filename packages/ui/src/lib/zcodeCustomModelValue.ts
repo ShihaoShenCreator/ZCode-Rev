@@ -1,7 +1,7 @@
 import {
   decodeCustomModelValue as decodeSharedCustomModelValue,
   encodeCustomModelValue as encodeSharedCustomModelValue,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 interface DecodedCustomModelValue {
   providerId: string;

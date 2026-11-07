@@ -1,4 +1,4 @@
-import type { BotsConfigFile, BotsStateFile } from "@zcode/shared";
+import type { BotsConfigFile, BotsStateFile } from "@s-agent/shared";
 
 import {
   createBotsServiceHarness,

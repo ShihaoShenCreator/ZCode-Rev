@@ -6,7 +6,7 @@
 
 **Architecture:** `executeTurn(...)` 保持 public API，但改为提交 `prompt` command；现有 turn 主体下沉为 internal `executeTurnCommand(...)`。新增 `RuntimeCommandQueue` 和 `drainRuntimeCommandQueue(...)`，drain 入口在任何 await 前同步置 busy。第一阶段只实现 `prompt` 和 `task-notification`，但 command envelope、priority policy、executor switch 和 runtime busy helper 要为后续能力留口。
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/core`, existing `AgentRuntime`, existing `TurnMachine`, existing session event store.
+**Tech Stack:** TypeScript, Vitest, `@s-agent/core`, existing `AgentRuntime`, existing `TurnMachine`, existing session event store.
 
 ---
 
@@ -247,7 +247,7 @@ git diff --check -- apps/zcode-cli/docs/design/v2/loop/runtime-command-queue-pla
 **Focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-command-queue.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-command-queue.test.ts
 ```
 
 **通过标准:**
@@ -301,7 +301,7 @@ pnpm --filter @zcode/core exec vitest run tests/runtime-command-queue.test.ts
 **Focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-command-queue.test.ts tests/runtime-tool-loop.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-command-queue.test.ts tests/runtime-tool-loop.test.ts
 ```
 
 **通过标准:**
@@ -355,7 +355,7 @@ pnpm --filter @zcode/core exec vitest run tests/runtime-command-queue.test.ts te
 **Focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-background.test.ts tests/runtime-hooks.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-background.test.ts tests/runtime-hooks.test.ts
 ```
 
 **通过标准:**
@@ -399,7 +399,7 @@ pnpm --filter @zcode/core exec vitest run tests/subagent-background.test.ts test
 **Focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-background.test.ts tests/subagent-explore.test.ts tests/subagent-profile.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-background.test.ts tests/subagent-explore.test.ts tests/subagent-profile.test.ts
 ```
 
 **通过标准:**
@@ -443,7 +443,7 @@ pnpm --filter @zcode/core exec vitest run tests/subagent-background.test.ts test
 **Focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-background.test.ts tests/subagent-explore.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-background.test.ts tests/subagent-explore.test.ts
 ```
 
 **通过标准:**
@@ -483,7 +483,7 @@ pnpm --filter @zcode/core exec vitest run tests/subagent-background.test.ts test
 **Focused tests:**
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts tests/bash-run-conformance.test.ts tests/subagent-background.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-tool-loop.test.ts tests/bash-run-conformance.test.ts tests/subagent-background.test.ts
 ```
 
 **通过标准:**
@@ -511,9 +511,9 @@ pnpm --filter @zcode/core exec vitest run tests/runtime-tool-loop.test.ts tests/
 
 ```bash
 git diff --check
-pnpm --filter @zcode/core exec vitest run tests/runtime-command-queue.test.ts tests/subagent-background.test.ts tests/subagent-explore.test.ts tests/subagent-profile.test.ts tests/runtime-hooks.test.ts tests/runtime-tool-loop.test.ts tests/bash-run-conformance.test.ts
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/core lint
+pnpm --filter @s-agent/core exec vitest run tests/runtime-command-queue.test.ts tests/subagent-background.test.ts tests/subagent-explore.test.ts tests/subagent-profile.test.ts tests/runtime-hooks.test.ts tests/runtime-tool-loop.test.ts tests/bash-run-conformance.test.ts
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/core lint
 pnpm typecheck
 pnpm lint
 ```

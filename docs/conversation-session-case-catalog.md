@@ -1432,7 +1432,7 @@ renderer CPU 升高的可重复环境，避免只测静态长历史打开。完�
 通信链路：
 
 ```text
-provider SSE -> zcode-cli runtime -> @zcode/protocol stdio
+provider SSE -> zcode-cli runtime -> @s-agent/protocol stdio
   -> host services -> renderer desktop-continuous subscription
   -> v4 pane projection -> React render/layout
 ```
@@ -3091,10 +3091,10 @@ TEL01 的日常回归允许新增字符串埋点字段，按事件告知；缺�
 [`conversation-telemetry-differential-regression-plan.md`](testing/conversation-telemetry-differential-regression-plan.md)。
 2026-07-18 已完成 `20260718-tdp-all-final`：TDP01-TDP19 每条都由旧版/current 两个真实 Electron
 实例构造同一受控状态，比较最终 `/event/report` HTTP body 与 main ARMS payload；19 份独立 diff 均为
-0。预期零上报的 TDP16/TDP17/TDP19 另外执行 quota/安全校验/Web production 状态正断言，避免空对空假
-通过。真实 provider/replay 的 TDP02 与 TDP-CORE 代表样本也保持 diff=0。差分 spec 继续保留在
+0。该证据是旧产品基线；其中 TDP16 的套餐额度断言已随套餐身份遥测退役，不再代表当前验收。
+真实 provider/replay 的 TDP02 与 TDP-CORE 代表样本也保持 diff=0。差分 spec 继续保留在
 manual-review pending；这里记录已执行的双版本认证，不提前宣称 formal promotion。购买模块内部事件不在
-TEL 范围，TEL08 只验证 conversation quota 与既有 Upgrade 入口交接。
+TEL 范围，旧 TEL08 曾验证 conversation quota 与 Upgrade 入口交接。
 
 2026-08-19 归因修复剪枝已确认：只保留桌面 live 本地预检、桌面 cold legacy provider、桌面 cold
 session-stop 和手机 replayable snapshot parity/零 ARMS 四个代表；不再与主题、语言、provider/model、
@@ -4172,7 +4172,9 @@ PJM07（pending，2026-10-24）：确认对话框勾选「同时删除它们的 
 
 AMT 验证：4 个相关单测文件 / 15 项通过；桌面 E2E `desktop-e2e-20260911073739200-p10328-ec7ec1db666a0f0c` 2/2 通过，真实历史正文/标题及开启归档后的列表、选中态、另一条同名未读均验证。Host getTaskMeta 0.4ms 完成早于 V4 冷恢复约 1 秒，日志无标题 readSession 请求。root typecheck、desktop typecheck:e2e、fixture check、格式检查、lint（48 个既有 warnings / 0 errors）、architecture（baseline 0 / new 0）通过。代码涉及 ui 与 project-sidebar，CLI/Host 事实归属、owner/lease、continuous/replayable 边界不变；实现净减约 50 行。真实手机配对、SSH/WSL、Windows/Linux GUI 未复跑，远端身份与 attachment 迟到结果由单测覆盖。保持 pending。
 
-## Start Plan bucket 提醒（2026-09-10）
+## Start Plan bucket 提醒（已退役，2026-09-10）
+
+以下为已退役套餐提醒的历史验收记录，不构成当前 S-Agent 行为或回归要求。
 
 | Case  | Setup / Action                                                                         | Expected                                                          | Decision |
 | ----- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------- |
@@ -4847,7 +4849,7 @@ WSL、真实手机按用户决定保留 TODO。候选运行证据只代表实际
 
 2026-10-12 审查修复复验：后台候选在 macOS Desktop + 独立 Linux SSH/Docker 环境 1/1 PASS，补验设置普通入口恢复同一在途／完成操作，证据 `packages/desktop/.e2e-artifacts/r3-server-review-20261012-background/`。旧三屏候选的设置进度卡、查看不重拨和显式取消后新建 1/1 PASS，证据 `packages/desktop/.e2e-artifacts/r3-server-review-20261012-threescreen-r4/`。候选状态仍为 pending；五份新增远程候选已补入远程全量回归清单，未转正或加入正式 CI。
 
-Composer 连接展示失败回归：CTP-31 在同 Provider/模型的两团队切换中，目标 revision 的展示刷新失败但独立同步成功，失败后不再发送目录事件；保留旧目录同时发布有归属的失败回执，菜单解除锁并可重试。用例与 spec 见 `docs/testing/coding-plan-team-e2e-cases.md`，不增加超时。
+已退役的 Composer 套餐连接展示回归：CTP-31 曾覆盖同 Provider/模型的两团队切换中展示刷新失败与重试；所属 Team Plan UI 已移除，记录仅作历史证据。旧用例见 `docs/testing/coding-plan-team-e2e-cases.md`。
 
 MR 连接展示消费者隔离：CTP-31 增加恢复重试中旧显式读取 A 被新读取 B 取代后迟到失败，成功展示不得变为错误。OAuth 连接初始化 CAS 的轮询及深链成功收尾由真实设置服务联合测试覆盖。
 
@@ -5005,7 +5007,7 @@ TD01–TD08 均 accepted，详见 [规则与用例](ui/composer-text-draft-persi
 | SPR01 | 生产 renderer、8 个固定已完成历史会话；真实点击切换 136 次；8/40/72/136 次及停止切换后，等待 35 秒并强制 GC 两次 | 非当前会话 snapshot 与已关闭 store 为零，当前 store 恰好一个；历史正文每次可见；保存各检查点 heap snapshot，不用 RSS 或切换耗时阈值代替对象释放断言。 |
 | SPR02 | lease owner 切换、草稿晋升后返回草稿、layer 换代、Suspense 中止 render                                           | 新 owner 的首帧不能读取旧 lease；同 lease 的草稿晋升不重挂 Composer；中止 render 不替换已提交 owner。                                                 |
 
-SPR01 已于 2026-10-19 经用户人工复核。staging `52cd1bc1d3` 的生产构建仍暴露模型轨迹 E2E store，前置断言失败，继续保留 `test/e2e/conversation-session/manual-review/pending/conversation-session-snapshot-retention.test.ts`，未转正。使用 `pnpm --filter @zcode/desktop test:e2e:retention` 连接隔离生产 Electron；开始前断言未暴露 E2E store bridge，避免误连普通 E2E 构建后污染堆对象统计；包括前置断言失败在内，均须释放 CDP 连接，使失败报告正常结束。不进入 WDIO 或 Docker preset，无模型请求。SPR02 沿用 SessionPane 组件回归与 lease owner 单测。共享 UI 引用边界适用于 desktop continuous / mobile replayable；本项不改变 Host、协议或身份路由，真实手机传输验证单独记录。
+SPR01 已于 2026-10-19 经用户人工复核。staging `52cd1bc1d3` 的生产构建仍暴露模型轨迹 E2E store，前置断言失败，继续保留 `test/e2e/conversation-session/manual-review/pending/conversation-session-snapshot-retention.test.ts`，未转正。使用 `pnpm --filter @s-agent/desktop test:e2e:retention` 连接隔离生产 Electron；开始前断言未暴露 E2E store bridge，避免误连普通 E2E 构建后污染堆对象统计；包括前置断言失败在内，均须释放 CDP 连接，使失败报告正常结束。不进入 WDIO 或 Docker preset，无模型请求。SPR02 沿用 SessionPane 组件回归与 lease owner 单测。共享 UI 引用边界适用于 desktop continuous / mobile replayable；本项不改变 Host、协议或身份路由，真实手机传输验证单独记录。
 
 VP-ROOT-01 的零 root 对照从冷态持久项目准备；PCD01 创建后自动选中会调用 prepareSession 并补齐目录，不能再把该项目当作零 root 对照。VP14 创建成功按 PCD01 验证选中新项目，取消仍保持原草稿。PLAN151-01 tooltip 使用当前“取消下一次提交的计划模式”，仍验证仅影响下一次提交标记而不改权限或触发模型。
 

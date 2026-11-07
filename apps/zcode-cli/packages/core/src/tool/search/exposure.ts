@@ -9,7 +9,7 @@ import {
   type ModelToolContract,
   type ToolSearchCandidate,
   type ToolSearchExecutionContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolRegistry } from "../registry.js";
 import type { ToolMetadata } from "../types.js";
 import type { RuntimeAttachmentEntry, RuntimeMessageEntry } from "../../agent/message-history.js";

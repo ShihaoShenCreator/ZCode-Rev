@@ -1,4 +1,4 @@
-import type { SessionLifecycleSnapshot } from "@zcode/shared";
+import type { SessionLifecycleSnapshot } from "@s-agent/shared";
 import {
   WorkspaceHookPendingIndicator,
   WorkspaceMcpPendingIndicator,
@@ -45,9 +45,8 @@ import { HighspeedComposerBackground } from "@/highspeed/HighspeedActivationVisu
 import { useHighspeedComposerEntrance } from "@/highspeed/useHighspeedComposerEntrance.js";
 import {
   type HighspeedCardSnapshot,
-  type PlanIdentitySnapshot,
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_CHAT_ATTACHMENT_BUTTON,
   TID_CHAT_ATTACHMENT_MENU_ITEM,
@@ -62,12 +61,12 @@ import {
   TID_V4_ATTACHMENT_UPLOAD_RETRY,
   TID_V4_STOP,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import type {
   AttachmentRef,
   ConversationSnapshot,
   SessionConfigState,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   ArrowUpIcon,
   ClipboardPenLineIcon,
@@ -143,7 +142,7 @@ import {
 } from "@/lib/workspaceFileDrag.js";
 import { appendWorkspaceFileMentionToComposer } from "@/lib/workspaceFileComposer.js";
 import { resolveProviderBaseURL } from "@/lib/registryProviderView.js";
-import type { ModelSelectionView } from "@zcode/services";
+import type { ModelSelectionView } from "@s-agent/services";
 import type {
   ModelSelectionState,
   ModelSelectionRefreshResult,
@@ -230,7 +229,7 @@ export interface ConversationComposerSendOptions {
   attachments?: AttachmentRef[];
   /** Prompt 文本内携带的上下文附件数量；用于阻止 /goal 等本地命令误消费。 */
   contextAttachmentCount?: number;
-  conversationQuotes?: import("@zcode/shared").ConversationSelectionText[];
+  conversationQuotes?: import("@s-agent/shared").ConversationSelectionText[];
   /** renderer-only：ACK accepted 后由 SessionPane 绑定真实 commandId/sessionId。 */
   telemetrySeed?: ConversationPromptTelemetrySeed;
   /** 本次 busy input 的一次性投递覆盖，不改 session 偏好。 */
@@ -239,7 +238,7 @@ export interface ConversationComposerSendOptions {
   onCommandCreated?: (commandId: string) => void;
   sharedContextRefs?: Array<{ kind: "shared_context_import"; context_id: string }>;
   /** 插件 UI 代发：随 sendText 持久化，用户消息卡片显示"来自插件 X"。 */
-  source?: import("@zcode/shared/zcode-protocol-v4").ConversationInputSource;
+  source?: import("@s-agent/shared/zcode-protocol-v4").ConversationInputSource;
 }
 
 export type ConversationComposerSendResult = "sent" | "blocked" | "confirmationRequired";
@@ -493,8 +492,6 @@ export interface ConversationComposerProps {
   provider?: ZCodeProvider;
   /** 宿主 pane 与 workspace 遮罩共同裁决的真实可见性，仅用于 visible-only telemetry。 */
   telemetryVisible?: boolean;
-  /** 点击发送时读取套餐身份；二次确认会继续复用同一份冻结 seed。 */
-  readPlanIdentitySnapshot?: () => PlanIdentitySnapshot;
   onSendText: (
     text: string,
     options?: ConversationComposerSendOptions,
@@ -527,14 +524,11 @@ export interface ConversationComposerProps {
     value: string,
     sourceModel: ModelSelectionSource | null,
   ) => Promise<void> | void;
-  /** context usage 面板的 /compact 入口（宿主走 v4 compact 命令）。 */
-  onSendCompressionCommand?: (command: string) => void;
   /** v4 会话级错误（snapshot.control.lastError），展示在输入框上方。 */
   error?: ZCodeUiError | null;
   onDismissError?: () => void;
   /** 无可用模型横幅的恢复动作；由 SessionPane 注入壳层导航，组件不直接操作 tab。 */
   onOpenModelSettings?: () => void;
-  onOpenModelUpgrade?: () => void;
   modelConfigTarget?: ChatErrorBannerModelConfigTarget;
   onOpenCodeViewer?: (source: CodeViewerSource) => void;
   /**
@@ -613,7 +607,6 @@ function ConversationComposerImpl({
   onRuntimeLifecycle,
   provider,
   telemetryVisible = true,
-  readPlanIdentitySnapshot,
   onSendText,
   onTextChange,
   onDraftStateChange,
@@ -625,11 +618,9 @@ function ConversationComposerImpl({
   backgroundWorkOpenTarget = "panel",
   runningSubagentCount = 0,
   onRecoverCustomModelSelection,
-  onSendCompressionCommand,
   error,
   onDismissError,
   onOpenModelSettings,
-  onOpenModelUpgrade,
   modelConfigTarget = "local",
   onOpenCodeViewer,
   listenAddToChatEvents = true,
@@ -1552,7 +1543,6 @@ function ConversationComposerImpl({
             configProvider: telemetryConfig?.provider,
             agentProvider: provider,
             providerBaseURL: resolveProviderBaseURL(telemetryConfig?.provider, modelSelectionView),
-            planIdentitySnapshot: readPlanIdentitySnapshot?.(),
           }),
         };
         const sendTrigger = sendTriggerRef.current;
@@ -1860,7 +1850,6 @@ function ConversationComposerImpl({
       pendingShareContext,
       persistDraftNow,
       provider,
-      readPlanIdentitySnapshot,
       removeCodeCommentContext,
       removeConversationSelectionReference,
       removePptxElementReference,
@@ -2540,7 +2529,6 @@ function ConversationComposerImpl({
               onSelectThought={onSelectThought}
               onSwitchMode={onSwitchMode}
               onRecoverCustomModelSelection={onRecoverCustomModelSelection}
-              onSendCompressionCommand={onSendCompressionCommand}
             />
           </span>
         ) : null}
@@ -2607,7 +2595,6 @@ function ConversationComposerImpl({
       modelSelectionView,
       onSelectThought,
       onRecoverCustomModelSelection,
-      onSendCompressionCommand,
       onSwitchMode,
       pending,
       provider,
@@ -2759,7 +2746,6 @@ function ConversationComposerImpl({
             onRetry={onRetryError}
             onDismiss={onDismissError}
             onOpenModelSettings={onOpenModelSettings}
-            onOpenUpgrade={onOpenModelUpgrade}
             modelConfigTarget={modelConfigTarget}
           />
         </div>

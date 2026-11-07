@@ -1,14 +1,14 @@
 import { openWorkspaceDraftFromSidebar } from "#e2e/helpers/workspace-agent-warmup";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_CONFIRM_DIALOG_CONFIRM,
   TID_SETTINGS_BACK_BUTTON,
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, readSettings } from "#e2e/helpers/desktop-app";
 import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-electron-reload";
 import {

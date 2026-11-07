@@ -1,4 +1,4 @@
-import { withPluginTelemetry } from "@zcode/services";
+import { withPluginTelemetry } from "@s-agent/services";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useServices } from "@/hooks/useServices.js";
 import { useScopedPluginManagementStore } from "@/store/pluginManagementStore.js";

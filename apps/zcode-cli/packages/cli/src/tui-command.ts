@@ -1,6 +1,6 @@
-import type { ToolSearchMode } from "@zcode/contracts";
-import type { RunContext, GlobalOptions } from "@zcode/shared-types";
-import { resolveZCodeRuntimeEnv, type DynamicWorkflowMode } from "@zcode/shared";
+import type { ToolSearchMode } from "@s-agent/contracts";
+import type { RunContext, GlobalOptions } from "@s-agent/shared-types";
+import { resolveZCodeRuntimeEnv, type DynamicWorkflowMode } from "@s-agent/shared";
 import { createNodeClipboardImageReader } from "./clipboard-image.js";
 import { createNodeClipboardTextWriter } from "./clipboard-text.js";
 import { listSlashCommandSuggestions } from "./command-center.js";

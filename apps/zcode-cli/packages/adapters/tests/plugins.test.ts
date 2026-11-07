@@ -50,7 +50,7 @@ import {
   ZCODE_HTTP_PROXY_ENV_KEY,
   ZCODE_NO_PROXY_ENV_KEY,
   ZCODE_TOOL_ENV_PASSTHROUGH_ENV_KEY,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const execFileAsync = promisify(execFile);
 

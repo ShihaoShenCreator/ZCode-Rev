@@ -7,7 +7,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import { Copy, Loader2, Maximize2, SlidersHorizontal, X } from "lucide-react";
-import type { GenUiReference } from "@zcode/shared/gen-ui";
+import type { GenUiReference } from "@s-agent/shared/gen-ui";
 import { Button } from "@/components/ui/button.js";
 import {
   Dialog,

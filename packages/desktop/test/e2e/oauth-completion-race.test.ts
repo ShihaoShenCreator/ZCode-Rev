@@ -1,7 +1,7 @@
 import { createDecipheriv, createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
-import { PlatformChannels } from "@zcode/shared";
+import { PlatformChannels } from "@s-agent/shared";
 import {
   TID_OAUTH_LOGIN_BUTTON,
   TID_OAUTH_ERROR,
@@ -9,7 +9,7 @@ import {
   TID_OAUTH_COPY_LOGIN_LINK,
   TID_LOGIN_TRIGGER,
   TID_LOGIN_MENU_ITEM,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

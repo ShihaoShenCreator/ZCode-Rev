@@ -12,12 +12,12 @@ import type {
   NodeRecordStatus,
   RunEvent,
   StoredEvent,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import {
   reduceWorkflowRunsState,
   type WorkflowRunsState,
   type WorkflowRunState,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { toProgressPayload } from "../src/app/dynamic-workflow-run-launch.js";
 import { buildWorkflowRunRoster } from "../src/app/dynamic-workflow-run-roster.js";
 

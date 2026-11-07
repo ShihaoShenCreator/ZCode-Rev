@@ -1,10 +1,10 @@
-import type { SessionLifecycleSnapshot } from "@zcode/shared";
+import type { SessionLifecycleSnapshot } from "@s-agent/shared";
 export type {
   SessionLifecycleState,
   SessionLifecycleOperation,
   SessionLifecycleFailure,
   SessionLifecycleSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 /** 仅管理当前进程内的运行实例，不创建/删除持久会话，不替代停止生成接口。 */
 export interface SessionLifecycle {

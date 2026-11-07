@@ -20,9 +20,9 @@ import {
   WORKSPACE_SESSION_GENERATION_CHANGED_ERROR_CODE,
   WORKSPACE_TASK_IDENTITY_CONFLICT_ERROR_CODE,
   type PublicZCodeErrorCode,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
-import type { RemoteTarget } from "@zcode/shared";
+import type { RemoteTarget } from "@s-agent/shared";
 import type { RemoteConnectionAction } from "@/lib/remoteConnectionPresentationTypes.js";
 
 export interface RemoteConnectionErrorPresentation {

@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { once } from "node:events";
-import type { ZCodeMcpResourceSample } from "@zcode/shared";
+import type { ZCodeMcpResourceSample } from "@s-agent/shared";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createMcpTelemetryTracker } from "../src/mcp/telemetry.js";
 import type { ProcessProbe } from "../src/device/process-probe.js";

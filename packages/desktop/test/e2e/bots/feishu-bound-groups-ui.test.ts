@@ -1,7 +1,7 @@
 import { skipOccupationOnboardingIfPresent } from "../helpers/occupation-onboarding.js";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import type { BotsStateFile } from "@zcode/shared";
+import type { BotsStateFile } from "@s-agent/shared";
 import {
   getE2EAppDataPaths,
   seedSettings,

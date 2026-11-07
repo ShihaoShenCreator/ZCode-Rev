@@ -4,7 +4,7 @@
 // （项目规则压得过、plan 压得过、没上下文就不生效）。
 
 import { describe, expect, it, vi } from "vitest";
-import { createSessionId, createToolCallId } from "@zcode/contracts";
+import { createSessionId, createToolCallId } from "@s-agent/contracts";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { recheckPermissionHookModifiedInput } from "../src/tool/executor/permission-input-recheck.js";
 import { writeToolEntry } from "../src/tool/handlers/write.js";

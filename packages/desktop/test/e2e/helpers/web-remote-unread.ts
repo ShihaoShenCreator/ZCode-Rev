@@ -1,8 +1,8 @@
 import { once } from "node:events";
 import { createServer } from "node:http";
 import type { BrowserContext, Page } from "playwright-core";
-import { parseWebRemoteControlAppPayload, type WebRemoteControlStatus } from "@zcode/shared";
-import { parseWebRemoteControlRelayV2IncomingMessage } from "@zcode/shared/web-remote-relay";
+import { parseWebRemoteControlAppPayload, type WebRemoteControlStatus } from "@s-agent/shared";
+import { parseWebRemoteControlRelayV2IncomingMessage } from "@s-agent/shared/web-remote-relay";
 
 /** 只延迟真实回包和丢弃重申；不改 epoch、Reporter 或 Main 查看事实。 */
 export async function replayStaleBootstrapAfterReconnect(context: BrowserContext) {

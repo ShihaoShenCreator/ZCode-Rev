@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@zcode/zcode-cua-plugin",
+  "name": "@s-agent/zcode-cua-plugin",
   "version": "0.6.5",
   "private": true,
   "description": "ZCode CUA SDK and skill package; execution is provided by the shared node_repl host.",
@@ -15,7 +15,7 @@
     "typecheck": "node scripts/check-sdk.mjs"
   },
   "dependencies": {
-    "@zcode/zcode-cua": "workspace:*"
+    "@s-agent/zcode-cua": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

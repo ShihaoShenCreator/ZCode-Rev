@@ -27,9 +27,9 @@ Node adapter 依赖 `ripgrep@0.3.1`。该包以 ESM 形式导出 WASM ripgrep AP
 
 依赖边界：
 
-- `@zcode/adapters` 负责导入和调用 WASM ripgrep。
-- `@zcode/contracts` 只定义 `FileSystemPort.searchText` 输入输出和错误契约。
-- `@zcode/core` 只调 port，不依赖 ripgrep 参数、WASI、包路径或打包细节。
+- `@s-agent/adapters` 负责导入和调用 WASM ripgrep。
+- `@s-agent/contracts` 只定义 `FileSystemPort.searchText` 输入输出和错误契约。
+- `@s-agent/core` 只调 port，不依赖 ripgrep 参数、WASI、包路径或打包细节。
 
 ## 搜索参数映射
 

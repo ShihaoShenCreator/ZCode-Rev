@@ -265,13 +265,13 @@ Lifecycle additional context 以 `hook_context` attachment 注入 message histor
 
 ```bash
 # 单元测试（lifecycle + tool hooks）
-pnpm --filter @zcode/core test runtime-hooks
-pnpm --filter @zcode/core test tool-hook-context
+pnpm --filter @s-agent/core test runtime-hooks
+pnpm --filter @s-agent/core test tool-hook-context
 
 # hooksService + 设置页
 pnpm exec vitest run packages/services/test/hooksService.test.ts packages/ui/test/hooksSection.test.ts
 
 # 整体 7 事件桌面 lifecycle
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts \
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts \
   --spec './test/e2e/conversation-session/conversation-session-hooks-lifecycle.test.ts'
 ```

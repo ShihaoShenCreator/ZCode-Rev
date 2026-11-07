@@ -50,7 +50,7 @@ avoid maintaining a parallel parser in the TUI.
 - Add a TUI-local markdown component and theme mapping.
 - Preserve copy/select behavior: selected rendered text should copy human text,
   not ANSI escape sequences or internal styling metadata.
-- Keep markdown rendering inside `@zcode/tui`; no runtime, provider, tool,
+- Keep markdown rendering inside `@s-agent/tui`; no runtime, provider, tool,
   session store, ZCode app-server, or CLI protocol changes are required for the first slice.
 
 ## Non-Goals
@@ -126,7 +126,7 @@ The markdown theme adapter maps the resolved TUI theme from
 The adapter must be deterministic and side-effect free. It should not read
 terminal state, config files, or environment variables. If the renderer exposes
 different token names across OpenTUI versions, the adapter should provide the
-smallest compatibility shim in `@zcode/tui`, not spread renderer conditionals
+smallest compatibility shim in `@s-agent/tui`, not spread renderer conditionals
 across components.
 
 ## Module Plan

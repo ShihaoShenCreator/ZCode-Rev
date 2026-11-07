@@ -14,8 +14,8 @@ import {
   createSessionId,
   type DynamicWorkflowRunSnapshot,
   type SessionEvent,
-} from "@zcode/contracts";
-import { workflowNotificationMetaSchema } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { workflowNotificationMetaSchema } from "@s-agent/shared/zcode-protocol-v4";
 import { AgentRuntime } from "../src/index.js";
 import { InMemoryRuntimeTaskRegistry } from "../src/runtime-task/registry.js";
 import { BackgroundTaskTracker } from "../src/tool/executor/background-tasks.js";

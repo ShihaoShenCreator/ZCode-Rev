@@ -103,13 +103,13 @@
 **Status:** Complete for ordering-only scope.
 
 - [x] Focused tests: `provider-request-messages.test.ts`、`prompt-attachments.test.ts`、`runtime-reminders.test.ts`、`runtime-tool-loop.test.ts`、`runtime-trace.test.ts`、`runtime-compact.test.ts`、`session-history-hydrator.test.ts`。
-- [x] `@zcode/core` typecheck。
+- [x] `@s-agent/core` typecheck。
 - [x] Touched-file lint gate: provider projection / conversation / turn-loop / compact / verifier / hydrator files passed oxlint.
 - [x] prompt-trajectory E2E for `user-message-provider-request-order` with both OpenAI-compatible and Anthropic Messages snapshots.
 - [x] prompt-trajectory E2E for `user-message-pasted-image-order` verifies pasted inline image placeholder stays after the real prompt text.
 - [x] Review generated request bodies for exact ordering and absence of runtime metadata.
 
-Validation note: package-level `pnpm --filter @zcode/core lint` still fails on pre-existing `max-lines` errors in `src/workflow/lifecycle.ts` and `src/subagent/runner.ts`; touched files pass targeted oxlint.
+Validation note: package-level `pnpm --filter @s-agent/core lint` still fails on pre-existing `max-lines` errors in `src/workflow/lifecycle.ts` and `src/subagent/runner.ts`; touched files pass targeted oxlint.
 
 ## Postponed
 
@@ -125,8 +125,8 @@ Validation note: package-level `pnpm --filter @zcode/core lint` still fails on p
 Current testcase:
 
 ```bash
-pnpm --filter @zcode/prompt-trajectory record -- --fixture testcases/user-message-provider-request-order/fixture.json --out out/user-message-provider-request-order/integration-e2e-final
-pnpm --filter @zcode/prompt-trajectory record -- --fixture testcases/user-message-pasted-image-order/fixture.json --out out/user-message-pasted-image-order-latest
+pnpm --filter @s-agent/prompt-trajectory record -- --fixture testcases/user-message-provider-request-order/fixture.json --out out/user-message-provider-request-order/integration-e2e-final
+pnpm --filter @s-agent/prompt-trajectory record -- --fixture testcases/user-message-pasted-image-order/fixture.json --out out/user-message-pasted-image-order-latest
 ```
 
 Expected derived snapshots per trajectory:

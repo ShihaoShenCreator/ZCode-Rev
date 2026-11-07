@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import type { ISubagentsService } from "@zcode/services";
+import type { ISubagentsService } from "@s-agent/services";
 import {
   normalizeAgentProviderToZCodeAgent,
   type AgentSummary,
   type AgentsCapability,
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger } from "@/logger.js";
 import { getServiceAuthorityId } from "@/store/serviceAuthorityKey.js";
 

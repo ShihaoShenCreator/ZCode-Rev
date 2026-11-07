@@ -7,7 +7,7 @@ import {
   traceContextToLogContext,
 } from "../deps.js";
 import type { MessageId, Model, TraceContext } from "../deps.js";
-import type { ModelSelection } from "@zcode/contracts";
+import type { ModelSelection } from "@s-agent/contracts";
 import { isModelContextExceededError, projectExecutionErrorPayload } from "../helpers/index.js";
 import type { AgentRuntimeInternal } from "../internal.js";
 import type { ModelExecutionContext } from "../types.js";

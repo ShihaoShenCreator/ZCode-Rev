@@ -1,7 +1,7 @@
 import { accessSync, constants } from "node:fs";
 import { delimiter, posix, win32 } from "node:path";
-import { sanitizeZCodeRuntimeEnv } from "@zcode/shared";
-import { withoutNetworkCapture } from "@zcode/shared/node";
+import { sanitizeZCodeRuntimeEnv } from "@s-agent/shared";
+import { withoutNetworkCapture } from "@s-agent/shared/node";
 import { createNetworkProxyFetch } from "../network/proxy-fetch.js";
 import { applyNetworkEgressEnv, type NetworkEgressEnvPolicy } from "../network/subprocess-env.js";
 

@@ -5,7 +5,7 @@ import {
   TID_CHAT_ATTACHMENT_BUTTON,
   TID_CHAT_ATTACHMENT_MENU_ITEM,
   TID_V4_ROW_ATTACHMENTS,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, DEFAULT_WORKSPACE } from "../helpers/desktop-app.js";
 import {
   assertUpstreamRequestCapture,

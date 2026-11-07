@@ -3,8 +3,8 @@ import {
   runWithModelInvocationContext,
   type ModelNetworkStatusEvent,
   type ModelStreamEvent,
-} from "@zcode/contracts";
-import { calculateOutputTps } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { calculateOutputTps } from "@s-agent/shared";
 import { createProviderBusinessErrorFetch } from "../src/model/model-execution.js";
 import { TestAiSdkModelAdapter, TestProviderConfigFixture } from "./test-provider-config.js";
 

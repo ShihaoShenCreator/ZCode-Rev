@@ -8,7 +8,7 @@ import {
   type SendMessageInput,
   type SendMessageOutput,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry, ToolHandler, ToolInputValidationResult } from "../types.js";
 
 const MAX_SEND_MESSAGE_MODEL_BYTES = 4096;

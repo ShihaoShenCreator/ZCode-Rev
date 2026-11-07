@@ -3,7 +3,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import type { RunContext } from "@zcode/shared-types";
+import type { RunContext } from "@s-agent/shared-types";
 import { run } from "../src/run.js";
 import { isTuiInvocation } from "../src/tui-stderr.js";
 import type { RunDependencies } from "../src/run.js";

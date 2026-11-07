@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import type { DynamicWorkflowRunSessionSummary } from "@zcode/contracts";
+import type { DynamicWorkflowRunSessionSummary } from "@s-agent/contracts";
 import {
   createCommandCenter,
   listSlashCommandSuggestions,

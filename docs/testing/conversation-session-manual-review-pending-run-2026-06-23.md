@@ -11,7 +11,7 @@
 单跑：
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-compact-auto.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-compact-auto.test.ts'
 ```
 
 - Summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260623-153459-510/summary.md`
@@ -19,7 +19,7 @@ ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.t
 批量顺序跑：
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 ZCODE_E2E_SPEC='<remaining pending specs>' pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+ZCODE_E2E_MANUAL_REVIEW=1 ZCODE_E2E_SPEC='<remaining pending specs>' pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 ```
 
 - Summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260623-154027-061/summary.md`
@@ -28,7 +28,7 @@ ZCODE_E2E_MANUAL_REVIEW=1 ZCODE_E2E_SPEC='<remaining pending specs>' pnpm --filt
 补跑后发现的 pending spec：
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 ZCODE_E2E_SPEC='./test/e2e/conversation-session/manual-review/pending/conversation-session-running-send-now.test.ts' pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+ZCODE_E2E_MANUAL_REVIEW=1 ZCODE_E2E_SPEC='./test/e2e/conversation-session/manual-review/pending/conversation-session-running-send-now.test.ts' pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 ```
 
 - Summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260623-160950-505/summary.md`
@@ -36,7 +36,7 @@ ZCODE_E2E_MANUAL_REVIEW=1 ZCODE_E2E_SPEC='./test/e2e/conversation-session/manual
 人工干扰后复跑确认的 pending spec：
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-compact-interrupted.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-compact-interrupted.test.ts'
 ```
 
 - Summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260623-163701-534/summary.md`
@@ -44,7 +44,7 @@ ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.t
 剥离 auto compact retry 后复跑确认的 pending spec：
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-compact-auto.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-compact-auto.test.ts'
 ```
 
 - Summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260624-042921-602/summary.md`
@@ -52,7 +52,7 @@ ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.t
 补充 compact running toast 断言并转正的 edit spec：
 
 ```bash
-ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-edit.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-edit.test.ts'
 ```
 
 - Manual summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260624-064810-462/summary.md`
@@ -62,7 +62,7 @@ ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop exec wdio run wdio.conf.t
 - 默认路径复跑：
 
 ```bash
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-edit.test.ts'
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/manual-review/pending/conversation-session-edit.test.ts'
 ```
 
 - Default summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260624-070956-672/summary.md`
@@ -75,7 +75,7 @@ pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conve
 Turn steer 探针转正后默认路径复跑：
 
 ```bash
-pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-turn-steer-probe.test.ts'
+pnpm --filter @s-agent/desktop test:e2e -- --spec './test/e2e/conversation-session/conversation-session-turn-steer-probe.test.ts'
 ```
 
 - Summary: `packages/desktop/.e2e-artifacts/desktop-e2e-20260624-070258-617/summary.md`
@@ -86,7 +86,7 @@ pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/conversation-session
 配套 runtime retry 单测：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-compact.test.ts -t "retries auto compact up to three attempts before continuing the turn"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-compact.test.ts -t "retries auto compact up to three attempts before continuing the turn"
 ```
 
 - Result: 1 passed

@@ -1,4 +1,4 @@
-import { ProxyChannel, type IDisposable, type IChannelServer } from "@zcode/rpc";
+import { ProxyChannel, type IDisposable, type IChannelServer } from "@s-agent/rpc";
 import {
   ServiceCollection,
   type ITerminalService,
@@ -14,8 +14,8 @@ import {
   createWindowProjectChangesService,
   type ServiceExposurePolicy,
   type ZCodeAgentV4ClientMode,
-} from "@zcode/services";
-import { ServiceChannels } from "@zcode/shared";
+} from "@s-agent/services";
+import { ServiceChannels } from "@s-agent/shared";
 
 const WEB_REMOTE_REPLAYABLE_ALLOWED_CHANNELS = new Set<string>([
   ServiceChannels.File,

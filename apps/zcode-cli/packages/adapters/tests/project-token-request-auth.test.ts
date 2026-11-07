@@ -1,6 +1,6 @@
 import { generateText } from "ai";
 import { describe, expect, it } from "vitest";
-import { createRegistryProviderConfig, parseProviderConfig } from "@zcode/provider";
+import { createRegistryProviderConfig, parseProviderConfig } from "@s-agent/provider";
 import { AiSdkModelExecution } from "../src/model/model-execution.js";
 
 const TOKEN = [

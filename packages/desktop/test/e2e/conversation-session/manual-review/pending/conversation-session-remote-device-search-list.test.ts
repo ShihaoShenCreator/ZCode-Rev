@@ -6,7 +6,7 @@ import {
   buildServerRemoteWorkspaceIdentity,
   parseRemoteWorkspaceIdentity,
   type SourceServerRecord,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { clearAppData, getE2EAppDataPaths, readSettings } from "#e2e/helpers/desktop-app";
 import { reloadElectronSessionPreservingBrowserProfile } from "#e2e/helpers/e2e-electron-reload";
 import {

@@ -20,7 +20,7 @@ import {
   type FileSystemWriteTextRequest,
   type ImageProcessorPort,
   type ApplyPatchOutput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { globHandler } from "../src/tool/handlers/glob.js";
 import { grepHandler } from "../src/tool/handlers/grep.js";
 import { readHandler, readToolEntry } from "../src/tool/handlers/read.js";

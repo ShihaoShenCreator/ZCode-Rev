@@ -7,18 +7,18 @@ import {
   type ModelConfig,
   type ProviderConfig,
   type ProviderConfigLayerSnapshot,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import {
   NodePersonalProviderConfigRepository,
   PERSONAL_PROVIDER_CONFIG_FILE_NAME,
-} from "@zcode/provider-node";
-import { ZAI_PROVIDER_ID } from "@zcode/shared";
+} from "@s-agent/provider-node";
+import { ZAI_PROVIDER_ID } from "@s-agent/shared";
 import {
   TID_COMPOSER_WORKSPACE_TRIGGER,
   TID_V4_SESSION_PANE,
   TID_WORKSPACE_PATH,
-} from "@zcode/shared/test-ids";
-import type { AppSettings } from "@zcode/shared";
+} from "@s-agent/shared/test-ids";
+import type { AppSettings } from "@s-agent/shared";
 import { collectWindowsE2EProcessTreePids } from "./e2e-process-cleanup.js";
 import {
   collectE2EWebDriverPageHandleCandidates,

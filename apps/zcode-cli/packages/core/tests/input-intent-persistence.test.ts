@@ -4,7 +4,7 @@ import {
   TELEMETRY_INPUT_ORIGIN_ATTRIBUTE,
 } from "../src/runtime/methods/input-intent-persistence.js";
 import { describe, expect, it } from "vitest";
-import type { TurnInputIntentMetadata } from "@zcode/contracts";
+import type { TurnInputIntentMetadata } from "@s-agent/contracts";
 import { buildPersistedConversationInputIntent } from "../src/runtime/methods/input-intent-persistence.js";
 
 describe("persisted conversation input intent", () => {

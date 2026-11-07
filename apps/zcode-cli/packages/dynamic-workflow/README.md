@@ -1,4 +1,4 @@
-# @zcode/dynamic-workflow
+# @s-agent/dynamic-workflow
 
 Self-contained library for the dynamic workflow feature: the TypeScript facade the
 main agent writes scripts against, and the compiler that recovers rigor from those
@@ -13,12 +13,12 @@ entry point. The facade, compiler options and authoring rules are decided in
 
 - This package is **pure**: no session spawning, no storage, no disk or network
   I/O (the TS stdlib is embedded, not read from disk — see "Embedded libs"). It
-  never imports from `@zcode/core` or `@zcode/bootstrap`.
+  never imports from `@s-agent/core` or `@s-agent/bootstrap`.
 - The runtime layer binds to this package through a narrow driver interface. The
   sandbox harness (child process + vm cell + NDJSON host bridge) lives in the
-  sibling package `@zcode/dynamic-workflow-runtime` — impure (node builtins) but
+  sibling package `@s-agent/dynamic-workflow-runtime` — impure (node builtins) but
   still app-independent. The production driver (actor sessions, SQLite journal,
-  tool wiring) lives in `@zcode/bootstrap`, evolving the existing
+  tool wiring) lives in `@s-agent/bootstrap`, evolving the existing
   `script-workflow-*` substrate. Phasing: `docs/execution-engine.md`.
 
 ## Layout
@@ -122,7 +122,7 @@ analyzer. These fixtures are excluded from oxlint like `tests/workflows/`.
 
 ## Develop
 
-All commands from this directory (or with `--filter @zcode/dynamic-workflow` from
+All commands from this directory (or with `--filter @s-agent/dynamic-workflow` from
 either workspace root):
 
 ```sh
@@ -175,11 +175,11 @@ diagnostics/schemas/graph output, implement until green.
 5. ~~Journal contracts + replay semantics (pure state machine, in-memory journal,
    fake driver tests)~~ (done; `src/engine/`; see `docs/execution-engine.md`)
 6. ~~Lowering: type-strip + site-id instrumentation emit step~~ (done; `src/lowering/`)
-7. ~~Sandbox harness in sibling `@zcode/dynamic-workflow-runtime`: child process +
+7. ~~Sandbox harness in sibling `@s-agent/dynamic-workflow-runtime`: child process +
    vm cell + NDJSON host bridge, end-to-end fixture runs against a fake driver~~
    (done; outside this package but still app-free)
-8. ~~Real-runtime binding (outside this package): `submit_result` in `@zcode/core` +
-   the `AgentRuntime` driver in `@zcode/bootstrap`~~ (done; `docs/execution-engine.md`,
+8. ~~Real-runtime binding (outside this package): `submit_result` in `@s-agent/core` +
+   the `AgentRuntime` driver in `@s-agent/bootstrap`~~ (done; `docs/execution-engine.md`,
    "The driver (Boundary B)")
 9. ~~Storage + app surfaces (outside this package): `dwf_*` SQLite journal passing
    the contract suite, `CreateWorkflow` submit path, notification/status wiring~~

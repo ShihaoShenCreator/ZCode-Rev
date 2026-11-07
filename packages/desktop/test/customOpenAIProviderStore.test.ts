@@ -7,8 +7,8 @@ import {
   ProviderConfigMap,
   ProviderConfigResolver,
   ProviderRegistry,
-} from "@zcode/provider";
-import { decodeProviderConfigFile } from "@zcode/provider-node";
+} from "@s-agent/provider";
+import { decodeProviderConfigFile } from "@s-agent/provider-node";
 
 describe("custom OpenAI Provider E2E seed", () => {
   afterEach(() => {

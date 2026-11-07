@@ -11,7 +11,7 @@ import {
   type BrowserInfo,
   setupBrowserRuntime,
 } from "../src/browser-client/index.js";
-import type { BrowserCommand, BrowserCommandResult } from "@zcode/contracts";
+import type { BrowserCommand, BrowserCommandResult } from "@s-agent/contracts";
 
 const IAB_INFO: BrowserInfo = {
   id: "iab-runtime-1",

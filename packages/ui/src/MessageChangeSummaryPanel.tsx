@@ -3,8 +3,8 @@ import type {
   ZCodePersistedFileChange,
   ZCodeTaskChangeSummary,
   ZCodeTurnFileState,
-} from "@zcode/shared";
-import { TID_CHAT_CHANGE_SUMMARY_TOGGLE_FILES_BUTTON, testId } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { TID_CHAT_CHANGE_SUMMARY_TOGGLE_FILES_BUTTON, testId } from "@s-agent/shared/test-ids";
 import { ChevronRightIcon, Undo2 } from "lucide-react";
 import {
   Collapsible,

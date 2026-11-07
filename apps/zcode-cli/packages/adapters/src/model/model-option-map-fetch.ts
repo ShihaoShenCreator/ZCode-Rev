@@ -2,7 +2,7 @@ import type {
   CompiledModelOptionMaps,
   JsonObject,
   ModelOptionValues,
-} from "@zcode/model-option-map";
+} from "@s-agent/model-option-map";
 
 type ProviderFetch = typeof globalThis.fetch;
 

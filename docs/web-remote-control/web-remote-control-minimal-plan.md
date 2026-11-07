@@ -470,8 +470,8 @@ desktop session ws <-> MessagePortMain <-> host ChannelServer
 1. 新建 `packages/relay/package.json`
 2. 新建 `packages/relay/src/*`
 3. 接入根脚本：
-   - `pnpm --filter @zcode/relay dev`
-   - `pnpm --filter @zcode/relay build`
+   - `pnpm --filter @s-agent/relay dev`
+   - `pnpm --filter @s-agent/relay build`
 4. 把 relay 加进根 `typecheck`
 5. 把 relay 加进根 `lint`
 

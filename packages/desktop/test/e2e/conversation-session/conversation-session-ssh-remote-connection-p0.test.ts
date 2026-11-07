@@ -1,4 +1,4 @@
-import { TID_SSH_PASSWORD_INPUT } from "@zcode/shared/test-ids";
+import { TID_SSH_PASSWORD_INPUT } from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   waitForWorkspaceApp,

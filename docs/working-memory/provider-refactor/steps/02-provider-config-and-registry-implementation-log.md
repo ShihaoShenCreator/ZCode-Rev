@@ -212,12 +212,12 @@ Reasoning Mapping 在 Model 创建时按 `apiFormat` 放入现有 Adapter namesp
 
 ## 25. Node Config Source 收敛到共享伴生包
 
-M2.5b 需要让 Local Host、Core Worker、Prompt CLI 与 TUI 分别读取同一 Environment 的 Official/Personal Config。当前 Node 文件实现位于 `@zcode/services`：Official Source 依赖 Node 文件读取与 watcher，Personal Repository 还依赖 Services 的路径解析和原子文件工具。Bootstrap 若直接复用它们，就必须依赖包含大量 Host 能力的整个 Services 包；若在 Bootstrap 复制一份实现，文件锁、迁移、watcher 与 revision 行为会立即形成两套。
+M2.5b 需要让 Local Host、Core Worker、Prompt CLI 与 TUI 分别读取同一 Environment 的 Official/Personal Config。当前 Node 文件实现位于 `@s-agent/services`：Official Source 依赖 Node 文件读取与 watcher，Personal Repository 还依赖 Services 的路径解析和原子文件工具。Bootstrap 若直接复用它们，就必须依赖包含大量 Host 能力的整个 Services 包；若在 Bootstrap 复制一份实现，文件锁、迁移、watcher 与 revision 行为会立即形成两套。
 
-已经建立 Node 伴生包 `@zcode/provider-node`。纯领域包 `@zcode/provider` 继续只包含 Config、Resolver、Registry 与 Facade；伴生包包含 Official 文件 Source、Personal 文件 Repository、Config Runtime 与进程级 Registry Runtime，并依赖 `@zcode/provider` 与已有 `@zcode/shared/node` 文件持久化能力。旧 `ModelProviderConfig` 到 Personal Overlay 的转换器继续留在 Services，由迁移入口注入，因而新伴生包不依赖旧领域类型。
+已经建立 Node 伴生包 `@s-agent/provider-node`。纯领域包 `@s-agent/provider` 继续只包含 Config、Resolver、Registry 与 Facade；伴生包包含 Official 文件 Source、Personal 文件 Repository、Config Runtime 与进程级 Registry Runtime，并依赖 `@s-agent/provider` 与已有 `@s-agent/shared/node` 文件持久化能力。旧 `ModelProviderConfig` 到 Personal Overlay 的转换器继续留在 Services，由迁移入口注入，因而新伴生包不依赖旧领域类型。
 
 ```text
-@zcode/provider              @zcode/provider-node
+@s-agent/provider              @s-agent/provider-node
 ├─ Config / Overlay          ├─ Official file source
 ├─ Resolver / Registry       ├─ Personal file repository
 └─ Facade                    ├─ Node config runtime
@@ -227,7 +227,7 @@ M2.5b 需要让 Local Host、Core Worker、Prompt CLI 与 TUI 分别读取同一
           +--------- Host / Worker / CLI / TUI
 ```
 
-Official Config 的物理定位仍由 Entry 负责。Desktop Main 解析开发态或安装态文件路径；Local Host 把 Official 与 Personal 文件路径作为成对的进程环境变量交给其管理的 Worker。Worker 使用 `@zcode/provider-node` 自己读取并监听两个文件，不接收 Host 序列化的 Registry 数据。
+Official Config 的物理定位仍由 Entry 负责。Desktop Main 解析开发态或安装态文件路径；Local Host 把 Official 与 Personal 文件路径作为成对的进程环境变量交给其管理的 Worker。Worker 使用 `@s-agent/provider-node` 自己读取并监听两个文件，不接收 Host 序列化的 Registry 数据。
 
 独立 CLI/TUI 的普通构建与 SEA 仍需携带同一份 `config/provider/official.json`，再把文件或已解析内容交给相同 Source 边界。不能用内置 TypeScript 常量代替，否则会重新产生第二事实来源。
 
@@ -515,7 +515,7 @@ Official Provider 及其 Personal Override 不走这条入口。它们仍需在�
 
 Personal-only API Provider 没有 Official 基底，其完整表单可以无损转换为完整 Personal ProviderConfig 与该 Provider 的精确 ModelConfig 集合。Config Service 为这一交互提供单次 Repository update：更新 Provider，并整体替换该 Provider 的精确模型规则；其他 Provider、Pattern 规则和其他 Provider 的精确规则保持不变。设置 RPC 先完成这次新写入，再把相同结果写入旧存储作为兼容镜像。镜像写入不再触发 Legacy Importer 反向替换 Personal Config。
 
-迁移期保留一个明确命名的 Legacy 表单转换入口，负责把旧 `ModelProviderConfig` 转成新 Facade 输入。它只接受 Settings View 已确认的 Personal-only API Provider。退出条件是设置卡片改为直接编辑 `personalConfig`、以 `effectiveConfig` 提供继承展示；届时删除 Legacy 转换入口和旧存储镜像，不把旧类型带入 `@zcode/provider` 领域 API。
+迁移期保留一个明确命名的 Legacy 表单转换入口，负责把旧 `ModelProviderConfig` 转成新 Facade 输入。它只接受 Settings View 已确认的 Personal-only API Provider。退出条件是设置卡片改为直接编辑 `personalConfig`、以 `effectiveConfig` 提供继承展示；届时删除 Legacy 转换入口和旧存储镜像，不把旧类型带入 `@s-agent/provider` 领域 API。
 
 ## 47. Welcome API Key 登录只修改稀疏 Personal Override
 
@@ -547,7 +547,7 @@ V4 草稿首发只需要判断当前是否至少存在一个可选择模型。�
 
 > 本节及下一节记录当时的物理路径实现。后续 [`Human in the Loop #10`](./02-provider-config-and-registry-human-in-the-loop.md#10-personal-config-保持原路径并以-schema-version-1-首次发布) 已裁决 Personal Config 保持原 `config.json` 路径、迁移前备份，并以最终 Schema Version 1 首次发布。
 
-普通 CLI bundle 在 `zcode.cjs` 旁携带仓库的 `config/provider/official.json`。SEA 构建把同一物理文件声明为 asset，启动时读取 asset 内容并按 SHA-256 物化到 `.zcode/v2/runtime-assets/provider/`；文件名包含完整内容哈希，因此新版本不会原地改写正在被其他进程读取的 Official 文件。两种打包方式最终都只向 `@zcode/provider-node` 注入文件路径。
+普通 CLI bundle 在 `zcode.cjs` 旁携带仓库的 `config/provider/official.json`。SEA 构建把同一物理文件声明为 asset，启动时读取 asset 内容并按 SHA-256 物化到 `.zcode/v2/runtime-assets/provider/`；文件名包含完整内容哈希，因此新版本不会原地改写正在被其他进程读取的 Official 文件。两种打包方式最终都只向 `@s-agent/provider-node` 注入文件路径。
 
 Personal Config 默认指向当前数据根下的 `.zcode/v2/provider-config.json`，与 Desktop 使用同一 Environment 文件。`ZCODE_DATA_BASE_DIR` 继续决定数据根；Desktop Worker、测试和远端部署显式注入的 Official / Personal 路径优先，不会被 CLI 默认值覆盖。Doctor、登录和插件管理等不创建 Core 的命令不准备 Provider asset。
 
@@ -567,7 +567,7 @@ Standalone user provider JSON ─> current Provider/Model ──┘
 
 只有 Prompt CLI 与 TUI 显式开启 Standalone 导入。`app-server` / `agent-server` 等协议 Worker 继续只读取 Entry 注入的 Official、Personal 与 Account Access；它们不会探测本机 `~/.zcode/cli/config.json`。新 Personal 文件已存在时 Repository 不调用 importer，因此旧用户文件后续残留不会重新覆盖新事实。
 
-实现把“已经展开的当前 Provider/Model 与 Official 求差异”下沉为 `@zcode/provider` 的纯投影。Desktop 历史列表和 Standalone 用户 JSON 各自只负责适配旧字段，差异计算、精确模型规则与版本化文档生成共用同一实现。
+实现把“已经展开的当前 Provider/Model 与 Official 求差异”下沉为 `@s-agent/provider` 的纯投影。Desktop 历史列表和 Standalone 用户 JSON 各自只负责适配旧字段，差异计算、精确模型规则与版本化文档生成共用同一实现。
 
 Standalone 适配器当前迁移 Provider 名称、API Format、Base URL、API Key、静态 Header、模型顺序、Properties、Option Specs 与 reasoning mapping。旧格式还允许 `model.headers` 和 reasoning 之外的任意 `model.options`；当前正式 Model/Request 边界尚未裁决这些执行字段的归属。
 
@@ -668,7 +668,7 @@ Registry 只负责最终 Config 的 Overlay 与完整性校验，不验证 `acce
 
 ## 65. Account Config 使用独立的进程级同步协议
 
-Worker 不再从 `workspace/updateProviderRegistry` 的完整运行快照反向提取 Account Config。Host 持有的 Account Provider Source 通过 `provider/updateAccountConfig` 发送 `revision + ProviderConfigMap` 普通对象；Worker 使用 `@zcode/provider` 的正式 Schema 解析，拒绝混入 API Provider，替换进程级 `MutableAccountProviderConfigSource` 后刷新 Registry。
+Worker 不再从 `workspace/updateProviderRegistry` 的完整运行快照反向提取 Account Config。Host 持有的 Account Provider Source 通过 `provider/updateAccountConfig` 发送 `revision + ProviderConfigMap` 普通对象；Worker 使用 `@s-agent/provider` 的正式 Schema 解析，拒绝混入 API Provider，替换进程级 `MutableAccountProviderConfigSource` 后刷新 Registry。
 
 ```text
 Host Account Provider Source
@@ -765,7 +765,7 @@ Start Plan、Coding Plan 与 Team Plan 的权益判断过去直接接收旧 `Mod
 
 ## 77. Account Provider Service 作为无 IO 的第三层 Config Source
 
-`@zcode/provider` 新增 `AccountProviderService`。它读取与 Registry 相同的 Config Source，把 Official 与 Personal Provider Config 先行 Overlay，再把当前 Config View 交给注入的 Account Resolver。Resolver 只返回 Account `ProviderConfigMap`；文件、网络、OAuth、套餐和团队接口均留在外围实现。
+`@s-agent/provider` 新增 `AccountProviderService`。它读取与 Registry 相同的 Config Source，把 Official 与 Personal Provider Config 先行 Overlay，再把当前 Config View 交给注入的 Account Resolver。Resolver 只返回 Account `ProviderConfigMap`；文件、网络、OAuth、套餐和团队接口均留在外围实现。
 
 Service 的首次 `read()` 是 ready barrier。Config Source 变化会触发后台重算，账号事件可以显式调用 `refresh()`；成功结果按内容生成稳定 revision，只有 Account Config 真正变化时才通知 Registry。刷新失败会报告错误并保留 last-known-good Snapshot；首次刷新失败则直接失败，不把网络异常伪装成“当前没有账号 Provider”。
 
@@ -775,7 +775,7 @@ Service 的首次 `read()` 是 ready barrier。Config Source 变化会触发后�
 
 Account 远端接口并不总是同时成功：Start Plan 的 `billing/balance`、Personal Coding Plan 的 `subscription/list` 和 Team Plan 的项目接口可以分别得到 available、unavailable 或 unknown。把任一 unknown 当成整个 Source 失败，会吞掉同一轮已经确定的结果；把 unknown 当 unavailable，又会因为网络抖动删除仍然有效的模型。
 
-`@zcode/provider` 现在提供统一的 Connection Result 解析。available 生成 `accessId/models` Overlay，未返回专属模型集合时沿用当前 Config 的模型顺序；unavailable 明确删除该 Provider；unknown 沿用该 Provider 上一次成功的 Account Config。首次没有旧值时，unknown 项暂不发布；所有候选均 unknown 且没有上一份状态时抛出明确错误，交给 AccountProviderService 的首次失败边界处理。
+`@s-agent/provider` 现在提供统一的 Connection Result 解析。available 生成 `accessId/models` Overlay，未返回专属模型集合时沿用当前 Config 的模型顺序；unavailable 明确删除该 Provider；unknown 沿用该 Provider 上一次成功的 Account Config。首次没有旧值时，unknown 项暂不发布；所有候选均 unknown 且没有上一份状态时抛出明确错误，交给 AccountProviderService 的首次失败边界处理。
 
 解析按 Config 中的 Account Provider 顺序生成结果，拒绝重复连接、未配置 Provider、API Provider、空 accessId 和空模型集合。`createAccountProviderConfigResolver()` 已把远端 Connection Resolver 与 AccountProviderService 的 Config Resolver 接口连接起来；生产代码下一步只需提供真实连接结果。
 
@@ -2180,7 +2180,7 @@ Provider Config，否则调用方仍可绕过 Registry 制造另一份执行事�
 - 新建窄的 `IProviderConnectivityService`：Settings 继续只管理配置，Connectivity 单独依赖 Registry、
   Account Request Auth 和请求 Adapter；将来 CLI/TUI 若需要显式探测可以直接复用，但会新增一个 Service/RPC。
 
-无论选择哪一种，`@zcode/provider` 继续保持无 IO；执行实现位于 Services/Host，Renderer 只承担 Start Plan
+无论选择哪一种，`@s-agent/provider` 继续保持无 IO；执行实现位于 Services/Host，Renderer 只承担 Start Plan
 交互式安全校验材料的获取。
 
 人的裁决是 M2 暂时维持现状。连通性测试只在设置页用户显式点击时运行，结果不修改 Registry、Config 或
@@ -2722,7 +2722,7 @@ Shared 协议、Services Provider Registry、Runtime Headers、Repo Wiki Lane、
 `packages/server` 的 HTTP Entry 与 `zcode-server-cli` 的 Standalone Server Core 仍直接调用
 `createLocalServices()`。这两个入口因此没有创建 Provider Runtime，会回退到旧 `ModelProviderService`。
 
-本轮把 Official Config 的内容版本物化能力收敛到 `@zcode/provider-node`：构建时把唯一的
+本轮把 Official Config 的内容版本物化能力收敛到 `@s-agent/provider-node`：构建时把唯一的
 `config/provider/official.json` 嵌入 Server 产物，启动时按内容哈希写入所属 Server Runtime 的
 `config/provider` 目录，再把版本文件路径显式传给 Services。相同内容复用同一路径；内容变化生成
 新路径，已启动进程继续读取旧版本，不会被原地修改。
@@ -4015,7 +4015,7 @@ Human in the Loop 复核仍为 16 项全部确认；删除无消费者镜像没�
 UI 与 Agent 一致所必需，因而会让测试持续掩盖 M2 已经删除的双轨事实来源。
 
 本轮先增加失败测试，固定 Direct Seed 的正式边界：只写版本化 Personal Provider Config；不创建旧
-Provider Store；不修改 CLI Config 中的 MCP 等非 Provider 内容。实现随后直接复用 `@zcode/provider`
+Provider Store；不修改 CLI Config 中的 MCP 等非 Provider 内容。实现随后直接复用 `@s-agent/provider`
 的 Config 类型、精确 Model Rule 与序列化格式。E2E 调用方暂时需要的旧 `ModelProviderConfig` 只在
 函数返回值和诊断读取时生成，属于测试 View，不再持久化。
 
@@ -4097,8 +4097,8 @@ Account Access 作用域。
 
 ## 259. 上线前最终静态与验证收口
 
-最后一轮重新拉取 `origin/staging`，分支保持 0 behind。`@zcode/provider` 与
-`@zcode/provider-node` 的 Knip 审计没有未使用文件或导出；生产代码对旧
+最后一轮重新拉取 `origin/staging`，分支保持 0 behind。`@s-agent/provider` 与
+`@s-agent/provider-node` 的 Knip 审计没有未使用文件或导出；生产代码对旧
 `model-providers.json` 的剩余读取只位于 Personal Config 首次导入和 Account Key 一次性迁移，继续作为
 明确、单向、可删除的迁移边界保留。
 
@@ -4161,7 +4161,7 @@ Builtin ID 和 Plan 特例决定是否进入 Agent Registry。生产调用方早
 继续保留会暗示旧 Store 仍可建立另一份 Registry 成员关系。
 
 静态引用审计确认零生产调用方后，本轮删除函数与对应历史测试。当前 Provider 成员关系和 `selectable`
-只由 `@zcode/provider` 的 Official、Personal、Account 解析与 Process Registry 决定。Shared 其余旧类型与
+只由 `@s-agent/provider` 的 Official、Personal、Account 解析与 Process Registry 决定。Shared 其余旧类型与
 转换 helper 继续仅服务一次性物理迁移和 Renderer 表单兼容，不恢复执行侧过滤入口。Human in the Loop
 16 项仍全部确认，没有新增裁决。
 
@@ -4305,7 +4305,7 @@ Shared、Services、UI、Adapter、Bootstrap 与 Core 定向回归共 669 条通
 ## 274. 完成门禁覆盖全部生产 Entry 并清理误导术语
 
 要求级审计继续核对“Host、Worker、Prompt CLI、TUI 复用同一 Provider 领域实现”。原有跨包门禁已经
-覆盖 Host、Worker 与共享协议，却没有扫描 `@zcode/provider`、`@zcode/provider-node`、Prompt CLI 和
+覆盖 Host、Worker 与共享协议，却没有扫描 `@s-agent/provider`、`@s-agent/provider-node`、Prompt CLI 和
 TUI 自身；旧边界若从这些目录重新进入，测试不会失败。
 
 本轮把四个目录加入同一生产源码门禁，并固定 Workspace Catalog、完整 Snapshot 更新协议、旧 Runtime

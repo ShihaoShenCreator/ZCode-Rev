@@ -236,7 +236,7 @@ const status = await tab.recording.status(job.id, {
 **覆盖注记**
 
 - `scripts/browser-*-smoke.mjs` 系列需要 Electron GUI 与屏幕录制权限，**未接入 CI**，属于手工/本地门禁。改录制链路时需手动跑
-  `pnpm --filter @zcode/desktop test:browser-webm-recording-smoke`。
+  `pnpm --filter @s-agent/desktop test:browser-webm-recording-smoke`。
 - `packages/desktop/test/*.test.ts`（非 e2e 单测）不被任何 `tsconfig` include，类型错误不会被 `pnpm typecheck` 拦住。
 - `browserVideoRecorder.ts` 返回的 `width/height/fps/durationMs/frameCount` 全部由入参推算，不解析 WebM。
   只有 Electron smoke 会核对容器里的真实分辨率与时长，单测层对这几个字段的断言是重言式。

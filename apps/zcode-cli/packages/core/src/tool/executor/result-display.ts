@@ -18,7 +18,7 @@ import {
   type DiffHunk,
   type NodeReplCuaAppDisplay,
   type ToolResultDisplayPayload,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createBashResultDisplay } from "./bash-result-display.js";
 import { countPatchLines } from "../diff.js";
 import { boundDisplayText } from "./display-text.js";
@@ -28,18 +28,18 @@ import { createWorkflowObservationDisplay } from "./workflow-observation-display
 // 拆到 create-workflow-display.ts 后保持既有导出面（handlers/create-workflow.ts 仍从这里 import）。
 export { createCreateWorkflowDisplay } from "./create-workflow-display.js";
 import { isRecord } from "./utils.js";
-import { parseOfficialMcpToolError, type OfficialMcpToolErrorCode } from "@zcode/shared";
+import { parseOfficialMcpToolError, type OfficialMcpToolErrorCode } from "@s-agent/shared";
 import {
   MCP_APPS_CONTENT_MAX_BYTES,
   MCP_APPS_STRUCTURED_CONTENT_MAX_BYTES,
   MCP_APPS_WIDGET_META_MAX_BYTES,
   type McpToolDisplayUi,
   type McpToolUiDescriptor,
-} from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared/mcp-apps";
 import {
   CUA_REQUEST_ACCESS_STATUS_META_KEY,
   cuaRequestAccessStatusSchema,
-} from "@zcode/zcode-cua/request-access-contract";
+} from "@s-agent/zcode-cua/request-access-contract";
 
 const MAX_DISPLAY_DIFF_HUNKS = 8;
 const MAX_DISPLAY_DIFF_LINES = 160;

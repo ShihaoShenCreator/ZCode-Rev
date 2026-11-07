@@ -5,7 +5,7 @@ import type {
   SessionId,
   SessionInputRecord,
   SessionStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   loadPersistentCommandFacts,
   savePersistentCommandFact,

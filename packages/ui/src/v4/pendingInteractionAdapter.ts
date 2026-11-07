@@ -3,12 +3,12 @@ import type {
   ZCodePermissionRequest,
   ZCodePermissionResponse,
   ZCodeElicitationRequest,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   PendingInteraction,
   PermissionRequestPayload,
   UserInputRequestPayload,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 
 const LEGACY_PERMISSION_RULE_INPUT_KEYS = [
   "command",

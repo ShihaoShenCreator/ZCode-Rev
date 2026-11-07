@@ -8,7 +8,7 @@ import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from
 import type { KeyboardEvent } from "react";
 import { useDraggable, useDroppable } from "@dnd-kit/core";
 
-import { CRON_DEFAULT_GROUP_ID, OFF_PEAK_DEFAULT_GROUP_ID } from "@zcode/shared";
+import { CRON_DEFAULT_GROUP_ID, OFF_PEAK_DEFAULT_GROUP_ID } from "@s-agent/shared";
 import { ChevronDownIcon, ChevronRightIcon, MessageCirclePlus } from "lucide-react";
 import { cn } from "@/components/lib/utils.js";
 import { Button } from "@/components/ui/button.js";

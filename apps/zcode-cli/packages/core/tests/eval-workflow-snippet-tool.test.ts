@@ -17,7 +17,7 @@ import {
   type DynamicWorkflowSnippetEvalResult,
   type DynamicWorkflowSnippetPort,
   type EvalWorkflowSnippetOutput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { HookRunner } from "../src/hooks/index.js";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";

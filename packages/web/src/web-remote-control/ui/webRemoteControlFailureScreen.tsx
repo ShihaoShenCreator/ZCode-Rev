@@ -1,5 +1,5 @@
-import { Button } from "@zcode/ui/button";
-import type { WebRemoteControlFailure } from "@zcode/shared";
+import { Button } from "@s-agent/ui/button";
+import type { WebRemoteControlFailure } from "@s-agent/shared";
 import { WebRemoteControlSwitchAccountDialog } from "#src/web-remote-control/ui/webRemoteControlSwitchAccountDialog.js";
 
 import {

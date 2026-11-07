@@ -154,9 +154,9 @@ reasoningLevel == "low"
 
 验证结果：
 
-- `@zcode/model-option-map`：26 tests passed；typecheck passed。
-- `@zcode/provider`：167 tests passed；typecheck passed。
-- `@zcode/provider-node`：47 tests passed；typecheck passed。
+- `@s-agent/model-option-map`：26 tests passed；typecheck passed。
+- `@s-agent/provider`：167 tests passed；typecheck passed。
+- `@s-agent/provider-node`：47 tests passed；typecheck passed。
 - CLI Adapter 定向：54 tests passed。
 - CLI Bootstrap Registry/Model 定向：83 tests passed。
 - UI、Services、Server 定向：144 tests passed；UI 默认配置展示补充用例 11 tests passed。

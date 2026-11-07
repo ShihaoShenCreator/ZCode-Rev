@@ -1,4 +1,4 @@
-import type { EditorInfo } from "@zcode/shared";
+import type { EditorInfo } from "@s-agent/shared";
 import { ChevronDownIcon, CopyIcon, ExternalLinkIcon, PanelRightIcon } from "lucide-react";
 import {
   useCallback,

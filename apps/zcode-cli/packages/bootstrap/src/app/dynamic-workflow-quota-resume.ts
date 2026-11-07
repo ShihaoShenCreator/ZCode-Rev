@@ -38,9 +38,9 @@ import type {
   DynamicWorkflowRunResumeErrorReason,
   DynamicWorkflowRunResumeResult,
   Logger,
-} from "@zcode/contracts";
-import type { JournalStorePort, RunRecord } from "@zcode/dynamic-workflow";
-import type { DwfRunSessionListItem } from "@zcode/adapters/storage";
+} from "@s-agent/contracts";
+import type { JournalStorePort, RunRecord } from "@s-agent/dynamic-workflow";
+import type { DwfRunSessionListItem } from "@s-agent/adapters/storage";
 import { defaultSchedule } from "./workflow-driver-helpers.js";
 
 /** 重置时刻之后再等一分钟：服务端窗口按秒取整，各端时钟也有偏差，早到只会再撞一次额度。 */

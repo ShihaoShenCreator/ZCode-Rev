@@ -1,4 +1,4 @@
-import { CREATE_WORKFLOW_TOOL_NAME, type TraceContext } from "@zcode/contracts";
+import { CREATE_WORKFLOW_TOOL_NAME, type TraceContext } from "@s-agent/contracts";
 import type { ExecutableToolCall } from "../../tool/types.js";
 import type { AgentRuntimeInternal } from "../internal.js";
 import { activateDynamicWorkflowTools } from "./dynamic-workflow-activation.js";

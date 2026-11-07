@@ -923,7 +923,7 @@ Exporter 禁止无限重试、无限落盘、阻塞进程退出或把异常抛�
 
 | 层                 | 主要改动                                                                     | 侵入性                              |
 | ------------------ | ---------------------------------------------------------------------------- | ----------------------------------- |
-| `@zcode/contracts` | Operation Registry、Typed Observation、Call/Attempt/Error Records、Sink 接口 | 已完成；纯类型/Schema，无 ARMS 依赖 |
+| `@s-agent/contracts` | Operation Registry、Typed Observation、Call/Attempt/Error Records、Sink 接口 | 已完成；纯类型/Schema，无 ARMS 依赖 |
 | Model Adapter      | Attempt 生命周期、最终 Provider/Endpoint/Thought/Usage、错误补全             | 中；集中在 runner/status/options    |
 | Core Runtime       | 主 Step/Compaction/Verifier/Title 等调用点补 `operation` 和 Operation 结果   | 低到中；约十个语义入口              |
 | Tool Handlers      | WebSearch/WebFetch/ReadSessionContext 补严格 Operation                       | 低                                  |
@@ -1220,7 +1220,7 @@ Phase 1 没有新增 ARMS “表”：`zcode.model.call` 与 `zcode.model.attemp
 - Desktop Agent 必须在不存在 `apps/zcode-cli/packages/telemetry/dist` 的干净环境中完成
   `prepare:desktop-runtime`；普通 pnpm 构建和 `bootstrap:with-remote` 直跑 tsc 构建必须共享
   `scripts/build-desktop-agent-cli.mjs` 中同一份 `cliWorkspaceBuilds` 依赖清单，顺序保持
-  `@zcode/contracts -> @zcode/telemetry -> @zcode/bootstrap`。禁止依赖开发机残留的 dist。
+  `@s-agent/contracts -> @s-agent/telemetry -> @s-agent/bootstrap`。禁止依赖开发机残留的 dist。
 
 ### 22.5 性能测试
 
@@ -1235,9 +1235,9 @@ Phase 1 没有新增 ARMS “表”：`zcode.model.call` 与 `zcode.model.attemp
 
 2026-07-22 使用 Node.js 24.14.0 验证：
 
-- `@zcode/telemetry`：6 files / 21 tests 通过，包含 Call/Attempt 父子 Span、真实本地 Fake OTLP Collector、gzip protobuf、队列、锁、错误脱敏和 Endpoint 清洗。
-- `@zcode/adapters`：55 files / 775 tests 通过，2 skipped；包含 Provider Thought 映射、request/global sink fan-out 与完整 runner 回归。
-- `@zcode/contracts`：22 files / 179 tests 通过；Operation Registry 和 Schema 测试通过。
+- `@s-agent/telemetry`：6 files / 21 tests 通过，包含 Call/Attempt 父子 Span、真实本地 Fake OTLP Collector、gzip protobuf、队列、锁、错误脱敏和 Endpoint 清洗。
+- `@s-agent/adapters`：55 files / 775 tests 通过，2 skipped；包含 Provider Thought 映射、request/global sink fan-out 与完整 runner 回归。
+- `@s-agent/contracts`：22 files / 179 tests 通过；Operation Registry 和 Schema 测试通过。
 - Core 本次相关 Compaction/Streaming：2 files / 104 tests 通过。
 - Bootstrap Workflow/Model Catalog：3 files / 10 tests 通过。
 - Shared/Services/Desktop 配置注入：3 files / 29 tests 通过。

@@ -5,12 +5,12 @@
 // （400 行纪律）：那边是决策与副作用的顺序，这里是「这件事怎么讲给模型和会话听」——入队、
 // 两项设置的 from/to、以及两条规范句（修订出了新 run / 就地生效还是同一个 run）。
 
-import type { TraceContext, WorkflowSettingsAmendMeta } from "@zcode/contracts";
-import type { DynamicWorkflowRunSnapshot } from "@zcode/contracts";
-import { uuidv7 } from "@zcode/shared";
+import type { TraceContext, WorkflowSettingsAmendMeta } from "@s-agent/contracts";
+import type { DynamicWorkflowRunSnapshot } from "@s-agent/contracts";
+import { uuidv7 } from "@s-agent/shared";
 import { createRuntimeCommandId } from "../command-queue.js";
 import type { AgentRuntimeInternal } from "../internal.js";
-import type { boundWorkflowLaunchMeta } from "@zcode/contracts";
+import type { boundWorkflowLaunchMeta } from "@s-agent/contracts";
 
 /** 本 run 的两项设置的归一形：缺席即默认（会话模型 / 默认并发）。 */
 export interface RunSettings {

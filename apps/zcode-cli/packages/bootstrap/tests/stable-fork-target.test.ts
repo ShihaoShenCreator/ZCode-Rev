@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { MessageWithParts, SessionGoal, SessionStorePort } from "@zcode/contracts";
+import type { MessageWithParts, SessionGoal, SessionStorePort } from "@s-agent/contracts";
 import { resolveStableForkTargetFromTranscript } from "../src/zcode-protocol-v4/stable-fork-target.js";
 
 function message(info: Record<string, unknown>): MessageWithParts {

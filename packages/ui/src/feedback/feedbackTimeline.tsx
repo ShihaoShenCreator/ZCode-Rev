@@ -3,7 +3,7 @@ import type {
   FeedbackCommentAttachment,
   FeedbackTicketEvent,
   FeedbackTicketEventType,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   CheckCircle2,
   CornerDownRight,

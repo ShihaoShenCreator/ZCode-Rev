@@ -1,8 +1,8 @@
-import { createServiceLogger } from "@zcode/services/node";
+import { createServiceLogger } from "@s-agent/services/node";
 import { createHash } from "node:crypto";
-import { collectMobilePushEvents, type MobilePushEvent } from "@zcode/shared/web-remote-relay";
-import type { IDisposable } from "@zcode/rpc";
-import { ZCODE_AGENT_RUNTIME_UNAVAILABLE_CODE, type IZCodeAgentService } from "@zcode/services";
+import { collectMobilePushEvents, type MobilePushEvent } from "@s-agent/shared/web-remote-relay";
+import type { IDisposable } from "@s-agent/rpc";
+import { ZCODE_AGENT_RUNTIME_UNAVAILABLE_CODE, type IZCodeAgentService } from "@s-agent/services";
 import {
   PROTOCOL_V4_LIMITS,
   sessionsIndexTopic,
@@ -11,7 +11,7 @@ import {
   type SessionsIndexTopicFrame,
   type SessionsIndexTopicWireCandidate,
   type SessionSummary,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 
 const notificationLogger = createServiceLogger("mobile-push");
 
@@ -54,7 +54,7 @@ export function createWindowHostSessionsIndexObserver(options: {
   agentService: SessionsIndexAgentService;
   target: { workspacePath: string; workspaceIdentity?: string };
   onSessionsChange: (sessions: SessionSummary[]) => void;
-  onRunStarted?: (run: import("@zcode/shared/web-remote-relay").MobilePushRun) => void;
+  onRunStarted?: (run: import("@s-agent/shared/web-remote-relay").MobilePushRun) => void;
   onNotification?: (event: MobilePushEvent) => void;
   onError?: (error: unknown) => void;
 }): WindowHostSessionsIndexObserver {

@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 import { createBotWorkerIntegration } from "../helpers/bot-worker-integration.js";
 import { installBotPlatformFixture } from "../helpers/bot-platform-fixture.js";
 import { startConversationModelProviderReplayServer } from "../helpers/model-provider-replay.js";
-import type { BotInboundMessage } from "@zcode/shared";
+import type { BotInboundMessage } from "@s-agent/shared";
 
 const actor = {
   botId: "bot-worker",

@@ -8,7 +8,7 @@ import {
   type SessionEvent,
   type WorkflowPort,
   type WorkflowStartRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { registerBuiltInTools } from "../src/tool/handlers/index.js";

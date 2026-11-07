@@ -12,7 +12,7 @@ import type {
   Logger,
   PermissionRequestHookDecision,
   SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 import type { WorkspaceHookRuntimeAdmissionPort } from "./workspace-hook-runtime-admission.js";
 

@@ -13,7 +13,7 @@ import {
   type SessionStorePort,
   type SessionGoal,
   type GoalStatus,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { builtInTools } from "../src/tool/handlers/index.js";
 import { targetReadHandler, targetReadToolEntry } from "../src/tool/handlers/target.js";
 import type { ToolExecutionContext } from "../src/tool/types.js";

@@ -794,7 +794,7 @@ Todo103 已替换该执行顺序；此前提交和证据全部保留，当前 G1
 
 ### 验证与失败归因
 
-- 18:07 CLI 4 文件最初 23 通过、3 失败：retention 失败是 `@zcode/contracts` 指向旧 dist，不是源实现错误。执行 `pnpm --filter @zcode/contracts build` 成功后，retention 三条通过。其他 CLI 跨包仍可能读取旧 dist；本轮局部通过不代替最终重建完整闭包。
+- 18:07 CLI 4 文件最初 23 通过、3 失败：retention 失败是 `@s-agent/contracts` 指向旧 dist，不是源实现错误。执行 `pnpm --filter @s-agent/contracts build` 成功后，retention 三条通过。其他 CLI 跨包仍可能读取旧 dist；本轮局部通过不代替最终重建完整闭包。
 - 18:09 分享导入新增两条先稳定复现 ReferenceError；修后通过。18:13 本批 OffPeak turn/Port、分享导入、retention、安全校验（包括180s timeout与迟到响应）、V4 附件组合 **6 文件57条通过**。安全校验不再有§27的跳过。
 - 18:11 含 zcode-protocol 的共享运行 **130通过/7失败**。其中 child parent 参数断言已更新，并在18:12定向通过；5条 MCP 失败同因 adapters/dist 仍调用已删除 isCuaGrayEnabled，留到完整构建后复验；1条远程 Cron 默认 denylist 是 Todo102 既有失败，base/source 同有该行为、checkpoint 早已缺失，不在本轮额外修复。不能把这7条都写成已通过。
 - 18:12 新增工厂门禁3例、分享2例、并发鉴权/child路由2例 **7通过**，其余115为显式过滤不执行，不计覆盖。18:12 desktop remote 装配 + OffPeak dispatch plan/settlement **3文件15通过**，未运行完整 Host 派发/E2E。
@@ -934,7 +934,7 @@ G02 发现新策略未登记重构后的 provider/provider-node：补 spec 与�
 ## 39. 完整候选平台验证：安全校验、浏览器、设置编辑器
 
 - Pro 官方版本安全校验 E2E `desktop-e2e-20260909194622186-p46656-08ed4ad96f7ee423` **1 spec 通过**（四种请求重试/取消/超时场景），runner exitCode=0。保留 pending，不自动晋级。日志在 Pro；没有真实 API 请求或业务白名单修改。
-- `@zcode/web-share build`、`@zcode/web build` 均通过；仅有 chunk size / plugin timings 提示。此证据不等于部署了手机包或验证过公开分享。
+- `@s-agent/web-share build`、`@s-agent/web build` 均通过；仅有 chunk size / plugin timings 提示。此证据不等于部署了手机包或验证过公开分享。
 - Pro hidden guest screenshot smoke 通过：从 2×2 bootstrap 恢复到 640×300，未抢焦点、结束后仍隐藏。surface smoke 首次精确 RGBA 断言失败（期望 255,0,0，实际 234,51,35）；相同脚本以 `--force-color-profile=srgb` 运行通过：1280×720、四角不同、没有周期平铺。不更改产品色彩配置。
 - background activity smoke 在 `win.hide()` 后仍读到 host `visibility=visible / frames=96 / timers=80`，未进入后续唤醒/恢复验收。脚本与固定 source 字节一致且仅直接调用 Electron、不加载整合后的业务代码，属于原脚本在当前 Pro/Electron 的失败；保持记录，不改时限或扩大为浏览器生命周期重构。Windows 专项仍不能由本次 Mac 结果替代。
 - Pro UI polish 首次 reporter 8 pass / 1 fail / 1 skip，其中 Windows-only `UP-00` 在 Mac 直接 return，不算 Windows 已测；7 项实际执行通过（菜单/导航、新增供应商、无同步入口、空列表、排序、删除）。MP-UI-06 的第一处失败为测试采样竞态：记录过渡 alpha=0.047，随后最终焦点 alpha=0.05 无法相等。仅调整测试为等待控件自身动画结束，保留相同颜色/边框断言。
@@ -1019,7 +1019,7 @@ Pro `desktop-e2e-20260909-203731-261` **2 specs / 2 cases 通过**，runner exit
 G01 两个既有脚本均检查 win32，使用临时目录创建 fixture 并清理。待提供隔离 Windows 执行环境后，在完整候选安装依赖，运行：
 
 ```text
-pnpm --filter @zcode/desktop test:installer-nsh-smoke
+pnpm --filter @s-agent/desktop test:installer-nsh-smoke
 node packages/desktop/scripts/test-installer-preserve-files.mjs
 ```
 

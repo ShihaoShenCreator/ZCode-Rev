@@ -2,10 +2,10 @@ import {
   sourceServerRunningTasksSchema,
   type SourceServerRunningTask,
   type SourceServerRunningTasksResult,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 /* eslint-disable max-lines -- Source 连接状态机、重试、更新和单连接归并必须共享同一代际状态。 */
 import { SourceServerOperationLogs } from "./sourceServerOperationLogs.js";
-import { Emitter, type Event } from "@zcode/rpc";
+import { Emitter, type Event } from "@s-agent/rpc";
 import type {
   ConnectionProfile,
   RemoteTarget,
@@ -13,7 +13,7 @@ import type {
   CompatibilityManifest,
   SourceServerArtifactPolicy,
   SourceServerConnectionStateSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   SOURCE_SERVER_INSTALL_REQUIRED_ERROR_CODE,
   SOURCE_SERVER_IDENTITY_CHANGE_PENDING_ERROR_CODE,
@@ -25,8 +25,8 @@ import {
   isPublicZCodeErrorCode,
   normalizeRemoteConnectionError,
   stripRemoteTargetSecrets,
-} from "@zcode/shared";
-import type { IServiceAccessor } from "@zcode/services";
+} from "@s-agent/shared";
+import type { IServiceAccessor } from "@s-agent/services";
 import {
   createSourceServerTransportAdapter,
   readServerCommandResult,
@@ -35,7 +35,7 @@ import {
   type SourceServerIngressInfo,
   type SourceServerTransportAdapter,
   type TransportContext,
-} from "@zcode/server/source-server";
+} from "@s-agent/server/source-server";
 import {
   connectServerRemoteOverDuplex,
   type ServerRemoteConnection,
@@ -47,7 +47,7 @@ import { isSourceServerAutomaticRecoveryTerminalState } from "./sourceServerReco
 export type {
   SourceServerConnectionState,
   SourceServerConnectionStateSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 export interface ManagedSourceServerConnection {
   /** 本次调用复用物理连接时的实际脱敏目标；不写入在线 owner。 */

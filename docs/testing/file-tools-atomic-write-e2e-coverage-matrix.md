@@ -24,10 +24,10 @@
 从 repo root 执行：
 
 ```bash
-pnpm --filter @zcode/contracts build
-pnpm --filter @zcode/shared-types build
-pnpm --filter @zcode/adapters build
-pnpm --filter @zcode/core build
+pnpm --filter @s-agent/contracts build
+pnpm --filter @s-agent/shared-types build
+pnpm --filter @s-agent/adapters build
+pnpm --filter @s-agent/core build
 node apps/zcode-cli/e2e/file-tools-atomic-write/run.mjs
 ```
 
@@ -36,17 +36,17 @@ node apps/zcode-cli/e2e/file-tools-atomic-write/run.mjs
 窗口级 replay E2E：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-file-tools-atomic-write.json \
-  pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts'
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts'
+  pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts'
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts'
 ```
 
 若后续要把 `FT-AW-04` 纳入 `conversation-session-verified` Docker suite，再执行容器准入：
 
 ```bash
 E2E_SPEC=./test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts pnpm run test:e2e:container
-pnpm --filter @zcode/desktop e2e:docker:admit -- --spec ./test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts --verified --artifact packages/desktop/.e2e-artifacts/<run-id> --apply
+pnpm --filter @s-agent/desktop e2e:docker:admit -- --spec ./test/e2e/conversation-session/conversation-session-file-tools-atomic-write.test.ts --verified --artifact packages/desktop/.e2e-artifacts/<run-id> --apply
 pnpm run test:e2e:container:conversation
 ```
 
@@ -57,4 +57,4 @@ pnpm run test:e2e:container:conversation
 - `e2e:fixture:check`：`FT-AW-04` 必跑，用来证明 fixture、manifest、spec marker 和请求合同一致。
 - `e2e:promote`：人工确认当前 V4 UI / network / snapshot 断言稳定后，用该流程把 `FT-AW-04` 晋级回默认 conversation-session 目录，并同步本矩阵状态。
 - Docker admission：仅在 `FT-AW-04` 需要进入 `conversation-session-verified` 容器 suite 时使用；进入前必须先通过单 spec `replay-isolated`，再用 `e2e:docker:admit` 同步 Docker preset 和准入文档。
-- `pnpm --filter @zcode/desktop typecheck:e2e`：作为 lifecycle 收尾门禁保留，防止 E2E 类型环境被本次测试设施改动破坏。
+- `pnpm --filter @s-agent/desktop typecheck:e2e`：作为 lifecycle 收尾门禁保留，防止 E2E 类型环境被本次测试设施改动破坏。

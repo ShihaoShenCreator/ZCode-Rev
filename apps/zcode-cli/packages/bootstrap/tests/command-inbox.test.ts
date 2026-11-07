@@ -4,8 +4,8 @@ import type {
   CommandAck,
   CommandEnvelope,
   ConversationInputIntent,
-} from "@zcode/shared/zcode-protocol-v4";
-import { PROTOCOL_V4_LIMITS } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
+import { PROTOCOL_V4_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
 import type { CommandInboxHost } from "../src/zcode-protocol-v4/command-inbox.js";
 import { CommandInbox } from "../src/zcode-protocol-v4/command-inbox.js";
 

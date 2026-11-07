@@ -1,7 +1,7 @@
 import type {
   SourceServerMigrationReport,
   SourceServerMigrationReportRow,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { cn } from "@/components/lib/utils.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

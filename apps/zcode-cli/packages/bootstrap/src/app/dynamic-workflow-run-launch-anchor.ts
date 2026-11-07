@@ -14,9 +14,9 @@
 // 引擎一概不读、都零 SQL——`dwf_run` 上
 // 没有对应的列。
 
-import type { TraceContext } from "@zcode/contracts";
-import type { JournalStorePort, RunEvent } from "@zcode/dynamic-workflow";
-import { uuidv7 } from "@zcode/shared";
+import type { TraceContext } from "@s-agent/contracts";
+import type { JournalStorePort, RunEvent } from "@s-agent/dynamic-workflow";
+import { uuidv7 } from "@s-agent/shared";
 import {
   parseWorkflowSubagentPermissionMode,
   type WorkflowSubagentPermissionMode,

@@ -1,8 +1,8 @@
 import { pendingTopicPreparations } from "@/v4/topicPreparationRenderUnits.js";
 import { useContext, useMemo } from "react";
 import { LoaderCircleIcon } from "lucide-react";
-import type { BotTopicPreparation as Preparation, FeishuBotProvider } from "@zcode/shared";
-import type { ConversationRow } from "@zcode/shared/zcode-protocol-v4";
+import type { BotTopicPreparation as Preparation, FeishuBotProvider } from "@s-agent/shared";
+import type { ConversationRow } from "@s-agent/shared/zcode-protocol-v4";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { DeliveryContext } from "@/v4/botGroupDeliveryContext.js";

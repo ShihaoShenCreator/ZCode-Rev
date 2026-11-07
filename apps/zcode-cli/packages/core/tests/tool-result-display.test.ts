@@ -1,8 +1,8 @@
 import {
   parseToolResultDisplayPayload,
   ZCODE_MCP_NODE_REPL_CUA_APP_META_KEY,
-} from "@zcode/contracts";
-import { toolCallGetWorkflowRunDisplaySchema } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { toolCallGetWorkflowRunDisplaySchema } from "@s-agent/shared/zcode-protocol-v4";
 import { describe, expect, it } from "vitest";
 import {
   createMcpToolDisplay,

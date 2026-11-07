@@ -63,14 +63,14 @@ hooks 从可执行配置中剥离（一律忽略）；本 MR 在此之上建立�
 | **desktop** | 5 files | HK05–HK07 正式 e2e + fixture helper + wdio.conf 冷启动接线 + case-local provider fixture/manifest |
 | **docs** | 13 files +5,005−27 | 主 spec `workspace-hook-trust.md`、语义权威 `workspace-hook-trust-persistent-only.md`、软门禁设计 `workspace-hook-trust-soft-gate.md`、用户指南（含 corrupt 恢复）、人工验收手册、conversation-session case catalog（HK05–07）+ coverage matrix、改动范围文档（本文件） |
 | **scripts** | 1 file +258 | `create-workspace-hook-trust-uat-fixture.mjs`：生成无害 UAT workspace（3 条声明 + executions.jsonl recorder），`--verify` 现场防漂移 |
-| **根/其他** | 2 files +137 | `pnpm-lock.yaml`（contracts 新增 `@zcode/shared` workspace 依赖）；`.agents/skills/feature-boundary-planner/references/zcode-feature-graph.yaml`（特性图登记） |
+| **根/其他** | 2 files +137 | `pnpm-lock.yaml`（contracts 新增 `@s-agent/shared` workspace 依赖）；`.agents/skills/feature-boundary-planner/references/zcode-feature-graph.yaml`（特性图登记） |
 
 ## 3. 关键设计决策
 
 1. **v2 = persistent-only**（`141ebf7bda`）：删除 v1 多态授权状态机（allow_once/trust_all/
    keep_blocked/timeout 自动决策/SessionStart 补跑/独立审核面板），只保留逐条精确持久
    Trust。决策契约收敛为 `{ action: "trust_selected"; reviewItemIds }`。
-2. **trust store schema 单源**（CR-01）：schema 下沉 `@zcode/shared`（zod4），contracts
+2. **trust store schema 单源**（CR-01）：schema 下沉 `@s-agent/shared`（zod4），contracts
    re-export（zod3 侧不组合引用），services/runtime/CLI 对同一文件同判——JSON 语法错误
    与结构非法（缺 schemaVersion/必需字段、非法 decision/时间戳、未知字段）一律 corrupt
    fail-closed，corrupt 下不展示任何 trusted_persistent。

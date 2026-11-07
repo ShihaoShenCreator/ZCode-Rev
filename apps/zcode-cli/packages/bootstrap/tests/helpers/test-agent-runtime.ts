@@ -19,8 +19,8 @@ import {
   type ModelRequest,
   type ModelResult,
   type ModelSelection,
-} from "@zcode/contracts";
-import { AgentRuntime, type AgentRuntimeConfig, type AgentRuntimeDeps } from "@zcode/core";
+} from "@s-agent/contracts";
+import { AgentRuntime, type AgentRuntimeConfig, type AgentRuntimeDeps } from "@s-agent/core";
 
 type RuntimeModelFactory = NonNullable<AgentRuntimeDeps["modelFactory"]>;
 type RuntimeModelFactoryInput = Parameters<RuntimeModelFactory>[0];

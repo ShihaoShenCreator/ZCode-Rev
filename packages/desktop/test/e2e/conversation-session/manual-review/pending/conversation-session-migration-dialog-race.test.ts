@@ -1,6 +1,6 @@
 import { join } from "node:path";
-import type { IServiceAccessor, ISettingsSyncService } from "@zcode/services";
-import { TID_TASK_SETTINGS_BUTTON, TID_SETTINGS_SECTION_NAV, testId } from "@zcode/shared/test-ids";
+import type { IServiceAccessor, ISettingsSyncService } from "@s-agent/services";
+import { TID_TASK_SETTINGS_BUTTON, TID_SETTINGS_SECTION_NAV, testId } from "@s-agent/shared/test-ids";
 import { clickTestIdByDom, waitForTestIdByDom } from "#e2e/helpers/desktop-app";
 import { prepareV4ConversationE2E } from "#e2e/helpers/v4-conversation";
 import { startElectronWindowRecording } from "#e2e/helpers/electron-window-recorder";

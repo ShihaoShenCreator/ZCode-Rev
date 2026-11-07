@@ -6,7 +6,7 @@ import {
   type WorkflowFailure,
   type WorkflowFailureKind,
   type WorkflowRecoveryAction,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export function latestWorkflowActivity(
   snapshot: ExpertWorkflowRunSnapshot,

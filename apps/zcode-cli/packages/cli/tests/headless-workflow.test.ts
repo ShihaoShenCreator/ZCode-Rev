@@ -4,9 +4,9 @@ import {
   SessionEventType,
   type DynamicWorkflowRunProgressPayload,
   type SessionEvent,
-} from "@zcode/contracts";
-import type { RunContext } from "@zcode/shared-types";
-import { zcodeSessionEventTypeSchema } from "@zcode/shared";
+} from "@s-agent/contracts";
+import type { RunContext } from "@s-agent/shared-types";
+import { zcodeSessionEventTypeSchema } from "@s-agent/shared";
 import { run } from "../src/run.js";
 import type { RunDependencies } from "../src/run.js";
 import {

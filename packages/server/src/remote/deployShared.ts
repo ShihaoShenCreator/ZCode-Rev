@@ -1,8 +1,8 @@
 import { join } from "node:path";
 import { access } from "node:fs/promises";
-import type { StdioStream } from "@zcode/server/remote/backend.js";
-import { quotePosixPathArg } from "@zcode/server/remote/posixShell.js";
-import type { RemoteAssetNetworkPort } from "@zcode/server/remote/remoteAssetNetwork.js";
+import type { StdioStream } from "@s-agent/server/remote/backend.js";
+import { quotePosixPathArg } from "@s-agent/server/remote/posixShell.js";
+import type { RemoteAssetNetworkPort } from "@s-agent/server/remote/remoteAssetNetwork.js";
 
 export const REMOTE_BASE = "~/.zcode/server";
 

@@ -42,7 +42,7 @@ R2 不交付：
 | 旧 `packages/server` | 仅作为现有 HTTP/WS、stdio、远程部署和协议行为参考；保持其当前入口兼容                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 用户入口             | 独立发行包提供 `zcode`；无参数继续进入既有 TUI                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Server Core          | 新目录内实现新的 Core 入口和生命周期合同，不继承旧 `entry-http` / `entry-stdio` 的进程语义                                                                                                                                                                                                                                                                                                                                                                                          |
-| 业务服务             | 经过审查后复用 `@zcode/services`、`@zcode/shared`、`@zcode/rpc` 等底层能力                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 业务服务             | 经过审查后复用 `@s-agent/services`、`@s-agent/shared`、`@s-agent/rpc` 等底层能力                                                                                                                                                                                                                                                                                                                                                                                                          |
 | Supervisor           | 只拥有生命周期状态，不拥有 task/session/stream/queue/snapshot 业务状态                                                                                                                                                                                                                                                                                                                                                                                                              |
 | 监听地址             | 默认回环地址和动态端口；非回环监听必须启用鉴权                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Web / WS             | R2 实现并验证 Core 的 HTTP/WS ingress；具体远程 Transport 留给后续阶段                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -272,9 +272,9 @@ packages/zcode-server-cli/
 
 依赖规则：
 
-- 新 Core 不依赖 `@zcode/server` 的入口实现；
+- 新 Core 不依赖 `@s-agent/server` 的入口实现；
 - 不修改 `packages/server` 的 `entry-http`、`entry-stdio` 和 `build:remote`；
-- 只复用经过审查的 `@zcode/services`、`@zcode/shared`、`@zcode/rpc` 和服务类型；
+- 只复用经过审查的 `@s-agent/services`、`@s-agent/shared`、`@s-agent/rpc` 和服务类型；
 - 不把 Electron、Renderer、Desktop Main 或 Window Host 打入 Server CLI 包；
 - 不新增 App ↔ Agent 协议；若未来必须修改该协议，另行修改 `packages/shared/src/zcode-protocol` 并增加 schema 验证；
 - 新增 IO 使用异步 API；锁、状态和 release 切换必须可恢复、可审计。
@@ -317,14 +317,14 @@ zcode-server-<os>-<arch>/
 └── manifest.json
 ```
 
-入口用 ESM `.js` 而不是最初设想的 `.cjs`：`@zcode/services` 依赖链已按 ESM 组织，
+入口用 ESM `.js` 而不是最初设想的 `.cjs`：`@s-agent/services` 依赖链已按 ESM 组织，
 CJS 化 bundle 风险更高；`server-cli.js` 通过 `new URL("./server-core.js", import.meta.url)`
 fork Core，通过同目录 `zcode.cjs` 委派既有 CLI，因此三个入口必须位于同一 `runtime/` 目录。
 
 ### 7.1 发行包 staging
 
 staging 由 `packages/zcode-server-cli/src/packaging/stage.ts` 实现，
-`pnpm --filter @zcode/server-cli stage --target <os>-<arch>` 触发，只做本地组装，不上传、不发布：
+`pnpm --filter @s-agent/server-cli stage --target <os>-<arch>` 触发，只做本地组装，不上传、不发布：
 
 - 入口 bundle 来自本包 `tsup` 产物；`zcode.cjs` 来自 `apps/zcode-cli/packages/cli/dist/zcode.cjs`
   （由 `scripts/build-desktop-agent-cli.mjs` 构建，与远端资产链同源）；
@@ -354,7 +354,7 @@ staging 由 `packages/zcode-server-cli/src/packaging/stage.ts` 实现，
   产出 `tar.gz`，Windows 产出 `zip` 和 `zcode.cmd`。Windows 不打包 `bfs`，使用 `rg.exe`、
   `ugrep.exe`，并保留系统/Git Bash fallback。
 - Agent bundle 的外置依赖以运行时入口扫描和官方插件定义为事实源；不再只扫描 Server CLI/Core，
-  因而 `@zcode/tui`、`playwright-core` 等 bundle 运行时依赖不会被遗漏。
+  因而 `@s-agent/tui`、`playwright-core` 等 bundle 运行时依赖不会被遗漏。
 - `runtime/tools` 由 `scripts/prepare-native-search-tools.mjs` 按目标 release plan 准备到
   `node_modules/.cache/zcode-server-cli/tools/<target>`（内网依赖源已配置时下载，未配置时解包仓库归档），
   不复用 mock-cdn 或 bundled-tools 目录（远端 macOS 固定为 rg13）；每个工具目录同时携带

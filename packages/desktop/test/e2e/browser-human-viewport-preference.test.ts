@@ -9,7 +9,7 @@ import {
   TID_BROWSER_RESPONSIVE_WIDTH_INPUT,
   TID_BROWSER_RESPONSIVE_ZOOM_OPTION,
   TID_BROWSER_RESPONSIVE_ZOOM_SELECT,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByWebDriver,

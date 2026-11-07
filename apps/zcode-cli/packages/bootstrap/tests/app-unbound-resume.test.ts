@@ -9,7 +9,7 @@ import {
   type Logger,
   type LoggerFactory,
   type ModelSelection,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createRegistryBackedTestApp,
   createTestProviderRegistry,

@@ -264,7 +264,7 @@ Window Host（R3）
    │  │  ├─ bootstrap：probe → (确认后 install/update) → ensure daemon → 读 port/token
    │  │  └─ channel：Duplex 字节通道 → 远端 127.0.0.1:<动态端口>
    │  ├─ 握手：/api/server-info（版本兼容 + 迁移门）→ ticket → WS /ws/host
-   │  └─ @zcode/rpc 服务集合（全转发）+ 多 logical remote session（remoteSessionId）
+   │  └─ @s-agent/rpc 服务集合（全转发）+ 多 logical remote session（remoteSessionId）
    │                         │
    │                         ▼
    │              远端 ZCode Server daemon（R2）
@@ -552,7 +552,7 @@ Host 已固定 A → 后续 Profile 编辑 B → 在途操作仍只使用 A
 ```
 
 - `source-server-install-required` 同样保留实际 `profileId`。WSL 安装失败响应另带严格校验的 `resolvedWslTarget: { kind: "wsl", distro, user }`，两个身份字段均非空，不含凭据。它来自本次 Host 连接请求的已解析目标，独立于附加安装预览；预览不可用时仍可确认同一目标。该字段经 Main、平台和原项目失败交接保留，不改变发现缓存、持久化、安装授权或桌面/手机传输边界。
-- 公开错误码统一由 `@zcode/shared` 登记并由 CLI/Host 消费：running-task guard 使用
+- 公开错误码统一由 `@s-agent/shared` 登记并由 CLI/Host 消费：running-task guard 使用
   `source-server-update-running-tasks`（`retryable:false`，允许用户显式 `force`），兼容阻断使用
   `source-server-upgrade-required`，未授权的降级使用 `source-server-downgrade-unconfirmed`
   （`retryable:false`）；workspace migration 与 bind cancel 同样不得维护各自白名单。
@@ -1055,7 +1055,7 @@ Desktop Main（desktopHostProcess → remoteSessionManager → coordinator）
   停止失败时原因写在所用连接的 `offline` 状态上（不改变未连接展示），供失败详情分类。设备操作日志 `operation` 增加 `stop`。
   更新、停止、重启失败写入状态的 `errorCode` 与 `retryable` 取自同一归一化结果；远端未声明 `retryable` 时统一为 `true`
   （2026-10-21 确认，含停止失败）。
-  版本门禁常量为 `@zcode/shared` 的 `SOURCE_SERVER_LIFECYCLE_CONTROL_MIN_VERSION`，与设备记录的 `lastSeenVersion` 比较，
+  版本门禁常量为 `@s-agent/shared` 的 `SOURCE_SERVER_LIFECYCLE_CONTROL_MIN_VERSION`，与设备记录的 `lastSeenVersion` 比较，
   取 `3.17.0`（2026-10-27 确认）：这是首个包含本合同的正式版。已发布的 3.16.3 及更早远端不支持本合同。
   曾取 `3.16.3`，前提是“下一次发版至少是 3.16.3，且包含本合同”；实际 v3.16.3 从 release 分支发布，不含本合同，
   最近握手为 3.16.3 的未连接或连接失败设备因此开放了菜单（发布验证 REL3170-CAP-01）。
@@ -1069,7 +1069,7 @@ Desktop Main（desktopHostProcess → remoteSessionManager → coordinator）
   设备操作日志 `operation` 增加 `restart`，阶段名为 `service-restart`（`restart` 阶段会被错误归一化当作安装失败）。
 - 实现落点（运行中任务读取，2026-10-21）：Host `getSourceRunningTasks` 的路由同重启（恢复意图优先；离线路由读取
   凭据后重查恢复意图），经 transport 执行 `running-tasks --json`。输出 `null`（Core 尚未上报）、非零退出、执行异常或
-  不符 schema 都返回 `{ available: false }`，不当作没有任务；结果 schema 为 `@zcode/shared` 的
+  不符 schema 都返回 `{ available: false }`，不当作没有任务；结果 schema 为 `@s-agent/shared` 的
   `sourceServerRunningTasksResultSchema`。读取只读：不登记生命周期操作、不参与 Host 互斥、不改变连接状态，也不写
   设备操作日志（日志按设备只保留最近一次操作）。更新 guard 拒绝后的清单读取共用同一解析。
 

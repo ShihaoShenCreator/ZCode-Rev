@@ -4,7 +4,7 @@ import { join } from "node:path";
 import {
   resetCapturedZCodeAgentTelemetryEnvForTest,
   sanitizeZCodeRuntimeEnvInPlace,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { afterEach, describe, expect, it } from "vitest";
 import { prepareZCodeTelemetryEnv } from "../src/telemetry-bootstrap.js";
 

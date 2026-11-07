@@ -40,7 +40,7 @@ Older builds may have written `user/default/model/reasoningLevel`. Current code 
 SQLite migrations use a ledger table:
 
 R3 的 `0024_session_database_identity` 接管 Source Server 曾直接创建的
-`zcode_database_identity`。Agent 与 Source 通过 `@zcode/shared/sqlite-migrations`
+`zcode_database_identity`。Agent 与 Source 通过 `@s-agent/shared/sqlite-migrations`
 复用冻结 SQL 和记账原语，保持已有 migration 的 checksum 算法与错误类型。
 Source 在 Agent 尚未启动时只应用该独立附加表迁移；后续 Agent 初始化补齐自己的
 其他版本。两种先后顺序都在同一 `schema_migration` 中记录一次。结构接管保留既有

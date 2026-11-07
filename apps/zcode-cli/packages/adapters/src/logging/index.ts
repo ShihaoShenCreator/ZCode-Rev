@@ -6,13 +6,13 @@ import { appendFileSync, existsSync, mkdirSync } from "node:fs";
 import { appendFile, mkdir } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
-import type { LogContext, LogEntry, Logger, LoggerFactory, LogRedactor } from "@zcode/contracts";
-import { LogLevel, LogLevelName } from "@zcode/contracts";
+import type { LogContext, LogEntry, Logger, LoggerFactory, LogRedactor } from "@s-agent/contracts";
+import { LogLevel, LogLevelName } from "@s-agent/contracts";
 import {
   ZCODE_RUNTIME_ENV_KEY,
   normalizeZCodeRuntimeEnv,
   createLocalTtftLogQueue,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   formatLocalLogDate,
   scheduleLogRetentionCleanup as scheduleRetentionCleanup,

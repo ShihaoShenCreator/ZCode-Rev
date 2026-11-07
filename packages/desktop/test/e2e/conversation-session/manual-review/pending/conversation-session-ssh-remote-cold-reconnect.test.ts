@@ -3,7 +3,7 @@ import {
   disconnectRemoteSource,
   requestRemoteProjectConnection,
 } from "#e2e/helpers/remote-project-actions";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import { clearAppData, readSettings, seedSettings } from "../../../helpers/desktop-app.js";
 import { selectUpstreamProviderModelById } from "../../../helpers/upstream-provider.js";
 import {

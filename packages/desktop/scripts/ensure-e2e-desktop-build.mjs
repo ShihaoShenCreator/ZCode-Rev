@@ -147,7 +147,7 @@ export function createE2EDesktopBuildFingerprint({
 }
 
 export function resolveE2EDesktopBuildInputPaths({
-  entryPackageName = "@zcode/desktop",
+  entryPackageName = "@s-agent/desktop",
   repoRoot = REPO_ROOT,
 } = {}) {
   const workspacePackages = readWorkspacePackages(repoRoot);
@@ -177,7 +177,7 @@ export function resolveE2EDesktopBuildInputPaths({
     }
   }
 
-  // Bug 根因：手写输入目录遗漏了 tsup noExternal 内联的 @zcode/server，导致同一
+  // Bug 根因：手写输入目录遗漏了 tsup noExternal 内联的 @s-agent/server，导致同一
   // HEAD 下修改 server 仍可能命中旧 bundle。依赖图作为权威输入，新增 workspace
   // 依赖时无需再同步维护缓存白名单。
   return [...new Set([...DEFAULT_E2E_DESKTOP_BUILD_INPUTS, ...packageInputPaths])].sort();
@@ -272,7 +272,7 @@ export function ensureE2EDesktopBuild({
     if (buildDesktop) {
       buildDesktop();
     } else {
-      execFileSync("pnpm", ["--filter", "@zcode/desktop", "build:no-runtime-assets"], {
+      execFileSync("pnpm", ["--filter", "@s-agent/desktop", "build:no-runtime-assets"], {
         cwd: REPO_ROOT,
         env,
         shell: process.platform === "win32",

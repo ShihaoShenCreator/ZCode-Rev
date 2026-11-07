@@ -6,7 +6,7 @@ import {
   TID_CHAT_MODEL_SELECT_TRIGGER,
   TID_CHAT_MODEL_SELECT_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { DEFAULT_WORKSPACE, clearAppData, getE2EAppDataPaths } from "../helpers/desktop-app.js";
 import { startConversationModelProviderReplayServer } from "../helpers/model-provider-replay.js";
 import { restartIntoWorkspacePreservingProfile } from "../helpers/model-provider-restart-runtime.js";

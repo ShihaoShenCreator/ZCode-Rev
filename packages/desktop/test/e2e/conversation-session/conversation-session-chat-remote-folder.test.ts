@@ -1,4 +1,4 @@
-import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@zcode/rpc";
+import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@s-agent/rpc";
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
 import {
@@ -6,19 +6,19 @@ import {
   buildServerRemoteWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
   type SourceServerManagementSnapshot,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_COMPOSER_WORKSPACE_TRIGGER,
   TID_COMPOSER_REMOTE_CONNECTION,
   TID_SETTINGS_PAGE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import type {
   ProjectTree,
   VirtualProject,
   RemoteProjectDirectory,
   TaskGroup,
   TaskGroupStructure,
-} from "@zcode/services";
+} from "@s-agent/services";
 import {
   prepareV4ConversationE2E,
   setV4ComposerText,

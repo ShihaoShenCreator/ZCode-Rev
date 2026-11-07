@@ -1,4 +1,4 @@
-import type { FeedbackComment, FeedbackTicketStatus } from "@zcode/shared";
+import type { FeedbackComment, FeedbackTicketStatus } from "@s-agent/shared";
 
 type MessageFormatter = (
   descriptor: { id: string },

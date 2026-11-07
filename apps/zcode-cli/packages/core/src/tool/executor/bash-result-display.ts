@@ -1,4 +1,4 @@
-import { BashOutputSchema, type ToolResultDisplayPayload } from "@zcode/contracts";
+import { BashOutputSchema, type ToolResultDisplayPayload } from "@s-agent/contracts";
 
 export function createBashResultDisplay(output: unknown): ToolResultDisplayPayload | undefined {
   const parsed = BashOutputSchema.safeParse(output);

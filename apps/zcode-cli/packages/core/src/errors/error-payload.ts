@@ -2,7 +2,7 @@ import type {
   ErrorAttribution,
   ModelApiErrorPhase,
   ModelFailureExceptionKind,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export interface ExecutionErrorPayloadProjection {
   attribution?: ErrorAttribution;

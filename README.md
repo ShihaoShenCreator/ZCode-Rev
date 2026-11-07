@@ -1,21 +1,5 @@
-# ZCode-Rev
+# S-Agent
 
-> **本仓库基于 ZCode 开源版，恢复并改造了被移除的仓库快照功能。**
->
-> 2026 年 9 月，安全研究者发现 ZCode 桌面客户端自首个公开版本起即静默打包用户完整工作区（含 `.git` 历史、LFS 缓存、reflog）并加密上传至智谱控制的阿里云 OSS。用户界面的隐私开关无法阻止采集和上传，RSA 私钥仅存于服务端，用户无法解密自己的数据。
->
-> 本 fork 从 `ZCode-3.12.3-linux-x64.AppImage` 反编译复原了完整的上传链路代码，并将其改造为 **用户可控的自助备份功能**：
->
-> - **用户自己提供** 阿里云 OSS AccessKey / Bucket，数据上传到用户自己的存储
-> - **用户自己持有** 加密密码（PBKDF2 + AES-256-CTR），可随时自行解密
-> - **用户主动启用**，尊重 `enabled` 开关，不绕过任何隐私设置
-> - 在设置页提供完整的 UI 配置面板（OSS 凭证、加密、文件过滤、手动触发）
->
-> 详见 [`packages/services/src/repo-snapshot/`](packages/services/src/repo-snapshot/) 目录。
-
-<div align="center">
-  <img src="public/logo/icons/1024x1024.png" alt="ZCode" width="128" height="128" />
-</div>
 <p align="center">
   <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=47ag983c-8fcb-4d6d-814b-5395193a712c&amp;qr_code=true">飞书社群</a> ·
   <a href="https://discord.gg/z9aBcQXZQ3">Discord</a>
@@ -24,16 +8,7 @@
   简体中文 | <a href="README.en.md">English</a>
 </p>
 
-ZCode 是 AI 编程工作台，提供桌面应用、浏览器界面和终端 Agent。本仓库包含客户端、后端服务、共享 UI，以及 Agent CLI 与运行时源码。
-
-## 更新
-
-- **2026-10-30**：更新至 ZCode v3.17.1 版本。
-- 2026-10-19：更新至 ZCode v3.16.2 版本。
-- 2026-10-16：更新至 ZCode v3.16.1 版本。
-- 2026-10-16：更新至 ZCode v3.15.4 版本。
-- 2026-10-10：更新至 ZCode v3.15.1 版本。
-- 2026-9-23：更新至 ZCode v3.14.3 版本。
+S-Agent 是 AI 编程工作台，提供桌面应用、浏览器界面和终端 Agent。本仓库包含客户端、后端服务、共享 UI，以及 Agent CLI 与运行时源码。
 
 ## 初始化
 
@@ -95,32 +70,32 @@ ZCODE_SERVER_WORKSPACE=/path/to/project pnpm dev:web
 
 该命令同时启动 Web 开发服务器（默认 `http://localhost:5173`）和后端（默认 `http://localhost:3030`）；浏览器访问前者。`/ws` 和一般 `/api` 请求代理到本地后端，`/api/v1/oauth/token` 单独代理到当前配置的产品服务。
 
-Agent 源码修改后，执行 `pnpm --filter @zcode/cli... build` 并重启服务。需要验证完整发行包时，按下方“ZCode 命令行版”打包章节解压运行。
+Agent 源码修改后，执行 `pnpm --filter @s-agent/cli... build` 并重启服务。需要验证完整发行包时，按下方“S-Agent 命令行版”打包章节解压运行。
 
-### ZCode 命令行版
+### S-Agent 命令行版
 
-命令行发行包包含 TUI、Web 和 Agent，统一使用 `zcode` 启动：无参数进入 TUI；第一个参数为 `--web` 时启动 Web；其他参数交给现有 Agent CLI 处理。两种模式都在本机运行，无需 Electron。
+命令行发行包包含 TUI、Web 和 Agent，使用 `s-agent` 启动：无参数进入 TUI；第一个参数为 `--web` 时启动 Web；其他参数交给 Agent CLI 处理。两种模式都在本机运行，无需 Electron。安装器暂时保留 `zcode` 兼容别名。
 
 ```bash
 # 默认进入终端交互界面
-zcode
+s-agent
 
 # 启动 Web 界面
-zcode --web
+s-agent --web
 
 # 指定项目和端口，不自动打开浏览器
-zcode --web --workspace /path/to/project --port 3030 --no-open
+s-agent --web --workspace /path/to/project --port 3030 --no-open
 
 # 查看 CLI 或 Web 参数
-zcode --help
-zcode --web --help
+s-agent --help
+s-agent --web --help
 ```
 
 Web 模式默认工作目录为当前目录，监听 `127.0.0.1`，默认不启用访问令牌，自动选择空闲端口并打开浏览器。访问终端输出的地址，按 `Ctrl+C` 停止服务。局域网访问可使用 `--host 0.0.0.0`；监听非本机地址时默认生成访问令牌，使用终端输出的带令牌链接。可通过 `--token` 指定令牌或 `--no-token` 关闭令牌认证。
 
 直接启动通用 Web 服务的 HTTP 入口时，通过 `ZCODE_SERVER_AUTH_TOKEN` 配置 API／WebSocket 认证；通过程序接口创建服务时，使用 `authToken` 选项。
 
-构建方式见下方打包章节。`pnpm build:zcode` 只生成发行包，不会替换 `PATH` 中已有的 `zcode`。如果命令仍指向旧安装或其他源码目录，macOS / Linux 可用 `command -v zcode` 检查，Windows 可用 `where.exe zcode` 检查。
+构建方式见下方打包章节。`pnpm build:s-agent` 只生成发行包，不会替换 `PATH` 中已有的命令。如果命令仍指向旧安装或其他源码目录，macOS / Linux 可用 `command -v s-agent` 检查，Windows 可用 `where.exe s-agent` 检查。`build:zcode` 和已安装的 `zcode` 命令暂作为兼容入口保留。
 
 ### CLI 源码开发
 
@@ -129,11 +104,11 @@ CLI 的模型配置、非交互调用、工具与扩展、批量评测和轨迹�
 直接开发 TUI 或 Agent 时，运行源码入口：
 
 ```bash
-pnpm --filter @zcode/cli dev --help
-pnpm --filter @zcode/cli dev
+pnpm --filter @s-agent/cli dev --help
+pnpm --filter @s-agent/cli dev
 
 # 构建 CLI 及其 workspace 依赖
-pnpm --filter @zcode/cli... build
+pnpm --filter @s-agent/cli... build
 node apps/zcode-cli/packages/cli/dist/zcode.cjs --help
 ```
 
@@ -183,45 +158,45 @@ sudo xattr -rd com.apple.quarantine /Applications/ZCode.app
 
 ### ZCode 命令行版
 
-构建入口为 `pnpm build:zcode`。脚本会依次构建 CLI/TUI、后端和 Web，收集 TUI 的原生库、worker 与运行时依赖，再组装发行包；运行发行包仍需要 Node.js，版本以 `mise.toml` 为准。
+构建入口为 `pnpm build:s-agent`。脚本会依次构建 CLI/TUI、后端和 Web，收集 TUI 的原生库、worker 与运行时依赖，再组装发行包；运行发行包仍需要 Node.js，版本以 `mise.toml` 为准。旧脚本入口 `pnpm build:zcode` 暂保留。
 
 打包前必须设置下载根地址 `ZCODE_DIST_BASE_URL`（可放在 `.env`、`.env.local` 或环境变量中），也可以通过 `--base-url` 传入。以下地址是占位示例，发布时替换为实际托管地址：
 
 ```bash
-pnpm build:zcode --base-url https://downloads.example.com/zcode/
+pnpm build:s-agent --base-url https://downloads.example.com/s-agent/
 
 # 已配置 ZCODE_DIST_BASE_URL 时
-pnpm build:zcode
+pnpm build:s-agent
 
 # 仅重新组包，复用已有的 Agent、后端和 Web 构建产物
-pnpm build:zcode --skip-build
+pnpm build:s-agent --skip-build
 
 # 查看版本、输出目录等可选参数
-pnpm build:zcode --help
+pnpm build:s-agent --help
 ```
 
-默认版本取根目录 `package.json`，输出目录为 `dist/zcode/`：
+默认版本取根目录 `package.json`，输出目录为 `dist/s-agent/`：
 
-- `releases/<version>/zcode-<version>.tar.gz`：运行包。
+- `releases/<version>/s-agent-<version>.tar.gz`：运行包。
 - `releases/<version>/sha256.txt`：校验摘要。
 - `latest.json`、`install.sh`：版本索引和安装脚本。
 
-完整目录可上传到配置的下载根地址。安装脚本从该地址下载运行包，默认安装到 `~/.zcode/runtime`，并在 `~/.local/bin` 创建 `zcode` 命令。安装目录可通过 `ZCODE_DIST_HOME` 修改，命令目录可通过 `ZCODE_DIST_BIN_DIR` 修改。
+完整目录可上传到配置的下载根地址。安装脚本从该地址下载运行包，默认沿用 `~/.zcode/runtime` 以复用已有安装，并在 `~/.local/bin` 创建 `s-agent` 命令和兼容的 `zcode` 别名。可通过 `S_AGENT_DIST_BASE_URL`（旧变量 `ZCODE_DIST_BASE_URL` 仍可用）指定下载根地址；安装目录和命令目录分别可通过 `ZCODE_DIST_HOME`、`ZCODE_DIST_BIN_DIR` 修改。
 
 旧 Lite 用户需要改用上述构建命令、环境变量和新的安装脚本。新安装不会删除旧 Lite 目录，也不会迁移或删除已有会话数据。
 
 本地调试打包产物时，可直接解压运行，无需上传或安装：
 
 ```bash
-zcode_version=$(node -p "require('./dist/zcode/latest.json').version")
-mkdir -p dist/zcode/debug
-tar -xzf "dist/zcode/releases/$zcode_version/zcode-$zcode_version.tar.gz" \
-  -C dist/zcode/debug
+agent_version=$(node -p "require('./dist/s-agent/latest.json').version")
+mkdir -p dist/s-agent/debug
+tar -xzf "dist/s-agent/releases/$agent_version/s-agent-$agent_version.tar.gz" \
+  -C dist/s-agent/debug
 # 默认启动 TUI
-node dist/zcode/debug/zcode/bin/zcode.mjs
+node dist/s-agent/debug/s-agent/bin/s-agent.mjs
 
 # 启动 Web
-node dist/zcode/debug/zcode/bin/zcode.mjs --web \
+node dist/s-agent/debug/s-agent/bin/s-agent.mjs --web \
   --workspace "$PWD" --port 3030 --no-open
 ```
 

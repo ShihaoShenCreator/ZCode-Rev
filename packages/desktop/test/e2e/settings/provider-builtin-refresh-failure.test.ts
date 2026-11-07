@@ -1,7 +1,7 @@
 import { createServer, request as forwardRequest } from "node:http";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { BUILTIN_MODEL_PROVIDER_IDS as ids } from "@zcode/shared";
+import { BUILTIN_MODEL_PROVIDER_IDS as ids } from "@s-agent/shared";
 import {
   TID_MODEL_PROVIDER_CONNECTION_MODE_ITEM,
   TID_MODEL_PROVIDER_CONNECTION_MODE_TRIGGER,
@@ -10,7 +10,7 @@ import {
   TID_SETTINGS_SECTION_NAV,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,
@@ -87,7 +87,7 @@ describe("Builtin 下载失败时的套餐操作", () => {
       const scenario = await fetch(`${upstream}/__e2e/coding-plan/scenario`, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ scenario: "both", providerResponsive: true }),
+        body: JSON.stringify({ scenario: "both", forceStartPlanBalance: true }),
       });
       expect(scenario.ok).toBe(true);
       await restartIntoWorkspace({

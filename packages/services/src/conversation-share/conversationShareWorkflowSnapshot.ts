@@ -7,14 +7,14 @@ import {
   type ShareWorkflowPayload,
   type ShareWorkflowArtifact,
   type ConversationShareCapabilities,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   reduceWorkflowRunsState,
   type ConversationRow,
   type ArtifactRow,
   type WorkflowRunsState,
   type ToolCallCreateWorkflowCausalityGraph,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type { IZCodeAgentService } from "../zcode-agent/zcodeAgent.js";
 import type { PublishTextConversationInput } from "./conversationShare.js";
 

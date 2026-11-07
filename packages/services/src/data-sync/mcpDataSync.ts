@@ -6,7 +6,7 @@ import type {
   DataSyncImportResultItem,
   McpDataSyncPayload,
   McpServerConfig,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { updateJsonObjectFile } from "#src/fs/atomicFileUtils.js";
 import {
   cloneMcpConfig,

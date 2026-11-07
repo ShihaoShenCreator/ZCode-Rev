@@ -1,4 +1,4 @@
-import type { ICommandsService, ISkillsService, IZCodeAgentService } from "@zcode/services";
+import type { ICommandsService, ISkillsService, IZCodeAgentService } from "@s-agent/services";
 import { logger } from "@/logger.js";
 import { invalidateDeferredDraftSessionForSkillChange } from "@/lib/zcodeDraftSkillInvalidation.js";
 import { refreshSharedSkillStoreForWorkspace } from "@/lib/skillStoreRefresh.js";

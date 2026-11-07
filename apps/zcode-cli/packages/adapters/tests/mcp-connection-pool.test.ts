@@ -3,7 +3,7 @@ import type {
   McpPort,
   McpServerConfig,
   McpServerStatus,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
 import { createMcpConnectionPool } from "../src/mcp/pool.js";
 import { createMcpTelemetryTracker } from "../src/mcp/telemetry.js";

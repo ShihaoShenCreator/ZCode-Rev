@@ -14,7 +14,7 @@ import {
   type TabId,
   type TabState,
   type WorkspacePurpose,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   persistWorkspaceExpandedPreference,
   readWorkspaceExpansionState,

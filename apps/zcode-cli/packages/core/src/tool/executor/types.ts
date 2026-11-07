@@ -1,4 +1,4 @@
-import type { ToolSearchExecutionContext } from "@zcode/contracts";
+import type { ToolSearchExecutionContext } from "@s-agent/contracts";
 import type {
   AgentExecutionTelemetryPort,
   AgentTelemetryActorKind,
@@ -35,7 +35,7 @@ import type {
   WorkflowEscalatePort,
   WorkflowPort,
   WorkflowSubmitPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { HookRunner } from "../../hooks/index.js";
 import type { PermissionService } from "../../permission/service.js";
 import type { RuntimeTaskRegistry } from "../../runtime-task/registry.js";

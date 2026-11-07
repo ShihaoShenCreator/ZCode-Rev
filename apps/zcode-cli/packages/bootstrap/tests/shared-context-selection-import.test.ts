@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { SessionStorePort } from "@zcode/contracts";
+import type { SessionStorePort } from "@s-agent/contracts";
 import { ZCodeProtocolAgentServer } from "../src/zcode-protocol/server.js";
 import { createSessionRecordForV4, closeSession } from "../src/zcode-protocol/server-operations.js";
 import type { ZCodeProtocolAgentServerContext } from "../src/zcode-protocol/server-types.js";

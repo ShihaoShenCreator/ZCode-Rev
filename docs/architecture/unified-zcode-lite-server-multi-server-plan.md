@@ -22,10 +22,10 @@
 
 ### 当前临时产品边界
 
-本文后续的 `Browser Web -> Lite Controller Runtime` 是目标架构，不是当前实现。当前普通 Web（包括开发环境 Web 入口和 `zcode-lite serve`）仍由浏览器直接连接 `@zcode/server` 的 `/ws`，没有 Desktop Window Host Controller。因此，在 Lite / Browser Controller Runtime 落地并完成多端回归前，普通 Web 暂不支持依赖 Window Host Controller 的左侧全局任务列表和多 source 聚合，也不在 renderer 中维护第二套 Controller fallback。
+本文后续的 `Browser Web -> Lite Controller Runtime` 是目标架构，不是当前实现。当前普通 Web（包括开发环境 Web 入口和 `zcode-lite serve`）仍由浏览器直接连接 `@s-agent/server` 的 `/ws`，没有 Desktop Window Host Controller。因此，在 Lite / Browser Controller Runtime 落地并完成多端回归前，普通 Web 暂不支持依赖 Window Host Controller 的左侧全局任务列表和多 source 聚合，也不在 renderer 中维护第二套 Controller fallback。
 
 ```text
-当前：Browser Web -> @zcode/server /ws -> createLocalServices()
+当前：Browser Web -> @s-agent/server /ws -> createLocalServices()
                                       -X-> Window Host Controller
 
 目标：Browser Web -> Lite Controller Runtime -> Local / Remote Server sources

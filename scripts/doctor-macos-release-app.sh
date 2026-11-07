@@ -19,7 +19,7 @@ if [ -n "$CUA_HELPER_INSTALL_VARIANT" ] && [[ ! "$CUA_HELPER_INSTALL_VARIANT" =~
 fi
 CUA_HELPER_INSTALL_SUBDIR="${CUA_HELPER_INSTALL_VARIANT:+$CUA_HELPER_INSTALL_VARIANT/}"
 # Shell cannot import producer TS constants. macosReleaseAppDoctor.test.ts locks these literals to
-# @zcode/zcode-cua/broker/helperConstants so a future producer rename fails loudly.
+# @s-agent/zcode-cua/broker/helperConstants so a future producer rename fails loudly.
 ZCODE_HOME_HELPER_APP_PATH="${ZCODE_HOME_DIR:+$ZCODE_HOME_DIR/computer-use/${CUA_HELPER_INSTALL_SUBDIR}ZCode Computer Use.app}"
 HELPER_APP_PATH="${ZCODE_CUA_HELPER_APP_PATH:-$ZCODE_HOME_HELPER_APP_PATH}"
 APP_BUNDLE_NAME="$(basename "$APP_PATH")"

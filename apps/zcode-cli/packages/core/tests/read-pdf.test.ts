@@ -11,7 +11,7 @@ import {
   type FileSystemPort,
   type ImageProcessorPort,
   type PdfDocumentPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { readHandler, readToolEntry } from "../src/tool/handlers/read.js";
 import type { ToolExecutionContext } from "../src/tool/types.js";
 import { createTestRuntimeModel } from "./test-runtime-model.js";

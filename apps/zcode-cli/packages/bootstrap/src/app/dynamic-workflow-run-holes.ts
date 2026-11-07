@@ -9,7 +9,7 @@
 import type {
   DynamicWorkflowRunFillHoleDiagnostic,
   DynamicWorkflowRunHole,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   collectSites,
   createWorkflowProgram,
@@ -21,7 +21,7 @@ import {
   type RunEvent,
   type SiteTable,
   type StoredEvent,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import type { RunRegistryEntry } from "./dynamic-workflow-run-observation.js";
 
 /**

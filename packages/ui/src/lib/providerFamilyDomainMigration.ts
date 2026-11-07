@@ -1,9 +1,9 @@
-import type { IServiceAccessor } from "@zcode/services";
+import type { IServiceAccessor } from "@s-agent/services";
 import {
   type ProviderFamilyDomain,
   resolveModelProviderFamilyIdByProviderId,
   resolveProviderFamilyDomainFromOAuthProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { logger } from "@/logger.js";
 
 function inferProviderFamilyDomainFromSelection(

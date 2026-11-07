@@ -5,7 +5,7 @@ import {
   TID_LOGOUT_BUTTON,
   TID_LOGIN_USE_API_KEY_BUTTON,
   TID_LOGIN_API_KEY_SKIP_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   getE2EAppDataPaths,

@@ -11,7 +11,7 @@ import {
   TID_V4_HOOK_DETAILS_CONTENT,
   TID_V4_HOOK_DETAILS_TRIGGER,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

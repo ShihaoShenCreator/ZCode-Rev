@@ -1,6 +1,6 @@
 import { access, mkdir, rename, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_V4_COMPOSER_INPUT } from "@zcode/shared/test-ids";
+import { TID_V4_COMPOSER_INPUT } from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   getE2EAppDataPaths,

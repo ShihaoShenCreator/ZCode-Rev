@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { createSessionId, createPartId, createMessageId, createProjectId } from "@zcode/contracts";
+import { createSessionId, createPartId, createMessageId, createProjectId } from "@s-agent/contracts";
 import { SQLITE_MIGRATIONS } from "../src/storage/session-store/migrations.js";
 import { createSqliteSessionStore } from "../src/storage/session-store/sqlite-session-store.js";
 import { seedUnrelatedProviderTables } from "./fixtures/provider-migration-unrelated-tables.js";

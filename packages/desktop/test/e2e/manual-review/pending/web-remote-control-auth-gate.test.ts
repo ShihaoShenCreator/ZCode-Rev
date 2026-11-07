@@ -5,7 +5,7 @@ import {
   TID_OAUTH_CANCEL,
   TID_OAUTH_LOGIN_BUTTON,
   TID_TASK_SETTINGS_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { seedCredentials, seedSettings, waitForTestIdByDom } from "#e2e/helpers/desktop-app";
 
 async function enterWorkspace() {

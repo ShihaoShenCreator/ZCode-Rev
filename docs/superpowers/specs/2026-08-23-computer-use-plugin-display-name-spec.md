@@ -15,7 +15,7 @@ CUA 插件的历史 manifest 名称是 `zcode-cua`，而 Browser Use 的内部 s
 - model-facing Skill 的 canonical name 使用 `computer-use`，qualified name 为
   `computer-use:computer-use`；producer 与 consumer 的 Skill 目录、同步脚本和 provenance
   必须保持同名。
-- 保持 `@zcode/zcode-cua` 包名、producer 仓库、producer pin、源码路径和 macOS Helper
+- 保持 `@s-agent/zcode-cua` 包名、producer 仓库、producer pin、源码路径和 macOS Helper
   bundle identity 不变；本次不提供旧插件 ID 或旧 Skill 名称的兼容别名。
 
 ## 方案

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ModelErrorCode, ModelFailureReason, ModelRetryBudget } from "@zcode/contracts";
+import { ModelErrorCode, ModelFailureReason, ModelRetryBudget } from "@s-agent/contracts";
 import { AiSdkModelAdapterError } from "../src/model/errors.js";
 import type { ClassifiedModelFailure } from "../src/model/failure-classifier.js";
 import {

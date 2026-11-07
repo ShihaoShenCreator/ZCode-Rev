@@ -21,7 +21,7 @@ import {
   type SessionEvent,
   type SessionStorePort,
   type ToolExecutionResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { createWorkflowToolEntry } from "../src/tool/handlers/create-workflow.js";
@@ -33,8 +33,8 @@ import type { ToolEntry } from "../src/tool/types.js";
 // 用 importOriginal 保持分析本身是真的——下面的 display 断言依赖真实因果图。
 const { analyzedScripts } = vi.hoisted(() => ({ analyzedScripts: [] as string[] }));
 
-vi.mock("@zcode/dynamic-workflow", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@zcode/dynamic-workflow")>();
+vi.mock("@s-agent/dynamic-workflow", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@s-agent/dynamic-workflow")>();
   return {
     ...actual,
     analyzeWorkflowScript: (script: string) => {

@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { TID_V4_RETRY } from "@zcode/shared/test-ids";
+import { TID_V4_RETRY } from "@s-agent/shared/test-ids";
 import { clearAppData } from "../../../helpers/desktop-app.js";
 import {
   getUpstreamRequestRecordCount,

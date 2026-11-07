@@ -1,5 +1,5 @@
 import { expect, it, vi } from "vitest";
-import { createSessionId, createTurnId } from "@zcode/contracts";
+import { createSessionId, createTurnId } from "@s-agent/contracts";
 import { createToolRegistry } from "../src/tool/registry.js";
 import { toolSearchToolEntry } from "../src/tool/handlers/tool-search.js";
 import { deferredToolCallEntry } from "../src/tool/handlers/deferred-tool-call.js";

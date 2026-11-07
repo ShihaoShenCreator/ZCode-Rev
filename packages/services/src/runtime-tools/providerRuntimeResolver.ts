@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, resolve as resolvePath } from "node:path";
-import { ZCODE_AGENT_RUNTIME, sanitizeZCodeRuntimeEnvInPlace } from "@zcode/shared";
+import { ZCODE_AGENT_RUNTIME, sanitizeZCodeRuntimeEnvInPlace } from "@s-agent/shared";
 import { getDataBaseDir, getProviderWorkspaceConfigDir } from "../paths.js";
 import { buildRuntimeProcessEnvPatch } from "./runtimeCommandEnv.js";
 
@@ -93,7 +93,7 @@ function resolvePlatformScopedBundledAgentRoots(moduleDir?: string): Array<strin
   return [
     resolvePath(process.cwd(), "bundled-agents", platformKey),
     resolvePath(process.cwd(), "packages", "desktop", "bundled-agents", platformKey),
-    // dev:web 会用 pnpm --filter @zcode/server dev 启动，cwd 落在 packages/server。
+    // dev:web 会用 pnpm --filter @s-agent/server dev 启动，cwd 落在 packages/server。
     // ZCode Agent 资源可能位于桌面包或仓库根的 bundled-agents/<platform>。
     // 这里统一补齐仓库内所有平台化目录候选，desktop/web/server 共享一套解析链路。
     resolvePath(process.cwd(), "..", "desktop", "bundled-agents", platformKey),

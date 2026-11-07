@@ -10,7 +10,7 @@ import {
   type ModelProperties,
   type ModelRequest,
   type ModelResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { RuntimeModelFactory, RuntimeModelFactoryInput } from "../src/runtime/types.js";
 
 export function createTestInputFormat(override: Partial<ModelInputFormat> = {}): ModelInputFormat {

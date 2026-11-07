@@ -23,7 +23,7 @@ import {
   type ModelMessageContent,
   type ResumeWorkflowRunInput,
   type ResumeWorkflowRunOutput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   ToolEntry,
   ToolExecutionContext,

@@ -9,8 +9,8 @@ import type {
   ToolCallId,
   TraceId,
   TurnId,
-} from "@zcode/contracts";
-import type { ModelToolCall, ModelCallWrapper } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import type { ModelToolCall, ModelCallWrapper } from "@s-agent/contracts";
 
 // Re-export ToolCall for consumers of this module
 export interface ToolCall extends ModelToolCall {

@@ -10,7 +10,7 @@ import {
 } from "@/web-remote-control/domain/presentation.js";
 import { memo, useEffect, useMemo, useState } from "react";
 import QRCode from "qrcode";
-import { DesktopCommandIds, type BotProvider, type WebRemoteControlStatus } from "@zcode/shared";
+import { DesktopCommandIds, type BotProvider, type WebRemoteControlStatus } from "@s-agent/shared";
 import {
   Bot as BotIcon,
   CopyIcon,
@@ -32,9 +32,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog.js";
 import { toast } from "@/components/ui/toast.js";
-import { useZCodeStore } from "@/store/StoreProvider.js";
 import { usePlatform } from "@/hooks/usePlatform.js";
-import { useOAuth } from "@/hooks/useOAuth.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { logger } from "@/logger.js";
 import { getBotProviderRegionTagLabelId } from "@/botsUi.js";
@@ -49,34 +47,6 @@ const REMOTE_CONTROL_BOT_ENTRIES: Array<{
   { provider: "lark" },
   { provider: "telegram" },
 ];
-
-function WebRemoteControlLoginButton({ onOpenChange }: { onOpenChange: (open: boolean) => void }) {
-  const { intl } = useZCodeIntl();
-  const hasUser = useZCodeStore((state) => Boolean(state.user));
-  const requestLoginEntry = useZCodeStore((state) => state.requestLoginEntry);
-  const { activeProvider, loadingProviders, refreshProviders } = useOAuth();
-
-  return (
-    <Button
-      type="button"
-      data-testid="web-remote-control-login"
-      className="enabled:cursor-pointer"
-      disabled={loadingProviders}
-      onClick={() => {
-        // 远控401不清全局用户；必须指定当前渠道建立新登录尝试，避免统一入口把缓存用户当作成功。
-        if (hasUser && !activeProvider) {
-          toast(intl.formatMessage({ id: "login.oauth.loginFailure" }));
-          void refreshProviders();
-          return;
-        }
-        onOpenChange(false);
-        requestLoginEntry(activeProvider ?? undefined, "app-login");
-      }}
-    >
-      {intl.formatMessage({ id: "webRemoteControl.authRequired.login" })}
-    </Button>
-  );
-}
 
 export const WebRemoteControlDialog = memo(function WebRemoteControlDialogComponent({
   open,
@@ -434,7 +404,6 @@ export const WebRemoteControlDialog = memo(function WebRemoteControlDialogCompon
                         {intl.formatMessage({ id: "webRemoteControl.authRequired.description" })}
                       </p>
                     </div>
-                    <WebRemoteControlLoginButton onOpenChange={onOpenChange} />
                   </div>
                 ) : (
                   <>

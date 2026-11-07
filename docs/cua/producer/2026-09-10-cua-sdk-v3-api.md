@@ -16,7 +16,7 @@
 >   删除 detail」的独立改动。工具面 **30 → 14**，broker 协议 **63 → 49**，详见 §3。
 >   评审确认接受两项能力收缩：「按住 → 观察 → 释放」与剪贴板读取。
 
-本文范围：重构 `@zcode/cua` SDK 的模型可见 API、其内部分层，以及**工具面与 broker 协议的一次显式瘦身**。
+本文范围：重构 `@s-agent/cua` SDK 的模型可见 API、其内部分层，以及**工具面与 broker 协议的一次显式瘦身**。
 不改 Helper 鉴权（M1）、Helper 生命周期（M2）、AX 规范化（M3）、node_repl MCP 工具面；
 但**会 bump broker IPC 协议版本**（1 → 2）以删除失去消费者的方法，走 M2 已有的
 `version_mismatch` fail-closed 路径（§7.3）。

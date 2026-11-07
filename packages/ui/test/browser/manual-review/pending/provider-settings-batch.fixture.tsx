@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { parseZCodeBuiltinModelConfigRules } from "@zcode/provider";
-import type { IServiceAccessor, ProviderSettingsView } from "@zcode/services";
+import { parseZCodeBuiltinModelConfigRules } from "@s-agent/provider";
+import type { IServiceAccessor, ProviderSettingsView } from "@s-agent/services";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 import { ServiceProvider } from "@/hooks/useServices.js";
 import { TooltipProvider } from "@/components/ui/tooltip.js";
@@ -24,8 +24,6 @@ import {
 } from "@/lib/providerSettingsFormTypes.js";
 import release from "../../../../../../config/provider/zcode-builtin.json";
 import { ProviderModelEditorFixture } from "./provider-model-editor.fixture.js";
-import { OffPeakEligibilityFixture } from "./offpeak-eligibility.fixture.js";
-import { OffPeakTeamEntryFixture } from "./offpeak-team-entry.fixture.js";
 import "@/styles.css";
 import { Checkbox } from "@/components/ui/checkbox.js";
 
@@ -42,19 +40,6 @@ function createProvider(templateId: string): ProviderSettingsFormProvider {
     group: "standard-personal" as const,
     access: { ...template.config.access, apiKey: "fixture-key" },
   };
-  const startPlan = params.get("access")?.startsWith("start-");
-  if (params.get("access") === "account" || params.get("access") === "team" || startPlan) {
-    config.access = {
-      type: "zhipu-account",
-      accountType: params.get("access") === "start-zai" ? "zai" : "bigmodel",
-      mode: startPlan
-        ? "start-plan"
-        : params.get("access") === "team"
-          ? "team-coding-plan"
-          : "individual-coding-plan",
-      entitled: true,
-    };
-  }
   return {
     providerId: "fixture",
     providerName: "Fixture Provider",
@@ -85,7 +70,8 @@ function createProvider(templateId: string): ProviderSettingsFormProvider {
   };
 }
 function Fixture() {
-  const [provider, setProvider] = useState(() => createProvider("bigmodel-api"));
+  // 去智谱化：内置 zhipu 模板已退役，默认选中第一个通用 Provider 模板。
+  const [provider, setProvider] = useState(() => createProvider(templates[0]!.templateId));
   const [picker, setPicker] = useState(!params.has("access"));
   const [opened, setOpened] = useState("");
   const [order, setOrder] = useState(["fixture", "second"]);
@@ -97,9 +83,10 @@ function Fixture() {
     });
     if (!response.ok) throw new Error("fixture rejected");
   };
-  return (
-    <main className="relative min-h-screen bg-background p-4 text-foreground">
-      {params.has("selectionError") ? (
+  // 子代理选档错误是独立的展示用例，不依赖任何 Provider 模板，提前返回避免模板初始化。
+  if (params.has("selectionError")) {
+    return (
+      <main className="relative min-h-screen bg-background p-4 text-foreground">
         <section data-testid="subagent-error" className="pt-32 pb-8">
           <ToolLayout
             toolId="selection-error"
@@ -111,11 +98,15 @@ function Fixture() {
             statusTooltip={getToolCallErrorText({
               status: "failed",
               error:
-                "Cannot start subagent: No reasoning level selected / 未选择思考档位 [reason=reasoning-level-missing; selection=account:bigmodel-team-coding-plan/GLM-5.3]",
+                "Cannot start subagent: No reasoning level selected / 未选择思考档位 [reason=reasoning-level-missing; selection=my-glm-provider/GLM-5.3]",
             })}
           />
         </section>
-      ) : null}
+      </main>
+    );
+  }
+  return (
+    <main className="relative min-h-screen bg-background p-4 text-foreground">
       {params.has("vision") ? (
         <ModelConfigSelect
           modelGroups={buildRegistryModelSelectGroups("glm", {
@@ -263,11 +254,7 @@ createRoot(document.getElementById("root")!).render(
   >
     <TooltipProvider>
       <ZCodeIntlProvider initialLocale={params.get("locale") === "zh-CN" ? "zh-CN" : "en-US"}>
-        {params.has("teamEntry") ? (
-          <OffPeakTeamEntryFixture />
-        ) : params.has("offpeak") ? (
-          <OffPeakEligibilityFixture />
-        ) : params.has("editor") ? (
+        {params.has("editor") ? (
           <ProviderModelEditorFixture />
         ) : (
           <Fixture />

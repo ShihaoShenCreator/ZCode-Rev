@@ -4,7 +4,7 @@ import {
   TID_WORKSPACE_PATH,
   TID_WORKSPACE_TITLE,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { DEFAULT_WORKSPACE, clearAppData, waitForWorkspaceApp } from "../helpers/desktop-app.js";
 import { ensureProjectExpanded } from "../helpers/project-sidebar.js";
 import {

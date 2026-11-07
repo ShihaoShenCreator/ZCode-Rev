@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import type { WorkspaceHookTrustCliStatus } from "@zcode/bootstrap";
-import type { RunContext } from "@zcode/shared-types";
+import type { WorkspaceHookTrustCliStatus } from "@s-agent/bootstrap";
+import type { RunContext } from "@s-agent/shared-types";
 import { run } from "../src/run.js";
 
 type CapturedWriteStream = NodeJS.WriteStream & { output(): string };

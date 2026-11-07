@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createSessionId, createTurnId, type ToolSearchMode } from "@zcode/contracts";
+import { createSessionId, createTurnId, type ToolSearchMode } from "@s-agent/contracts";
 import type { RuntimeMessageEntry } from "../src/agent/message-history.js";
 import { createToolRegistry } from "../src/tool/registry.js";
 import { toolSearchToolEntry } from "../src/tool/handlers/tool-search.js";

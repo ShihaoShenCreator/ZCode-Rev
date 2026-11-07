@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import type { ExecutionPort, ExecutionResult } from "@zcode/contracts";
+import type { ExecutionPort, ExecutionResult } from "@s-agent/contracts";
 import { resolveZCodeBuiltinPromptCommand } from "../src/builtin-prompt-command.js";
 import { resolveZCodeCustomCommandPrompt } from "../src/custom-command-prompt.js";
 

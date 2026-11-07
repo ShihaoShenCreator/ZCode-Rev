@@ -1,10 +1,10 @@
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 import type { ProjectTask as ZCodeTaskMeta } from "@/project-sidebar/contract.js";
 import { memo, useState } from "react";
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useDraggable, useDroppable } from "@dnd-kit/core";
 import type { UniqueIdentifier } from "@dnd-kit/core";
-import { isCronTask, isOffPeakTask } from "@zcode/shared";
+import { isCronTask, isOffPeakTask } from "@s-agent/shared";
 import { ArrowUpToLine, Clock, Cloud, Folder, ListTree, LoaderIcon, Moon, X } from "lucide-react";
 import { cn } from "@/components/lib/utils.js";
 import { Badge } from "@/components/ui/badge.js";

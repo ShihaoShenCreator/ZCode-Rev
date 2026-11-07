@@ -7,7 +7,7 @@ import {
   type MessageWithParts,
   type PermissionRuleset,
   type SessionStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { hydrateReadFileStateFromSession } from "../src/agent/read-file-state-hydrator.js";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { restorePostCompactFiles } from "../src/runtime/helpers/compact-post-reminders.js";

@@ -1,4 +1,4 @@
-import type { Model, ModelOptions, ModelProperties, ModelSelection } from "@zcode/contracts";
+import type { Model, ModelOptions, ModelProperties, ModelSelection } from "@s-agent/contracts";
 import {
   ApiKeyAccessConfig,
   ModelConfig,
@@ -12,7 +12,7 @@ import {
   type RegistryModelConfig,
   type RegistryProviderConfig,
   type ZhipuAccountMode,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import {
   AiSdkModelAdapter as ProductionAiSdkModelAdapter,
   type AiSdkModelAdapterOptions,

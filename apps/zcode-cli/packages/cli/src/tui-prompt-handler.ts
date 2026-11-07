@@ -1,11 +1,11 @@
-import type { ToolSearchMode } from "@zcode/contracts";
-import { getDefaultConfigPath, updateUiLocaleInFileConfig } from "@zcode/adapters/config";
-import type { SessionEvent } from "@zcode/contracts";
-import type { ZCodeAppOptions } from "@zcode/bootstrap";
-import { DEFAULT_LOCALE, type SupportedLocale } from "@zcode/i18n";
-import type { TuiRequestPermission } from "@zcode/tui";
-import type { GlobalOptions } from "@zcode/shared-types";
-import type { DynamicWorkflowMode } from "@zcode/shared";
+import type { ToolSearchMode } from "@s-agent/contracts";
+import { getDefaultConfigPath, updateUiLocaleInFileConfig } from "@s-agent/adapters/config";
+import type { SessionEvent } from "@s-agent/contracts";
+import type { ZCodeAppOptions } from "@s-agent/bootstrap";
+import { DEFAULT_LOCALE, type SupportedLocale } from "@s-agent/i18n";
+import type { TuiRequestPermission } from "@s-agent/tui";
+import type { GlobalOptions } from "@s-agent/shared-types";
+import type { DynamicWorkflowMode } from "@s-agent/shared";
 import { createCommandCenter, parseSlashCommand } from "./command-center.js";
 import type { CommandCenterApp } from "./command-center.js";
 import { resolveDisplayLocale } from "./locale.js";
@@ -20,12 +20,6 @@ import {
   prepareTuiAppRuntime,
 } from "./tui-prompt-handler-runtime.js";
 import { DEFAULT_CLI_CLEANUP_TIMEOUT_MS, runCliCleanupWithTimeout } from "./shutdown.js";
-import {
-  configureApiKeyForTui,
-  loginBigmodelForTui,
-  loginForTui,
-  logoutForTui,
-} from "./tui-auth.js";
 import {
   listCustomCommandsForTui,
   listSessionsForTui,
@@ -275,9 +269,6 @@ export function createTuiSubmitPrompt(
     listCustomCommands: () => listCustomCommandsForTui(deps),
     listSessions: () => listSessionsForTui(deps),
     listSkills: () => listSkillsForTui(deps),
-    configureApiKey: (options) => configureApiKeyForTui(deps, options),
-    login: (options) => loginForTui(deps, options),
-    loginBigmodel: (options) => loginBigmodelForTui(deps, options),
     loadCustomCommand: (name) => loadCustomCommandForTui(deps, name),
     newApp,
     recordInputHistory: async (input, kind) => {
@@ -291,7 +282,6 @@ export function createTuiSubmitPrompt(
       }
       await runtime.modelSelectionConfigRepository.saveConfiguredDefault(selection);
     },
-    logout: () => logoutForTui(deps),
     setLocale: async (locale) => {
       if (app?.setLocale) {
         const result = await app.setLocale(locale);

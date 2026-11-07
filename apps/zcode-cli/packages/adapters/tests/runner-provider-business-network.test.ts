@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { Logger, ModelNetworkStatusEvent, ModelStreamEvent } from "@zcode/contracts";
+import type { Logger, ModelNetworkStatusEvent, ModelStreamEvent } from "@s-agent/contracts";
 import type { AiSdkModelRuntime } from "../src/model/runner.js";
 import { ProviderBusinessError } from "../src/model/model-execution.js";
 import {

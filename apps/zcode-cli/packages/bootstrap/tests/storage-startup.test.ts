@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { Writable } from "node:stream";
 import { afterEach, describe, expect, it } from "vitest";
 import { DatabaseSync } from "node:sqlite";
-import { zcodeStorageStartupStateSchema } from "@zcode/shared";
+import { zcodeStorageStartupStateSchema } from "@s-agent/shared";
 import { openProtocolStartupStorage } from "../src/zcode-protocol/storage-startup.js";
 
 const dirs: string[] = [];

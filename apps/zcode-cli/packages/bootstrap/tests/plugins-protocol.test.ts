@@ -35,7 +35,7 @@ import {
   zcodePluginsCancelOperationResultSchema,
   zcodePluginsSetEnabledParamsSchema,
   zcodePluginsValidateResultSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { getCliStorageRoot, getPluginStorageRoot } from "../src/app/paths.js";
 import { installZCodeMarketplacePlugin } from "../src/plugins.js";
 import {

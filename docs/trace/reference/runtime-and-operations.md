@@ -197,7 +197,7 @@ attachment 时，数据仍由承载真实 CLI Runtime 的 Host 上报；不能�
 否则会重复计数。
 
 当前 `AgentTelemetryCausation` 是 CLI 内部严格类型，不等价于 Desktop/RUM 到 Agent 的完整 W3C
-跨进程传播。未来打通时必须修改 `@zcode/protocol` 严格 Schema 并补拓扑测试。
+跨进程传播。未来打通时必须修改 `@s-agent/protocol` 严格 Schema 并补拓扑测试。
 
 ## 3. Writer 与终态保证
 

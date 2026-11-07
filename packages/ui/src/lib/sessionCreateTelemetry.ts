@@ -3,7 +3,7 @@ import {
   type IPlatformService,
   type SessionCreateClientKind,
   type SessionCreateSource,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { reportAppTelemetryEvent } from "@/lib/appTelemetry.js";
 
 interface SessionCreateInput {

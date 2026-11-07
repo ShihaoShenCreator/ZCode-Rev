@@ -4,10 +4,9 @@ import type {
   WebRemoteControlEntryOptions,
   WebRemoteControlDeviceGroup,
 } from "#src/web-remote-control/contract.js";
-import type { WebRemoteControlRelayV2Device } from "@zcode/shared/web-remote-relay";
-import { parseWebRemoteControlExternalQrParams, type WebRemoteControlFailure } from "@zcode/shared";
-import { WebRemoteControlV2ConnectionError } from "@zcode/shared/web-remote-relay";
-import type { WebOAuthProviderId } from "#src/auth/browserOAuthCredentialRepo.js";
+import type { WebRemoteControlRelayV2Device } from "@s-agent/shared/web-remote-relay";
+import { parseWebRemoteControlExternalQrParams, type WebRemoteControlFailure } from "@s-agent/shared";
+import { WebRemoteControlV2ConnectionError } from "@s-agent/shared/web-remote-relay";
 import { groupWebRemoteControlDevices } from "#src/web-remote-control/domain/webRemoteControlDeviceGroups.js";
 import {
   readKnownDevices,
@@ -18,7 +17,7 @@ export function isWebRemoteControlOAuthCallback(url: URL): boolean {
   return (
     ["/remote/v4", "/remote/v4/"].includes(url.pathname) &&
     url.searchParams.has("state") &&
-    // BigModel 使用 authCode；必须先进入既有回调校验，不能落回未登录门禁。
+    // Legacy OAuth callbacks should explain that sign-in is unavailable, not look like a QR code.
     (url.searchParams.has("code") ||
       url.searchParams.has("authCode") ||
       url.searchParams.has("error"))
@@ -115,14 +114,12 @@ export class WebRemoteControlEntry {
     } catch {
       // iOS 私密模式等环境可能禁用存储；最近设备只是偏好，不阻断入口。
     }
-    const account = this.options.auth.getActiveAccount() ?? undefined;
     this.list = {
       view: {
         kind: "devices",
         devices: [],
         loading: false,
         error: false,
-        ...(account ? { account } : {}),
       },
       unsubscribe: this.options.subscribeVisible(() => {
         void this.refreshDevices();
@@ -317,14 +314,6 @@ export class WebRemoteControlEntry {
           void this.resolveLostTarget(params, failure);
         else this.options.onView({ kind: "failure", failure });
       },
-    });
-  }
-
-  startLogin(provider?: WebOAuthProviderId): void {
-    this.options.auth.startLogin({
-      ...this.options.loginOptions,
-      ...(provider ? { provider } : {}),
-      appReturnTo: this.options.getHref(),
     });
   }
 

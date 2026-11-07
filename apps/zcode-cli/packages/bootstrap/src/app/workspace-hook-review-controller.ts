@@ -2,7 +2,7 @@ import {
   SessionEventType,
   type WorkspaceHookBundleSnapshot,
   type WorkspaceHookReasonCode,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   WorkspaceHookReviewFlowRegistry,
   createWorkspaceHookTrustRecords,
@@ -11,13 +11,13 @@ import {
   type WorkspaceHookRuntimeAdmissionPort,
   type WorkspaceHookSnapshotEvaluation,
   type WorkspaceHookTrustCoordinator,
-} from "@zcode/core";
+} from "@s-agent/core";
 import type {
   WorkspaceHookReviewDecision,
   WorkspaceHookReviewRequestPayload,
   WorkspaceHookTrustRevokeTarget,
-} from "@zcode/shared/zcode-protocol-v4";
-import { WorkspaceHookMutationError } from "@zcode/shared/workspace-hook-mutation";
+} from "@s-agent/shared/zcode-protocol-v4";
+import { WorkspaceHookMutationError } from "@s-agent/shared/workspace-hook-mutation";
 
 export type * from "./workspace-hook-review-types.js";
 import type {

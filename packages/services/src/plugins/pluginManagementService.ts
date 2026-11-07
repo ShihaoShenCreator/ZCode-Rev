@@ -2,7 +2,7 @@ import {
   collectTelemetryRendererContext,
   resolveWorkspaceTelemetryDetail,
   type RendererTelemetryEventPayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 // 设置页插件管理薄服务实现——plugins/* 旧协议词的唯一 host 侧消费点。
 // 插件安装/市场/启停的事实源在 zcode-cli 进程（读写 ~/.zcode 插件目录并热更新
 // 运行态），host 无副本，故实现保持 agent 协议往返；收敛价值在 UI 层不再直触

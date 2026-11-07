@@ -5,7 +5,7 @@ import { createTestRenderer } from "@mbears/opentui-core/testing";
 import { runTuiWithRenderer } from "../../tui/src/tui.js";
 import { TUI_SWITCHABLE_MODES } from "../../tui/src/app-mode.js";
 import type { TuiOptions } from "../../tui/src/types.js";
-import { resolveExecutionState } from "@zcode/shared";
+import { resolveExecutionState } from "@s-agent/shared";
 import { createTuiSubmitPrompt } from "../src/tui-prompt-handler.js";
 import { createCliModeState, currentCliMode } from "../src/tui-command-state.js";
 import type { RunDependencies } from "../src/cli-types.js";

@@ -6,7 +6,7 @@ import {
 } from "#e2e/helpers/remote-project-actions";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_CHAT_MODEL_SELECT_GROUP,
   TID_CHAT_MODEL_SELECT_ITEM,
@@ -17,7 +17,7 @@ import {
   TID_TASK_SETTINGS_BUTTON,
   TID_V4_COMPOSER_INPUT,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, DEFAULT_WORKSPACE } from "../helpers/desktop-app.js";
 import { refreshSeededOpenAIProvidersThroughSettings } from "../helpers/custom-openai-provider.js";
 import { seedCustomOpenAIChatCompletionsProvider } from "../helpers/custom-openai-provider-store.js";

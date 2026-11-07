@@ -1,5 +1,5 @@
-import type { WorkspaceHookBundleSnapshot } from "@zcode/contracts";
-import type { WorkspaceHookTrustCoordinator } from "@zcode/core";
+import type { WorkspaceHookBundleSnapshot } from "@s-agent/contracts";
+import type { WorkspaceHookTrustCoordinator } from "@s-agent/core";
 import type {
   WorkspaceHookReviewCommandResult,
   WorkspaceHookTrustStoreMutationPort,

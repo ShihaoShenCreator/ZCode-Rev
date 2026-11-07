@@ -6,7 +6,7 @@
 
 **Architecture:** Keep file-name/version fallback in the repo layer, keep provider/model matching in pure migration helpers, and let `createBotsService` run one lazy storage migration before state/cache reads are trusted. Old files are never written by the new code path.
 
-**Tech Stack:** TypeScript, Zod schemas, Vitest, existing `@zcode/shared` bot/model-provider types, service logger via `createServiceLogger`.
+**Tech Stack:** TypeScript, Zod schemas, Vitest, existing `@s-agent/shared` bot/model-provider types, service logger via `createServiceLogger`.
 
 ---
 
@@ -229,7 +229,7 @@ Create `packages/services/test/botsStorageMigration.test.ts` with cases for dire
 
 ```ts
 import { describe, expect, it } from "vitest";
-import { createModelProviderModelConfig, encodeCustomModelValue, type BotsStateFile, type ModelProviderConfig } from "@zcode/shared";
+import { createModelProviderModelConfig, encodeCustomModelValue, type BotsStateFile, type ModelProviderConfig } from "@s-agent/shared";
 import { createDefaultBotsModelCache } from "../src/bots/modelCacheRepo.js";
 import { migrateBotsModelCacheToV2, migrateBotsStateToV2 } from "../src/bots/storageMigration.js";
 
@@ -361,7 +361,7 @@ import {
   type BotsStateFile,
   type BotDraftOptions,
   type ModelProviderConfig,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   type BotsModelCacheFile,
 } from "./modelCacheRepo.js";

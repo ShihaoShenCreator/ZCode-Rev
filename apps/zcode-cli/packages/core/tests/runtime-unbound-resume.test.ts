@@ -7,14 +7,14 @@ import {
   type MessageWithParts,
   type SessionInfo,
   type SessionStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../src/runtime.js";
 import { createTestSessionEventStore } from "./test-event-store.js";
 import {
   createTestModelFactory,
   type TestModelExecutionObservation,
 } from "./test-runtime-model.js";
-import type { ModelRequest } from "@zcode/contracts";
+import type { ModelRequest } from "@s-agent/contracts";
 import { createTestModelSelection } from "./test-model-selection.js";
 
 describe("未绑定模型的 Session 历史恢复", () => {

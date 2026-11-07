@@ -1,4 +1,4 @@
-import { normalizeRemoteConnectionError } from "@zcode/shared";
+import { normalizeRemoteConnectionError } from "@s-agent/shared";
 import { createHash, randomUUID } from "node:crypto";
 import { createReadStream, createWriteStream } from "node:fs";
 import { access, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
@@ -13,17 +13,17 @@ import {
   type RemoteTarget,
   type SourceServerReleaseArchive,
   type SourceServerReleaseDescriptor,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   buildReleaseAssetUrlCandidates,
   buildReleaseBaseCandidates,
-} from "@zcode/server/remote/remoteAssetCdn.js";
+} from "@s-agent/server/remote/remoteAssetCdn.js";
 import {
   resolveRemoteAssetFetch,
   type RemoteAssetNetworkPort,
-} from "@zcode/server/remote/remoteAssetNetwork.js";
-import { createUnsupportedRemotePlatformError } from "@zcode/server/remote/remotePlatformSupport.js";
-import type { ServerReleaseAsset, SourceServerProbeResult } from "@zcode/server/source-server";
+} from "@s-agent/server/remote/remoteAssetNetwork.js";
+import { createUnsupportedRemotePlatformError } from "@s-agent/server/remote/remotePlatformSupport.js";
+import type { ServerReleaseAsset, SourceServerProbeResult } from "@s-agent/server/source-server";
 import type { WindowRemoteAssetDirs } from "./windowRemoteConnectionRegistry.js";
 
 interface ResolvedDescriptor {

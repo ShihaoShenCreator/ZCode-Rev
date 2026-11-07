@@ -1,8 +1,8 @@
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
-import type { ConnectionProfile, SourceServerRecord } from "@zcode/shared";
-import { DEFAULT_REMOTE_ASSET_INSTALL_MODE } from "@zcode/shared";
-import type { ISourceServerManagementService } from "@zcode/services";
+import type { ConnectionProfile, SourceServerRecord } from "@s-agent/shared";
+import { DEFAULT_REMOTE_ASSET_INSTALL_MODE } from "@s-agent/shared";
+import type { ISourceServerManagementService } from "@s-agent/services";
 import { Button } from "@/components/ui/button.js";
 import {
   Dialog,

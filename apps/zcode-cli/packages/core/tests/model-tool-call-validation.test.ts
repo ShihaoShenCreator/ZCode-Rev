@@ -6,7 +6,7 @@ import {
   createSessionId,
   createToolCallId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { Logger, ModelSelection, ToolCall } from "../src/runtime/deps.js";
 import {
   normalizeModelToolCallsForRuntime,

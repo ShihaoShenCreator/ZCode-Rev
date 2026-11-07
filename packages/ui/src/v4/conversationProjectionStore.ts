@@ -1,4 +1,4 @@
-import type { SessionLifecycleSnapshot } from "@zcode/shared";
+import type { SessionLifecycleSnapshot } from "@s-agent/shared";
 import { getLocalTtftObserver } from "@/v4/telemetry/local-ttft/contract.js";
 /* eslint-disable max-lines -- projection/base/recovery/optimistic 必须共享一个原子 store 状态机，拆分会重新引入跨对象竞态。 */
 // Per-session projection store（只读 projection store）。
@@ -22,7 +22,7 @@ import {
   type SessionModelTransition,
   type ToolCallRow,
   type TopicFrameDeliveryKind,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { logger } from "@/logger.js";
 import type { ConversationTurnNavigatorHydrationResult } from "@/v4/conversationTurnNavigatorHelpers.js";
 import type { ConversationTransport } from "@/v4/transport.js";

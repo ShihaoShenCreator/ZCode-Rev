@@ -1,5 +1,5 @@
-import type { PipSessionEvent } from "@zcode/zcode-cua/pip-session";
-import { ServiceChannels } from "@zcode/shared";
+import type { PipSessionEvent } from "@s-agent/zcode-cua/pip-session";
+import { ServiceChannels } from "@s-agent/shared";
 
 import { createServiceDescriptor } from "../descriptors.js";
 

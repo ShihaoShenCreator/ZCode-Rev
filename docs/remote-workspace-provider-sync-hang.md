@@ -16,7 +16,7 @@
 
 - **问题本质**：被违反的不变量是「远程 scope 的每一次 RPC 调用，要么收到回包，要么在其传输载体终结时以错误 settle」。`ChannelClient` 在传输死亡时对挂起请求既不 fail 也不 close（`packages/rpc/src/channelClient.ts:233-242` 的 `dispose()` 不 reject pending），模块级 in-flight 缓存（`packages/ui/src/lib/remoteWorkspaceProviderSync.ts:245-248`）把一次永久 pending 放大为该 workspaceKey 所有后续打开全部静默挂死。这与 r1 架构文档已声明的契约直接冲突（`docs/architecture/r1-single-window-host-refactor.md` L109「旧 generation 的异步结果不得覆盖新连接」、L232「换代 fail-closed」）——属实现未兑现既有设计契约，不需要新的产品决策。
 - **证据**：09:57:44 `updateProviderRegistry` 已达远端后 0.3 秒连接关闭且 host 无完成记录（对照当天 11 条正常 `OK/FAIL (~2s)`）；10:01 受害流程在快照读取后零后续、同连接文件 RPC 秒级成功（排除传输故障）；`unregisterRemoteWorkspaceSession` 只清理已 bind 的 key 而 sync 先于 bind（中毒残留有代码路径级解释）；红信号断言 6 项两次通过。详见 §2。
-- **影响范围**：3.8.1 全量、SSH/WSL/Docker 通用；连接死于 provider 同步窗口即毒化该 workspaceKey，向导/侧栏重连/历史入口全部挂死，仅重启 app 可解。隔离论证：手机 `web-remote-replayable` 的 bridge session 不注入 disposer（store 改动对其 no-op）；`remote.ts` 重连走 `replaceSocket` 不触发 dispose（重放语义不变）；不触碰 `@zcode/protocol` 与持久化格式。
+- **影响范围**：3.8.1 全量、SSH/WSL/Docker 通用；连接死于 provider 同步窗口即毒化该 workspaceKey，向导/侧栏重连/历史入口全部挂死，仅重启 app 可解。隔离论证：手机 `web-remote-replayable` 的 bridge session 不注入 disposer（store 改动对其 no-op）；`remote.ts` 重连走 `replaceSocket` 不触发 dispose（重放语义不变）；不触碰 `@s-agent/protocol` 与持久化格式。
 - **推荐修复**（最小完整变更，两点缺一不可，详见 §4）：
   1. **A1** `ChannelClient.dispose(reason?)` reject 全部挂起的 Promise 请求（5 处生产 dispose 调用点已逐一审计，全部是连接终结路径）；
   2. **A2** renderer 侧补上传输终结出口：`messageport.ts` 新 helper 返回 `{services, dispose}`，`RemoteWorkspaceSession` 增可选 `dispose`，store 在 unregister/换代替换时调用，desktop 注册时注入并复用错误码 `ZCODE_REMOTE_WORKSPACE_DISCONNECTED`。
@@ -146,7 +146,7 @@
 ### 4.4 不改什么（非目标）
 
 - 不加 RPC 超时（掩盖症状且与慢链路合法耗时冲突，违背"不堆兜底"准则）。
-- 不改 `@zcode/protocol`、持久化格式、host 换代/attachment 时序、向导 UI。
+- 不改 `@s-agent/protocol`、持久化格式、host 换代/attachment 时序、向导 UI。
 - 不动手机 `web-remote-replayable` 链路：`webRemoteControlWorkspaceBridgeSession.ts` 注册的 bridge session 不注入 dispose → store 改动对其为 no-op；其"同 sessionId 晚到 dispose"防护（对象身份比对）与 store 的替换判定同构，互不干扰。
 - 服务端 zcode-server 早退：需用户提供远端日志另案处理；修复后该场景从"静默永挂"变为"可见失败 + 可重试"。
 

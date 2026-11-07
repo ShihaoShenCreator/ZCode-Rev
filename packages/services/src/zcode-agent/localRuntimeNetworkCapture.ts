@@ -3,8 +3,8 @@ import {
   zcodeProtocolMethods,
   zcodeProtocolNotifications,
   type NetworkCaptureBatch,
-} from "@zcode/shared";
-import type { IDisposable } from "@zcode/rpc";
+} from "@s-agent/shared";
+import type { IDisposable } from "@s-agent/rpc";
 import type { ZCodeProtocolClient } from "#src/zcode-agent/zcodeProtocolClient.js";
 
 /** 仅由本机子进程 spawn 点登记；remote RPC/手机 attachment 不登记也不透传启停。 */

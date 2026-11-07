@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Smartphone } from "lucide-react";
-import type { WebRemoteControlStatus } from "@zcode/shared";
+import type { WebRemoteControlStatus } from "@s-agent/shared";
 import {
   buildWebRemoteControlEntryViewTelemetry,
   parseRemoteWorkspaceIdentity,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { cn } from "@/components/lib/utils.js";
 import { ControlHintTooltip } from "@/ControlHintTooltip.js";

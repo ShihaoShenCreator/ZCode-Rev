@@ -101,7 +101,7 @@ user action
 | `duplicate` | 同一 `commandId` 已处理                                    | 返回既有结果，不能重复执行                            |
 | `failed`    | command accepted 后执行失败                                | fault catalog、恢复入口、是否保留 queue/command state |
 
-`@zcode/rpc` 只承载 call/listen、连接、超时、日志和遥测；`commandId`、`baseRevision`、`projectionRevision`、
+`@s-agent/rpc` 只承载 call/listen、连接、超时、日志和遥测；`commandId`、`baseRevision`、`projectionRevision`、
 `eventSeq`、`deliveryKind`、`accepted/rejected/stale/duplicate` 都是 conversation protocol 语义。
 
 桌面窗口（包含 SSH/WSL/Docker）由 host 可信标记为 `desktop-continuous`，手机 `/remote` 和 Web remote

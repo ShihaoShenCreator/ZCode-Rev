@@ -6,7 +6,7 @@
 
 **Architecture:** 保持现有 session-start shell snapshot 契约不变：shell 设置变更仍只对新 session 生效。只在 cold resume 发现旧会话没有可用 shell snapshot、最终由当前 auto Git Bash 接管执行时，通过现有 `shell_environment_change` provider-visible attachment 插入一次语法迁移提醒。实现集中在 runtime shell owner，不改 executor、protocol schema 或设置 UI。
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/core` runtime, existing `MessageHistory.addAttachment()`, existing `shell_environment_change` system reminder source.
+**Tech Stack:** TypeScript, Vitest, `@s-agent/core` runtime, existing `MessageHistory.addAttachment()`, existing `shell_environment_change` system reminder source.
 
 ## Global Constraints
 
@@ -146,7 +146,7 @@ Add this test after `announces legacy cold-resume Bash shell drift when no shell
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts -t "Windows Git Bash syntax migration"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts -t "Windows Git Bash syntax migration"
 ```
 
 Expected: FAIL because provider text does not contain the new Git Bash migration reminder.
@@ -256,7 +256,7 @@ function escapeRegExp(value: string): string {
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts -t "Git Bash migration"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts -t "Git Bash migration"
 ```
 
 Expected: FAIL because implementation does not yet insert the migration reminder and does not yet have idempotence logic.
@@ -416,7 +416,7 @@ And:
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts -t "Git Bash migration"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts -t "Git Bash migration"
 ```
 
 Expected: PASS for the two migration tests.
@@ -499,14 +499,14 @@ expect(requestText).not.toContain(
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts -t "shell"
-pnpm --filter @zcode/core exec vitest run tests/runtime-trace.test.ts -t "Shell"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts -t "shell"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-trace.test.ts -t "Shell"
 ```
 
 Expected: PASS. If `runtime-trace.test.ts -t "Shell"` matches no tests because test names changed, run the whole file:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-trace.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-trace.test.ts
 ```
 
 Expected: PASS.
@@ -580,8 +580,8 @@ Expected: Diff only documents legacy/no-usable snapshot resume reminder behavior
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/runtime-persistence.test.ts -t "shell"
-pnpm --filter @zcode/core exec vitest run tests/runtime-trace.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/runtime-persistence.test.ts -t "shell"
+pnpm --filter @s-agent/core exec vitest run tests/runtime-trace.test.ts
 ```
 
 Expected: PASS.
@@ -591,7 +591,7 @@ Expected: PASS.
 Run:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/system-reminder-source.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/system-reminder-source.test.ts
 ```
 
 Expected: PASS. This verifies reusing `shell_environment_change` did not break descriptor assumptions.
@@ -601,7 +601,7 @@ Expected: PASS. This verifies reusing `shell_environment_change` did not break d
 Run:
 
 ```bash
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 ```
 
 Expected: PASS.

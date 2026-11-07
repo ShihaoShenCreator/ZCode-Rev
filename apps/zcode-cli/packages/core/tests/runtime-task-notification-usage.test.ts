@@ -5,7 +5,7 @@ import {
   createSessionId,
   SessionEventType,
   type ModelInputMessage,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { RuntimeMessageEntry } from "../src/agent/message-history.js";
 import type { AgentRuntimeInternal } from "../src/runtime/internal.js";
 import { buildProviderRequestMessages } from "../src/runtime/helpers/provider-request-messages.js";

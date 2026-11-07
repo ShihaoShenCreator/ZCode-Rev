@@ -9,7 +9,7 @@ import type {
   TodoItem,
   SessionStorePort,
   MessageWithParts,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export function createRecordingSubagentSessionStore(): SessionStorePort {
   const sessions = new Map<SessionId, SessionInfo>();

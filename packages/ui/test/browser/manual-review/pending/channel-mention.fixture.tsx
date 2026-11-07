@@ -1,9 +1,9 @@
 import { createRoot } from "react-dom/client";
-import { channelContentText, type ChannelContentPart } from "@zcode/shared";
+import { channelContentText, type ChannelContentPart } from "@s-agent/shared";
 import { ConversationUserInputBubble } from "@/v4/ConversationUserInputBubble.js";
 import { BotTopicPreparationList } from "@/v4/BotTopicPreparation.js";
 import { ConversationQueuePanel } from "@/v4/ConversationQueuePanel.js";
-import type { QueueState } from "@zcode/shared/zcode-protocol-v4";
+import type { QueueState } from "@s-agent/shared/zcode-protocol-v4";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 import { TooltipProvider } from "@/components/ui/tooltip.js";
 import "@/styles.css";

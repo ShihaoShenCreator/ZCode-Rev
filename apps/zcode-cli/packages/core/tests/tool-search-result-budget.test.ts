@@ -4,7 +4,7 @@ import {
   createTurnId,
   modelMessageContentToText,
   type ModelMessageContentBlock,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { createToolRegistry } from "../src/tool/registry.js";
 import { toolSearchToolEntry } from "../src/tool/handlers/tool-search.js";

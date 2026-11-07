@@ -10,7 +10,7 @@ import {
   AMEND_WORKFLOW_TOOL_NAME,
   CREATE_WORKFLOW_TOOL_NAME,
   parseWorkflowSettingsAdjustment,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { V4InteractionAnswer } from "../zcode-protocol-v4/interaction-registry.js";
 
 /**

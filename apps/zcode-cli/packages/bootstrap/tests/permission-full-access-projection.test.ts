@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { ProductProjection } from "../src/zcode-protocol-v4/product-projection.js";
-import { conversationSnapshotSchema } from "@zcode/shared/zcode-protocol-v4";
+import { conversationSnapshotSchema } from "@s-agent/shared/zcode-protocol-v4";
 
 function fixture() {
   const projection = new ProductProjection("session", "epoch");

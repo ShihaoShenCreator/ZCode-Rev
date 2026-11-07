@@ -14,8 +14,8 @@ import type {
   SettingsDirectorySource,
   NativeMcpServerRecord,
   SaveCliMcpToUserDirectoryRequest,
-} from "@zcode/shared";
-import { readJsonObjectFileForUpdate, updateJsonObjectFile } from "@zcode/services/node";
+} from "@s-agent/shared";
+import { readJsonObjectFileForUpdate, updateJsonObjectFile } from "@s-agent/services/node";
 import type { McpConfigKeyName } from "./types.js";
 import { isRecord } from "./utils.js";
 import { migrateLegacyCommonMcp } from "./legacy.js";

@@ -3,8 +3,8 @@
 // sendQueuedNow 的「reserve → stop barrier → start/promote → remove」编排语义保真。
 // fake 风格参照 tests/v4-native-commands.test.ts（fake host/app，不经旧协议代码）。
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
-import type { CommandEnvelope, QueueItem } from "@zcode/shared/zcode-protocol-v4";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
+import type { CommandEnvelope, QueueItem } from "@s-agent/shared/zcode-protocol-v4";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";
 import {
   V4QueueItemTextUnavailableError,

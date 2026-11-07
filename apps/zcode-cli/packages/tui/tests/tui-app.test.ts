@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import React, { act } from "react";
 import { testRender } from "@mbears/opentui-react/test-utils";
-import { getZCodeCopy } from "@zcode/i18n";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { TuiApp } from "../src/app.js";
 import { LoginRequiredPanel } from "../src/app-components.js";
 import { ZCODE_LOGO_LINES } from "../src/app-empty-transcript.js";

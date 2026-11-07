@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import * as app from "#e2e/helpers/desktop-app";
 import * as ssh from "#e2e/helpers/ssh-remote-p0";
 import * as v4 from "#e2e/helpers/v4-conversation";

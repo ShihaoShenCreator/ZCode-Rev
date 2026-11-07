@@ -148,7 +148,7 @@ pnpm bootstrap:with-remote
 pnpm dev:desktop
 
 # 单项 pending 的现有 WDIO 入口；SSH 凭据在受控运行环境注入。
-ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @zcode/desktop test:e2e -- --spec './test/e2e/conversation-session/manual-review/pending/<case>.test.ts'
+ZCODE_E2E_MANUAL_REVIEW=1 pnpm --filter @s-agent/desktop test:e2e -- --spec './test/e2e/conversation-session/manual-review/pending/<case>.test.ts'
 ```
 
 `bootstrap:with-remote` 最后重新 stage remote archives，但不构建 Desktop bundle。WDIO 自身构建 E2E Desktop；开发入口验收另用 `pnpm dev:desktop`。两者必须从同一确定源码状态准备，不能将 WDIO PASS 写成已验证开发启动方式。跳过构建仅在 build receipt 的源码/配置/产物摘要匹配时允许。
@@ -250,7 +250,7 @@ run/
 3. 补配置/身份/恢复包，再补升级迁移、Docker/Mobile/live；在资源独立时继续其他测试包。
 4. case-local provider/file fixture，确定性流用 controlled-stream，协议故障用 fault-stream；真实 SSH case 不因在容器中运行就自动获得 Docker transport 或平台证明。
 5. 首次 GUI/行为审阅后按 `e2e-case-lifecycle` promotion dry run → fixture check → apply → default replay。需入 Docker preset 的用例先独立 admission，再批量跑稳定 preset。
-6. 机械检查：`pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`、相关 fixture/coverage audit。受影响测试足够时不追加无关全量 UT。
+6. 机械检查：`pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint`、相关 fixture/coverage audit。受影响测试足够时不追加无关全量 UT。
 7. 实施提交遵守 Conventional Commits 与[仓库提交规范](../git/ai-agent-commit-message-guidelines.md)。完成报告分别列方案状态、harness 状态、测试执行状态，避免混为“已完成”。
 
 ### Planning Handoff / 未决项

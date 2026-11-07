@@ -1,4 +1,4 @@
-import { formatLogPrefix } from "@zcode/shared";
+import { formatLogPrefix } from "@s-agent/shared";
 
 export type LogLevel = "debug" | "info" | "warn" | "error";
 

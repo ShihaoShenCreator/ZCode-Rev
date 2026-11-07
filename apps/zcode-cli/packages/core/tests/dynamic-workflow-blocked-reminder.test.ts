@@ -13,7 +13,7 @@ import {
   type BackgroundResultOriginMeta,
   type DynamicWorkflowRunPort,
   type DynamicWorkflowRunSnapshot,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../src/index.js";
 import { createRuntimeCommandQueue } from "../src/runtime/command-queue.js";
 import type { RuntimeCommand, RuntimeCommandId } from "../src/runtime/command-queue.js";

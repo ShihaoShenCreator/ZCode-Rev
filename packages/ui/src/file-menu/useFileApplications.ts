@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { FileApplicationInfo, FileApplicationTarget } from "@zcode/shared";
+import type { FileApplicationInfo, FileApplicationTarget } from "@s-agent/shared";
 import { usePlatform } from "@/hooks/usePlatform.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { toast } from "@/components/ui/toast.js";

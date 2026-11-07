@@ -1,16 +1,16 @@
-import type { PluginUiToolResultNotification } from "@zcode/shared/mcp-apps";
+import type { PluginUiToolResultNotification } from "@s-agent/shared/mcp-apps";
 import type {
   BackgroundBashOutputResult,
   SessionDebugSnapshot,
   ZCodeSessionContentProfile,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 /* eslint-disable max-lines -- ZCode agent service 接口集中声明 protocol/session/workspace 方法，拆分会增加 service descriptor 迁移成本。 */
-import type { RemoteConversationTelemetryEvent } from "@zcode/shared/conversation-telemetry";
-import type { Event, IDisposable } from "@zcode/rpc";
-import { ServiceChannels } from "@zcode/shared";
-import type { AppUsageRange, AppUsageSnapshot, ZCodeTaskTokenUsageResult } from "@zcode/shared";
-import type { DynamicWorkflowMode } from "@zcode/shared";
-import type { ZCodeAutomation, ZCodeAutomationRun } from "@zcode/shared";
+import type { RemoteConversationTelemetryEvent } from "@s-agent/shared/conversation-telemetry";
+import type { Event, IDisposable } from "@s-agent/rpc";
+import { ServiceChannels } from "@s-agent/shared";
+import type { AppUsageRange, AppUsageSnapshot, ZCodeTaskTokenUsageResult } from "@s-agent/shared";
+import type { DynamicWorkflowMode } from "@s-agent/shared";
+import type { ZCodeAutomation, ZCodeAutomationRun } from "@s-agent/shared";
 import type {
   ZCodeStorageStartupState,
   ZCodeDeliveryKind,
@@ -88,7 +88,7 @@ import type {
   ZCodeWorkspaceGenerateTextParams,
   ZCodeWorkspaceHookTrustGrantResult,
   ZCodeAutomationBotDeliveryTarget,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type {
   ClientHello,
   CommandAck,
@@ -127,12 +127,12 @@ import type {
   V4SessionsIndexSubscribeResult,
   V4WorkspaceConfigSubscribeResult,
   WorkspaceConfigTopicWireCandidate,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type {
   V4SessionDataMeasureResult,
   V4SessionDataParams,
   V4SessionDataPurgeResult,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { createServiceDescriptor } from "../descriptors.js";
 
 export * from "./zcodeAgentPluginParams.js";
@@ -300,7 +300,7 @@ export interface ZCodeAgentGrantWorkspaceHookTrustParams extends ZCodeAgentWorks
 
 export interface ZCodeAgentSendPromptParamsBase extends ZCodeAgentSessionTarget {
   modelSelection?: ModelSelection;
-  modelExecution?: import("@zcode/shared/zcode-protocol-v4").CommandPayloadMap["sendText"]["modelExecution"];
+  modelExecution?: import("@s-agent/shared/zcode-protocol-v4").CommandPayloadMap["sendText"]["modelExecution"];
   inputId?: string;
   queryId?: string;
   messageId?: string;
@@ -719,7 +719,7 @@ export interface IZCodeAgentService {
     params: import("../plugin-ui-bridge/contract.js").PluginUiPrepareSandboxParams & {
       accountContext?: string;
     },
-  ): Promise<import("@zcode/shared/mcp-apps").McpAppInstance>;
+  ): Promise<import("@s-agent/shared/mcp-apps").McpAppInstance>;
   validateMcpUiInstance(
     params: import("../plugin-ui-bridge/contract.js").PluginUiPluginScope,
   ): Promise<void>;
@@ -733,7 +733,7 @@ export interface IZCodeAgentService {
   /** 插件 UI：UI 发起的工具调用；复用既有权限审批，不产生 transcript row。 */
   sampleMcpApp(
     params: import("../plugin-ui-bridge/samplingContract.js").PluginUiSamplingParams,
-  ): Promise<import("@zcode/shared/mcp-apps").McpAppsSamplingResult>;
+  ): Promise<import("@s-agent/shared/mcp-apps").McpAppsSamplingResult>;
   cancelMcpAppSampling(
     params: import("../plugin-ui-bridge/samplingContract.js").PluginUiCancelSamplingParams,
   ): Promise<{ cancelled: boolean }>;
@@ -799,7 +799,7 @@ export interface IZCodeAgentService {
   ): Promise<ZCodeWorkflowsForRunResult>;
   resolveSuggestedPluginReference(
     params: ZCodeAgentResolveSuggestedPluginReferenceParams,
-  ): Promise<import("@zcode/shared").ZCodePluginsResolveSuggestedReferenceResult>;
+  ): Promise<import("@s-agent/shared").ZCodePluginsResolveSuggestedReferenceResult>;
   /** 推荐项 Plugin 首次本地检查缺失后的 operation-scoped 刷新进度。 */
   onDynamicPluginOperationProgress(
     operationId: string,
@@ -1003,14 +1003,14 @@ export interface IZCodeAgentService {
   ): Promise<V4ConversationAttachmentStatResult>;
   getSessionLifecycle(
     params: ZCodeAgentSessionTarget,
-  ): Promise<import("@zcode/shared").SessionLifecycleSnapshot | null>;
+  ): Promise<import("@s-agent/shared").SessionLifecycleSnapshot | null>;
   ensureSessionReady(params: ZCodeAgentSessionTarget): Promise<void>;
   stopSessionRuntime(params: ZCodeAgentSessionTarget): Promise<void>;
   restartSessionRuntime(params: ZCodeAgentSessionTarget): Promise<void>;
   /** 独立于可被释放的 conversation publisher 的生命周期事实。 */
   onDynamicSessionLifecycle(
     params: ZCodeAgentWorkspaceTarget,
-  ): Event<import("@zcode/shared").SessionLifecycleSnapshot>;
+  ): Event<import("@s-agent/shared").SessionLifecycleSnapshot>;
   /** workspace 级下行帧流（v4/conversation/frame），renderer 侧按 topic 自行路由。 */
   onDynamicConversationFrame(
     params: ZCodeAgentWorkspaceTarget,
@@ -1018,17 +1018,17 @@ export interface IZCodeAgentService {
   /** workspace 级 live telemetry 事实；connection facade 仅向可信 desktop-continuous 下游暴露。 */
   onDynamicLocalTtftFacts(
     params: ZCodeAgentWorkspaceTarget,
-  ): Event<import("@zcode/shared").LocalTtftFacts>;
+  ): Event<import("@s-agent/shared").LocalTtftFacts>;
   onDynamicConversationTelemetryFact(
     params: ZCodeAgentWorkspaceTarget,
   ): Event<ConversationTelemetryFact>;
   /** Host 消费驻留 CLI 的闲时生命周期；不参与聊天快照恢复。 */
   onDynamicOffPeakLifecycle(
     params: ZCodeAgentWorkspaceTarget,
-  ): Event<import("@zcode/shared").OffPeakLifecycleNotification>;
+  ): Event<import("@s-agent/shared").OffPeakLifecycleNotification>;
   controlOffPeakExecutionV4(
-    params: ZCodeAgentWorkspaceTarget & { control: import("@zcode/shared").OffPeakControlParams },
-  ): Promise<import("@zcode/shared").OffPeakControlResult>;
+    params: ZCodeAgentWorkspaceTarget & { control: import("@s-agent/shared").OffPeakControlParams },
+  ): Promise<import("@s-agent/shared").OffPeakControlResult>;
   /** 当前窗口全部本地 live task 的 CUA 权限观察；历史、远程与 replayable 不在此事件面。 */
   onDynamicCuaPermissionObservation(): Event<ZCodeAgentCuaPermissionObservation>;
   /** 本地桌面窗口创建插件页面，不依赖 conversation 订阅。 */

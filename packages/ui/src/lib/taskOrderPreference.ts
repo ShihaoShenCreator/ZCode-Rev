@@ -1,4 +1,4 @@
-import type { ZCodeTaskMeta } from "@zcode/shared";
+import type { ZCodeTaskMeta } from "@s-agent/shared";
 
 interface StorageLike {
   getItem(key: string): string | null;

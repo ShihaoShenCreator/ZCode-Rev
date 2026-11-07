@@ -1,17 +1,17 @@
-import type { TurnInputIntentMetadata } from "@zcode/contracts";
-import type { ModelSelection } from "@zcode/shared";
+import type { TurnInputIntentMetadata } from "@s-agent/contracts";
+import type { ModelSelection } from "@s-agent/shared";
 import type {
   AttachmentRef,
   CommandEnvelope,
   CommandPayloadMap,
   QueueItem,
   SubmissionMode,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { commandAdmissionOf } from "./executor.js";
 
 export interface CanonicalCommandIntent {
   inputOrigin?: "desktop" | "mobile";
-  conversationQuotes?: import("@zcode/contracts").TurnInputIntentMetadata["conversationQuotes"];
+  conversationQuotes?: import("@s-agent/contracts").TurnInputIntentMetadata["conversationQuotes"];
   botGroupSource?: TurnInputIntentMetadata["botGroupSource"];
   kind: "sendText" | "sendGoalCommand";
   text: string;
@@ -36,7 +36,7 @@ export function inputIntentMetadata(
   options: {
     text: string;
     inputOrigin?: "desktop" | "mobile";
-    conversationQuotes?: import("@zcode/contracts").TurnInputIntentMetadata["conversationQuotes"];
+    conversationQuotes?: import("@s-agent/contracts").TurnInputIntentMetadata["conversationQuotes"];
     botGroupSource?: TurnInputIntentMetadata["botGroupSource"];
     requestedDelivery: TurnInputIntentMetadata["requestedDelivery"];
     admittedDelivery?: TurnInputIntentMetadata["admittedDelivery"];

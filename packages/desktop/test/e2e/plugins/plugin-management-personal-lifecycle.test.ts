@@ -1,5 +1,5 @@
-import { type ZCodePluginComponentKind } from "@zcode/shared";
-import { TID_V4_COMPOSER_INPUT } from "@zcode/shared/test-ids";
+import { type ZCodePluginComponentKind } from "@s-agent/shared";
+import { TID_V4_COMPOSER_INPUT } from "@s-agent/shared/test-ids";
 import { clearAppData, waitForTestIdByDom } from "../helpers/desktop-app.js";
 import { waitForUpstreamRequestContaining } from "#e2e/helpers/conversation-session-network";
 import {

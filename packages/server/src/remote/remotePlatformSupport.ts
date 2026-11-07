@@ -1,5 +1,5 @@
-import type { PublicZCodeErrorCode } from "@zcode/shared";
-import type { RemoteEnvironment } from "@zcode/server/remote/backend.js";
+import type { PublicZCodeErrorCode } from "@s-agent/shared";
+import type { RemoteEnvironment } from "@s-agent/server/remote/backend.js";
 
 export const WINDOWS_NATIVE_REMOTE_UNSUPPORTED_MESSAGE =
   "当前 remote 模式仅支持 POSIX shell 环境，暂不支持 Windows 原生远程主机";

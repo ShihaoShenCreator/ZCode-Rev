@@ -16,9 +16,9 @@ import type {
   DynamicWorkflowRunSubagentAsk,
   DynamicWorkflowRunSubagentState,
   DynamicWorkflowRunSubagentView,
-} from "@zcode/contracts";
-import type { ActorRecord, NodeRecord } from "@zcode/dynamic-workflow";
-import type { WorkflowRunNode, WorkflowRunState } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import type { ActorRecord, NodeRecord } from "@s-agent/dynamic-workflow";
+import type { WorkflowRunNode, WorkflowRunState } from "@s-agent/shared/zcode-protocol-v4";
 import {
   instanceKey,
   laterOf,

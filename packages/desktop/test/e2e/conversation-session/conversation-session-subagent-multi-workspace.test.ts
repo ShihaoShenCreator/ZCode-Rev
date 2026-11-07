@@ -6,7 +6,7 @@ import {
 } from "../helpers/subagent-refresh-conversation.js";
 import { mkdir, rename, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_VIRTUAL_PROJECT_ADD } from "@zcode/shared/test-ids";
+import { TID_VIRTUAL_PROJECT_ADD } from "@s-agent/shared/test-ids";
 import {
   selectNativeProjectDirectories,
   startDraftFromProject,

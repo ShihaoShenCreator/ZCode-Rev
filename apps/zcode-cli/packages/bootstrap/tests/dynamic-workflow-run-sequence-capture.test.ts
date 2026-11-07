@@ -2,7 +2,7 @@
 // journal」）：TS 允许实现的形参比签名少，写成固定选项照样编译通过，引擎的窄读就会悄悄退化回
 // 整表读——这条测试钉住每一条读的选项都到达了真 store。
 import { describe, expect, it } from "vitest";
-import { InMemoryJournalStore } from "@zcode/dynamic-workflow";
+import { InMemoryJournalStore } from "@s-agent/dynamic-workflow";
 import { createJournalSequenceCapture } from "../src/app/dynamic-workflow-run-sequence-capture.js";
 
 function seeded(): InMemoryJournalStore {

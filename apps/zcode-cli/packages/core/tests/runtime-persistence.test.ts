@@ -51,7 +51,7 @@ import {
   type TurnUsageRecord,
   type UsageStorePort,
   type WorkspaceId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { resolveProjectMemoryRoot } from "../src/memory/project-root.js";
 import { buildUserContentFromTurn } from "../src/runtime/helpers/conversation.js";

@@ -2,8 +2,8 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
-import { SESSION_ENTRY_MODEL_SELECTION, type SessionId } from "@zcode/contracts";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
+import { SESSION_ENTRY_MODEL_SELECTION, type SessionId } from "@s-agent/contracts";
 
 /** 旧数据必须从磁盘播种；新版 writer 会包装新字段，不能拿它伪造升级前状态。 */
 export async function createLegacySelectionStoreFixture() {

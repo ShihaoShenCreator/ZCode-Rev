@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Logger } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 // 候选目录可控：默认指向真实 monorepo（复现开发态 / 桌面态），用例按需换成临时目录。

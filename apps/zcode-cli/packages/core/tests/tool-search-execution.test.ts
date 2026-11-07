@@ -1,5 +1,5 @@
 import { expect, it, vi } from "vitest";
-import { createSessionId, createTurnId, type ToolSearchExecutionContext } from "@zcode/contracts";
+import { createSessionId, createTurnId, type ToolSearchExecutionContext } from "@s-agent/contracts";
 import { createToolExecutor } from "../src/tool/executor.js";
 import { createToolRegistry } from "../src/tool/registry.js";
 import { toolSearchToolEntry } from "../src/tool/handlers/tool-search.js";

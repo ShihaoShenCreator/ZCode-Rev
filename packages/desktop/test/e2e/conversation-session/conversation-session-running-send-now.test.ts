@@ -3,7 +3,7 @@ import {
   TID_CHAT_QUEUE_SEND_NOW_BUTTON,
   TID_V4_QUEUE_ITEM_SEND_NOW,
   TID_V4_TIMELINE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   readSettings,

@@ -1,9 +1,9 @@
 // L2：v4 原生命令执行器（sendText / stop）——验证自旧 server-operations 搬运的
 // 决策语义在原生层保真：steer 分流、draft 提升、ready 边界、goal-pause barrier。
 // 08-phasing M4 完成定义的 L2 层（命令 → core 调用 → 状态推进，不经旧协议代码）。
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import { describe, expect, it, vi } from "vitest";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { createInputFacade } from "../src/app/input-facade.js";
 import type { SendInputOptions } from "../src/app/types.js";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";

@@ -1,7 +1,7 @@
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import { encodeCustomModelValue, resolveWorkspaceKey } from "@zcode/shared";
+import { encodeCustomModelValue, resolveWorkspaceKey } from "@s-agent/shared";
 import {
   TID_AUTOMATION_CREATE_MANUALLY,
   TID_AUTOMATION_CREATE_MENU,
@@ -15,7 +15,7 @@ import {
   TID_PROJECT_SECTION,
   TID_TASK_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   DEFAULT_CONVERSATION_WORKSPACE,
   DEFAULT_WORKSPACE,

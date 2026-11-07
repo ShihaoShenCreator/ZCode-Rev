@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { TID_WORKSPACE_ITEM } from "@zcode/shared";
+import { TID_WORKSPACE_ITEM } from "@s-agent/shared";
 import {
   TID_COMPOSER_WORKSPACE_TRIGGER,
   TID_V4_SESSION_PANE,
   TID_WORKSPACE_PATH,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { probeWorkspaceAppState } from "./e2e/helpers/desktop-app.js";
 
 const PROJECT_PATH = "/Users/dev/Code/z-code/.e2e-home/ZCodeProject";

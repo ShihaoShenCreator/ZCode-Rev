@@ -1,6 +1,6 @@
-import { ZCODE_PROVIDER_CONFIG_NETWORK_ERROR, type RequestVerificationReason } from "@zcode/shared";
-import type { ModelRequestAuth } from "@zcode/contracts";
-import { ModelErrorCode, ModelProtocolError } from "@zcode/contracts";
+import { ZCODE_PROVIDER_CONFIG_NETWORK_ERROR, type RequestVerificationReason } from "@s-agent/shared";
+import type { ModelRequestAuth } from "@s-agent/contracts";
+import { ModelErrorCode, ModelProtocolError } from "@s-agent/contracts";
 import type { AiSdkModelTextRequest, ResolvedAiSdkModel } from "./runner-runtime.js";
 
 export class RuntimeHeadersRefreshError extends Error {

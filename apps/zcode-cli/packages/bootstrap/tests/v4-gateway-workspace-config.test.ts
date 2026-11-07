@@ -8,8 +8,8 @@ import { describe, expect, it } from "vitest";
 import type {
   WorkspaceConfigState,
   WorkspaceConfigTopicFrame,
-} from "@zcode/shared/zcode-protocol-v4";
-import { workspaceConfigTopic } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
+import { workspaceConfigTopic } from "@s-agent/shared/zcode-protocol-v4";
 import { ConversationV4Gateway } from "../src/zcode-protocol-v4/index.js";
 
 const configA: WorkspaceConfigState = {

@@ -1,6 +1,6 @@
-import { genUiModelContextSchema, type GenUiModelContext } from "@zcode/shared/gen-ui";
+import { genUiModelContextSchema, type GenUiModelContext } from "@s-agent/shared/gen-ui";
 import { attachGenUiContext, normalizeGenUiInput } from "./message-history.js";
-import { ModelCallWrapperSchema } from "@zcode/contracts";
+import { ModelCallWrapperSchema } from "@s-agent/contracts";
 import {
   hydrateToolSearchContent,
   hydrateCompactDiscovery,
@@ -18,7 +18,7 @@ import {
   STREAM_RECOVERY_DISCARDED_ERROR_NAME,
   modelMessageContentToText,
   selectActiveConversationBranch,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   Logger,
   MessagePart,
@@ -28,7 +28,7 @@ import type {
   MessageId,
   ToolArtifactStorePort,
   ToolPart,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   getSystemReminderDescriptor,
   wrapSystemReminderForSource,

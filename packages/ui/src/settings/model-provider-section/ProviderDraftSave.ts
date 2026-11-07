@@ -1,4 +1,4 @@
-import { isApiKeyAccess, type ProviderApiType } from "@zcode/provider";
+import { isApiKeyAccess, type ProviderApiType } from "@s-agent/provider";
 import {
   getProviderFormLabel,
   type ProviderSettingsFormProvider,

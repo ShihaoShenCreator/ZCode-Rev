@@ -1,4 +1,4 @@
-import { createMessageId, type TraceContext } from "@zcode/contracts";
+import { createMessageId, type TraceContext } from "@s-agent/contracts";
 import type { RuntimeAttachmentEntry, RuntimeMessageEntry } from "../../agent/message-history.js";
 import { collectAgentListingAttachment } from "../../subagent/listing.js";
 import type { AgentRuntimeInternal } from "../internal.js";

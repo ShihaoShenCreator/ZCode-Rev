@@ -270,7 +270,7 @@ describe("wdio.conf.ts SSH remote assets wiring", () => {
     // 「只需 Linux」声明来自本机 Docker runner 的环境变量；未声明时 helper 返回全平台入口。
     expect(stageDesktopE2EAppOutput).toContain("resolveSshRemoteReleaseScope(process.env)");
     // Bug 根因：packages/desktop 的 prepare:remote-assets 脚本已随 legacy asset pipeline 删除，
-    // `pnpm --filter @zcode/desktop prepare:remote-assets` 会以 ERR_PNPM_RECURSIVE_RUN_NO_SCRIPT
+    // `pnpm --filter @s-agent/desktop prepare:remote-assets` 会以 ERR_PNPM_RECURSIVE_RUN_NO_SCRIPT
     // 失败并让 onPrepare fatal；唯一有效入口是根 package.json 的脚本（helper 给出脚本名）。
     expect(stageDesktopE2EAppOutput).toMatch(/runPnpmWorkspaceCommand\(\[request\.script\]/u);
     expect(stageDesktopE2EAppOutput).not.toMatch(/@zcode\/desktop",\s*"prepare:remote-assets/u);

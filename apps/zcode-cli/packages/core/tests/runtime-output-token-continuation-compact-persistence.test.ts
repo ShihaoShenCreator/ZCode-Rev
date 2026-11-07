@@ -5,7 +5,7 @@ import {
   SessionEventType,
   createSessionId,
   modelMessageContentToText,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { type AgentRuntime } from "../src/runtime.js";
 import {
   OUTPUT_TOKEN_CONTINUE_PROMPT,

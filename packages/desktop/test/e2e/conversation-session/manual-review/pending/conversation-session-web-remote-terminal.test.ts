@@ -1,11 +1,11 @@
 import { writeFile } from "node:fs/promises";
-import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@zcode/rpc";
+import { BufferReader, BufferWriter, deserialize, serialize, VSBuffer } from "@s-agent/rpc";
 import { basename, join } from "node:path";
 import {
   parseWebRemoteControlAppPayload,
   ServiceChannels,
   type WebRemoteControlWorkspaceBridgeReadyPayload,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   callHandoffHost,
   installHandoffRpcProbe,
@@ -28,7 +28,7 @@ import {
   TID_SIDE_PANE_TOGGLE,
   TID_TASK_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   DEFAULT_WORKSPACE,

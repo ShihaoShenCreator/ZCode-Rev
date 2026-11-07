@@ -1,6 +1,6 @@
 import { thoughtLevelLabelId } from "@/chat-input-toolbar/thoughtLevelLabels.js";
 export { thoughtLevelLabelId } from "@/chat-input-toolbar/thoughtLevelLabels.js";
-import type { ZCodeConfigOption, ZCodeProvider } from "@zcode/shared";
+import type { ZCodeConfigOption, ZCodeProvider } from "@s-agent/shared";
 import type { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { getConfigOptionEntryLabel } from "@/chat-input-toolbar/display.js";
 

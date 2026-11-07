@@ -1,4 +1,4 @@
-import type { AgentTelemetryCausation, Model } from "@zcode/contracts";
+import type { AgentTelemetryCausation, Model } from "@s-agent/contracts";
 import type { TraceContext } from "../deps.js";
 import {
   canStartMemoryRecall,

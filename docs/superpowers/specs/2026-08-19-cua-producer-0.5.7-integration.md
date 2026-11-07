@@ -7,7 +7,7 @@
 
 ## 背景
 
-z-code 已将 Helper runtime 的事实源迁到固定的 `@zcode/zcode-cua`，但旧 producer pin 仍迫使
+z-code 已将 Helper runtime 的事实源迁到固定的 `@s-agent/zcode-cua`，但旧 producer pin 仍迫使
 consumer 维护三类重复状态：
 
 1. renderer 已不调用的 controller status/take/stop permission-service facade；
@@ -48,9 +48,9 @@ z-code MR（consumer）
 
 ### Desktop 安装包运行时闭包
 
-- `@zcode/services` 会把 producer broker 接入 Desktop main、host 与 scheduler；对应的
-  `@zcode/zcode-cua` JavaScript 必须由 tsup 内联，不能在最终 bundle 中留下裸包导入。
-- electron-builder 继续排除 `node_modules/@zcode/**`。不得为了修复模块解析而把 producer
+- `@s-agent/services` 会把 producer broker 接入 Desktop main、host 与 scheduler；对应的
+  `@s-agent/zcode-cua` JavaScript 必须由 tsup 内联，不能在最终 bundle 中留下裸包导入。
+- electron-builder 继续排除 `node_modules/@s-agent/**`。不得为了修复模块解析而把 producer
   的源码、sourcemap、构建目录或 `ax_native.node` 整包复制进 `app.asar`；原生动作仍只由
   独立 Helper 承载。
 - 单元测试必须对 main、host、scheduler 三个配置机械检查 `noExternal`；发布验证必须实际
@@ -105,7 +105,7 @@ z-code MR（consumer）
 
 ### Pin 与 skill
 
-- workspace catalog 只保留一个 canonical `@zcode/zcode-cua` git pin。
+- workspace catalog 只保留一个 canonical `@s-agent/zcode-cua` git pin。
 - wrapper package/plugin/bootstrap version、最终 raster spec 的 producer commit、bundled skill
   与 `upstream.json` 必须同步到 0.5.7 候选。
 - skill sync 脚本只接受一个 canonical pin，并写入明确的 upstream ref；不得要求已删除的

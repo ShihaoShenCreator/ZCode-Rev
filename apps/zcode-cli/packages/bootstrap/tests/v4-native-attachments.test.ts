@@ -4,9 +4,9 @@
 // 模式对齐 v4-native-commands.test.ts（fake app/record/host → executor → 断言 core 调用）。
 import { createHash } from "node:crypto";
 import { describe, expect, it, vi } from "vitest";
-import { SessionEventType } from "@zcode/contracts";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
-import { PROTOCOL_V4_LIMITS } from "@zcode/shared/zcode-protocol-v4";
+import { SessionEventType } from "@s-agent/contracts";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
+import { PROTOCOL_V4_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
 import {
   isUriAttachmentRef,
   mapAttachmentRefsToTurnAttachments,

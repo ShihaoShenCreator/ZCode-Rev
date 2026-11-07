@@ -9,8 +9,8 @@
 // 与 workflow-actor-tools.ts / workflow-actor-model.ts 是同一个接缝上的姊妹模块，都由 driver
 // 侧的 runtime 工厂在造 AgentRuntime 时展开。
 
-import type { CollaborationMode } from "@zcode/contracts";
-import { refToString, type ActorRef, type PersonaSpec } from "@zcode/dynamic-workflow";
+import type { CollaborationMode } from "@s-agent/contracts";
+import { refToString, type ActorRef, type PersonaSpec } from "@s-agent/dynamic-workflow";
 
 /** run 记下的子代理权限模式：会话的基础权限模式，plan 除外。 */
 export type WorkflowSubagentPermissionMode = Exclude<CollaborationMode, "plan">;

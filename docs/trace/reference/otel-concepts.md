@@ -76,7 +76,7 @@ Owner，其中包含一个 TracerProvider 和一个 MeterProvider。
 Tracer 通过 Instrumentation Scope 标识“哪个库创建了这些 Span”：
 
 ```text
-name    = @zcode/cli-agent-telemetry
+name    = @s-agent/cli-agent-telemetry
 version = Telemetry Schema Version
 ```
 

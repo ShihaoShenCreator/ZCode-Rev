@@ -11,7 +11,7 @@ import {
   ModelFailureReason,
   ModelTransportKind,
   type ModelNetworkStatusEvent,
-} from "@zcode/contracts/model";
+} from "@s-agent/contracts/model";
 import { AgentExecutionTelemetryRuntime } from "../src/agent-trace-runtime.js";
 import { ModelApiTelemetryStatusSink } from "../src/model-api-recorder.js";
 

@@ -463,8 +463,8 @@ already-created Active Model
 
 ### 8.2 自动化证据
 
-- `@zcode/provider`：14 个测试文件、130 条测试通过，package typecheck 通过；
-- `@zcode/provider-node`：5 个测试文件、36 条测试通过，package typecheck 通过；
+- `@s-agent/provider`：14 个测试文件、130 条测试通过，package typecheck 通过；
+- `@s-agent/provider-node`：5 个测试文件、36 条测试通过，package typecheck 通过；
 - Services Account/Registry/Request Auth 定向测试：3 个测试文件、24 条测试通过；
 - CLI Bootstrap process/protocol 定向测试：114 条测试通过，package typecheck 通过；
 - CLI Provider Runtime Env 的 development、SEA 与元信息入口 3 条定向测试通过；
@@ -478,7 +478,7 @@ already-created Active Model
   当前生产打包路径原本就直接使用该系统命令，被删除的孤儿 helper 没有任何调用方，因此这不是本 Todo 引入的回归；
 - CUA Permission Broker 的 socket close 时序用例在全量并发运行时失败一次；同一条用例随后独立复跑通过，属于与 Provider
   无关的既有时序波动；
-- `@zcode/cli` 独立 typecheck 仍被既有 `AgentRuntimeConfig.modelSelection` 缺失挡住，报错位于
+- `@s-agent/cli` 独立 typecheck 仍被既有 `AgentRuntimeConfig.modelSelection` 缺失挡住，报错位于
   `prompt-command.ts` 与 `tui-prompt-handler.ts`，不在本 Todo 改动面；
 - 全仓 `fmt:check` 仍会扫描 Electron vendor fiddle 的既有非法 HTML 与二进制 `gb2312.js`，因此本次以修改文件格式检查
   和 `git diff --check` 作为提交证据；

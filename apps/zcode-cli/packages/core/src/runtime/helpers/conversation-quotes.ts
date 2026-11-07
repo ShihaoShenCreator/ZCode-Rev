@@ -1,4 +1,4 @@
-import type { TurnInputIntentMetadata } from "@zcode/contracts";
+import type { TurnInputIntentMetadata } from "@s-agent/contracts";
 
 /** 引用只在模型边界转为材料，不能混入 canonical 用户正文或解析成控制命令。 */
 export function withConversationQuotes(

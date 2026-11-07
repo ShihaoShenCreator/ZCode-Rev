@@ -2,12 +2,12 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, expect, it, vi } from "vitest";
-import { createConfig } from "@zcode/adapters/config";
+import { createConfig } from "@s-agent/adapters/config";
 import {
   convertToZCodeAgentMcpServer,
   type McpServerConfig as HostMcpServerConfig,
-} from "@zcode/shared";
-import type { McpPort } from "@zcode/contracts";
+} from "@s-agent/shared";
+import type { McpPort } from "@s-agent/contracts";
 import { resolveAppRuntimeConfig } from "../src/app/runtime-config.js";
 import { protocolMcpServersToRuntimeMcpConfig } from "../src/zcode-protocol/protocol-mcp-config.js";
 
@@ -42,8 +42,8 @@ it("工作区直接 MCP 不得被当作用户可信配置", async () => {
 
 import { access, readFile } from "node:fs/promises";
 import { createServer } from "node:http";
-import { createMcpAdapter, createMcpAdapterConnectionPool } from "@zcode/adapters/mcp";
-import type { McpServerConfig } from "@zcode/contracts";
+import { createMcpAdapter, createMcpAdapterConnectionPool } from "@s-agent/adapters/mcp";
+import type { McpServerConfig } from "@s-agent/contracts";
 import { createWorkspaceMcpTrust } from "../src/workspace-mcp-trust/index.js";
 
 async function fixture(exitAfterCall = false) {

@@ -9,21 +9,21 @@
 ## 当前问题
 
 历史版本的 `build:web-share` 曾通过 `packages/web/src/main.tsx` 构建完整 Web 应用。
-当前已切换为独立的 `@zcode/web-share` 入口；Share 仅复用 `@zcode/share-ui`、协议类型、
+当前已切换为独立的 `@s-agent/web-share` 入口；Share 仅复用 `@s-agent/share-ui`、协议类型、
 认证/Share API 客户端和只读 presentation，不再进入完整 Web 的 CUA 依赖闭包。
 
 ```text
-历史：@zcode/web -> @zcode/client / @zcode/ui -> @zcode/services -> @zcode/zcode-cua
-当前：@zcode/web-share -> @zcode/share-ui / @zcode/shared
-      @zcode/web       -> @zcode/client / @zcode/ui -> @zcode/services -> @zcode/zcode-cua
+历史：@s-agent/web -> @s-agent/client / @s-agent/ui -> @s-agent/services -> @s-agent/zcode-cua
+当前：@s-agent/web-share -> @s-agent/share-ui / @s-agent/shared
+      @s-agent/web       -> @s-agent/client / @s-agent/ui -> @s-agent/services -> @s-agent/zcode-cua
 ```
 
 ## 目标边界
 
-- `@zcode/web-share` 只包含 Share 路由、Preview API、OAuth callback 和只读时间线。
-- Share 构建不声明、解析或下载 `@zcode/services` 与 `@zcode/zcode-cua`。
-- `@zcode/share-ui` 提供 Share 所需的只读 presentation 入口；Desktop/Remote 继续使用完整
-  `@zcode/ui`。
+- `@s-agent/web-share` 只包含 Share 路由、Preview API、OAuth callback 和只读时间线。
+- Share 构建不声明、解析或下载 `@s-agent/services` 与 `@s-agent/zcode-cua`。
+- `@s-agent/share-ui` 提供 Share 所需的只读 presentation 入口；Desktop/Remote 继续使用完整
+  `@s-agent/ui`。
 - Share 与完整 Web 共用协议类型和已确认的只读展示实现，不共用运行态 service。
 - Remote v4 构建从 workspace 内的 `packages/zcode-cua` 构建 CUA，不涉及私有 Git 与凭据。
 
@@ -31,8 +31,8 @@
 
 ```text
 Dockerfile.web-share
-  -> pnpm install --frozen-lockfile --filter @zcode/web-share...
-  -> pnpm --filter @zcode/web-share build
+  -> pnpm install --frozen-lockfile --filter @s-agent/web-share...
+  -> pnpm --filter @s-agent/web-share build
   -> nginx static image
 ```
 

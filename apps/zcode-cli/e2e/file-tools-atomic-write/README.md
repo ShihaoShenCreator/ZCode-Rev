@@ -11,10 +11,10 @@ Cases:
 从 repo root 先构建依赖的 dist：
 
 ```bash
-pnpm --filter @zcode/contracts build
-pnpm --filter @zcode/shared-types build
-pnpm --filter @zcode/adapters build
-pnpm --filter @zcode/core build
+pnpm --filter @s-agent/contracts build
+pnpm --filter @s-agent/shared-types build
+pnpm --filter @s-agent/adapters build
+pnpm --filter @s-agent/core build
 ```
 
 然后运行：

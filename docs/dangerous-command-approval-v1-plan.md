@@ -378,12 +378,12 @@ DCA-V1-01/03..08 转为 guarded 合同；02 保持 PowerShell pruned；09..12 �
 ### 复现命令（2026-09-17 更新为正式路径）
 
 ```sh
-E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-guarded.json pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-guarded.test.ts'
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec './test/e2e/conversation-session/conversation-session-guarded.test.ts'
-pnpm --filter @zcode/bootstrap exec vitest run --no-file-parallelism tests/guarded-interaction-lifecycle.test.ts tests/guarded-permission-options.test.ts tests/guarded-projection.test.ts tests/guarded-workflow.test.ts tests/automation-port.test.ts tests/v4-native-session-mgmt.test.ts tests/v4-native-model-config.test.ts tests/v4-native-interaction-background.test.ts tests/workflow-effective-selection.test.ts tests/session-selection-cold-resume.test.ts tests/v4-native-queue.test.ts
+E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-guarded.json pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-guarded.test.ts'
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec './test/e2e/conversation-session/conversation-session-guarded.test.ts'
+pnpm --filter @s-agent/bootstrap exec vitest run --no-file-parallelism tests/guarded-interaction-lifecycle.test.ts tests/guarded-permission-options.test.ts tests/guarded-projection.test.ts tests/guarded-workflow.test.ts tests/automation-port.test.ts tests/v4-native-session-mgmt.test.ts tests/v4-native-model-config.test.ts tests/v4-native-interaction-background.test.ts tests/workflow-effective-selection.test.ts tests/session-selection-cold-resume.test.ts tests/v4-native-queue.test.ts
 pnpm typecheck
-pnpm --filter @zcode/desktop typecheck:e2e
-pnpm --filter @zcode/core --filter @zcode/bootstrap --filter @zcode/cli --filter @zcode/tui typecheck
+pnpm --filter @s-agent/desktop typecheck:e2e
+pnpm --filter @s-agent/core --filter @s-agent/bootstrap --filter @s-agent/cli --filter @s-agent/tui typecheck
 pnpm lint
 pnpm architecture:check --changed
 pnpm audit:conversation-session-coverage

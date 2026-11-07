@@ -1,5 +1,5 @@
 import { autoUpdate } from "@floating-ui/dom";
-import type { PluginSandboxHandle } from "@zcode/shared/mcp-apps";
+import type { PluginSandboxHandle } from "@s-agent/shared/mcp-apps";
 import type { SandboxPagePlacement } from "../contract.js";
 
 /**

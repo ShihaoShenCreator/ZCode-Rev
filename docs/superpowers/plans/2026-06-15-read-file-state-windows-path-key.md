@@ -6,7 +6,7 @@
 
 **架构：** Read、Write、Edit 共享同一套归一化后的 read-state key，而不是各 handler 自己比较原始路径字符串。路径 canonicalization 只用于内部 read-before-write/edit 状态身份判断，不改变 provider-visible 的 `filePath`、权限路径、diff 路径或全局 path policy。
 
-**技术栈：** TypeScript、Node path API、Vitest、现有 `@zcode/core` 文件工具 handler。
+**技术栈：** TypeScript、Node path API、Vitest、现有 `@s-agent/core` 文件工具 handler。
 
 ---
 
@@ -110,7 +110,7 @@ describe("read file state path keys", () => {
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/read-file-state.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/read-file-state.test.ts
 ```
 
 预期：失败，原因是 `../src/tool/read-file-state.js` 还不存在。
@@ -254,7 +254,7 @@ function stripWindowsExtendedPathPrefix(filePath: string): string {
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/read-file-state.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/read-file-state.test.ts
 ```
 
 预期：通过。
@@ -303,7 +303,7 @@ function createReadCacheKey(filePath: string, offset: number, limit: number | un
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/read-file-state.test.ts tests/file-tool-port.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/read-file-state.test.ts tests/file-tool-port.test.ts
 ```
 
 预期：通过。
@@ -374,7 +374,7 @@ it("accepts a normalized read-state key when the stored display path differs", a
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/write-tool-contract.test.ts -t "normalized read-state key"
+pnpm --filter @s-agent/core exec vitest run tests/write-tool-contract.test.ts -t "normalized read-state key"
 ```
 
 任务 5 实现前的预期：失败，错误为 `File has not been read yet. Read it first before writing to it.`
@@ -475,7 +475,7 @@ import type { ReadFileStateMap, ToolExecutionContext } from "../types.js";
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/write-tool-contract.test.ts tests/read-file-state.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/write-tool-contract.test.ts tests/read-file-state.test.ts
 ```
 
 预期：通过。
@@ -548,7 +548,7 @@ it("accepts a normalized read-state key when the stored display path differs", a
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/edit-tool-contract.test.ts -t "normalized read-state key"
+pnpm --filter @s-agent/core exec vitest run tests/edit-tool-contract.test.ts -t "normalized read-state key"
 ```
 
 任务 7 实现前的预期：失败，错误为 `File has not been read yet. Read it first before writing to it.`
@@ -648,7 +648,7 @@ return partialRead;
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/edit-tool-contract.test.ts tests/read-file-state.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/edit-tool-contract.test.ts tests/read-file-state.test.ts
 ```
 
 预期：通过。
@@ -713,7 +713,7 @@ Write/Edit 的 provider-visible result 继续保留原始 tool input path；不�
 运行：
 
 ```bash
-pnpm --filter @zcode/core exec vitest run \
+pnpm --filter @s-agent/core exec vitest run \
   tests/read-file-state.test.ts \
   tests/write-tool-contract.test.ts \
   tests/edit-tool-contract.test.ts \
@@ -727,7 +727,7 @@ pnpm --filter @zcode/core exec vitest run \
 运行：
 
 ```bash
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 ```
 
 预期：通过。
@@ -737,7 +737,7 @@ pnpm --filter @zcode/core typecheck
 运行：
 
 ```bash
-pnpm --filter @zcode/core lint
+pnpm --filter @s-agent/core lint
 ```
 
 预期：通过。

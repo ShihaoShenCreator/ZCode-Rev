@@ -5,7 +5,7 @@ import {
   TID_SIDE_PANE_TOGGLE,
   TID_WORKSPACE_HEADER,
   TID_WORKSPACE_TITLE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData } from "../helpers/desktop-app.js";
 import { listSystemProcesses } from "../helpers/e2e-process-cleanup.js";
 import { prepareV4ConversationE2E } from "../helpers/v4-conversation.js";

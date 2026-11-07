@@ -7,7 +7,7 @@ import {
   TID_TASK_SETTINGS_BUTTON,
   TID_MODEL_PROVIDER_MODEL_INPUT,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, DEFAULT_WORKSPACE } from "../../../helpers/desktop-app.js";
 import { getUpstreamRequestRecordCount } from "../../../helpers/conversation-session-network.js";
 import {

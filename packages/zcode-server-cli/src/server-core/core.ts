@@ -6,9 +6,9 @@ import {
   getAppConfigDir,
   ZCODE_BUILTIN_PROVIDER_CONFIG_FILE_ENV,
   createTopicResourcePeers,
-} from "@zcode/services/node";
-import { IZCodeAgentService } from "@zcode/services";
-import { ZCODE_APP_VERSION_ENV, ZCODE_VERSION } from "@zcode/shared";
+} from "@s-agent/services/node";
+import { IZCodeAgentService } from "@s-agent/services";
+import { ZCODE_APP_VERSION_ENV, ZCODE_VERSION } from "@s-agent/shared";
 import { createCoreHttpServer } from "./http.js";
 import { createIngressToken } from "./ingressToken.js";
 import { installParentDisconnectHandler } from "./parentDisconnect.js";

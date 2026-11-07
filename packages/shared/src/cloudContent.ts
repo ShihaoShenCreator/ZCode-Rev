@@ -83,7 +83,6 @@ const action = z.discriminatedUnion("type", [
   }),
   z.object({ type: z.literal("copy_text"), text: z.string().max(20000) }),
   z.object({ type: z.literal("open_external"), url }),
-  z.object({ type: z.literal("claim_plan"), planId: id }),
 ]);
 export const cloudContentPayloadSchema = z
   .object({

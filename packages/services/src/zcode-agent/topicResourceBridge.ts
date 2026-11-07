@@ -5,7 +5,7 @@ import {
   type ZCodeTopicResourceReadResult,
   type ZCodePromptAttachment,
   type ZCodeProtocolTrace,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 const RESOURCE_TIMEOUT_MS = 120_000;
 export interface TopicResourceBridgeDependencies {

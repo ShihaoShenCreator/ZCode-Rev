@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { MCP_APPS_UI_READ_RESOURCE_MAX_BYTES } from "@zcode/shared/mcp-apps";
+import { MCP_APPS_UI_READ_RESOURCE_MAX_BYTES } from "@s-agent/shared/mcp-apps";
 import { createExampleSessionAccess } from "../src/zcode-protocol/mcp-ui/contract.example.js";
 import type { McpUiReadResourceParams } from "../src/zcode-protocol/mcp-ui/contract.js";
 import { createMcpUiHandlers } from "../src/zcode-protocol/mcp-ui/handlers.js";

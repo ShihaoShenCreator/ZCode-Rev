@@ -15,7 +15,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createProtocolBrowserControlBroker } from "../src/zcode-protocol/browser-control-broker.js";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import type {
   MessageId,
   MessagePart,
@@ -23,8 +23,8 @@ import type {
   ModelProviderId,
   ProjectId,
   SessionId,
-} from "@zcode/contracts";
-import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { zcodeProtocolMethods, type ZCodeProtocolMessage } from "@s-agent/shared";
 import {
   V4_METHODS,
   conversationTopic,
@@ -35,7 +35,7 @@ import {
   v4ConversationSubscribeResultSchema,
   v4SessionsIndexSubscribeResultSchema,
   V4_NOTIFICATIONS,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   SessionResidentPool,
   type SessionDeactivationDecision,

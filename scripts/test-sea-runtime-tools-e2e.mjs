@@ -101,7 +101,7 @@ function main() {
     "--dir",
     cliWorkspace,
     "--filter",
-    "@zcode/cli",
+    "@s-agent/cli",
     "sea",
     "--",
     "--target",

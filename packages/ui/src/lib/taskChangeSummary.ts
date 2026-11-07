@@ -3,8 +3,8 @@ import type {
   ZCodeTaskChangeSummary,
   ZCodeTaskChangedFileSummary,
   ZCodeTaskMeta,
-} from "@zcode/shared";
-import { computeLineChangeStat } from "@zcode/shared";
+} from "@s-agent/shared";
+import { computeLineChangeStat } from "@s-agent/shared";
 import { getPathLeaf } from "@/lib/path.js";
 import type { TaskChatMessage } from "@/lib/taskChatMessageTypes.js";
 import { readRawToolCallFileSummaries } from "@/ToolCallBlocks/fileSummaries.js";

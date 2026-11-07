@@ -1,10 +1,8 @@
 # Z.ai / BigModel Provider Family Merge
 
 > 历史方案及 staging 行为来源，不是当前 Provider 数据结构契约。2026-09-06 恢复审计：
-> 当前使用 `providerFamilyDomain` / `providerFamilyConnectionSelections`；账号 Provider 已拆成
-> Start、Individual、Team，普通 API 通过 Template 创建。下文旧 `builtin:*`、mode/selectedKey、
-> Provider Key 缓存及自动改会话选择的段落不可作为恢复旧架构的依据。
-> 本轮保留的产品行为是 Family 连接菜单、独立查询 Start 权益和数量快捷入口。
+> 当前 S-Agent 已退役 Z.ai/BigModel 原生 Provider 与 Family 连接菜单；下文所述结构、权益查询、
+> Provider Key 缓存、Start 导航及自动改会话选择均为历史行为，不可视为当前产品能力或恢复旧架构的依据。
 > 具体适配与未决行为见 [Todo 85 审计表](working-memory/provider-refactor/plan/staging-conflict-restoration-audit.md)。
 
 ## Goal
@@ -606,7 +604,7 @@ Recommended implementation pieces:
 - 能容纳快捷入口和选择框时保持同行；选择框优先完整展示名称，不设固定最大宽度；先保留快捷入口与箭头所需空间，名称使用当前行剩余空间，仅在全称确实放不下时省略。短名称不拉伸成空白长框；剩余空间连控件基本宽度都不足时才换行。
 - 展开菜单后团队全称允许换行（包括无空格英文），菜单不得超出视口；选择与 Start Plan 快捷入口行为不变。
 - 使用 Flex 自然换行，覆盖手机 Web、窄桌面面板、中英文及浅色/深色主题；不改变 provider、远控或消息流逻辑。
-- 浏览器回归：`node --test packages/ui/test/browser/manual-review/pending/provider-family-responsive.test.mjs`。
+- 历史浏览器回归：`provider-family-responsive.test.mjs` 曾覆盖原生套餐连接菜单窄屏布局，已随该 UI 退役。
   直接挂载真实 Family 组件、Radix Select、国际化与产品 CSS，验证 320/390/430 手机视口、650px 视口（可同行但之前被固定断点拆行）、宽视口中的窄面板与桌面横排，检查几何边界并实际选择连接项。
   此用例为待审核的组件浏览器交互回归，不代表完整 `/remote` 连接链路验证。
 

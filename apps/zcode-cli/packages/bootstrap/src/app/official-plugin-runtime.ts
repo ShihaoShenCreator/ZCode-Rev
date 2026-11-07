@@ -4,8 +4,8 @@ import {
   ZCODE_OFFICIAL_PLUGIN_MARKETPLACE,
   ZCODE_PLUGIN_HOST_COMMAND,
   type McpServerConfig,
-} from "@zcode/contracts";
-import { ZCODE_PLUGIN_ID_ENV_KEY } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { ZCODE_PLUGIN_ID_ENV_KEY } from "@s-agent/shared";
 import {
   createOfficialPluginCacheRetryBudget,
   type OfficialPluginCacheRetryBudget,

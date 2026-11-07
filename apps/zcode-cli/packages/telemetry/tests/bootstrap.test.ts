@@ -2,7 +2,7 @@ import { mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AgentTelemetryRuntimeOwner } from "@zcode/contracts/telemetry";
+import type { AgentTelemetryRuntimeOwner } from "@s-agent/contracts/telemetry";
 import {
   createModelTelemetry,
   parseOtlpHeaders,

@@ -1,4 +1,4 @@
-import { createFileSystemError, type FileSystemPort } from "@zcode/contracts";
+import { createFileSystemError, type FileSystemPort } from "@s-agent/contracts";
 
 export class MemoryFileSystem implements FileSystemPort {
   readonly createdDirectories = new Set<string>();

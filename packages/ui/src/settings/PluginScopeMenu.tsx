@@ -9,7 +9,7 @@ import {
   Server,
 } from "lucide-react";
 import { Fragment, useState } from "react";
-import { testId } from "@zcode/shared/test-ids";
+import { testId } from "@s-agent/shared/test-ids";
 import { Button } from "@/components/ui/button.js";
 import {
   DropdownMenu,

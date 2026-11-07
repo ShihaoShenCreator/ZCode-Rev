@@ -11,7 +11,7 @@ import {
   createCoreError,
   DYNAMIC_WORKFLOW_SKILL_NAME,
   type SkillRuntimeInput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolEntry, ToolHandler } from "../types.js";
 
 /** 技能正文的默认字节上限；超出部分由 adapter 从尾部截掉。 */

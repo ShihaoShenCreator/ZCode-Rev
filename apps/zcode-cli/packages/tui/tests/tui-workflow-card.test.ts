@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SessionEventType, createSessionEvent, type SessionEvent } from "@zcode/contracts";
-import { getZCodeCopy } from "@zcode/i18n";
-import { WORKFLOW_RUNS_LIMITS } from "@zcode/shared/zcode-protocol-v4";
+import { SessionEventType, createSessionEvent, type SessionEvent } from "@s-agent/contracts";
+import { getZCodeCopy } from "@s-agent/i18n";
+import { WORKFLOW_RUNS_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
 import {
   EMPTY_TUI_WORKFLOW_MIRROR,
   applyWorkflowProgressToMirror,
@@ -89,7 +89,7 @@ test("progress events drive the mirror through the shared reducer", () => {
   assert.equal(executing.state.runs[0]?.actors[0]?.status, "running");
 });
 
-// 步数读法只有一处（@zcode/shared 的 workflowRunStepCounts）。镜像此前自己数 nodes，于是一条
+// 步数读法只有一处（@s-agent/shared 的 workflowRunStepCounts）。镜像此前自己数 nodes，于是一条
 // 撞过节点界的 run 在 TUI 卡、run 卡与时间线摘要上显示三个数字，而且三个都比真实步数小。
 test("step counts include the instances the node cap kept out of the list", () => {
   const rejected = 3;

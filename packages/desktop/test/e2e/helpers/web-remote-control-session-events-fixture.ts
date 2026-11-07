@@ -2,7 +2,7 @@ import { resolve } from "node:path";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { readFile, writeFile } from "node:fs/promises";
-import { createFakeRelayV2 } from "@zcode/shared/testing/fake-relay-v2";
+import { createFakeRelayV2 } from "@s-agent/shared/testing/fake-relay-v2";
 
 export const WEB_REMOTE_CONTROL_FIXTURE_CREDENTIALS = {
   "oauth:active_provider": "zai",

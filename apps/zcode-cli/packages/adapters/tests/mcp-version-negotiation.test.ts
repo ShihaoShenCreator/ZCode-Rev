@@ -3,7 +3,7 @@ import { createServer as createHttpServer, type AddressInfo } from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import type { Logger } from "@zcode/contracts";
+import type { Logger } from "@s-agent/contracts";
 import { createMcpAdapter } from "../src/mcp/index.js";
 
 describe("MCP dual-era version negotiation", () => {

@@ -13,7 +13,7 @@ import {
   createTurnId,
   type BackgroundExecutionSnapshot,
   type ExecutionResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import {

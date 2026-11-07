@@ -3,7 +3,7 @@ import {
   type ModelUsage,
   type SubagentResultMeta,
   type SubagentStopOptions,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { formatTaskNotification } from "../runtime-task/notification.js";
 
 export type LocalAgentTaskNotificationStatus = "completed" | "failed" | "killed";

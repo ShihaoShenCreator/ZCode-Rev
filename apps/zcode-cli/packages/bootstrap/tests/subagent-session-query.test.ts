@@ -8,7 +8,7 @@ import {
   type SessionInfo,
   type SessionProjection,
   type ToolPart,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   paginateEndedSubagents,
   projectSessionSubagents,

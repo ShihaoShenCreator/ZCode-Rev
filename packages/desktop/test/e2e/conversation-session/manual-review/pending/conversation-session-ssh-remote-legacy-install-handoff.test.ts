@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import type { RemoteWorkspaceSessionEntry } from "@zcode/shared";
-import { PlatformChannels } from "@zcode/shared";
+import type { RemoteWorkspaceSessionEntry } from "@s-agent/shared";
+import { PlatformChannels } from "@s-agent/shared";
 import {
   clearAppData,
   getE2EAppDataPaths,

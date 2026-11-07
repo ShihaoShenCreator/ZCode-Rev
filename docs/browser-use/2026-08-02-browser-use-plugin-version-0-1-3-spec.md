@@ -175,7 +175,7 @@ seed temp directory -> atomic promote -> browser-use/0.1.3
 | Browser Use plugin tests | 6 files / 29 tests 通过 |
 | SEA build tests | 39/39 通过；包含版本对齐、完整资产清单，以及缺失 Browser client 时拒绝打包 |
 | ZCode CLI workspace build | 15 tasks 全部成功 |
-| Browser Use plugin build | 通过，构建身份为 `@zcode/browser-use-plugin@0.1.3` |
+| Browser Use plugin build | 通过，构建身份为 `@s-agent/browser-use-plugin@0.1.3` |
 | Bootstrap plugin tests | 1 file / 30 tests 通过；filesystem/SEA seed 缺必需 Browser 资产时拒绝，完整包正常 seed |
 | Browser 分发与文档聚焦回归 | core 16 + plugin 29 + desktop 38 + server 77 + SEA 39 全部通过 |
 | ZCode CLI workspace typecheck | 23/23 tasks 通过 |

@@ -6,7 +6,7 @@
 
 **架构：** 把修复拆成两层：bootstrap seed 写入端负责有界重试、陈旧工作目录清理、seed lock 和 manifest 原子写重试；adapter 插件发现端负责忽略官方插件缓存里的工作目录，保证历史残留不会污染插件加载。bootstrap 和 adapters 分属不同包，不互相跨包导入实现辅助模块；bootstrap 放文件系统重试辅助模块，adapters 放最小扫描过滤逻辑。
 
-**技术栈：** TypeScript、Node.js `fs` 同步 API、Vitest、`@zcode/bootstrap` 官方插件 seed、`@zcode/adapters` 插件发现。
+**技术栈：** TypeScript、Node.js `fs` 同步 API、Vitest、`@s-agent/bootstrap` 官方插件 seed、`@s-agent/adapters` 插件发现。
 
 ---
 
@@ -103,7 +103,7 @@
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/plugins.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/plugins.test.ts
 ```
 
 预期（实现前）：失败（FAIL）。失败点应是 `outcome.plugins` 包含 `document-skills@zcode-plugins-official`，或 diagnostics 包含 lock 目录缺少 manifest 的错误。
@@ -136,7 +136,7 @@ function isOfficialCacheWorkDirectoryName(name: string): boolean {
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/plugins.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/plugins.test.ts
 ```
 
 预期（实现后）：通过（PASS），新增测试不再从 tmp/lock 目录发现插件。
@@ -258,7 +258,7 @@ describe("official plugin cache fs helpers", () => {
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
 ```
 
 预期（实现前）：失败（FAIL），原因是 `../src/app/official-plugin-cache-fs.js` 还不存在。
@@ -461,7 +461,7 @@ function sleepSync(ms: number): void {
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
 ```
 
 预期（实现后）：通过（PASS），4 个辅助模块测试全部通过。
@@ -524,7 +524,7 @@ import { mkdir, mkdtemp, readFile, rm, stat, utimes, writeFile } from "node:fs/p
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/plugins.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/plugins.test.ts
 ```
 
 预期（实现前）：失败（FAIL）。失败点应是陈旧 tmp 仍然存在。
@@ -654,7 +654,7 @@ function replaceSeedRoot(
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/plugins.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/plugins.test.ts
 ```
 
 预期（实现后）：通过（PASS），陈旧 tmp 清理回归和既有官方插件 seed 行为都通过。
@@ -705,7 +705,7 @@ pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/plugin
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
 ```
 
 预期：通过（PASS）。
@@ -743,7 +743,7 @@ import { writeTextFileAtomicallyWithRetry } from "./official-plugin-cache-fs.js"
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/plugins.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/plugins.test.ts
 ```
 
 预期：通过（PASS），iOS/Android MCP server args 仍指向 official plugin cache 下的 `dist/mcp/server.js`。
@@ -785,9 +785,9 @@ seed 流程先写 `${version}.tmp-<pid>-<time>`，再删除正式版本目录并
 
 ## 验证
 
-- `pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/plugins.test.ts`
-- `pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts`
-- `pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/plugins.test.ts`
+- `pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/plugins.test.ts`
+- `pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts`
+- `pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/plugins.test.ts`
 - `pnpm typecheck`
 - `pnpm lint`
 
@@ -819,7 +819,7 @@ rg -n "$PLACEHOLDER_PATTERN" docs/official-plugin-cache-windows-hardening.md
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/plugins.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/plugins.test.ts
 ```
 
 预期：通过（PASS）。
@@ -829,7 +829,7 @@ pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/plugins
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/official-plugin-cache-fs.test.ts
 ```
 
 预期：通过（PASS）。
@@ -839,7 +839,7 @@ pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/offici
 运行：
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/bootstrap exec vitest run tests/plugins.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/bootstrap exec vitest run tests/plugins.test.ts
 ```
 
 预期：通过（PASS）。

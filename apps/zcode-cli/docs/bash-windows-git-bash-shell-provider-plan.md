@@ -494,7 +494,7 @@ export interface ExecutionShellOverride {
 运行：
 
 ```bash
-pnpm --filter @zcode/contracts typecheck
+pnpm --filter @s-agent/contracts typecheck
 ```
 
 预期：PASS。若 package 没有单独 typecheck script，运行覆盖 contracts 的最近 package-level typecheck，并在验证记录里写明命令。
@@ -579,7 +579,7 @@ expect(gitBashPathToWindowsPath("//server/share/repo")).toBe("\\\\server\\share\
 运行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- --run tests/exec.test.ts -t "Windows Git Bash"
+pnpm --filter @s-agent/adapters test -- --run tests/exec.test.ts -t "Windows Git Bash"
 ```
 
 预期：实现前 FAIL，原因是 Windows Git Bash resolver/path helper 还不存在，或者 Windows 仍 fallback 到 ComSpec。
@@ -708,7 +708,7 @@ function resolveWindowsBashShellProvider(options: {
 运行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- --run tests/exec.test.ts -t "Windows Git Bash|user-configured Windows Git Bash"
+pnpm --filter @s-agent/adapters test -- --run tests/exec.test.ts -t "Windows Git Bash|user-configured Windows Git Bash"
 ```
 
 预期：resolver/path conversion/override 优先级测试 PASS；涉及 foreground cwd capture 的 Git Bash 测试可能仍会失败，直到 Task 5 完成。
@@ -825,7 +825,7 @@ expect(normalizeCapturedCwdForHost("C:\\path\\to\\repo", "cmd")).toBe("C:\\path\
 运行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- --run tests/exec.test.ts -t "cwd capture"
+pnpm --filter @s-agent/adapters test -- --run tests/exec.test.ts -t "cwd capture"
 ```
 
 预期：已有 POSIX 和 cmd cwd capture 测试仍 PASS；新增 Git Bash cwd capture 测试 PASS。
@@ -880,8 +880,8 @@ it("keeps generic Windows shell commands on the legacy shell path", () => {
 运行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- --run tests/exec.test.ts -t "Windows .cmd"
-pnpm --filter @zcode/adapters test -- --run tests/exec.test.ts -t "Windows .exe"
+pnpm --filter @s-agent/adapters test -- --run tests/exec.test.ts -t "Windows .cmd"
+pnpm --filter @s-agent/adapters test -- --run tests/exec.test.ts -t "Windows .exe"
 ```
 
 预期：已有 `.cmd` / `.bat` / `.exe` argv-mode 测试仍 PASS。
@@ -954,7 +954,7 @@ If this session is running on Windows, execute Bash calls that print `$0`, `${BA
 运行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- --run tests/exec.test.ts
+pnpm --filter @s-agent/adapters test -- --run tests/exec.test.ts
 ```
 
 预期：PASS。
@@ -964,7 +964,7 @@ pnpm --filter @zcode/adapters test -- --run tests/exec.test.ts
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- --run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core test -- --run tests/bash-handler.test.ts
 ```
 
 预期：PASS。
@@ -974,7 +974,7 @@ pnpm --filter @zcode/core test -- --run tests/bash-handler.test.ts
 如果当前分支有这些测试，运行：
 
 ```bash
-pnpm --filter @zcode/core test -- --run tests/bash-run-conformance.test.ts tests/bash-result-mapping.test.ts
+pnpm --filter @s-agent/core test -- --run tests/bash-run-conformance.test.ts tests/bash-result-mapping.test.ts
 ```
 
 预期：PASS，或者只有已知 pre-existing skip。
@@ -1454,8 +1454,8 @@ it("passes user-configured integrated terminal shell into Bash execution request
 运行：
 
 ```bash
-pnpm --filter @zcode/shared test -- --run test/zcodeEndpoint.test.ts
-pnpm --filter @zcode/services test -- --run test/settingService.test.ts test/systemService.test.ts
+pnpm --filter @s-agent/shared test -- --run test/zcodeEndpoint.test.ts
+pnpm --filter @s-agent/services test -- --run test/settingService.test.ts test/systemService.test.ts
 ```
 
 预期：PASS。
@@ -1465,7 +1465,7 @@ pnpm --filter @zcode/services test -- --run test/settingService.test.ts test/sys
 运行：
 
 ```bash
-pnpm --filter @zcode/ui test -- --run test/settingsDataBaseDirControl.test.ts
+pnpm --filter @s-agent/ui test -- --run test/settingsDataBaseDirControl.test.ts
 ```
 
 预期：PASS，或者新增的 settings shell row test PASS。
@@ -1475,7 +1475,7 @@ pnpm --filter @zcode/ui test -- --run test/settingsDataBaseDirControl.test.ts
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- --run tests/bash-handler.test.ts
+pnpm --filter @s-agent/core test -- --run tests/bash-handler.test.ts
 ```
 
 预期：PASS。
@@ -1494,10 +1494,10 @@ pnpm typecheck
 当前验证记录：
 
 - `pnpm lint` 已通过，保留仓库既有 warning。
-- `pnpm typecheck` 已执行；当前分支仍被既有 `@zcode/shared` export 缺失、implicit any、TS6305 build output 等错误阻塞，首批错误不在本 Phase 2 改动文件内。
-- `pnpm --filter @zcode/bootstrap exec tsc --noEmit --pretty false` 已通过。
-- `pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts -t "passes a configured Bash shell override to the execution adapter"` 已通过。
-- `pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts` 已执行；当前仍有 2 个既有 claude-code-hint/image 相关失败，本 Phase 2 不处理这些历史用例。
+- `pnpm typecheck` 已执行；当前分支仍被既有 `@s-agent/shared` export 缺失、implicit any、TS6305 build output 等错误阻塞，首批错误不在本 Phase 2 改动文件内。
+- `pnpm --filter @s-agent/bootstrap exec tsc --noEmit --pretty false` 已通过。
+- `pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts -t "passes a configured Bash shell override to the execution adapter"` 已通过。
+- `pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts` 已执行；当前仍有 2 个既有 claude-code-hint/image 相关失败，本 Phase 2 不处理这些历史用例。
 
 - [ ] **Step 5: Windows 手动验证**
 

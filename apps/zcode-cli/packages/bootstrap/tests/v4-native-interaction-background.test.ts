@@ -5,13 +5,13 @@
 // - broker race：v4 应答先到 → 悬空反向 RPC 被取消、返回映射结果；RPC 先到 → 登记注销；
 //   permission 的 allowAlways 映射必须携带 permissionUpdates（持久化规则不丢）。
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import {
   PROTOCOL_V4_LIMITS,
   WORKFLOW_ARTIFACT_LIMITS,
   WORKFLOW_RUN_EVENTS_PAGE_LIMITS,
   WORKFLOW_WORKSPACE_LIMITS,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type {
   DynamicWorkflowRunArtifact,
   DynamicWorkflowRunArtifactItem,
@@ -22,8 +22,8 @@ import type {
   SessionEvent,
   DynamicWorkflowRunWorkspaceNode,
   DynamicWorkflowRunWorkspaceNodeResult,
-} from "@zcode/contracts";
-import { SessionEventType } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { SessionEventType } from "@s-agent/contracts";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";
 import { ConversationV4Gateway } from "../src/zcode-protocol-v4/v4-gateway.js";
 import { V4CapabilityUnsupportedError } from "../src/zcode-protocol-v4/commands/handlers/interaction-background.js";
@@ -749,9 +749,9 @@ describe("v4 原生 cancelBackgroundWork", () => {
   // 没有第二条 cancel RPC。这里用**真实** AgentRuntime 走完整条链，证明 workId 一路直达
   // DynamicWorkflowRunPort.cancel 且不经任何身份映射表（workId ≡ taskId ≡ runId）。
   it("dwf run：workId 一路打到 DynamicWorkflowRunPort.cancel", async () => {
-    const { AgentRuntime, InMemoryRuntimeTaskRegistry } = await import("@zcode/core");
-    const { createSessionId } = await import("@zcode/contracts");
-    const { createInMemorySessionEventStore } = await import("@zcode/adapters/storage");
+    const { AgentRuntime, InMemoryRuntimeTaskRegistry } = await import("@s-agent/core");
+    const { createSessionId } = await import("@s-agent/contracts");
+    const { createInMemorySessionEventStore } = await import("@s-agent/adapters/storage");
 
     const cancelled: string[] = [];
     const runtimeTaskRegistry = new InMemoryRuntimeTaskRegistry();
@@ -859,7 +859,7 @@ function permissionRequest(overrides: Record<string, unknown> = {}) {
     riskLevel: "medium",
     requestedAt: new Date(),
     ...overrides,
-    // 结构对齐 @zcode/contracts PermissionBrokerRequest（品牌类型字段用宽松断言）。
+    // 结构对齐 @s-agent/contracts PermissionBrokerRequest（品牌类型字段用宽松断言）。
   } as never;
 }
 

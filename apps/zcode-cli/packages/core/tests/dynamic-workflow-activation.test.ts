@@ -11,7 +11,7 @@ import {
   type ModelRequest,
   type SessionEntryInfo,
   type SessionStorePort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { AgentRuntime } from "../src/runtime.js";
 import { persistedMessagesShowDynamicWorkflow } from "../src/runtime/methods/dynamic-workflow-activation.js";
 import { createToolRegistry } from "../src/tool/registry.js";

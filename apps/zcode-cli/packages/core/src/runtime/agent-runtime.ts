@@ -4,9 +4,9 @@ import {
   createAgentDefinitionsReader,
   type GetAgentDefinitions,
 } from "../subagent/definitions.js";
-import { DEFAULT_ZCODE_MODEL_CONTEXT_BUDGET_STRATEGY, resolveExecutionState } from "@zcode/shared";
-import type { BackgroundBashOutputResult } from "@zcode/shared";
-import type { ModelRequestSessionFeature } from "@zcode/contracts";
+import { DEFAULT_ZCODE_MODEL_CONTEXT_BUDGET_STRATEGY, resolveExecutionState } from "@s-agent/shared";
+import type { BackgroundBashOutputResult } from "@s-agent/shared";
+import type { ModelRequestSessionFeature } from "@s-agent/contracts";
 import {
   createDenyPermissionBroker,
   createRootTraceContext,
@@ -148,8 +148,8 @@ import { cloneModelSelection } from "./model-selection.js";
 // oxlint-disable typescript-eslint/no-unsafe-declaration-merging
 export class AgentRuntime {
   controlOffPeakExecution(
-    input: import("@zcode/shared").OffPeakControlParams,
-  ): Promise<import("@zcode/shared").OffPeakControlResult> {
+    input: import("@s-agent/shared").OffPeakControlParams,
+  ): Promise<import("@s-agent/shared").OffPeakControlResult> {
     return controlOffPeakRuntime(
       this as unknown as import("./internal.js").AgentRuntimeInternal,
       input,
@@ -822,7 +822,7 @@ export interface AgentRuntime {
   sampleModel(
     input: import("./methods/sample-model.js").SampleModelInput,
     options: { abortSignal: AbortSignal; traceContext?: TraceContext },
-  ): Promise<import("@zcode/shared/mcp-apps").McpAppsSamplingResult>;
+  ): Promise<import("@s-agent/shared/mcp-apps").McpAppsSamplingResult>;
   generateWorkspaceText(
     input: WorkspaceGenerateTextInput,
     options?: { abortSignal?: AbortSignal; traceContext?: TraceContext },

@@ -17,9 +17,9 @@ import {
   type RiskLevel,
   type SessionEvent,
   type ToolCallProgressPayload,
-} from "@zcode/contracts";
-import { ZCODE_CUA_OFFICIAL_MCP_NAMESPACE_NAME as ZCODE_CUA_OFFICIAL_MCP_SERVER_NAME } from "@zcode/shared";
-import { OFFICIAL_CUA_FRAME_MODEL_CONTENT_PROTECTION } from "@zcode/zcode-cua/frame-contract";
+} from "@s-agent/contracts";
+import { ZCODE_CUA_OFFICIAL_MCP_NAMESPACE_NAME as ZCODE_CUA_OFFICIAL_MCP_SERVER_NAME } from "@s-agent/shared";
+import { OFFICIAL_CUA_FRAME_MODEL_CONTENT_PROTECTION } from "@s-agent/zcode-cua/frame-contract";
 import { randomUUID } from "node:crypto";
 import type { ToolRegistry } from "../tool/registry.js";
 import { createToolRuleNameSet } from "../tool/tool-visibility.js";

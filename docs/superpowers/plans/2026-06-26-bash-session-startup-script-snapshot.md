@@ -6,7 +6,7 @@
 
 **Architecture:** 第一版只做 `.sh` startup snapshot 基础设施，不重新开启 find/grep alias，不改变 main agent provider-visible system prompt，也不改变当前工具暴露策略。`core` 只负责生成内部 startup descriptor；`adapters` 负责把 descriptor 安全物化为 `.sh` 文件并 source；未来 embedded search prelude 可以作为同一个 startup script 的内容片段接入，而不是继续 inline 拼接到每条命令前。
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/contracts`, `@zcode/core`, `@zcode/adapters`, ZCode Bash tool execution boundary.
+**Tech Stack:** TypeScript, Vitest, `@s-agent/contracts`, `@s-agent/core`, `@s-agent/adapters`, ZCode Bash tool execution boundary.
 
 ## Global Constraints
 
@@ -157,7 +157,7 @@ Do not remove `bashPrelude` in this task. It remains the structured embedded-sea
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/contracts typecheck
+pnpm --dir apps/zcode-cli --filter @s-agent/contracts typecheck
 ```
 
 Expected: command exits 0.
@@ -218,7 +218,7 @@ Use the local helper names that already exist in `bash-handler.test.ts`; if the 
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/core exec vitest run tests/bash-handler.test.ts -t "attaches a session Bash startup script"
+pnpm --dir apps/zcode-cli --filter @s-agent/core exec vitest run tests/bash-handler.test.ts -t "attaches a session Bash startup script"
 ```
 
 Expected: fails because `bashStartup` is not populated yet.
@@ -228,7 +228,7 @@ Expected: fails because `bashStartup` is not populated yet.
 Create `apps/zcode-cli/packages/core/src/tool/handlers/bash-startup.ts`:
 
 ```ts
-import type { ExecutionBashStartupScript, SessionId } from "@zcode/contracts";
+import type { ExecutionBashStartupScript, SessionId } from "@s-agent/contracts";
 
 export function createBashSessionStartupScript(input: {
   sessionId: SessionId;
@@ -273,7 +273,7 @@ Keep the existing `bashPrelude` conditional unchanged:
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/core exec vitest run tests/embedded-search-shell.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/core exec vitest run tests/embedded-search-shell.test.ts
 ```
 
 Expected: passes and still asserts `shouldInjectEmbeddedSearchBashPrelude()` is `false`.
@@ -283,7 +283,7 @@ Expected: passes and still asserts `shouldInjectEmbeddedSearchBashPrelude()` is 
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/core exec vitest run tests/bash-handler.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/core exec vitest run tests/bash-handler.test.ts
 ```
 
 Expected: all Bash handler tests pass.
@@ -389,7 +389,7 @@ describe("bash startup script materializer", () => {
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/bash-startup-script.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/bash-startup-script.test.ts
 ```
 
 Expected: fails because `bash-startup-script.ts` does not exist.
@@ -405,8 +405,8 @@ import { join } from "node:path";
 import type {
   ExecutionBashStartupScript,
   ExecutionShellDialect,
-} from "@zcode/contracts";
-import { windowsPathToGitBashPath } from "@zcode/contracts";
+} from "@s-agent/contracts";
+import { windowsPathToGitBashPath } from "@s-agent/contracts";
 
 type StartupShellDialect = ExecutionShellDialect | "legacy-shell";
 
@@ -482,7 +482,7 @@ function shellQuote(value: string): string {
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/bash-startup-script.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/bash-startup-script.test.ts
 ```
 
 Expected: all tests pass.
@@ -552,7 +552,7 @@ import { join } from "node:path";
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/exec.test.ts -t "sources Bash startup script"
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/exec.test.ts -t "sources Bash startup script"
 ```
 
 Expected: fails because adapter does not source `bashStartup` yet.
@@ -634,7 +634,7 @@ At this stage, leave `applyBashPreludeToExecutionRequest(...)` in the file. Task
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/bash-startup-script.test.ts tests/exec.test.ts -t "startup"
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/bash-startup-script.test.ts tests/exec.test.ts -t "startup"
 ```
 
 Expected: startup-related tests pass.
@@ -688,7 +688,7 @@ import {
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/embedded-search-prelude.test.ts -t "build prelude content"
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/embedded-search-prelude.test.ts -t "build prelude content"
 ```
 
 Expected: fails because `buildEmbeddedSearchPreludeContent` does not exist.
@@ -767,7 +767,7 @@ After this is wired, remove the old `applyBashPreludeToExecutionRequest()` call 
 Confirm core still does not send `bashPrelude` while the flag is disabled:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/core exec vitest run tests/embedded-search-shell.test.ts tests/bash-handler.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/core exec vitest run tests/embedded-search-shell.test.ts tests/bash-handler.test.ts
 ```
 
 Expected: tests pass and Bash request has `bashStartup` but no `bashPrelude`.
@@ -777,7 +777,7 @@ Expected: tests pass and Bash request has `bashStartup` but no `bashPrelude`.
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/embedded-search-prelude.test.ts tests/bash-startup-script.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/embedded-search-prelude.test.ts tests/bash-startup-script.test.ts
 ```
 
 Expected: all tests pass.
@@ -850,9 +850,9 @@ Expected: all three phrases are present in docs.
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/contracts typecheck
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec vitest run tests/bash-startup-script.test.ts tests/embedded-search-prelude.test.ts tests/exec.test.ts
-pnpm --dir apps/zcode-cli --filter @zcode/core exec vitest run tests/bash-handler.test.ts tests/embedded-search-shell.test.ts tests/context-builder.test.ts tests/main-tool-pool.test.ts tests/subagent-explore.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/contracts typecheck
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec vitest run tests/bash-startup-script.test.ts tests/embedded-search-prelude.test.ts tests/exec.test.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/core exec vitest run tests/bash-handler.test.ts tests/embedded-search-shell.test.ts tests/context-builder.test.ts tests/main-tool-pool.test.ts tests/subagent-explore.test.ts
 ```
 
 Expected: all commands exit 0.
@@ -862,9 +862,9 @@ Expected: all commands exit 0.
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/contracts typecheck
-pnpm --dir apps/zcode-cli --filter @zcode/adapters typecheck
-pnpm --dir apps/zcode-cli --filter @zcode/core typecheck
+pnpm --dir apps/zcode-cli --filter @s-agent/contracts typecheck
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters typecheck
+pnpm --dir apps/zcode-cli --filter @s-agent/core typecheck
 ```
 
 Expected: all commands exit 0.
@@ -874,8 +874,8 @@ Expected: all commands exit 0.
 Run:
 
 ```bash
-pnpm --dir apps/zcode-cli --filter @zcode/adapters exec oxlint src/exec/bash-startup-script.ts src/exec/embedded-search-prelude.ts src/exec/index.ts
-pnpm --dir apps/zcode-cli --filter @zcode/core exec oxlint src/tool/handlers/bash-startup.ts src/tool/handlers/bash.ts src/embedded-search/shell.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/adapters exec oxlint src/exec/bash-startup-script.ts src/exec/embedded-search-prelude.ts src/exec/index.ts
+pnpm --dir apps/zcode-cli --filter @s-agent/core exec oxlint src/tool/handlers/bash-startup.ts src/tool/handlers/bash.ts src/embedded-search/shell.ts
 ```
 
 Expected: both commands exit 0.

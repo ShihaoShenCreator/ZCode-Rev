@@ -1,18 +1,18 @@
 import { dirname, join, basename } from "node:path";
-import { sqliteMigrations, MigrationChecksumError } from "@zcode/shared/sqlite-migrations";
-import type { MigrationResult } from "@zcode/shared/sqlite-migrations";
+import { sqliteMigrations, MigrationChecksumError } from "@s-agent/shared/sqlite-migrations";
+import type { MigrationResult } from "@s-agent/shared/sqlite-migrations";
 import {
   classifyDatabaseStartupError,
   databaseMigrationIdSchema,
   databaseStartupErrorDetails,
   type DatabaseMigrationFacts,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { createHash } from "node:crypto";
 import type { DatabaseSync } from "node:sqlite";
 import {
   ensureSqliteSchemaMigrationTable,
   SqliteSchemaMigrationChecksumError,
-} from "@zcode/shared/sqlite-migrations";
+} from "@s-agent/shared/sqlite-migrations";
 import { SqliteSessionMigrationError } from "./errors.js";
 import { SQLITE_MIGRATIONS } from "./migrations.js";
 type SchemaMigrationRow = { id: string; checksum: string };

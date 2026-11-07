@@ -7,8 +7,8 @@ import {
   type SessionEntryInfo,
   type SessionId,
   type SessionStorePort,
-} from "@zcode/contracts";
-import { HIGHSPEED_PROVIDER_IDS } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { HIGHSPEED_PROVIDER_IDS } from "@s-agent/shared";
 import { readSessionModelSelection } from "../src/app/session-store.js";
 
 const SESSION_ID = "sess_restore" as SessionId;

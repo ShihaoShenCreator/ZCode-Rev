@@ -1,4 +1,4 @@
-import type { AiSdkModelAdapter } from "@zcode/adapters/model";
+import type { AiSdkModelAdapter } from "@s-agent/adapters/model";
 import type {
   AgentTelemetryRuntimeOwner,
   AutomationPort,
@@ -67,7 +67,7 @@ import type {
   WorkflowEvent,
   WorkflowRunListItem,
   WorkspaceHookPolicy,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   AgentRuntime,
   AgentRuntimeConfig,
@@ -90,26 +90,26 @@ import type {
   WorkspaceGenerateTextInput,
   WorkspaceHookPolicyProvider,
   WorkspaceHookReviewTarget,
-} from "@zcode/core";
+} from "@s-agent/core";
 import type {
   BackgroundBashOutputResult,
   SubagentRuntimeConfig,
   ZCodeModelOption,
   ZCodeToolExecResource,
-} from "@zcode/shared";
-import type { McpAppsToolVisibility } from "@zcode/shared/mcp-apps";
-import type { EffectiveModelSelectionResult } from "@zcode/shared/model-selection";
+} from "@s-agent/shared";
+import type { McpAppsToolVisibility } from "@s-agent/shared/mcp-apps";
+import type { EffectiveModelSelectionResult } from "@s-agent/shared/model-selection";
 import type {
   WorkspaceHookReviewDecision,
   WorkspaceHookTrustRevokeTarget,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type { ModelProviderSourceTitle } from "../model-config.js";
 import type { ZCodeInstalledPluginData } from "../plugins.js";
 import type { SessionTranscriptMessage } from "../session-transcript.js";
 import type { NodeReplBrowserBroker } from "./node-repl-browser-broker.js";
 import type { ProviderRegistryModelSource } from "./provider-registry-model-runtime.js";
 import type { WorkspaceHookReviewCommandResult } from "./workspace-hook-review-controller.js";
-export type { ZCodeModelOption } from "@zcode/shared";
+export type { ZCodeModelOption } from "@s-agent/shared";
 
 export interface WorkspaceHookReviewHostContext {
   taskId: string;
@@ -206,7 +206,7 @@ export interface ZCodeAppOptions {
   mcpPortFactory?: (input: { workingDirectory?: string }) => McpPort;
   permissionBroker?: PermissionBrokerPort;
   eventSink?: SessionEventSink;
-  onOffPeakLifecycleEvent?: (event: import("@zcode/shared").OffPeakLifecycleNotification) => void;
+  onOffPeakLifecycleEvent?: (event: import("@s-agent/shared").OffPeakLifecycleNotification) => void;
   env?: NodeJS.ProcessEnv;
   platform?: NodeJS.Platform | string;
   projectConfigPath?: string;
@@ -249,7 +249,7 @@ export interface SubmitPromptOptionsBase {
 }
 
 export type SubmitPromptOptions = SubmitPromptOptionsBase &
-  import("@zcode/contracts").TurnBackgroundAttribution;
+  import("@s-agent/contracts").TurnBackgroundAttribution;
 
 export type PrepareUserExecutionBoundary = (
   options?: Pick<SubmitPromptOptions, "abortSignal" | "traceContext">,
@@ -367,7 +367,7 @@ export interface ZCodeApp {
   readSubagents(input?: {
     endedCursor?: string;
     endedLimit?: number;
-  }): Promise<import("@zcode/shared").ZCodeSessionSubagentsResult>;
+  }): Promise<import("@s-agent/shared").ZCodeSessionSubagentsResult>;
   readSubagentTranscript(
     childSessionId: string,
   ): Promise<import("./subagent-observation.js").SubagentTranscriptSnapshot>;

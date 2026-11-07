@@ -8,7 +8,7 @@
 // 载荷还原的 RunEvent 视图上断。
 
 import { describe, expect, it } from "vitest";
-import type { RunEvent } from "@zcode/dynamic-workflow";
+import type { RunEvent } from "@s-agent/dynamic-workflow";
 import { startFakeProviderServer, type FaultProgram } from "./helpers/fake-provider-server.js";
 import { AUTH_401, BUSY_3008, SERVE, always, healthy } from "./helpers/fault-programs.js";
 import {

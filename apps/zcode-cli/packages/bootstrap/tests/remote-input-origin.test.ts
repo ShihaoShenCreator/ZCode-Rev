@@ -4,7 +4,7 @@ import {
   inputIntentMetadataFromCanonical,
   inputIntentMetadataFromQueueItem,
 } from "../src/zcode-protocol-v4/commands/input-intent.js";
-import type { CommandEnvelope, QueueItem } from "@zcode/shared/zcode-protocol-v4";
+import type { CommandEnvelope, QueueItem } from "@s-agent/shared/zcode-protocol-v4";
 describe("扫码输入来源贯穿 admission", () => {
   it.each(["createSession", "sendText", "sendGoalCommand", "editUserQuery", "retryTurn"] as const)(
     "%s uses trusted envelope origin",

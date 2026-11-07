@@ -1,6 +1,6 @@
 import { CheckIcon, MinusIcon, XIcon } from "lucide-react";
-import type { RemoteTarget } from "@zcode/shared";
-import { TID_REMOTE_NEW_CONNECTION_PREVIEW } from "@zcode/shared/test-ids";
+import type { RemoteTarget } from "@s-agent/shared";
+import { TID_REMOTE_NEW_CONNECTION_PREVIEW } from "@s-agent/shared/test-ids";
 import { cn } from "@/components/lib/utils.js";
 import { DialogDescription, DialogTitle } from "@/components/ui/dialog.js";
 import { Button } from "@/components/ui/button.js";

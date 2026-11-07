@@ -4,8 +4,8 @@ import {
   type ResourceUsageSnapshot,
   type StorageManagementBridge,
   type NetworkCaptureBridge,
-} from "@zcode/shared";
-import { TID_RESOURCE_MANAGER_TAB, testId } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import { TID_RESOURCE_MANAGER_TAB, testId } from "@s-agent/shared/test-ids";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs.js";
 import { useZCodeIntl } from "@/i18n/index.js";
 import { StorageSection } from "./storage/StorageSection.js";

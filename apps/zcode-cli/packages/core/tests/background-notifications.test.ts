@@ -5,8 +5,8 @@
 // 「一轮 ↔ 一张 manifest」的对应在批量下不成立，谎报第一条的载荷比整轮退回裸标题行更坏。
 // 这个纪律用测试钉死，防止后续「顺手把载荷也合成过来」的回归。
 import { describe, expect, it } from "vitest";
-import { createRootTraceContext, createSessionId } from "@zcode/contracts";
-import type { BackgroundResultOriginMeta } from "@zcode/contracts";
+import { createRootTraceContext, createSessionId } from "@s-agent/contracts";
+import type { BackgroundResultOriginMeta } from "@s-agent/contracts";
 import { resolveBackgroundTaskNotificationOriginMeta } from "../src/runtime/methods/background-notifications.js";
 import {
   createRuntimeCommandId,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ModelToolCall } from "@zcode/contracts";
+import type { ModelToolCall } from "@s-agent/contracts";
 import {
   createProviderToolRoundEntries,
   hasProviderToolRoundContent,

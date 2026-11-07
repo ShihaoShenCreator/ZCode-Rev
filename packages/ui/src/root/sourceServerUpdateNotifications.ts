@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
-import type { ISourceServerManagementService } from "@zcode/services";
-import type { RemoteTarget, SourceServerManagementSnapshot } from "@zcode/shared";
+import type { ISourceServerManagementService } from "@s-agent/services";
+import type { RemoteTarget, SourceServerManagementSnapshot } from "@s-agent/shared";
 import { dismissToast, toast, type ToastOptions } from "@/components/ui/toast.js";
 import { useConfirmDialog } from "@/hooks/useConfirmDialog.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

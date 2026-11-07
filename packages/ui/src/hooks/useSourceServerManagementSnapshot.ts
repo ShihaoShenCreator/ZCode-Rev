@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { SourceServerManagementSnapshot } from "@zcode/shared";
-import type { ISourceServerManagementService } from "@zcode/services";
+import type { SourceServerManagementSnapshot } from "@s-agent/shared";
+import type { ISourceServerManagementService } from "@s-agent/services";
 
 export function useSourceServerManagementSnapshot(
   management: ISourceServerManagementService | undefined,

@@ -1,4 +1,4 @@
-import { ZCODE_AGENT_PROVIDER } from "@zcode/shared";
+import { ZCODE_AGENT_PROVIDER } from "@s-agent/shared";
 import {
   legacyTelemetryModelValue,
   legacyTelemetryProviderId,

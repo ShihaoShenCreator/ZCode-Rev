@@ -11,7 +11,7 @@ import {
   ZCODE_MCP_NODE_REPL_BROWSER_USE_META_KEY,
   ZCODE_MCP_NODE_REPL_COMPUTER_USE_META_KEY,
   ZCODE_MCP_NODE_REPL_CUA_APP_META_KEY,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { buildNodeReplHostBundle } from "../scripts/build.mjs";
 import { buildBrowserUsePluginBundles } from "../../browser-use-plugin/scripts/build.mjs";
 

@@ -1,5 +1,5 @@
-import type { ModelRequestAuth, ModelSelection, SessionEventSink } from "@zcode/contracts";
-import type { OffPeakControlParams, OffPeakControlResult } from "@zcode/shared";
+import type { ModelRequestAuth, ModelSelection, SessionEventSink } from "@s-agent/contracts";
+import type { OffPeakControlParams, OffPeakControlResult } from "@s-agent/shared";
 import { isTerminalRuntimeTask } from "../../runtime-task/registry.js";
 import type { AgentRuntimeInternal } from "../internal.js";
 import type { ExecuteTurnOptions, ModelExecutionContext } from "../types.js";

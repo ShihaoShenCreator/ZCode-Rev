@@ -13,9 +13,9 @@ import {
   zcodeWorkflowsRunsParamsSchema,
   zcodeWorkflowsRunsResultSchema,
   zcodeWorkflowsUpdateMetaResultSchema,
-} from "@zcode/shared";
-import { SavedWorkflowEntrySchema, SavedWorkflowMetaSchema } from "@zcode/contracts";
-import { parseSavedWorkflow, serializeSavedWorkflow } from "@zcode/core";
+} from "@s-agent/shared";
+import { SavedWorkflowEntrySchema, SavedWorkflowMetaSchema } from "@s-agent/contracts";
+import { parseSavedWorkflow, serializeSavedWorkflow } from "@s-agent/core";
 import {
   deleteSavedWorkflowOp,
   getSavedWorkflowOp,

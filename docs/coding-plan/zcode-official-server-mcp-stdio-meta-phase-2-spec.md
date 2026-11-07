@@ -86,7 +86,7 @@ targetOrigin := resolveRuntimeZCodeEndpointOrigin(env)     # 客户端自行解�
 
 **为什么这比 http 路径更严**：http 路径下插件能写 url，判定的作用是"把它挡回官方 origin"；
 stdio 路径下插件根本没有表达 origin 的渠道，身份头只可能被解析为"当前 ZCode API origin 的凭证"。
-`isOfficialMcpOriginTrusted` 的调用照旧保留（同一份 `@zcode/shared` 实现），此时它退化为一条
+`isOfficialMcpOriginTrusted` 的调用照旧保留（同一份 `@s-agent/shared` 实现），此时它退化为一条
 恒真断言——**仍要调用**，因为它同时校验 https 与不带 username/password，且 dev loopback 开关
 （`ZCODE_OFFICIAL_MCP_DEV_TRUSTED_ORIGINS`）必须继续生效。
 

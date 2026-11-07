@@ -244,7 +244,7 @@ async function loadZCodeModules(): Promise<{
   const bootstrapPath = pathToFileURL(
     join(import.meta.dirname, "../../../packages/bootstrap/dist/index.js"),
   ).href;
-  // @zcode/provider 只发布 src 入口，bootstrap dist 运行时也加载这份 src。
+  // @s-agent/provider 只发布 src 入口，bootstrap dist 运行时也加载这份 src。
   // 修复原因：读旧的 provider dist 会得到另一份配置类，Registry 的 instanceof 校验对不上。
   const providerPath = pathToFileURL(
     join(import.meta.dirname, "../../../../../packages/provider/src/index.ts"),
@@ -257,7 +257,7 @@ async function loadZCodeModules(): Promise<{
     return { bootstrap, provider };
   } catch (error) {
     throw new Error(
-      "Missing built zcode-cli packages. Run `pnpm --filter @zcode/bootstrap^... build && pnpm --filter @zcode/bootstrap build` before `record`.",
+      "Missing built zcode-cli packages. Run `pnpm --filter @s-agent/bootstrap^... build && pnpm --filter @s-agent/bootstrap build` before `record`.",
       { cause: error },
     );
   }

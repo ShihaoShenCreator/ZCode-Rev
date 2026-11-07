@@ -1,5 +1,5 @@
-import type { BackgroundBashOutputResult } from "@zcode/shared";
-import type { ModelToolContract, RuntimeInputPresentation } from "@zcode/contracts";
+import type { BackgroundBashOutputResult } from "@s-agent/shared";
+import type { ModelToolContract, RuntimeInputPresentation } from "@s-agent/contracts";
 import type {
   CompactPhase,
   CompactReason,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { SessionTaskType } from "@zcode/contracts";
+import type { SessionTaskType } from "@s-agent/contracts";
 import { resolveModelRequestSessionTypeFromTaskType } from "../src/runtime/methods/model-request-session-type.js";
 
 describe("resolveModelRequestSessionTypeFromTaskType", () => {

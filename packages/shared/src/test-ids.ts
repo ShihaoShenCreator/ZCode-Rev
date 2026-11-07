@@ -487,8 +487,8 @@ export const TID_SUBAGENT_ROW = "subagent-row";
 export const TID_SUBAGENT_BUILT_IN_MODEL_TRIGGER = "subagent-built-in-model-trigger";
 /** 设置页使用统计顶层 tab（动态后缀为 usage tab id） */
 export const TID_SETTINGS_USAGE_TAB = "settings-usage-tab";
-/** 侧边栏头像菜单使用统计入口 */
-export const TID_SIDEBAR_CODING_PLAN_USAGE_BUTTON = "sidebar-coding-plan-usage-button";
+/** 侧边栏头像菜单应用使用统计入口 */
+export const TID_SIDEBAR_APP_USAGE_BUTTON = "sidebar-app-usage-button";
 
 // Model Provider Settings
 /** 模型供应商顶部添加按钮 */
@@ -811,7 +811,6 @@ export const TID_MANUAL_CLAIM_PLAN_BANNER = "manual-claim-plan-banner";
 export const TID_PLUGIN_UI_CARD = "plugin-ui-card";
 export const TID_PLUGIN_UI_OPEN_SIDE_PANE = "plugin-ui-open-side-pane";
 export const TID_PLUGIN_UI_WEBVIEW = "plugin-ui-webview";
-export const TID_START_PLAN_RECOMMENDATION_DIALOG = "start-plan-recommendation-dialog";
 
 /** 用户反馈的诊断日志授权开关 */
 export const TID_FEEDBACK_LOGS_OPT_IN = "feedback-logs-opt-in";

@@ -16,8 +16,8 @@ describe("desktop e2e beforeSession setup", () => {
           };
         }),
     );
-    const configureCodingPlanTeamMockForSpecs = vi.fn(async () => {
-      events.push("coding-plan-case-mode");
+    const resetCodingPlanTeamMockStateForSpecs = vi.fn(async () => {
+      events.push("coding-plan-reset-state");
     });
 
     const setupPromise = runE2EBeforeSessionSetup({
@@ -29,7 +29,7 @@ describe("desktop e2e beforeSession setup", () => {
       startCodingPlanTeamMockIfNeeded: async () => {
         events.push("coding-plan-team");
       },
-      configureCodingPlanTeamMockForSpecs,
+      resetCodingPlanTeamMockStateForSpecs,
       startCodingPlanDataPlaneProxyIfNeeded: async () => {
         events.push("coding-plan-data-plane");
       },
@@ -55,7 +55,7 @@ describe("desktop e2e beforeSession setup", () => {
       "record-before-session",
       "configure-env",
       "coding-plan-team",
-      "coding-plan-case-mode",
+      "coding-plan-reset-state",
       "upstream-http",
       "coding-plan-data-plane",
       "coding-plan-upgrade",
@@ -63,7 +63,7 @@ describe("desktop e2e beforeSession setup", () => {
       "off-peak-mock",
       "reset-started",
     ]);
-    expect(configureCodingPlanTeamMockForSpecs).toHaveBeenCalledWith([
+    expect(resetCodingPlanTeamMockStateForSpecs).toHaveBeenCalledWith([
       "./test/e2e/example.test.ts",
     ]);
     expect(resetHome).toHaveBeenCalledWith(["./test/e2e/example.test.ts"]);

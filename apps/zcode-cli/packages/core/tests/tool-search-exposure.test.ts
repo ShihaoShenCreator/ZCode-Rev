@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { type Model, type ModelToolContract } from "@zcode/contracts";
+import { type Model, type ModelToolContract } from "@s-agent/contracts";
 import { createTestRuntimeModel } from "./test-runtime-model.js";
 import { buildToolExposure, buildToolSearchAnnouncement } from "../src/tool/search/exposure.js";
 import { createToolRegistry } from "../src/tool/registry.js";

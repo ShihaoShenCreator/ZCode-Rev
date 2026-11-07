@@ -1,4 +1,4 @@
-import type { RequestVerificationReason } from "@zcode/shared";
+import type { RequestVerificationReason } from "@s-agent/shared";
 import { generateText as aiGenerateText, streamText as aiStreamText } from "ai";
 import type {
   ModelProperties,
@@ -6,8 +6,8 @@ import type {
   ModelRequestSessionFeature,
   ModelTextRequest,
   TraceContext,
-} from "@zcode/contracts";
-import type { ZCodeProviderAccountAccess } from "@zcode/shared";
+} from "@s-agent/contracts";
+import type { ZCodeProviderAccountAccess } from "@s-agent/shared";
 import type { AiSdkResolvedModel } from "./model-execution.js";
 
 export type AiSdkGenerateTextOptions = Parameters<typeof aiGenerateText>[0];

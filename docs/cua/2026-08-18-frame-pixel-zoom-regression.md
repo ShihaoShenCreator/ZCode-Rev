@@ -56,7 +56,7 @@ coordinate target。
 
 模型只从当前工具结果交付的 raster 读取整数 `(x,y)`，并原样携带相邻的 `frame_id`。所有
 resize、byte-budget、Retina/DPI、crop、window/display origin 和 native dispatch 投影均由
-`@zcode/zcode-cua` 内部完成，不得要求模型计算。
+`@s-agent/zcode-cua` 内部完成，不得要求模型计算。
 
 Zoom 不属于常规流程。当前 raster 中的目标清晰可辨时必须直接点击；只有目标过小或存在
 歧义、无法可靠选点时，才把 Zoom 作为最后手段。C07 模型提示与工具 description 使用相同

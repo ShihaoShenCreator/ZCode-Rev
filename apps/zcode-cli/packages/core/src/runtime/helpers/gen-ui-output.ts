@@ -1,4 +1,4 @@
-import { getGenUiOutputDirectory } from "@zcode/shared/node";
+import { getGenUiOutputDirectory } from "@s-agent/shared/node";
 import type { AgentRuntimeInternal } from "../internal.js";
 
 export function resolveGenUiOutputDirectory(runtime: AgentRuntimeInternal): string | undefined {

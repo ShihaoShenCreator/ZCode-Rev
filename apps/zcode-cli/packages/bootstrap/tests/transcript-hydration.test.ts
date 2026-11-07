@@ -10,11 +10,11 @@ import {
   type MessagePart,
   type MessageWithParts,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   toolCallGetWorkflowRunDisplaySchema,
   type CommandEnvelope,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 import { inputIntentMetadata } from "../src/zcode-protocol-v4/commands/input-intent.js";
 import {

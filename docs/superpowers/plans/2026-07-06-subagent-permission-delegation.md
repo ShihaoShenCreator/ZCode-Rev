@@ -387,7 +387,7 @@ permissionBroker:
 Commands:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-interaction-broker.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-interaction-broker.test.ts
 pnpm --dir apps/zcode-cli exec vitest run packages/core/tests/subagent-tool-events.test.ts
 ```
 
@@ -783,7 +783,7 @@ PASS packages/ui/test/permissionDialog.test.ts
 Commands:
 
 ```bash
-pnpm --filter @zcode/core exec vitest run tests/subagent-interaction-broker.test.ts
+pnpm --filter @s-agent/core exec vitest run tests/subagent-interaction-broker.test.ts
 pnpm vitest run packages/services/test/zcodeAgentService.test.ts
 pnpm vitest run packages/ui/test/permissionRequest.test.ts packages/ui/test/permissionDialog.test.ts
 ```

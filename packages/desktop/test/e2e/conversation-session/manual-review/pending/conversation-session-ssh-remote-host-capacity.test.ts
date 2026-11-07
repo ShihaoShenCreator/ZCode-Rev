@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity, ServiceChannels } from "@zcode/shared";
-import type { RemoteProjectDirectory, RemoteProjectHost } from "@zcode/services";
+import { parseRemoteWorkspaceIdentity, ServiceChannels } from "@s-agent/shared";
+import type { RemoteProjectDirectory, RemoteProjectHost } from "@s-agent/services";
 import { clearAppData } from "#e2e/helpers/desktop-app";
 import {
   callHandoffHost,

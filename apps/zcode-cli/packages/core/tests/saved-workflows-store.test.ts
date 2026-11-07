@@ -14,7 +14,7 @@ import {
   serializeSavedWorkflow,
   validateWorkflowArgs,
 } from "../src/tool/handlers/saved-workflows/index.js";
-import type { SavedWorkflowMeta } from "@zcode/contracts";
+import type { SavedWorkflowMeta } from "@s-agent/contracts";
 
 const created: string[] = [];
 

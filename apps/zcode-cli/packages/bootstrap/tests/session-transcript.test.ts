@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { MessageWithParts } from "@zcode/contracts";
+import type { MessageWithParts } from "@s-agent/contracts";
 import { projectSessionTranscript } from "../src/session-transcript.js";
 
 describe("session transcript projection", () => {

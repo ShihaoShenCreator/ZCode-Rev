@@ -11,7 +11,7 @@ import type {
   SessionEvent,
   TraceContext,
 } from "../deps.js";
-import type { AgentTelemetryCausation, ModelRequestDependencies } from "@zcode/contracts";
+import type { AgentTelemetryCausation, ModelRequestDependencies } from "@s-agent/contracts";
 import type { AgentRuntimeInternal } from "../internal.js";
 import { createRefreshRuntimeHeadersBeforeModelAttempt } from "./model-runtime-headers.js";
 import { recordModelUsageFact } from "./usage-observability.js";

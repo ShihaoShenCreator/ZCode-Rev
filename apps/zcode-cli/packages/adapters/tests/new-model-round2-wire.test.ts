@@ -1,12 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import type { ModelMessageContentBlock } from "@zcode/contracts";
+import type { ModelMessageContentBlock } from "@s-agent/contracts";
 import {
   createRegistryModelConfig,
   createRegistryProviderConfig,
   parseProviderConfig,
   parseZCodeBuiltinModelConfigRules,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { AiSdkModelAdapter } from "../src/model/runner.js";
 import { AiSdkModelExecution } from "../src/model/model-execution.js";
 

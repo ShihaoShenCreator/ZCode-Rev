@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { ProviderEndpointRoutingPort } from "@zcode/contracts";
+import type { ProviderEndpointRoutingPort } from "@s-agent/contracts";
 import { createProviderEndpointRoutingFetch } from "../src/model/provider-endpoint-routing-fetch.js";
 import { createProviderBusinessErrorFetch } from "../src/model/model-execution.js";
 

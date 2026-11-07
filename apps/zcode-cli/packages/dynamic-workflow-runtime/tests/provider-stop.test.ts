@@ -5,7 +5,7 @@
  */
 
 import { describe, expect, it } from "vitest";
-import { WorkflowError } from "@zcode/dynamic-workflow";
+import { WorkflowError } from "@s-agent/dynamic-workflow";
 import { runScript } from "./helpers.js";
 
 const PROVIDER_STOP = new WorkflowError("ProviderStop", "Sign-in to BigModel expired.", {

@@ -6,8 +6,8 @@
 // 追加成主转写里的一条 agent 消息。
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SessionEventType, createSessionEvent, type SessionEvent } from "@zcode/contracts";
-import { getZCodeCopy } from "@zcode/i18n";
+import { SessionEventType, createSessionEvent, type SessionEvent } from "@s-agent/contracts";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { applyMainSessionEvent } from "../src/app-session-event-handler.js";
 import type { Message } from "../src/app-model.js";
 import { EMPTY_TUI_WORKFLOW_MIRROR, type TuiWorkflowMirror } from "../src/app-workflow-mirror.js";

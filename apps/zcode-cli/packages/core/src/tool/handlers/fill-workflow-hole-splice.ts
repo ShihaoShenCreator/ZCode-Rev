@@ -8,7 +8,7 @@
 // 拼接本体是分析器包的 `spliceHoleBody`（apps/zcode-cli/packages/dynamic-workflow/docs/analysis.md
 // 「Sites」）：函数体插在留白调用的闭括号前，站点 id 的编号规则由分析器保证。
 
-import { collectSites, createWorkflowProgram, spliceHoleBody } from "@zcode/dynamic-workflow";
+import { collectSites, createWorkflowProgram, spliceHoleBody } from "@s-agent/dynamic-workflow";
 
 /**
  * 把函数体拼进 run 的脚本，返回有效脚本文本；拼不了（留白未知、已补过、脚本连站点表都建不出）时回

@@ -26,8 +26,8 @@ import { Buffer } from "node:buffer";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import type { IDisposable } from "@zcode/rpc";
-import { completeNewModelSelection } from "@zcode/provider";
+import type { IDisposable } from "@s-agent/rpc";
+import { completeNewModelSelection } from "@s-agent/provider";
 import {
   ALL_BOT_WORKSPACES,
   parseRemoteWorkspaceIdentity,
@@ -82,7 +82,7 @@ import {
   type BotsConfigFile,
   type Locale,
   type SelectionPrompt,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { BotRemoteRuntimeService } from "#src/bot-project-runtime/contract.js";
 import {
   readProjectCatalog,
@@ -91,7 +91,7 @@ import {
 } from "#src/project-catalog/index.js";
 import type { IProjectService } from "#src/project/contract.js";
 import type { IRemoteProjectService } from "#src/remote-projects/contract.js";
-import { buildRemoteHostWorkspaceIdentity, remoteHostIdFromWorkspaceIdentity } from "@zcode/shared";
+import { buildRemoteHostWorkspaceIdentity, remoteHostIdFromWorkspaceIdentity } from "@s-agent/shared";
 import type { IZCodeTaskService } from "../session/zcodeTaskService.js";
 import { resolveProviderModeIdFromConfigOptions } from "#src/session/sessionModeOptions.js";
 import { deriveSessionTitle as deriveTaskTitle } from "#src/session/sessionTitle.js";
@@ -527,7 +527,7 @@ function createOutbound(
 function groupCardFor(
   actor: BotActor,
   context: BotContextState,
-): import("@zcode/shared").BotGroupCard {
+): import("@s-agent/shared").BotGroupCard {
   const group = context.group!;
   const threadId = actor.threadId ?? group.threadId;
   return {
@@ -6727,7 +6727,7 @@ export function createBotsService(
   ) {
     const messageId = message.actor.providerMessageId!;
     if (!context.group) return {};
-    let topicContext: import("@zcode/shared").BotTopicHistoryBatch | undefined;
+    let topicContext: import("@s-agent/shared").BotTopicHistoryBatch | undefined;
     let historyError: unknown;
 
     const generation = historyGeneration(context);

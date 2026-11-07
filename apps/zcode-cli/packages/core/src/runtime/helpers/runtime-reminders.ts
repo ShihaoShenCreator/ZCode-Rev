@@ -12,7 +12,7 @@ import type {
   SyntheticUserMessageSource,
   TodoItem,
 } from "../deps.js";
-import { ASK_USER_QUESTION_TOOL_NAME, EXIT_PLAN_MODE_TOOL_NAME } from "@zcode/contracts";
+import { ASK_USER_QUESTION_TOOL_NAME, EXIT_PLAN_MODE_TOOL_NAME } from "@s-agent/contracts";
 import { EXPLORE_AGENT_TYPE } from "../../subagent/explore.js";
 import { isUserTurnInput } from "./provider-entry-origins.js";
 

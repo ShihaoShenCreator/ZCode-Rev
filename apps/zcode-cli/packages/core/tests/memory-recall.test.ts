@@ -8,7 +8,7 @@ import {
   type FileSystemListDirectoryEntry,
   type FileSystemPort,
   type Model,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { describe, expect, it } from "vitest";
 
 import {

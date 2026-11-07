@@ -1,6 +1,6 @@
-import { createMessagePortServiceConnection } from "@zcode/client";
-import { InternalChannels } from "@zcode/shared";
-import { registerSourceSettingsServices } from "@zcode/ui";
+import { createMessagePortServiceConnection } from "@s-agent/client";
+import { InternalChannels } from "@s-agent/shared";
+import { registerSourceSettingsServices } from "@s-agent/ui";
 
 export function handleSourceSettingsServicePortMessage(event: MessageEvent): boolean {
   if (

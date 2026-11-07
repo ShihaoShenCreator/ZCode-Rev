@@ -117,9 +117,9 @@ target's serial directly to install, launch, screenshot, log, or UI tools.
 
 ```bash
 pnpm install
-pnpm --filter @zcode/android-emulator-plugin typecheck
-pnpm --filter @zcode/android-emulator-plugin test
-pnpm --filter @zcode/android-emulator-plugin build
+pnpm --filter @s-agent/android-emulator-plugin typecheck
+pnpm --filter @s-agent/android-emulator-plugin test
+pnpm --filter @s-agent/android-emulator-plugin build
 ```
 
 The Claude-compatible `.mcp.json` and the ZCode manifest both execute

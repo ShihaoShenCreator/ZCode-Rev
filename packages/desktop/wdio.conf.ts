@@ -39,10 +39,7 @@ import {
   withE2ESourceEvidence,
 } from "./test/e2e/reporting/e2e-source-evidence.js";
 import { config as loadDotenv } from "dotenv";
-import {
-  PROVIDER_RESPONSIVE_TEAM_NAME,
-  buildProviderResponsiveStartBalance,
-} from "./test/e2e/fixtures/provider-family-responsive.js";
+import { buildStartPlanBalance } from "./test/e2e/fixtures/start-plan-balance.js";
 import {
   startUpstreamReplayServer,
   type UpstreamReplayServer,
@@ -127,7 +124,7 @@ import {
   BUILTIN_MODEL_PROVIDER_IDS,
   BIGMODEL_PROVIDER_ID,
   ZAI_PROVIDER_ID,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   seedPersonalProviderConfig,
   seedPersonalDefaultModelSelection,
@@ -163,11 +160,6 @@ import {
   startModelContextBudgetConfigMockServer,
   type ModelContextBudgetConfigMockServer,
 } from "./test/e2e/helpers/model-context-budget-config-mock-server.js";
-import {
-  MODEL_PROVIDER_CATALOG_PAYLOAD,
-  resolveSubagentLoginCatalogConfigVersion,
-  resolveSubagentLoginCatalogPayload,
-} from "./test/e2e/helpers/model-provider-catalog-mock-server.js";
 import {
   applyClientScenesMockEnv,
   clearClientScenesMockEnv,
@@ -315,11 +307,6 @@ const PLUGIN_NO_GIT_GITHUB_ARCHIVE_SPEC = "plugin-no-git-github-archive.test.ts"
 const GIT_COMMIT_DIALOG_UI_FLOW_SPEC = "git-commit-dialog-ui-flow.test.ts";
 const OAUTH_CREDENTIAL_RECOVERY_SPEC = "oauth-credential-recovery.test.ts";
 const JWT_EXPIRY_REAUTHENTICATION_SPEC = "jwt-expiry-reauthentication.test.ts";
-const SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_SPEC =
-  "subagent-coding-plan-login-catalog-stale.test.ts";
-const SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE = "subagent-login-catalog-stale";
-const SUBAGENT_CODING_PLAN_OAUTH_FLOW_ID = "e2e-subagent-bigmodel-flow";
-const SUBAGENT_CODING_PLAN_OAUTH_STATE = "e2e-subagent-bigmodel-state";
 const PROVIDER_READINESS_AGENT_STARTUP_SPEC = "provider-readiness-agent-startup.test.ts";
 const CONTEXT_WINDOW_COLD_RESUME_SPEC = "conversation-session-context-window-cold-resume.test.ts";
 const PASSIVE_AGENT_STARTUP_SPEC = "workspace-passive-agent-startup.test.ts";
@@ -379,7 +366,6 @@ const SUBAGENT_RUNTIME_CATALOG_AGENT_NAME = "e2e-claude-catalog-reviewer";
 const OFFPEAK_SUBAGENT_MODEL_INHERITANCE_SPEC =
   "conversation-session-offpeak-subagent-model-inheritance.test.ts";
 const OFFPEAK_INVALID_TICKET_SPEC = "conversation-session-off-peak-invalid-ticket.test.ts";
-const MODEL_PROVIDER_PLAN_SURFACE_SPEC = "conversation-session-model-provider-plan-surface.test.ts";
 const SUBAGENT_TEAM_SCOPE_SPEC = "conversation-session-subagent-team-scope.test.ts";
 const TOOL_ERROR_SURFACE_SPEC = "conversation-session-tool-error-surface.test.ts";
 const MODEL_OUTPUT_TOKEN_BUDGET_SPEC = "conversation-session-model-output-token-budget.test.ts";
@@ -953,7 +939,7 @@ function prepareDesktopAppBuild() {
   // Bugfix: 直接执行 `wdio run` 会绕过 package.json 的 pretest:e2e；只检查
   // out 文件是否存在又会跑到旧 renderer，表现成”已修复但 e2e 仍白屏/没动作”。
   // 因此 WDIO 入口始终先构建，确保测试使用当前源码对应的桌面产物。
-  runPnpmWorkspaceCommand(["--filter", "@zcode/desktop", "build:no-runtime-assets"]);
+  runPnpmWorkspaceCommand(["--filter", "@s-agent/desktop", "build:no-runtime-assets"]);
   assertDesktopE2EBuildReady("onPrepare build");
 }
 
@@ -1008,9 +994,9 @@ async function stageDesktopE2EAppOutput() {
     // CI-only 失败。改为缺目录时自动跑 prepare:remote-assets（幂等），产出后仍缺失才
     // fail-closed。
     // Bug 根因：packages/desktop 的 prepare:remote-assets 已随 legacy asset pipeline 一并删除，
-    // `pnpm --filter @zcode/desktop prepare:remote-assets` 会以 ERR_PNPM_RECURSIVE_RUN_NO_SCRIPT
+    // `pnpm --filter @s-agent/desktop prepare:remote-assets` 会以 ERR_PNPM_RECURSIVE_RUN_NO_SCRIPT
     // 失败并让所有 SSH E2E 在 onPrepare 阶段 fatal；必须调用根 package.json 的
-    // prepare:remote-assets（→ @zcode/server-cli stage:remote-assets）。runPnpmWorkspaceCommand
+    // prepare:remote-assets（→ @s-agent/server-cli stage:remote-assets）。runPnpmWorkspaceCommand
     // 的 cwd 固定为 REPO_ROOT，直接传脚本名即可命中根脚本。
     // 本机 Docker runner 声明「只需 Linux」时，helper 改读 descriptor 判断两个 Linux 目标，
     // 并只调用 `ZCODE_ENV=test pnpm prepare:remote-assets:linux`；未声明时行为不变。
@@ -1067,7 +1053,7 @@ function createPnpmChildEnv() {
     ...(HOST_USERPROFILE_DIR ? { USERPROFILE: HOST_USERPROFILE_DIR } : {}),
     // Bugfix: agent 构建脚本会进入 apps/zcode-cli 子 workspace；pnpm 11 的
     // verify-deps-before-run 会触发子 workspace install，但该 workspace 运行时
-    // 依赖根仓库 @zcode/shared，自动 install 无法解析，必须在 E2E 构建链路关闭。
+    // 依赖根仓库 @s-agent/shared，自动 install 无法解析，必须在 E2E 构建链路关闭。
     PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN: "false",
     // 修复原因：E2E 依赖 renderer 暴露 store bridge；只在 WDIO 构建链路显式注入，
     // 避免普通 production/test 产品构建意外暴露可变全局 store。
@@ -1219,12 +1205,6 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
     );
   }
 
-  let caseMode:
-    | "default"
-    | typeof SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE
-    | "model-provider-plan-surface" = "default";
-  let subagentOAuthTokenIssued = false;
-  let modelProviderCatalogMode: "full" | "partial" | "unavailable" = "full";
   let presentation: EntitlementPresentation | undefined;
   let scenario: "personalOnly" | "teamOnly" | "both" = "both";
   // Bug 回归：Start Plan 独立 case 需要 billing/balance 返回 Start Plan 权益与模型，
@@ -1237,7 +1217,7 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
   const offPeakTeam = isOffPeakTeamPlanSpec(specs);
   if (offPeakTeam) {
     // 通用产品 mock 会替换成个人假凭证，无法验证 Team。只在测试进程替代 HTTP 服务端。
-    const { startOffPeakMockGateway, createServiceLogger } = await import("@zcode/services/node");
+    const { startOffPeakMockGateway, createServiceLogger } = await import("@s-agent/services/node");
     offPeakTeamGateway = await startOffPeakMockGateway(
       {
         logger: createServiceLogger("e2e-offpeak-team", { isDebugEnabled: false }),
@@ -1255,7 +1235,7 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
     );
     process.env.ZCODE_OFFPEAK_MOCK_PORT = String(offPeakTeamGateway.port);
   }
-  let providerResponsive = startIndependent;
+  let forceStartPlanBalance = startIndependent;
   let faultMode:
     | "none"
     | "optionalActivity"
@@ -1324,19 +1304,9 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
       response.end(Buffer.from(await upstream.arrayBuffer()));
       return;
     }
-    if (url.pathname === "/__e2e/coding-plan/case-mode" && request.method === "POST") {
+    if (url.pathname === "/__e2e/coding-plan/reset-state" && request.method === "POST") {
       presentation = undefined;
-      const body = await readRequestJson<{ mode?: typeof caseMode }>(request);
-      caseMode =
-        body.mode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE
-          ? SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE
-          : body.mode === "model-provider-plan-surface"
-            ? "model-provider-plan-surface"
-            : "default";
-      subagentOAuthTokenIssued = false;
-      modelProviderCatalogMode = "full";
-      scenario =
-        caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE ? "personalOnly" : "both";
+      scenario = "both";
       faultMode = "none";
       resetScenario = "none";
       resetScenarioStartedAt = Date.now();
@@ -1348,7 +1318,7 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
       resetMultiUnread = false;
       resetMultiLag = null;
       requests.length = 0;
-      writeJson(response, { mode: caseMode, ok: true });
+      writeJson(response, { ok: true });
       return;
     }
     if (url.pathname === "/__e2e/coding-plan/team-health" && request.method === "GET") {
@@ -1356,25 +1326,14 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
       return;
     }
 
-    if (url.pathname === "/__e2e/coding-plan/catalog-mode" && request.method === "POST") {
-      const body = await readRequestJson<{ mode?: string }>(request);
-      if (body.mode !== "full" && body.mode !== "partial" && body.mode !== "unavailable") {
-        writeJson(response, { code: 400, msg: "invalid catalog mode" }, 400);
-        return;
-      }
-      modelProviderCatalogMode = body.mode;
-      writeJson(response, { mode: modelProviderCatalogMode, ok: true });
-      return;
-    }
-
     if (url.pathname === "/__e2e/coding-plan/scenario" && request.method === "POST") {
       const body = await readRequestJson<{
         scenario?: typeof scenario;
         faultMode?: typeof faultMode;
-        providerResponsive?: boolean;
+        forceStartPlanBalance?: boolean;
         presentation?: EntitlementPresentation;
       }>(request);
-      providerResponsive = body.providerResponsive === true;
+      forceStartPlanBalance = body.forceStartPlanBalance === true;
       presentation = body.presentation;
       if (
         body.scenario === "personalOnly" ||
@@ -1463,142 +1422,6 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
     }
 
     if (
-      caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE &&
-      request.method === "POST" &&
-      url.pathname === "/api/v1/oauth/cli/init"
-    ) {
-      writeJson(response, {
-        code: 0,
-        data: {
-          authorize_url: `https://bigmodel.cn/login?appId=zcode&redirect=${encodeURIComponent("https://zcode.z.ai/api/v1/oauth/cli/callback/bigmodel")}&state=${SUBAGENT_CODING_PLAN_OAUTH_STATE}`,
-          expires_at: Math.floor(Date.now() / 1000) + 300,
-          flow_id: SUBAGENT_CODING_PLAN_OAUTH_FLOW_ID,
-          poll_interval_sec: 30,
-        },
-        msg: "",
-      });
-      return;
-    }
-
-    if (caseMode === "model-provider-plan-surface" && request.method === "GET") {
-      if (url.pathname === "/api/v2/releases/latest") {
-        writeJson(response, {
-          config_version: "e2e-model-provider-catalog-v1",
-          version: "3.8.1-e2e",
-        });
-        return;
-      }
-      if (url.pathname === "/api/v1/client/configs") {
-        if (modelProviderCatalogMode === "unavailable") {
-          writeJson(
-            response,
-            { code: 503, data: null, msg: "catalog temporarily unavailable" },
-            503,
-          );
-          return;
-        }
-        // 原因：模型目录与团队套餐目录是两份事实；缺少套餐静态目录会让 Composer
-        // 隐去已订阅团队，Automation 的原始 Registry 菜单却仍然可见。
-        const catalogPayload = {
-          ...MODEL_PROVIDER_CATALOG_PAYLOAD,
-          data: {
-            ...MODEL_PROVIDER_CATALOG_PAYLOAD.data,
-            configs: {
-              ...requestSecurityClientConfig(),
-              codingPlanStaticTeamProducts: {
-                [BUILTIN_MODEL_PROVIDER_IDS.bigmodelIndividualCodingPlan]: [
-                  {
-                    productId: "product-team-a",
-                    productName: "Team",
-                    tier: "PRO",
-                    subscribeMode: "CONTINUOUS",
-                    subscribePeriod: "MONTHLY",
-                    purchaseMethodName: "Monthly",
-                    priceCurrency: "CNY",
-                    payAmount: 598,
-                  },
-                ],
-              },
-            },
-          },
-        };
-        if (modelProviderCatalogMode === "partial") {
-          writeJson(response, {
-            ...catalogPayload,
-            data: {
-              ...catalogPayload.data,
-              builtinModels: catalogPayload.data.builtinModels.slice(0, 1),
-              builtinProviders: catalogPayload.data.builtinProviders.slice(0, 1),
-            },
-          });
-          return;
-        }
-        writeJson(response, catalogPayload);
-        return;
-      }
-    }
-
-    if (
-      caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE &&
-      request.method === "GET" &&
-      url.pathname === `/api/v1/oauth/cli/poll/${SUBAGENT_CODING_PLAN_OAUTH_FLOW_ID}`
-    ) {
-      writeJson(response, {
-        code: 0,
-        data: { status: "pending" },
-        msg: "",
-      });
-      return;
-    }
-
-    if (
-      caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE &&
-      request.method === "POST" &&
-      url.pathname === "/api/v1/oauth/token"
-    ) {
-      subagentOAuthTokenIssued = true;
-      writeJson(response, {
-        code: 0,
-        data: {
-          token: "e2e-subagent-login-zcode-jwt",
-          bigmodel: {
-            access_token: "e2e-subagent-login-bigmodel-token",
-            refresh_token: "e2e-subagent-login-bigmodel-refresh-token",
-          },
-        },
-        msg: "",
-      });
-      return;
-    }
-
-    if (
-      caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE &&
-      request.method === "GET" &&
-      url.pathname === "/api/v2/releases/latest"
-    ) {
-      writeJson(response, {
-        config_version: resolveSubagentLoginCatalogConfigVersion(subagentOAuthTokenIssued),
-        version: "3.8.1-e2e",
-      });
-      return;
-    }
-
-    if (
-      caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE &&
-      request.method === "GET" &&
-      url.pathname === "/api/v1/client/configs"
-    ) {
-      writeJson(
-        response,
-        resolveSubagentLoginCatalogPayload({
-          configVersion: url.searchParams.get("config_version"),
-          oauthTokenIssued: subagentOAuthTokenIssued,
-        }),
-      );
-      return;
-    }
-
-    if (
       faultMode === "startBalanceFailure" &&
       url.pathname === "/api/v1/zcode-plan/billing/balance"
     ) {
@@ -1607,41 +1430,15 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
     }
 
     if (
-      providerResponsive &&
+      forceStartPlanBalance &&
       request.method === "GET" &&
       url.pathname === "/api/v1/zcode-plan/billing/balance"
     ) {
       writeJson(
         response,
         // 推荐依赖目标模型的真实额度；与 SIP 使用的当前模型保持一致。
-        buildProviderResponsiveStartBalance(startIndependent ? "GLM-5.3" : undefined),
+        buildStartPlanBalance(startIndependent ? "GLM-5.3" : undefined),
       );
-      return;
-    }
-
-    if (
-      caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE &&
-      request.method === "GET" &&
-      url.pathname === "/api/v1/zcode-plan/billing/balance"
-    ) {
-      writeJson(response, {
-        code: 0,
-        data: { balances: [], plans: [] },
-        msg: "",
-        success: true,
-      });
-      return;
-    }
-
-    if (
-      caseMode === "model-provider-plan-surface" &&
-      request.method === "GET" &&
-      url.pathname === "/api/v1/zcode-plan/billing/balance"
-    ) {
-      // 计划交叉用例需要一份确定的 Start Plan 权益；普通 Coding Plan 用例仍按
-      // 自己的订阅接口判定，不把 Start 权益泄漏到其他 spec。
-      // 仅有 plan 元信息、没有模型额度不会形成可执行 Start 候选。
-      writeJson(response, buildProviderResponsiveStartBalance("GLM-5.2"));
       return;
     }
 
@@ -1803,14 +1600,6 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
       writeJson(response, {
         code: 200,
         data: {
-          ...(caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE
-            ? {
-                avatar: "",
-                customerName: "Subagent Login E2E",
-                customerNumber: "subagent-login-e2e-user",
-                nickName: "Subagent Login E2E",
-              }
-            : {}),
           organizations: [
             ...(["expiredTeam", "twoTeams"].includes(faultMode)
               ? [
@@ -1834,11 +1623,9 @@ async function startCodingPlanTeamMockIfNeeded(specs: string[] = []) {
               : []),
             {
               organizationId: "org-team-a",
-              organizationName: providerResponsive ? PROVIDER_RESPONSIVE_TEAM_NAME : "Team Org",
+              organizationName: "Team Org",
               projects: [
-                ...(scenario !== "teamOnly" ||
-                caseMode === SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE ||
-                caseMode === "model-provider-plan-surface"
+                ...(scenario !== "teamOnly"
                   ? [
                       {
                         projectId: "proj-personal-a",
@@ -2204,28 +1991,23 @@ async function isCodingPlanTeamMockAlive(baseUrl: string): Promise<boolean> {
   }
 }
 
-async function configureCodingPlanTeamMockForSpecs(specs: string[]) {
+async function resetCodingPlanTeamMockStateForSpecs(specs: string[]) {
   if (!shouldUseCodingPlanTeamMock(specs)) {
     return;
   }
   const baseUrl =
     codingPlanTeamMockBaseUrl || process.env.ZCODE_E2E_CODING_PLAN_MOCK_URL?.trim() || "";
   if (!baseUrl) {
-    throw new Error("coding plan mock case mode 配置失败：mock URL 未初始化");
+    throw new Error("coding plan mock state reset failed: mock URL is not initialized");
   }
-  const mode = isSubagentCodingPlanLoginCatalogStaleSpec(specs)
-    ? SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_MODE
-    : isModelProviderPlanSurfaceSpec(specs)
-      ? "model-provider-plan-surface"
-      : "default";
-  const response = await fetch(`${baseUrl}/__e2e/coding-plan/case-mode`, {
-    body: JSON.stringify({ mode }),
+  const response = await fetch(`${baseUrl}/__e2e/coding-plan/reset-state`, {
+    body: JSON.stringify({}),
     headers: { "content-type": "application/json" },
     method: "POST",
     signal: AbortSignal.timeout(2_000),
   });
   if (!response.ok) {
-    throw new Error(`coding plan mock case mode 配置失败：status=${response.status} mode=${mode}`);
+    throw new Error(`coding plan mock state reset failed: status=${response.status}`);
   }
 }
 
@@ -3454,7 +3236,6 @@ function seedE2EStartupState(specs: string[] = []) {
   const codingPlanUpgradeE2E = isCodingPlanUpgradeE2E(specs);
   const oauthCredentialRecoverySpec = isOAuthCredentialRecoverySpec(specs);
   const jwtExpiryReauthenticationSpec = isJwtExpiryReauthenticationSpec(specs);
-  const subagentLoginCatalogStaleSpec = isSubagentCodingPlanLoginCatalogStaleSpec(specs);
   const builtInSubagentModelOverridesSpec = isBuiltInSubagentModelSelectionOverridesSpec(specs);
   const providerReadinessColdStartFixture = usesProviderReadinessColdStartFixture(specs);
   const shouldUseBigmodelAuth = codingPlanTeamSpec || codingPlanUpgradeE2E;
@@ -3537,27 +3318,25 @@ function seedE2EStartupState(specs: string[] = []) {
           // 该 case 只保留本地 Provider 回放，不注入无关账号身份。
           builtInSubagentModelOverridesSpec
           ? {}
-          : subagentLoginCatalogStaleSpec
-            ? {}
-            : oauthCredentialRecoverySpec
-              ? createCorruptOAuthCredentialSeed(authProviderId)
-              : jwtExpiryReauthenticationSpec
-                ? createExpiredJwtOAuthCredentialSeed(authProviderId)
-                : createE2EStartupCredentialSeed({
-                    specs,
-                    accountMock: codingPlanTeamSpec || codingPlanUpgradeE2E,
-                    remoteProfile: process.env.ZCODE_E2E_REMOTE_PROFILE === "1",
-                    legacyAuthToken: E2E_AUTH_TOKEN,
-                    restoredOAuthCredentials: {
-                      "oauth:active_provider": authProviderId,
-                      // 账号 mock 只覆盖选定族；夹带另一个假账号会访问未接管的真实控制面。
-                      [`oauth:${authProviderId}:access_token`]: shouldUseBigmodelAuth
-                        ? "e2e-bigmodel-oauth-token"
-                        : E2E_AUTH_TOKEN,
-                      [`oauth:${authProviderId}:user_info`]: JSON.stringify(E2E_USER_PROFILE),
-                      zcodejwttoken: E2E_AUTH_TOKEN,
-                    },
-                  }),
+          : oauthCredentialRecoverySpec
+            ? createCorruptOAuthCredentialSeed(authProviderId)
+            : jwtExpiryReauthenticationSpec
+              ? createExpiredJwtOAuthCredentialSeed(authProviderId)
+              : createE2EStartupCredentialSeed({
+                  specs,
+                  accountMock: codingPlanTeamSpec || codingPlanUpgradeE2E,
+                  remoteProfile: process.env.ZCODE_E2E_REMOTE_PROFILE === "1",
+                  legacyAuthToken: E2E_AUTH_TOKEN,
+                  restoredOAuthCredentials: {
+                    "oauth:active_provider": authProviderId,
+                    // 账号 mock 只覆盖选定族；夹带另一个假账号会访问未接管的真实控制面。
+                    [`oauth:${authProviderId}:access_token`]: shouldUseBigmodelAuth
+                      ? "e2e-bigmodel-oauth-token"
+                      : E2E_AUTH_TOKEN,
+                    [`oauth:${authProviderId}:user_info`]: JSON.stringify(E2E_USER_PROFILE),
+                    zcodejwttoken: E2E_AUTH_TOKEN,
+                  },
+                }),
       null,
       2,
     ),
@@ -3571,10 +3350,6 @@ function isOAuthCredentialRecoverySpec(specs: string[] = []) {
 
 function isJwtExpiryReauthenticationSpec(specs: string[] = []) {
   return workerSpecsContain(specs, JWT_EXPIRY_REAUTHENTICATION_SPEC);
-}
-
-function isSubagentCodingPlanLoginCatalogStaleSpec(specs: string[] = []) {
-  return workerSpecsContain(specs, SUBAGENT_CODING_PLAN_LOGIN_CATALOG_STALE_SPEC);
 }
 
 function usesProviderReadinessColdStartFixture(specs: string[] = []) {
@@ -4073,9 +3848,6 @@ function isOffPeakInvalidTicketSpec(specs: string[] = []) {
   return specs.some((spec) => spec.includes(OFFPEAK_INVALID_TICKET_SPEC));
 }
 
-function isModelProviderPlanSurfaceSpec(specs: string[] = []) {
-  return specs.some((spec) => spec.includes(MODEL_PROVIDER_PLAN_SURFACE_SPEC));
-}
 
 function isToolErrorSurfaceSpec(specs: string[] = []) {
   return specs.some((spec) => spec.includes(TOOL_ERROR_SURFACE_SPEC));
@@ -4376,8 +4148,7 @@ async function seedUpstreamE2EModelConfig(specs: string[] = []) {
     ) ||
     builtInSubagentModelOverridesSpec ||
     settingsSubagentCreateEditPersistenceSpec ||
-    specs.some((spec) => spec.includes("plugin-subagent-override-cold.test.ts")) ||
-    isSubagentCodingPlanLoginCatalogStaleSpec(specs);
+    specs.some((spec) => spec.includes("plugin-subagent-override-cold.test.ts"));
   const subagentRuntimeCatalogReasoningSpec = isSubagentRuntimeCatalogReasoningSpec(specs);
   // 原因：pending 目录曾统一使用 240/80，导致普通续发插入无关 Compact，
   // 并在转正移动文件后改变测试语义。只有显式自动压缩场景使用小窗口。
@@ -4917,7 +4688,7 @@ export const config: WebdriverIO.Config = {
           cid,
           specs,
           configureAgentServerEnv: configureZCodeAgentServerEnv,
-          configureCodingPlanTeamMockForSpecs,
+          resetCodingPlanTeamMockStateForSpecs,
           recordBeforeSession: e2eReporter.beforeSession,
           resetHome: resetE2EHome,
           startCodingPlanTeamMockIfNeeded,

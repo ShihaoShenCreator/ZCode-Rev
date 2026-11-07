@@ -1,4 +1,4 @@
-import { modelMessageContentToText } from "@zcode/contracts";
+import { modelMessageContentToText } from "@s-agent/contracts";
 
 /** 队列/trace fixture 按任务正文匹配响应；目录的原始请求由 agent-listing 专项测试验收。 */
 export function withoutAgentListingMessages<T extends { content?: unknown; role?: string }>(

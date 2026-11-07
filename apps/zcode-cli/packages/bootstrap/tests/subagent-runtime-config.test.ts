@@ -2,9 +2,9 @@ import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promis
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { describe, expect, it, vi } from "vitest";
-import { createAgentStateId, type SubagentRuntimeConfig } from "@zcode/shared";
-import type { ModelRequest } from "@zcode/contracts";
-import { createNodeLoggerFactory } from "@zcode/adapters/logging";
+import { createAgentStateId, type SubagentRuntimeConfig } from "@s-agent/shared";
+import type { ModelRequest } from "@s-agent/contracts";
+import { createNodeLoggerFactory } from "@s-agent/adapters/logging";
 import { parseRuntimeSubagentConfig } from "../src/runtime-subagents/index.js";
 import * as subagents from "../src/subagents.js";
 import { createRegistryBackedTestApp } from "./helpers/registry-backed-test-app.js";

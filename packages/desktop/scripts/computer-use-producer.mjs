@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
 /**
- * 判定当前安装的 `@zcode/zcode-cua` 是闭源真实 producer 还是开源占位包。
+ * 判定当前安装的 `@s-agent/zcode-cua` 是闭源真实 producer 还是开源占位包。
  *
  * 闭源构建使用 workspace 内 `packages/zcode-cua` 的真实 producer；开源导出把该目录整体换成占位包，
  * 占位包在 package.json 声明 `zcodeCuaPlaceholder: true`，所有能力 fail-closed。

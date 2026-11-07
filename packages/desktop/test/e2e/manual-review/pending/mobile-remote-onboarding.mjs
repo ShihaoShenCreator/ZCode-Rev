@@ -12,14 +12,14 @@ import { createServer } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { WebSocketServer } from "ws";
-import { ChannelServer, Emitter, Event, SocketProtocol, VSBuffer } from "@zcode/rpc";
+import { ChannelServer, Emitter, Event, SocketProtocol, VSBuffer } from "@s-agent/rpc";
 import {
   IBroadcastService,
   IOnboardingRecordService,
   ISettingService,
   ServiceCollection,
-} from "@zcode/services";
-import { setDataBaseDir } from "@zcode/services/node";
+} from "@s-agent/services";
+import { setDataBaseDir } from "@s-agent/services/node";
 import { createOnboardingRecordService } from "../../../../../services/src/onboarding/onboardingRecordService.js";
 import { createServerRemoteWorkspaceServiceCollection } from "../../../../src/host/remoteWorkspaceServiceCollection.js";
 import { exposeWindowHostAttachmentServices } from "../../../../src/host/windowHostAttachmentRpcPolicy.js";
@@ -73,8 +73,8 @@ const entryId = resolve(repoRoot, "packages/desktop/onboarding-e2e-entry.js");
 const entry = `
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { connectViaWebSocket } from '@zcode/client';
-import { Event } from '@zcode/rpc';
+import { connectViaWebSocket } from '@s-agent/client';
+import { Event } from '@s-agent/rpc';
 import { ServiceProvider } from '@/hooks/useServices.js';
 import { PlatformProvider } from '@/hooks/usePlatform.js';
 import { StoreProvider } from '@/store/StoreProvider.js';

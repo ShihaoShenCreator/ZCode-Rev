@@ -6,7 +6,7 @@
 
 **Architecture:** Keep using `unbash` for AST parsing, then apply a conservative safety layer over parsed simple commands, redirects, assignments, and argv. Bash read-only classification may grant plan-mode permission and concurrency safety, but it must not decide whether a successful Bash call persists cwd.
 
-**Tech Stack:** TypeScript, Vitest, `unbash`, `@zcode/core` permission service, Bash tool handler.
+**Tech Stack:** TypeScript, Vitest, `unbash`, `@s-agent/core` permission service, Bash tool handler.
 
 ## Global Constraints
 
@@ -67,13 +67,13 @@
 - [x] Add failing tests in `apps/zcode-cli/packages/core/tests/bash-permission.test.ts` for safe read/search/list commands, safe redirects, wrapper stripping, denied dynamic/assignment/write cases, denied `cd && git`, and denied write redirects.
 - [x] Add failing tests in `apps/zcode-cli/packages/core/tests/bash-handler.test.ts` proving read-only classification does not suppress main-thread cwd persistence.
 - [x] Run focused Vitest files first.
-- [x] Run `pnpm --filter @zcode/core typecheck`.
+- [x] Run `pnpm --filter @s-agent/core typecheck`.
 - [x] Run root `pnpm lint`; note unrelated failures if present.
 
 ## Verification Notes
 
-- `pnpm --filter @zcode/core exec vitest run tests/bash-permission.test.ts tests/bash-handler.test.ts` passed.
-- `pnpm --filter @zcode/core typecheck` passed.
+- `pnpm --filter @s-agent/core exec vitest run tests/bash-permission.test.ts tests/bash-handler.test.ts` passed.
+- `pnpm --filter @s-agent/core typecheck` passed.
 - `oxfmt --check` on touched Bash files and this plan passed.
 - `pnpm lint` passed with existing warnings only.
 - `pnpm typecheck` still fails in `packages/desktop/test/e2e/reporting/e2e-ui-coverage.ts` because the existing Istanbul packages lack local declarations and several callback parameters are implicit `any`.

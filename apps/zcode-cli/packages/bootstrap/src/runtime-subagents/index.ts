@@ -4,7 +4,7 @@ import {
   type AgentProfileParseDiagnostic,
   resolveSubagentRuntimeProfiles,
   type SubagentRuntimeConfig,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 /** 独立 CLI 的磁盘 loader 复用共享纯解析器，保留原文件配置来源。 */
 import type { RuntimeSubagentConfiguration } from "./contract.js";

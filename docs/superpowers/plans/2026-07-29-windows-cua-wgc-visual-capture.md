@@ -897,7 +897,7 @@ Use the existing source-helper environment and execute:
 
 ```powershell
 pnpm exec vitest run packages/services/test/cuaPermissionBroker.server.win32.test.ts packages/services/test/cuaPermissionBrokerNodeHelper.test.ts packages/services/test/cuaPermissionBroker.platformAxSource.test.ts packages/services/test/cuaPermissionBroker.electronBackend.test.ts
-pnpm --filter @zcode/zcode-cua-plugin test
+pnpm --filter @s-agent/zcode-cua-plugin test
 pnpm typecheck
 pnpm lint
 pnpm test:unit:affected

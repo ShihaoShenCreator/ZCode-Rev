@@ -8,7 +8,7 @@ import {
   createToolCallId,
   createTraceId,
   createTurnId,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../src/storage/index.js";
 
 const DAY = 24 * 60 * 60 * 1000;

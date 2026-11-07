@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { resolveSubagentSelection } from "../src/runtime/helpers/subagent-selection.js";
 import { projectExecutionErrorPayload } from "../src/errors/error-payload.js";
 import { createErrorResult } from "../src/tool/executor/errors.js";
-import type { EffectiveModelSelectionResult } from "@zcode/shared/model-selection";
+import type { EffectiveModelSelectionResult } from "@s-agent/shared/model-selection";
 import { modelContentForToolResult } from "../src/runtime/helpers/tool-result.js";
 
 describe("显式 Subagent 选择使用注入的公共解析", () => {

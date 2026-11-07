@@ -7,8 +7,8 @@ import {
   type Socket,
 } from "node:net";
 import { resolve } from "node:path";
-import { BufferWriter, serialize } from "@zcode/rpc";
-import { ServiceChannels } from "@zcode/shared";
+import { BufferWriter, serialize } from "@s-agent/rpc";
+import { ServiceChannels } from "@s-agent/shared";
 import { clearAppData } from "../helpers/desktop-app.js";
 import {
   getUpstreamRequestRecordCount,

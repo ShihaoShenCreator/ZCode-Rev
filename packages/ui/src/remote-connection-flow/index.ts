@@ -22,7 +22,7 @@ import {
   type ConnectionProfile,
   type SourceServerRunningTask,
   type RemoteTarget,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { useCancelPendingRemoteConnection } from "@/hooks/useCancelPendingRemoteConnection.js";
 import { useConfirmDialogStore } from "@/store/confirmDialogStore.js";
 import { useConfirmDialog } from "@/hooks/useConfirmDialog.js";

@@ -1,12 +1,12 @@
 import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
-import { parseRemoteWorkspaceIdentity } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity } from "@s-agent/shared";
 import {
   TID_SETTINGS_BACK_BUTTON,
   TID_TASK_SETTINGS_BUTTON,
   TID_TASK_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   clickTestIdByDom,

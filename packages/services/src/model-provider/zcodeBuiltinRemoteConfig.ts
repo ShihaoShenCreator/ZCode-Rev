@@ -1,5 +1,5 @@
-import { downloadZCodeBuiltinRelease, type ZCodeBuiltinRelease } from "@zcode/provider-node";
-import type { ApiClient } from "@zcode/shared";
+import { downloadZCodeBuiltinRelease, type ZCodeBuiltinRelease } from "@s-agent/provider-node";
+import type { ApiClient } from "@s-agent/shared";
 
 export interface FetchZCodeBuiltinRemoteReleaseOptions {
   readonly apiClient: ApiClient;

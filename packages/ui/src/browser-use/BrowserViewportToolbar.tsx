@@ -1,12 +1,12 @@
 import { useEffect, useState, type KeyboardEvent } from "react";
-import { BROWSER_VIEWPORT_LIMITS, type BrowserViewportSize } from "@zcode/shared";
+import { BROWSER_VIEWPORT_LIMITS, type BrowserViewportSize } from "@s-agent/shared";
 import {
   TID_BROWSER_RESPONSIVE_HEIGHT_INPUT,
   TID_BROWSER_RESPONSIVE_TOOLBAR,
   TID_BROWSER_RESPONSIVE_WIDTH_INPUT,
   TID_BROWSER_RESPONSIVE_ZOOM_OPTION,
   TID_BROWSER_RESPONSIVE_ZOOM_SELECT,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   BROWSER_VIEWPORT_ZOOM_OPTIONS,
   type BrowserViewportZoom,

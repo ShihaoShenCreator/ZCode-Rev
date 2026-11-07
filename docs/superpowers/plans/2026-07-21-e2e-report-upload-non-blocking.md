@@ -90,7 +90,7 @@ Expected: PASS。
 
 - [ ] **Step 3: Verify repository gates**
 
-Run: `pnpm --filter @zcode/desktop typecheck:e2e`
+Run: `pnpm --filter @s-agent/desktop typecheck:e2e`
 
 Run: `pnpm typecheck`
 

@@ -14,7 +14,7 @@
 // 阶段——那些是编译产物，住在快照的 `holes[]` 与 `scriptPath` 上。所以这里读一次端口快照（有界：
 // 一处留白一次），端口缺席或读不到时退回载荷自己说得出的字段，通知照发、只是少几句。
 
-import type { DynamicWorkflowRunHole } from "@zcode/contracts";
+import type { DynamicWorkflowRunHole } from "@s-agent/contracts";
 import type { DynamicWorkflowRunProgressPayload, TraceContext } from "../deps.js";
 import { formatWorkflowHoleNotification } from "../../runtime-task/workflow-notification-copy.js";
 import type { AgentRuntimeInternal } from "../internal.js";

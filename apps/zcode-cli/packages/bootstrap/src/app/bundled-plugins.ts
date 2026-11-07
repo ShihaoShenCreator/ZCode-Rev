@@ -9,9 +9,9 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, join, resolve, sep } from "node:path";
-import { writeBundledOfficialMarketplacePartitionSync } from "@zcode/adapters";
-import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE, type Logger } from "@zcode/contracts";
-import { isZCodeCuaInternalFeatureEnabled, ZCODE_CUA_OFFICIAL_PLUGIN_ID } from "@zcode/shared";
+import { writeBundledOfficialMarketplacePartitionSync } from "@s-agent/adapters";
+import { ZCODE_OFFICIAL_PLUGIN_MARKETPLACE, type Logger } from "@s-agent/contracts";
+import { isZCodeCuaInternalFeatureEnabled, ZCODE_CUA_OFFICIAL_PLUGIN_ID } from "@s-agent/shared";
 import {
   createOfficialPluginCacheRetryBudget,
   getOfficialPluginCacheRetryAttempts,

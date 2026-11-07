@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import React, { act } from "react";
 import { testRender } from "@mbears/opentui-react/test-utils";
-import { getZCodeCopy } from "@zcode/i18n";
+import { getZCodeCopy } from "@s-agent/i18n";
 import { completeSlashCommand } from "../src/app-keyboard.js";
 import { AppView } from "../src/app-view.js";
 import { Sidebar } from "../src/app-sidebar.js";

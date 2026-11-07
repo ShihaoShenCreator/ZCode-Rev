@@ -7,18 +7,18 @@ import {
   ModelPropertiesConfig,
   ProviderApiConfig,
   ProviderConfig,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import {
   NodePersonalProviderConfigRepository,
   NodeProviderRegistryRuntime,
   createNodeModelSelectionFacade,
-} from "@zcode/provider-node";
+} from "@s-agent/provider-node";
 import {
   createZCodeAgentService,
   createZCodeTaskServiceAdapter,
   getDataBaseDir,
   setDataBaseDir,
-} from "@zcode/services/node";
+} from "@s-agent/services/node";
 import { TaskIndexRepo } from "../../../../services/src/session/taskIndexRepo.js";
 import { createZCodeTaskIndexSyncer } from "../../../../services/src/zcode-agent/zcodeTaskIndexSyncer.js";
 import { getE2EAppDataPaths } from "./desktop-app.js";

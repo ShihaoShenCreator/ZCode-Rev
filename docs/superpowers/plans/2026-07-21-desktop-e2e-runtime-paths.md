@@ -14,7 +14,7 @@
 - Do not change desktop continuous or web remote replayable behavior.
 - Every bug-fix comment added to source code must explain the cause in Chinese.
 - `packages/desktop/test/e2e` must contain no raw `/tmp` literal after migration.
-- Run `pnpm --filter @zcode/desktop typecheck:e2e`, `pnpm typecheck`, and `pnpm lint` before completion.
+- Run `pnpm --filter @s-agent/desktop typecheck:e2e`, `pnpm typecheck`, and `pnpm lint` before completion.
 
 ---
 
@@ -37,7 +37,7 @@ expect(resolveE2EShellPath("bg25", "release-child-bash")).toBe(
 expect(findRawSystemTmpReferences()).toEqual([]);
 ```
 
-- [ ] **Step 2: Run `pnpm --filter @zcode/desktop exec vitest run test/e2eRuntimePaths.test.ts`** and verify failure is caused by the missing helper/current raw literals.
+- [ ] **Step 2: Run `pnpm --filter @s-agent/desktop exec vitest run test/e2eRuntimePaths.test.ts`** and verify failure is caused by the missing helper/current raw literals.
 - [ ] **Step 3: Implement the minimal pure path helper** using `node:path` and the existing E2E HOME environment precedence.
 
 ```ts
@@ -182,5 +182,5 @@ const fixtures = options.fixturePaths.flatMap((path) =>
 - [ ] **Step 2: Run `e2e:fixture:check`** for BG25, BG21, v4 permission, refresh permission, turn navigator, and tool cross product specs.
 - [ ] **Step 3: Run strict case-local BG25 replay** and verify the Bash barrier releases, coordinator reply is consumed, and child completes.
 - [ ] **Step 4: Run representative permission and tool-cross-product replays** to verify absolute tool paths and relative Bash paths converge.
-- [ ] **Step 5: Run `pnpm --filter @zcode/desktop typecheck:e2e`, `pnpm typecheck`, and `pnpm lint`** and report any pre-existing warnings separately.
+- [ ] **Step 5: Run `pnpm --filter @s-agent/desktop typecheck:e2e`, `pnpm typecheck`, and `pnpm lint`** and report any pre-existing warnings separately.
 - [ ] **Step 6: Review `git diff`, stage the scoped files, and commit** with a Conventional Commit message.

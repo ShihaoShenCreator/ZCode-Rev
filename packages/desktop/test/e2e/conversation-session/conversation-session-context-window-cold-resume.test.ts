@@ -9,7 +9,7 @@ import {
   TID_V4_MODEL_CONFIG,
   TID_V4_SESSION_PANE,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   getE2EAppDataPaths,

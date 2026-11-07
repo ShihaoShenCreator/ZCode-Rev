@@ -6,7 +6,7 @@ import {
   SessionEventType,
   type SessionStorePort,
   type ToolPart,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createReadFileStatePathKey } from "../src/tool/read-file-state.js";
 import { parseReadFileStateMetadata } from "../src/tool/read-file-state-metadata.js";
 import type { ReadFileStateMap } from "../src/tool/types.js";

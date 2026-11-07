@@ -1,5 +1,5 @@
 import { isSea } from "node:sea";
-import type { RuntimeInfo } from "@zcode/shared-types";
+import type { RuntimeInfo } from "@s-agent/shared-types";
 
 export { type RuntimeInfo };
 

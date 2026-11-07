@@ -2,12 +2,12 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import {
   SESSION_ENTRY_SESSION_FEATURES,
   getCurrentModelInvocationContext,
   type ModelRequestSessionFeature,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createRegistryBackedTestApp as createZCodeApp } from "./helpers/registry-backed-test-app.js";
 
 // docs/design/v2/model/session-features-header.md 的装配层一半：内置 `/workflow` 的展开处

@@ -5,7 +5,7 @@ import {
   removeRemoteProjectEntryForRow,
 } from "#e2e/helpers/remote-project-handoff-probe";
 import { openWorkspaceDraftFromSidebar } from "#e2e/helpers/workspace-agent-warmup";
-import type { VirtualProject } from "@zcode/services";
+import type { VirtualProject } from "@s-agent/services";
 import { selectNativeProjectDirectories } from "../helpers/project-sidebar.js";
 import { openScopeProjectSubmenu } from "../helpers/settings-scope-menu.js";
 import { spawn } from "node:child_process";
@@ -13,7 +13,7 @@ import { once } from "node:events";
 import { join, basename, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
-import { ServiceChannels } from "@zcode/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import {
   TID_TASK_SETTINGS_BUTTON,
   TID_TASK_ITEM,
@@ -32,7 +32,7 @@ import {
   TID_AUTOMATION_FORM_SUBMIT,
   TID_AUTOMATIONS_LIST,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   setInputValueByTestIdDom,

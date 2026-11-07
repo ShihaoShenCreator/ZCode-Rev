@@ -12,7 +12,7 @@ import {
   CreateWorkflowOutputSchema,
   FILL_WORKFLOW_HOLE_TOOL_NAME,
   type ToolResultDisplayPayload,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 /**
  * 共用 `create_workflow` display 的三个工具：两个启动工具，加上留白补全——它的输出就是

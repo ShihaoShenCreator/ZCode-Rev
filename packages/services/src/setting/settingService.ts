@@ -5,7 +5,7 @@ import type {
   AppSettings,
   ProviderFamilyDomain,
   ProviderFamilyConnectionSelectionSettings,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   appSettingsPatchSchema,
   appSettingsSchema,
@@ -13,8 +13,8 @@ import {
   formatZodError,
   USER_INSTRUCTIONS_MAX_BYTES,
   USER_INSTRUCTIONS_TOO_LARGE_ERROR_CODE,
-} from "@zcode/shared";
-import { atomicWritePrivateTextFile } from "@zcode/shared/node";
+} from "@s-agent/shared";
+import { atomicWritePrivateTextFile } from "@s-agent/shared/node";
 import type { ISettingService, WorkspaceSettingsProjection } from "./setting.js";
 import { normalizeSettingsPatch } from "#src/setting/normalizeSettingsPatch.js";
 import {

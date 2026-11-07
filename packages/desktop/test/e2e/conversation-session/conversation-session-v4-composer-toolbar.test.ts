@@ -29,7 +29,7 @@ import {
   TID_V4_MODEL_CONFIG,
   TID_SETTINGS_PAGE,
   TID_SETTINGS_BACK_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clickV4SlashOption,
   getV4ComposerText,

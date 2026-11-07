@@ -57,7 +57,7 @@ Helper 是 **Node SEA + `LSUIElement=true`**（实测 `NODE_SEA_BLOB` 命中、I
 - **fail-closed vs fail-open**：验签/指纹相关一律 fail-closed（拒绝操作）；窗口 bounds 获取失败一律 fail-open（退回屏幕底部居中），吸附是增强不是可用性前提。
 - **授权后生效**：两项权限都必须重启 Helper 才生效（SR 对已运行进程不生效；accessibility 有 `AXIsProcessTrusted` 进程级缓存）。保留 `restartHelperAfterReturn` 机制。
 - **语言跟随 ZCode**：权限拖拽浮窗不得自行读取浏览器 `localStorage` 或操作系统语言；每次 `show(permission)` 都从 main 进程的 `currentApplicationLocale` 读取当前 ZCode 界面语言，并通过浮窗 state IPC 传给 renderer。renderer 只支持 shared `Locale` 已声明的 `zh-CN` / `en-US`，同步更新说明文案、拖拽 tooltip、`document.title` 与 `<html lang>`。state 必须在 `showInactive()` 前发送，避免英文界面先闪出中文 fallback。
-- **git**：禁用 `--no-verify`。上游 `@zcode/zcode-cua` 本次**不修改**，全部改动在下游仓库。
+- **git**：禁用 `--no-verify`。上游 `@s-agent/zcode-cua` 本次**不修改**，全部改动在下游仓库。
 - **macOS API 版本**：`CGWindowListCopyWindowInfo` 自 10.5 起可用，安全。新增任何系统命令前必须核最低支持版本（`/usr/bin/lockf` 是 15+ 曾致 macOS ≤14 全线不可用）。
 
 语言状态链路：
@@ -130,7 +130,7 @@ describe("CUA helper permission drag channels", () => {
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/shared test -- channels`
+Run: `pnpm --filter @s-agent/shared test -- channels`
 Expected: FAIL — `PrepareCuaHelperPermissionDrag` 为 `undefined`
 
 - [ ] **Step 3: 实现**
@@ -187,7 +187,7 @@ export interface PrepareCuaHelperPermissionDragResult {
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/shared test -- channels`
+Run: `pnpm --filter @s-agent/shared test -- channels`
 Expected: PASS
 
 Run: `pnpm typecheck`
@@ -257,7 +257,7 @@ it("绝不触发 native 权限请求（不弹系统弹窗）", async () => {
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaAccessibilitySettings.test.ts -t "绝不触发"`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaAccessibilitySettings.test.ts -t "绝不触发"`
 Expected: FAIL — `requestCalls` 为 `["screen_recording", "accessibility"]`
 
 - [ ] **Step 3: 实现 —— 删除请求调用，保留验签**
@@ -296,7 +296,7 @@ Expected: FAIL — `requestCalls` 为 `["screen_recording", "accessibility"]`
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaAccessibilitySettings.test.ts`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaAccessibilitySettings.test.ts`
 Expected: PASS。**注意**：原有断言「会调用 request*」的用例会失败，逐个改为断言不调用；断言 `openSettingsUrl` 顺序、会话协调、recovery 权的用例应全部保持通过。
 
 - [ ] **Step 5: 提交**
@@ -365,7 +365,7 @@ it("预热成功返回路径与身份，但不泄漏指纹给 renderer 形状", 
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaAccessibilitySettings.test.ts -t "预热"`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaAccessibilitySettings.test.ts -t "预热"`
 Expected: FAIL — `prepareCuaHelperPermissionDrag is not a function`
 
 - [ ] **Step 3: 实现**
@@ -446,7 +446,7 @@ export async function prepareCuaHelperPermissionDrag(
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaAccessibilitySettings.test.ts`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaAccessibilitySettings.test.ts`
 Expected: PASS
 
 - [ ] **Step 5: 提交**
@@ -505,7 +505,7 @@ it("预热后未被篡改则同步发起拖拽", async () => {
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/desktopCuaPermissionIpc.test.ts -t "拖拽"`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/desktopCuaPermissionIpc.test.ts -t "拖拽"`
 Expected: FAIL — 通道无 handler
 
 - [ ] **Step 3: 实现**
@@ -636,7 +636,7 @@ const CUA_HELPER_DRAG_ICON_DATA_URL =
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/desktopCuaPermissionIpc.test.ts`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/desktopCuaPermissionIpc.test.ts`
 Expected: PASS
 
 - [ ] **Step 5: 提交**
@@ -697,7 +697,7 @@ it("忽略非 layer-0 窗口（面板/浮层不是主窗口）", () => {
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaSystemSettingsWindowWatcher.test.ts`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaSystemSettingsWindowWatcher.test.ts`
 Expected: FAIL — 模块不存在
 
 - [ ] **Step 3: 实现**
@@ -749,7 +749,7 @@ while true {
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaSystemSettingsWindowWatcher.test.ts`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaSystemSettingsWindowWatcher.test.ts`
 Expected: PASS
 
 Run: `node packages/desktop/scripts/build-macos-window-bounds.mjs && ./packages/desktop/resources/macos-window-bounds/zcode-window-bounds 150 | head -2`
@@ -830,7 +830,7 @@ it.each(["success", "canceled", "timeout", "origin-destroyed"])(
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaPermissionPanelPositioner.test.ts test/cuaPermissionDragPanel.test.ts`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaPermissionPanelPositioner.test.ts test/cuaPermissionDragPanel.test.ts`
 Expected: FAIL — 模块不存在
 
 - [ ] **Step 3: 实现**
@@ -864,7 +864,7 @@ win.once("ready-to-show", () => {
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/desktop exec vitest run test/cuaPermissionPanelPositioner.test.ts test/cuaPermissionDragPanel.test.ts`
+Run: `pnpm --filter @s-agent/desktop exec vitest run test/cuaPermissionPanelPositioner.test.ts test/cuaPermissionDragPanel.test.ts`
 Expected: PASS
 
 - [ ] **Step 5: 提交**
@@ -927,7 +927,7 @@ it("点击继续时只请求仍缺失的权限", async () => {
 
 - [ ] **Step 2: 运行测试确认失败**
 
-Run: `pnpm --filter @zcode/ui exec vitest run test/cuaPermissionChecklistModal.test.tsx`
+Run: `pnpm --filter @s-agent/ui exec vitest run test/cuaPermissionChecklistModal.test.tsx`
 Expected: FAIL — 组件不存在
 
 - [ ] **Step 3: 实现**
@@ -940,7 +940,7 @@ Expected: FAIL — 组件不存在
 
 - [ ] **Step 4: 运行测试确认通过**
 
-Run: `pnpm --filter @zcode/ui exec vitest run test/cuaPermissionChecklistModal.test.tsx`
+Run: `pnpm --filter @s-agent/ui exec vitest run test/cuaPermissionChecklistModal.test.tsx`
 Expected: PASS
 
 Run: `pnpm typecheck && pnpm lint`

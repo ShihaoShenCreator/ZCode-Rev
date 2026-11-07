@@ -21,7 +21,7 @@ CPU / 内存 tab 的内容：
 
 ## 存储 tab 数据通路
 
-该窗口按设计不接 RPC / MessagePort（见 `preload/resourceManager.ts`），因此存储服务不走 Window Host，而是由 **main 进程持有唯一的 `StorageService` 实例**（`@zcode/services` 的 storage 模块），遍历放在 `worker_threads` 里（entry `main/storageScanWorker`），不阻塞 main 事件循环；这与「main 禁止起外部进程采样」不冲突，扫盘只是 fs 遍历。
+该窗口按设计不接 RPC / MessagePort（见 `preload/resourceManager.ts`），因此存储服务不走 Window Host，而是由 **main 进程持有唯一的 `StorageService` 实例**（`@s-agent/services` 的 storage 模块），遍历放在 `worker_threads` 里（entry `main/storageScanWorker`），不阻塞 main 事件循环；这与「main 禁止起外部进程采样」不冲突，扫盘只是 fs 遍历。
 
 ```
 Resource Manager Renderer            preload (window.resourceManager.storage)        Main
@@ -174,7 +174,7 @@ contracts/spec:   packages/shared protocol.ts / channels.ts / validation.ts / zc
 | `desktop/src/main/resourceManagerStorage.ts`                                                            | 存储 tab 的 ipc 面：持有 StorageService、进度推送、关窗取消、定位路径校验                                  |
 | `desktop/src/main/storageScanWorker.ts` / `storageScanWorkerClient.ts` / `storageScanWorkerProtocol.ts` | 扫描 Worker 入口与 ScanRunnerPort 实现                                                                     |
 | `ui/src/resource-manager/storage/*`                                                                     | 存储 tab UI（磁盘卡片、类别列表、明细、清理确认）与 `useStorageUsage`                                      |
-| `desktop/src/renderer/resource-manager.html` / `src/resource-manager.tsx`                               | 独立 renderer 入口，挂载 `@zcode/ui` 的 `ResourceManagerApp`                                               |
+| `desktop/src/renderer/resource-manager.html` / `src/resource-manager.tsx`                               | 独立 renderer 入口，挂载 `@s-agent/ui` 的 `ResourceManagerApp`                                               |
 | `ui/src/resource-manager/ResourceManagerApp.tsx`                                                        | 窗口 UI（指标卡 + 分组列表），组件放在 `packages/ui` 内以纳入 Tailwind 扫描                                |
 | `ui/src/resource-manager/resourceUsageView.ts`                                                          | 分组聚合与格式化纯函数                                                                                     |
 | `services/src/process/processResourceSampler.ts`                                                        | 跨平台进程表读取、CPU 差分、进程树归属                                                                     |

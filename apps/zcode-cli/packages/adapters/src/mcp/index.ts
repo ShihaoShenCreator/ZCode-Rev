@@ -39,18 +39,18 @@ import type {
   OfficialMcpAuthFailureReason,
   OfficialMcpAuthHeadersPort,
   OfficialMcpTrustedOriginRegistry,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   McpResourceSubscribeUnsupportedError,
   ZCODE_MCP_SERVER_REQUEST_ID_META_KEY,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   OFFICIAL_MCP_AUTH_META_KEY,
   ZCODE_OFFICIAL_MCP_AUTH_TYPE,
   type McpServerFailureKind,
   type OfficialMcpAuthFailureKind,
-} from "@zcode/shared";
-import { buildMcpAppsClientCapabilities } from "@zcode/shared/mcp-apps";
+} from "@s-agent/shared";
+import { buildMcpAppsClientCapabilities } from "@s-agent/shared/mcp-apps";
 import { createHash, randomUUID } from "node:crypto";
 import { resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";

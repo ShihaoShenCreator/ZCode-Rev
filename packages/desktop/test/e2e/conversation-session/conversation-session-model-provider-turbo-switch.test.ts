@@ -1,5 +1,5 @@
-import { ModelConfig, ProviderConfig } from "@zcode/provider";
-import { NodePersonalProviderConfigRepository } from "@zcode/provider-node";
+import { ModelConfig, ProviderConfig } from "@s-agent/provider";
+import { NodePersonalProviderConfigRepository } from "@s-agent/provider-node";
 import { clearAppData, getE2EAppDataPaths } from "../helpers/desktop-app.js";
 import {
   selectUpstreamProviderModelById,

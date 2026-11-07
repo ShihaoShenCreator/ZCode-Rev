@@ -1,7 +1,7 @@
 import { startDraftFromProject } from "#e2e/helpers/project-sidebar";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { TID_V4_COMPOSER_INPUT } from "@zcode/shared/test-ids";
+import { TID_V4_COMPOSER_INPUT } from "@s-agent/shared/test-ids";
 import {
   getE2EAppDataPaths,
   setInputValueByTestIdDom,

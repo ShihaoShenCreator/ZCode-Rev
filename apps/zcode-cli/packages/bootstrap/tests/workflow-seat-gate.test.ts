@@ -14,8 +14,8 @@ import type {
   ModelRequestAdmission,
   ModelRequestAdmissionTicket,
   ModelRequestTarget,
-} from "@zcode/contracts";
-import type { InstanceRef } from "@zcode/dynamic-workflow";
+} from "@s-agent/contracts";
+import type { InstanceRef } from "@s-agent/dynamic-workflow";
 import {
   createWorkflowRunSeatGate,
   type SeatGateSubagent,

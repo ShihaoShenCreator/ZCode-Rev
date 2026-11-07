@@ -3,7 +3,7 @@ import {
   normalizeAgentProvidersToZCodeAgent,
   type ZCodeProvider,
   type AppSettings,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 const INSTALLABLE_AGENT_CLI_PROVIDERS: ZCodeProvider[] = [];
 
 export type BuiltinAgentCliStatus =

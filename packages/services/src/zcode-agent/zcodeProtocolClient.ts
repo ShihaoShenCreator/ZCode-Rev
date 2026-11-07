@@ -3,18 +3,18 @@ import {
   sessionLifecycleParamsSchema,
   sessionLifecycleSnapshotSchema,
   sessionLifecycleResultSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { ZCodeStorageStartupGate } from "#src/zcode-agent/zcodeStorageStartupGate.js";
-import { Emitter } from "@zcode/rpc";
-import type { IDisposable } from "@zcode/rpc";
+import { Emitter } from "@s-agent/rpc";
+import type { IDisposable } from "@s-agent/rpc";
 import type {
   ZCodeProtocolMethod,
   ZCodeProtocolNotification,
   ZCodeProtocolRequest,
   ZCodeProtocolRequestId,
   ZCodeProtocolTrace,
-} from "@zcode/shared";
-import type { V4Method } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import type { V4Method } from "@s-agent/shared/zcode-protocol-v4";
 import type { z } from "zod";
 import type { ZCodeProtocolTransport } from "./zcodeProtocolTransport.js";
 

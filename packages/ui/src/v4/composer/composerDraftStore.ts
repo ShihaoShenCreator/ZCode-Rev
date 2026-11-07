@@ -13,8 +13,8 @@ import {
   modelSelectionSchema,
   remoteHostIdFromWorkspaceIdentity,
   type ModelSelection,
-} from "@zcode/shared";
-import { submissionModeSchema, type SubmissionMode } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared";
+import { submissionModeSchema, type SubmissionMode } from "@s-agent/shared/zcode-protocol-v4";
 import type { ComposerMentionPrefill } from "@/store/zcodeSessionStoreTypes.js";
 
 export interface V4ComposerDraft {

@@ -17,7 +17,7 @@ import {
   type DynamicWorkflowRunSnapshot,
   type FillWorkflowHoleHole,
   type FillWorkflowHoleInput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type {
   ToolHandlerFailure,
   ToolInputResolutionContext,

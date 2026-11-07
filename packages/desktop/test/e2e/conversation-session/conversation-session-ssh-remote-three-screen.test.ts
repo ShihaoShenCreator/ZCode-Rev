@@ -1,7 +1,7 @@
 import { mkdir, writeFile, rm, readFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { createServer, type Socket } from "node:net";
-import { TID_TASK_SETTINGS_BUTTON, TID_SETTINGS_SECTION_NAV, testId } from "@zcode/shared/test-ids";
+import { TID_TASK_SETTINGS_BUTTON, TID_SETTINGS_SECTION_NAV, testId } from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

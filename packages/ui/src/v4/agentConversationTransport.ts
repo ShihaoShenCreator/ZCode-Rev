@@ -1,12 +1,12 @@
-import type { SessionLifecycleSnapshot } from "@zcode/shared";
+import type { SessionLifecycleSnapshot } from "@s-agent/shared";
 import { sendWithConversationDelayE2E } from "@/v4/conversationTransportDelayE2E.js";
 import { getLocalTtftObserver } from "@/v4/telemetry/local-ttft/contract.js";
-import { calibrateLocalTtftClock, localTtftNow } from "@zcode/shared";
+import { calibrateLocalTtftClock, localTtftNow } from "@s-agent/shared";
 /* oxlint-disable eslint(max-lines) -- transport 将上传、分块读取和 runtime 生命周期保持在同一 host 边界。 */
 // ConversationTransport 的 desktop/host 实现：桥到 IZCodeAgentService 的 v4 转发面
 // （依赖注入原则——数据层不感知 host 细节，
 // web 直连 ws relay 时换一个实现即可）。
-import type { IZCodeAgentService } from "@zcode/services";
+import type { IZCodeAgentService } from "@s-agent/services";
 import {
   conversationTopicFrameSchema,
   PROTOCOL_V4_LIMITS,
@@ -33,7 +33,7 @@ import {
   type V4ConversationRowsRangeResult,
   type V4ConversationSubscribeResult,
   type V4ConversationResyncResult,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import type { ConversationTransport } from "@/v4/transport.js";
 import { ensureAgentV4ConnectionHandshake } from "@/v4/agentV4ConnectionHandshake.js";
 import { createWorkflowRunTransportMethods } from "@/v4/agentConversationTransportWorkflowRuns.js";

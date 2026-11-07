@@ -1,5 +1,5 @@
-import { DesktopCommandIds } from "@zcode/shared";
-import type { UpdateStatePayload } from "@zcode/shared";
+import { DesktopCommandIds } from "@s-agent/shared";
+import type { UpdateStatePayload } from "@s-agent/shared";
 import { useCallback, useEffect, useState } from "react";
 import { useFeedbackStore } from "@/feedback/feedbackStore.js";
 import { usePlatform } from "@/hooks/usePlatform.js";

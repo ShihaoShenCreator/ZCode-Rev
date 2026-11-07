@@ -8,7 +8,7 @@
 
 **Persistence boundary:** 本计划只更新当前 `AgentRuntime` 实例的 `workingDirectory`。暂不把 Bash `cd` 后的 cwd 写回 `SessionInfo.directory/path`：`directory` 目前还承担 session 列表和 `--continue` 发现过滤，`path` 承担 workspace/display/fork 归属语义；让它们跟随工具内 `cd` 漂移会改变 session 发现和工作区归属行为，影响面超过本计划的 Bash provider-visible 目标。`workspaceRoot` / `projectID` / persisted message `path.root` 都保持 context 初始化时的稳定工作区身份；只有执行语义里的 `workingDirectory` / message `path.cwd` 可以跟随 Bash `cd` 变化。
 
-**Tech Stack:** TypeScript, Vitest, `@zcode/contracts`, `@zcode/adapters` NodeExecutionAdapter, `@zcode/core` Bash handler / ToolExecutor / AgentRuntime。
+**Tech Stack:** TypeScript, Vitest, `@s-agent/contracts`, `@s-agent/adapters` NodeExecutionAdapter, `@s-agent/core` Bash handler / ToolExecutor / AgentRuntime。
 
 ---
 
@@ -119,7 +119,7 @@ eval <user command> && pwd -P > <cwdFile>
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts typecheck
+pnpm --filter @s-agent/contracts typecheck
 ```
 
 Expected: PASS。
@@ -260,7 +260,7 @@ it("does not wrap Windows shell commands for POSIX cwd capture", () => {
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- tests/exec.test.ts
+pnpm --filter @s-agent/adapters test -- tests/exec.test.ts
 ```
 
 Expected: FAIL，失败原因是 `resolvedCwd` 还没有实现。
@@ -360,7 +360,7 @@ function readCapturedCwd(cwdFilePath?: string): string | undefined {
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters test -- tests/exec.test.ts
+pnpm --filter @s-agent/adapters test -- tests/exec.test.ts
 ```
 
 Expected: PASS。
@@ -418,7 +418,7 @@ Expected: PASS。
 Run:
 
 ```bash
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 ```
 
 Expected: PASS。
@@ -531,7 +531,7 @@ it.each([
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- tests/bash-handler.test.ts
+pnpm --filter @s-agent/core test -- tests/bash-handler.test.ts
 ```
 
 Expected: FAIL，失败原因是 Bash request 未设置 capture 或未消费 `resolvedCwd`。
@@ -564,7 +564,7 @@ Expected: FAIL，失败原因是 Bash request 未设置 capture 或未消费 `re
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- tests/bash-handler.test.ts
+pnpm --filter @s-agent/core test -- tests/bash-handler.test.ts
 ```
 
 Expected: PASS。
@@ -628,7 +628,7 @@ it("persists Bash cwd updates across tool calls in the same runtime", async () =
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- tests/runtime-tool-loop.test.ts
+pnpm --filter @s-agent/core test -- tests/runtime-tool-loop.test.ts
 ```
 
 Expected: PASS。
@@ -694,7 +694,7 @@ expect(bashToolEntry.metadata.concurrentSafe).toBe(false);
 Run:
 
 ```bash
-pnpm --filter @zcode/core test -- tests/tool-executor-trace.test.ts tests/bash-handler.test.ts tests/tool-contracts.test.ts
+pnpm --filter @s-agent/core test -- tests/tool-executor-trace.test.ts tests/bash-handler.test.ts tests/tool-contracts.test.ts
 ```
 
 Expected: PASS。
@@ -706,11 +706,11 @@ Expected: PASS。
 Run:
 
 ```bash
-pnpm --filter @zcode/contracts typecheck
-pnpm --filter @zcode/adapters test -- tests/exec.test.ts
-pnpm --filter @zcode/core test -- tests/bash-handler.test.ts
-pnpm --filter @zcode/core test -- tests/runtime-tool-loop.test.ts
-pnpm --filter @zcode/core test -- tests/tool-executor-trace.test.ts tests/tool-contracts.test.ts
+pnpm --filter @s-agent/contracts typecheck
+pnpm --filter @s-agent/adapters test -- tests/exec.test.ts
+pnpm --filter @s-agent/core test -- tests/bash-handler.test.ts
+pnpm --filter @s-agent/core test -- tests/runtime-tool-loop.test.ts
+pnpm --filter @s-agent/core test -- tests/tool-executor-trace.test.ts tests/tool-contracts.test.ts
 ```
 
 Expected: all PASS。
@@ -720,10 +720,10 @@ Expected: all PASS。
 Run:
 
 ```bash
-pnpm --filter @zcode/adapters typecheck
-pnpm --filter @zcode/core typecheck
-pnpm --filter @zcode/adapters lint
-pnpm --filter @zcode/core lint
+pnpm --filter @s-agent/adapters typecheck
+pnpm --filter @s-agent/core typecheck
+pnpm --filter @s-agent/adapters lint
+pnpm --filter @s-agent/core lint
 ```
 
 Expected: all PASS。

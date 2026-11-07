@@ -52,7 +52,7 @@ describe("remote asset staging CLI", () => {
       await readFile(new URL("../../../package.json", import.meta.url), "utf8"),
     );
     expect(rootPackage.scripts["prepare:remote-assets:linux"]).toBe(
-      "pnpm --filter @zcode/server-cli stage:remote-assets --linux",
+      "pnpm --filter @s-agent/server-cli stage:remote-assets --linux",
     );
   });
 
@@ -65,10 +65,10 @@ describe("remote asset staging CLI", () => {
     vi.stubEnv("ZCODE_ENV", input);
     await runCli(["--linux"]);
     expect(spawn.mock.calls.map((call) => call[1])).toEqual([
-      ["--filter", "@zcode/server-cli", "build"],
+      ["--filter", "@s-agent/server-cli", "build"],
       [
         "--filter",
-        "@zcode/server-cli",
+        "@s-agent/server-cli",
         "exec",
         "tsx",
         "src/packaging/stageCli.ts",
@@ -78,7 +78,7 @@ describe("remote asset staging CLI", () => {
       ],
       [
         "--filter",
-        "@zcode/server-cli",
+        "@s-agent/server-cli",
         "exec",
         "tsx",
         "src/packaging/stageCli.ts",

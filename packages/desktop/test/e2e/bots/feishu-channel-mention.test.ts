@@ -1,4 +1,4 @@
-import { channelContentText, type BotActor, type ChannelContentPart } from "@zcode/shared";
+import { channelContentText, type BotActor, type ChannelContentPart } from "@s-agent/shared";
 import {
   createBotsServiceHarness,
   createFeishuConfig,

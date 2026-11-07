@@ -3,8 +3,8 @@ import type {
   ModelRequestCompletedStatusEvent,
   ModelRequestFailedStatusEvent,
   ModelStatusSink,
-} from "@zcode/contracts/model";
-import { ModelFailureReason, ModelTransportKind } from "@zcode/contracts/model";
+} from "@s-agent/contracts/model";
+import { ModelFailureReason, ModelTransportKind } from "@s-agent/contracts/model";
 import type {
   AgentTelemetryErrorCategory,
   ModelApiOperationKind,
@@ -13,7 +13,7 @@ import type {
   ModelCallSpanWriter,
   ModelExecutionTelemetryPort,
   ResolvedModelTelemetryDescriptor,
-} from "@zcode/contracts/telemetry";
+} from "@s-agent/contracts/telemetry";
 import { ProviderEndpointIdentityCache } from "./provider-endpoint.js";
 
 interface ModelApiTelemetryStatusSinkOptions {

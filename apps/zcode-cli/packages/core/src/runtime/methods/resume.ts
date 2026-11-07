@@ -1,6 +1,6 @@
 import { restorePermissionGrantMarker } from "../helpers/permission-grant-resume.js";
-import { executionStateSchema, resolveExecutionState } from "@zcode/shared";
-import { SESSION_ENTRY_EXECUTION_STATE } from "@zcode/contracts";
+import { executionStateSchema, resolveExecutionState } from "@s-agent/shared";
+import { SESSION_ENTRY_EXECUTION_STATE } from "@s-agent/contracts";
 import {
   CoreErrorType,
   HookEventName,

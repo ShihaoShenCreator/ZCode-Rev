@@ -1,4 +1,4 @@
-import { DEFERRED_TOOL_CALL_NAME, type ModelToolContract } from "@zcode/contracts";
+import { DEFERRED_TOOL_CALL_NAME, type ModelToolContract } from "@s-agent/contracts";
 import { wrapSystemReminderForSource } from "../../system-reminder/source.js";
 
 // 编码只在本次请求内复用；下一请求必须读取当前定义，不能跨请求留下过期 schema。

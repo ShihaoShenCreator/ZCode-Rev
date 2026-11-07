@@ -33,7 +33,7 @@
 
 构建配置根据 `ZCODE_ENV` 选择对应链接，并向 renderer 注入公开的 `VITE_*` 值。
 renderer、host/service 和 agent 里的 ZCode API、远控链接、zcode-plan OpenAI/Anthropic
-入口都通过 `@zcode/shared` 的 endpoint resolver 派生，业务代码不要再手写
+入口都通过 `@s-agent/shared` 的 endpoint resolver 派生，业务代码不要再手写
 `zcode.z.ai` / `zcode.z.ai` 的 zcode-plan URL。
 
 ## Endpoint resolver

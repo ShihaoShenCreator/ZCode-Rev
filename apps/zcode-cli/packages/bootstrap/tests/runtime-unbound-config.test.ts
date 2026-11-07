@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { createConfig } from "@zcode/adapters/config";
+import { createConfig } from "@s-agent/adapters/config";
 import {
   ModelConfig,
   ModelOptionSpecsConfig,
   ModelPropertiesConfig,
   ProviderRegistry,
-} from "@zcode/provider";
-import type { ModelSelection } from "@zcode/contracts";
+} from "@s-agent/provider";
+import type { ModelSelection } from "@s-agent/contracts";
 import { resolveAppRuntimeConfig } from "../src/app/runtime-config.js";
 import { createApiKeyProviderConfig } from "./provider-config-fixtures.js";
 

@@ -93,6 +93,6 @@ E2E 候选：`packages/desktop/test/e2e/preview-pane-image-copy.test.ts`。此�
 ```sh
 ZCODE_E2E_MANUAL_REVIEW=1 \
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json \
-pnpm --filter @zcode/desktop test:e2e -- \
+pnpm --filter @s-agent/desktop test:e2e -- \
   --spec './test/e2e/preview-pane-image-copy.test.ts'
 ```

@@ -62,7 +62,7 @@ importers:
       '@types/node':
         specifier: ^25.5.0
         version: 25.6.0
-      '@zcode/zcode-cua':
+      '@s-agent/zcode-cua':
         specifier: workspace:*
         version: link:packages/zcode-cua
       concurrently:
@@ -223,22 +223,22 @@ importers:
       '@modelcontextprotocol/client':
         specifier: 2.0.0
         version: 2.0.0
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@zcode/dynamic-workflow':
+      '@s-agent/dynamic-workflow':
         specifier: workspace:*
         version: link:../dynamic-workflow
-      '@zcode/model-option-map':
+      '@s-agent/model-option-map':
         specifier: workspace:*
         version: link:../../../../packages/model-option-map
-      '@zcode/provider':
+      '@s-agent/provider':
         specifier: workspace:*
         version: link:../../../../packages/provider
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
-      '@zcode/zcode-cua':
+      '@s-agent/zcode-cua':
         specifier: workspace:*
         version: link:../../../../packages/zcode-cua
       ai:
@@ -312,34 +312,34 @@ importers:
 
   apps/zcode-cli/packages/bootstrap:
     dependencies:
-      '@zcode/adapters':
+      '@s-agent/adapters':
         specifier: workspace:*
         version: link:../adapters
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@zcode/core':
+      '@s-agent/core':
         specifier: workspace:*
         version: link:../core
-      '@zcode/dynamic-workflow':
+      '@s-agent/dynamic-workflow':
         specifier: workspace:*
         version: link:../dynamic-workflow
-      '@zcode/dynamic-workflow-runtime':
+      '@s-agent/dynamic-workflow-runtime':
         specifier: workspace:*
         version: link:../dynamic-workflow-runtime
-      '@zcode/i18n':
+      '@s-agent/i18n':
         specifier: workspace:*
         version: link:../i18n
-      '@zcode/provider':
+      '@s-agent/provider':
         specifier: workspace:*
         version: link:../../../../packages/provider
-      '@zcode/provider-node':
+      '@s-agent/provider-node':
         specifier: workspace:*
         version: link:../../../../packages/provider-node
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
-      '@zcode/telemetry':
+      '@s-agent/telemetry':
         specifier: workspace:*
         version: link:../telemetry
       diff:
@@ -355,7 +355,7 @@ importers:
       '@types/yazl':
         specifier: ^3.3.1
         version: 3.3.1
-      '@zcode/formal-proof':
+      '@s-agent/formal-proof':
         specifier: workspace:*
         version: link:../../../../packages/formal-proof
       yazl:
@@ -367,16 +367,16 @@ importers:
       '@modelcontextprotocol/server':
         specifier: 2.0.0
         version: 2.0.0
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@zcode/core':
+      '@s-agent/core':
         specifier: workspace:*
         version: link:../core
-      '@zcode/node-repl-host':
+      '@s-agent/node-repl-host':
         specifier: workspace:*
         version: link:../node-repl-host
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
       zod:
@@ -389,10 +389,10 @@ importers:
       '@types/node':
         specifier: ^24.0.0
         version: 24.12.2
-      '@zcode/adapters':
+      '@s-agent/adapters':
         specifier: workspace:*
         version: link:../adapters
-      '@zcode/bootstrap':
+      '@s-agent/bootstrap':
         specifier: workspace:*
         version: link:../bootstrap
       esbuild:
@@ -410,34 +410,34 @@ importers:
 
   apps/zcode-cli/packages/cli:
     dependencies:
-      '@zcode/adapters':
+      '@s-agent/adapters':
         specifier: workspace:*
         version: link:../adapters
-      '@zcode/bootstrap':
+      '@s-agent/bootstrap':
         specifier: workspace:*
         version: link:../bootstrap
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@zcode/core':
+      '@s-agent/core':
         specifier: workspace:*
         version: link:../core
-      '@zcode/dynamic-workflow-runtime':
+      '@s-agent/dynamic-workflow-runtime':
         specifier: workspace:*
         version: link:../dynamic-workflow-runtime
-      '@zcode/i18n':
+      '@s-agent/i18n':
         specifier: workspace:*
         version: link:../i18n
-      '@zcode/provider-node':
+      '@s-agent/provider-node':
         specifier: workspace:*
         version: link:../../../../packages/provider-node
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
-      '@zcode/shared-types':
+      '@s-agent/shared-types':
         specifier: workspace:*
         version: link:../shared-types
-      '@zcode/tui':
+      '@s-agent/tui':
         specifier: workspace:*
         version: link:../tui
       dotenv:
@@ -449,7 +449,7 @@ importers:
 
   apps/zcode-cli/packages/contracts:
     dependencies:
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
       zod:
@@ -468,19 +468,19 @@ importers:
 
   apps/zcode-cli/packages/core:
     dependencies:
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@zcode/dynamic-workflow':
+      '@s-agent/dynamic-workflow':
         specifier: workspace:*
         version: link:../dynamic-workflow
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
-      '@zcode/shared-types':
+      '@s-agent/shared-types':
         specifier: workspace:*
         version: link:../shared-types
-      '@zcode/zcode-cua':
+      '@s-agent/zcode-cua':
         specifier: workspace:*
         version: link:../../../../packages/zcode-cua
       cheerio:
@@ -517,7 +517,7 @@ importers:
       '@hono/node-server':
         specifier: ^1.14.4
         version: 1.19.14(hono@4.12.12)
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
       hono:
@@ -566,7 +566,7 @@ importers:
 
   apps/zcode-cli/packages/documents-plugin:
     devDependencies:
-      '@zcode/office-runtime':
+      '@s-agent/office-runtime':
         specifier: workspace:*
         version: link:../office-runtime
 
@@ -585,7 +585,7 @@ importers:
 
   apps/zcode-cli/packages/dynamic-workflow-runtime:
     dependencies:
-      '@zcode/dynamic-workflow':
+      '@s-agent/dynamic-workflow':
         specifier: workspace:*
         version: link:../dynamic-workflow
     devDependencies:
@@ -598,7 +598,7 @@ importers:
 
   apps/zcode-cli/packages/i18n:
     dependencies:
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
     devDependencies:
@@ -635,16 +635,16 @@ importers:
       '@modelcontextprotocol/server':
         specifier: 2.0.0
         version: 2.0.0
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@zcode/core':
+      '@s-agent/core':
         specifier: workspace:*
         version: link:../core
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
-      '@zcode/zcode-cua':
+      '@s-agent/zcode-cua':
         specifier: workspace:*
         version: link:../../../../packages/zcode-cua
       zod:
@@ -735,7 +735,7 @@ importers:
 
   apps/zcode-cli/packages/pdf-plugin:
     devDependencies:
-      '@zcode/office-runtime':
+      '@s-agent/office-runtime':
         specifier: workspace:*
         version: link:../office-runtime
 
@@ -743,7 +743,7 @@ importers:
 
   apps/zcode-cli/packages/presentations-plugin:
     devDependencies:
-      '@zcode/office-runtime':
+      '@s-agent/office-runtime':
         specifier: workspace:*
         version: link:../office-runtime
 
@@ -759,7 +759,7 @@ importers:
 
   apps/zcode-cli/packages/spreadsheets-plugin:
     devDependencies:
-      '@zcode/office-runtime':
+      '@s-agent/office-runtime':
         specifier: workspace:*
         version: link:../office-runtime
 
@@ -767,7 +767,7 @@ importers:
 
   apps/zcode-cli/packages/swift-bridge:
     dependencies:
-      '@zcode/shared-types':
+      '@s-agent/shared-types':
         specifier: workspace:*
         version: link:../shared-types
 
@@ -797,7 +797,7 @@ importers:
       '@opentelemetry/sdk-trace-base':
         specifier: 2.6.1
         version: 2.6.1(@opentelemetry/api@1.9.1)
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
     devDependencies:
@@ -816,13 +816,13 @@ importers:
       '@mbears/opentui-react':
         specifier: 0.2.15
         version: 0.2.15(react-devtools-core@7.0.1)(react@19.2.7)(typescript@6.0.2)(web-tree-sitter@0.25.10)(ws@8.18.0)
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@zcode/i18n':
+      '@s-agent/i18n':
         specifier: workspace:*
         version: link:../i18n
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
       react:
@@ -852,7 +852,7 @@ importers:
 
   apps/zcode-cli/packages/zcode-cua-plugin:
     dependencies:
-      '@zcode/zcode-cua':
+      '@s-agent/zcode-cua':
         specifier: workspace:*
         version: link:../../../../packages/zcode-cua
     devDependencies:
@@ -888,7 +888,7 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../../../../packages/shared
       esbuild:
@@ -927,25 +927,25 @@ importers:
 
   apps/zcode-cli/tools/provider-regression:
     dependencies:
-      '@zcode/adapters':
+      '@s-agent/adapters':
         specifier: workspace:*
         version: link:../../packages/adapters
-      '@zcode/bootstrap':
+      '@s-agent/bootstrap':
         specifier: workspace:*
         version: link:../../packages/bootstrap
-      '@zcode/contracts':
+      '@s-agent/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
-      '@zcode/core':
+      '@s-agent/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@zcode/model-option-map':
+      '@s-agent/model-option-map':
         specifier: workspace:*
         version: link:../../../../packages/model-option-map
-      '@zcode/provider':
+      '@s-agent/provider':
         specifier: workspace:*
         version: link:../../../../packages/provider
-      '@zcode/provider-node':
+      '@s-agent/provider-node':
         specifier: workspace:*
         version: link:../../../../packages/provider-node
       zod:
@@ -969,13 +969,13 @@ importers:
 
   packages/client:
     dependencies:
-      '@zcode/rpc':
+      '@s-agent/rpc':
         specifier: workspace:*
         version: link:../rpc
-      '@zcode/services':
+      '@s-agent/services':
         specifier: workspace:*
         version: link:../services
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -1030,34 +1030,34 @@ importers:
       '@opentelemetry/sdk-trace-base':
         specifier: 2.6.1
         version: 2.6.1(@opentelemetry/api@1.9.1)
-      '@zcode/client':
+      '@s-agent/client':
         specifier: workspace:*
         version: link:../client
-      '@zcode/e2e-report':
+      '@s-agent/e2e-report':
         specifier: workspace:*
         version: link:../e2e-report
-      '@zcode/provider':
+      '@s-agent/provider':
         specifier: workspace:*
         version: link:../provider
-      '@zcode/provider-node':
+      '@s-agent/provider-node':
         specifier: workspace:*
         version: link:../provider-node
-      '@zcode/rpc':
+      '@s-agent/rpc':
         specifier: workspace:*
         version: link:../rpc
-      '@zcode/server':
+      '@s-agent/server':
         specifier: workspace:*
         version: link:../server
-      '@zcode/services':
+      '@s-agent/services':
         specifier: workspace:*
         version: link:../services
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
-      '@zcode/ui':
+      '@s-agent/ui':
         specifier: workspace:*
         version: link:../ui
-      '@zcode/zcode-cua':
+      '@s-agent/zcode-cua':
         specifier: workspace:*
         version: link:../zcode-cua
       electron-updater:
@@ -1267,10 +1267,10 @@ importers:
 
   packages/provider:
     dependencies:
-      '@zcode/model-option-map':
+      '@s-agent/model-option-map':
         specifier: workspace:*
         version: link:../model-option-map
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
       zod:
@@ -1283,10 +1283,10 @@ importers:
 
   packages/provider-node:
     dependencies:
-      '@zcode/provider':
+      '@s-agent/provider':
         specifier: workspace:*
         version: link:../provider
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
       zod:
@@ -1296,7 +1296,7 @@ importers:
       '@types/node':
         specifier: ^25.5.0
         version: 25.6.0
-      '@zcode/model-option-map':
+      '@s-agent/model-option-map':
         specifier: workspace:*
         version: link:../model-option-map
       typescript:
@@ -1332,16 +1332,16 @@ importers:
       '@lydell/node-pty-linux-x64':
         specifier: 1.2.0-beta.10
         version: 1.2.0-beta.10
-      '@zcode/client':
+      '@s-agent/client':
         specifier: workspace:*
         version: link:../client
-      '@zcode/rpc':
+      '@s-agent/rpc':
         specifier: workspace:*
         version: link:../rpc
-      '@zcode/services':
+      '@s-agent/services':
         specifier: workspace:*
         version: link:../services
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
       axios:
@@ -1417,19 +1417,19 @@ importers:
       '@larksuiteoapi/node-sdk':
         specifier: 1.64.0
         version: 1.64.0
-      '@zcode/provider':
+      '@s-agent/provider':
         specifier: workspace:*
         version: link:../provider
-      '@zcode/provider-node':
+      '@s-agent/provider-node':
         specifier: workspace:*
         version: link:../provider-node
-      '@zcode/rpc':
+      '@s-agent/rpc':
         specifier: workspace:*
         version: link:../rpc
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
-      '@zcode/zcode-cua':
+      '@s-agent/zcode-cua':
         specifier: workspace:*
         version: link:../zcode-cua
       chokidar:
@@ -1556,7 +1556,7 @@ importers:
       '@xyflow/react':
         specifier: ^12.10.1
         version: 12.10.2(@types/react@19.2.14)(immer@11.1.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
       ai:
@@ -1677,7 +1677,7 @@ importers:
 
   packages/shared:
     dependencies:
-      '@zcode/model-option-map':
+      '@s-agent/model-option-map':
         specifier: workspace:*
         version: link:../model-option-map
       zod:
@@ -1820,16 +1820,16 @@ importers:
       '@xyflow/react':
         specifier: ^12.10.1
         version: 12.10.2(@types/react@19.2.14)(immer@11.1.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@zcode/provider':
+      '@s-agent/provider':
         specifier: workspace:*
         version: link:../provider
-      '@zcode/rpc':
+      '@s-agent/rpc':
         specifier: workspace:*
         version: link:../rpc
-      '@zcode/services':
+      '@s-agent/services':
         specifier: workspace:*
         version: link:../services
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
       ai:
@@ -1974,13 +1974,13 @@ importers:
 
   packages/web:
     dependencies:
-      '@zcode/client':
+      '@s-agent/client':
         specifier: workspace:*
         version: link:../client
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
-      '@zcode/ui':
+      '@s-agent/ui':
         specifier: workspace:*
         version: link:../ui
       react:
@@ -2017,10 +2017,10 @@ importers:
 
   packages/web-share:
     dependencies:
-      '@zcode/share-ui':
+      '@s-agent/share-ui':
         specifier: workspace:*
         version: link:../share-ui
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
       lucide-react:
@@ -2069,13 +2069,13 @@ importers:
       '@hono/node-ws':
         specifier: ^1.3.0
         version: 1.3.0(@hono/node-server@1.19.14(hono@4.12.12))(hono@4.12.12)
-      '@zcode/rpc':
+      '@s-agent/rpc':
         specifier: workspace:*
         version: link:../rpc
-      '@zcode/services':
+      '@s-agent/services':
         specifier: workspace:*
         version: link:../services
-      '@zcode/shared':
+      '@s-agent/shared':
         specifier: workspace:*
         version: link:../shared
       hono:

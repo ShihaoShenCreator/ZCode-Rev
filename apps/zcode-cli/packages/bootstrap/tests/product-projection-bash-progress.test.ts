@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { SessionEventType, type SessionEvent } from "@zcode/contracts";
+import { SessionEventType, type SessionEvent } from "@s-agent/contracts";
 import {
   DELIVERY_PROFILES,
   conversationDeltaSchema,
   filterConversationDeltasForProfile,
   type ToolCallRow,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import { ProductProjection } from "../src/zcode-protocol-v4/index.js";
 
 const preview = {

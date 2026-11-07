@@ -7,7 +7,7 @@ import {
   type ModelRequestAdmission,
   type ModelRequestAdmissionTicket,
   type ModelStreamEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AiSdkModelRuntime } from "../src/model/runner-runtime.js";
 import { executeAdapterGenerateText, executeAdapterStreamText } from "./test-adapter-model.js";
 

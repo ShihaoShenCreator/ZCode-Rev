@@ -14,7 +14,7 @@ import {
   type PermissionBrokerPort,
   type PermissionBrokerResult,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { racePermissionResponders } from "../src/tool/executor/permission-responder-race.js";
 import { createToolExecutor } from "../src/tool/executor.js";

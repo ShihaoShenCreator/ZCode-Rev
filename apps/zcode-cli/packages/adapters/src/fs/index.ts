@@ -36,7 +36,7 @@ import {
   type FileSystemStatResult,
   type FileSystemWriteTextRequest,
   type FileSystemWriteTextResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   applyRequestedLineEndings,
   decodeTextBuffer,

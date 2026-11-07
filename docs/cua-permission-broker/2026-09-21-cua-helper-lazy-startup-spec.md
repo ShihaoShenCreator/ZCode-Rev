@@ -231,7 +231,7 @@ Agent(SDK)                                    Helper
 - producer：`ensureStandaloneHelperLaunched` 增加 win32 fork 分支 + 单测；删除
   `warmHelperForBuiltInPlugin` 预热路径（懒启动下「无候选即预热」与不变量 3 冲突）；
   producer pin bump 用原子命令
-  `pnpm --filter @zcode/zcode-cua-plugin bump:producer`。
+  `pnpm --filter @s-agent/zcode-cua-plugin bump:producer`。
 - services：稳定 pipe 名 singleton；spawn env 注入 pipe 名 + authority + recipe（删除
   win32 acquire / `waitForTransport`）；`getStatus` win32 对齐 3.5。
 - 清理（可并入本 MR 或单独 MR3）：删除 `buildCuaProductHelperAgentEnv` 尸体、

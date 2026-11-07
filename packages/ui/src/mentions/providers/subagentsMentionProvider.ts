@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { ZCodeProvider, AgentSummary } from "@zcode/shared";
+import type { ZCodeProvider, AgentSummary } from "@s-agent/shared";
 import { useSubagents } from "@/hooks/useSubagents.js";
 import { buildSubagentMentionMarkdown } from "@/mentions/mentionMarkdown.js";
 import { filterMentionItemsWithOptions } from "@/mentions/mentionSearch.js";

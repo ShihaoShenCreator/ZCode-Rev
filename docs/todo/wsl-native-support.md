@@ -190,7 +190,7 @@ async function setupWSLConnection(
   options: WSLConnectOptions,
   remoteAssets: RemoteAssetDirs,
 ): Promise<RemoteConnection> {
-  const { WSLBackend } = await import("@zcode/server/remote");
+  const { WSLBackend } = await import("@s-agent/server/remote");
   const backend = new WSLBackend(options);
   return connectRemote(backend, remoteAssets);
   // connectRemote() 完全复用 —— 它只依赖 IRemoteBackend 接口
@@ -232,7 +232,7 @@ ipcMain.handle(PlatformChannels.ConnectWSL, async (_event, rawOptions) => {
 });
 
 ipcMain.handle(PlatformChannels.ListWSLDistros, async () => {
-  const { listWSLDistros } = await import("@zcode/server/remote");
+  const { listWSLDistros } = await import("@s-agent/server/remote");
   return listWSLDistros();
 });
 ```

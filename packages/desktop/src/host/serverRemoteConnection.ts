@@ -1,5 +1,5 @@
 import { WebSocket, type RawData } from "ws";
-import { RemoteServiceAccess } from "@zcode/client";
+import { RemoteServiceAccess } from "@s-agent/client";
 import {
   ChannelClient,
   ChannelServer,
@@ -8,8 +8,8 @@ import {
   VSBuffer,
   type ISocket,
   type IServerChannel,
-} from "@zcode/rpc";
-import type { IServiceAccessor } from "@zcode/services";
+} from "@s-agent/rpc";
+import type { IServiceAccessor } from "@s-agent/services";
 import {
   ZCODE_RPC_HOST_CAPABILITY_HEADER,
   TOPIC_RESOURCE_RELAY_CHANNEL,
@@ -17,7 +17,7 @@ import {
   serverRemoteInfoSchema,
   type ServerConnectOptions,
   type ServerRemoteInfo,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   connectWebSocketOverDuplex,
   createReusableDuplexHttpAgent,

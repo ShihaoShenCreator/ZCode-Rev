@@ -1,6 +1,6 @@
-import type { RequestVerificationReason } from "@zcode/shared";
-import { projectAccessTokenFingerprint, isRequestSecurityFailure } from "@zcode/shared";
-import type { Logger, ModelRequestAuth } from "@zcode/contracts";
+import type { RequestVerificationReason } from "@s-agent/shared";
+import { projectAccessTokenFingerprint, isRequestSecurityFailure } from "@s-agent/shared";
+import type { Logger, ModelRequestAuth } from "@s-agent/contracts";
 import { RequestVerificationRetry } from "./request-security-edition/recovery.js";
 import { inspectProviderFailure } from "./failure-classifier.js";
 import {

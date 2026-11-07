@@ -3,7 +3,7 @@ export {
   AmendWorkflowInputSchema,
   FillWorkflowHoleInputSchema,
   ListModelsInputSchema,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 /** 复用原 ToolEntry 与执行器契约，不包装 handler 或复制工具配置。 */
 export interface WorkflowToolEntrypoints {

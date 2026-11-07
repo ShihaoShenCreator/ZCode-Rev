@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { ArrowLeft, LoaderIcon } from "lucide-react";
-import { type WebRemoteControlMobileNavigationIntent } from "@zcode/shared";
+import { type WebRemoteControlMobileNavigationIntent } from "@s-agent/shared";
 import { Button } from "@/components/ui/button.js";
 import { WebRemoteControlThemeMenu } from "@/WebRemoteControlThemeMenu.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";

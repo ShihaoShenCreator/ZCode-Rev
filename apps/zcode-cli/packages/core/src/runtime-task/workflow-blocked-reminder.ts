@@ -18,7 +18,7 @@
 // 本文件是纯状态机：时钟、定时器、「谁在飞 / 开着什么 / 怎么发」全由宿主递进来
 // （runtime 侧的宿主在 runtime/methods/dynamic-workflow-blocked-reminder.ts）。
 
-import type { DynamicWorkflowRunHole, DynamicWorkflowRunPendingQuestion } from "@zcode/contracts";
+import type { DynamicWorkflowRunHole, DynamicWorkflowRunPendingQuestion } from "@s-agent/contracts";
 
 const MINUTE_MS = 60_000;
 

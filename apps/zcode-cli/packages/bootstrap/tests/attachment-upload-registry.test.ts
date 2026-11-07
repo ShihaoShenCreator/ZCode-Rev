@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it, vi } from "vitest";
-import { PROTOCOL_V4_LIMITS } from "@zcode/shared/zcode-protocol-v4";
+import { PROTOCOL_V4_LIMITS } from "@s-agent/shared/zcode-protocol-v4";
 import { AttachmentUploadRegistry } from "../src/zcode-protocol-v4/attachment-upload-registry.js";
 
 function sha256(bytes: Uint8Array): string {

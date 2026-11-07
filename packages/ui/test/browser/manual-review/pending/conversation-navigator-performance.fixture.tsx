@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import type { ConversationRow } from "@zcode/shared/zcode-protocol-v4";
+import type { ConversationRow } from "@s-agent/shared/zcode-protocol-v4";
 import { ConversationTimeline } from "@/v4/ConversationTimeline.js";
 import { ZCodeIntlProvider } from "@/i18n/IntlProvider.js";
 import { TooltipProvider } from "@/components/ui/tooltip.js";

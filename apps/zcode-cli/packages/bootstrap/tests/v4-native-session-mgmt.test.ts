@@ -3,8 +3,8 @@
 // delete = CLI 软删除后关闭运行实例，经 host.deleteSession 过渡钩子。
 // 08-phasing M4 完成定义的 L2 层（命令 → core 调用 → 状态推进，不经旧协议代码）。
 import { describe, expect, it, vi } from "vitest";
-import { SessionEventType } from "@zcode/contracts";
-import type { CommandEnvelope } from "@zcode/shared/zcode-protocol-v4";
+import { SessionEventType } from "@s-agent/contracts";
+import type { CommandEnvelope } from "@s-agent/shared/zcode-protocol-v4";
 import { V4CommandExecutor } from "../src/zcode-protocol-v4/commands/executor.js";
 import { V4SessionNotFoundError } from "../src/zcode-protocol-v4/commands/record-access.js";
 import type {

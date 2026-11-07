@@ -4,12 +4,12 @@ import {
   v4AttachmentChunkResultSchema,
   v4AttachmentCommitResultSchema,
   v4AttachmentAbortResultSchema,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 import {
   zcodeTopicResourceReadResultSchema,
   type ZCodePromptAttachment,
   type ZCodeProtocolTrace,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { uploadBotGroupAttachments } from "./groupAttachmentUpload.js";
 import type { ZCodeProtocolClient } from "./zcodeProtocolClient.js";
 import type { ZCodeAgentSessionTarget } from "./zcodeAgent.js";

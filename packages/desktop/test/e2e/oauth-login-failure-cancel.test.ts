@@ -4,7 +4,7 @@ import {
   TID_OAUTH_CANCEL,
   TID_OAUTH_ERROR,
   TID_OAUTH_LOGIN_BUTTON,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, clickTestIdByDom, waitForTestIdByDom } from "./helpers/desktop-app.js";
 
 import { dismissOccupationOnboarding } from "./helpers/occupation-onboarding.js";
@@ -12,7 +12,7 @@ import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const CASE_TIMEOUT_MS = 240_000;
-// PlatformChannels.OAuthCallback 的 channel 值(main 进程 execute 里无法 import @zcode/shared,
+// PlatformChannels.OAuthCallback 的 channel 值(main 进程 execute 里无法 import @s-agent/shared,
 // 与 packages/shared/src/channels.ts 保持一致)
 const OAUTH_CALLBACK_CHANNEL = "zcode:oauth-callback";
 // state 不匹配的回调:oauthService.handleCallback 在无 pending flow 时会抛

@@ -3,7 +3,7 @@ import type {
   MessageWithParts,
   ReadSessionContextInput,
   ReadSessionContextOutput,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { estimateTokens } from "../context/utils.js";
 
 const recordSchema = z.object({

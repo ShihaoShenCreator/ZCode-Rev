@@ -5,7 +5,7 @@
  * 测试树，所以重写一遍）。
  */
 
-import { SUBMIT_RESULT_TOOL_NAME } from "@zcode/contracts";
+import { SUBMIT_RESULT_TOOL_NAME } from "@s-agent/contracts";
 
 export type WireFormat = "anthropic-messages" | "openai-chat-completions";
 

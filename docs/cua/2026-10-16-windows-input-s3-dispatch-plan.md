@@ -381,7 +381,7 @@ ZCODE_CUA_HARNESS_E2E=1 是真实测试的显式开关：
 
 ```powershell
 $env:ZCODE_CUA_HARNESS_E2E = '1'
-corepack pnpm --filter @zcode/zcode-cua exec vitest run test/native/win-uia-timeout-lifecycle-cua.test.ts test/native/win-uia-patterns-cua.test.ts test/native/win-gtk-click-cua.test.ts --maxWorkers 1
+corepack pnpm --filter @s-agent/zcode-cua exec vitest run test/native/win-uia-timeout-lifecycle-cua.test.ts test/native/win-uia-patterns-cua.test.ts test/native/win-gtk-click-cua.test.ts --maxWorkers 1
 node packages/zcode-cua/scripts/windows-harness-matrix-baseline.mjs
 ```
 

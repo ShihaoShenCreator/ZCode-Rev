@@ -3,7 +3,7 @@
  * 用 `describe.skipIf` 按环境变量 `ZCODE_WORKFLOW_LIVE_TEST` 门控——缺省整块跳过，`pnpm test` 保持确定性。
  *
  * 如何运行：
- *   ZCODE_WORKFLOW_LIVE_TEST=1 pnpm --filter @zcode/bootstrap exec vitest run tests/workflow-driver.live.test.ts
+ *   ZCODE_WORKFLOW_LIVE_TEST=1 pnpm --filter @s-agent/bootstrap exec vitest run tests/workflow-driver.live.test.ts
  * 凭据与模型直接取自本机 v2 配置（~/.zcode/v2/config.json + setting.json）里活跃的 provider——见
  * resolveV2ModelConfig。无需额外 env（可选 ZCODE_WORKFLOW_LIVE_MODEL 覆盖模型 id）。若本机无 v2
  * 配置或活跃 provider 无内联 apiKey，则整块跳过。
@@ -19,10 +19,10 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { createTestAgentRuntime } from "./helpers/test-agent-runtime.js";
-import { createInMemorySessionEventStore } from "@zcode/adapters/storage";
-import { parseModelRef, type RuntimeModelConfig } from "@zcode/contracts";
-import { AgentRuntime } from "@zcode/core";
-import { InMemoryJournalStore, inputHash } from "@zcode/dynamic-workflow";
+import { createInMemorySessionEventStore } from "@s-agent/adapters/storage";
+import { parseModelRef, type RuntimeModelConfig } from "@s-agent/contracts";
+import { AgentRuntime } from "@s-agent/core";
+import { InMemoryJournalStore, inputHash } from "@s-agent/dynamic-workflow";
 import { createModelAdapter } from "../src/index.js";
 import { workflowActorToolPolicy } from "../src/app/workflow-actor-tools.js";
 import { fakeFileSystemPort, runDriverScript, type PlannedResponse } from "./workflow-driver.helpers.js";
@@ -32,7 +32,7 @@ import type { ActorRuntimeFactory } from "../src/app/workflow-driver.js";
  * 直接读取本机 v2 配置（~/.zcode/v2/config.json + setting.json）解析出活跃 provider 的凭据与模型，
  * 构造 RuntimeModelConfig 注入 createModelAdapter —— 镜像生产里桌面经协议下发 bootstrapModelConfig
  * 的做法。CLI 的 createConfig 只读已废弃的 v1 ~/.zcode/cli/config.json，不认 v2 provider map（v2 的
- * 原生解析在桌面 @zcode/services，按协议边界不被 CLI 依赖），所以这里让 live 测试自解析 v2 并注入
+ * 原生解析在桌面 @s-agent/services，按协议边界不被 CLI 依赖），所以这里让 live 测试自解析 v2 并注入
  * modelConfig，而不是依赖那条会落到 v1 空配置的 fallback。测试专用，只读不写，绝不落盘或打印密钥。
  * 可用 ZCODE_WORKFLOW_LIVE_MODEL 覆盖模型 id。
  */

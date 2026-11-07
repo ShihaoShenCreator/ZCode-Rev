@@ -7,7 +7,7 @@ import { homedir } from "node:os";
 import {
   DATA_BASE_DIR_FORBIDDEN_WINDOWS_INSTALL_DIR_ERROR_CODE,
   ZCODE_AGENT_RUNTIME,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 let _dataBaseDir: string | null = null;
 export const ZCODE_WINDOWS_APP_INSTALL_DIR_ENV = "ZCODE_WINDOWS_APP_INSTALL_DIR";

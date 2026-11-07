@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { createSessionId, type Model, type ModelRequest } from "@zcode/contracts";
+import { createSessionId, type Model, type ModelRequest } from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestModelFactory } from "./test-runtime-model.js";
 import { createTestSessionEventStore } from "./test-event-store.js";

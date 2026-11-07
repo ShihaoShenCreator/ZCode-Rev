@@ -1,18 +1,16 @@
-import type { TuiReadClipboardImage, TuiWriteClipboardText } from "@zcode/tui";
-import type { UiLocale } from "@zcode/i18n";
-import type { Logger } from "@zcode/contracts";
+import type { TuiReadClipboardImage, TuiWriteClipboardText } from "@s-agent/tui";
+import type { UiLocale } from "@s-agent/i18n";
+import type { Logger } from "@s-agent/contracts";
 import type {
   createManagedCdpBrowserRuntime,
   ManagedCdpBrowserRuntimeOptions,
-} from "@zcode/adapters/browser";
+} from "@s-agent/adapters/browser";
 import type {
   createDefaultProviderEndpointRoutingPort,
   createModelAdapter,
   createZCodeApp,
   CreateDefaultProviderEndpointRoutingPortOptions,
   CreateModelAdapterOptions,
-  configureCodingPlanApiKey,
-  ConfigureCodingPlanApiKeyOptions,
   inspectZCodeSkill,
   inspectWorkspaceHookTrust,
   grantWorkspaceHookTrust,
@@ -20,10 +18,6 @@ import type {
   inspectZCodeCustomCommand,
   InspectZCodeCustomCommandOptions,
   InspectZCodeSkillOptions,
-  loginZCodeCli,
-  loginBigmodelCodingPlan,
-  LoginBigmodelCodingPlanOptions,
-  LoginZCodeCliOptions,
   listZCodeCustomCommands,
   ListZCodeCustomCommandsOptions,
   loadZCodeCustomCommand,
@@ -31,8 +25,6 @@ import type {
   listZCodeSkills,
   ListZCodeSessionsOptions,
   ListZCodeSkillsOptions,
-  logoutZCodeCli,
-  LogoutZCodeCliOptions,
   resolveLatestSession,
   ResolveLatestSessionOptions,
   RunZCodeProtocolAgentOptions,
@@ -40,16 +32,16 @@ import type {
   startProcessProviderRegistryRuntime,
   shutdownZCodeTelemetry,
   ZCodeAppOptions,
-} from "@zcode/bootstrap";
+} from "@s-agent/bootstrap";
 import type { CliEnv, DotenvLoadResult, LoadCliDotenvOptions } from "./env.js";
 import type { PluginsCommandOverrides } from "./plugins-command.js";
 import type { CliShutdownProcess } from "./shutdown.js";
 import type { resolveWorkspaceGitBranch } from "./tui-workspace-git.js";
 
-export type BootstrapModule = typeof import("@zcode/bootstrap");
+export type BootstrapModule = typeof import("@s-agent/bootstrap");
 
 export interface RunDependencies extends PluginsCommandOverrides {
-  migrateStorage?: () => Promise<import("@zcode/shared/sqlite-migrations").MigrationResult>;
+  migrateStorage?: () => Promise<import("@s-agent/shared/sqlite-migrations").MigrationResult>;
   protocolLifecycle?: RunZCodeProtocolAgentOptions["lifecycle"];
   protocolInput?: NodeJS.ReadableStream;
   createManagedCdpBrowserRuntime?: (
@@ -80,13 +72,6 @@ export interface RunDependencies extends PluginsCommandOverrides {
   inspectCustomCommand?: (
     options: InspectZCodeCustomCommandOptions,
   ) => ReturnType<typeof inspectZCodeCustomCommand>;
-  loginZCodeCli?: (options?: LoginZCodeCliOptions) => ReturnType<typeof loginZCodeCli>;
-  loginBigmodelCodingPlan?: (
-    options?: LoginBigmodelCodingPlanOptions,
-  ) => ReturnType<typeof loginBigmodelCodingPlan>;
-  configureCodingPlanApiKey?: (
-    options: ConfigureCodingPlanApiKeyOptions,
-  ) => ReturnType<typeof configureCodingPlanApiKey>;
   loadDotenv?: (options?: LoadCliDotenvOptions) => DotenvLoadResult;
   prepareZCodeTelemetryEnv?: typeof prepareZCodeTelemetryEnv;
   projectConfigPath?: string;
@@ -108,9 +93,8 @@ export interface RunDependencies extends PluginsCommandOverrides {
     options: ResolveLatestSessionOptions,
   ) => ReturnType<typeof resolveLatestSession>;
   resolveWorkspaceGitBranch?: typeof resolveWorkspaceGitBranch;
-  logoutZCodeCli?: (options?: LogoutZCodeCliOptions) => ReturnType<typeof logoutZCodeCli>;
   runZCodeProtocolAgent?: (options?: RunZCodeProtocolAgentOptions) => Promise<void>;
-  runTui?: typeof import("@zcode/tui").runTui;
+  runTui?: typeof import("@s-agent/tui").runTui;
   skipUserConfig?: boolean;
   userConfigPath?: string;
   exitProcess?: (code: number) => void;

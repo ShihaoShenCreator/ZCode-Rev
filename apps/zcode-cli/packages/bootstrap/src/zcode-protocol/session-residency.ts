@@ -1,7 +1,7 @@
 // Session 常驻池的真实事实适配与去激活执行面。
 
-import type { SessionId } from "@zcode/contracts";
-import { zcodeProtocolMethods } from "@zcode/shared";
+import type { SessionId } from "@s-agent/contracts";
+import { zcodeProtocolMethods } from "@s-agent/shared";
 import { waitForSessionResidencyFinalization } from "../session-execution/index.js";
 import type {
   SessionDeactivationDecision,

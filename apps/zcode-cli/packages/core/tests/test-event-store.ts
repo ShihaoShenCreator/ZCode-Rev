@@ -1,4 +1,4 @@
-import { InMemorySessionEventStore, type SessionEventStorePort } from "@zcode/contracts";
+import { InMemorySessionEventStore, type SessionEventStorePort } from "@s-agent/contracts";
 
 /**
  * core 测试用的 event store 直接复用 contracts 的生产实现，避免手写替身与生产行为漂移。

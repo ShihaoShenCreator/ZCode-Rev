@@ -9,7 +9,7 @@ import {
   type ModelRequest,
   type ModelResult,
   type ModelSelection,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";
 import { createTestModelSelection } from "./test-model-selection.js";
 import { createToolRegistry } from "../src/tool/registry.js";

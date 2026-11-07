@@ -20,14 +20,14 @@ shared ← rpc ← services ← client ← server
 
 |包|职责|TS 源码行数|
 |---|---|---|
-|@zcode/rpc|VS Code 风格 7 层 IPC 框架，传输无关、类型安全|4,934|
-|@zcode/shared|共享类型 \+ zod schema \+ ZCode Protocol 契约|20,531|
-|@zcode/services|35 个业务子域服务（agent/session/git/bots/oauth…）|96,506|
-|@zcode/client|RPC 桥接（MessagePort / WebSocket → service 代理）|945|
-|@zcode/server|后端入口（Hono HTTP/WS、stdio、Remote SSH）|11,923|
-|@zcode/ui|平台无关 React 19 组件库（桌面/手机共用）|267,181|
-|@zcode/web|Vite SPA（web 端 \+ 手机远控 /remote、/remote/v3）|6,917|
-|@zcode/desktop|Electron 41 桌面端（main/host/preload/renderer）|39,161|
+|@s-agent/rpc|VS Code 风格 7 层 IPC 框架，传输无关、类型安全|4,934|
+|@s-agent/shared|共享类型 \+ zod schema \+ ZCode Protocol 契约|20,531|
+|@s-agent/services|35 个业务子域服务（agent/session/git/bots/oauth…）|96,506|
+|@s-agent/client|RPC 桥接（MessagePort / WebSocket → service 代理）|945|
+|@s-agent/server|后端入口（Hono HTTP/WS、stdio、Remote SSH）|11,923|
+|@s-agent/ui|平台无关 React 19 组件库（桌面/手机共用）|267,181|
+|@s-agent/web|Vite SPA（web 端 \+ 手机远控 /remote、/remote/v3）|6,917|
+|@s-agent/desktop|Electron 41 桌面端（main/host/preload/renderer）|39,161|
 |apps/zcode\-cli|嵌套 monorepo，ZCode Agent / app\-server，14 个子包|181,683|
 
 全仓 TS 总量约 **63 万行**，其中 ui 占比约 57%。
@@ -42,7 +42,7 @@ shared ← rpc ← services ← client ← server
 
 - **App ↔ Agent**：通过 `zcode app-server --stdio` 子进程，stdio NDJSON 传输 ZCode Protocol（JSON\-RPC 风格 envelope，单一版本号，无 capabilities 握手）。
 
-- 传输统一收敛在 `@zcode/rpc` 的 `IMessagePassingProtocol` 抽象上：桌面 MessagePort、Web WebSocket、远程 SSH stdio\-socket。
+- 传输统一收敛在 `@s-agent/rpc` 的 `IMessagePassingProtocol` 抽象上：桌面 MessagePort、Web WebSocket、远程 SSH stdio\-socket。
 
 ### 1\.3 关键设计决策
 
@@ -86,7 +86,7 @@ desktop main/host、services 大部分服务、ui hooks/lib/store 普遍 `disabl
 
 **4\. packages/shared 退化为大杂烩**
 文档宣称"零依赖、纯类型"，实际依赖 zod，`index.ts` 含 63 处 `export *`，58 个文件含运行时逻辑，内嵌 2,530 行协议 schema。
-建议：拆出 `@zcode/protocol`（协议契约）与 `@zcode/shared-runtime`，恢复 shared 的纯类型定位；至少先更新架构文档与现实对齐。
+建议：拆出 `@s-agent/protocol`（协议契约）与 `@s-agent/shared-runtime`，恢复 shared 的纯类型定位；至少先更新架构文档与现实对齐。
 
 **5\. desktop/src/main 过重（约 18,000 行 / 70\+ 文件）**
 web 远控相关 7 个文件（manager、transport、relay auth、attachment、reconnect、feature gate、status events）混在 main 目录。

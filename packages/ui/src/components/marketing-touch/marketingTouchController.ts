@@ -1,6 +1,6 @@
 import { createStore } from "zustand/vanilla";
-import type { IMarketingTouchService } from "@zcode/services";
-import type { MarketingAction, MarketingDelivery } from "@zcode/shared";
+import type { IMarketingTouchService } from "@s-agent/services";
+import type { MarketingAction, MarketingDelivery } from "@s-agent/shared";
 import type { CloudDialogHero } from "@/components/cloud-content-dialog/cloudContentDialogTypes.js";
 import type { PreparedMarketingHero } from "@/components/marketing-touch/marketingResources.js";
 import { logger } from "@/logger.js";
@@ -22,7 +22,6 @@ export interface MarketingTouchState {
   pending: boolean;
   phase: "idle" | "verifying" | "submitting" | "preparing";
   error: string | null;
-  errorAction: MarketingAction["type"] | null;
 }
 export type MarketingActionResult = {
   status: "success" | "cancelled" | "failure" | "uncertain";
@@ -56,7 +55,6 @@ export function createMarketingTouchController(options: {
   ) => Promise<MarketingActionResult>;
   locale: "zh-CN" | "en-US";
   canOpen: () => boolean;
-  refresh: () => void;
 }) {
   const store = createStore<MarketingTouchState>(() => ({
     banner: null,
@@ -64,7 +62,6 @@ export function createMarketingTouchController(options: {
     pending: false,
     phase: "idle",
     error: null,
-    errorAction: null,
   }));
   let disposed = false;
   let generation = 0;
@@ -206,7 +203,6 @@ export function createMarketingTouchController(options: {
       disposed ||
       state.pending ||
       state.dialog ||
-      (state.errorAction === "claim_zcode_plan" && state.error) ||
       !options.canOpen()
     )
       return;
@@ -223,30 +219,25 @@ export function createMarketingTouchController(options: {
   }
   async function run(candidate: Candidate, action: MarketingAction) {
     if (disposed || store.getState().pending) return;
-    store.setState({ pending: true, phase: "verifying", error: null, errorAction: null });
+    store.setState({ pending: true, phase: "verifying", error: null });
     let completed = false;
-    let succeeded = false;
     try {
       const result = await options.execute(action, lifetime.signal, (phase) => {
         if (!disposed) store.setState({ phase });
       });
       if (disposed) return;
       if (result.status !== "success") {
-        if (
-          (action.type === "claim_zcode_plan" || action.type === "open_url") &&
-          (result.terminal || result.status === "uncertain")
-        ) {
+        if (action.type === "open_url" && (result.terminal || result.status === "uncertain")) {
           completed = true;
           invalidatePendingSnapshot();
         }
-        store.setState({ error: result.message ?? null, errorAction: action.type });
+        store.setState({ error: result.message ?? null });
         return result;
       }
       completed = action.type !== "copy_text";
-      succeeded = true;
       invalidatePendingSnapshot();
       report(candidate, "confirm");
-      // 复制是可重复操作；不能沿用领取的完成清理，否则首次复制就会移除内容。
+      // 复制是可重复操作；不能沿用一次性动作的完成清理，否则首次复制就会移除内容。
       if (action.type === "copy_text") return result;
       if (
         action.type !== "navigate" &&
@@ -284,8 +275,6 @@ export function createMarketingTouchController(options: {
           release(state.banner);
         store.setState({ pending: false, phase: "idle", banner: next });
         await showPending();
-        // 只有领取会改变资格；外链等动作立即查询会与异步 confirm 竞争，使已关闭的旧弹窗重开。
-        if (succeeded && action.type === "claim_zcode_plan" && !disposed) options.refresh();
       }
     }
   }
@@ -327,7 +316,7 @@ export function createMarketingTouchController(options: {
       if (dialog) return run(dialog, action);
     },
     clearError() {
-      store.setState({ error: null, errorAction: null });
+      store.setState({ error: null });
     },
     dispose() {
       disposed = true;

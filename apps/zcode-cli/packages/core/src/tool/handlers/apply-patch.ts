@@ -13,7 +13,7 @@ import {
   type ApplyPatchOutput,
   type FileSystemTextEncoding,
   type TraceContext,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createStructuredPatch } from "../diff.js";
 import { derivePatchedContent } from "../patch-apply.js";
 import { parseStructuredPatch, type ParsedPatch } from "../patch-parser.js";

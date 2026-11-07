@@ -3,13 +3,13 @@ import { test } from "node:test";
 import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { TurnId } from "@zcode/contracts";
-import type { ZCodeAppOptions } from "@zcode/bootstrap";
+import type { TurnId } from "@s-agent/contracts";
+import type { ZCodeAppOptions } from "@s-agent/bootstrap";
 import {
   NodeModelSelectionConfigRepository,
   NodePersonalProviderConfigRepository,
-} from "@zcode/provider-node";
-import { modelSelectionSchema, type ModelSelection, type ZCodeModelOption } from "@zcode/shared";
+} from "@s-agent/provider-node";
+import { modelSelectionSchema, type ModelSelection, type ZCodeModelOption } from "@s-agent/shared";
 import { createCommandCenter, type CommandCenterApp } from "../src/command-center.js";
 import { handleModelCommand } from "../src/command-center/handlers/model.js";
 import { createTuiModelAvailabilityChecker } from "../src/tui-login-state.js";

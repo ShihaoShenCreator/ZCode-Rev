@@ -2,8 +2,8 @@ import { execFile } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
-import { ApiKeyAccessConfig, ProviderApiConfig, ProviderConfig } from "@zcode/provider";
-import { NodePersonalProviderConfigRepository } from "@zcode/provider-node";
+import { ApiKeyAccessConfig, ProviderApiConfig, ProviderConfig } from "@s-agent/provider";
+import { NodePersonalProviderConfigRepository } from "@s-agent/provider-node";
 import { clearAppData, getE2EAppDataPaths } from "../../../helpers/desktop-app.js";
 import { refreshSeededOpenAIProvidersThroughSettings } from "../../../helpers/custom-openai-provider.js";
 import {

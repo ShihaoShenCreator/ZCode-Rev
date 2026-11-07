@@ -3,7 +3,7 @@
  * 「Two bounds on a run」）：引擎构造好之后交给调用方的那个句柄，必须指向**这一世的**引擎，
  * 且在子进程真的跑起来之后仍然管用。
  *
- * 这里不测命令的语义（那在 @zcode/dynamic-workflow 的引擎用例里），只测接线：绑没绑、
+ * 这里不测命令的语义（那在 @s-agent/dynamic-workflow 的引擎用例里），只测接线：绑没绑、
  * 绑的是不是活着的那个引擎、句柄发出的改动有没有落到这个 run 的 journal 行上。
  */
 
@@ -14,7 +14,7 @@ import {
   type JsonSchema,
   type RunEvent,
   type ValidateFn,
-} from "@zcode/dynamic-workflow";
+} from "@s-agent/dynamic-workflow";
 import { runWorkflowScript, type RunControlBinding } from "../src/index.js";
 import { AutoDriver } from "./auto-driver.js";
 import { askSpecsFor, TEST_CWD } from "./helpers.js";

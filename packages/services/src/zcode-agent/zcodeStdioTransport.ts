@@ -1,8 +1,8 @@
 import type { ChildProcessWithoutNullStreams } from "node:child_process";
 import { StringDecoder } from "node:string_decoder";
-import { Emitter } from "@zcode/rpc";
-import type { ZCodeProtocolMessage } from "@zcode/shared";
-import { zcodeProtocolMessageSchema } from "@zcode/shared";
+import { Emitter } from "@s-agent/rpc";
+import type { ZCodeProtocolMessage } from "@s-agent/shared";
+import { zcodeProtocolMessageSchema } from "@s-agent/shared";
 import { createServiceLogger } from "#src/logger/serviceLogger.js";
 import type {
   ZCodeProtocolTransport,

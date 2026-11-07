@@ -96,14 +96,14 @@ TTL 精确到期、请求未完成时切换 endpoint 保留在可控时钟单测
 - 迁移到受支持的候选目录后，限定 common provider fixture 重跑 8/8 passed：
   `desktop-e2e-20260904062010268-p58126-9129778db7899df8`。provider capture 的 records 为 0。
 - 帮助配置相关单元测试 36/36 passed（shared reader、remote config、Web resolver、desktop commands）。
-- `pnpm --filter @zcode/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint` 全部通过；
+- `pnpm --filter @s-agent/desktop typecheck:e2e`、`pnpm typecheck`、`pnpm lint` 全部通过；
   lint 41 个既有 warning、0 error。
 
 ### 重跑正式用例
 
 ```bash
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json \
-pnpm --filter @zcode/desktop test:e2e -- --spec ./test/e2e/help-client-config.test.ts
+pnpm --filter @s-agent/desktop test:e2e -- --spec ./test/e2e/help-client-config.test.ts
 ```
 
 先完成 typecheck 再构建/运行 Electron，避免二者同时写 out/host。

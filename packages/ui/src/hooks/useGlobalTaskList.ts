@@ -3,7 +3,7 @@ import type {
   WindowHostControllerTaskListItem,
   ZCodeTaskListQuery,
   ZCodeTaskListWorkspaceScope,
-} from "@zcode/services";
+} from "@s-agent/services";
 import { logger } from "@/logger.js";
 import { useBaseWorkspaceServices } from "@/hooks/useWorkspaceServices.js";
 import type { WorkspaceTabState } from "@/store/tabStore.js";

@@ -2,7 +2,7 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, it } from "vitest";
-import { createSessionId, type Model, type ModelRequest } from "@zcode/contracts";
+import { createSessionId, type Model, type ModelRequest } from "@s-agent/contracts";
 import { createSqliteSessionStore } from "../../adapters/src/storage/session-store/sqlite-session-store.js";
 import { toAiSdkMessages } from "../../adapters/src/model/transform.js";
 import type { AgentRuntimeInternal } from "../src/runtime/internal.js";

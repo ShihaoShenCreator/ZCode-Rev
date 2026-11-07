@@ -12,14 +12,14 @@ import {
   type ZCodeConfigOption,
   type ZCodeConfigSelectValue,
   type ZCodeProvider,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   TID_CHAT_MODE_SELECT_ITEM,
   TID_CHAT_MODE_SELECT_TRIGGER,
   TID_CHAT_THOUGHT_LEVEL_SELECT_ITEM,
   TID_CHAT_THOUGHT_LEVEL_SELECT_TRIGGER,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { ControlHintTooltip } from "@/ControlHintTooltip.js";
 import {
   Select,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createSessionId, type SessionTaskType } from "@zcode/contracts";
+import { createSessionId, type SessionTaskType } from "@s-agent/contracts";
 import { join } from "node:path";
 import { resolveProjectMemoryRoot } from "../src/memory/project-root.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";

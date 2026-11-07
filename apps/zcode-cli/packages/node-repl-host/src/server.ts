@@ -3,9 +3,9 @@ import { resolve } from "node:path";
 import { isMainThread, parentPort, Worker, workerData } from "node:worker_threads";
 import { INVALID_PARAMS, Server, type Tool } from "@modelcontextprotocol/server";
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
-import { JsInputJsonSchema } from "@zcode/contracts/tools/node-repl";
-// 值导入必须走 @zcode/core/repl 这条深路径：barrel 会把 core 的整张图拖进 bundle
-// （tool handlers → @zcode/dynamic-workflow → typescript，实测 21.7MB 且求值即崩
+import { JsInputJsonSchema } from "@s-agent/contracts/tools/node-repl";
+// 值导入必须走 @s-agent/core/repl 这条深路径：barrel 会把 core 的整张图拖进 bundle
+// （tool handlers → @s-agent/dynamic-workflow → typescript，实测 21.7MB 且求值即崩
 // ERR_AMBIGUOUS_MODULE_SYNTAX）。宿主只需要 REPL 会话本身。
 // 类型也一并从 /repl 取：总入口的顶层副作用会把 Agent、Bash 注册表和工作流编译器
 // 打入每个 REPL Worker，Worker 会重复承担这份开销。
@@ -13,13 +13,13 @@ import {
   NodeReplSession,
   type NodeReplRequestMeta,
   type NodeReplRunResult,
-} from "@zcode/core/repl";
-import { createComputerUseRuntime, type ComputerUseRuntime } from "@zcode/zcode-cua";
+} from "@s-agent/core/repl";
+import { createComputerUseRuntime, type ComputerUseRuntime } from "@s-agent/zcode-cua";
 // 只加载 broker 协议常量；shared 总入口会初始化无关领域的 schema。
 import {
   NODE_REPL_BROWSER_BROKER_SOCKET_ENV,
   NODE_REPL_BROWSER_BROKER_TOKEN_ENV,
-} from "@zcode/shared/node-repl-browser-broker";
+} from "@s-agent/shared/node-repl-browser-broker";
 import { z } from "zod";
 import {
   createBrowserBridgeGlobals,

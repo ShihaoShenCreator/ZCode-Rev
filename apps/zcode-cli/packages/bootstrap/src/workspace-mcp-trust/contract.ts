@@ -1,7 +1,7 @@
-import type { McpPort, McpServerConfig } from "@zcode/contracts";
+import type { McpPort, McpServerConfig } from "@s-agent/contracts";
 
-import type { WorkspaceMcpTrustReview } from "@zcode/shared";
-export type { WorkspaceMcpTrustReview } from "@zcode/shared";
+import type { WorkspaceMcpTrustReview } from "@s-agent/shared";
+export type { WorkspaceMcpTrustReview } from "@s-agent/shared";
 
 export interface WorkspaceMcpTrustContract {
   /** 只读当前声明及持久授权；不连接 MCP。 */

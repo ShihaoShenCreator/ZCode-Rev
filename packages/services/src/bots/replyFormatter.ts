@@ -4,11 +4,11 @@ import type {
   ZCodeStreamEvent,
   ZCodeTaskChangeSummary,
   Locale,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import {
   getCompactToolCallSummary,
   getPermissionRequestPreview,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { normalizeBotMessageLocale } from "./messages.js";
 
 export interface BotReplyToolCallState {

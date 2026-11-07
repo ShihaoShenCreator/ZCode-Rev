@@ -8,7 +8,7 @@ import {
   type HookExecutionDescriptor,
   type HookRunLifecyclePayload,
   type SessionEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import type { HookInput } from "../src/hooks/types.js";
 

@@ -1,4 +1,4 @@
-import { type SessionId } from "@zcode/contracts";
+import { type SessionId } from "@s-agent/contracts";
 
 // 旧 Host 的 session_ 已进入持久化正文，引用原样透传给读取工具，不能静默丢弃或改写。
 const SESSION_REFERENCE_PATTERN = /#((?:sess|session)_[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*)/g;

@@ -3,14 +3,14 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { openMobilePairingPage } from "../helpers/mobile-pairing.js";
 import { selectNativeProjectDirectories } from "../helpers/project-sidebar.js";
-import { ServiceChannels } from "@zcode/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import {
   TID_TASK_ITEM,
   TID_V4_COMPOSER_INPUT,
   TID_V4_COMPOSER_SEND,
   TID_COMPOSER_WORKSPACE_TRIGGER,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { createServer } from "node:http";
 import { once } from "node:events";
 import { join, basename } from "node:path";

@@ -1,18 +1,18 @@
 import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { createNodeContextSourceAdapter } from "@zcode/adapters/context";
-import { createNodeExecutionAdapter } from "@zcode/adapters/exec";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
-import { createNodeWebFetchHttpClientAdapter } from "@zcode/adapters/http";
-import { createNodeSkillAdapter } from "@zcode/adapters/skills";
-import type { ConfigResult } from "@zcode/adapters/config";
+import { createNodeContextSourceAdapter } from "@s-agent/adapters/context";
+import { createNodeExecutionAdapter } from "@s-agent/adapters/exec";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
+import { createNodeWebFetchHttpClientAdapter } from "@s-agent/adapters/http";
+import { createNodeSkillAdapter } from "@s-agent/adapters/skills";
+import type { ConfigResult } from "@s-agent/adapters/config";
 import {
   AgentRuntime,
   type AgentRuntimeConfig,
   type AgentRuntimeDeps,
   type ChildClientPortsContext,
   type PermissionService,
-} from "@zcode/core";
+} from "@s-agent/core";
 import {
   type AgentExecutionTelemetryPort,
   type BrowserControlPort,
@@ -34,7 +34,7 @@ import {
   type WorkflowAgentCallInput,
   type WorkflowEscalatePort,
   type WorkflowSubmitPort,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { collectDisabledPaths } from "../skill-command-overrides.js";
 import { parseProviderQualifiedModelSelection } from "./provider-registry-selection.js";
 import type { ZCodeAppOptions } from "./types.js";

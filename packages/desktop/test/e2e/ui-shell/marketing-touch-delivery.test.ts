@@ -1,7 +1,7 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import { join } from "node:path";
-import { BUILTIN_MODEL_PROVIDER_IDS, marketingPopupSchema } from "@zcode/shared";
-import { TID_TASK_SETTINGS_BUTTON } from "@zcode/shared/test-ids";
+import { BUILTIN_MODEL_PROVIDER_IDS, marketingPopupSchema } from "@s-agent/shared";
+import { TID_TASK_SETTINGS_BUTTON } from "@s-agent/shared/test-ids";
 import {
   waitForTestIdByDom,
   getE2EAppDataPaths,
@@ -171,9 +171,6 @@ describe("Marketing Touch delivery", () => {
       expect((await ledger()).events).toEqual([
         { campaign_id: "independent", action_type: "cancel" },
       ]);
-      expect(
-        (await ledger()).requests.filter((path) => path.endsWith("/billing/claim")),
-      ).toHaveLength(0);
     });
   }
   it("MTE-17 image: switches the prepared resource with the App theme", async () => {
@@ -300,7 +297,7 @@ describe("Marketing Touch delivery", () => {
       await byId("cloud-content-dialog").waitForExist({ reverse: true });
       await browser.waitUntil(async () => (await ledger()).events.length === 1);
       expect((await ledger()).events).toEqual([{ campaign_id: campaign, action_type: "confirm" }]);
-      // 外链不改变领取资格，不应与 confirm 并发查询、重新打开旧投放。
+      // 外链不会导致与 confirm 并发的查询或重新打开旧投放。
       expect(
         (await ledger()).requests.filter((path) => path === "/api/v1/marketing/touch").length,
       ).toBe(queriesBefore);
@@ -978,75 +975,6 @@ describe("Marketing Touch delivery", () => {
           delete target.e2eCopyCalls;
           Reflect.deleteProperty(navigator.clipboard, "writeText");
         });
-      }
-    });
-  }
-  it("MTA-07: opens the existing upgrade webview and reports navigation, not purchase", async () => {
-    const baseline = (await ledger()).events.length;
-    await deliverAction({ type: "navigate", args: { page: "upgrade" } });
-    await byId("cloud-content-dialog").$("button=Run action").click();
-    await byId("coding-plan-upgrade-surface").waitForDisplayed({ timeout: 35_000 });
-    await browser.waitUntil(async () => (await ledger()).events.length === baseline + 1, {
-      timeout: 35_000,
-    });
-    expect(await byId("cloud-content-dialog").isExisting()).toBe(false);
-    expect(await byId("coding-plan-embedded-webview").isDisplayed()).toBe(true);
-    expect((await ledger()).events[baseline]).toEqual({
-      campaign_id: currentActionCampaignId,
-      action_type: "confirm",
-    });
-    await byId("coding-plan-upgrade-surface").$('button[aria-label="Close"]').click();
-    await byId("coding-plan-upgrade-surface").waitForExist({ reverse: true });
-    expect((await ledger()).events.length).toBe(baseline + 1);
-  });
-  for (const failure of ["network", "close", "timeout"] as const) {
-    it(`MTE-15 upgrade ${failure}: restores popup and requires explicit retry`, async () => {
-      const mode = (mode: string) =>
-        fetch(`${origin()}/__e2e/coding-plan/webview-mode`, {
-          method: "POST",
-          body: JSON.stringify({ mode }),
-        });
-      await mode(failure === "network" ? "fail" : "hold");
-      await deliverAction({ type: "navigate", args: { page: "upgrade" } });
-      const campaignId = currentActionCampaignId;
-      const popup = byId("cloud-content-dialog");
-      const upgrade = byId("coding-plan-upgrade-surface");
-      try {
-        await popup.$("button=Run action").click();
-        if (failure !== "network") {
-          await upgrade.waitForDisplayed({ timeout: 15_000 });
-          await browser.waitUntil(async () => {
-            const state = (await (
-              await fetch(`${origin()}/__e2e/coding-plan/webview-state`)
-            ).json()) as { pending: number };
-            return state.pending === 1;
-          });
-          expect((await ledger()).events).toEqual([]);
-          if (failure === "close") await upgrade.$('button[aria-label="Close"]').click();
-        }
-        // 升级期间原实例被卸载；恢复应重新定位 Popup，导航失败由外层 toast 提示。
-        await byId("cloud-content-dialog").waitForDisplayed({ timeout: 35_000 });
-        expect(await byId("cloud-content-dialog").getText()).toContain("E2E actions");
-        expect(await upgrade.isExisting()).toBe(false);
-        expect(await popup.$("button=Run action").isEnabled()).toBe(true);
-        expect((await ledger()).events).toEqual([]);
-        await mode("ready");
-        await browser.executeAsync((done) =>
-          requestAnimationFrame(() => requestAnimationFrame(() => done())),
-        );
-        expect((await ledger()).events).toEqual([]);
-        await popup.$("button=Run action").click();
-        await upgrade.waitForDisplayed({ timeout: 15_000 });
-        await browser.waitUntil(async () => (await ledger()).events.length === 1, {
-          timeout: 35_000,
-        });
-        expect((await ledger()).events).toEqual([
-          { campaign_id: campaignId, action_type: "confirm" },
-        ]);
-        expect(await popup.isExisting()).toBe(false);
-      } finally {
-        await mode("ready");
-        if (await upgrade.isDisplayed()) await upgrade.$('button[aria-label="Close"]').click();
       }
     });
   }

@@ -1,7 +1,7 @@
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { createSqliteSessionStore } from "@zcode/adapters/storage";
+import { createSqliteSessionStore } from "@s-agent/adapters/storage";
 import { describe, expect, it, vi } from "vitest";
 import { createRegistryBackedTestApp } from "./helpers/registry-backed-test-app.js";
 import type { ZCodeApp } from "../src/app/types.js";

@@ -642,7 +642,7 @@ describe("automation surface feature policy", () => {
 Create `packages/services/src/automation-surface/automationSurfaceFeaturePolicy.ts`:
 
 ```ts
-import type { AppSettings } from "@zcode/shared";
+import type { AppSettings } from "@s-agent/shared";
 
 export interface AutomationSurfaceFeaturePolicy {
   browserUse: {
@@ -686,7 +686,7 @@ Create `packages/services/src/automation-surface/automationSurface.ts`:
 
 ```ts
 import { createServiceDescriptor } from "../collection.js";
-import type { AutomationSurfaceInstanceRef, AutomationSurfaceSessionRef } from "@zcode/shared";
+import type { AutomationSurfaceInstanceRef, AutomationSurfaceSessionRef } from "@s-agent/shared";
 
 export interface PrepareAutomationSurfaceSessionResult {
   mcpServers: Array<{
@@ -849,7 +849,7 @@ describe("automation surface desktop security", () => {
 Create `packages/desktop/src/main/automationSurface/security.ts`:
 
 ```ts
-import { BROWSER_USE_PARTITION_HINT_PREFIX } from "@zcode/shared";
+import { BROWSER_USE_PARTITION_HINT_PREFIX } from "@s-agent/shared";
 
 export function parseAutomationSurfacePartitionHint(raw: string | undefined) {
   if (!raw?.startsWith(BROWSER_USE_PARTITION_HINT_PREFIX)) {

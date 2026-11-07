@@ -6,8 +6,8 @@ import {
   waitForWorkspaceApp,
 } from "#e2e/helpers/desktop-app";
 import { selectNativeProjectDirectories } from "#e2e/helpers/project-sidebar";
-import { ServiceChannels } from "@zcode/shared";
-import type { VirtualProject } from "@zcode/services";
+import { ServiceChannels } from "@s-agent/shared";
+import type { VirtualProject } from "@s-agent/services";
 import {
   installHandoffRpcProbe,
   callHandoffHost,

@@ -8,8 +8,8 @@ import {
   SessionEventType,
   type ModelRequest,
   type SessionEvent,
-} from "@zcode/contracts";
-import { applyConversationDeltas } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { applyConversationDeltas } from "@s-agent/shared/zcode-protocol-v4";
 import { createSqliteSessionStore } from "../../adapters/src/storage/session-store/sqlite-session-store.js";
 import type { AgentRuntimeInternal } from "../../core/src/runtime/internal.js";
 import { createToolRegistry } from "../../core/src/tool/registry.js";

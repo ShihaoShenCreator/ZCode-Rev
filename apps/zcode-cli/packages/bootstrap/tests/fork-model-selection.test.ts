@@ -2,7 +2,7 @@
 // Bug：加速中的会话分叉后没有把原模型带过去——分叉点消息记录的是加速卡的单轮执行
 // Selection（highspeed-card-spec §5），旧实现把它当成会话选型继承给 child。
 import { describe, expect, it } from "vitest";
-import { HIGHSPEED_PROVIDER_IDS } from "@zcode/shared";
+import { HIGHSPEED_PROVIDER_IDS } from "@s-agent/shared";
 import {
   cloneModelSelection,
   derivedSessionModelSelection,

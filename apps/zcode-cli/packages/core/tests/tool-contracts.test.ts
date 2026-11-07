@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { AgentInputSchema, BashInputJsonSchema, BashOutputJsonSchema } from "@zcode/contracts";
+import { AgentInputSchema, BashInputJsonSchema, BashOutputJsonSchema } from "@s-agent/contracts";
 import { agentToolEntry } from "../src/tool/handlers/agent.js";
 import { bashToolEntry } from "../src/tool/handlers/bash.js";
 import { editToolEntry } from "../src/tool/handlers/edit.js";

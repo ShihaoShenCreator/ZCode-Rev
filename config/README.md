@@ -9,7 +9,7 @@ Web 在构建时导入；远端请求失败或缺少有效字段时使用内置�
 读取 `data.configs.feedbackUrl`：
 
 - `community_urls["zh-CN" | "en-US"]`：只按当前语言回退到内置入口，不跨语言回退。
-- `feedback_url`：远端有效地址优先，否则使用内置地址。
+- `feedback_url`：远端提供有效地址时显示外部反馈入口；内置配置不提供品牌方表单地址。
 - `feedback_use_external_form`：远端布尔值优先，`false` 也是有效覆盖。
 
 请求携带 `app_version`；Desktop 另带 `platform-arch`，Web 省略平台参数。

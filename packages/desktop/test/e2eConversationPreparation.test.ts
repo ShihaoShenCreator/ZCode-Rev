@@ -6,7 +6,7 @@ import {
   TID_V4_COMPOSER_INPUT,
   TID_V4_SESSION_PANE,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import {
   clickTestIdByDom,
   DEFAULT_WORKSPACE,

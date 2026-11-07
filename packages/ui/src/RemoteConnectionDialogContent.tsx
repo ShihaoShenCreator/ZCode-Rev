@@ -9,9 +9,9 @@ import type {
   SourceServerWorkspaceHistoryEntry,
   SSHConfigAliasOption,
   WSLDistro,
-} from "@zcode/shared";
-import type { IServiceAccessor } from "@zcode/services";
-import { TID_SSH_CONFIG_IMPORT } from "@zcode/shared/test-ids";
+} from "@s-agent/shared";
+import type { IServiceAccessor } from "@s-agent/services";
+import { TID_SSH_CONFIG_IMPORT } from "@s-agent/shared/test-ids";
 import {
   AlertTriangleIcon,
   ArrowLeftIcon,

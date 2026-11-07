@@ -1,4 +1,4 @@
-import type { ZCodeConfigOption } from "@zcode/shared";
+import type { ZCodeConfigOption } from "@s-agent/shared";
 
 export function applySelectedZCodeMode(
   options: readonly ZCodeConfigOption[],

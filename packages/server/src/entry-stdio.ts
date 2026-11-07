@@ -1,6 +1,6 @@
-import { migrateApplicationStorage, createSettingService } from "@zcode/services/node";
-import { disposeServiceResourcesAndWait, getAppConfigDir } from "@zcode/services/node";
-import type { IChannel } from "@zcode/rpc";
+import { migrateApplicationStorage, createSettingService } from "@s-agent/services/node";
+import { disposeServiceResourcesAndWait, getAppConfigDir } from "@s-agent/services/node";
+import type { IChannel } from "@s-agent/rpc";
 import {
   ZCODE_VERSION,
   TOPIC_RESOURCE_RELAY_CHANNEL,
@@ -8,8 +8,8 @@ import {
   formatLogPrefix,
   formatZodError,
   helloAckMessageSchema,
-} from "@zcode/shared";
-import type { HelloMessage, HelloAckMessage } from "@zcode/shared";
+} from "@s-agent/shared";
+import type { HelloMessage, HelloAckMessage } from "@s-agent/shared";
 import { createStdioServer } from "./stdio.js";
 import { registerStdioProcessLifecycle } from "./stdio-lifecycle.js";
 import { createStdioServices } from "./stdioServices.js";

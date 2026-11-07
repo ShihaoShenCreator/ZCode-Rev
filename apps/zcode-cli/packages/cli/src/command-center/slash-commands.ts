@@ -1,5 +1,5 @@
-import type { DynamicWorkflowMode } from "@zcode/shared";
-import type { TuiSlashCommandSuggestion } from "@zcode/tui";
+import type { DynamicWorkflowMode } from "@s-agent/shared";
+import type { TuiSlashCommandSuggestion } from "@s-agent/tui";
 import {
   findCustomCommandHelpEntry,
   formatAvailableCommandNames,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { PermissionRuleset } from "@zcode/contracts";
+import type { PermissionRuleset } from "@s-agent/contracts";
 import { PermissionService } from "../src/permission/service.js";
 import { createBashPermissionRulePolicy } from "../src/tool/handlers/bash-command-permission-policy.js";
 import { bashToolEntry } from "../src/tool/handlers/bash.js";

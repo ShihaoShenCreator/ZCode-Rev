@@ -2,7 +2,7 @@ import { mkdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import type { ElectronMock } from "@wdio/electron-types";
-import { TID_CHAT_ATTACHMENT_BUTTON, TID_CHAT_ATTACHMENT_MENU_ITEM } from "@zcode/shared/test-ids";
+import { TID_CHAT_ATTACHMENT_BUTTON, TID_CHAT_ATTACHMENT_MENU_ITEM } from "@s-agent/shared/test-ids";
 import { clearAppData } from "../helpers/desktop-app.js";
 import { prepareV4ConversationE2E, startNewV4Draft } from "#e2e/helpers/v4-conversation";
 

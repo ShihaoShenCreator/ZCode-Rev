@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { PluginLoadOutcome, PluginMetadata } from "@zcode/contracts";
+import type { PluginLoadOutcome, PluginMetadata } from "@s-agent/contracts";
 import { resolvePluginRuntimeFeatures } from "../src/app/plugin-runtime-features.js";
 import { resolveBuiltInNodeReplMcpServers } from "../src/app/built-in-node-repl.js";
 

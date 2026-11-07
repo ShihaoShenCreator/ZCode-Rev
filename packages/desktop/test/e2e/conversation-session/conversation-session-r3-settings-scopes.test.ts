@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { basename, join, resolve } from "node:path";
-import { parseRemoteWorkspaceIdentity, encodeCustomModelValue } from "@zcode/shared";
+import { parseRemoteWorkspaceIdentity, encodeCustomModelValue } from "@s-agent/shared";
 import {
   TID_CHAT_MODEL_SELECT_GROUP,
   TID_CHAT_MODEL_SELECT_ITEM,
@@ -13,7 +13,7 @@ import {
   TID_SUBAGENT_ROW,
   TID_TASK_SETTINGS_BUTTON,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { access } from "node:fs/promises";
 import {
   clearAppData,

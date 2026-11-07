@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { channelReplyPartsSchema, channelReplyResultSchema } from "@zcode/shared";
-import type { SessionId } from "@zcode/contracts";
+import { channelReplyPartsSchema, channelReplyResultSchema } from "@s-agent/shared";
+import type { SessionId } from "@s-agent/contracts";
 
 import type { ToolEntry, ToolHandler } from "../types.js";
 

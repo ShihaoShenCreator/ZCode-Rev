@@ -664,7 +664,7 @@ MCP 动态 tool 还需要额外确认：
 - 显式 modern protocol pin 的 version probe 是唯一协商路径，必须继承 server 的完整连接 `timeoutMs`；只有允许 legacy fallback 的 `auto` 模式才可使用有界短 probe。pin probe 超时不得伪装成 legacy server 或静默丢工具。
 - MCP server 自己实施的调用超时必须与 `tools/list` 描述、输入 schema 和具体 tool spec 保持一致；修改默认值时要由同一命名常量驱动执行与模型文案，并用契约测试防止二者漂移。
 - 可选超时字段的 provider-visible 描述不能只写字段类型；必须给出模型可执行的决策规则，包括何时必须显式传值、如何为预计执行时间预留开销，以及超过上限时应拆分调用。
-- MCP server 可在 result `_meta` 中声明 namespaced 的 `zcode/errorPresentation: "message-only"`，要求通用 bridge 在 `isError: true` 时直接投影 content，不额外添加 `MCP tool returned an error:` 包装。该能力只控制模型可见文案，不得被当作失败状态本身；失败事实仍以标准 MCP `isError` 为准。`node_repl` 生产端不得声明 `message-only`：它直接把经过脱敏的结构化 `run.error.message` 写入 content，并让通用 bridge 投影稳定的 `MCP tool returned an error:` 前缀，供不读取私有 `_meta` 的分析链路区分成功与失败。错误结果不得混入错误类型、`at ...` 堆栈帧或失败前的 REPL 日志。通用 bridge 禁止按 `serverName` 分支或解析具体错误正文。本调整不修改 `ToolResultPayload`、session event、持久化、UI 或 desktop continuous / web remote replayable 链路。开发态 desktop agent 构建必须同步重建 `@zcode/browser-use-plugin` runtime，确保插件缓存 hash 能感知这类生产端变更。
+- MCP server 可在 result `_meta` 中声明 namespaced 的 `zcode/errorPresentation: "message-only"`，要求通用 bridge 在 `isError: true` 时直接投影 content，不额外添加 `MCP tool returned an error:` 包装。该能力只控制模型可见文案，不得被当作失败状态本身；失败事实仍以标准 MCP `isError` 为准。`node_repl` 生产端不得声明 `message-only`：它直接把经过脱敏的结构化 `run.error.message` 写入 content，并让通用 bridge 投影稳定的 `MCP tool returned an error:` 前缀，供不读取私有 `_meta` 的分析链路区分成功与失败。错误结果不得混入错误类型、`at ...` 堆栈帧或失败前的 REPL 日志。通用 bridge 禁止按 `serverName` 分支或解析具体错误正文。本调整不修改 `ToolResultPayload`、session event、持久化、UI 或 desktop continuous / web remote replayable 链路。开发态 desktop agent 构建必须同步重建 `@s-agent/browser-use-plugin` runtime，确保插件缓存 hash 能感知这类生产端变更。
 - 标准 media result 不应无条件降级成文本占位。`image` block 应进入 provider-neutral `ModelMessageContent`，让 screenshot/visual inspection 类 MCP 能力和内置 `Read` 图片路径一致；不支持的 media 再返回短占位并受 result budget 约束。
 - 官方 CUA 的最终 raster 是坐标输入的一部分，不是普通可优化媒体。只有通过 Host authority 校验的官方 `zcode-cua` descriptor 可以启用该路径；每个 image 必须紧邻精确形态的 `image_ref {frame_id,width,height,actionable}`，bridge 必须校验 canonical base64、PNG/JPEG 文件头、MIME、实际尺寸、200 KiB 上限和单结果 `frame_id` 唯一性，并保持 bytes 与 block 顺序不变。`PostToolUse` hook 文本是这批 tool result 之后的附件，不进受保护的结果，不能替换或重排媒体对。任一校验失败时必须原子移除本次结果中的全部 CUA image/image_ref 并返回错误，禁止只留引用、只留图片或退回 artifact/文本占位。第三方同名 MCP 仍走通用 result budget，不能获得豁免。
 - official CUA 结构化结果在 Host 内只由 `modelContentProtection=official_cua_frame_v1` 表示；不要再增加或恢复并行 preserve boolean。`returnedBytes` 是文本与真实媒体载荷的唯一 aggregate，hook 文本不进 tool result，不计入它；不能依赖第二份 `mediaBytes` 镜像状态。
@@ -790,8 +790,8 @@ Browser use 虽由 `js` REPL 驱动，但其 capability manifest、模型文档�
   `packages/ui/src/lib/nodeReplToolDisplay.ts` 里的名称映射：那两处只读取历史 transcript 里的
   toolName，与当前 `tools/list` 无关，删掉会让旧会话的调用块退化成 unknown fallback renderer。
   回放合同与模型可见面是两件事，不要一起删。
-- Node REPL MCP server 通过 `@zcode/core/repl` 复用执行引擎，browser client 通过
-  `@zcode/core/browser-client` 接入；禁止从 core 总入口打入 Agent、Bash 注册表和工作流编译器。
+- Node REPL MCP server 通过 `@s-agent/core/repl` 复用执行引擎，browser client 通过
+  `@s-agent/core/browser-client` 接入；禁止从 core 总入口打入 Agent、Bash 注册表和工作流编译器。
   App、普通 CLI、SEA 保留现有 plugin-host 适配与工具合同，构建依赖图和真实 bundle 握手/执行
   共同验证该边界，详见根目录 `docs/browser-use/browser-use-plugin-runtime-boundary.md`。
 - plugin-host 在 CLI main 中先于通用 Agent runner 和 Provider 模块导入分流；保留环境清理、

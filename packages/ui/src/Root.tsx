@@ -5,8 +5,8 @@ import {
   buildRemoteWorkspaceIdentity,
   buildServerRemoteWorkspaceIdentity,
   remoteHostIdFromWorkspaceIdentity,
-} from "@zcode/shared";
-import type { RemoteProjectHost } from "@zcode/services";
+} from "@s-agent/shared";
+import type { RemoteProjectHost } from "@s-agent/services";
 import { useRemoteWorkspaceSessionStore } from "@/store/remoteWorkspaceSessionStore.js";
 import { RemoteConnectionProgressProvider } from "@/remote-connection-flow/ui/RemoteConnectionProgress.js";
 /* eslint-disable max-lines -- Root 当前集中编排启动、workspace shell wiring 和 Web 远控同步，先保持入口收口避免跨层状态拆散。 */
@@ -22,7 +22,7 @@ import {
   APP_RUNTIME_PREFERENCES_CHANGED_BROADCAST_CHANNEL,
   DesktopCommandIds,
   appRuntimePreferencesChangedBroadcastPayloadSchema,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import { TooltipProvider } from "@/components/ui/tooltip.js";
 import { Button } from "@/components/ui/button.js";
 import { PlatformProvider } from "@/hooks/usePlatform.js";
@@ -49,7 +49,6 @@ import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { SSHDialog } from "@/SSHDialog.js";
 import { SettingsPage } from "@/SettingsPage.js";
 import { setPendingSettingsSectionIntent } from "@/lib/settingsNavigation.js";
-import { CodingPlanUpgradeDialogProvider } from "@/settings/CodingPlanUpgradeDialogProvider.js";
 import { RewardsProvider } from "@/rewards/RewardsProvider.js";
 import { WelcomeScreen, type LoginCompleteReason } from "@/WelcomeScreen.js";
 import { setDefaultFileDisplayBasePath } from "@/lib/fileDisplay.js";
@@ -173,16 +172,14 @@ export function Root(props: RootProps) {
                       <AssistantCodeCommentFeatureProvider
                         enabled={props.assistantCodeCommentCardsEnabled}
                       >
-                        <CodingPlanUpgradeDialogProvider>
-                          <RewardsProvider desktop={props.isDesktop === true}>
-                            <RequestSecurityHost />
-                            <MarketingTouchProvider desktop={props.isDesktop === true}>
-                              <RemoteConnectionProgressProvider>
-                                <RootInner {...props} />
-                              </RemoteConnectionProgressProvider>
-                            </MarketingTouchProvider>
-                          </RewardsProvider>
-                        </CodingPlanUpgradeDialogProvider>
+                        <RewardsProvider desktop={props.isDesktop === true}>
+                          <RequestSecurityHost />
+                          <MarketingTouchProvider desktop={props.isDesktop === true}>
+                            <RemoteConnectionProgressProvider>
+                              <RootInner {...props} />
+                            </RemoteConnectionProgressProvider>
+                          </MarketingTouchProvider>
+                        </RewardsProvider>
                       </AssistantCodeCommentFeatureProvider>
                     </WebRemoteControlFeatureProvider>
                   </DiffsWorkerPoolProvider>

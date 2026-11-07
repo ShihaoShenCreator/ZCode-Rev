@@ -6,21 +6,21 @@ import { tmpdir } from "node:os";
 import {
   createInMemorySessionEventStore,
   createNodeToolArtifactStore,
-} from "@zcode/adapters/storage";
-import { createNodeLoggerFactory } from "@zcode/adapters/logging";
-import { createConfig, resolvePath } from "@zcode/adapters/config";
+} from "@s-agent/adapters/storage";
+import { createNodeLoggerFactory } from "@s-agent/adapters/logging";
+import { createConfig, resolvePath } from "@s-agent/adapters/config";
 import {
   createNodeExecutionAdapter,
   resolveEffectiveBashShellSelection,
-} from "@zcode/adapters/exec";
-import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
-import { createNodeWebFetchHttpClientAdapter } from "@zcode/adapters/http";
-import { createJimpImageProcessorAdapter } from "@zcode/adapters/image";
-import { createPopplerPdfDocumentAdapter } from "@zcode/adapters/pdf";
-import { createNodeSessionMailboxAdapter } from "@zcode/adapters/mailbox";
-import { createNodeContextSourceAdapter } from "@zcode/adapters/context";
-import { createNodeSkillAdapter } from "@zcode/adapters/skills";
-import { createMcpAdapter } from "@zcode/adapters/mcp";
+} from "@s-agent/adapters/exec";
+import { createNodeFileSystemAdapter } from "@s-agent/adapters/fs";
+import { createNodeWebFetchHttpClientAdapter } from "@s-agent/adapters/http";
+import { createJimpImageProcessorAdapter } from "@s-agent/adapters/image";
+import { createPopplerPdfDocumentAdapter } from "@s-agent/adapters/pdf";
+import { createNodeSessionMailboxAdapter } from "@s-agent/adapters/mailbox";
+import { createNodeContextSourceAdapter } from "@s-agent/adapters/context";
+import { createNodeSkillAdapter } from "@s-agent/adapters/skills";
+import { createMcpAdapter } from "@s-agent/adapters/mcp";
 import {
   AgentRuntime,
   normalizeAgentProfiles,
@@ -29,8 +29,8 @@ import {
   writeWorkflowDraft,
   type AmendWorkflowRunSettingsInput,
   type ResumeSessionResult,
-} from "@zcode/core";
-import { createModelTelemetry } from "@zcode/telemetry";
+} from "@s-agent/core";
+import { createModelTelemetry } from "@s-agent/telemetry";
 import {
   createRootTraceContext,
   ModelRequestSessionFeature,
@@ -41,12 +41,12 @@ import {
   SessionEventType,
   type ExecutionShellSelection,
   type MessageId,
-} from "@zcode/contracts";
-import { isRemoteWorkspaceIdentity, resolveZCodeRuntimeEnv } from "@zcode/shared";
+} from "@s-agent/contracts";
+import { isRemoteWorkspaceIdentity, resolveZCodeRuntimeEnv } from "@s-agent/shared";
 import {
   ZCODE_ATTACHMENT_FAULT_CODES,
   ZCodeAttachmentFaultError,
-} from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/shared/zcode-protocol-v4";
 
 import { createModelAdapter } from "../model-factory.js";
 import { StartupTimer, startupNow } from "../startup-logging.js";

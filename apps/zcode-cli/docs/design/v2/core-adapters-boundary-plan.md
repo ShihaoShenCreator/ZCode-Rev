@@ -14,7 +14,7 @@
 
 当前实现已经出现 core / adapters 边界泄漏：
 
-1. `@zcode/core` 依赖了 `@zcode/adapters`，违反了 v2 的编译依赖方向。
+1. `@s-agent/core` 依赖了 `@s-agent/adapters`，违反了 v2 的编译依赖方向。
 2. `packages/core/src/runtime.ts` 直接引用 `AiSdkModelAdapter`，导致 provider SDK adapter 形态进入 core。
 3. `packages/core/src/tool/handlers/read.ts`、`write.ts`、`edit.ts` 直接使用 `fs/promises`。
 4. `packages/core/src/tool/handlers/bash.ts` 直接使用 `child_process.exec`，且是 shell 字符串执行。
@@ -32,7 +32,7 @@
 
 本次改造完成后应满足：
 
-- `packages/core/package.json` 不再依赖 `@zcode/adapters`。
+- `packages/core/package.json` 不再依赖 `@s-agent/adapters`。
 - `packages/core/src/**` 不直接 import `node:fs`、`fs/promises`、`node:child_process`、`child_process`、provider SDK、HTTP SDK 或 adapter 实现。
 - `core` 通过 contracts 中的 port 调用模型、工具 I/O、日志、trace、存储和配置。
 - built-in tools 可以分成两层：core 中的 tool contract / lifecycle，adapters 中的 Node I/O implementation。
@@ -204,13 +204,13 @@ packages/core          packages/adapters
 - 在 contracts 中定义最小 `ModelPort`。
 - 将 `AgentRuntimeDeps.modelAdapter?: AiSdkModelAdapter` 改为 `modelPort?: ModelPort`。
 - `AiSdkModelAdapter` 实现 `ModelPort`。
-- 从 `packages/core/package.json` 移除 `@zcode/adapters`。
-- 增加 dependency guard 测试：core 源码禁止 import `@zcode/adapters`。
+- 从 `packages/core/package.json` 移除 `@s-agent/adapters`。
+- 增加 dependency guard 测试：core 源码禁止 import `@s-agent/adapters`。
 
 验收：
 
-- `pnpm --filter @zcode/core typecheck` 不需要 adapters build。
-- `rg "@zcode/adapters" packages/core/src packages/core/package.json` 无结果。
+- `pnpm --filter @s-agent/core typecheck` 不需要 adapters build。
+- `rg "@s-agent/adapters" packages/core/src packages/core/package.json` 无结果。
 
 ### Phase 2：迁移 built-in tool I/O 到 adapters
 
@@ -297,9 +297,9 @@ packages/core          packages/adapters
 任务：
 
 - 增加 `tests/architecture-boundary.test.ts` 或 package 内测试。
-- 检查 core package dependencies 只允许 `@zcode/contracts`、必要纯类型包和测试依赖。
+- 检查 core package dependencies 只允许 `@s-agent/contracts`、必要纯类型包和测试依赖。
 - 检查 core source 禁止底层 I/O import。
-- 检查 adapters source 禁止 import `@zcode/core`。
+- 检查 adapters source 禁止 import `@s-agent/core`。
 - 检查 contracts source 禁止 import core / adapters / bootstrap。
 
 验收：
@@ -334,13 +334,13 @@ packages/core          packages/adapters
 ```sh
 pnpm lint
 pnpm test
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 ```
 
 并且下面检查应无结果：
 
 ```sh
-rg "@zcode/adapters" packages/core/src packages/core/package.json
+rg "@s-agent/adapters" packages/core/src packages/core/package.json
 rg "fs/promises|node:fs|child_process|node:child_process|process\\.env|fetch\\(" packages/core/src
-rg "@zcode/core" packages/adapters/src packages/adapters/package.json
+rg "@s-agent/core" packages/adapters/src packages/adapters/package.json
 ```

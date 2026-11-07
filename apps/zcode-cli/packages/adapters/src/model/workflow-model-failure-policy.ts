@@ -14,10 +14,10 @@
  * `unrecognizedCodeStreak` 带过去）。
  */
 
-import { ModelErrorCode, ModelFailureReason } from "@zcode/contracts";
+import { ModelErrorCode, ModelFailureReason } from "@s-agent/contracts";
 import type { ClassifiedModelFailure } from "./failure-classifier.js";
 import { isRetryableFailure } from "./failure-classifier.js";
-import type { ModelRetryBudget } from "@zcode/contracts";
+import type { ModelRetryBudget } from "@s-agent/contracts";
 import { isUnboundedRetryBudget } from "./retry-budget.js";
 
 /** `ProviderStop` 的判定键：通知文案表按它选句子（不是按 reason）。 */

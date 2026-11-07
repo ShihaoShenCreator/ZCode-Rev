@@ -1,6 +1,6 @@
 import { useCallback, type RefObject } from "react";
-import { BROWSER_VIEW_RESTORE_BOOTSTRAP_URL, type BrowserViewportSize } from "@zcode/shared";
-import { TID_BROWSER_WEBVIEW } from "@zcode/shared/test-ids";
+import { BROWSER_VIEW_RESTORE_BOOTSTRAP_URL, type BrowserViewportSize } from "@s-agent/shared";
+import { TID_BROWSER_WEBVIEW } from "@s-agent/shared/test-ids";
 import { TriangleAlertIcon } from "lucide-react";
 import { ResponsiveBrowserViewport } from "@/browser-use/ResponsiveBrowserViewport.js";
 import {

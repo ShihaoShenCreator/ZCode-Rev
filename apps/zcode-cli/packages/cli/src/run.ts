@@ -1,14 +1,14 @@
-import { ToolSearchModeSchema } from "@zcode/contracts";
+import { ToolSearchModeSchema } from "@s-agent/contracts";
 import {
   STORAGE_MIGRATION_COMMAND,
   storageMigrationReportSchema,
-} from "@zcode/shared/sqlite-migrations";
+} from "@s-agent/shared/sqlite-migrations";
 import { extractDisallowedToolsArgs, parseGlobalArgs } from "./arguments.js";
-import { createNodeLoggerFactory } from "@zcode/adapters";
-import { getRuntimeInfo, type PresentationSurface } from "@zcode/core";
-import { color, formatJson, supportsColor } from "@zcode/core";
-import { getZCodeCopy, isUiLocale, type UiLocale } from "@zcode/i18n";
-import type { RunContext, GlobalOptions, GlobalOutputFormat } from "@zcode/shared-types";
+import { createNodeLoggerFactory } from "@s-agent/adapters";
+import { getRuntimeInfo, type PresentationSurface } from "@s-agent/core";
+import { color, formatJson, supportsColor } from "@s-agent/core";
+import { getZCodeCopy, isUiLocale, type UiLocale } from "@s-agent/i18n";
+import type { RunContext, GlobalOptions, GlobalOutputFormat } from "@s-agent/shared-types";
 import {
   applyCliRuntimeEnvSanitization,
   loadCliDotenv,
@@ -310,8 +310,8 @@ export const run = async (ctx: RunContext, deps: RunDependencies = {}): Promise<
         deps.migrateStorage ??
         (async () => {
           // 复用正常启动的配置解析与存储入口，不初始化 Provider/MCP/Agent 运行态。
-          const { createConfig, resolvePath } = await import("@zcode/adapters/config");
-          const { openStartupSqliteSessionStore } = await import("@zcode/adapters/storage");
+          const { createConfig, resolvePath } = await import("@s-agent/adapters/config");
+          const { openStartupSqliteSessionStore } = await import("@s-agent/adapters/storage");
           const config = createConfig({ env: deps.env ?? process.env });
           const store = await openStartupSqliteSessionStore({
             dbPath: resolvePath(config.config.storage.sessionDbPath),

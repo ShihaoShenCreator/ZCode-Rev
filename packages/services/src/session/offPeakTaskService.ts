@@ -21,12 +21,12 @@ import {
   type OffPeakTaskCreateResult,
   type ZCodeOffPeakTask,
   type ZCodeOffPeakTaskCreateParams,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 import type { ServiceLogger } from "../logger/serviceLogger.js";
 import { isOffPeakBoundSessionConflict, type OffPeakTaskRepo } from "./offPeakTaskRepo.js";
 import type { IOffPeakTaskService, OffPeakUpdateTaskParams } from "./offPeakTask.js";
 import { OffPeakServerError, type OffPeakServerClient } from "./offPeakServerClient.js";
-import type { ModelSelection, ModelSelectionValidation } from "@zcode/provider";
+import type { ModelSelection, ModelSelectionValidation } from "@s-agent/provider";
 import { OffPeakResidentExecutions } from "./offPeakResidentExecutions.js";
 
 /** 轮询下限/上限与失败退避（服务端 next_poll_after 优先，钳制防打爆/防饿死）。 */

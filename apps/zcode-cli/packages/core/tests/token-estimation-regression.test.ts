@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ESTIMATED_TOKEN_CHAR_DIVISOR } from "@zcode/shared";
+import { ESTIMATED_TOKEN_CHAR_DIVISOR } from "@s-agent/shared";
 import { estimateMessageTokens, shouldAutoCompact } from "../src/compact/index.js";
 import { estimateTokens } from "../src/context/utils.js";
 import { buildPostCompactFileRestore } from "../src/runtime/helpers/compact-post-reminders.js";

@@ -1,5 +1,7 @@
 # Z.AI / BigModel Start Plan Provider
 
+> 已退役：仅保留历史设计记录。当前 S-Agent 不提供 Z.AI/BigModel 原生 Provider、账号连接、套餐权益或推荐功能；本文行为不适用于当前版本。
+
 ## 当前 Provider 架构（Todo154：Start 独立）
 
 账号选择继续保存 `providerFamilyDomain` 与 `providerFamilyConnectionSelections`；不增加迁移。

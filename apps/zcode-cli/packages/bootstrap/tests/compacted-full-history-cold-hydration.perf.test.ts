@@ -12,9 +12,9 @@ import {
   type SessionId,
   type TraceId,
   type TurnId,
-} from "@zcode/contracts";
-import { activeSessionMessages } from "@zcode/core";
-import { conversationTopicFrameSchema } from "@zcode/shared/zcode-protocol-v4";
+} from "@s-agent/contracts";
+import { activeSessionMessages } from "@s-agent/core";
+import { conversationTopicFrameSchema } from "@s-agent/shared/zcode-protocol-v4";
 import { mergeColdConversationEvents } from "../src/zcode-protocol-v4/cold-event-merge.js";
 import { ConversationTopicPublisher } from "../src/zcode-protocol-v4/conversation-topic-publisher.js";
 

@@ -1,4 +1,4 @@
-import type { Logger, PluginLoadOutcome } from "@zcode/contracts";
+import type { Logger, PluginLoadOutcome } from "@s-agent/contracts";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const resolverCapture = vi.hoisted(() => ({

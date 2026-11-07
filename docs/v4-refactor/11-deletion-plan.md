@@ -111,7 +111,7 @@
 
 ---
 
-## 波次 2：`@zcode/protocol` 重写
+## 波次 2：`@s-agent/protocol` 重写
 
 ### 2.1 协议本体
 
@@ -144,13 +144,13 @@
 | 文件 | 行数 | 处置 |
 | --- | --- | --- |
 | `packages/desktop/src/main/taskRealtimeBus.ts`（+ `packages/desktop/test/taskRealtimeBus.test.ts`） | 1,056 | 删。owner/lease/mirror 整层消灭（01-topology），所有客户端对等订阅 |
-| `packages/client/src/webRemoteControlRelayProtocol.ts` | 217 | 删。全系统只留 `@zcode/rpc` 一层帧级可靠性（05） |
+| `packages/client/src/webRemoteControlRelayProtocol.ts` | 217 | 删。全系统只留 `@s-agent/rpc` 一层帧级可靠性（05） |
 | `packages/desktop/src/main/webRemoteControlManager.ts` | 1,321 | 大改：去掉 base64 双层编码、bridgeSessionId 易失身份，退化为字节转发 + host attachment 调度 |
 | `packages/web/src/main.tsx` | 2,141 | 大改：三条 web 链路收敛为"连一个 endpoint"（01 部署收敛） |
 | `packages/services/src/zcode-agent/zcodeTaskServiceAdapter.ts` | 5,871 | 删。task→session 适配层的存在理由（旧 UI 讲 task 语言）随旧 UI 一起消失。**注意顺序：新 UI 可用之前它必须活着**，是波次 3 里最后删的 |
 | 旧协议生成目录 | — | 陈旧构建产物，清理 + 重新构建即可 |
 
-`@zcode/rpc`（`packages/rpc/src`，3,119 行）**不删**，打两个补丁：暴露拥塞信号（`unacknowledgedBytes` + `onSaturated/onDrained`）、重放缓冲加界（见 05）。
+`@s-agent/rpc`（`packages/rpc/src`，3,119 行）**不删**，打两个补丁：暴露拥塞信号（`unacknowledgedBytes` + `onSaturated/onDrained`）、重放缓冲加界（见 05）。
 
 ---
 
@@ -309,7 +309,7 @@ conversation 相关 E2E 的既有工作流继续生效：**新写任何 case 前
 
 > 执行节奏的权威版本是 [08-phasing.md](./08-phasing.md) 的 M0–M5 里程碑（本节 1–6 步与之对应：步骤 1≈M1、2≈M2、3–4≈M3、5≈M4/M5）。波次 1 的删除动作发生在 M3 分支上；波次 2/3 发生在 M5。
 
-1. **先立新协议**：按 09/10 落 `@zcode/protocol` 新 schema + coalesce 纯函数 + 类型测试（此时新旧并存，旧代码尚未删）。
+1. **先立新协议**：按 09/10 落 `@s-agent/protocol` 新 schema + coalesce 纯函数 + 类型测试（此时新旧并存，旧代码尚未删）。
 2. **CLI 侧产出投影**：ProductProjection reducer + command inbox + `subscribe(base)`（02/03/04），黄金测试全过。
 3. **新 UI 骨架起步**：SessionDataLayer + `apply()` + 单 pane Timeline（虚拟滚动）先跑通一条"订阅→渲染→发送"竖切。
 4. **删除波次 1**：新竖切可用后整批删 UI 旧链路（本清单 1.1–1.6），同批把保留组件的 store 引用剥掉。

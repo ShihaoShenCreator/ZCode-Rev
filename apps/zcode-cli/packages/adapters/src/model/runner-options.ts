@@ -1,5 +1,5 @@
 import { Output, jsonSchema } from "ai";
-import type { ModelToolChoice } from "@zcode/contracts";
+import type { ModelToolChoice } from "@s-agent/contracts";
 import type { EnvRecord } from "./model-execution.js";
 import { toolSearchHeaders } from "./tool-search.js";
 import { toAiSdkMessages } from "./transform.js";

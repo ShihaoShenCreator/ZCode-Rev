@@ -9,7 +9,7 @@ import {
   type SessionEvent,
   type ToolArtifactStorePort,
   type ToolArtifactWriteRequest,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createInMemoryHookRunner } from "../src/hooks/index.js";
 import { PermissionService, defaultPermissionConfig } from "../src/permission/service.js";
 import { createToolExecutor } from "../src/tool/executor.js";

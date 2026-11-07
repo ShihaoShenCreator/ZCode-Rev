@@ -1,4 +1,4 @@
-import type { IPlatformService } from "@zcode/shared";
+import type { IPlatformService } from "@s-agent/shared";
 import type { RequestSecurityWorkspaceTab } from "@/request-security.js";
 export function RequestSecurityHost() {
   return null;

@@ -1,5 +1,5 @@
-import type { ZCodeError, ZCodeTaskMeta, TraceId } from "@zcode/shared";
-import { errorAttributionSchema, type ErrorAttribution } from "@zcode/shared/zcode-protocol-v4";
+import type { ZCodeError, ZCodeTaskMeta, TraceId } from "@s-agent/shared";
+import { errorAttributionSchema, type ErrorAttribution } from "@s-agent/shared/zcode-protocol-v4";
 import { resolveRequestVerificationBusinessCode } from "@/lib/providerBusinessError.js";
 
 export interface ZCodeUiError extends ZCodeError {

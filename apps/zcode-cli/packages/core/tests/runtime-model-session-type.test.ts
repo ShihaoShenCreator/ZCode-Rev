@@ -6,7 +6,7 @@ import {
   runWithModelInvocationContext,
   type ModelInvocationContext,
   type SessionTaskType,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createRuntimeModel } from "../src/runtime/methods/runtime-model.js";
 import { generateTitleCandidate } from "../src/runtime/methods/title-generation-sidecar.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";

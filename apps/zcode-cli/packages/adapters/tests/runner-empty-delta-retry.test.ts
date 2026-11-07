@@ -3,13 +3,13 @@ import {
   runWithModelInvocationContext,
   type ModelNetworkStatusEvent,
   type ModelStreamEvent,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createRegistryModelConfig,
   createRegistryProviderConfig,
   parseModelConfig,
   parseProviderConfig,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import { ProviderBusinessError } from "../src/model/model-execution.js";
 import { AiSdkModelAdapter, type AiSdkModelRuntime } from "../src/model/runner.js";
 import { createTestModelProperties } from "./test-model-format.js";

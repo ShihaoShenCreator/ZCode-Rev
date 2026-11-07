@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import { TID_BROWSER_ADDRESS_INPUT } from "@zcode/shared/test-ids";
+import { TID_BROWSER_ADDRESS_INPUT } from "@s-agent/shared/test-ids";
 import {
   clearAppData,
   setCurrentElectronRendererContentSize,

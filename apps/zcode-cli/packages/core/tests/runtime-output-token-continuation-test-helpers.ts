@@ -1,4 +1,4 @@
-import { createSessionId, modelMessageContentToText } from "@zcode/contracts";
+import { createSessionId, modelMessageContentToText } from "@s-agent/contracts";
 import {
   type AgentRuntime,
   type AgentRuntimeConfig,

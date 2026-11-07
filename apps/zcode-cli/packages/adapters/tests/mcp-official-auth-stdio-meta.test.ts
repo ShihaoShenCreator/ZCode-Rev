@@ -4,8 +4,8 @@
    这里验证"注入点的行为"：命中/失败/不信任/无端口/非官方 server 五种形态下 `_meta` 的形状。
    凭证解析本身在 services 侧测试，配置解析在 plugin-official-mcp-auth.test.ts。 */
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { OFFICIAL_MCP_AUTH_META_KEY } from "@zcode/shared";
-import type { McpServerConfig } from "@zcode/contracts";
+import { OFFICIAL_MCP_AUTH_META_KEY } from "@s-agent/shared";
+import type { McpServerConfig } from "@s-agent/contracts";
 
 const {
   clientCallToolMock,

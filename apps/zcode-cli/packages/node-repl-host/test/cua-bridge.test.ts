@@ -1,11 +1,11 @@
 import { createConnection } from "node:net";
 import { afterEach, describe, expect, it } from "vitest";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import type { ComputerUseRuntime } from "@zcode/zcode-cua";
+import type { ComputerUseRuntime } from "@s-agent/zcode-cua";
 import { createComputerUseBridgeGlobals, NODE_REPL_CUA_BRIDGE_SYMBOL } from "../src/cua-bridge.js";
 import { createNodeReplCuaBroker, type NodeReplCuaBroker } from "../src/cua-broker.js";
 import { createNodeReplCallLedger, type NodeReplCallLedger } from "../src/call-ledger/contract.js";
-import { CUA_APP_ASSOCIATIONS_META_KEY } from "@zcode/zcode-cua/host-display-contract";
+import { CUA_APP_ASSOCIATIONS_META_KEY } from "@s-agent/zcode-cua/host-display-contract";
 
 // broker 只认本次调用的 token，会话信息取自账本条目，目标应用身份记入条目的 facts
 // （apps/zcode-cli/docs/design/v2/tool/20-node-repl-call-ledger.md「CUA broker」）。

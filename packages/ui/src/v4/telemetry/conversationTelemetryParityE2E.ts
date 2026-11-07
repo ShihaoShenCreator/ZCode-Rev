@@ -1,15 +1,12 @@
-/* eslint-disable max-lines -- 测试桥只负责把统一的 19 个场景输入翻译成 V4 live fact，集中映射便于隐私审计。 */
-import type { IPlatformService } from "@zcode/shared";
-import type { ConversationTelemetryFact } from "@zcode/shared/zcode-protocol-v4";
+/* eslint-disable max-lines -- 测试桥只负责把统一的 18 个场景输入翻译成 V4 live fact，集中映射便于隐私审计。 */
+import type { IPlatformService } from "@s-agent/shared";
+import type { ConversationTelemetryFact } from "@s-agent/shared/zcode-protocol-v4";
 import { reportAppTelemetryEvent } from "@/lib/appTelemetry.js";
 import {
   getConversationTelemetryParityScenario,
   type ConversationTelemetryParityOperation,
 } from "@/lib/conversationTelemetryParityScenarioDefinitions.js";
-import {
-  runRequestVerificationParityAssertions,
-  runQuotaParityStateAssertions,
-} from "@/lib/conversationTelemetryParityStateE2E.js";
+import { runRequestVerificationParityAssertions } from "@/lib/conversationTelemetryParityStateE2E.js";
 import { shouldExposeE2EStoreBridge } from "@/lib/e2eStoreBridge.js";
 import { resetMessageTelemetryForTest } from "@/lib/messageTelemetry.js";
 import { setUiPerfArmsReporter } from "@/lib/uiPerfArmsTelemetry.js";
@@ -128,10 +125,6 @@ async function applyCurrentOperation(input: {
   if (operation.kind === "web.noop") {
     await runCurrentWebNoopOperations(input, operation.operations);
     rememberStateAssertion(input.stateAssertions, "web:no-final-output");
-    return;
-  }
-  if (operation.kind === "quota.assert") {
-    input.stateAssertions.push(...runQuotaParityStateAssertions());
     return;
   }
   if (operation.kind === "verification.assert") {

@@ -1,12 +1,12 @@
 import { join } from "node:path";
-import { PlatformChannels } from "@zcode/shared";
+import { PlatformChannels } from "@s-agent/shared";
 import {
   TID_LOGIN_TRIGGER,
   TID_LOGIN_MENU_ITEM,
   TID_LOGIN_USE_API_KEY_BUTTON,
   TID_LOGIN_API_KEY_SKIP_BUTTON,
   TID_SIDE_PANE_TOGGLE,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, DEFAULT_WORKSPACE, waitForWorkspaceApp } from "#e2e/helpers/desktop-app";
 import {
   prepareV4ConversationE2E,

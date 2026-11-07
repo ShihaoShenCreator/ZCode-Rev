@@ -1,7 +1,7 @@
 import { readFile, writeFile, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND } from "@zcode/shared/test-ids";
+import { TID_V4_COMPOSER_INPUT, TID_V4_COMPOSER_SEND } from "@s-agent/shared/test-ids";
 import {
   DEFAULT_WORKSPACE,
   clearAppData,

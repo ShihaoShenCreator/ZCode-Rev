@@ -7,7 +7,7 @@ import type {
   Logger,
   OfficialMcpAuthHeadersPort,
   OfficialMcpTrustedOriginRegistry,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import {
   createOfficialMcpAuthFetch,
   mergeOfficialAuthHeaders,

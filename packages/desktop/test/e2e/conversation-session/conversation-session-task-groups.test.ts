@@ -12,8 +12,8 @@ import {
   waitForV4ComposerText,
 } from "#e2e/helpers/v4-conversation";
 import { installHandoffRpcProbe, callHandoffHost } from "#e2e/helpers/remote-project-handoff-probe";
-import { ServiceChannels, ZCODE_AGENT_PROVIDER } from "@zcode/shared";
-import { TID_TASK_ITEM, testId } from "@zcode/shared/test-ids";
+import { ServiceChannels, ZCODE_AGENT_PROVIDER } from "@s-agent/shared";
+import { TID_TASK_ITEM, testId } from "@s-agent/shared/test-ids";
 
 declare global {
   interface Window {

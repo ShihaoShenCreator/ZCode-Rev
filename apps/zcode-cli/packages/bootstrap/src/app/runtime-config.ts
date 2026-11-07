@@ -1,8 +1,8 @@
-import type { ConfigResult } from "@zcode/adapters/config";
-import { GEN_UI_OUTPUT_ROOT_ENV } from "@zcode/shared/node";
-import { resolveInitialModelSelection, type ModelSelectionOptions } from "@zcode/provider";
-import { resolveBashTimeoutPolicy, type AgentProfile, type AgentRuntimeConfig } from "@zcode/core";
-import { type BuiltInSubagentModelSelectionOverrides } from "@zcode/shared";
+import type { ConfigResult } from "@s-agent/adapters/config";
+import { GEN_UI_OUTPUT_ROOT_ENV } from "@s-agent/shared/node";
+import { resolveInitialModelSelection, type ModelSelectionOptions } from "@s-agent/provider";
+import { resolveBashTimeoutPolicy, type AgentProfile, type AgentRuntimeConfig } from "@s-agent/core";
+import { type BuiltInSubagentModelSelectionOverrides } from "@s-agent/shared";
 import {
   type CollaborationMode,
   type HookConfigSource,
@@ -10,7 +10,7 @@ import {
   type HookMatcherConfig,
   type HooksRuntimeConfig,
   type McpServerConfig,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { omitMcpServers, resolveTrustedOfficialCuaServerNames } from "../mcp-config.js";
 import { resolveDefaultEmbeddedSearchBackend } from "./embedded-search-backend.js";
 import { getProjectMemoryRoot } from "./paths.js";

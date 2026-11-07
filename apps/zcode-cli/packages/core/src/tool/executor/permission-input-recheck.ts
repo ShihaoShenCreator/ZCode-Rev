@@ -1,4 +1,4 @@
-import { type CollaborationMode, type PermissionRuleset } from "@zcode/contracts";
+import { type CollaborationMode, type PermissionRuleset } from "@s-agent/contracts";
 
 import type { PermissionDecisionResult, PermissionContext } from "../../permission/service.js";
 import type {

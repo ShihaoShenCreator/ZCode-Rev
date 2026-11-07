@@ -7,7 +7,7 @@ import {
   type Model,
   type ModelRequest,
   type ModelResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { AgentRuntimeConfig } from "../src/runtime/types.js";
 import type { AgentRuntimeInternal } from "../src/runtime/internal.js";
 import { createTestAgentRuntime } from "./test-agent-runtime.js";

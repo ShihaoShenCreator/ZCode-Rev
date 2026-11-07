@@ -18,9 +18,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { Readable } from "node:stream";
 import test from "node:test";
-import { ZCODE_DWF_CHILD_COMMAND } from "@zcode/contracts";
+import { ZCODE_DWF_CHILD_COMMAND } from "@s-agent/contracts";
 
-import type { RunContext } from "@zcode/shared-types";
+import type { RunContext } from "@s-agent/shared-types";
 import { isDwfChildInvocation } from "../src/dwf-child-command.js";
 import { run } from "../src/run.js";
 

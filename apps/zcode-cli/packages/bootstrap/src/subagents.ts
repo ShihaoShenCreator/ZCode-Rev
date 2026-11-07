@@ -2,20 +2,20 @@ import { readFileSync } from "node:fs";
 import { readFile, readdir } from "node:fs/promises";
 import { basename, join, resolve } from "node:path";
 import { parseRuntimeSubagentConfig } from "./runtime-subagents/index.js";
-import { migrateUserSubagentMarkdown, migrateSubagentStateFile } from "@zcode/shared/node";
+import { migrateUserSubagentMarkdown, migrateSubagentStateFile } from "@s-agent/shared/node";
 import {
   parseAgentProfileFromMarkdown,
   type AgentProfile,
   type AgentProfileParseDiagnostic,
-} from "@zcode/core";
-import type { Logger, PluginMetadata } from "@zcode/contracts";
+} from "@s-agent/core";
+import type { Logger, PluginMetadata } from "@s-agent/contracts";
 import {
   createPluginAgentStateId,
   parsePluginSubagentModelSelectionOverrides,
   modelSelectionSchema,
   type BuiltInSubagentModelSelectionOverrides,
   type PluginSubagentModelSelectionOverrides,
-} from "@zcode/shared";
+} from "@s-agent/shared";
 
 interface LoadZCodeAgentProfilesInput {
   logger?: Logger;

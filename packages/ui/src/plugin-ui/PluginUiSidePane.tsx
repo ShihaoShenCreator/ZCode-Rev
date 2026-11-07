@@ -1,5 +1,5 @@
 import { memo, useMemo } from "react";
-import type { PluginUiScopeRef } from "@zcode/shared/mcp-apps";
+import type { PluginUiScopeRef } from "@s-agent/shared/mcp-apps";
 import { readPluginUiScopeRef, type PluginUiSidePaneTab } from "@/plugin-ui/contract.js";
 import {
   PluginUiConversationScope,

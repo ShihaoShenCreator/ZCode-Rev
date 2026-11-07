@@ -1,4 +1,4 @@
-import type { BrowserBackendDescriptor } from "@zcode/contracts";
+import type { BrowserBackendDescriptor } from "@s-agent/contracts";
 
 export function createManagedCdpDescriptor(
   browserId: string,

@@ -1,4 +1,4 @@
-import { OFF_PEAK_EXECUTION_TOOL_DENYLIST } from "@zcode/shared";
+import { OFF_PEAK_EXECUTION_TOOL_DENYLIST } from "@s-agent/shared";
 import type {
   CompactPhase,
   CompactReason,
@@ -13,7 +13,7 @@ import type {
   TurnId,
 } from "../deps.js";
 import type { ActiveTurnSteeringState } from "../types.js";
-import type { ModelToolContract, SubagentRunOptions } from "@zcode/contracts";
+import type { ModelToolContract, SubagentRunOptions } from "@s-agent/contracts";
 import type { DrainedPendingInputDiagnostics, ModelExecutionContext } from "../types.js";
 import type { TurnMachineImpl } from "../deps.js";
 import type { RuntimeMessageEntry } from "../../agent/message-history.js";

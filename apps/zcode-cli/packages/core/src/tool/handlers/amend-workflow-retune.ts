@@ -18,7 +18,7 @@ import {
   type CreateWorkflowOutput,
   type DynamicWorkflowRunPort,
   type DynamicWorkflowRunRetuneResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { ToolExecutionContext, ToolHandlerFailure } from "../types.js";
 import {
   AMEND_WORKFLOW_ERROR_CODE,

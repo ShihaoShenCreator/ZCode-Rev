@@ -221,7 +221,7 @@ task-index syncer ◀── 同结构 snapshot（几十 KB~数百 KB，而非 15
    └─ buildMetaFromSnapshot / searchableText / hasUserVisibleContent：结果与 full 逐字节一致
 ```
 
-- 剥离规则（`elideSessionSnapshotForIndex`，`@zcode/shared`）：tool part 的 `state.input` → `{}`、
+- 剥离规则（`elideSessionSnapshotForIndex`，`@s-agent/shared`）：tool part 的 `state.input` → `{}`、
   `state.output/raw/error` → `""`、`state.metadata` → `{}`；reasoning part 的 `text` → `""`；
   file part 的 `data:` URL → `data:,`。message 数量与顺序、`info`、所有 part 的 `type/id/metadata`、
   text/compaction/timeline/subagent 等其它 part 全部原样保留。
@@ -241,7 +241,7 @@ task-index syncer ◀── 同结构 snapshot（几十 KB~数百 KB，而非 15
 - `session.status=idle` only means the agent engine has no active turn. If the latest user-visible assistant message has a completed timestamp and is not a tool-call continuation boundary, the task status is `completed`.
 - `projection.lastError` takes precedence over a previously completed assistant message, because provider failures can happen before a new assistant message is persisted.
 
-All snapshot-to-task-status callers must use the shared projection helper from `@zcode/shared`. UI projection, service adapter, and sqlite index sync must not carry separate copies of this logic, otherwise switching workspaces can restore a task from a different terminal-status interpretation than the one used while streaming.
+All snapshot-to-task-status callers must use the shared projection helper from `@s-agent/shared`. UI projection, service adapter, and sqlite index sync must not carry separate copies of this logic, otherwise switching workspaces can restore a task from a different terminal-status interpretation than the one used while streaming.
 
 ## Implementation
 

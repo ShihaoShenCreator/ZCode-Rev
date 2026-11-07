@@ -241,9 +241,9 @@ git commit -m "feat(shared): add OAuth channels, config, and platform types; rem
 
 创建 `packages/services/src/oauth/oauth.ts`：
 ```ts
-import { ServiceChannels } from "@zcode/shared";
+import { ServiceChannels } from "@s-agent/shared";
 import { createServiceDescriptor } from "../descriptors.js";
-import type { UserInfo } from "@zcode/shared";
+import type { UserInfo } from "@s-agent/shared";
 
 /**
  * OAuth 认证服务
@@ -301,8 +301,8 @@ git commit -m "feat(services): add IOAuthService interface and descriptor"
 创建 `packages/services/src/oauth/oauthService.ts`：
 ```ts
 import { randomBytes, createHash } from "node:crypto";
-import { BIGMODEL_OAUTH_CONFIG } from "@zcode/shared";
-import type { UserInfo } from "@zcode/shared";
+import { BIGMODEL_OAUTH_CONFIG } from "@s-agent/shared";
+import type { UserInfo } from "@s-agent/shared";
 import type { IOAuthService } from "./oauth.js";
 import type { ICredentialService } from "../credential/credential.js";
 
@@ -573,7 +573,7 @@ export { createOAuthService } from "./oauth/oauthService.js";
 import {
   ...existing imports,
   IOAuthService,
-} from "@zcode/services";
+} from "@s-agent/services";
 ```
 
 添加字段和构造器中的初始化：
@@ -594,8 +594,8 @@ Remote 模式的 ServiceCollection（`InitRemote` 分支）不走 `createLocalSe
 
 添加 import：
 ```ts
-import { IOAuthService } from "@zcode/services";
-import { createOAuthService, createCredentialService } from "@zcode/services/node";
+import { IOAuthService } from "@s-agent/services";
+import { createOAuthService, createCredentialService } from "@s-agent/services/node";
 ```
 
 在 remote 模式的 `new ServiceCollection()` 链中添加（OAuth 是本地操作，不走 SSH）：
@@ -628,8 +628,8 @@ git commit -m "feat(services): wire IOAuthService into accessor, registry, remot
 替换 `packages/desktop/src/preload/index.ts` 为：
 ```ts
 import { contextBridge, ipcRenderer } from "electron";
-import type { SSHConnectOptions } from "@zcode/shared";
-import { PlatformChannels, InternalChannels } from "@zcode/shared";
+import type { SSHConnectOptions } from "@s-agent/shared";
+import { PlatformChannels, InternalChannels } from "@s-agent/shared";
 
 /**
  * Preload bridge —— 仅暴露需要 main 进程参与的平台操作
@@ -700,7 +700,7 @@ ipcRenderer.on(InternalChannels.ServicePort, (event) => {
 
 替换 `packages/client/src/globals.d.ts` 为：
 ```ts
-import type { SSHConnectOptions } from "@zcode/shared";
+import type { SSHConnectOptions } from "@s-agent/shared";
 
 /**
  * window.zcode 类型定义 —— 仅包含需要 main 进程参与的平台操作
@@ -1185,7 +1185,7 @@ git commit -m "feat(ui): add useOAuth and useTokenRefresh hooks"
  */
 import { useEffect } from "react";
 import { LogInIcon, TriangleAlertIcon, Loader2Icon } from "lucide-react";
-import { TID_OAUTH_LOGIN_BUTTON, TID_OAUTH_CANCEL, TID_OAUTH_ERROR } from "@zcode/shared";
+import { TID_OAUTH_LOGIN_BUTTON, TID_OAUTH_CANCEL, TID_OAUTH_ERROR } from "@s-agent/shared";
 import { useOAuth } from "./hooks/useOAuth.js";
 import { useZCodeStore } from "./store/StoreProvider.js";
 import { Alert, AlertDescription } from "./components/ui/alert.js";

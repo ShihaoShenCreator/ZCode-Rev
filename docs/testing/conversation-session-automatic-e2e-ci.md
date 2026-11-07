@@ -35,11 +35,11 @@ CI job 使用 macOS shell runner 在宿主机上执行桌面端 WDIO Electron E2
 ```bash
 E2E_PROVIDER_HTTP_MODE=replay \
 ZCODE_E2E_SPEC='./test/e2e/conversation-session/*.test.ts,./test/e2e/workspace-file-tree-refresh.test.ts' \
-pnpm --filter @zcode/e2e-report build:node
+pnpm --filter @s-agent/e2e-report build:node
 
 E2E_PROVIDER_HTTP_MODE=replay \
 ZCODE_E2E_SPEC='./test/e2e/conversation-session/*.test.ts,./test/e2e/workspace-file-tree-refresh.test.ts' \
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts
 ```
 
 `ZCODE_E2E_SPEC` 只作为环境变量交给 `wdio.conf.ts` 解析。CI 不再把同一个 glob追加到 WDIO CLI `--spec`，避免出现两套 spec 过滤入口，让 job 只跑到 `onPrepare` / 构建阶段却没有稳定调度 worker。
@@ -98,7 +98,7 @@ conversation formal glob 包含 `conversation-session-ssh-remote*.test.ts`。当
 的 `stageDesktopE2EAppOutput` 会把 `packages/desktop/mock-cdn/releases/<repo version>`
 stage 到 runId 隔离目录，供 SSH remote runtime 使用。
 
-该 release 目录由 `pnpm --filter @zcode/desktop prepare:remote-assets` 产出。历史上的坑：
+该 release 目录由 `pnpm --filter @s-agent/desktop prepare:remote-assets` 产出。历史上的坑：
 CI 只有 `build:remote:assets` job 会跑该命令，且它跑在 `macos` tag runner 的工作槽位，
 而 conversation e2e 跑在专用 e2e runner；`mock-cdn` 虽被 `GIT_CLEAN_FLAGS` 排除做工作区
 持久化，但两个工作目录互不相通，且目录按版本号命名——每次版本 bump 后专用 runner 上
@@ -106,7 +106,7 @@ CI 只有 `build:remote:assets` job 会跑该命令，且它跑在 `macos` tag r
 `SSH remote assets missing: .../mock-cdn/releases/3.12.0` 即此问题）。
 
 当前行为：SSH 环境就绪但 release 目录缺失时，`onPrepare` 自动执行
-`pnpm --filter @zcode/desktop prepare:remote-assets` 再 stage；目录已存在则跳过（幂等，
+`pnpm --filter @s-agent/desktop prepare:remote-assets` 再 stage；目录已存在则跳过（幂等，
 同版本复用持久化产物）。prepare 完成后目录仍缺失则继续 fail-closed 中止运行。这样
 conversation e2e job 与本地 SSH e2e 都不再依赖其他 job / 其他 runner 槽位的工作区
 隐式共享产物。

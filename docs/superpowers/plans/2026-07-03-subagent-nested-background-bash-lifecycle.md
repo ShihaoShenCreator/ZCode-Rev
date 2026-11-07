@@ -924,7 +924,7 @@ Run:
 ```bash
 python -m json.tool packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-background.json >/dev/null
 python -m json.tool packages/desktop/test/e2e/fixtures/cases/conversation-session/conversation-session-background.json >/dev/null
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts
 ```
 
 Expected:
@@ -954,12 +954,12 @@ Case-specific responses were added only to the existing background case-local fi
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts
 
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/conversation-session-background.json \
-  pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-background.test.ts'
+  pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-background.test.ts'
 
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-background.test.ts'
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/conversation-session-background.test.ts'
 ```
 
 Expected:
@@ -998,7 +998,7 @@ Expected:
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/conversation-session-background.test.ts
 ```
 
 Expected:
@@ -1010,7 +1010,7 @@ Expected:
 Run:
 
 ```bash
-pnpm --filter @zcode/desktop typecheck:e2e
+pnpm --filter @s-agent/desktop typecheck:e2e
 pnpm typecheck
 pnpm lint
 ```

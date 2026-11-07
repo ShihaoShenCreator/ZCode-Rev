@@ -375,7 +375,7 @@ pending case 已有 case-local fixture 时，可以在转正前直接检查合�
 同时要求两个 fixture JSON 的 `spec` 指向 canonical formal target：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- \
+pnpm --filter @s-agent/desktop e2e:fixture:check -- \
   --spec ./test/e2e/conversation-session/manual-review/pending/<case>.test.ts
 ```
 
@@ -386,7 +386,7 @@ provider transport 切到 replay，但仍保留 `ZCODE_E2E_MANUAL_REVIEW=1` 的 
 
 ```bash
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/<case>.json \
-  pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec \
+  pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec \
   './test/e2e/conversation-session/manual-review/pending/<case>.test.ts'
 ```
 
@@ -412,7 +412,7 @@ E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/com
 review 已确认的 pending case 使用 promotion 工具做机械转正：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:promote -- --spec ./test/e2e/conversation-session/manual-review/pending/<case>.test.ts --reviewed --apply
+pnpm --filter @s-agent/desktop e2e:promote -- --spec ./test/e2e/conversation-session/manual-review/pending/<case>.test.ts --reviewed --apply
 ```
 
 promotion 工具只做确定性脚手架：
@@ -432,12 +432,12 @@ formal audit，开发者必须在 pending 阶段根据人工 review 和请求分
 manifest 与 provider fixture 的 `spec` 都指向 canonical formal target；audit 未通过时不会完成转正。转正后再运行：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/<case>.test.ts
+pnpm --filter @s-agent/desktop e2e:fixture:check -- --spec ./test/e2e/conversation-session/<case>.test.ts
 
 E2E_PROVIDER_REPLAY_FIXTURE_PATH=packages/desktop/test/e2e/fixtures/upstream/common.json,packages/desktop/test/e2e/fixtures/upstream/conversation-session/<case>.json \
-  pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/<case>.test.ts'
+  pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/<case>.test.ts'
 
-pnpm --filter @zcode/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/<case>.test.ts'
+pnpm --filter @s-agent/desktop exec wdio run wdio.conf.ts --spec './test/e2e/conversation-session/<case>.test.ts'
 ```
 
 第一条 replay 命令显式只加载 common + case-local fixture，用来证明正式 case 不依赖 legacy `provider-basic.json` 的专用兜底。
@@ -452,7 +452,7 @@ E2E_SPEC=./test/e2e/conversation-session/<case>.test.ts \
 通过后再登记进 `conversation-session-verified`：
 
 ```bash
-pnpm --filter @zcode/desktop e2e:docker:admit -- \
+pnpm --filter @s-agent/desktop e2e:docker:admit -- \
   --spec ./test/e2e/conversation-session/<case>.test.ts \
   --verified \
   --artifact packages/desktop/.e2e-artifacts/<run-id> \

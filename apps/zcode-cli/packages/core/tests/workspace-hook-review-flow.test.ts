@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { WorkspaceHookReviewRequestPayload } from "@zcode/shared/zcode-protocol-v4";
+import type { WorkspaceHookReviewRequestPayload } from "@s-agent/shared/zcode-protocol-v4";
 import {
   WorkspaceHookReviewFlowRegistry,
   type WorkspaceHookReviewTarget,

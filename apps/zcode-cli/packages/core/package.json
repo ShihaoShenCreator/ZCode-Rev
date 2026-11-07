@@ -1,5 +1,5 @@
 {
-  "name": "@zcode/core",
+  "name": "@s-agent/core",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -33,11 +33,11 @@
     "lint:fix": "oxlint --fix src --no-ignore"
   },
   "dependencies": {
-    "@zcode/contracts": "workspace:*",
-    "@zcode/dynamic-workflow": "workspace:*",
-    "@zcode/shared": "workspace:*",
-    "@zcode/shared-types": "workspace:*",
-    "@zcode/zcode-cua": "workspace:*",
+    "@s-agent/contracts": "workspace:*",
+    "@s-agent/dynamic-workflow": "workspace:*",
+    "@s-agent/shared": "workspace:*",
+    "@s-agent/shared-types": "workspace:*",
+    "@s-agent/zcode-cua": "workspace:*",
     "cheerio": "^1.0.0",
     "diff": "^9.0.0",
     "ipaddr.js": "1.9.1",

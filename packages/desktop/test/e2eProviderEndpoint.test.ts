@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { resolveBigModelApiOrigin, resolveRuntimeZCodeEndpointOrigin } from "@zcode/shared";
+import { resolveBigModelApiOrigin, resolveRuntimeZCodeEndpointOrigin } from "@s-agent/shared";
 import {
   getE2EProviderEndpointEnv,
   shouldUseProductionE2EProviderEndpoint,

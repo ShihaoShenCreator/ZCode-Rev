@@ -5,7 +5,7 @@ import {
   TID_GIT_PANE,
   TID_TASK_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import type { ChainablePromiseElement } from "webdriverio";
 import {
   DEFAULT_WORKSPACE,

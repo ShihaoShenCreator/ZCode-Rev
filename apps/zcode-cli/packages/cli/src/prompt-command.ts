@@ -1,8 +1,8 @@
-import type { ToolSearchMode } from "@zcode/contracts";
+import type { ToolSearchMode } from "@s-agent/contracts";
 import { createCliProviderRefreshReporter } from "./provider-runtime-env.js";
 import { extname } from "node:path";
-import { formatJson, type PresentationSurface } from "@zcode/core";
-import type { RunContext, GlobalOptions } from "@zcode/shared-types";
+import { formatJson, type PresentationSurface } from "@s-agent/core";
+import type { RunContext, GlobalOptions } from "@s-agent/shared-types";
 import { loadBootstrapModule } from "./bootstrap-loader.js";
 import {
   buildManualSkillPrompt,
@@ -33,7 +33,7 @@ import {
   resolveWorkflowModeRuntimeConfig,
   WORKFLOW_DISABLED_NOTICE,
 } from "./workflow-mode.js";
-import type { DynamicWorkflowMode } from "@zcode/shared";
+import type { DynamicWorkflowMode } from "@s-agent/shared";
 import type { CommandCenterApp, SlashCommand } from "./command-center.js";
 import type {
   CliPermissionMode,
@@ -110,17 +110,9 @@ export const runPrompt = async (
     return await runSkillsCommand(ctx, options, deps, []);
   }
   if (slashCommand?.type === "known" && slashCommand.name === "login") {
-    if (slashCommand.args.length > 0) {
-      ctx.stderr.write("Usage: /login\n");
-      return 1;
-    }
     return await runLoginCommand(ctx, options, deps, false);
   }
   if (slashCommand?.type === "known" && slashCommand.name === "logout") {
-    if (slashCommand.args.length > 0) {
-      ctx.stderr.write("Usage: /logout\n");
-      return 1;
-    }
     return await runLogoutCommand(ctx, options, deps);
   }
 

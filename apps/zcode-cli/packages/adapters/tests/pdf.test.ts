@@ -10,7 +10,7 @@ import {
   type ExecutionPort,
   type ExecutionRequest,
   type ExecutionResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import { createPopplerPdfDocumentAdapter } from "../src/pdf/index.js";
 
 const roots: string[] = [];

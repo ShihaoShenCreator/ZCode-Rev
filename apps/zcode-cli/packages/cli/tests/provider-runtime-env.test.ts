@@ -6,7 +6,7 @@ import test from "node:test";
 import {
   ZCODE_BUILTIN_PROVIDER_CONFIG_FILE_ENV,
   ZCODE_PERSONAL_PROVIDER_CONFIG_FILE_ENV,
-} from "@zcode/provider-node";
+} from "@s-agent/provider-node";
 import {
   SEA_ZCODE_BUILTIN_PROVIDER_CONFIG_ASSET_KEY,
   prepareCliProviderRuntimeEnv,

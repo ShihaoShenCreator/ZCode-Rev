@@ -1,7 +1,7 @@
-import { isHighspeedProviderId } from "@zcode/shared";
-import { modelSelectionSchema, type ModelSelection } from "@zcode/shared/model-selection";
-import { submissionModeSchema, type SubmissionMode } from "@zcode/shared/zcode-protocol-v4";
-import type { ModelSelectionView } from "@zcode/services";
+import { isHighspeedProviderId } from "@s-agent/shared";
+import { modelSelectionSchema, type ModelSelection } from "@s-agent/shared/model-selection";
+import { submissionModeSchema, type SubmissionMode } from "@s-agent/shared/zcode-protocol-v4";
+import type { ModelSelectionView } from "@s-agent/services";
 import { logger } from "@/logger.js";
 import { composerScopeKey, type ComposerScope } from "@/v4/composer/composerDraftStore.js";
 

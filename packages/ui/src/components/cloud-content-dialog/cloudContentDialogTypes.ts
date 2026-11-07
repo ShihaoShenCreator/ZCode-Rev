@@ -1,4 +1,4 @@
-import type { CloudContentPayload } from "@zcode/shared";
+import type { CloudContentPayload } from "@s-agent/shared";
 
 type WireHero = CloudContentPayload["dialog"]["hero"];
 export type CloudImageHero = Extract<WireHero, { type: "image" }>;

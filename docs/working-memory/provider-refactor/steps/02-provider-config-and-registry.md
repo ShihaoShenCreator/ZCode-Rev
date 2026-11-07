@@ -95,7 +95,7 @@ ProviderConfigResolver
 └─ 变化通知
 ```
 
-这一切片建立在新的纯领域包 `@zcode/provider` 中。后续切片已经让 Host、Worker、Prompt CLI 和 TUI 复用这套代码；文件监听、远端管理配置和账号接口继续由各自 Source Service 负责。
+这一切片建立在新的纯领域包 `@s-agent/provider` 中。后续切片已经让 Host、Worker、Prompt CLI 和 TUI 复用这套代码；文件监听、远端管理配置和账号接口继续由各自 Source Service 负责。
 
 这一节只记录首个领域切片当时的边界，不代表 M2 最终交付范围。后续切片已经接入 Host、Worker、设置页、模型选择和模型执行；Adapter reasoning 映射仍保持原有执行语义。
 
@@ -105,7 +105,7 @@ ProviderConfigResolver
 ## 实施切片与结果
 
 ```text
-M2.1  @zcode/provider 包                                      [完成]
+M2.1  @s-agent/provider 包                                      [完成]
       + ConfigOverlay、ProviderConfig、ModelConfigRules 与解析测试
 
 M2.2  ProviderConfigResolver

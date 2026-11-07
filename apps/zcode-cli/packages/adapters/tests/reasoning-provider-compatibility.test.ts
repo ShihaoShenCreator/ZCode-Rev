@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createModelId, createModelProviderId, type ModelInputMessage } from "@zcode/contracts";
+import { createModelId, createModelProviderId, type ModelInputMessage } from "@s-agent/contracts";
 import { normalizeReasoningHistory } from "../src/model/reasoning-history-normalization.js";
 
 const MODEL_ID = createModelId("GLM-5.3");

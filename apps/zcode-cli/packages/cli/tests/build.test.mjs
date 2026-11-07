@@ -208,10 +208,10 @@ test("every shared package export has an exact build alias, including SQLite mig
   const rootDirectory = resolve("/repo/apps/zcode-cli");
   const aliases = resolveBuildAliases({ rootDirectory });
   for (const [subpath, target] of Object.entries(shared.exports)) {
-    const name = subpath === "." ? "@zcode/shared" : `@zcode/shared/${subpath.slice(2)}`;
+    const name = subpath === "." ? "@s-agent/shared" : `@s-agent/shared/${subpath.slice(2)}`;
     assert.equal(aliases[name], resolve(rootDirectory, "../../packages/shared", target));
     if (subpath !== ".")
-      assert.ok(Object.keys(aliases).indexOf(name) < Object.keys(aliases).indexOf("@zcode/shared"));
+      assert.ok(Object.keys(aliases).indexOf(name) < Object.keys(aliases).indexOf("@s-agent/shared"));
   }
 });
 
@@ -239,7 +239,7 @@ test("CLI bundles session migrations through the shared sqlite subpath", async (
   );
   assert.ok(
     Object.values(result.metafile.outputs).every((output) =>
-      output.imports.every((entry) => entry.path !== "@zcode/shared/sqlite-migrations"),
+      output.imports.every((entry) => entry.path !== "@s-agent/shared/sqlite-migrations"),
     ),
   );
 });
@@ -262,7 +262,7 @@ test("built CLI embeds the compact registry without a runtime Fig dependency", a
 test("request security subpath bundles through its edition entry", async () => {
   const result = await build({
     stdin: {
-      contents: 'import * as security from "@zcode/shared/request-security"; export { security };',
+      contents: 'import * as security from "@s-agent/shared/request-security"; export { security };',
       resolveDir: resolve(import.meta.dirname, ".."),
     },
     alias: resolveBuildAliases(),

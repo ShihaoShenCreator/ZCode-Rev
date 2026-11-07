@@ -147,7 +147,7 @@ package / manifest / Bootstrap / SEA / serverInfo = 0.2.1
 | SEA Browser Use version/assets test | 1/1 通过；package/manifest/SEA 均为 `0.2.1`，必需资产清单完整                                       |
 | Desktop runtime asset scripts       | 39/39 通过                                                                                          |
 | Remote official plugin assets       | 77/77 通过                                                                                          |
-| Browser Use plugin build            | 通过，构建身份为 `@zcode/browser-use-plugin@0.2.1`                                                  |
+| Browser Use plugin build            | 通过，构建身份为 `@s-agent/browser-use-plugin@0.2.1`                                                  |
 | CLI workspace typecheck             | 23/23 tasks 通过                                                                                    |
 | 根仓库 `pnpm typecheck`             | 通过                                                                                                |
 | 根仓库 `pnpm lint`                  | 0 errors，36 条既有 warning                                                                         |

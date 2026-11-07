@@ -3,7 +3,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
-// `@zcode/dynamic-workflow/projections` 是给作品集浏览器包用的纯投影桶
+// `@s-agent/dynamic-workflow/projections` 是给作品集浏览器包用的纯投影桶
 // （docs/chat/workflow-portfolio.md）：站内在冻结的 core.json 上现场重算投影，整条链不能把
 // `typescript`（分析器铸造 core 时才用的编译器）拖进前端 bundle。这里不靠打包器报错来发现——
 // 直接静态遍历 dist/projections.js 的 ESM import 闭包（tsc 已经擦掉了 type-only import，

@@ -6,7 +6,7 @@
 
 **架构：** 不引入长驻 shell，也不新增全局 system-reminder。继续使用现有 `ExecutionResult.resolvedCwd` 捕获通道，在 Bash handler 内增加一个小的 cwd policy 层，集中决定是否更新 cwd、是否 reset、是否追加 Bash stderr 文案。其它工具、hooks、background Bash、failed Bash、timeout Bash 不消费该 policy。
 
-**技术栈：** TypeScript、Vitest、`@zcode/contracts`、`@zcode/core`、现有 `ExecutionPort` cwd capture。
+**技术栈：** TypeScript、Vitest、`@s-agent/contracts`、`@s-agent/core`、现有 `ExecutionPort` cwd capture。
 
 ## 执行状态
 
@@ -17,12 +17,12 @@
 
 2026-06-16 验证结果：
 
-- `pnpm --filter @zcode/core exec vitest run tests/bash-handler.test.ts tests/runtime-tool-loop.test.ts tests/bash-result-mapping.test.ts --reporter=dot` 通过，129 tests passed。
-- `pnpm --filter @zcode/adapters exec vitest run tests/exec.test.ts --reporter=dot` 通过，52 tests passed / 2 skipped。
-- `pnpm --filter @zcode/core typecheck` 通过。
-- `pnpm --filter @zcode/adapters typecheck` 通过。
+- `pnpm --filter @s-agent/core exec vitest run tests/bash-handler.test.ts tests/runtime-tool-loop.test.ts tests/bash-result-mapping.test.ts --reporter=dot` 通过，129 tests passed。
+- `pnpm --filter @s-agent/adapters exec vitest run tests/exec.test.ts --reporter=dot` 通过，52 tests passed / 2 skipped。
+- `pnpm --filter @s-agent/core typecheck` 通过。
+- `pnpm --filter @s-agent/adapters typecheck` 通过。
 - `pnpm lint` 通过，0 errors / 66 warnings。
-- `pnpm typecheck` 仍失败在仓库级历史 `@zcode/shared` export/type 问题；失败文件不在本次 Bash reset 实现面内。
+- `pnpm typecheck` 仍失败在仓库级历史 `@s-agent/shared` export/type 问题；失败文件不在本次 Bash reset 实现面内。
 
 ---
 
@@ -205,7 +205,7 @@ import type {
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- bash-handler.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts
 ```
 
 预期：如果失败，应只剩测试 helper 需要补 `runtimeScope` 的类型问题；不应该出现其它工具行为变化。
@@ -225,7 +225,7 @@ pnpm --filter @zcode/core test -- bash-handler.test.ts
 
 ```ts
 import path from "node:path";
-import type { ExecutionResult } from "@zcode/contracts";
+import type { ExecutionResult } from "@s-agent/contracts";
 import type { ToolRuntimeScope } from "../types.js";
 
 export interface BashCwdPolicyInput {
@@ -362,7 +362,7 @@ describe("Bash cwd policy", () => {
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- bash-handler.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts
 ```
 
 预期：在 helper/import 尚未接入或断言不匹配时失败。失败必须来自 cwd policy 相关测试。
@@ -448,7 +448,7 @@ function appendStderrSuffix(stderr: string, suffix: string | undefined): string 
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- bash-handler.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts
 ```
 
 预期：cwd policy 单测和原有 Bash handler 测试通过；如果 `resolvedCwd` privacy 测试失败，需要按 Task 5 更新断言。
@@ -584,7 +584,7 @@ expect(JSON.stringify(content)).not.toContain("resolvedCwd");
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- bash-handler.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts
 ```
 
 预期：所有 Bash handler 测试通过。
@@ -672,7 +672,7 @@ it("resets Bash cwd to workspace root after a successful command leaves the work
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- runtime-tool-loop.test.ts
+pnpm --filter @s-agent/core test -- runtime-tool-loop.test.ts
 ```
 
 预期：cwd persistence 旧测试通过，新 reset 测试通过。
@@ -717,7 +717,7 @@ expect(bashToolEntry.formatModelContent?.(output)).not.toContain("Shell cwd was 
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- bash-handler.test.ts bash-result-mapping.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts bash-result-mapping.test.ts
 ```
 
 预期：provider-visible text 符合上述 cwd reset 语义；没有新的 image / error output 变化。
@@ -752,7 +752,7 @@ git diff -- apps/zcode-cli/packages/core/src/tool/handlers/bash.ts apps/zcode-cl
 运行：
 
 ```bash
-pnpm --filter @zcode/core test -- bash-handler.test.ts runtime-tool-loop.test.ts bash-result-mapping.test.ts
+pnpm --filter @s-agent/core test -- bash-handler.test.ts runtime-tool-loop.test.ts bash-result-mapping.test.ts
 ```
 
 预期：通过。
@@ -762,7 +762,7 @@ pnpm --filter @zcode/core test -- bash-handler.test.ts runtime-tool-loop.test.ts
 运行：
 
 ```bash
-pnpm --filter @zcode/adapters test -- exec.test.ts
+pnpm --filter @s-agent/adapters test -- exec.test.ts
 ```
 
 预期：已有 `captureCwdAfterSuccess` 行为仍通过；background 不捕获 cwd。
@@ -772,7 +772,7 @@ pnpm --filter @zcode/adapters test -- exec.test.ts
 运行：
 
 ```bash
-pnpm --filter @zcode/core typecheck
+pnpm --filter @s-agent/core typecheck
 pnpm typecheck
 pnpm lint
 ```
@@ -818,6 +818,6 @@ pnpm lint
 - macOS `/private/tmp`、`/private/var` alias 不导致误判。
 - symlink workspace 下，`pwd -P` 返回的物理 child path 仍被识别为项目内 cwd，不误追加 reset。
 - hooks/plugin shell command、generic `ExecutionPort` shell request、background Bash、subagent Bash、其它文件类 tools 不会自动消费 cwd policy。
-- `pnpm --filter @zcode/core test -- bash-handler.test.ts runtime-tool-loop.test.ts bash-result-mapping.test.ts` 通过。
-- `pnpm --filter @zcode/adapters test -- exec.test.ts` 通过。
+- `pnpm --filter @s-agent/core test -- bash-handler.test.ts runtime-tool-loop.test.ts bash-result-mapping.test.ts` 通过。
+- `pnpm --filter @s-agent/adapters test -- exec.test.ts` 通过。
 - `pnpm typecheck` 和 `pnpm lint` 通过，或仅剩明确无关的历史失败并有记录。

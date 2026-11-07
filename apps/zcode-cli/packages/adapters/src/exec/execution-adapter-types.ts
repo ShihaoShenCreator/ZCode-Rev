@@ -1,6 +1,6 @@
 import type { SpawnOptions } from "node:child_process";
 import type { BashFileOutput } from "./bash-file-output.js";
-import type { ZCodeToolExecResource } from "@zcode/shared";
+import type { ZCodeToolExecResource } from "@s-agent/shared";
 import type { NetworkEgressEnvPolicy } from "../network/subprocess-env.js";
 import type { ResolvedSpawnCommand } from "./execution-command.js";
 import type {
@@ -9,7 +9,7 @@ import type {
   ExecutionResult,
   ExecutionRunOptions,
   ExecutionShellDialect,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export interface ExitState {
   code?: number;

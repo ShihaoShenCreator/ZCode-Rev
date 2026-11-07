@@ -1,4 +1,4 @@
-import { ServiceChannels, type ZCodeTaskMeta } from "@zcode/shared";
+import { ServiceChannels, type ZCodeTaskMeta } from "@s-agent/shared";
 import { createServiceDescriptor } from "#src/descriptors.js";
 
 export type TaskGroupColor = "gray" | "red" | "orange" | "yellow" | "green" | "blue" | "purple";

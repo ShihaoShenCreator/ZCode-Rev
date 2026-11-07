@@ -14,7 +14,7 @@
 // 时长不需要像 tokens 那样在行上累加：事件日志已经给每一世标了日期（`run-started` → 那一世
 // 最后一条事件），所以这里是一次**只读求和**，零写入、零迁移，对升级前就存在的老 run 同样成立。
 
-import type { JournalStorePort } from "@zcode/dynamic-workflow";
+import type { JournalStorePort } from "@s-agent/dynamic-workflow";
 import { supportsRunLifeSpans } from "./dynamic-workflow-run-journal.js";
 
 /**

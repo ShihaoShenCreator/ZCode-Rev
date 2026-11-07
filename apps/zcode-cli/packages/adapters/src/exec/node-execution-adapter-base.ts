@@ -25,7 +25,7 @@ import type {
   ExecutionEvent,
   ExecutionRequest,
   ExecutionResult,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 
 export class NodeExecutionAdapterBase {
   protected readonly activeExecutions = new Map<string, ActiveExecutionRecord>();

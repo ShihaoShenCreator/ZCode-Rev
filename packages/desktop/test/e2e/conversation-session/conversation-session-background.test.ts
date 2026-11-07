@@ -15,7 +15,7 @@ import {
   TID_V4_SESSION_PANE,
   TID_V4_TURN_NAVIGATOR_ITEM,
   testId,
-} from "@zcode/shared/test-ids";
+} from "@s-agent/shared/test-ids";
 import { clearAppData, seedSettings } from "../helpers/desktop-app.js";
 import {
   waitForCompactMarkerStatus,

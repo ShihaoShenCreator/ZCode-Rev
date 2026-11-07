@@ -1,8 +1,8 @@
-import type { TuiSubmitPromptResult } from "@zcode/tui";
+import type { TuiSubmitPromptResult } from "@s-agent/tui";
 import type {
   DynamicWorkflowRunResumeErrorReason,
   DynamicWorkflowRunSessionSummary,
-} from "@zcode/contracts";
+} from "@s-agent/contracts";
 import type { CommandCenterDeps } from "../types.js";
 import { splitArgs } from "../utils.js";
 import { isWorkflowModeEnabled, WORKFLOW_DISABLED_NOTICE } from "../../workflow-mode.js";

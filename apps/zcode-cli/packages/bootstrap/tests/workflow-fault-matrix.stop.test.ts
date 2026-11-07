@@ -5,9 +5,9 @@
 // 兄弟子代理立即被 abort、结算带齐 `providerStop` 载荷（通知文案是它的纯函数）。
 // 与 terminal-states 策略表的对应：auth / quota / model_unavailable / invalid_request。
 
-import type { ModelNetworkStatusEvent } from "@zcode/contracts";
+import type { ModelNetworkStatusEvent } from "@s-agent/contracts";
 import type { FaultProgram, Verdict } from "./helpers/fake-provider-server.js";
-import { WORKFLOW_UNRECOGNIZED_CODE_MAX_CONSECUTIVE } from "@zcode/adapters/model";
+import { WORKFLOW_UNRECOGNIZED_CODE_MAX_CONSECUTIVE } from "@s-agent/adapters/model";
 import { describe, expect, it } from "vitest";
 import {
   startFakeProviderServer,

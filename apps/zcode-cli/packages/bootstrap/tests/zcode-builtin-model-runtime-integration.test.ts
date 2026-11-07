@@ -1,5 +1,5 @@
-import type { CreateAiSdkModelOptions } from "@zcode/adapters/model";
-import type { Model } from "@zcode/contracts";
+import type { CreateAiSdkModelOptions } from "@s-agent/adapters/model";
+import type { Model } from "@s-agent/contracts";
 import { fileURLToPath } from "node:url";
 import {
   ApiKeyAccessConfig,
@@ -10,11 +10,11 @@ import {
   ProviderRegistry,
   ZhipuAccountAccessConfig,
   type ProviderId,
-} from "@zcode/provider";
+} from "@s-agent/provider";
 import {
   NodeZCodeBuiltinProviderConfigSource,
   type ZCodeBuiltinProviderConfigSnapshot,
-} from "@zcode/provider-node";
+} from "@s-agent/provider-node";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { ApiProviderModelRuntime } from "../src/app/provider-registry-model-runtime.js";
 

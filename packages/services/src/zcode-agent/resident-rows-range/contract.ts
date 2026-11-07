@@ -1,4 +1,4 @@
-import { zcodeProtocolMethods, zcodeRuntimeCapabilitiesSchema } from "@zcode/shared";
+import { zcodeProtocolMethods, zcodeRuntimeCapabilitiesSchema } from "@s-agent/shared";
 import type { ZCodeProtocolClient } from "../zcodeProtocolClient.js";
 
 const residentRowsChecks = new WeakMap<object, Promise<boolean>>();

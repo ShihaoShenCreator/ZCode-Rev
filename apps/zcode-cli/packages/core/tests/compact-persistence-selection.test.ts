@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { MessageInfo } from "@zcode/contracts";
-import { createMessageId } from "@zcode/contracts";
+import type { MessageInfo } from "@s-agent/contracts";
+import { createMessageId } from "@s-agent/contracts";
 import { persistCompactSummary } from "../src/runtime/methods/compact-persistence.js";
 
 describe("compact persistence model selection", () => {
